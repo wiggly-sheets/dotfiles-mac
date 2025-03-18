@@ -78,13 +78,13 @@ return {
 			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 		end
 
+		-- Default LSP setup after installation
 		mason_lspconfig.setup_handlers({
-			-- default handler for installed servers
 			function(server_name)
-				lspconfig[server_name].setup({
-					capabilities = capabilities,
-				})
+				local opts = {} -- Here you can add additional LSP-specific options
+				require("lspconfig")[server_name].setup(opts)
 			end,
+
 			["svelte"] = function()
 				-- configure svelte server
 				lspconfig["svelte"].setup({

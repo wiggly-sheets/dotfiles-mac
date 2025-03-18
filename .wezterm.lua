@@ -23,6 +23,13 @@ config.default_cursor_style = "BlinkingUnderline"
 config.window_background_opacity = 0.5
 config.macos_window_background_blur = 10
 
+config.window_padding = {
+	left = 0,
+	right = 0,
+	top = 0,
+	bottom = 0,
+}
+
 config.colors = {
 	foreground = "#CBE0F0",
 	background = "#011423",

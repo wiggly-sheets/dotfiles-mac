@@ -1,7 +1,7 @@
 #!/bin/bash
 
 options=(
-blacklist="WezTerm,tmux"
+blacklist="WezTerm,tmux,Neovide"
 hidpi=on
 width=2.0  
 active_color="0xffffffff" 

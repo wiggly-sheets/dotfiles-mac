@@ -32,14 +32,14 @@ return {
 		--		local colorInline_bg = colors["linkarzu_color02"]
 		--		local color_fg = colors["linkarzu_color26"]
 
-		local color1_bg = colors["#ebfafa"]
-		local color2_bg = colors["#ebfafa"]
-		local color3_bg = colors["#ebfafa"]
-		local color4_bg = colors["#ebfafa"]
-		local color5_bg = colors["#ebfafa"]
-		local color6_bg = colors["#ebfafa"]
-		local colorInline_bg = colors["#ebfafa"]
-		local color_fg = colors["#ebfafa"]
+		local color1_bg = "#ebfafa"
+		local color2_bg = "#ebfafa"
+		local color3_bg = "#ebfafa"
+		local color4_bg = "#ebfafa"
+		local color5_bg = "#ebfafa"
+		local color6_bg = "#ebfafa"
+		local colorInline_bg = "#ebfafa"
+		local color_fg = "#ebfafa"
 
 		-- local color_sign = "#ebfafa"
 
