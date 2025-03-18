@@ -210,7 +210,8 @@ chruby ruby-3.4.2
 # }
 
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+export NVIM_APPNAME="nvim"
 
 
 #history setup

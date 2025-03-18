@@ -13,6 +13,11 @@ return {
 			local fg_dark = "#B4D0E9"
 			local fg_gutter = "#627E97"
 			local border = "#547998"
+			--     local cursor_normal = "#A5CD52"
+			--     local cursor_insert = "#D8B058""
+			--     local cursor_visual = "#AF83FF"
+			--    local cursor_command ="#D7D6FF"
+			--   local cursor_replace = "#F15977""
 
 			require("tokyonight").setup({
 				style = "night",
