@@ -13,7 +13,7 @@ yabai -m space 2 --layout bsp
 yabai -m space 3 --layout float
 
 
-yabai -m config menubar_opacity 0.8
+# yabai -m config menubar_opacity 0.8
 
 yabai -m config window_origin_display cursor
 
@@ -23,8 +23,8 @@ yabai -m config window_animation_duration 0.0
 yabai -m config window_placement second_child
 
 # padding
-yabai -m config top_padding 20
-yabai -m config bottom_padding 40
+yabai -m config top_padding 10 #might need to make a second config with this changed for external monitor
+yabai -m config bottom_padding 60
 yabai -m config left_padding 20
 yabai -m config right_padding 20
 yabai -m config window_gap 20

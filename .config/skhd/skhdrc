@@ -132,4 +132,6 @@ shift + ctrl + alt + cmd - c : yabai -m space --layout float
 
 
 
-
+# toggle mac menu bar opacity
+shift + ctrl + alt + cmd - w : yabai -m config menubar_opacity 1.0
+shift + ctrl + alt + cmd - q : yabai -m config menubar_opacity 0.0
