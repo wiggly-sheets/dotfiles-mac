@@ -160,11 +160,13 @@ alias fvim="~/scripts/fzf_listoldfiles.sh"
 
 alias fman="compgen -c | fzf | xargs man"
 
+alias nzo="~/scripts/zoxide_openfiles_nvim.sh"
+
 #bat (better cat)
 export BAT_THEME=tokyonight_night
 
 #eza (better ls)
-alias ls="eza --color=always --long --git"
+alias ls="eza --long --color=always --icons=always --long --git"
 
 show_file_or_dir_preview="if [ -d {} ]; then eza --tree --color=always {} | head -200; else bat -n --color=always --line-range :500 {}; fi"
 
