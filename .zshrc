@@ -1,7 +1,10 @@
 
 ZSH_TMUX_AUTOSTART=true
+
 neofetch
+
 cd ~
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -151,8 +154,11 @@ _fzf_compgen_dir() {
   fd --type=d --hidden --exclude .git . "$1"
 }
 
-source ~/fzf-git.sh/fzf-git.sh
+source ~/scripts/fzf-git.sh
 
+alias fvim="~/scripts/fzf_listoldfiles.sh"
+
+alias fman="compgen -c | fzf | xargs man"
 
 #bat (better cat)
 export BAT_THEME=tokyonight_night
