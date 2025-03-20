@@ -160,7 +160,7 @@ alias fvim="~/scripts/fzf_listoldfiles.sh"
 
 alias fman="compgen -c | fzf | xargs man"
 
-alias nzo="~/scripts/zoxide_openfiles_nvim.sh"
+alias ovim="~/scripts/zoxide_openfiles_nvim.sh"
 
 alias c="clear"
 
