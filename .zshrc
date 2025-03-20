@@ -162,6 +162,8 @@ alias fman="compgen -c | fzf | xargs man"
 
 alias nzo="~/scripts/zoxide_openfiles_nvim.sh"
 
+alias c="clear"
+
 #bat (better cat)
 export BAT_THEME=tokyonight_night
 
