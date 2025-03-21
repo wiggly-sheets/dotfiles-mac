@@ -1,1 +1,0 @@
-.config/scripts/zoxide_openfiles_nvim.sh

@@ -1,1 +1,0 @@
-.config/scripts/tmux_sessionizer.sh
