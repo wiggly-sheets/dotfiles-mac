@@ -1,0 +1,29 @@
+dock settings 
+______________________________________________________________
+
+terminal commands
+__________________________________________________________
+
+defaults write com.apple.dock showhidden -bool TRUE; killall Dock         (dims hidden apps' icons)
+defaults write com.apple.dock magnification -bool false                   (disables magnification)
+defaults write com.apple.dock autohide-time-modifier -float 0.0           (immediate auto-hide after mousing away)
+defaults write com.apple.dock autohide-delay -float 0      		  (immediate auto-appear when mousing over)
+defaults write com.apple.dock static-only -bool true 			  (only show apps that are open/disable pinned apps)
+defaults write com.apple.dock persistent-apps -array-add '{"tile-type"="spacer-tile";}'  (adds spacer between main apps and finder)
+defaults write com.apple.dock size-immutable -bool true					(disables using mouse to resize dock)
+defaults write com.apple.dock tilesize -integer 18
+
+
+
+___________________________________________________________
+
+
+
+system settings
+_______________________________________________________________
+
+position on screen: right
+hiding: on
+minimize using: scale
+
+when done: killall Dock
