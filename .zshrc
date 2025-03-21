@@ -154,13 +154,13 @@ _fzf_compgen_dir() {
   fd --type=d --hidden --exclude .git . "$1"
 }
 
-source ~/scripts/fzf-git.sh
+source ~/dotfiles/.config/scripts/fzf-git.sh
 
-alias fvim="~/scripts/fzf_listoldfiles.sh"
+alias fvim="~/dotfiles/.config/scripts/fzf_listoldfiles.sh"
 
 alias fman="compgen -c | fzf | xargs man"
 
-alias ovim="~/scripts/zoxide_openfiles_nvim.sh"
+alias ovim="~/dotfiles/.config/scripts/zoxide_openfiles_nvim.sh"
 
 alias c="clear"
 
