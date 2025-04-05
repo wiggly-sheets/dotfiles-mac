@@ -15,8 +15,7 @@
 # sudo_command = "sudo"
 
 # Disable specific steps - same options as the command line flag
-# disable = ["system", "emacs"]
-
+ disable = ["macports", "npm", "yarn", "nix"]
 # Ignore failures for these steps
 # ignore_failures = ["powershell"]
 
@@ -215,7 +214,7 @@ fetch_head = true
 
 [npm]
 # Use sudo if the NPM directory isn't owned by the current user
-use_sudo = true
+use_sudo = false
 
 
 [yarn]

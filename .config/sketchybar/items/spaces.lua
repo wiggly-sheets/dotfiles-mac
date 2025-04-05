@@ -13,7 +13,8 @@ end
 -- Function to update space icon with number + layout, and label with icons
 local function update_space_display(space, space_id, is_selected)
 	sbar.exec("yabai -m query --spaces --space " .. space_id .. " | jq -r '.type'", function(output)
-		local layout = output:gsub("\n", "") -- Get space layout (bsp, float, stack)
+		local layout_map = { stack = "stk", float = "flt", bsp = "bsp" }
+		local layout = layout_map[output:gsub("\n", "")] or "unk"
 		local icon_text = space_app_icons[space_id] -- App icons inside space
 		local space_text = tostring(space_id) .. " (" .. layout .. ")" -- e.g., "1 (bsp)"
 
@@ -37,7 +38,7 @@ for i = 1, 10, 1 do
 			highlight_color = colors.white,
 		},
 		label = {
-			padding_right = 10,
+			padding_right = 2,
 			color = colors.white,
 			highlight_color = colors.white,
 			font = "sketchybar-app-font:Regular:16.0",
@@ -51,7 +52,7 @@ for i = 1, 10, 1 do
 			height = 26,
 			border_color = colors.transparent,
 		},
-		popup = { background = { border_width = 3, border_color = colors.red } },
+		popup = { background = { border_width = 3, border_color = colors.transparent } },
 	})
 	spaces[i] = space
 
@@ -72,12 +73,12 @@ for i = 1, 10, 1 do
 
 	local space_popup = sbar.add("item", {
 		position = "popup." .. space.name,
-		padding_left = 5,
+		padding_left = 0,
 		padding_right = 0,
 		background = {
 			drawing = true,
 			image = {
-				corner_radius = 9,
+				corner_radius = 10,
 				scale = 0.2,
 			},
 		},
@@ -89,7 +90,10 @@ for i = 1, 10, 1 do
 		update_space_display(space, env.SID, is_selected)
 
 		space_bracket:set({
-			background = { border_color = is_selected and colors.green or colors.transparent },
+			background = {
+				border_color = is_selected and colors.green or colors.transparent,
+				corner_radius = 20,
+			},
 		})
 	end)
 
@@ -111,24 +115,6 @@ end
 local space_window_observer = sbar.add("item", {
 	drawing = false,
 	updates = true,
-})
-
-sbar.add("item", {
-	name = "new_space",
-	icon = {
-		background = {
-			drawing = false,
-			color = colors.black,
-			border_color = colors.blue,
-		},
-		string = "+",
-		font = { size = 40.0, color = colors.blue },
-		color = colors.blue,
-		padding_right = 3,
-		padding_left = -2,
-	},
-	label = { drawing = false },
-	click_script = "yabai -m space --create",
 })
 
 -- Track window changes and update space labels with icons

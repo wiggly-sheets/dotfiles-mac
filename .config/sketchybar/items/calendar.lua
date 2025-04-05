@@ -57,7 +57,9 @@ end)
 -- Click event for opening the calendar
 local function click_event(env)
 	if settings.calendar and settings.calendar.click_script then
-		sbar.exec(settings.calendar.click_script)
+		sbar.exec(
+			[[osascript -e 'tell application "System Events" to keystroke "D" using {command down, option down, control down, shift down}']]
+		)
 	end
 end
 

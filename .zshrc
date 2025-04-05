@@ -1,7 +1,7 @@
 
 ZSH_TMUX_AUTOSTART=true
 
-neofetch
+# neofetch
 
 cd ~
 
@@ -85,7 +85,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git tmux)
 
-source $ZSH/oh-my-zsh.sh
+source /Users/Zeb/.oh-my-zsh/oh-my-zsh.sh
 
 # User configuration
 
@@ -245,3 +245,4 @@ function cling() {
     done
     open -a Cling "${folders[@]}"
 }
+export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"

@@ -5,8 +5,8 @@ alt - h : yabai -m window --focus west
 alt - l : yabai -m window --focus east
 
 #change focus between external displays (left and right)
-alt - s: yabai -m display --focus west
-alt - g: yabai -m display --focus east
+alt - s : yabai -m display --focus west
+alt - g  : yabai -m display --focus east
 
 # rotate layout clockwise
 shift + alt - r : yabai -m space --rotate 270
@@ -91,13 +91,13 @@ ctrl + cmd - 2  : yabai -m window --display 2; yabai -m display --focus 2
 ctrl + cmd - 3  : yabai -m window --display 3; yabai -m display --focus 3
 
 # create desktop, move window and follow focus - uses jq for parsing json (brew install jq)
-shift + cmd - n : yabai -m space --create && \
+shift + ctrl + cmd - n : yabai -m space --create && \
                    index="$(yabai -m query --spaces --display | jq 'map(select(."native-fullscreen" == 0))[-1].index')" && \
                    yabai -m window --space "${index}" && \
                    yabai -m space --focus "${index}"
 
 # create desktop and follow focus - uses jq for parsing json (brew install jq)
-cmd + alt - n : yabai -m space --create && \
+shift + cmd + alt - n : yabai -m space --create && \
                  index="$(yabai -m query --spaces --display | jq 'map(select(."native-fullscreen" == 0))[-1].index')" && \
                  yabai -m space --focus "${index}"
 
@@ -110,7 +110,7 @@ ctrl + alt - q : yabai --stop-service
 ctrl + alt - s : yabai --start-service
 ctrl + alt - r : yabai --restart-service
 
-# stop/start/restart skhd
+# stop/restart skhd
 ctrl + alt + shift - q : skhd --stop-service
 ctrl + alt + shift - r : skhd --restart-service
 
@@ -119,7 +119,7 @@ shift + alt + cmd + fn - q : brew services stop borders
 shift + alt + cmd + fn - s : brew services start borders
 shift + alt + cmd + fn - r : brew services restart borders
 
-# stop/start/restart svim
+# stop/start/restart sketchyvim
 ctrl + alt + shift + fn - q : brew services stop svim
 ctrl + alt + shift + fn - s : brew services start svim
 ctrl + alt + shift + fn - r : brew services restart svim
@@ -131,7 +131,6 @@ shift + ctrl + alt + cmd - x : yabai -m space --layout stack
 shift + ctrl + alt + cmd - c : yabai -m space --layout float
 
 
-
-# toggle mac menu bar opacity
+# toggle menu bar opacity
 shift + ctrl + alt + cmd - w : yabai -m config menubar_opacity 1.0
 shift + ctrl + alt + cmd - q : yabai -m config menubar_opacity 0.0

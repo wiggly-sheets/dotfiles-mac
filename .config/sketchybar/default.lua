@@ -8,7 +8,7 @@ sbar.default({
 		font = {
 			family = "IosevkaTermSlab Nerd Font",
 			style = settings.font.style_map["Regular"],
-			size = 13.0,
+			size = 14.0,
 		},
 		color = colors.white,
 		padding_left = settings.paddings,
@@ -19,7 +19,7 @@ sbar.default({
 		font = {
 			family = "IosevkaTermSlab Nerd Font",
 			style = settings.font.style_map["Regular"],
-			size = 12.0,
+			size = 14.0,
 		},
 		color = colors.white,
 		padding_left = settings.paddings,
@@ -42,8 +42,8 @@ sbar.default({
 	popup = {
 		background = {
 			border_width = 1,
-			corner_radius = 0,
-			border_color = colors.red,
+			corner_radius = 20,
+			border_color = colors.white,
 			color = colors.black,
 			shadow = { drawing = false },
 		},

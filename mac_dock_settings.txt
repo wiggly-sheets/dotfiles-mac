@@ -4,26 +4,46 @@ ______________________________________________________________
 terminal commands
 __________________________________________________________
 
-defaults write com.apple.dock showhidden -bool TRUE; killall Dock         (dims hidden apps' icons)
-defaults write com.apple.dock magnification -bool false                   (disables magnification)
-defaults write com.apple.dock autohide-time-modifier -float 0.0           (immediate auto-hide after mousing away)
-defaults write com.apple.dock autohide-delay -float 0      		  (immediate auto-appear when mousing over)
-defaults write com.apple.dock static-only -bool true 			  (only show apps that are open/disable pinned apps)
-defaults write com.apple.dock persistent-apps -array-add '{"tile-type"="spacer-tile";}'  (adds spacer between main apps and finder)
-defaults write com.apple.dock size-immutable -bool true					(disables using mouse to resize dock)
-defaults write com.apple.dock tilesize -integer 18
+defaults write com.apple.dock showhidden -bool TRUE                     
+defaults write com.apple.dock magnification -bool false 
+defaults write com.apple.dock autohide-time-modifier -float 0.0  
+defaults write com.apple.dock autohide-delay -float 0     
+defaults write com.apple.dock size-immutable -bool true
+defaults write com.apple.dock tilesize -integer 32
+defaults write com.apple.dock orientation right
 
 
+defaults write com.apple.dock persistent-apps -array-add '{"tile-type"="small-spacer-tile";}   
 
+ 
+(dims hidden app icons)
+(disables magnification)
+(immediate auto-hide after mousing away)
+(immediate auto-appear when mousing over)
+(disables mouse resize dock)
+(sets app icon size to a medium size)
+(sets dock position to right)
+
+
+(adds spacer between main apps and finder)
 ___________________________________________________________
-
 
 
 system settings
 _______________________________________________________________
-
-position on screen: right
 hiding: on
 minimize using: scale
+minimize windows into app icons: on
+automatically hide and show the dock: on
+animate opening applications: off
+show indicators for open apps: off
+show suggested and recent apps in the dock: off
+
+-------------------------------------------------------------
 
 when done: killall Dock
+
+-------------------------------------------------------------
+
+
+defaults write com.apple.dock static-only -bool true 	--not using this because it doesn't work with spacers
