@@ -42,9 +42,14 @@ ctrl + alt - l : yabai -m window --warp east
 shift + alt - s : yabai -m window --display west; yabai -m display --focus west;
 shift + alt - g : yabai -m window --display east; yabai -m display --focus east;
 
-#move window to prev and next space
+# move window to prev and next space
 shift + alt - p : yabai -m window --space prev;
 shift + alt - n : yabai -m window --space next;
+
+# focus prev and next space 
+cmd + alt - p : yabai -m space --focus prev;
+cmd + alt - n : yabai -m space --focus next;
+
 
 # move window to space #
 shift + alt - 1 : yabai -m window --space 1;
@@ -55,8 +60,11 @@ shift + alt - 5 : yabai -m window --space 5;
 shift + alt - 6 : yabai -m window --space 6;
 shift + alt - 7 : yabai -m window --space 7;
 
-# destroy desktop
-cmd + alt - w : yabai -m space --destroy
+# destroy focused desktop
+cmd + alt - q : yabai -m space --destroy
+
+# create new desktop
+cmd + alt - w : yabai -m space --create
 
 # send window to desktop and follow focus
 shift + cmd - x : yabai -m window --space recent; yabai -m space --focus recent
