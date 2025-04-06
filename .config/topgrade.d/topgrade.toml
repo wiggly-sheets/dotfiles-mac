@@ -15,7 +15,7 @@
 # sudo_command = "sudo"
 
 # Disable specific steps - same options as the command line flag
- disable = ["macports", "npm", "yarn", "nix"]
+ disable = ["macports", "node", "yarn", "nix"]
 # Ignore failures for these steps
 # ignore_failures = ["powershell"]
 

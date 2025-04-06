@@ -1,3 +1,7 @@
+
+# upon upgrading run this to upgrade sudoers file for scripting addition
+# echo "$(whoami) ALL=(root) NOPASSWD: sha256:$(shasum -a 256 $(which yabai) | cut -d " " -f 1) $(which yabai) --load-sa" | sudo tee /private/etc/sudoers.d/yabai
+
 yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 sudo yabai --load-sa
 
@@ -48,7 +52,7 @@ yabai -m config window_opacity on
 yabai -m config window_opacity_duration 0
 yabai -m config active_window_opacity 1.0
 yabai -m config normal_window_opacity 0.5
-
+echo "$(whoami) ALL=(root) NOPASSWD: sha256:$(shasum -a 256 $(which yabai) | cut -d " " -f 1) $(which yabai) --load-sa" | sudo tee /private/etc/sudoers.d/yabai
 
 
 # center mouse on window with focus
@@ -70,7 +74,7 @@ yabai -m mouse_drop_action swap
 
 yabai -m config event_feedback on
 
-yabai -m rule --add manage=off app=""
+yabai -m rule --add manage=off app="Wezterm, Neovide"
 
 yabai -m config menubar_opacity 0.0
 
