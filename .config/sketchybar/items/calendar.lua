@@ -5,10 +5,28 @@ local icons = require("icons")
 -- Padding item required because of bracket
 sbar.add("item", { position = "right", width = settings.group_paddings })
 
+local cal_icon = sbar.add("item", {
+	position = "right",
+	padding_right = 0,
+	padding_left = 10,
+	width = 5,
+	label = {
+		color = colors.white,
+		font = {
+			family = "SF Pro Display",
+			size = 15,
+		},
+		-- SF Symbols is typically part of this font family
+		string = icons.calendar, -- Assuming icons.calendar is set properly elsewhere
+		y_offset = -1, -- Adjust for vertical alignment if needed
+	},
+	click_script = [[osascript -e 'tell application "System Events" to keystroke "D" using {command down, option down, control down, shift down}']],
+})
+
 local cal_up = sbar.add("item", {
 	position = "right",
 	padding_left = 0,
-	padding_right = 7,
+	padding_right = 15,
 	width = 0,
 	label = {
 		color = colors.white,
@@ -22,13 +40,13 @@ local cal_up = sbar.add("item", {
 
 local cal_down = sbar.add("item", {
 	position = "right",
-	padding_left = -5,
-	padding_right = 8,
+	padding_left = 0,
+	padding_right = 20,
 	y_offset = -6,
 	label = {
 		color = colors.white,
 		font = {
-			family = settings.font.numbers,
+			family = "IosevkaTermSlab Nerd Font",
 			size = 11.0,
 		},
 	},

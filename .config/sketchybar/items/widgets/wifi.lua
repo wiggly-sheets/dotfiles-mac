@@ -10,9 +10,48 @@ sbar.exec(
 
 local popup_width = 250
 
+local sbar = require("sketchybar")
+local icons = require("icons")
+local colors = require("colors")
+
+local wifi = sbar.add("item", "wifi.status", {
+	position = "right",
+	icon = {
+		string = icons.wifi.disconnected,
+		font = {
+			family = "IosevkaTermSlab Nerd Font",
+			size = 13.0,
+		},
+		color = colors.red,
+	},
+	label = { drawing = false },
+	padding_left = -5,
+	click_script = [[cliclick kd:cmd,alt,ctrl,shift t:j]],
+})
+
+wifi:subscribe({ "wifi_change", "system_woke" }, function()
+	sbar.exec("ipconfig getifaddr en0", function(ip)
+		if ip == "" then
+			wifi:set({
+				icon = {
+					string = icons.wifi.disconnected,
+					color = colors.red,
+				},
+			})
+		else
+			wifi:set({
+				icon = {
+					string = icons.wifi.connected,
+					color = colors.white,
+				},
+			})
+		end
+	end)
+end)
+
 local wifi_up = sbar.add("item", "widgets.wifi1", {
 	position = "right",
-	padding_left = -5,
+	padding_left = 0,
 	width = 0,
 	icon = {
 		padding_right = 0,
@@ -32,6 +71,7 @@ local wifi_up = sbar.add("item", "widgets.wifi1", {
 		string = "??? Bps",
 	},
 	y_offset = 8,
+	click_script = [[cliclick kd:cmd,alt,ctrl,shift t:j]],
 })
 
 local wifi_down = sbar.add("item", "widgets.wifi2", {
@@ -55,6 +95,7 @@ local wifi_down = sbar.add("item", "widgets.wifi2", {
 		string = "??? Bps",
 	},
 	y_offset = -4,
+	click_script = [[cliclick kd:cmd,alt,ctrl,shift t:j]],
 })
 
 local wifi = sbar.add("item", "widgets.wifi.padding", {
@@ -167,39 +208,39 @@ local network_interface = sbar.add("item", {
 	},
 })
 
-local function toggle_details()
-	local should_draw = wifi_bracket:query().popup.drawing == "off"
-	if should_draw then
-		wifi_bracket:set({ popup = { drawing = true } })
-		sbar.exec("networksetup -getcomputername", function(result)
-			hostname:set({ label = result })
-		end)
-		sbar.exec("ipconfig getifaddr en0", function(result)
-			ip:set({ label = result })
-		end)
-		sbar.exec("ipconfig getsummary en0 | awk -F ' SSID : '  '/ SSID : / {print $2}'", function(result)
-			ssid:set({ label = result })
-		end)
-		sbar.exec("networksetup -getinfo Wi-Fi | awk -F 'Subnet mask: ' '/^Subnet mask: / {print $2}'", function(result)
-			mask:set({ label = result })
-		end)
-		sbar.exec("networksetup -getinfo Wi-Fi | awk -F 'Router: ' '/^Router: / {print $2}'", function(result)
-			router:set({ label = result })
-		end)
-		sbar.exec("route get default | awk '/interface: / {print $2}'", function(result)
-			network_interface:set({ label = result })
-		end)
-	else
-		wifi_bracket:set({ popup = { drawing = false } })
-	end
-end
-
-wifi_up:subscribe("mouse.clicked", toggle_details)
-wifi_down:subscribe("mouse.clicked", toggle_details)
-wifi:subscribe("mouse.clicked", toggle_details)
-wifi:subscribe("mouse.exited.global", function()
-	wifi_bracket:set({ popup = { drawing = false } })
-end)
+---- local function toggle_details()
+--	local should_draw = wifi_bracket:query().popup.drawing == "off"
+--	if should_draw then
+--		wifi_bracket:set({ popup = { drawing = true } })
+--		sbar.exec("networksetup -getcomputername", function(result)
+--			hostname:set({ label = result })
+--		end)
+--		sbar.exec("ipconfig getifaddr en0", function(result)
+--			ip:set({ label = result })
+--		end)
+--		sbar.exec("ipconfig getsummary en0 | awk -F ' SSID : '  '/ SSID : / {print $2}'", function(result)
+--			ssid:set({ label = result })
+--		end)
+--		sbar.exec("networksetup -getinfo Wi-Fi | awk -F 'Subnet mask: ' '/^Subnet mask: / {print $2}'", function(result)
+--			mask:set({ label = result })
+--		end)
+--		sbar.exec("networksetup -getinfo Wi-Fi | awk -F 'Router: ' '/^Router: / {print $2}'", function(result)
+--			router:set({ label = result })
+--		end)
+--		sbar.exec("route get default | awk '/interface: / {print $2}'", function(result)
+--			network_interface:set({ label = result })
+--		end)
+--	else
+--		wifi_bracket:set({ popup = { drawing = false } })
+--	end
+--end
+--
+--wifi_up:subscribe("mouse.clicked", toggle_details)
+--wifi_down:subscribe("mouse.clicked", toggle_details)
+--wifi:subscribe("mouse.clicked", toggle_details)
+--wifi:subscribe("mouse.exited.global", function()
+--	wifi_bracket:set({ popup = { drawing = false } })
+--end)
 
 wifi_up:subscribe("network_update", function(env)
 	local up_color = (env.upload == "000 Bps") and colors.grey or colors.red
@@ -219,4 +260,3 @@ wifi_up:subscribe("network_update", function(env)
 		},
 	})
 end)
-
