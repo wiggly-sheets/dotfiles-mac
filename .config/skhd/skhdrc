@@ -123,9 +123,14 @@ ctrl + alt + shift - q : skhd --stop-service
 ctrl + alt + shift - r : skhd --restart-service
 
 # stop/start/restart jankyborders
-shift + alt + cmd + fn - q : brew services stop borders
-shift + alt + cmd + fn - s : brew services start borders
-shift + alt + cmd + fn - r : brew services restart borders
+ctrl + alt + cmd + fn - q : brew services stop borders
+ctrl + alt + cmd + fn - s : brew services start borders
+ctrl + alt + cmd + fn - r : brew services restart borders
+
+# stop/start/restart sketchybar
+ctrl + alt + cmd - q : brew services stop sketchybar
+ctrl + alt + cmd - s : brew services start sketchybar
+ctrl + alt + cmd - r : brew services restart sketchybar
 
 # stop/start/restart sketchyvim
 ctrl + alt + shift + fn - q : brew services stop svim

@@ -27,7 +27,8 @@ local ram = sbar.add("graph", "widgets.ram", 42, {
 	},
 	update_freq = 3,
 	updates = true,
-	padding_right = -6,
+	padding_right = 0,
+	click_script = [[cliclick kd:cmd,alt,ctrl,shift t:,]],
 })
 
 sbar.add("bracket", "widgets.ram.bracket", { ram.name }, {
@@ -38,9 +39,9 @@ sbar.add("item", "widgets.ram.padding", {
 	position = "right",
 	width = settings.group_paddings,
 })
-ram:subscribe("mouse.clicked", function(env)
-	sbar.exec("open -a 'Activity Monitor'")
-end)
+--ram:subscribe("mouse.clicked", function(env)
+--	sbar.exec("open -a 'Activity Monitor'")
+--end)
 ram:subscribe({ "routine", "forced", "system_woke" }, function(env)
 	sbar.exec("memory_pressure", function(output)
 		local percentage = output:match("System%-wide memory free percentage: (%d+)")

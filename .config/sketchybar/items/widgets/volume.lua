@@ -16,6 +16,7 @@ local volume_percent = sbar.add("item", "widgets.volume1", {
 		font = { family = "IosevkaTermSlab Nerd Font" },
 	},
 	persistent = true, -- Ensure the item is present in all spaces
+	click_script = [[osascript -e 'tell application "System Events" to keystroke "v" using {command down, shift down, option down, control down}']],
 })
 
 local volume_icon = sbar.add("item", "widgets.volume2", {
@@ -46,6 +47,7 @@ local volume_icon = sbar.add("item", "widgets.volume2", {
 		},
 	},
 	persistent = true, -- Ensure the item is present in all spaces
+	click_script = [[osascript -e 'tell application "System Events" to keystroke "v" using {command down, shift down, option down, control down}']],
 })
 
 local volume_bracket = sbar.add("bracket", "widgets.volume.bracket", {
@@ -162,8 +164,8 @@ local function volume_scroll(env)
 	sbar.exec('osascript -e "set volume output volume (output volume of (get volume settings) + ' .. delta .. ')"')
 end
 
-volume_icon:subscribe("mouse.clicked", volume_toggle_details)
-volume_icon:subscribe("mouse.scrolled", volume_scroll)
-volume_percent:subscribe("mouse.clicked", volume_toggle_details)
-volume_percent:subscribe("mouse.exited.global", volume_collapse_details)
-volume_percent:subscribe("mouse.scrolled", volume_scroll)
+--volume_icon:subscribe("mouse.clicked", volume_toggle_details)
+--volume_icon:subscribe("mouse.scrolled", volume_scroll)
+--volume_percent:subscribe("mouse.clicked", volume_toggle_details)
+--volume_percent:subscribe("mouse.exited.global", volume_collapse_details)
+--volume_percent:subscribe("mouse.scrolled", volume_scroll)

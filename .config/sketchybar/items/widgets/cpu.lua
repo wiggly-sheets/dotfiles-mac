@@ -14,7 +14,7 @@ local cpu = sbar.add("graph", "widgets.cpu", 42, {
 		color = { alpha = 0 },
 		border_color = { alpha = 0 },
 		drawing = true,
-		padding_right = -5,
+		padding_right = 0,
 	},
 	icon = { string = icons.cpu },
 	label = {
@@ -26,9 +26,11 @@ local cpu = sbar.add("graph", "widgets.cpu", 42, {
 		},
 		align = "right",
 		padding_right = 0,
+		padding_left = 5,
 		width = 0,
 		y_offset = 10,
 	},
+	click_script = [[cliclick kd:cmd,alt,ctrl,shift t:.]],
 })
 
 cpu:subscribe("cpu_update", function(env)
@@ -53,9 +55,9 @@ cpu:subscribe("cpu_update", function(env)
 	})
 end)
 
-cpu:subscribe("mouse.clicked", function(env)
-	sbar.exec("open -a 'Activity Monitor'")
-end)
+-- cpu:subscribe("mouse.clicked", function(env)
+--	sbar.exec("open -a 'Activity Monitor'")
+--end)
 
 -- Background around the cpu item
 sbar.add("bracket", "widgets.cpu.bracket", { cpu.name }, {

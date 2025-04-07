@@ -2,6 +2,7 @@
 ZSH_TMUX_AUTOSTART=true
 
 # neofetch
+fastfetch
 
 cd ~
 
@@ -164,6 +165,11 @@ alias ovim="~/dotfiles/.config/scripts/zoxide_openfiles_nvim.sh"
 
 alias c="clear"
 
+alias nv='nvim'
+
+alias vim='nvim'
+
+
 #bat (better cat)
 export BAT_THEME=tokyonight_night
 
@@ -269,7 +275,6 @@ alias ls='ls --color=auto'
 alias cp='cp -i'
 alias mv='mv -i'
 alias rm='rm -i'
-
 
 
 }
