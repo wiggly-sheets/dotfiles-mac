@@ -20,7 +20,7 @@ local wifi = sbar.add("item", "wifi.status", {
 		string = icons.wifi.disconnected,
 		font = {
 			family = "IosevkaTermSlab Nerd Font",
-			size = 13.0,
+			size = 15.0,
 		},
 		color = colors.red,
 	},

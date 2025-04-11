@@ -1,6 +1,6 @@
 local colors = require("colors")
 
--- Equivalent to the --bar domain
+---- Equivalent to the --bar domain
 sbar.bar({
 	display = "main",
 	height = 40,

@@ -13,3 +13,4 @@ tabs = true
 theme = "auto"
 vsync = true
 wsl = false
+
