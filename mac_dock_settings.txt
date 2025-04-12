@@ -49,3 +49,17 @@ when done: killall Dock
 
 
 defaults write com.apple.dock static-only -bool true 	--not using this because it doesn't work with spacers
+
+
+
+
+
+
+other macos terminal settings that are useful: 
+defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
+defaults write com.apple.finder CreateDesktop -bool false && killall Finder
+
+
+
+
+

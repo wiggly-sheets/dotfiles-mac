@@ -16,7 +16,7 @@ local function update_space_display(space, space_id, is_selected)
 		local layout_map = { stack = "stk", float = "flt", bsp = "bsp" }
 		local layout = layout_map[output:gsub("\n", "")] or "unk"
 		local icon_text = space_app_icons[space_id] -- App icons inside space
-		local space_text = tostring(space_id) .. " (" .. layout .. ")" -- e.g., "1 (bsp)"
+		local space_text = tostring(space_id) .. "(" .. layout .. ")" -- e.g., "1 (bsp)"
 
 		space:set({
 			icon = { string = space_text, highlight = is_selected }, -- ✅ Layout inside icon
@@ -30,22 +30,23 @@ for i = 1, 10, 1 do
 	local space = sbar.add("space", "space." .. i, {
 		space = i,
 		icon = {
-			font = { family = "IosevkaTermSlab Nerd Font" },
+			font = { family = "IosevkaTermSlab Nerd Font", size = 13 },
 			string = tostring(i), -- Placeholder before update
-			padding_left = 8,
-			padding_right = 8,
+			padding_left = 3,
+			padding_right = 1,
 			color = colors.white,
 			highlight_color = colors.white,
 		},
 		label = {
 			padding_right = 2,
+			padding_left = 2,
 			color = colors.white,
 			highlight_color = colors.white,
-			font = "sketchybar-app-font:Regular:16.0",
+			font = "sketchybar-app-font:Regular:12.0",
 			y_offset = -1,
 		},
-		padding_right = 1,
-		padding_left = 1,
+		padding_right = 0,
+		padding_left = 2,
 		background = {
 			color = colors.transparent,
 			border_width = 1,
@@ -61,14 +62,17 @@ for i = 1, 10, 1 do
 			color = colors.transparent,
 			border_color = colors.transparent,
 			height = 28,
-			border_width = 2,
+			border_width = 1,
+			padding_right = -5,
 		},
 	})
 
 	sbar.add("space", "space.padding." .. i, {
 		space = i,
 		script = "",
-		width = settings.group_paddings,
+		width = 0,
+		padding_left = 2,
+		padding_right = -2,
 	})
 
 	local space_popup = sbar.add("item", {
@@ -92,7 +96,7 @@ for i = 1, 10, 1 do
 		space_bracket:set({
 			background = {
 				border_color = is_selected and colors.green or colors.transparent,
-				corner_radius = 20,
+				corner_radius = 10,
 			},
 		})
 	end)

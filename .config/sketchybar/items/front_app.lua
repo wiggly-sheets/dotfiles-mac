@@ -7,28 +7,28 @@ local front_app = sbar.add("item", "front_app", {
 	-- Initialize the icon area (hidden until an app is active)
 	icon = {
 		drawing = false,
-		font = "sketchybar-app-font:Regular:16.0", -- Ensure this is your icon font
+		font = "sketchybar-app-font:Regular:13.0", -- Ensure this is your icon font
 		string = "",
-		padding_right = 5,
+		padding_right = 0,
 		padding_left = 0,
 		color = colors.magenta, -- Set icon color to magenta
 	},
-	label = {
-		font = {
-			style = settings.font.style_map["Black"],
-			size = 12.0,
-		},
-		background = {
-			color = colors.magenta,
-			border_width = 1,
-			height = 26,
-			border_color = colors.magenta,
-			corner_radius = 20,
-		},
-		position = "left",
-		string = "",
-	},
-	updates = true,
+	--	label = {
+	--		font = {
+	--			style = settings.font.style_map["Black"],
+	--			size = 12.0,
+	--		},
+	--		background = {
+	--			color = colors.magenta,
+	--			border_width = 1,
+	--			height = 26,
+	--			border_color = colors.magenta,
+	--			corner_radius = 20,
+	--		},
+	--		position = "left",
+	--		string = "",
+	--	},
+	--	updates = true,
 })
 
 front_app:subscribe("front_app_switched", function(env)
@@ -42,15 +42,15 @@ front_app:subscribe("front_app_switched", function(env)
 		icon = {
 			drawing = true,
 			string = icon,
-			font = "sketchybar-app-font:Regular:16.0", -- Must be an icon-supporting font
-			padding_right = 5,
+			font = "sketchybar-app-font:Regular:13.0", -- Must be an icon-supporting font
+			padding_right = -12,
 			color = colors.magenta, -- Set icon color to magenta
 		},
 		-- Set the app name as the label
-		label = {
-			string = app,
-			font = "IosevkaTermSlab Nerd Font",
-		},
+		--		label = {
+		--			string = app,
+		--			font = "IosevkaTermSlab Nerd Font",
+		--		},
 	})
 end)
 

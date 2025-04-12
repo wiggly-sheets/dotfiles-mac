@@ -5,7 +5,7 @@ local icons = require("icons")
 -- Padding item required because of bracket
 sbar.add("item", { position = "right", width = settings.group_paddings })
 
-local cal_icon = sbar.add("item", {
+local cal_icon = sbar.add("item", "cal_icon", {
 	position = "right",
 	padding_right = 0,
 	padding_left = 10,
@@ -23,7 +23,7 @@ local cal_icon = sbar.add("item", {
 	click_script = [[osascript -e 'tell application "System Events" to keystroke "D" using {command down, option down, control down, shift down}']],
 })
 
-local cal_up = sbar.add("item", {
+local cal_up = sbar.add("item", "cal_up", {
 	position = "right",
 	padding_left = 0,
 	padding_right = 15,
@@ -38,7 +38,7 @@ local cal_up = sbar.add("item", {
 	y_offset = 5,
 })
 
-local cal_down = sbar.add("item", {
+local cal_down = sbar.add("item", "cal_down", {
 	position = "right",
 	padding_left = 0,
 	padding_right = 22,

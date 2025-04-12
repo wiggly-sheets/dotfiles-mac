@@ -3,5 +3,3 @@
 -- Load the sketchybar-package and prepare the helper binaries
 require("helpers")
 require("init")
-
-sbar.exec("sketchybar --move front_app after item_5")

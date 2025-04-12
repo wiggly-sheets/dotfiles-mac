@@ -12,7 +12,7 @@ local weather = sbar.add("item", "widgets.weather", {
 		font = { family = "IosevkaTermSlab Nerd Font" },
 	},
 	update_freq = 900,
-	padding_right = -20,
+	padding_right = -30,
 	padding_left = 0,
 	popup = { align = "center", height = 25 },
 })
@@ -23,7 +23,7 @@ sbar.add("bracket", "widgets.weather.bracket", { weather.name }, {
 
 sbar.add("item", "widgets.weather.padding", {
 	position = "right",
-	width = settings.group_paddings,
+	width = 0,
 })
 
 local location_info = sbar.add("item", {
