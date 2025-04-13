@@ -31,7 +31,7 @@ local cal_up = sbar.add("item", "cal_up", {
 	label = {
 		color = colors.white,
 		font = {
-			family = "IosevkaTermSlab Nerd Font",
+			family = "IosevkaTermSlab Nerd Font Mono",
 			size = 11.0,
 		},
 	},
@@ -46,7 +46,7 @@ local cal_down = sbar.add("item", "cal_down", {
 	label = {
 		color = colors.white,
 		font = {
-			family = "IosevkaTermSlab Nerd Font",
+			family = "IosevkaTermSlab Nerd Font Mono",
 			size = 11.0,
 		},
 	},

@@ -7,7 +7,7 @@ local lowpowermode = sbar.add("item", "widgets.lowpowermode", {
 	position = "right",
 	label = {
 		font = {
-			family = "IosevkaSlabTerm Nerd Font",
+			family = "SF Pro",
 			size = 20.0,
 		},
 		string = "⚡︎",
@@ -46,14 +46,14 @@ sbar.add("item", "widgets.lowpowermode.padding", {
 local battery = sbar.add("item", "widgets.battery", {
 	position = "right",
 	icon = {
-		font = { style = "IosevkaTermSlab Nerd Font" },
+		font = { style = "IosevkaTermSlab Nerd Font Mono" },
 		color = colors.green,
 		padding_right = -1,
 	},
 	padding_left = -10,
 	padding_right = -10,
 	label = {
-		font = { family = "IosevkaTermSlab Nerd Font" },
+		font = { family = "IosevkaTermSlab Nerd Font Mono" },
 		color = colors.green,
 		size = 20.0,
 	},

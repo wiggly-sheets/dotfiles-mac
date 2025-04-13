@@ -22,11 +22,11 @@ for i = 1, max_items, 1 do
 		icon = { drawing = true },
 		label = {
 			font = {
-				style = settings.font.style_map[i == 1 and "Heavy" or "Semibold"],
-				family = "IosevkaTermSlab Nerd Font",
+				style = settings.font.style_map[i == 1 and "Bold" or "Medium"],
+				family = "IosevkaTermSlab Nerd Font Mono",
 				size = 12,
 			},
-			padding_left = -5,
+			padding_left = -3,
 			padding_right = 5,
 		},
 		click_script = "$CONFIG_DIR/helpers/menus/bin/menus -s " .. i,

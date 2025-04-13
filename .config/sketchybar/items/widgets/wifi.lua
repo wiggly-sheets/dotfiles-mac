@@ -63,8 +63,8 @@ local wifi_up = sbar.add("item", "widgets.wifi1", {
 	},
 	label = {
 		font = {
-			family = "IosevkaTermSlab Nerd Font",
-			style = settings.font.style_map["Bold"],
+			family = "IosevkaTermSlab Nerd Font Mono",
+			style = settings.font.style_map["Medium"],
 			size = 9.0,
 		},
 		color = colors.red,
@@ -80,15 +80,15 @@ local wifi_down = sbar.add("item", "widgets.wifi2", {
 	icon = {
 		padding_right = 0,
 		font = {
-			style = settings.font.style_map["Bold"],
+			style = settings.font.style_map["Regular"],
 			size = 9.0,
 		},
 		string = icons.wifi.download,
 	},
 	label = {
 		font = {
-			family = "IosevkaTermSlab Nerd Font",
-			style = settings.font.style_map["Bold"],
+			family = "IosevkaTermSlab Nerd Font Mono",
+			style = settings.font.style_map["Regular"],
 			size = 9.0,
 		},
 		color = colors.blue,

@@ -14,14 +14,14 @@ local cpu = sbar.add("graph", "widgets.cpu", 42, {
 		color = { alpha = 0 },
 		border_color = { alpha = 0 },
 		drawing = true,
-		padding_right = 0,
+		padding_right = -10,
 	},
 	icon = { string = icons.cpu },
 	label = {
 		string = "cpu ??%",
 		font = {
-			family = "IosevkaTermSlab Nerd Font",
-			style = settings.font.style_map["Bold"],
+			family = "IosevkaTermSlab Nerd Font Mono",
+			style = settings.font.style_map["Medium"],
 			size = 9.0,
 		},
 		align = "right",
@@ -31,6 +31,8 @@ local cpu = sbar.add("graph", "widgets.cpu", 42, {
 		y_offset = 10,
 	},
 	click_script = [[cliclick kd:cmd,alt,ctrl,shift t:.]],
+	updates = true,
+	update_freq = 30,
 })
 
 cpu:subscribe("cpu_update", function(env)

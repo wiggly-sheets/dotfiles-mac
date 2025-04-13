@@ -6,7 +6,7 @@ local config = wezterm.config_builder()
 
 -- config.cursor_blink_rate = 800
 config.window_close_confirmation = "NeverPrompt"
-config.font = wezterm.font("IosevkaTermSlab Nerd Font")
+config.font = wezterm.font("IosevkaTermSlab Nerd Font Mono")
 config.font_size = 15
 
 require("wezterm").on("format-window-title", function()

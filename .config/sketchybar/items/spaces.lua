@@ -13,10 +13,10 @@ end
 -- Function to update space icon with number + layout, and label with icons
 local function update_space_display(space, space_id, is_selected)
 	sbar.exec("yabai -m query --spaces --space " .. space_id .. " | jq -r '.type'", function(output)
-		local layout_map = { stack = "stk", float = "flt", bsp = "bsp" }
-		local layout = layout_map[output:gsub("\n", "")] or "unk"
+		local layout_map = { stack = "s", float = "f", bsp = "b" }
+		local layout = layout_map[output:gsub("\n", "")] or "?"
 		local icon_text = space_app_icons[space_id] -- App icons inside space
-		local space_text = tostring(space_id) .. "(" .. layout .. ")" -- e.g., "1 (bsp)"
+		local space_text = tostring(space_id) .. "(" .. layout .. ")" -- e.g., "1(bsp)"
 
 		space:set({
 			icon = { string = space_text, highlight = is_selected }, -- ✅ Layout inside icon
@@ -30,7 +30,7 @@ for i = 1, 10, 1 do
 	local space = sbar.add("space", "space." .. i, {
 		space = i,
 		icon = {
-			font = { family = "IosevkaTermSlab Nerd Font", size = 13 },
+			font = { family = "IosevkaTermSlab Nerd Font Mono", size = 13, style = "Medium" },
 			string = tostring(i), -- Placeholder before update
 			padding_left = 3,
 			padding_right = 1,

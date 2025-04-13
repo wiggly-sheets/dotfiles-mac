@@ -9,7 +9,7 @@ local weather = sbar.add("item", "widgets.weather", {
 	icon = { drawing = false },
 	label = {
 		string = icons.loading,
-		font = { family = "IosevkaTermSlab Nerd Font" },
+		font = { family = "IosevkaTermSlab Nerd Font Mono" },
 	},
 	update_freq = 900,
 	padding_right = -30,

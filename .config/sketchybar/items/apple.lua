@@ -12,7 +12,7 @@ local apple = sbar.add("item", {
 		position = "left",
 		padding_left = 5,
 		padding_right = 5,
-		color = colors.blue,
+		color = colors.white,
 	},
 
 	label = { drawing = false },
@@ -26,8 +26,8 @@ local apple = sbar.add("item", {
 	},
 	padding_left = -15,
 	padding_right = -3,
-	--	click_script = "$CONFIG_DIR/helpers/menus/bin/menus -s 0",
-	click_script = "yabai -m config menubar_opacity 1.0",
+	click_script = "$CONFIG_DIR/helpers/menus/bin/menus -s 0",
+	-- 	click_script = "yabai -m config menubar_opacity 1.0",
 })
 
 -- Double border for apple using a single item bracket

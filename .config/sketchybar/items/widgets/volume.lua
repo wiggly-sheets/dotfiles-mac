@@ -13,9 +13,8 @@ local volume_percent = sbar.add("item", "widgets.volume1", {
 		padding_left = 0,
 		width = 35,
 		color = colors.yellow,
-		font = { family = "IosevkaTermSlab Nerd Font" },
+		font = { family = "IosevkaTermSlab Nerd Font Mono" },
 	},
-	persistent = true, -- Ensure the item is present in all spaces
 	click_script = [[osascript -e 'tell application "System Events" to keystroke "v" using {command down, shift down, option down, control down}']],
 })
 
@@ -29,25 +28,22 @@ local volume_icon = sbar.add("item", "widgets.volume2", {
 		drawing = false,
 		string = icons.volume._10,
 		width = 0,
-		align = "left",
 		color = colors.yellow,
 		font = {
-			style = settings.font.style_map["Regular"],
+			style = settings.font.style_map["Medium"],
 			size = 14.0,
 			color = colors.yellow,
 		},
 	},
 	label = {
 		width = 30,
-		align = "left",
 		drawing = true,
 		font = {
-			style = settings.font.style_map["Regular"],
+			style = settings.font.style_map["Medium"],
 			size = 14.0,
 			color = colors.yellow,
 		},
 	},
-	persistent = true, -- Ensure the item is present in all spaces
 	click_script = [[osascript -e 'tell application "System Events" to keystroke "v" using {command down, shift down, option down, control down}']],
 })
 
@@ -83,7 +79,6 @@ local volume_slider = sbar.add("slider", popup_width, {
 	},
 	background = { color = colors.bg1, height = 2, y_offset = -20, x_offset = -10 },
 	click_script = 'osascript -e "set volume output volume $PERCENTAGE"',
-	persistent = true, -- Ensure the item is present in all spaces
 })
 
 volume_percent:subscribe("volume_change", function(env)

@@ -2,14 +2,12 @@
 
 options=(
 blacklist="Wezterm, Neovide"
-hidpi=on
+hidpi=off
 width=2.0  
-active_color="0xffffffff" 
-inactive_color="0xff000000"
+active_color="0xffffffff"
 background_color="0xff000000"
 style=round
 ax_focus=on
 order=below
-blur_radius=15.0
 )
 borders "${options[@]}"
