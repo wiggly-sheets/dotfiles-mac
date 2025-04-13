@@ -26,7 +26,7 @@ local wifi = sbar.add("item", "wifi.status", {
 	},
 	label = { drawing = false },
 	padding_left = -5,
-	click_script = [[cliclick kd:cmd,alt,ctrl,shift t:j]],
+	click_script = "cliclick kd:cmd,shift,ctrl,alt t:=",
 })
 
 wifi:subscribe({ "wifi_change", "system_woke" }, function()

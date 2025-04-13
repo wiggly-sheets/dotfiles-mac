@@ -9,7 +9,7 @@ defaults write com.apple.dock magnification -bool false
 defaults write com.apple.dock autohide-time-modifier -float 0.0  
 defaults write com.apple.dock autohide-delay -float 0     
 defaults write com.apple.dock size-immutable -bool true
-defaults write com.apple.dock tilesize -integer 32
+defaults write com.apple.dock tilesize -integer 1
 defaults write com.apple.dock orientation right
 
 

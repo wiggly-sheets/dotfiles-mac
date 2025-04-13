@@ -19,7 +19,6 @@ yabai -m config layout bsp
 yabai -m space 1 --layout stack
 
 
-
 yabai -m config window_origin_display cursor
 
 yabai -m config window_insertion_point last
@@ -45,9 +44,9 @@ yabai -m config window_gap 20
 yabai -m config window_topmost off # Disabled because browser popups will disappear if its enabled
 
 
-yabai -m window --opacity 0.1 && sleep $(yabai -m config window_opacity_duration) && yabai -m window --opacity 0.0
+# yabai -m window --opacity 0.1 && sleep $(yabai -m config window_opacity_duration) && yabai -m window --opacity 0.0
 
-yabai -m signal --add label="flash_focus" event="window_focused" action="yabai -m window \$YABAI_WINDOW_ID --opacity 0.1 && sleep $(yabai -m config window_opacity_duration) && yabai -m window \$YABAI_WINDOW_ID --opacity 0.0"
+ # yabai -m signal --add label="flash_focus" event="window_focused" action="yabai -m window \$YABAI_WINDOW_ID --opacity 0.1 && sleep $(yabai -m config window_opacity_duration) && yabai -m window \$YABAI_WINDOW_ID --opacity 0.0"
 
 
 yabai -m config window_shadow off
@@ -60,7 +59,10 @@ echo "$(whoami) ALL=(root) NOPASSWD: sha256:$(shasum -a 256 $(which yabai) | cut
 
 # center mouse on window with focus
 yabai -m config mouse_follows_focus on
-yabai -m config focus_follows_mouse autofocus
+
+# autofocus and autoraise windows hovered by mouse
+# yabai -m config focus_follows_mouse autofocus
+yabai -m config focus_follows_mouse autoraise
 
 yabai -m config auto_balance on
 
@@ -77,7 +79,6 @@ yabai -m mouse_drop_action swap
 
 yabai -m config event_feedback on
 
-# yabai -m rule --add manage=off app="Wezterm, Neovide"
 
 yabai -m config menubar_opacity 0.0
 
@@ -86,4 +87,18 @@ yabai -m config debug_output on
 
 # find all executable files in ~/.config/yabai and execute them
 find "${HOME}/.config/yabai" -type f -perm +111 -exec {} \;
+
+
+# bootstrap jankyborders with yabai service
+borders 
+hidpi=off
+width=2.0  
+active_color="0xffffffff"
+background_color="0xff000000"
+style=round
+ax_focus=on
+order=below
+&
+
+
 
