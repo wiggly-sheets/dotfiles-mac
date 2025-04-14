@@ -3,7 +3,7 @@ local icons = require("icons")
 
 local calendar = sbar.add("item", "calendar", {
 	position = "right",
-	padding_right = 0,
+	padding_right = -1,
 	padding_left = 0,
 	width = 5,
 	label = {
