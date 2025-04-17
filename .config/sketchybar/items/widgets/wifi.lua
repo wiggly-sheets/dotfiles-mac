@@ -26,6 +26,7 @@ local wifi = sbar.add("item", "wifi.status", {
 	},
 	label = { drawing = false },
 	padding_left = -5,
+	padding_right = 5,
 })
 
 wifi:subscribe({ "wifi_change", "system_woke" }, function()

@@ -26,6 +26,10 @@ local icons = {
 			stormy = "􀇞",
 			sleet = "􀇐",
 		},
+		mic = {
+			muted = "􀊳",
+			on = "􀊱",
+		},
 		stocks = {
 			up = "􀄤",
 			down = "􀄥",

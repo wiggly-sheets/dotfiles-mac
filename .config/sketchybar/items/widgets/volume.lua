@@ -94,7 +94,7 @@ volume_percent:subscribe("volume_change", function(env)
 		icon = icons.volume._10
 	end
 
-	volume_icon:set({ label = icon, icon = colors.yellow })
+	volume_icon:set({ label = icon })
 
 	volume_percent:set({ label = volume .. "%" })
 	volume_slider:set({ slider = { percentage = volume } })
