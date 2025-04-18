@@ -78,12 +78,13 @@ if vim.g.neovide then
 	-- vim.opt.guicursor = {
 	--		"n-v-c:hor10-blinkon500-green,i-ci:hor10-blinkon500-yellow,r-cr:hor10-blinkon500-red,o:hor10-blinkon500-blue,v:hor10-blinkon500-purple",
 	--	}
-	--  vim.g.neovide_cursor_vfx_mode = "railgun"
-	--  vim.g.neovide_cursor_vfx_mode = "torpedo"
+	vim.g.neovide_cursor_vfx_mode = "railgun"
+	--	vim.g.neovide_cursor_vfx_mode = "torpedo"
 	--	vim.g.neovide_cursor_vfx_mode = "pixiedust"
-	vim.g.neovide_cursor_vfx_mode = "sonicboom"
+	--  vim.g.neovide_cursor_vfx_mode = "sonicboom"
 	--  vim.g.neovide_cursor_vfx_mode = "ripple"
-	--	vim.g.neovide_cursor_vfx_mode = "wireframe"
+	-- vim.g.neovide_cursor_vfx_mode = "wireframe"
+
 	vim.g.neovide_hide_mouse_when_typing = true
 
 	vim.g.neovide_opacity = 0.8 --  Adjust between 0.0 (fully transparent) to 1.0 (opaque)

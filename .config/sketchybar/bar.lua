@@ -4,6 +4,12 @@ local colors = require("colors")
 sbar.bar({
 	display = "main",
 	height = 40,
-	color = colors.transparent,
+	color = 0x1AD3D3D3,
+	blur_radius = 30,
+	corner_radius = 30,
+	padding_right = 5,
 	topmost = "window",
+	border_color = 0x1A000000,
+	border_width = 1,
+	y_offset = 5,
 })
