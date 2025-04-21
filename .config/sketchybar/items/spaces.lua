@@ -13,14 +13,12 @@ end
 -- Function to update space icon with number + layout, and label with icons
 local function update_space_display(space, space_id, is_selected)
 	sbar.exec("yabai -m query --spaces --space " .. space_id .. " | jq -r '.type'", function(output)
-		local layout_map = { stack = "s", float = "f", bsp = "b" }
-		local layout = layout_map[output:gsub("\n", "")] or "?"
-		local icon_text = space_app_icons[space_id] -- App icons inside space
-		local space_text = tostring(space_id) .. "(" .. layout .. ")" -- e.g., "1(bsp)"
+		local icon_text = space_app_icons[space_id]
+		local space_text = "" .. tostring(space_id) .. ""
 
 		space:set({
-			icon = { string = space_text, highlight = is_selected }, -- ✅ Layout inside icon
-			label = { string = icon_text, highlight = is_selected }, -- ✅ App icons in label
+			icon = { string = space_text, highlight = is_selected },
+			label = { string = icon_text, highlight = is_selected },
 			background = { border_color = is_selected and colors.transparent or colors.transparent },
 		})
 	end)
@@ -30,7 +28,7 @@ for i = 1, 10, 1 do
 	local space = sbar.add("space", "space." .. i, {
 		space = i,
 		icon = {
-			font = { family = "IosevkaTermSlab Nerd Font Mono", size = 13, style = "Medium" },
+			font = { family = "IosevkaTermSlab Nerd Font Mono", size = 12, style = "Bold" },
 			string = tostring(i), -- Placeholder before update
 			padding_left = 3,
 			padding_right = 1,
@@ -135,7 +133,7 @@ space_window_observer:subscribe("space_windows_change", function(env)
 	end
 
 	if no_app then
-		icon_line = "—"
+		icon_line = ""
 	end
 
 	space_app_icons[sid] = icon_line

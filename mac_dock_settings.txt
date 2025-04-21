@@ -3,31 +3,15 @@ ______________________________________________________________
 
 terminal commands
 __________________________________________________________
-
-defaults write com.apple.dock showhidden -bool TRUE                     
+                     
 defaults write com.apple.dock magnification -bool false 
-defaults write com.apple.dock autohide-time-modifier -float 0.0  
-defaults write com.apple.dock autohide-delay -float 0     
+defaults write com.apple.dock autohide-time-modifier -float 10000000 
+defaults write com.apple.dock autohide-delay -float 10000000     
 defaults write com.apple.dock size-immutable -bool true
 defaults write com.apple.dock tilesize -integer 1
-defaults write com.apple.dock orientation right
+defaults write com.apple.dock orientation gottom
 
 
-defaults write com.apple.dock persistent-apps -array-add '{"tile-type"="small-spacer-tile";}   
-
-
-defaults write -g ApplePressAndHoldEnabled -bool false
- 
-(dims hidden app icons)
-(disables magnification)
-(immediate auto-hide after mousing away)
-(immediate auto-appear when mousing over)
-(disables mouse resize dock)
-(sets app icon size to a medium size)
-(sets dock position to right)
-
-
-(adds spacer between main apps and finder)
 ___________________________________________________________
 
 
@@ -48,18 +32,9 @@ when done: killall Dock
 -------------------------------------------------------------
 
 
-defaults write com.apple.dock static-only -bool true 	--not using this because it doesn't work with spacers
-
-
-
-
-
-
 other macos terminal settings that are useful: 
 defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
 defaults write com.apple.finder CreateDesktop -bool false && killall Finder
-
-
 
 
 

@@ -7,7 +7,7 @@ sbar.add("item", { width = 2 })
 
 local apple = sbar.add("item", {
 	icon = {
-		font = { size = 15 },
+		font = { size = 18 },
 		string = icons.apple,
 		position = "left",
 		padding_left = 5,
