@@ -4,24 +4,38 @@ local wezterm = require("wezterm")
 -- This will hold the configuration
 local config = wezterm.config_builder()
 
--- config.cursor_blink_rate = 800
 config.window_close_confirmation = "NeverPrompt"
-config.font = wezterm.font("IosevkaTermSlab Nerd Font Mono")
-config.font_size = 15
+
+config.front_end = "OpenGL"
+
+config.font = wezterm.font_with_fallback({
+	"IosevkaTermSlab Nerd Font Mono",
+	"JetBrains Mono",
+	"Noto Sans Mono",
+	"Apple Color Emoji",
+	"SF Pro Display",
+})
+config.font_size = 13.5
 
 require("wezterm").on("format-window-title", function()
 	return "􀣺 WezTerm"
 end)
 
-TERM = "xterm-kitty"
+TERM = "wezterm"
+-- TERM = "xterm-kitty"
+
 config.enable_kitty_graphics = true
 config.enable_tab_bar = false
 config.window_decorations = "RESIZE"
 
-config.default_cursor_style = "BlinkingUnderline"
+config.harfbuzz_features = { "calt=1", "clig=1", "liga=1", "dlig=1" }
+config.warn_about_missing_glyphs = false
 
-config.window_background_opacity = 0.5
-config.macos_window_background_blur = 10
+config.default_cursor_style = "BlinkingUnderline"
+config.cursor_blink_rate = 800
+
+-- config.window_background_opacity = 0.5
+-- config.macos_window_background_blur = 10
 
 config.window_padding = {
 	left = 0,
@@ -32,7 +46,7 @@ config.window_padding = {
 
 config.colors = {
 	foreground = "#CBE0F0",
-	background = "#011423",
+	background = "#000000",
 	cursor_bg = "#47FF9C",
 	cursor_border = "#47FF9C",
 	cursor_fg = "#011423",
