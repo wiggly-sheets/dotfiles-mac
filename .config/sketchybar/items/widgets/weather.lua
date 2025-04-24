@@ -49,7 +49,7 @@ for i = 1, 3 do
 		},
 		drawing = false,
 	})
-	for j = 1, 8 do
+	for i = 1, 8 do
 		local hour_item = sbar.add("item", {
 			position = "popup." .. weather.name,
 			icon = {

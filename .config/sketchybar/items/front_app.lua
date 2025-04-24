@@ -7,7 +7,7 @@ local front_app = sbar.add("item", "front_app", {
 	-- Initialize the icon area (hidden until an app is active)
 	icon = {
 		drawing = false,
-		font = "sketchybar-app-font:Regular:13.0", -- Ensure this is your icon font
+		font = "sketchybar-app-font:Regular:12.0", -- Ensure this is your icon font
 		string = "",
 		padding_right = 0,
 		padding_left = 0,

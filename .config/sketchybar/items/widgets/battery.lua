@@ -2,46 +2,6 @@ local icons = require("icons")
 local colors = require("colors")
 local settings = require("settings")
 
--- Low Power Mode Widget --
-local lowpowermode = sbar.add("item", "widgets.lowpowermode", {
-	position = "right",
-	label = {
-		font = {
-			family = "SF Pro",
-			size = 20.0,
-		},
-		string = "⚡︎",
-		color = colors.red,
-		padding_right = 0,
-		padding_left = -8,
-	},
-	click_script = [[cliclick kd:cmd,alt,ctrl,shift t:b]],
-})
-
-local function setModeValue(v)
-	local color = v == 1 and colors.green or colors.red
-	lowpowermode:set({ label = { string = "⚡︎", color = color } })
-	sbar.exec("sudo pmset -a lowpowermode " .. (v == 1 and "1" or "0"), function() end)
-end
-
-lowpowermode:subscribe({ "power_source_change", "system_woke" }, function()
-	sbar.exec("pmset -g | grep lowpowermode", function(mode_info)
-		local found, _, enabled = mode_info:find("(%d+)")
-		if found then
-			setModeValue(tonumber(enabled))
-		end
-	end)
-end)
-
-sbar.add("bracket", "widgets.lowpowermode.bracket", { lowpowermode.name }, {
-	background = { color = colors.bg1 },
-})
-
-sbar.add("item", "widgets.lowpowermode.padding", {
-	position = "right",
-	width = 5,
-})
-
 -- Battery Widget --
 local battery = sbar.add("item", "widgets.battery", {
 	position = "right",
@@ -50,14 +10,13 @@ local battery = sbar.add("item", "widgets.battery", {
 		color = colors.green,
 		padding_right = -1,
 	},
-	padding_left = -10,
+	padding_left = 0,
 	padding_right = -10,
 	label = {
-		font = { family = "IosevkaTermSlab Nerd Font Mono" },
+		font = { family = "IosevkaTermSlab Nerd Font Mono", size = 13 },
 		color = colors.green,
-		size = 20.0,
 	},
-	update_freq = 60,
+	update_freq = 120,
 	click_script = [[cliclick kd:cmd,alt,ctrl,shift t:-]],
 
 	--	popup = { align = "center" },
