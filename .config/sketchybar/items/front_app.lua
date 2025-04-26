@@ -13,7 +13,12 @@ local front_app = sbar.add("item", "front_app", {
 		padding_left = 0,
 		color = colors.white, -- Set icon color to magenta
 	},
-	-- click_script "osascript -e '(tell application "System Events" to set frontApp to name of first application process whose frontmost is true; tell process frontApp to click menu item 1 of menu (name of menu bar item 1 of menu bar 1) of menu bar 1)'"
+
+	click_script = [[
+osascript -e 'tell application "System Events" to set frontApp to name of first application process whose frontmost is true' \
+-e 'tell application "System Events" to tell process frontApp to click menu item ("About " & frontApp) of menu 1 of menu bar item frontApp of menu bar 1'
+]],
+
 	--	label = {
 	--		font = {
 	--			style = settings.font.style_map["Black"],
