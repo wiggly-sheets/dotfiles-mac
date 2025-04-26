@@ -13,7 +13,7 @@ local volume_percent = sbar.add("item", "widgets.volume1", {
 		padding_left = 15,
 		width = "dynamic",
 		color = colors.yellow,
-		font = { family = "IosevkaTermSlab Nerd Font Mono" },
+		font = { family = "IosevkaTermSlab Nerd Font Mono", size = 13 },
 	},
 	click_script = [[osascript -e 'tell application "System Events" to keystroke "v" using {command down, shift down, option down, control down}']],
 })
