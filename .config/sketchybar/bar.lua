@@ -11,5 +11,5 @@ sbar.bar({
 	topmost = "window",
 	border_color = 0x1A000000,
 	border_width = 1,
-	y_offset = 5,
+	y_offset = 3,
 })
