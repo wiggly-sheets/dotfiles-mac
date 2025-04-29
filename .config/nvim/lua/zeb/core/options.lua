@@ -22,6 +22,9 @@ opt.smartcase = true -- if you include mixed case in your search, assumes you wa
 -- cursor line
 opt.cursorline = true -- highlight the current cursor line
 
+vim.o.guicursor =
+	"n-v-c:hor10-blinkon500-green,i-ci:hor10-blinkon500-yellow,r-cr:hor10-blinkon500-red,o:hor10-blinkon500-blue,v:hor10-blinkon500-purple"
+
 -- appearance
 
 -- turn on termguicolors for nightfly colorscheme to work
@@ -43,18 +46,16 @@ opt.splitbelow = true -- split horizontal window to the bottom
 -- turn off swapfile
 opt.swapfile = false
 
-vim.o.guicursor =
-	"n-v-c:hor10-blinkon500-green,i-ci:hor10-blinkon500-yellow,r-cr:hor10-blinkon500-red,o:hor10-blinkon500-blue,v:hor10-blinkon500-purple"
+-- Set up the cursor in different modes with specific colors
+-- vim.o.guicursor = "n-v-c:hor20-Cursor,i-ci:hor20-iCursor,r-cr:hor20-rCursor"
+
+-- Define highlight groups for cursor
+-- vim.api.nvim_set_hl(0, "Cursor", { fg = "NONE", bg = "#FFFFFF", gui = "NONE" }) -- White cursor for normal mode
+-- vim.api.nvim_set_hl(0, "iCursor", { fg = "NONE", bg = "#00FF00", gui = "NONE" }) -- Green cursor for insert mode
+-- vim.api.nvim_set_hl(0, "rCursor", { fg = "NONE", bg = "#FF0000", gui = "NONE" }) -- Red cursor for replace mode
 
 --------- neovide stuff
 if vim.g.neovide then
-	vim.keymap.set("n", "<D-s>", ":w<CR>") -- Save
-	vim.keymap.set("v", "<D-c>", '"+y') -- Copy
-	vim.keymap.set("n", "<D-v>", '"+P') -- Paste normal mode
-	vim.keymap.set("v", "<D-v>", '"+P') -- Paste visual mode
-	vim.keymap.set("c", "<D-v>", "<C-R>+") -- Paste command mode
-	vim.keymap.set("i", "<D-v>", '<ESC>l"+Pli') -- Paste insert mode
-
 	vim.keymap.set("n", "<D-s>", ":w<CR>") -- Save
 	vim.keymap.set("v", "<D-c>", '"+y') -- Copy
 	vim.keymap.set("n", "<D-v>", '"+P') -- Paste normal mode
@@ -69,15 +70,12 @@ if vim.g.neovide then
 	vim.api.nvim_set_keymap("t", "<D-v>", "<C-R>+", { noremap = true, silent = true })
 	vim.api.nvim_set_keymap("v", "<D-v>", "<C-R>+", { noremap = true, silent = true })
 
-	vim.o.guifont = "IosevkaTermSlab Nerd Font:14" -- text below applies for VimScript
+	vim.o.guifont = "IosevkaTermSlab Nerd Font Mono:14" -- text below applies for VimScript
 
 	vim.g.neovide_refresh_rate = 60
-	vim.g.neovide_cursor_animation_length = 0.03
-	vim.g.neovide_cursor_trail = 0.6
+	vim.g.neovide_cursor_animation_length = 0.02
+	vim.g.neovide_cursor_trail = 0.4
 
-	-- vim.opt.guicursor = {
-	--		"n-v-c:hor10-blinkon500-green,i-ci:hor10-blinkon500-yellow,r-cr:hor10-blinkon500-red,o:hor10-blinkon500-blue,v:hor10-blinkon500-purple",
-	--	}
 	vim.g.neovide_cursor_vfx_mode = "railgun"
 	--	vim.g.neovide_cursor_vfx_mode = "torpedo"
 	--	vim.g.neovide_cursor_vfx_mode = "pixiedust"
@@ -87,7 +85,8 @@ if vim.g.neovide then
 
 	vim.g.neovide_hide_mouse_when_typing = true
 
-	vim.g.neovide_opacity = 0.8 --  Adjust between 0.0 (fully transparent) to 1.0 (opaque)
-	vim.g.neovide_floating_blur_amount_x = 5.0
-	vim.g.neovide_floating_blur_amount_y = 5.0
+	vim.g.neovide_opacity = 1 --  Adjust between 0.0 (fully transparent) to 1.0 (opaque)
+
+	vim.g.neovide_floating_blur_amount_x = 0.0
+	vim.g.neovide_floating_blur_amount_y = 0.0
 end
