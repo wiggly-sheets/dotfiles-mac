@@ -252,23 +252,6 @@ function cling() {
 
 
 
-# Enable GNU coreutils, sed, grep, find, awk, etc.
-export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
-export PATH="/opt/homebrew/opt/findutils/libexec/gnubin:$PATH"
-export PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH"
-export PATH="/opt/homebrew/opt/grep/libexec/gnubin:$PATH"
-export PATH="/opt/homebrew/opt/gawk/libexec/gnubin:$PATH"
-
-# Optional: make 'man' pages for GNU versions show up first
-export MANPATH="/opt/homebrew/opt/coreutils/libexec/gnuman:$MANPATH"
-export MANPATH="/opt/homebrew/opt/findutils/libexec/gnuman:$MANPATH"
-export MANPATH="/opt/homebrew/opt/gnu-sed/libexec/gnuman:$MANPATH"
-export MANPATH="/opt/homebrew/opt/grep/libexec/gnuman:$MANPATH"
-export MANPATH="/opt/homebrew/opt/gawk/libexec/gnuman:$MANPATH"
-
-# Optional: Show LS output with color like Linux
-alias ls='ls --color=auto'
-
 # Optional: safer cp and mv
 alias cp='cp -i'
 alias mv='mv -i'
@@ -276,4 +259,5 @@ alias rm='rm -i'
 
 
 }
+
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
