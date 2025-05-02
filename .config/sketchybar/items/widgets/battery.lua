@@ -16,7 +16,7 @@ local battery = sbar.add("item", "widgets.battery", {
 		font = { family = "IosevkaTermSlab Nerd Font Mono", size = 13 },
 		color = colors.green,
 	},
-	update_freq = 120,
+	update_freq = 300,
 	click_script = [[cliclick kd:cmd,alt,ctrl,shift t:-]],
 
 	--	popup = { align = "center" },

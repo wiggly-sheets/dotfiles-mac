@@ -149,3 +149,4 @@ shift + ctrl + alt + cmd - q : yabai -m config menubar_opacity 0.0
 # switch layout between default (macbook) and secondary (external) display
 cmd + ctrl + alt - c : yabai --stop-service && yabai --start-service -c ~/dotfiles/yabai/desktop/yabairc
 
+
