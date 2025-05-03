@@ -79,10 +79,6 @@ yabai -m config menubar_opacity 0.0
 
 yabai -m config debug_output off
 
-#use when second display connected, restart yabai when only using built-in display
-shift + cmd - m :  yabai -m config top_padding 25
-
-
 
 # find all executable files in ~/.config/yabai and execute them
 # find "${HOME}/.config/yabai" -type f -perm +111 -exec {} \;

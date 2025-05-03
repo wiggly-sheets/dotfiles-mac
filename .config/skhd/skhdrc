@@ -146,7 +146,9 @@ ctrl + alt + shift + fn - r : brew services restart svim
 shift + ctrl + alt + cmd - w : yabai -m config menubar_opacity 1.0
 shift + ctrl + alt + cmd - q : yabai -m config menubar_opacity 0.0
 
-# switch layout between default (macbook) and secondary (external) display
-cmd + ctrl + alt - c : yabai --stop-service && yabai --start-service -c ~/dotfiles/yabai/desktop/yabairc
+#use when second display connected, restart yabai when only using built-in display
+shift + cmd - m :  yabai -m config top_padding 25
+
+
 
 
