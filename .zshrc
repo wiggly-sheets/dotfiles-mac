@@ -155,18 +155,21 @@ _fzf_compgen_dir() {
 
 source ~/dotfiles/.config/scripts/fzf-git.sh
 
-alias fvim="~/dotfiles/.config/scripts/fzf_listoldfiles.sh"
+alias fvim='~/dotfiles/.config/scripts/fzf_listoldfiles.sh'
 
 alias fman="compgen -c | fzf | xargs man"
 
 alias ovim="~/dotfiles/.config/scripts/zoxide_openfiles_nvim.sh"
 
-alias c="clear"
+alias c='clear'
 
 alias nv='nvim'
 
 alias vim='nvim'
 
+alias ff='fastfetch'
+
+alias top='btop'
 
 #bat (better cat)
 export BAT_THEME=tokyonight_night

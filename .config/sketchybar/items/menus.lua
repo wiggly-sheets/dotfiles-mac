@@ -17,7 +17,7 @@ local menu_items = {}
 for i = 1, max_items, 1 do
 	local menu = sbar.add("item", "menu." .. i, {
 		padding_left = -4,
-		padding_right = 2,
+		padding_right = 1,
 		drawing = false,
 		icon = { drawing = true },
 		label = {

@@ -36,15 +36,15 @@ for i = 1, 10, 1 do
 			highlight_color = colors.white,
 		},
 		label = {
-			padding_right = 2,
-			padding_left = 2,
+			padding_right = 1,
+			padding_left = 1,
 			color = colors.white,
 			highlight_color = colors.white,
 			font = "sketchybar-app-font:Regular:12.0",
 			y_offset = -1,
 		},
 		padding_right = 0,
-		padding_left = 2,
+		padding_left = 1,
 		background = {
 			color = colors.transparent,
 			border_width = 1,
