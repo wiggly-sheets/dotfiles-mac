@@ -48,7 +48,7 @@ front_app:subscribe("front_app_switched", function(env)
 		icon = {
 			drawing = true,
 			string = icon,
-			font = "sketchybar-app-font:Regular:13.0", -- Must be an icon-supporting font
+			font = "sketchybar-app-font:Regular:12.0", -- Must be an icon-supporting font
 			padding_right = -12,
 			color = colors.white, -- Set icon color to magenta
 		},
