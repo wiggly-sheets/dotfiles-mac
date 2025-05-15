@@ -10,10 +10,6 @@ sbar.exec(
 
 local popup_width = 250
 
-local sbar = require("sketchybar")
-local icons = require("icons")
-local colors = require("colors")
-
 local wifi = sbar.add("item", "wifi.status", {
 	position = "right",
 	icon = {
