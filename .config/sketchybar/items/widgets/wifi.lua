@@ -39,12 +39,23 @@ wifi:subscribe({ "wifi_change", "system_woke" }, function()
 				},
 			})
 		else
-			wifi:set({
-				icon = {
-					string = icons.wifi.connected,
-					color = colors.white,
-				},
-			})
+			sbar.exec("scutil --nc list | grep Connected", function(vpnStatus)
+				if vpnStatus ~= "" then
+					wifi:set({
+						icon = {
+							string = "􀎡",
+							color = colors.white,
+						},
+					})
+				else
+					wifi:set({
+						icon = {
+							string = icons.wifi.connected,
+							color = colors.white,
+						},
+					})
+				end
+			end)
 		end
 	end)
 end)

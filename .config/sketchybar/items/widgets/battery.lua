@@ -12,14 +12,18 @@ local battery = sbar.add("item", "widgets.battery", {
 	},
 	padding_left = 0,
 	padding_right = -10,
-	label = {
-		font = { family = "IosevkaTermSlab Nerd Font Mono", size = 13 },
-		color = colors.green,
-	},
 	update_freq = 300,
 	click_script = [[cliclick kd:cmd,alt,ctrl,shift t:-]],
 
 	--	popup = { align = "center" },
+})
+
+local battery_percentage = sbar.add("item", "widgets.battery_percentage", {
+	position = "right",
+	label = { font = { family = "IosevkaTermSlab Nerd Font Mono", size = 13 }, color = colors.green },
+	click_script = 'osascript -e \'tell application "System Events" to tell process "AirBattery" to click menu bar item 1 of menu bar 2\'',
+	padding_left = -10,
+	padding_right = -10,
 })
 
 -- Single Instance Popup Items --
@@ -75,6 +79,8 @@ battery:subscribe({ "routine", "power_source_change", "system_woke" }, function(
 		-- Set battery widget state based on parsed data
 		battery:set({
 			icon = { string = charging and icons.battery.charging or icon, color = color },
+		})
+		battery_percentage:set({
 			label = { string = label, color = color },
 		})
 	end)

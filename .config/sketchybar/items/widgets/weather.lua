@@ -15,6 +15,7 @@ local weather = sbar.add("item", "widgets.weather", {
 	padding_right = -30,
 	padding_left = 0,
 	popup = { align = "center", height = 25 },
+	click_script = 'osascript -e \'tell application "System Events" to tell process "Sparrow" to click menu bar item 1 of menu bar 2\'',
 })
 
 sbar.add("bracket", "widgets.weather.bracket", { weather.name }, {
@@ -194,10 +195,10 @@ weather:subscribe({ "routine", "forced", "system_woke" }, function()
 	end)
 end)
 
-weather:subscribe("mouse.clicked", function()
-	weather:set({ popup = { drawing = "toggle" } })
-end)
+--weather:subscribe("mouse.clicked", function()
+--	weather:set({ popup = { drawing = "toggle" } })
+--end)
 
-weather:subscribe("mouse.exited.global", function()
-	weather:set({ popup = { drawing = "off" } })
-end)
+--weather:subscribe("mouse.exited.global", function()
+--	weather:set({ popup = { drawing = "off" } })
+--end)
