@@ -242,14 +242,11 @@ local function toggle_details()
 	end
 end
 
---wifi_up:subscribe("mouse.clicked", toggle_details)
---wifi_down:subscribe("mouse.clicked", toggle_details)
 wifi:subscribe("mouse.clicked", toggle_details)
 wifi:subscribe("mouse.exited.global", function()
 	wifi_bracket:set({ popup = { drawing = false } })
 end)
 wifi_up:subscribe("network_update", function(env)
-	-- Replace "Bps" with "B/s" in the upload and download strings.
 	local upload_str = env.upload:gsub("Bps", "B/s")
 	local download_str = env.download:gsub("Bps", "B/s")
 

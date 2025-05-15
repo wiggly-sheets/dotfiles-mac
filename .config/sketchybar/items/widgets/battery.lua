@@ -26,30 +26,6 @@ local battery_percentage = sbar.add("item", "widgets.battery_percentage", {
 	padding_right = -10,
 })
 
--- Single Instance Popup Items --
---local popup_items = {
---	time = sbar.add("item", {
---		position = "popup." .. battery.name,
---		icon = { string = "Time:", width = 100, align = "left" },
---		label = { string = "Calculating...", width = 100, align = "right" },
---	}),
---	capacity = sbar.add("item", {
---		position = "popup." .. battery.name,
---		icon = { string = "Capacity:", width = 100, align = "left" },
---		label = { string = "86%", width = 100, align = "right" },
---	}),
---	condition = sbar.add("item", {
---		position = "popup." .. battery.name,
---		icon = { string = "Condition:", width = 100, align = "left" },
---		label = { string = "Normal", width = 100, align = "right" },
---	}),
---	cycles = sbar.add("item", {
---		position = "popup." .. battery.name,
---		icon = { string = "Cycles:", width = 100, align = "left" },
---		label = { string = "Fetching...", width = 100, align = "right" },
---	}),
---}
-
 -- Battery Updates --
 battery:subscribe({ "routine", "power_source_change", "system_woke" }, function()
 	sbar.exec("pmset -g batt", function(batt_info)
@@ -85,47 +61,3 @@ battery:subscribe({ "routine", "power_source_change", "system_woke" }, function(
 		})
 	end)
 end)
-
--- Extract battery time remaining
---	local time_remaining = "Calculating..."
---	local time_match = batt_info:match("(%d+:%d+)")
-
---	if time_match then
---			time_remaining = charging and (time_match .. " until full") or (time_match .. " remaining")
---		end
-
--- Update time remaining in popup
---popup_items.time:set({ label = time_remaining })
---end)
-
----- Extract battery capacity
---sbar.exec("system_profiler SPPowerDataType | grep 'Maximum Capacity' | awk '{print $3}'", function(capacity)
---	local cap = capacity and capacity:match("%d+") or "N/A"
---	popup_items.capacity:set({ label = cap .. "%" })
---end)
-
----- Extract battery cycle count
---sbar.exec("system_profiler SPPowerDataType | grep 'Cycle Count' | awk '{print $3}'", function(cycles)
---	local cycle_count = cycles and cycles:match("%d+") or "N/A"
---	popup_items.cycles:set({ label = cycle_count })
---end)
---	end)
-
--- Popup Interactions --
---battery:subscribe("mouse.clicked", function()
---	local drawing = battery:query().popup.drawing
---	battery:set({ popup = { drawing = drawing == "off" and "on" or "off" } })
---end)
---
---battery:subscribe("mouse.exited.global", function()
---	battery:set({ popup = { drawing = "off" } })
---end)
---
---sbar.add("bracket", "widgets.battery.bracket", { battery.name }, {
---	background = { color = colors.bg1 },
---})
---
---sbar.add("item", "widgets.battery.padding", {
---	position = "right",
---	width = settings.group_paddings,
---	})

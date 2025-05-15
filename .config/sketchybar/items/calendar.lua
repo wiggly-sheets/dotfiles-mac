@@ -12,9 +12,7 @@ local calendar = sbar.add("item", "calendar", {
 			family = "SF Pro Display",
 			size = 15,
 		},
-		-- SF Symbols is typically part of this font family
-		string = icons.calendar, -- Assuming icons.calendar is set properly elsewhere
-		y_offset = 0, -- Adjust for vertical alignment if needed
+		string = icons.calendar,
 	},
 	click_script = "cliclick kd:cmd,shift,ctrl,alt t:d",
 })

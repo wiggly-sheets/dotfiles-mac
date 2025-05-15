@@ -1,6 +1,6 @@
 --local icons = require("icons")
 --local colors = require("colors")
---local whitelist = { ["Music"] = true }
+--local whitelist = { ["Plexamp"] = true }
 --local popup_shown = false
 --
 ----------------------------------------------------

@@ -39,9 +39,6 @@ sbar.add("item", "widgets.ram.padding", {
 	position = "right",
 	width = settings.group_paddings,
 })
---ram:subscribe("mouse.clicked", function(env)
---	sbar.exec("open -a 'Activity Monitor'")
---end)
 ram:subscribe({ "routine", "forced", "system_woke" }, function(env)
 	sbar.exec("memory_pressure", function(output)
 		local percentage = output:match("System%-wide memory free percentage: (%d+)")

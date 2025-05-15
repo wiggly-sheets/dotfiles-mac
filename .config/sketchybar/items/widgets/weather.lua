@@ -14,7 +14,6 @@ local weather = sbar.add("item", "widgets.weather", {
 	update_freq = 900,
 	padding_right = -30,
 	padding_left = 0,
-	popup = { align = "center", height = 25 },
 	click_script = 'osascript -e \'tell application "System Events" to tell process "Sparrow" to click menu bar item 1 of menu bar 2\'',
 })
 
@@ -26,53 +25,6 @@ sbar.add("item", "widgets.weather.padding", {
 	position = "right",
 	width = 0,
 })
-
-local location_info = sbar.add("item", {
-	position = "popup." .. weather.name,
-	label = {
-		string = "No weather data",
-		width = 160,
-		align = "left",
-		font = { size = 10.0 },
-	},
-	drawing = true,
-})
-
-local popup_days = {}
-for i = 1, 3 do
-	local popup_hours = {}
-	local item = sbar.add("item", {
-		position = "popup." .. weather.name,
-		label = {
-			string = "?",
-			width = 160,
-			align = "left",
-		},
-		drawing = false,
-	})
-	for i = 1, 8 do
-		local hour_item = sbar.add("item", {
-			position = "popup." .. weather.name,
-			icon = {
-				string = "?",
-				width = 25,
-				align = "left",
-			},
-			label = {
-				string = "?",
-				width = 135,
-				align = "left",
-			},
-			drawing = false,
-		})
-		table.insert(popup_hours, hour_item)
-	end
-	local popup_value = {
-		day_value = item,
-		hour_values = popup_hours,
-	}
-	table.insert(popup_days, popup_value)
-end
 
 local function map_condition_to_icon(cond)
 	local condition = cond:lower():match("^%s*(.-)%s*$")
@@ -98,15 +50,6 @@ local function map_condition_to_icon(cond)
 	return "?"
 end
 
-local function map_time_to_string(minutes)
-	local hours = math.floor(tonumber(minutes) / 100)
-	local mins = minutes % 100
-
-	-- Format the time in 24-hour format (HH:mm)
-	local formatted_time = string.format("%02d:%02d", hours, mins)
-	return formatted_time
-end
-
 local function load_weather(weather_data)
 	local current_condition = weather_data.current_condition[1]
 	local temperature = current_condition.temp_F .. "°"
@@ -115,59 +58,13 @@ local function load_weather(weather_data)
 		icon = {
 			string = map_condition_to_icon(condition),
 			drawing = true,
-			align = "left", -- Align icon to the left
 		},
 		label = {
 			string = temperature,
-			align = "left", -- Align the label to the left so it stays close to the icon
-			padding_left = -2, -- Adjust this value to move the temperature closer to the icon
-			padding_right = 5, -- Optional: You can set this to 0 to avoid extra space on the right
+			padding_left = -2,
+			padding_right = 5,
 		},
 	})
-	local nearest_area = weather_data.nearest_area[1]
-	local city = nearest_area.areaName[1].value
-	local country = nearest_area.country[1].value
-	local region = country == "United States of America" and nearest_area.region[1].value or country
-	location_info:set({
-		label = {
-			string = city .. ", " .. region,
-		},
-	})
-	local current_time = os.date("*t")
-	local time_number = current_time.hour * 100 + current_time.min
-	for day_index, day_item in pairs(weather_data.weather) do
-		local display_date = "Today"
-		if day_index == 2 then
-			display_date = "Tomorrow"
-		elseif day_index == 3 then
-			local two_days_later = os.time() + (2 * 24 * 60 * 60)
-			display_date = tostring(os.date("%A", two_days_later))
-		end
-		popup_days[day_index].day_value:set({ label = { string = display_date }, drawing = true })
-		for hourly_index, hourly_item in ipairs(day_item.hourly) do
-			if day_index == 1 and time_number > tonumber(hourly_item.time) + 300 then
-				popup_days[day_index].hour_values[hourly_index]:set({
-					drawing = false,
-				})
-			else
-				popup_days[day_index].hour_values[hourly_index]:set({
-					icon = {
-						string = map_condition_to_icon(hourly_item.weatherDesc[1].value),
-					},
-					label = {
-						string = map_time_to_string(hourly_item.time)
-							.. " | "
-							.. hourly_item.tempF
-							.. "°"
-							.. " | "
-							.. (100 - tonumber(hourly_item.chanceofremdry))
-							.. "%",
-					},
-					drawing = true,
-				})
-			end
-		end
-	end
 end
 
 weather:subscribe({ "routine", "forced", "system_woke" }, function()
@@ -194,11 +91,3 @@ weather:subscribe({ "routine", "forced", "system_woke" }, function()
 		sbar.exec('curl "wttr.in/' .. loc_str .. '?format=j1"', load_weather)
 	end)
 end)
-
---weather:subscribe("mouse.clicked", function()
---	weather:set({ popup = { drawing = "toggle" } })
---end)
-
---weather:subscribe("mouse.exited.global", function()
---	weather:set({ popup = { drawing = "off" } })
---end)

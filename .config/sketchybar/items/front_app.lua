@@ -1,5 +1,4 @@
 local colors = require("colors")
-local settings = require("settings")
 local app_icons = require("helpers.app_icons")
 
 local front_app = sbar.add("item", "front_app", {
@@ -11,30 +10,13 @@ local front_app = sbar.add("item", "front_app", {
 		string = "",
 		padding_right = 0,
 		padding_left = 4,
-		color = colors.white, -- Set icon color to magenta
+		color = colors.white,
 	},
 
 	click_script = [[
 osascript -e 'tell application "System Events" to set frontApp to name of first application process whose frontmost is true' \
 -e 'tell application "System Events" to tell process frontApp to click menu item ("About " & frontApp) of menu 1 of menu bar item frontApp of menu bar 1'
 ]],
-
-	--	label = {
-	--		font = {
-	--			style = settings.font.style_map["Black"],
-	--			size = 12.0,
-	--		},
-	--		background = {
-	--			color = colors.magenta,
-	--			border_width = 1,
-	--			height = 26,
-	--			border_color = colors.magenta,
-	--			corner_radius = 20,
-	--		},
-	--		position = "left",
-	--		string = "",
-	--	},
-	--	updates = true,
 })
 
 front_app:subscribe("front_app_switched", function(env)
@@ -50,16 +32,7 @@ front_app:subscribe("front_app_switched", function(env)
 			string = icon,
 			font = "sketchybar-app-font:Regular:12.0", -- Must be an icon-supporting font
 			padding_right = -12,
-			color = colors.white, -- Set icon color to magenta
+			color = colors.white,
 		},
-		-- Set the app name as the label
-		--		label = {
-		--			string = app,
-		--			font = "IosevkaTermSlab Nerd Font",
-		--		},
 	})
 end)
-
--- front_app:subscribe("mouse.clicked", function(env)
---  #	sbar.trigger("swap_menus_and_spaces")
--- end)

@@ -1,5 +1,4 @@
 local colors = require("colors")
-local settings = require("settings")
 local icons = require("icons")
 
 -- Padding item required because of bracket
@@ -17,7 +16,6 @@ local apple = sbar.add("item", {
 
 	label = { drawing = false },
 	background = {
-		--		image = "/Users/Zeb/.config/sketchybar/proxy-image.png",
 		width = 0,
 		height = 10,
 		color = colors.transparent,
@@ -27,7 +25,6 @@ local apple = sbar.add("item", {
 	padding_left = 0,
 	padding_right = -3,
 	click_script = "$CONFIG_DIR/helpers/menus/bin/menus -s 0",
-	-- 	click_script = "yabai -m config menubar_opacity 1.0",
 })
 
 -- Double border for apple using a single item bracket
