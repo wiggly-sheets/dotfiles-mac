@@ -30,7 +30,7 @@ for i = 1, 10, 1 do
 		icon = {
 			font = { family = "IosevkaTermSlab Nerd Font Mono", size = 12, style = "Bold" },
 			string = tostring(i), -- Placeholder before update
-			padding_left = 3,
+			padding_left = 2,
 			padding_right = 1,
 			color = colors.white,
 			highlight_color = colors.white,
@@ -44,14 +44,14 @@ for i = 1, 10, 1 do
 			y_offset = -1,
 		},
 		padding_right = 0,
-		padding_left = 1,
+		padding_left = 0,
 		background = {
 			color = colors.transparent,
 			border_width = 1,
 			height = 26,
 			border_color = colors.transparent,
 		},
-		popup = { background = { border_width = 3, border_color = colors.transparent } },
+		popup = { background = { border_width = 1, border_color = colors.transparent } },
 	})
 	spaces[i] = space
 
@@ -68,8 +68,8 @@ for i = 1, 10, 1 do
 	sbar.add("space", "space.padding." .. i, {
 		space = i,
 		script = "",
-		width = 0,
-		padding_left = 2,
+		width = 2,
+		padding_left = 0,
 		padding_right = -2,
 	})
 
@@ -93,7 +93,7 @@ for i = 1, 10, 1 do
 
 		space_bracket:set({
 			background = {
-				border_color = is_selected and colors.green or colors.transparent,
+				border_color = is_selected and colors.green or colors.white,
 				corner_radius = 10,
 			},
 		})

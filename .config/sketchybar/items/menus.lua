@@ -46,7 +46,7 @@ sbar.add("bracket", { "/menu\\..*/" }, {
 
 local menu_padding = sbar.add("item", "menu.padding", {
 	drawing = false,
-	width = 5,
+	width = 2,
 	padding_left = -2,
 	padding_right = -5,
 })

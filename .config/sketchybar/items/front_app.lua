@@ -10,7 +10,7 @@ local front_app = sbar.add("item", "front_app", {
 		font = "sketchybar-app-font:Regular:12.0", -- Ensure this is your icon font
 		string = "",
 		padding_right = 0,
-		padding_left = 1,
+		padding_left = 4,
 		color = colors.white, -- Set icon color to magenta
 	},
 
