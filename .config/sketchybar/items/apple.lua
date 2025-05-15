@@ -24,7 +24,7 @@ local apple = sbar.add("item", {
 		border_color = colors.transparent,
 		border_width = 0,
 	},
-	padding_left = -15,
+	padding_left = 0,
 	padding_right = -3,
 	click_script = "$CONFIG_DIR/helpers/menus/bin/menus -s 0",
 	-- 	click_script = "yabai -m config menubar_opacity 1.0",
