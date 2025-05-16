@@ -30,7 +30,7 @@ yabai -m config window_animation_duration 0.0
 yabai -m config window_placement second_child
 
 # padding
-yabai -m config top_padding 5
+yabai -m config top_padding 4
 yabai -m config bottom_padding 30
 yabai -m config left_padding 5
 yabai -m config right_padding 45

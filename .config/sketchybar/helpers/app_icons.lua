@@ -332,7 +332,7 @@ return {
 	["WeChat"] = ":wechat:",
 	["企业微信"] = ":wecom:",
 	["WeCom"] = ":wecom:",
-	["WezTerm"] = ":wezterm:",
+	["WezTerm"] = ":terminal:",
 	["WhatsApp"] = ":whats_app:",
 	["‎WhatsApp"] = ":whats_app:",
 	["Xcode"] = ":xcode:",
