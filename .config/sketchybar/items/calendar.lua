@@ -1,5 +1,4 @@
 local colors = require("colors")
-local icons = require("icons")
 
 local calendar = sbar.add("item", "calendar", {
 	position = "right",
@@ -12,7 +11,7 @@ local calendar = sbar.add("item", "calendar", {
 			family = "SF Pro Display",
 			size = 15,
 		},
-		string = icons.calendar,
+		string = "􀉉",
 	},
 	click_script = "cliclick kd:cmd,shift,ctrl,alt t:d",
 })
