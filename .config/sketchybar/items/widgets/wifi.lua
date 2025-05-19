@@ -25,35 +25,56 @@ local wifi = sbar.add("item", "wifi.status", {
 	padding_right = 5,
 })
 
-wifi:subscribe({ "wifi_change", "system_woke" }, function()
+local function updateNetworkStatus()
+	-- 1. Check internet connection
 	sbar.exec("ipconfig getifaddr en0", function(ip)
 		if ip == "" then
 			wifi:set({
-				icon = {
-					string = icons.wifi.disconnected,
-					color = colors.red,
-				},
+				icon = { string = icons.wifi.disconnected, color = colors.red },
+				label = { drawing = false },
 			})
-		else
-			sbar.exec("scutil --nc list | grep Connected", function(vpnStatus)
-				if vpnStatus ~= "" then
-					wifi:set({
-						icon = {
-							string = "􀎡",
-							color = colors.white,
-						},
-					})
-				else
-					wifi:set({
-						icon = {
-							string = icons.wifi.connected,
-							color = colors.white,
-						},
-					})
-				end
-			end)
+			return
 		end
+
+		-- 2. Check VPN status
+		sbar.exec("scutil --nc list | grep -q Connected && echo 1 || echo 0", function(vpnStatus)
+			if tonumber(vpnStatus) == 1 then
+				wifi:set({
+					icon = { string = "􀎡", color = colors.white },
+					label = { drawing = false },
+				})
+				return
+			end
+
+			-- 3. Hotspot check (your fast command)
+			sbar.exec(
+				[[
+                ipconfig getsummary $(networksetup -listallhardwareports | awk '/Hardware Port: Wi-Fi/{getline; print $2}') | 
+                awk -F ' SSID : ' '/ SSID : / {if ($2 ~ /iPhone/) {print 1} else {print 0}}'
+            ]],
+				function(isHotspot)
+					if tonumber(isHotspot) == 1 then
+						wifi:set({
+							icon = { string = "􀉤", color = colors.white },
+						})
+					else
+						wifi:set({
+							icon = { string = icons.wifi.connected, color = colors.white },
+							label = { drawing = false },
+						})
+					end
+				end
+			)
+		end)
 	end)
+end
+
+-- Initial update
+updateNetworkStatus()
+
+-- Debounced event handling (300ms)
+wifi:subscribe({ "wifi_change", "system_woke", "network_update" }, function()
+	sbar.delay(0.3, updateNetworkStatus)
 end)
 
 local wifi_up = sbar.add("item", "widgets.wifi1", {

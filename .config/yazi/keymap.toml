@@ -154,6 +154,7 @@ keymap = [
 	# Help
 	{ on = "~",    run = "help", desc = "Open help" },
 	{ on = "<F1>", run = "help", desc = "Open help" },
+
 ]
 
 [tasks]
@@ -175,8 +176,9 @@ keymap = [
 
 	# Help
 	{ on = "~",    run = "help", desc = "Open help" },
-	{ on = "<F1>", run = "help", desc = "Open help" },
+  { on = "<F1>", run = "help", desc = "Open help" },
 ]
+
 
 [spot]
 
