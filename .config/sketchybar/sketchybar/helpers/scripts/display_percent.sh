@@ -17,7 +17,7 @@ main_brightness_percentage=$(get_brightness_percentage "built-in")
 
 # Attempt to query brightness for the second display
 second_brightness_percentage=""
-second_display=$(betterdisplaycli get --n="asus" --brightness=% 2>/dev/null)
+second_display=$(betterdisplaycli get --n="sceptre" --brightness=% 2>/dev/null)
 
 if [[ -n $second_display ]]; then
     # Calculate the brightness percentage for the second display

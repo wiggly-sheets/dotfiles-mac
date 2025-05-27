@@ -25,35 +25,65 @@ local wifi = sbar.add("item", "wifi.status", {
 	padding_right = 5,
 })
 
-wifi:subscribe({ "wifi_change", "system_woke" }, function()
-	sbar.exec("ipconfig getifaddr en0", function(ip)
-		if ip == "" then
-			wifi:set({
-				icon = {
-					string = icons.wifi.disconnected,
-					color = colors.red,
-				},
-			})
-		else
-			sbar.exec("scutil --nc list | grep Connected", function(vpnStatus)
-				if vpnStatus ~= "" then
+local function updateNetworkStatus()
+	-- 1. First check if ANY interface has internet
+	sbar.exec("ping -c1 -t1 8.8.8.8 >/dev/null 2>&1 && echo 1 || echo 0", function(hasInternet)
+		-- 2. Check VPN status (parallel check since it's independent)
+		sbar.exec("scutil --nc list | grep -q Connected && echo 1 || echo 0", function(vpnStatus)
+			-- 3. Check active interface (only if needed)
+			sbar.exec("route get default 2>/dev/null | awk '/interface: / {print $2}'", function(activeInterface)
+				-- Visual feedback logic
+				if tonumber(vpnStatus) == 1 then
+					-- VPN ACTIVE (highest priority)
 					wifi:set({
-						icon = {
-							string = "􀎡",
-							color = colors.white,
-						},
+						icon = { string = "􀎡", color = colors.white },
+						label = { string = "VPN", color = colors.white },
+					})
+				elseif tonumber(hasInternet) == 0 then
+					-- DISCONNECTED
+					wifi:set({
+						icon = { string = icons.wifi.disconnected, color = colors.red },
+						label = { drawing = false },
+					})
+				elseif activeInterface and tonumber(activeInterface:match("^en(%d+)")) >= 1 then
+					-- ETHERNET
+					wifi:set({
+						icon = { string = "􀤆", color = colors.white },
+						label = { string = "Ethernet", color = colors.green },
 					})
 				else
-					wifi:set({
-						icon = {
-							string = icons.wifi.connected,
-							color = colors.white,
-						},
-					})
+					-- WIFI/HOTSPOT CHECK
+					sbar.exec(
+						[[
+                        ipconfig getsummary $(networksetup -listallhardwareports | awk '/Hardware Port: Wi-Fi/{getline; print $2}') | 
+                        awk -F ' SSID : ' '/ SSID : / {if ($2 ~ /iPhone/) {print 1} else {print 0}}'
+                    ]],
+						function(isHotspot)
+							if tonumber(isHotspot) == 1 then
+								wifi:set({
+									icon = { string = "􀉤", color = colors.white },
+									label = { string = "Hotspot", color = colors.blue },
+								})
+							else
+								wifi:set({
+									icon = { string = icons.wifi.connected, color = colors.white },
+									label = { drawing = false },
+								})
+							end
+						end
+					)
 				end
 			end)
-		end
+		end)
 	end)
+end
+
+-- Initial update with 1s delay to allow network stabilization
+sbar.delay(1, updateNetworkStatus)
+
+-- Event subscriptions
+wifi:subscribe({ "wifi_change", "system_woke", "network_update", "vpn_state_change" }, function()
+	sbar.delay(0.5, updateNetworkStatus)
 end)
 
 local wifi_up = sbar.add("item", "widgets.wifi1", {
