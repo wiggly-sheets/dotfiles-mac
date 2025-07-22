@@ -14,8 +14,6 @@ local battery = sbar.add("item", "widgets.battery", {
 	padding_right = -10,
 	update_freq = 300,
 	click_script = [[cliclick kd:cmd,alt,ctrl,shift t:-]],
-
-	--	popup = { align = "center" },
 })
 
 local battery_percentage = sbar.add("item", "widgets.battery_percentage", {

@@ -7,35 +7,44 @@ get_brightness_percentage() {
     echo $(echo "$brightness * 100" | bc | awk '{printf "%d\n", $1}')
 }
 
-# Initialize variables for SketchyBar
-one_display_icon="􀟛"    # Placeholder for icon when only one display is present
-two_displays_icon="􂤓"  # Placeholder for icon when two displays are present
-display_icon="$one_display_icon"           # Default to one display
+# Define icons for different display configurations
+main_only_icon="􀟛"       # Laptop icon
+secondary_only_icon="􀙗" # External monitor icon
+both_displays_icon="􂤓"  # Dual-screen icon
+display_icon="$main_only_icon"  # Default to laptop icon
 
-# Get brightness percentage for the built-in display
-main_brightness_percentage=$(get_brightness_percentage "built-in")
-
-# Attempt to query brightness for the second display
+# Attempt to query brightness for both displays
+main_brightness_percentage=""
 second_brightness_percentage=""
-second_display=$(betterdisplaycli get --n="sceptre" --brightness=% 2>/dev/null)
 
-if [[ -n $second_display ]]; then
-    # Calculate the brightness percentage for the second display
-    second_brightness_percentage=$(echo "$second_display * 100" | bc | awk '{printf "%d\n", $1}')
-    # Set the icon to indicate two displays
-    display_icon="$two_displays_icon"
+# Check if built-in display is active
+if betterdisplaycli get --n="built-in" --brightness=% >/dev/null 2>&1; then
+    main_brightness_percentage=$(get_brightness_percentage "built-in")
 fi
 
-# Prepare the label
-if [[ -n $second_brightness_percentage ]]; then
-    # Format label with both values
+# Check if second display is active
+if betterdisplaycli get --n="sceptre" --brightness=% >/dev/null 2>&1; then
+    second_brightness_percentage=$(get_brightness_percentage "sceptre")
+fi
+
+# Prepare the label and icon based on which displays are active
+if [[ -n "$main_brightness_percentage" && -n "$second_brightness_percentage" ]]; then
+    # Both displays active
     label="${second_brightness_percentage}% & ${main_brightness_percentage}%"
-else
-    # Show only one display's brightness
+    display_icon="$both_displays_icon"
+elif [[ -n "$second_brightness_percentage" ]]; then
+    # Only second display active
+    label="${second_brightness_percentage}%"
+    display_icon="$secondary_only_icon"
+elif [[ -n "$main_brightness_percentage" ]]; then
+    # Only main display active
     label="${main_brightness_percentage}%"
+    display_icon="$main_only_icon"
+else
+    # No displays active (unlikely case)
+    label="No Display"
 fi
 
 # Update the SketchyBar with label and correct icon
-# Replace 'your_item_name' with the actual item name in SketchyBar
 sketchybar --set display label="$label" icon="$display_icon"
 

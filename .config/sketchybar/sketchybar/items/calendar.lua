@@ -13,5 +13,5 @@ local calendar = sbar.add("item", "calendar", {
 		},
 		string = "􀉉",
 	},
-	click_script = "cliclick kd:cmd,shift,ctrl,alt t:d",
+	click_script = 'osascript -e \'tell application "System Events" to tell process "Dato" to click menu bar item 1 of menu bar 2\'',
 })

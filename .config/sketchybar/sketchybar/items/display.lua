@@ -18,10 +18,10 @@ local display_item = sbar.add("item", "display", {
 	},
 	position = "right",
 	update_freq = 10,
-	click_script = "cliclick kd:ctrl,alt,cmd t:b",
 	padding_left = 0,
 	padding_right = 0,
 	script = "~/.config/sketchybar/helpers/scripts/display_percent.sh",
+	click_script = "cliclick kd:ctrl,alt,cmd t:b",
 })
 
 -- Function: Count the displays using system_profiler
