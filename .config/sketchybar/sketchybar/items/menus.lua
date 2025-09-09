@@ -1,5 +1,4 @@
 local colors = require("colors")
-local icons = require("icons")
 local settings = require("settings")
 
 local menu_watcher = sbar.add("item", {
@@ -15,18 +14,16 @@ local max_items = 15
 local menu_items = {}
 for i = 1, max_items, 1 do
 	local menu = sbar.add("item", "menu." .. i, {
-		padding_left = -4,
-		padding_right = 1,
+		padding_left = -3,
+		padding_right = -3,
 		drawing = false,
 		icon = { drawing = true },
 		label = {
 			font = {
 				style = settings.font.style_map[i == 1 and "Bold" or "Medium"],
-				family = "IosevkaTermSlab Nerd Font Mono",
-				size = 12,
+				family = "Inconsolata Nerd Font Mono",
+				size = 13,
 			},
-			padding_left = -3,
-			padding_right = 5,
 		},
 		click_script = "$CONFIG_DIR/helpers/menus/bin/menus -s " .. i,
 	})
@@ -37,7 +34,7 @@ end
 sbar.add("bracket", { "/menu\\..*/" }, {
 	background = {
 		color = colors.bg1,
-		border_color = colors.white,
+		border_color = colors.transparent,
 		border_width = 1,
 		corner_radius = 10,
 		height = 28,
@@ -45,10 +42,10 @@ sbar.add("bracket", { "/menu\\..*/" }, {
 })
 
 local menu_padding = sbar.add("item", "menu.padding", {
-	drawing = false,
-	width = 2,
-	padding_left = -2,
-	padding_right = -5,
+	drawing = true,
+	width = 9,
+	padding_left = 0,
+	padding_right = 0,
 })
 
 local function update_menus(env)

@@ -9,13 +9,14 @@ config.window_close_confirmation = "NeverPrompt"
 config.front_end = "OpenGL"
 
 config.font = wezterm.font_with_fallback({
+	"Inconsolata Nerd Font Mono",
 	"IosevkaTermSlab Nerd Font Mono",
 	"JetBrains Mono",
 	"Noto Sans Mono",
 	"Apple Color Emoji",
 	"SF Pro Display",
 })
-config.font_size = 13.5
+config.font_size = 15
 
 require("wezterm").on("format-window-title", function()
 	return "WezTerm"
@@ -45,7 +46,6 @@ config.window_padding = {
 }
 
 config.colors = {
-	foreground = "#CBE0F0",
 	background = "#000000",
 	cursor_bg = "#47FF9C",
 	cursor_border = "#47FF9C",

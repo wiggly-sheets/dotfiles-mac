@@ -27,27 +27,26 @@ for i = 1, 10, 1 do
 	local space = sbar.add("space", "space." .. i, {
 		space = i,
 		icon = {
-			font = { family = "IosevkaTermSlab Nerd Font Mono", size = 12, style = "Bold" },
+			font = { family = "Inconsolata Nerd Font Mono", size = 12, style = "Bold" },
 			string = tostring(i), -- Placeholder before update
-			padding_left = 2,
-			padding_right = 1,
+			padding_left = 5,
+			padding_right = 5,
 			color = colors.white,
 			highlight_color = colors.white,
 		},
 		label = {
-			padding_right = 1,
-			padding_left = 1,
+			padding_right = 5,
+			padding_left = 2,
 			color = colors.white,
 			highlight_color = colors.white,
-			font = "sketchybar-app-font:Regular:12.0",
-			y_offset = -1,
+			font = "sketchybar-app-font:Regular:13.0",
 		},
 		padding_right = 0,
-		padding_left = 0,
+		padding_left = 2,
 		background = {
 			color = colors.transparent,
 			border_width = 1,
-			height = 26,
+			height = 24,
 			border_color = colors.transparent,
 		},
 		popup = { background = { border_width = 1, border_color = colors.transparent } },
@@ -58,9 +57,10 @@ for i = 1, 10, 1 do
 		background = {
 			color = colors.transparent,
 			border_color = colors.transparent,
-			height = 28,
+			height = 20,
 			border_width = 1,
 			padding_right = -5,
+			padding_left = 5,
 		},
 	})
 
@@ -68,8 +68,8 @@ for i = 1, 10, 1 do
 		space = i,
 		script = "",
 		width = 2,
-		padding_left = 0,
-		padding_right = -2,
+		padding_left = 5,
+		padding_right = 5,
 	})
 
 	local space_popup = sbar.add("item", {
@@ -79,7 +79,7 @@ for i = 1, 10, 1 do
 		background = {
 			drawing = true,
 			image = {
-				corner_radius = 10,
+				corner_radius = 8,
 				scale = 0.2,
 			},
 		},
@@ -92,7 +92,7 @@ for i = 1, 10, 1 do
 
 		space_bracket:set({
 			background = {
-				border_color = is_selected and colors.green or colors.white,
+				border_color = is_selected and colors.white or colors.grey,
 				corner_radius = 10,
 			},
 		})

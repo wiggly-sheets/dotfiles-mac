@@ -1,6 +1,6 @@
 return {
-	text = "IosevkaSlabTerm Nerd Font Mono", -- Used for text
-	numbers = "IosevkaSlabTerm Nerd Font Mono", -- Used for numbers
+	text = "Inconsolata Nerd Font Mono", -- Used for text
+	numbers = "Inconsolata Nerd Font Mono", -- Used for numbers
 
 	-- Unified font style map
 	style_map = {

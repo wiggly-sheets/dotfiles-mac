@@ -6,7 +6,7 @@ sbar.default({
 	updates = "when_shown",
 	icon = {
 		font = {
-			family = "IosevkaTermSlab Nerd Font Mono",
+			family = "Inconsolata Nerd Font Mono",
 			style = settings.font.style_map["Regular"],
 			size = 14.0,
 		},
@@ -17,7 +17,7 @@ sbar.default({
 	},
 	label = {
 		font = {
-			family = "IosevkaTermSlab Nerd Font Mono",
+			family = "Inconsolata Nerd Font Mono",
 			style = settings.font.style_map["Regular"],
 			size = 14.0,
 		},

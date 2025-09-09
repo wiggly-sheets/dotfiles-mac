@@ -42,7 +42,7 @@ elif [[ -n "$main_brightness_percentage" ]]; then
     display_icon="$main_only_icon"
 else
     # No displays active (unlikely case)
-    label="No Display"
+    label="􀁟"
 fi
 
 # Update the SketchyBar with label and correct icon

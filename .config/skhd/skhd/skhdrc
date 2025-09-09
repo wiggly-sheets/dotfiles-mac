@@ -120,20 +120,10 @@ ctrl + alt - r : yabai --restart-service
 ctrl + alt + shift - q : skhd --stop-service
 ctrl + alt + shift - r : skhd --restart-service
 
-# stop/start/restart jankyborders
-ctrl + alt + cmd + fn - q : brew services stop borders
-ctrl + alt + cmd + fn - s : brew services start borders
-ctrl + alt + cmd + fn - r : brew services restart borders
-
 # stop/start/restart sketchybar
 ctrl + alt + cmd - q : brew services stop sketchybar
 ctrl + alt + cmd - s : brew services start sketchybar
-ctrl + alt + cmd - r : brew services restart sketchybar
-
-# stop/start/restart sketchyvim
-ctrl + alt + shift + fn - q : brew services stop svim
-ctrl + alt + shift + fn - s : brew services start svim
-ctrl + alt + shift + fn - r : brew services restart svim
+shift + ctrl + alt + cmd - r : sketchybar --reload
 
 
 # change current space layout
@@ -147,7 +137,7 @@ shift + ctrl + alt + cmd - w : yabai -m config menubar_opacity 1.0
 shift + ctrl + alt + cmd - q : yabai -m config menubar_opacity 0.0
 
 #use when second display connected, restart yabai when only using built-in display
-shift + cmd - m :  yabai -m config top_padding 24
+shift + cmd - m :  yabai -m config top_padding 15
 
 
 

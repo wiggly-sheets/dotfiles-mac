@@ -14,15 +14,15 @@ local mic_item = sbar.add("item", "mic", {
 		padding_left = 5,
 		padding_right = 0,
 		string = "??", -- Default volume text.
-		font = { family = "IosevkaTermSlab Nerd Font Mono", size = 13, style = "Medium" },
+		font = { family = "Inconsolata Nerd Font Mono" },
 		color = colors.yellow,
 	},
 	position = "right",
 	padding_left = 0,
 	padding_right = -5,
-	update_freq = 5,
+	update_freq = 1,
 	script = "~/.config/sketchybar/helpers/scripts/mic.sh",
-	click_script = "cliclick kd:alt,shift,cmd,ctrl t:v",
+	click_script = 'osascript -e \'tell application "System Events" to tell process "SoundSource" to click menu bar item 1 of menu bar 2\'',
 })
 
 -- Function to update the mic item based on current input volume.

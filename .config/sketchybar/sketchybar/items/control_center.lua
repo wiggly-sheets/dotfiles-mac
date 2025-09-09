@@ -8,7 +8,7 @@ local control_center = sbar.add("item", "control_center", {
 		font = { family = "SF Pro", size = 15 },
 
 		padding_left = 0,
-		padding_right = 15,
+		padding_right = -5,
 		color = colors.white,
 	},
 	background = {
@@ -16,5 +16,5 @@ local control_center = sbar.add("item", "control_center", {
 		padding_left = 0,
 		padding_right = 0,
 	},
-	click_script = "cliclick kd:fn t:c",
+	click_script = 'osascript -e \'tell application "System Events" to tell process "ControlCenter" to click menu bar item 2 of menu bar 1\'',
 })

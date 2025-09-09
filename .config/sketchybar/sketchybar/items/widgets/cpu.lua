@@ -14,15 +14,14 @@ local cpu = sbar.add("graph", "widgets.cpu", 42, {
 		color = { alpha = 0 },
 		border_color = { alpha = 0 },
 		drawing = true,
-		padding_right = -10,
+		padding_right = 0,
 	},
 	icon = { string = icons.cpu },
 	label = {
 		string = "cpu ??%",
 		font = {
-			family = "IosevkaTermSlab Nerd Font Mono",
-			style = settings.font.style_map["Medium"],
-			size = 9.0,
+			style = settings.default,
+			size = 10.0,
 		},
 		align = "right",
 		padding_right = 0,
@@ -30,7 +29,8 @@ local cpu = sbar.add("graph", "widgets.cpu", 42, {
 		width = 0,
 		y_offset = 10,
 	},
-	click_script = [[cliclick kd:cmd,alt,ctrl,shift t:.]],
+	click_script = 'osascript -e \'tell application "System Events" to keystroke "c" using {command down, option down, control down}\'',
+
 	updates = true,
 	update_freq = 30,
 })

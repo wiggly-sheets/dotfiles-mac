@@ -6,33 +6,35 @@ sbar.add("item", { position = "right", width = settings.group_paddings })
 
 local cal_up = sbar.add("item", "cal_up", {
 	position = "right",
-	padding_left = -3,
-	padding_right = 21,
+	padding_left = -10,
+	padding_right = 25,
 	width = 0,
 	label = {
 		color = colors.white,
 		font = {
-			family = "IosevkaTermSlab Nerd Font Mono",
-			size = 11.0,
+			family = settings.default,
+			style = "Bold",
+			size = 12,
 		},
 	},
 	y_offset = 5,
-	click_script = "cliclick kd:fn t:n",
+	click_script = 'osascript -e \'tell application "System Events" to tell process "Dato" to click menu bar item 1 of menu bar 2\'',
 })
 
 local cal_down = sbar.add("item", "cal_down", {
 	position = "right",
-	padding_left = -2,
-	padding_right = 3,
-	y_offset = -6,
+	padding_left = -10,
+	padding_right = 0,
+	y_offset = -5,
 	label = {
 		color = colors.white,
 		font = {
-			family = "IosevkaTermSlab Nerd Font Mono",
-			size = 11.0,
+			family = settings.default,
+			style = "Bold",
+			size = 12,
 		},
 	},
-	click_script = "cliclick kd:fn t:n",
+	click_script = 'osascript -e \'tell application "System Events" to tell process "Dato" to click menu bar item 1 of menu bar 2\'',
 })
 
 -- Double border for calendar using a single item bracket
@@ -49,8 +51,8 @@ local cal_bracket = sbar.add("bracket", { cal_up.name, cal_down.name }, {
 local spacing = sbar.add("item", { position = "right", width = 26 })
 
 cal_bracket:subscribe({ "forced", "routine", "system_woke" }, function(env)
-	local up_value = os.date("%a %b %d %Y")
-	local down_value = os.date("%H:%M:%S %Z")
+	local down_value = os.date("%a %b %d %Y")
+	local up_value = os.date("%H:%M:%S %Z")
 	cal_up:set({ label = { string = up_value } })
 	cal_down:set({ label = { string = down_value } })
 end)

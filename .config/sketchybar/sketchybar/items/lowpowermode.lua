@@ -1,6 +1,3 @@
-local colors = require("colors")
-
--- Low Power Mode Widget --
 local lowpowermode = sbar.add("item", "lowpowermode", {
 	position = "right",
 	label = {
@@ -10,9 +7,9 @@ local lowpowermode = sbar.add("item", "lowpowermode", {
 		},
 		padding_right = 1,
 		padding_left = -4,
-		string = "",
+		string = "􀋦",
 	},
 	script = "/Users/Zeb/.config/sketchybar/helpers/scripts/lowpowermode.sh",
 	click_script = [[osascript -e 'tell application "Shortcuts" to run shortcut "Toggle Low Power"']],
-	update_freq = 10,
+	update_freq = 1,
 })

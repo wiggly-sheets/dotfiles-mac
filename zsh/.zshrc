@@ -1,7 +1,6 @@
 
 ZSH_TMUX_AUTOSTART=true
 
-# neofetch
 fastfetch
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
@@ -231,7 +230,6 @@ HISTSIZE=999
 setopt share_history
 setopt hist_expire_dups_first
 setopt hist_verify
-
 
 
 # Optional: safer cp and mv

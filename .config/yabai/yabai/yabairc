@@ -31,11 +31,14 @@ yabai -m config window_animation_duration 0.0
 yabai -m config window_placement second_child
 
 # padding
+# no top padding required because of notch
 yabai -m config top_padding 0
-yabai -m config bottom_padding 27
-yabai -m config left_padding 3
-yabai -m config right_padding 3
-yabai -m config window_gap 3
+#bottom padding for custom taskbar
+yabai -m config bottom_padding 25
+#one width padding for jankyborders
+yabai -m config left_padding 1
+yabai -m config right_padding 1
+yabai -m config window_gap 0
 
 
 yabai -m config window_topmost off # Disabled because browser popups will disappear if its enabled
@@ -50,14 +53,13 @@ yabai -m config window_shadow off
 yabai -m config window_opacity on
 yabai -m config window_opacity_duration 0
 yabai -m config active_window_opacity 1.0
-yabai -m config normal_window_opacity 0.5
+yabai -m config normal_window_opacity .5
 
 
 # center mouse on window with focus
 yabai -m config mouse_follows_focus on
 
-# autofocus and autoraise windows hovered by mouse
-# yabai -m config focus_follows_mouse autofocus
+# autoraise windows hovered by mouse
 yabai -m config focus_follows_mouse autoraise
 
 yabai -m config auto_balance on
@@ -75,7 +77,6 @@ yabai -m mouse_drop_action swap
 
 yabai -m config event_feedback on
 
-
 yabai -m config menubar_opacity 0.0
 
 yabai -m config debug_output off
@@ -86,7 +87,7 @@ yabai -m config debug_output off
 
 
 # bootstrap jankyborders with yabai service
-borders hidpi=on width=1.0 active_color="0xffffffff"inactive_color="0xffffffff" background_color="0xff000000" style=round ax_focus=on order=below blacklist="WezTerm,tmux" &
+borders hidpi=on width=1.0 active_color="0xffffffff"inactive_color="0x000000" background_color="0xff000000" style=round ax_focus=on order=below blacklist="WezTerm,tmux" &
 
 
 

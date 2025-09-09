@@ -11,9 +11,9 @@ local volume_percent = sbar.add("item", "widgets.volume1", {
 		padding_left = 15,
 		width = "dynamic",
 		color = colors.yellow,
-		font = { family = "IosevkaTermSlab Nerd Font Mono", size = 13 },
+		font = { style = settings.default },
 	},
-	click_script = [[osascript -e 'tell application "System Events" to keystroke "v" using {command down, shift down, option down, control down}']],
+	click_script = 'osascript -e \'tell application "System Events" to tell process "SoundSource" to click menu bar item 1 of menu bar 2\'',
 })
 
 local volume_icon = sbar.add("item", "widgets.volume2", {
@@ -43,7 +43,7 @@ local volume_icon = sbar.add("item", "widgets.volume2", {
 			color = colors.yellow,
 		},
 	},
-	click_script = [[osascript -e 'tell application "System Events" to keystroke "v" using {command down, shift down, option down, control down}']],
+	click_script = 'osascript -e \'tell application "System Events" to tell process "SoundSource" to click menu bar item 1 of menu bar 2\'',
 })
 
 local volume_bracket = sbar.add("bracket", "widgets.volume.bracket", {

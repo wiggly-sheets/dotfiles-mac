@@ -16,8 +16,7 @@ local ram = sbar.add("graph", "widgets.ram", 42, {
 	label = {
 		string = "ram ??%",
 		font = {
-			family = "IosevkaTermSlab Nerd Font Mono",
-			style = settings.font.style_map["Medium"],
+			style = settings.default,
 			size = 9.0,
 		},
 		align = "right",
@@ -28,7 +27,7 @@ local ram = sbar.add("graph", "widgets.ram", 42, {
 	update_freq = 60,
 	updates = true,
 	padding_right = -12,
-	click_script = [[cliclick kd:cmd,alt,ctrl,shift t:,]],
+	click_script = 'osascript -e \'tell application "System Events" to keystroke "r" using {command down, option down, control down}\'',
 })
 
 sbar.add("bracket", "widgets.ram.bracket", { ram.name }, {

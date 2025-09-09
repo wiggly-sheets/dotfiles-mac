@@ -15,14 +15,14 @@ local wifi = sbar.add("item", "wifi.status", {
 	icon = {
 		string = icons.wifi.disconnected,
 		font = {
-			family = "IosevkaTermSlab Nerd Font",
+			style = settings.default,
 			size = 15.0,
 		},
 		color = colors.red,
 	},
 	label = { drawing = false },
-	padding_left = -5,
-	padding_right = 5,
+	padding_left = 5,
+	padding_right = -25,
 })
 
 local function updateNetworkStatus()
@@ -94,39 +94,37 @@ local wifi_up = sbar.add("item", "widgets.wifi1", {
 		padding_right = 0,
 		font = {
 			style = settings.font.style_map["Bold"],
-			size = 9.0,
+			size = 11.0,
 		},
 		string = icons.wifi.upload,
 	},
 	label = {
 		font = {
-			family = "IosevkaTermSlab Nerd Font Mono",
-			style = settings.font.style_map["Medium"],
-			size = 9.0,
+			style = settings.default,
+			size = 11.0,
 		},
-		color = colors.red,
+		color = colors.blue,
 		string = "??? Bps",
 	},
 	y_offset = 8,
-	click_script = "cliclick kd:cmd,alt,shift,ctrl t:=",
+	click_script = 'osascript -e \'tell application "System Events" to keystroke "r" using {command down, option down, control down}\'',
 })
 
 local wifi_down = sbar.add("item", "widgets.wifi2", {
 	position = "right",
-	padding_left = -5,
+	padding_left = 0,
 	icon = {
 		padding_right = 0,
 		font = {
 			style = settings.font.style_map["Regular"],
-			size = 9.0,
+			size = 11.0,
 		},
 		string = icons.wifi.download,
 	},
 	label = {
 		font = {
-			family = "IosevkaTermSlab Nerd Font Mono",
-			style = settings.font.style_map["Regular"],
-			size = 9.0,
+			style = settings.default,
+			size = 11.0,
 		},
 		color = colors.green,
 		string = "??? Bps",
@@ -255,9 +253,12 @@ local function toggle_details()
 		sbar.exec("ipconfig getifaddr en0", function(result)
 			ip:set({ label = result })
 		end)
-		sbar.exec("ipconfig getsummary en0 | awk -F ' SSID : '  '/ SSID : / {print $2}'", function(result)
-			ssid:set({ label = result })
-		end)
+		sbar.exec(
+			"system_profiler SPAirPortDataType | sed -n '/Current Network Information:/,/PHY Mode:/ p' | head -2 | tail -1 | sed 's/^[[:space:]]*//' | sed 's/:$//'",
+			function(result)
+				ssid:set({ label = result })
+			end
+		)
 		sbar.exec("networksetup -getinfo Wi-Fi | awk -F 'Subnet mask: ' '/^Subnet mask: / {print $2}'", function(result)
 			mask:set({ label = result })
 		end)
@@ -280,7 +281,7 @@ wifi_up:subscribe("network_update", function(env)
 	local upload_str = env.upload:gsub("Bps", "B/s")
 	local download_str = env.download:gsub("Bps", "B/s")
 
-	local up_color = (upload_str == "000 B/s") and colors.grey or colors.red
+	local up_color = (upload_str == "000 B/s") and colors.grey or colors.blue
 	local down_color = (download_str == "000 B/s") and colors.grey or colors.green
 
 	wifi_up:set({

@@ -9,13 +9,13 @@
 # Run `sudo -v` to cache credentials at the start of the run
 # This avoids a blocking password prompt in the middle of an unattended run
 # (default: false)
-# pre_sudo = true
+pre_sudo = false
 
 # Sudo command to be used
 # sudo_command = "sudo"
 
 # Disable specific steps - same options as the command line flag
- disable = ["macports", "node", "yarn", "nix"]
+ disable = ["node", "yarn", "macports", "containers", "git_repos" ]
 # Ignore failures for these steps
 # ignore_failures = ["powershell"]
 
@@ -104,7 +104,7 @@ no_self_update = false
 
 
 [composer]
-# self_update = true
+self_update = true
 
 
 [brew]
@@ -117,13 +117,13 @@ greedy_cask = true
 # If `Repo Cask Upgrade` does not exist, then use the `--greedy_latest` option.
 # NOTE: the above entry `greedy_cask` contains this entry, though you can enable
 # both of them, they won't clash with each other.
-# greedy_latest = true
+greedy_latest = true
 
 # For the BrewCask step
 # If `Repo Cask Upgrade` does not exist, then use the `--greedy_auto_updates` option.
 # NOTE: the above entry `greedy_cask` contains this entry, though you can enable
 # both of them, they won't clash with each other.
-# greedy_auto_updates = true
+greedy_auto_updates = true
 
 # For the BrewFormula step
 # Execute `brew autoremove` after the step.
@@ -133,50 +133,6 @@ autoremove = true
 # Upgrade formulae built from the HEAD branch; `brew upgrade --fetch-HEAD`
 fetch_head = true
 
-
-[linux]
-# Arch Package Manager to use.
-# Allowed values:
-#   autodetect, aura, garuda_update, pacman, pamac, paru, pikaur, trizen, yay
-# arch_package_manager = "pacman"
-
-# Arguments to pass yay (or paru) when updating packages
-# yay_arguments = "--nodevel"
-
-# Arguments to pass dnf when updating packages
-# dnf_arguments = "--refresh"
-
-# aura_aur_arguments = "-kx"
-
-# aura_pacman_arguments = ""
-# garuda_update_arguments = ""
-
-# show_arch_news = true
-
-# trizen_arguments = "--devel"
-
-# pikaur_arguments = ""
-
-# pamac_arguments = "--no-devel"
-
-# enable_tlmgr = true
-
-# emerge_sync_flags = "-q"
-
-# emerge_update_flags = "-uDNa --with-bdeps=y world"
-
-# redhat_distro_sync = false
-
-# suse_dup = false
-
-# rpm_ostree = false
-
-# nix_arguments = "--flake"
-
-# nix_env_arguments = "--prebuilt-only"
-
-# Extra Home Manager arguments
-# home_manager_arguments = ["--flake", "file"]
 
 
 [git]
@@ -195,21 +151,6 @@ fetch_head = true
 # Arguments to pass Git when pulling Repositories
 # arguments = "--rebase --autostash"
 
-
-[windows]
-# Manually select Windows updates
-# accept_all_updates = false
-
-# open_remotes_in_new_terminal = true
-
-# wsl_update_pre_release = true
-
-# wsl_update_use_web_download = true
-
-# Causes Topgrade to rename itself during the run to allow package managers
-# to upgrade it. Use this only if you installed Topgrade by using a package
-# manager such as Scoop or Cargo
-# self_rename = true
 
 
 [npm]
@@ -243,13 +184,6 @@ upgrade = true
 # always_suspend = true
 
 
-[flatpak]
-# Use sudo for updating the system-wide installation
-# use_sudo = true
-
-
-[distrobox]
-# use_root = false
 
 # containers = ["archlinux-latest"]
 [containers]
