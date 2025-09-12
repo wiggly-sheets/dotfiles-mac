@@ -123,7 +123,7 @@ ctrl + alt + shift - r : skhd --restart-service
 # stop/start/restart sketchybar
 ctrl + alt + cmd - q : brew services stop sketchybar
 ctrl + alt + cmd - s : brew services start sketchybar
-shift + ctrl + alt + cmd - r : sketchybar --reload
+shift + cmd - r : sketchybar --reload
 
 
 # change current space layout

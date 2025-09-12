@@ -16,9 +16,9 @@ local function update_space_display(space, space_id, is_selected)
 		local space_text = "" .. tostring(space_id) .. ""
 
 		space:set({
-			icon = { string = space_text, highlight = is_selected },
-			label = { string = icon_text, highlight = is_selected },
-			background = { border_color = is_selected and colors.transparent or colors.transparent },
+			icon = { string = space_text, highlight = is_selected, color = is_selected and colors.white or colors.grey },
+			label = { string = icon_text, highlight = is_selected, color = is_selected and colors.white or colors.grey },
+			--		background = { border_color = is_selected and colors.transparent or colors.transparent },
 		})
 	end)
 end

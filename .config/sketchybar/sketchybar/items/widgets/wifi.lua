@@ -4,11 +4,21 @@ local settings = require("settings")
 
 -- Execute the event provider binary which provides the event "network_update"
 -- for the current network interface, which is fired every 2.0 seconds.
-sbar.exec(
-	"killall network_load >/dev/null; $CONFIG_DIR/helpers/event_providers/network_load/bin/network_load en0 network_update 2.0"
-)
 
-local popup_width = 250
+sbar.exec("route get default 2>/dev/null | awk '/interface: / {print $2}'", function(iface)
+	iface = iface and iface:match("^%s*(.-)%s*$") -- trim whitespace
+	if not iface or iface == "" then
+		return
+	end
+
+	-- Start the network_load event provider on the active interface, either en4 ethernet or en0 wifi
+	sbar.exec(
+		string.format(
+			"killall network_load >/dev/null 2>&1; $CONFIG_DIR/helpers/event_providers/network_load/bin/network_load %s network_update 2.0",
+			iface
+		)
+	)
+end)
 
 local wifi = sbar.add("item", "wifi.status", {
 	position = "right",
@@ -22,8 +32,73 @@ local wifi = sbar.add("item", "wifi.status", {
 	},
 	label = { drawing = false },
 	padding_left = 5,
-	padding_right = -25,
+	padding_right = -5,
 })
+
+-- Upload network graph
+local net_graph_up = sbar.add("graph", "widgets.net_graph_up", 42, {
+	position = "right",
+	graph = {
+		color = colors.blue,
+	},
+	background = {
+		height = 10,
+		color = { alpha = 0 },
+		border_color = { alpha = 0 },
+		drawing = true,
+		padding_right = -20,
+		padding_left = -20,
+	},
+	updates = true,
+	y_offset = 7,
+	update_freq = 30,
+	click_script = 'osascript -e \'tell application "System Events" to keystroke "n" using {command down, option down, control down}\'',
+})
+
+net_graph_up:subscribe("network_update", function(env)
+	local up = tonumber(env.upload:match("%d+"))
+	local up_norm = math.min(up / 1000, 1)
+
+	net_graph_up:push({ up_norm })
+end)
+
+-- Match CPU widget style
+sbar.add("bracket", "widgets.net_graph_bracket", { net_graph_up.name }, {
+	background = { color = colors.bg1 },
+})
+
+-- Download network graph
+local net_graph_down = sbar.add("graph", "widgets.net_graph_down", 42, {
+	position = "right",
+	graph = {
+		color = colors.green,
+	},
+	background = {
+		height = 10,
+		color = { alpha = 0 },
+		border_color = { alpha = 0 },
+		drawing = true,
+		padding_right = 0,
+		padding_left = -50,
+	},
+	updates = true,
+	y_offset = -3,
+	update_freq = 30,
+	click_script = 'osascript -e \'tell application "System Events" to keystroke "n" using {command down, option down, control down}\'',
+})
+
+net_graph_down:subscribe("network_update", function(env)
+	local down = tonumber(env.download:match("%d+"))
+	local down_norm = math.min(down / 1000, 1)
+	net_graph_down:push({ down_norm })
+end)
+
+sbar.add("item", "widgets.net.graph.padding", {
+	position = "right",
+	width = settings.group_paddings,
+})
+
+-- updates wifi logo based on conditions (connected, disconnected, vpn, ethernet)
 
 local function updateNetworkStatus()
 	-- 1. First check if ANY interface has internet
@@ -52,19 +127,19 @@ local function updateNetworkStatus()
 						label = { string = "Ethernet", color = colors.green },
 					})
 				else
-					-- WIFI/HOTSPOT CHECK
+					-- WIFI/HOTSPOT CHECK using system_profiler
 					sbar.exec(
-						[[
-                        ipconfig getsummary $(networksetup -listallhardwareports | awk '/Hardware Port: Wi-Fi/{getline; print $2}') | 
-                        awk -F ' SSID : ' '/ SSID : / {if ($2 ~ /iPhone/) {print 1} else {print 0}}'
-                    ]],
-						function(isHotspot)
-							if tonumber(isHotspot) == 1 then
+						"system_profiler SPAirPortDataType | sed -n '/Current Network Information:/,/PHY Mode:/ p' | head -2 | tail -1 | sed 's/^[[:space:]]*//' | sed 's/:$//'",
+						function(ssid_result)
+							local ssid_str = ssid_result or ""
+							if ssid_str:match("iPhone") then
+								-- Detected hotspot
 								wifi:set({
 									icon = { string = "􀉤", color = colors.white },
 									label = { string = "Hotspot", color = colors.blue },
 								})
 							else
+								-- Normal Wi-Fi
 								wifi:set({
 									icon = { string = icons.wifi.connected, color = colors.white },
 									label = { drawing = false },
@@ -88,7 +163,7 @@ end)
 
 local wifi_up = sbar.add("item", "widgets.wifi1", {
 	position = "right",
-	padding_left = 0,
+	padding_left = 100,
 	width = 0,
 	icon = {
 		padding_right = 0,
@@ -107,12 +182,12 @@ local wifi_up = sbar.add("item", "widgets.wifi1", {
 		string = "??? Bps",
 	},
 	y_offset = 8,
-	click_script = 'osascript -e \'tell application "System Events" to keystroke "r" using {command down, option down, control down}\'',
+	click_script = 'osascript -e \'tell application "System Events" to keystroke "n" using {command down, option down, control down}\'',
 })
 
 local wifi_down = sbar.add("item", "widgets.wifi2", {
 	position = "right",
-	padding_left = 0,
+	padding_left = 100,
 	icon = {
 		padding_right = 0,
 		font = {
@@ -130,8 +205,10 @@ local wifi_down = sbar.add("item", "widgets.wifi2", {
 		string = "??? Bps",
 	},
 	y_offset = -4,
-	click_script = [[cliclick kd:cmd,alt,ctrl,shift t:=]],
+	click_script = 'osascript -e \'tell application "System Events" to keystroke "n" using {command down, option down, control down}\'',
 })
+
+local popup_width = 250
 
 local wifi_padding = sbar.add("item", "widgets.wifi.padding", {
 	position = "right",
@@ -277,6 +354,121 @@ wifi:subscribe("mouse.clicked", toggle_details)
 wifi:subscribe("mouse.exited.global", function()
 	wifi_bracket:set({ popup = { drawing = false } })
 end)
+
+wifi_up:subscribe("network_update", function(env)
+	local upload_str = env.upload:gsub("Bps", "B/s")
+	local download_str = env.download:gsub("Bps", "B/s")
+
+	local up_color = (upload_str == "000 B/s") and colors.grey or colors.blue
+	local down_color = (download_str == "000 B/s") and colors.grey or colors.green
+
+	wifi_up:set({
+		icon = { color = up_color },
+		label = {
+			string = upload_str,
+			color = up_color,
+		},
+	})
+
+	wifi_down:set({
+		icon = { color = down_color },
+		label = {
+			string = download_str,
+			color = down_color,
+		},
+	})
+end)
+
+-- Initial update with 1s delay to allow network stabilization
+sbar.delay(1, updateNetworkStatus)
+
+-- Event subscriptions
+wifi:subscribe({ "wifi_change", "system_woke", "network_update", "vpn_state_change" }, function()
+	sbar.delay(0.5, updateNetworkStatus)
+end)
+
+local wifi_up = sbar.add("item", "widgets.wifi1", {
+	position = "right",
+	padding_left = 0,
+	width = 0,
+	icon = {
+		padding_right = 0,
+		font = {
+			style = settings.font.style_map["Bold"],
+			size = 11.0,
+		},
+		string = icons.wifi.upload,
+	},
+	label = {
+		font = {
+			style = settings.default,
+			size = 11.0,
+		},
+		color = colors.blue,
+		string = "??? Bps",
+	},
+	y_offset = 8,
+	click_script = 'osascript -e \'tell application "System Events" to keystroke "n" using {command down, option down, control down}\'',
+})
+
+local wifi_down = sbar.add("item", "widgets.wifi2", {
+	position = "right",
+	padding_left = 0,
+	icon = {
+		padding_right = 0,
+		font = {
+			style = settings.font.style_map["Regular"],
+			size = 11.0,
+		},
+		string = icons.wifi.download,
+	},
+	label = {
+		font = {
+			style = settings.default,
+			size = 11.0,
+		},
+		color = colors.green,
+		string = "??? Bps",
+	},
+	y_offset = -4,
+	click_script = 'osascript -e \'tell application "System Events" to keystroke "n" using {command down, option down, control down}\'',
+})
+
+local function toggle_details()
+	local should_draw = wifi_bracket:query().popup.drawing == "off"
+	if should_draw then
+		wifi_bracket:set({ popup = { drawing = true } })
+		sbar.exec("networksetup -getcomputername", function(result)
+			hostname:set({ label = result })
+		end)
+		sbar.exec("ipconfig getifaddr en0", function(result)
+			ip:set({ label = result })
+		end)
+		sbar.exec(
+			"system_profiler SPAirPortDataType | sed -n '/Current Network Information:/,/PHY Mode:/ p' | head -2 | tail -1 | sed 's/^[[:space:]]*//' | sed 's/:$//'",
+			function(result)
+				ssid:set({ label = result })
+			end
+		)
+		sbar.exec("networksetup -getinfo Wi-Fi | awk -F 'Subnet mask: ' '/^Subnet mask: / {print $2}'", function(result)
+			mask:set({ label = result })
+		end)
+		sbar.exec("networksetup -getinfo Wi-Fi | awk -F 'Router: ' '/^Router: / {print $2}'", function(result)
+			router:set({ label = result })
+		end)
+		sbar.exec("route get default | awk '/interface: / {print $2}'", function(result)
+			network_interface:set({ label = result })
+		end)
+	else
+		wifi_bracket:set({ popup = { drawing = false } })
+	end
+end
+
+wifi:subscribe("mouse.clicked", toggle_details)
+wifi:subscribe("mouse.exited.global", function()
+	wifi_bracket:set({ popup = { drawing = false } })
+end)
+
 wifi_up:subscribe("network_update", function(env)
 	local upload_str = env.upload:gsub("Bps", "B/s")
 	local download_str = env.download:gsub("Bps", "B/s")

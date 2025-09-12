@@ -17,7 +17,7 @@ local display_item = sbar.add("item", "display", {
 		padding_left = 8,
 	},
 	position = "right",
-	update_freq = 1,
+	update_freq = 5,
 	padding_left = 0,
 	padding_right = 0,
 	script = "~/.config/sketchybar/helpers/scripts/display_percent.sh",

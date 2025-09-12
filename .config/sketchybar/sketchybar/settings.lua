@@ -9,7 +9,6 @@ local function load_config()
 		hide_widgets = {},
 		icons = "sf-symbols", -- alternatively available: NerdFont
 		paddings = 5,
-		python_command = "python3",
 		weather = {
 			location = false,
 			use_shortcut = false,
