@@ -20,7 +20,7 @@ local battery_percentage = sbar.add("item", "widgets.battery_percentage", {
 	position = "right",
 	label = { font = { family = settings.default, size = 13 }, color = colors.green },
 	click_script = 'osascript -e \'tell application "System Events" to tell process "AirBattery" to click menu bar item 1 of menu bar 2\'',
-	padding_left = -10,
+	padding_left = -12,
 	padding_right = -10,
 	update_freq = 60,
 })

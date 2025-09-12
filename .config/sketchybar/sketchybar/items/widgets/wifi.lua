@@ -5,20 +5,29 @@ local settings = require("settings")
 -- Execute the event provider binary which provides the event "network_update"
 -- for the current network interface, which is fired every 2.0 seconds.
 
-sbar.exec("route get default 2>/dev/null | awk '/interface: / {print $2}'", function(iface)
-	iface = iface and iface:match("^%s*(.-)%s*$") -- trim whitespace
-	if not iface or iface == "" then
-		return
-	end
+local function start_network_load()
+	sbar.exec("route get default 2>/dev/null | awk '/interface: / {print $2}'", function(iface)
+		iface = iface and iface:match("^%s*(.-)%s*$") -- trim whitespace
+		if not iface or iface == "" then
+			return
+		end
 
-	-- Start the network_load event provider on the active interface, either en4 ethernet or en0 wifi
-	sbar.exec(
-		string.format(
-			"killall network_load >/dev/null 2>&1; $CONFIG_DIR/helpers/event_providers/network_load/bin/network_load %s network_update 2.0",
-			iface
+		sbar.exec(
+			string.format(
+				"killall network_load >/dev/null 2>&1; "
+					.. "$CONFIG_DIR/helpers/event_providers/network_load/bin/network_load %s network_update 2.0 &",
+				iface
+			)
 		)
-	)
-end)
+	end)
+end
+
+-- run immediately at startup
+start_network_load()
+
+-- re-run when system wakes or network changes
+sbar.add("event", "system_woke"):subscribe("system_woke", start_network_load)
+sbar.add("event", "network_change"):subscribe("network_change", start_network_load)
 
 local wifi = sbar.add("item", "wifi.status", {
 	position = "right",
@@ -27,12 +36,13 @@ local wifi = sbar.add("item", "wifi.status", {
 		font = {
 			style = settings.default,
 			size = 15.0,
+			padding_right = 0,
 		},
 		color = colors.red,
 	},
 	label = { drawing = false },
 	padding_left = 5,
-	padding_right = -5,
+	padding_right = -10,
 })
 
 -- Upload network graph
@@ -46,11 +56,13 @@ local net_graph_up = sbar.add("graph", "widgets.net_graph_up", 42, {
 		color = { alpha = 0 },
 		border_color = { alpha = 0 },
 		drawing = true,
-		padding_right = -20,
-		padding_left = -20,
 	},
 	updates = true,
 	y_offset = 7,
+	padding_right = -27,
+	--	padding_left = -10,
+	padding_left = -10,
+
 	update_freq = 30,
 	click_script = 'osascript -e \'tell application "System Events" to keystroke "n" using {command down, option down, control down}\'',
 })
@@ -63,9 +75,9 @@ net_graph_up:subscribe("network_update", function(env)
 end)
 
 -- Match CPU widget style
-sbar.add("bracket", "widgets.net_graph_bracket", { net_graph_up.name }, {
-	background = { color = colors.bg1 },
-})
+-- sbar.add("bracket", "widgets.net_graph_bracket", { net_graph_up.name }, {
+-- 	background = { color = colors.bg1 },
+-- })
 
 -- Download network graph
 local net_graph_down = sbar.add("graph", "widgets.net_graph_down", 42, {
@@ -78,11 +90,11 @@ local net_graph_down = sbar.add("graph", "widgets.net_graph_down", 42, {
 		color = { alpha = 0 },
 		border_color = { alpha = 0 },
 		drawing = true,
-		padding_right = 0,
-		padding_left = -50,
+		padding_right = -55,
+		padding_left = 0,
 	},
 	updates = true,
-	y_offset = -3,
+	y_offset = -5,
 	update_freq = 30,
 	click_script = 'osascript -e \'tell application "System Events" to keystroke "n" using {command down, option down, control down}\'',
 })
@@ -163,7 +175,7 @@ end)
 
 local wifi_up = sbar.add("item", "widgets.wifi1", {
 	position = "right",
-	padding_left = 100,
+	padding_left = -10,
 	width = 0,
 	icon = {
 		padding_right = 0,
@@ -187,7 +199,7 @@ local wifi_up = sbar.add("item", "widgets.wifi1", {
 
 local wifi_down = sbar.add("item", "widgets.wifi2", {
 	position = "right",
-	padding_left = 100,
+	padding_left = -20,
 	icon = {
 		padding_right = 0,
 		font = {
@@ -205,6 +217,7 @@ local wifi_down = sbar.add("item", "widgets.wifi2", {
 		string = "??? Bps",
 	},
 	y_offset = -4,
+
 	click_script = 'osascript -e \'tell application "System Events" to keystroke "n" using {command down, option down, control down}\'',
 })
 
@@ -392,7 +405,7 @@ local wifi_up = sbar.add("item", "widgets.wifi1", {
 	padding_left = 0,
 	width = 0,
 	icon = {
-		padding_right = 0,
+		padding_right = -2,
 		font = {
 			style = settings.font.style_map["Bold"],
 			size = 11.0,
@@ -415,7 +428,7 @@ local wifi_down = sbar.add("item", "widgets.wifi2", {
 	position = "right",
 	padding_left = 0,
 	icon = {
-		padding_right = 0,
+		padding_right = -2,
 		font = {
 			style = settings.font.style_map["Regular"],
 			size = 11.0,

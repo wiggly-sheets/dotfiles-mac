@@ -10,7 +10,7 @@ local ram = sbar.add("graph", "widgets.ram", 42, {
 		color = { alpha = 0 },
 		border_color = { alpha = 0 },
 		drawing = true,
-		padding_right = -2,
+		padding_right = -5,
 	},
 	icon = { string = icons.ram },
 	label = {

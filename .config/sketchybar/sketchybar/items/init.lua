@@ -21,5 +21,4 @@ sbar.exec("sketchybar --move lowpowermode before widgets.battery")
 sbar.exec("sketchybar --move widgets.battery_percentage after lowpowermode")
 sbar.exec("sketchybar --move wifi.status before widgets.cpu")
 sbar.exec("sketchybar --move widgets.net_graph_down before wifi.status")
-sbar.exec("sketchybar --move widgets.net_graph_down after widgets.net_graph_up")
-
+sbar.exec("sketchybar --move widgets.net_graph_up before wifi.status")

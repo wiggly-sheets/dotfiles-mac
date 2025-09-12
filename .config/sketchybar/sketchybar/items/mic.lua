@@ -11,7 +11,7 @@ local mic_item = sbar.add("item", "mic", {
 	label = {
 		drawing = true,
 		width = "dynamic",
-		padding_left = 5,
+		padding_left = 0,
 		padding_right = 0,
 		string = "??", -- Default volume text.
 		font = { family = "Inconsolata Nerd Font Mono" },
