@@ -172,11 +172,17 @@ alias ff='fastfetch'
 
 alias top='btop'
 
+alias cd='z'
+
+alias cat='bat'
+
 #bat (better cat)
 export BAT_THEME=tokyonight_night
 
 #eza (better ls)
-alias ls="eza --long --color=always --icons=always --git"
+alias ls='eza --long --color=always --icons=always --tree --all'
+
+alias lsgit='eza --long --color=always --icons=always --tree --all --git --git-repos'
 
 show_file_or_dir_preview="if [ -d {} ]; then eza --tree --color=always {} | head -200; else bat -n --color=always --line-range :500 {}; fi"
 

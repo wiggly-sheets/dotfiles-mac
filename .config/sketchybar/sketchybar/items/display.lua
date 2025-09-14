@@ -18,7 +18,7 @@ local display_item = sbar.add("item", "display", {
 	},
 	position = "right",
 	update_freq = 5,
-	padding_left = -5,
+	padding_left = 0,
 	padding_right = 0,
 	script = "~/.config/sketchybar/helpers/scripts/display_percent.sh",
 	click_script = 'osascript -e \'tell application "System Events" to keystroke "d" using {command down, option down, control down}\'',

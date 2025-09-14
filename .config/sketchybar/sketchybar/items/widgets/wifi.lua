@@ -67,11 +67,29 @@ local net_graph_up = sbar.add("graph", "widgets.net_graph_up", 42, {
 	click_script = 'osascript -e \'tell application "System Events" to keystroke "n" using {command down, option down, control down}\'',
 })
 
-net_graph_up:subscribe("network_update", function(env)
-	local up = tonumber(env.upload:match("%d+"))
-	local up_norm = math.min(up / 1000, 1)
+local up_history = {}
+local down_history = {}
+local max_up_history = 5
+local max_down_history = 5 -- number of values to average over for download
 
-	net_graph_up:push({ up_norm })
+net_graph_up:subscribe("network_update", function(env)
+	local up = tonumber(env.upload:match("%d+")) or 0
+
+	-- add new value to history
+	table.insert(up_history, up)
+	if #up_history > max_up_history then
+		table.remove(up_history, 1)
+	end
+
+	-- calculate average
+	local sum = 0
+	for _, v in ipairs(up_history) do
+		sum = sum + v
+	end
+	local avg_up = sum / #up_history
+
+	-- normalize and push
+	net_graph_up:push({ math.min(avg_up / 1000, 1) })
 end)
 
 -- Match CPU widget style
@@ -100,15 +118,24 @@ local net_graph_down = sbar.add("graph", "widgets.net_graph_down", 42, {
 })
 
 net_graph_down:subscribe("network_update", function(env)
-	local down = tonumber(env.download:match("%d+"))
-	local down_norm = math.min(down / 1000, 1)
-	net_graph_down:push({ down_norm })
-end)
+	local down = tonumber(env.download:match("%d+")) or 0
 
-sbar.add("item", "widgets.net.graph.padding", {
-	position = "right",
-	width = settings.group_paddings,
-})
+	-- add new value to history
+	table.insert(down_history, down)
+	if #down_history > max_down_history then
+		table.remove(down_history, 1)
+	end
+
+	-- calculate average
+	local sum = 0
+	for _, v in ipairs(down_history) do
+		sum = sum + v
+	end
+	local avg_down = sum / #down_history
+
+	-- normalize and push
+	net_graph_down:push({ math.min(avg_down / 1000, 1) })
+end)
 
 -- updates wifi logo based on conditions (connected, disconnected, vpn, ethernet)
 
