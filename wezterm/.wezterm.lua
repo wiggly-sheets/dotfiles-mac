@@ -35,8 +35,8 @@ config.warn_about_missing_glyphs = false
 config.default_cursor_style = "BlinkingUnderline"
 config.cursor_blink_rate = 500
 
--- config.window_background_opacity = 0.5
--- config.macos_window_background_blur = 10
+config.window_background_opacity = 0.5
+config.macos_window_background_blur = 20
 
 config.window_padding = {
 	left = 0,
@@ -46,7 +46,7 @@ config.window_padding = {
 }
 
 config.colors = {
-	background = "#000000",
+	--	background = "#000000",
 	cursor_bg = "#47FF9C",
 	cursor_border = "#47FF9C",
 	cursor_fg = "#011423",

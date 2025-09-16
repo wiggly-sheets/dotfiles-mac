@@ -180,7 +180,9 @@ alias cat='bat'
 export BAT_THEME=tokyonight_night
 
 #eza (better ls)
-alias ls='eza --long --color=always --icons=always --tree --all'
+alias ls='eza --long --color=always --icons=always --all'
+
+alias lslong='eza --long --color=always --icons=always --all --tree'
 
 alias lsgit='eza --long --color=always --icons=always --tree --all --git --git-repos'
 
