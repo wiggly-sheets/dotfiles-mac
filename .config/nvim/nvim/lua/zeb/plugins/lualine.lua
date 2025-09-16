@@ -2,74 +2,60 @@ return {
 	"nvim-lualine/lualine.nvim",
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	config = function()
-		local lualine = require("lualine")
-		local lazy_status = require("lazy.status") -- to configure lazy pending updates count
-		local lualine = require("lualine").setup({
-			sections = {
-				lualine_x = { "encoding", { "fileformat", symbols = { unix = "" } }, "filetype" },
-			},
-		})
-		local colors = {
-			blue = "#65D1FF",
-			green = "#3EFFDC",
-			violet = "#FF61EF",
-			yellow = "#FFDA7B",
-			red = "#FF4A4A",
-			fg = "#c3ccdc",
-			bg = "#112638",
-			inactive_bg = "#2c3043",
-		}
+		local lazy_status = require("lazy.status")
 
+		-- transparent-friendly theme
 		local my_lualine_theme = {
 			normal = {
-				a = { bg = colors.blue, fg = colors.bg, gui = "bold" },
-				b = { bg = colors.bg, fg = colors.fg },
-				c = { bg = colors.bg, fg = colors.fg },
+				a = { bg = "none", fg = "#65D1FF", gui = "bold" },
+				b = { bg = "none", fg = "#c3ccdc" },
+				c = { bg = "none", fg = "#c3ccdc" },
 			},
 			insert = {
-				a = { bg = colors.green, fg = colors.bg, gui = "bold" },
-				b = { bg = colors.bg, fg = colors.fg },
-				c = { bg = colors.bg, fg = colors.fg },
+				a = { bg = "none", fg = "#3EFFDC", gui = "bold" },
+				b = { bg = "none", fg = "#c3ccdc" },
+				c = { bg = "none", fg = "#c3ccdc" },
 			},
 			visual = {
-				a = { bg = colors.violet, fg = colors.bg, gui = "bold" },
-				b = { bg = colors.bg, fg = colors.fg },
-				c = { bg = colors.bg, fg = colors.fg },
+				a = { bg = "none", fg = "#FF61EF", gui = "bold" },
+				b = { bg = "none", fg = "#c3ccdc" },
+				c = { bg = "none", fg = "#c3ccdc" },
 			},
 			command = {
-				a = { bg = colors.yellow, fg = colors.bg, gui = "bold" },
-				b = { bg = colors.bg, fg = colors.fg },
-				c = { bg = colors.bg, fg = colors.fg },
+				a = { bg = "none", fg = "#FFDA7B", gui = "bold" },
+				b = { bg = "none", fg = "#c3ccdc" },
+				c = { bg = "none", fg = "#c3ccdc" },
 			},
 			replace = {
-				a = { bg = colors.red, fg = colors.bg, gui = "bold" },
-				b = { bg = colors.bg, fg = colors.fg },
-				c = { bg = colors.bg, fg = colors.fg },
+				a = { bg = "none", fg = "#FF4A4A", gui = "bold" },
+				b = { bg = "none", fg = "#c3ccdc" },
+				c = { bg = "none", fg = "#c3ccdc" },
 			},
 			inactive = {
-				a = { bg = colors.inactive_bg, fg = colors.semilightgray, gui = "bold" },
-				b = { bg = colors.inactive_bg, fg = colors.semilightgray },
-				c = { bg = colors.inactive_bg, fg = colors.semilightgray },
+				a = { bg = "none", fg = "#666666", gui = "bold" },
+				b = { bg = "none", fg = "#666666" },
+				c = { bg = "none", fg = "#666666" },
 			},
 		}
 
-		-- configure lualine with modified theme
-		--		lualine.setup({
-		--			options = {
-		--				theme = my_lualine_theme,
-		--			},
-		--			sections = {
-		--				lualine_x = {
-		--					{
-		--						lazy_status.updates,
-		--						cond = lazy_status.has_updates,
-		--						color = { fg = "#ff9e64" },
-		--					},
-		--					{ "encoding" },
-		--					{ "fileformat" },
-		--					{ "filetype" },
-		--				},
-		--			},
-		--		})
+		require("lualine").setup({
+			options = {
+				theme = my_lualine_theme,
+				component_separators = { left = "", right = "" },
+				section_separators = { left = "", right = "" },
+			},
+			sections = {
+				lualine_x = {
+					{
+						lazy_status.updates,
+						cond = lazy_status.has_updates,
+						color = { fg = "#ff9e64" },
+					},
+					{ "encoding" },
+					{ "fileformat", symbols = { unix = "" } },
+					{ "filetype" },
+				},
+			},
+		})
 	end,
 }

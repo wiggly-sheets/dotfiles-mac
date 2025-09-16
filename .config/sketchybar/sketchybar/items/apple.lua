@@ -9,7 +9,7 @@ local apple = sbar.add("item", {
 		font = { size = 15 },
 		string = icons.apple,
 		position = "left",
-		padding_left = 0,
+		padding_left = 5,
 		padding_right = 0,
 		color = colors.white,
 	},

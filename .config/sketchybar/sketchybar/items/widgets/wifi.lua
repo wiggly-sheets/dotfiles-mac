@@ -64,7 +64,7 @@ local net_graph_up = sbar.add("graph", "widgets.net_graph_up", 42, {
 	padding_left = -10,
 
 	update_freq = 30,
-	click_script = 'osascript -e \'tell application "System Events" to tell process "Little Snitch" to click menu bar item 1 of menu bar 2\'',
+	click_script = 'osascript -e \'tell application "System Events" to keystroke "n" using {command down, option down, control down}\'',
 })
 
 local up_history = {}
@@ -114,7 +114,7 @@ local net_graph_down = sbar.add("graph", "widgets.net_graph_down", 42, {
 	updates = true,
 	y_offset = -5,
 	update_freq = 30,
-	click_script = 'osascript -e \'tell application "System Events" to tell process "Little Snitch" to click menu bar item 2 of menu bar 2\'',
+	click_script = 'osascript -e \'tell application "System Events" to keystroke "n" using {command down, option down, control down}\'',
 })
 
 net_graph_down:subscribe("network_update", function(env)

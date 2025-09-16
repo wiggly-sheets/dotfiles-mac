@@ -116,8 +116,7 @@ ctrl + alt - q : yabai --stop-service
 ctrl + alt - s : yabai --start-service
 ctrl + alt - r : yabai --restart-service
 
-# stop/restart skhd
-ctrl + alt + shift - q : skhd --stop-service
+# restart skhd
 ctrl + alt + shift - r : skhd --restart-service
 
 # stop/start/restart sketchybar
@@ -127,17 +126,16 @@ shift + cmd - r : sketchybar --reload
 
 
 # change current space layout
-# shift + ctrl + alt + cmd - z : yabai -m space --layout bsp
-# shift + ctrl + alt + cmd - x : yabai -m space --layout stack
-# shift + ctrl + alt + cmd - c : yabai -m space --layout float
-
+shift + ctrl + alt + cmd - x : yabai -m space --layout bsp
+shift + ctrl + alt + cmd - c : yabai -m space --layout stack
+shift + ctrl + alt + cmd - v : yabai -m space --layout float
 
 # toggle menu bar opacity
 shift + ctrl + alt + cmd - w : yabai -m config menubar_opacity 1.0
 shift + ctrl + alt + cmd - q : yabai -m config menubar_opacity 0.0
 
 #use when second display connected, restart yabai when only using built-in display
-shift + cmd - m :  yabai -m config top_padding 15
+shift + cmd - m :  yabai -m config top_padding 8
 
 
 
