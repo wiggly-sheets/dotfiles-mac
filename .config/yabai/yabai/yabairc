@@ -6,7 +6,14 @@
 yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 sudo yabai --load-sa
 
+yabai -m signal --add event=mission_control_exit action="yabai -m config menubar_opacity 0.0"
+yabai -m signal --add event=display_added action="yabai -m config top_padding 8"
+yabai -m signal --add event=display_removed action="yabai -m config top_padding 0"
 
+yabai -m config menubar_opacity 0.0
+
+
+# white feedback color for dropping windows in bsp
 yabai -m config insert_feedback_color 0xffffffff
 
 # default layout (can be bsp, stack or float)
@@ -41,7 +48,7 @@ yabai -m config right_padding 1
 yabai -m config window_gap 0
 
 
-yabai -m config window_topmost off # Disabled because browser popups will disappear if its enabled
+yabai -m config window_topmost on # Disabled because browser popups will disappear if its enabled
 
 
 # yabai -m window --opacity 0.1 && sleep $(yabai -m config window_opacity_duration) && yabai -m window --opacity 0.0
@@ -77,7 +84,6 @@ yabai -m mouse_drop_action swap
 
 yabai -m config event_feedback on
 
-yabai -m config menubar_opacity 0.0
 
 yabai -m config debug_output off
 
