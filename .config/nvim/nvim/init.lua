@@ -17,6 +17,8 @@ require("asciiart").setup({
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
+vim.opt.guicursor = "n-ci:hor30-iCursor,v-c-r-i-sm-t:ver25,a:blinkwait300-blinkon200-blinkoff150,"
+
 vim.api.nvim_create_autocmd("VimEnter", {
 	once = true,
 	callback = function()

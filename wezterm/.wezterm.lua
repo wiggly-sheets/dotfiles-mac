@@ -36,6 +36,7 @@ config.warn_about_missing_glyphs = false
 
 config.default_cursor_style = "BlinkingUnderline"
 config.cursor_blink_rate = 500
+config.animation_fps = 50
 
 config.window_background_opacity = 0.5
 config.macos_window_background_blur = 20
