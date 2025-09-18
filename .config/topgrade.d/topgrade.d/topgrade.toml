@@ -41,7 +41,7 @@ pre_sudo = false
 # assume_yes = true
 
 # Do not ask to retry failed steps (default: false)
-no_retry = true
+no_retry = false
 
 # Run inside tmux (default: false)
 run_in_tmux = false

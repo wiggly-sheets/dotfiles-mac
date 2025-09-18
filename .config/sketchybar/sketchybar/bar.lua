@@ -5,7 +5,7 @@ sbar.bar({
 	height = 38,
 	color = 0x0A0A0A0D,
 	blur_radius = 20,
-	corner_radius = 20,
+	corner_radius = 0,
 	padding_right = 0,
 	padding_left = 0,
 	topmost = "window",

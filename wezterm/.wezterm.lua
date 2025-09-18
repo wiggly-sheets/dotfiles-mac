@@ -25,6 +25,8 @@ end)
 TERM = "wezterm"
 -- TERM = "xterm-kitty"
 
+config.color_scheme = "Dark Pastel"
+
 config.enable_kitty_graphics = true
 config.enable_tab_bar = false
 config.window_decorations = "RESIZE"

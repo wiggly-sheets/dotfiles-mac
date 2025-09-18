@@ -10,7 +10,7 @@ local dnd = sbar.add("item", "dnd", {
 	position = "right",
 	script = "/Users/Zeb/.config/sketchybar/helpers/scripts/dnd.sh",
 	click_script = 'osascript -e \'tell application "Shortcuts" to run shortcut "Toggle DND"\'',
-	update_freq = 1,
+	update_freq = 2,
 	padding_right = 0,
 	padding_left = 0,
 })

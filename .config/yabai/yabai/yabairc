@@ -48,7 +48,7 @@ yabai -m config right_padding 1
 yabai -m config window_gap 0
 
 
-yabai -m config window_topmost on # Disabled because browser popups will disappear if its enabled
+yabai -m config window_topmost off # Disabled because browser popups will disappear if its enabled
 
 
 # yabai -m window --opacity 0.1 && sleep $(yabai -m config window_opacity_duration) && yabai -m window --opacity 0.0
