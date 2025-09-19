@@ -141,6 +141,8 @@ source ~/powerlevel10k/powerlevel10k.zsh-theme
 export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
+export FZF_DEFAULT_OPTS="--preview 'bat --style=numbers --color=always --line-range :500 {}'"
+
 
 # Use fd (https://github.com/sharkdp/fd) for listing path candidates.
 # - The first argument to the function ($1) is the base path to start traversal
@@ -182,7 +184,7 @@ export BAT_THEME=tokyonight_night
 #eza (better ls)
 alias ls='eza --long --color=always --icons=always --all'
 
-alias lslong='eza --long --color=always --icons=always --all --tree'
+alias lstree='eza --long --color=always --icons=always --all --tree'
 
 alias lsgit='eza --long --color=always --icons=always --tree --all --git --git-repos'
 

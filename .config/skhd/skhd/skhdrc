@@ -101,7 +101,7 @@ shift + cmd + alt - n : yabai -m space --create && \
                  index="$(yabai -m query --spaces --display | jq 'map(select(."native-fullscreen" == 0))[-1].index')" && \
                  yabai -m space --focus "${index}"
 
-# toggle sticky window
+# toggle sticky window -- window on all spaces
 cmd + ctrl - s : yabai -m window --toggle sticky
 
 # stop/start/restart yabai
@@ -112,7 +112,6 @@ alt + cmd - r : skhd --restart-service
 
 #restart sketchybar
 shift + cmd - r : sketchybar --reload
-
 
 # change current space layout
 shift + cmd - z : yabai -m space --layout bsp

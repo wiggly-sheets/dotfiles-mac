@@ -306,6 +306,7 @@ return {
 	["PhpStorm"] = ":php_storm:",
 	["Pi-hole Remote"] = ":pihole:",
 	["Pine"] = ":pine:",
+	["Pixelmator Pro"] = ":pixelmator_pro:",
 	["Plex"] = ":plex:",
 	["Plexamp"] = ":plexamp:",
 	["Podcasts"] = ":podcasts:",
@@ -457,3 +458,4 @@ return {
 	["Zotero"] = ":zotero:",
 	["Zulip"] = ":zulip:",
 }
+
