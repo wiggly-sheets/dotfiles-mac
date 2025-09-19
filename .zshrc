@@ -27,6 +27,10 @@ source "$ZSH/oh-my-zsh.sh" > /dev/null 2>&1
 source $HOMEBREW_PREFIX/share/powerlevel10k/powerlevel10k.zsh-theme
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+
+screenfetch
+
+
 # -----------------------------
 # Editor
 # -----------------------------
