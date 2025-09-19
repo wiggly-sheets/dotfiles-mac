@@ -19,6 +19,23 @@ vim.g.loaded_netrwPlugin = 1
 
 vim.opt.guicursor = "n-ci:hor30-iCursor,v-c-r-i-sm-t:ver25,a:blinkwait300-blinkon200-blinkoff150,"
 
+-- Make floating windows transparent
+vim.cmd([[
+  hi NormalFloat guibg=NONE ctermbg=NONE
+  hi FloatBorder guibg=NONE ctermbg=NONE
+  hi Pmenu guibg=NONE ctermbg=NONE
+  hi PmenuSel guibg=#3b4261 guifg=#c0caf5
+  hi TelescopeNormal guibg=NONE
+  hi TelescopeBorder guibg=NONE guifg=#7aa2f7
+  hi TelescopePromptNormal guibg=NONE
+  hi TelescopePromptBorder guibg=NONE guifg=#7aa2f7
+  hi TelescopePromptTitle guibg=NONE guifg=#7aa2f7
+  hi TelescopePreviewTitle guibg=NONE guifg=#7aa2f7
+  hi TelescopeResultsTitle guibg=NONE
+  hi TelescopeSelection guibg=#3b4261 guifg=#c0caf5
+  hi LazyNormal guibg=NONE
+  hi LazyFloat guibg=NONE
+]])
 vim.api.nvim_create_autocmd("VimEnter", {
 	once = true,
 	callback = function()

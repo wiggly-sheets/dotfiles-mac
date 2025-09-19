@@ -6,7 +6,7 @@ local config = wezterm.config_builder()
 
 config.window_close_confirmation = "NeverPrompt"
 
-config.front_end = "OpenGL"
+config.front_end = "WebGpu"
 
 config.font = wezterm.font_with_fallback({
 	"Inconsolata Nerd Font Mono",

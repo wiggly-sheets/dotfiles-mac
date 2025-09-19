@@ -134,16 +134,13 @@ chruby ruby-3.4.2
 ENABLE_CORRECTION="true"
 COMPLETION_WAITING_DOTS="true"
 HIST_STAMPS="mm/dd/yyyy"
-ZSH_TMUX_AUTOSTART=true
 
 # Optional: faster fd preview instead of fzf default
 export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
 
-
-# superfile cd on quit
- spf() {
+spf() {
     os=$(uname -s)
 
     # Linux
