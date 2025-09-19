@@ -17,6 +17,10 @@ config.font_size = 15
 
 TERM = "wezterm"
 
+require("wezterm").on("format-window-title", function()
+	return "WezTerm"
+end)
+
 config.color_scheme = "Dark Pastel"
 
 config.enable_kitty_graphics = true
