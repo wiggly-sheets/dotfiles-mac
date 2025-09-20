@@ -22,13 +22,23 @@ vim.opt.guicursor = "n-ci:hor30-iCursor,v-c-r-i-sm-t:ver25,a:blinkwait300-blinko
 -- Enable cursorline
 vim.o.cursorline = true
 
--- Set a translucent light grey cursorline
--- Use your terminal background transparency for the effect
--- The "#RRGGBB" color will appear as a soft grey
-vim.api.nvim_set_hl(0, "CursorLine", { bg = "#444444" }) -- Adjust hex as desired
+-- Make the cursorline use an underline instead of background
+vim.api.nvim_set_hl(0, "CursorLine", { underline = true, bg = "NONE" })
 
--- Optional: highlight line number as well
-vim.api.nvim_set_hl(0, "CursorLineNr", { fg = "#ffffff", bold = true })
+-- Highlight the line number of the current line
+vim.api.nvim_set_hl(0, "CursorLineNr", { fg = "#ff9e64", bold = true })
+
+-- Optional: Only show cursorline in the active window
+vim.api.nvim_create_autocmd({ "WinEnter", "BufEnter" }, {
+	callback = function()
+		vim.o.cursorline = true
+	end,
+})
+vim.api.nvim_create_autocmd({ "WinLeave", "BufLeave" }, {
+	callback = function()
+		vim.o.cursorline = false
+	end,
+})
 
 -- Make floating windows transparent
 vim.cmd([[
