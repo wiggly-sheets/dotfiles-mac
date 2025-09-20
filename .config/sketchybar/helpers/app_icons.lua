@@ -4,6 +4,7 @@ return {
 	["Activity Monitor"] = ":activity_monitor:",
 	["Aktivitätsanzeige"] = ":activity_monitor:",
 	["Adobe Bridge"] = ":adobe_bridge:",
+	["AFFiNE"] = ":affine:",
 	["Affinity Designer"] = ":affinity_designer:",
 	["Affinity Designer 2"] = ":affinity_designer_2:",
 	["Affinity Photo"] = ":affinity_photo:",
@@ -336,6 +337,7 @@ return {
 	["QQ音乐"] = ":qqmusic:",
 	["QQMusic"] = ":qqmusic:",
 	["Quantumult X"] = ":quantumult_x:",
+	["QuickTime Player"] = ":quicktime:",
 	["Quip"] = ":quip:",
 	["qutebrowser"] = ":qute_browser:",
 	["Raindrop.io"] = ":raindrop_io:",
@@ -458,4 +460,3 @@ return {
 	["Zotero"] = ":zotero:",
 	["Zulip"] = ":zulip:",
 }
-
