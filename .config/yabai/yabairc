@@ -93,7 +93,7 @@ yabai -m config debug_output off
 
 
 # bootstrap jankyborders with yabai service
-borders hidpi=on width=1.0 active_color="0xffffffff" style=round ax_focus=on order=below blacklist="Stats,Dropover,iPhone Mirroring" &
+borders hidpi=on width=1.0 active_color="0xffffffff" style=round ax_focus=on order=below blacklist="Stats,Dropover,iPhone Mirroring,Passwords" &
 
 
 #background_color="0xff000000" 
