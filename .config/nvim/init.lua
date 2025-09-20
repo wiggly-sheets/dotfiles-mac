@@ -19,6 +19,17 @@ vim.g.loaded_netrwPlugin = 1
 
 vim.opt.guicursor = "n-ci:hor30-iCursor,v-c-r-i-sm-t:ver25,a:blinkwait300-blinkon200-blinkoff150,"
 
+-- Enable cursorline
+vim.o.cursorline = true
+
+-- Set a translucent light grey cursorline
+-- Use your terminal background transparency for the effect
+-- The "#RRGGBB" color will appear as a soft grey
+vim.api.nvim_set_hl(0, "CursorLine", { bg = "#444444" }) -- Adjust hex as desired
+
+-- Optional: highlight line number as well
+vim.api.nvim_set_hl(0, "CursorLineNr", { fg = "#ffffff", bold = true })
+
 -- Make floating windows transparent
 vim.cmd([[
   hi NormalFloat guibg=NONE ctermbg=NONE

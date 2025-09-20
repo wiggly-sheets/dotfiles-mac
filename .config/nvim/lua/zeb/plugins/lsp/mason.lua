@@ -6,12 +6,11 @@ return {
 	},
 
 	config = function()
-		-- Import mason and other dependencies
 		local mason = require("mason")
 		local mason_lspconfig = require("mason-lspconfig")
 		local mason_tool_installer = require("mason-tool-installer")
 
-		-- Enable mason and configure icons
+		-- Mason UI setup
 		mason.setup({
 			ui = {
 				icons = {
@@ -22,42 +21,37 @@ return {
 			},
 		})
 
-		-- Mason LSP Config setup with the servers to ensure installation
+		-- Ensure LSP servers are installed
 		mason_lspconfig.setup({
 			ensure_installed = {
-				--			"tsserver", -- TypeScript LSP
-				--			"html", -- HTML LSP
-				--		"cssls", -- CSS LSP
-				--		"tailwindcss", -- Tailwind CSS LSP
-				--		"svelte", -- Svelte LSP
-				--		"lua_ls", -- Lua LSP
-				--			"graphql", -- GraphQL LSP
-				--		"emmet_ls", -- Emmet LSP
-				--		"prismals", -- Prisma LSP
-				--		"pyright", -- Python LSP
-				--		"rust-analyzer", -- Rust LSP
-				--				"markdown-oxide", -- Markdown LSP
+				"ts_ls", -- TypeScript
+				"html", -- HTML
+				"cssls", -- CSS
+				"tailwindcss", -- Tailwind
+				"svelte", -- Svelte
+				"lua_ls", -- Lua
+				"graphql", -- GraphQL
+				"emmet_ls", -- Emmet
+				"prismals", -- Prisma
+				"pyright", -- Python
+				"rust_analyzer", -- Rust
+				"marksman", -- Markdown
 			},
+			automatic_installation = true, -- auto install missing servers when opening file
 		})
 
-		-- Mason Tool Installer setup with tools to ensure installation
+		-- Ensure formatters / linters are installed
 		mason_tool_installer.setup({
 			ensure_installed = {
-				"prettier", -- Prettier
-				"stylua", -- Stylua
-				"isort", -- Isort
-				"black", -- Black
-				"pylint", -- Pylint
-				"eslint_d", -- ESLint D
+				"prettier", -- Prettier for JS/TS/HTML/CSS
+				"stylua", -- Lua formatter
+				"isort", -- Python import sorter
+				"black", -- Python formatter
+				"pylint", -- Python linter
+				"eslint_d", -- JS/TS linter
 			},
+			auto_update = true, -- auto-update tools
+			run_on_start = true, -- run installer on startup
 		})
-
-		-- Optional: If you need a custom handler for setting up LSP servers
-		--	mason_lspconfig.setup_handlers({
-		--		function(server_name)
-		--				local opts = {}
-		--				require("lspconfig")[server_name].setup(opts)
-		--			end,
-		--		})
 	end,
 }
