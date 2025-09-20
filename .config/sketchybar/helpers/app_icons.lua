@@ -262,6 +262,7 @@ return {
 	["nvim"] = ":neovim:",
 	["网易云音乐"] = ":netease_music:",
 	["NetEaseMusic"] = ":netease_music:",
+	["NetNewsWire"] = ":netnewswire:",
 	["News"] = ":news:",
 	["Nextcloud"] = ":nextcloud:",
 	["Nicotine+"] = ":nicotine_plus:",
