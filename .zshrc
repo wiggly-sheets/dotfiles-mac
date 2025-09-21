@@ -120,6 +120,8 @@ eval "$(thefuck --alias)"
 eval "$(thefuck --alias fk)"
 eval "$(zoxide init zsh)"
 source ~/.config/scripts/fzf-git.sh
+eval "$(register-python-argcomplete pipx)"
+
 
 # -----------------------------
 # chruby
@@ -160,3 +162,6 @@ spf() {
         rm -f -- "$SPF_LAST_DIR" > /dev/null
     }
 }
+
+# Created by `pipx` on 2025-09-21 19:29:37
+export PATH="$PATH:/Users/Zeb/.local/bin"
