@@ -49,6 +49,7 @@ yabai -m config left_padding 1
 yabai -m config right_padding 1
 yabai -m config window_gap 0
 
+yabai -m config window_zoom_persist on
 
 yabai -m config window_topmost off # Disabled because browser popups will disappear if its enabled
 
