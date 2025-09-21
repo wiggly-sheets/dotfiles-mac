@@ -88,6 +88,7 @@ yabai -m config event_feedback on
 yabai -m config debug_output off
 
 
+
 # find all executable files in ~/.config/yabai and execute them
 # find "${HOME}/.config/yabai" -type f -perm +111 -exec {} \;
 
