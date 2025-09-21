@@ -31,12 +31,12 @@ return {
 			local plugins_count = require("lazy").stats().count
 			local nvim_version = vim.version()
 			local nvim_ver_str = string.format("%d.%d.%d", nvim_version.major, nvim_version.minor, nvim_version.patch)
-
+			local zsh_ver = vim.fn.system(vim.env.SHELL .. " --version"):gsub("\n", "")
 			return {
 				" Neovim " .. nvim_ver_str,
 				" Plugins: " .. plugins_count,
 				" Lua: " .. _VERSION,
-				" Shell: " .. vim.env.SHELL,
+				" Shell: " .. zsh_ver,
 			}
 		end
 
