@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/usr/bin/env zsh
+
 
 # Get input volume
 volume=$(osascript -e 'set volInfo to input volume of (get volume settings)')

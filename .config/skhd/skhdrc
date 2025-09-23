@@ -49,7 +49,7 @@ shift + alt - n : yabai -m window --space next;
 # focus prev and next space 
 cmd + alt - p : yabai -m space --focus prev;
 cmd + alt - n : yabai -m space --focus next;
-
+:
 
 # move window to space #
 shift + alt - 1 : yabai -m window --space 1;
@@ -116,17 +116,7 @@ shift + cmd - r : sketchybar --reload
 # change current space layout
 shift + cmd - z : yabai -m space --layout bsp
 shift + cmd - x: yabai -m space --layout stack
-shift + cmd - c : yabai -m space --layout float
-
-# toggle menu bar opacity for sketchybar
-shift + cmd - w : yabai -m config menubar_opacity 1.0
-shift + cmd - q : yabai -m config menubar_opacity 0.0
-
-
-#toggle window opacity for stack or float/bsp
-shift + cmd - o : yabai -m config normal_window_opacity 1.0
-shift + cmd - p : yabai -m config normal_window_opacity 0.0001
-
+shift + cmd - c : yabai -m space --layout floa
 #padding for use when external display connected
 shift + cmd - m :  yabai -m config top_padding 8
 #revert to notch padding

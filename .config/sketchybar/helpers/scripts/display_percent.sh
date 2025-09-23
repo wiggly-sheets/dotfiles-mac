@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env zsh
 
 # Function to get brightness for a specific display
 get_brightness_percentage() {

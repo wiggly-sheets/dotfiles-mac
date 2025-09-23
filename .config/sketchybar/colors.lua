@@ -1,13 +1,13 @@
 return {
 	black = 0xff000000,
-	white = 0xffffffff,
-	red = 0xfffc5d7c,
-	green = 0xff9ed072,
-	blue = 0xff76cce0,
-	yellow = 0xffe7c664,
-	orange = 0xfff39660,
-	magenta = 0xffb39df3,
-	grey = 0xFF555555,
+	white = 0xffececec,
+	red = 0xff931818,
+	green = 0xff1c924b,
+	blue = 0xff018bad,
+	yellow = 0xffbac12c,
+	orange = 0xffe3a500,
+	magenta = 0xff7700e2,
+	grey = 0xff787878,
 	transparent = 0x00000000,
 
 	bar = {

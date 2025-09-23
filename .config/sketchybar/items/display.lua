@@ -5,7 +5,7 @@ local display_item = sbar.add("item", "display", {
 		drawing = true,
 		-- Default icon, assuming a laptop if no external display is present.
 		string = "􀟛",
-		font = { family = "SF Pro", size = 13 },
+		font = { family = "SF Pro", size = 12 },
 		color = colors.white,
 		padding_right = 0,
 		padding_left = 0,

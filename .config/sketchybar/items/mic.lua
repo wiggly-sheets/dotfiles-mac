@@ -5,7 +5,7 @@ local mic_item = sbar.add("item", "mic", {
 	icon = {
 		drawing = true,
 		string = icons.mic.on, -- Default unmuted mic icon.
-		font = { family = "SF Pro", size = 13 },
+		font = { family = "SF Pro", size = 12 },
 		color = colors.white,
 	},
 	label = {

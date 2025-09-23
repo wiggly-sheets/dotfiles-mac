@@ -39,7 +39,7 @@ for i = 1, 10, 1 do
 			padding_left = 2,
 			color = colors.white,
 			highlight_color = colors.white,
-			font = "sketchybar-app-font:Regular:13.0",
+			font = "sketchybar-app-font:Regular:12.0",
 		},
 		padding_right = 0,
 		padding_left = 2,

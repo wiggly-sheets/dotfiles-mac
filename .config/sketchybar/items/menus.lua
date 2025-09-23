@@ -13,19 +13,19 @@ sbar.add("event", "swap_menus_and_spaces")
 local max_items = 15
 local menu_items = {}
 for i = 1, max_items, 1 do
-	local menu = sbar.add("item", "menu." .. i, {
-		padding_left = -3,
-		padding_right = -3,
+	local menu = sbar.add("item", "menu." .. i, {		padding_left = -6,
+		padding_right = -6,
 		drawing = false,
 		icon = { drawing = true },
 		label = {
 			font = {
 				style = settings.font.style_map[i == 1 and "Bold" or "Medium"],
 				family = "Inconsolata Nerd Font Mono",
-				size = 13,
+				size = 12,
 			},
 		},
-		click_script = "$CONFIG_DIR/helpers/menus/bin/menus -s " .. i,
+		--	click_script = "$CONFIG_DIR/helpers/menus/bin/menus -s " .. i,
+	click_script = 'osascript -e \'tell application "System Events" to keystroke "m" using {command down, option down, control down}\'',
 	})
 
 	menu_items[i] = menu
@@ -35,10 +35,9 @@ sbar.add("bracket", { "/menu\\..*/" }, {
 	background = {
 		color = colors.bg1,
 		border_color = colors.transparent,
-		border_width = 1,
-		corner_radius = 10,
-		height = 28,
+		height = 20,
 	},
+	width = 50,
 })
 
 local menu_padding = sbar.add("item", "menu.padding", {
@@ -50,8 +49,8 @@ local menu_padding = sbar.add("item", "menu.padding", {
 
 local function update_menus(env)
 	sbar.exec("$CONFIG_DIR/helpers/menus/bin/menus -l", function(menus)
-		sbar.set("/menu\\..*/", { drawing = false })
-		menu_padding:set({ drawing = true })
+		sbar.set("/menu\\..*/", { drawing = false})
+		menu_padding:set({ drawing = true})
 		id = 1
 		for menu in string.gmatch(menus, "[^\r\n]+") do
 			if id < max_items then

@@ -35,7 +35,7 @@ local wifi = sbar.add("item", "wifi.status", {
 		string = icons.wifi.disconnected,
 		font = {
 			style = settings.default,
-			size = 15.0,
+			size = 14.0,
 			padding_right = 0,
 		},
 		color = colors.red,
@@ -207,7 +207,7 @@ local wifi_up = sbar.add("item", "widgets.wifi1", {
 	icon = {
 		padding_right = 0,
 		font = {
-			style = settings.font.style_map["Bold"],
+			style = settings.font.style_map["Regular"],
 			size = 11.0,
 		},
 		string = icons.wifi.upload,

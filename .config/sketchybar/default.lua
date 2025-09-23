@@ -8,7 +8,7 @@ sbar.default({
 		font = {
 			family = "Inconsolata Nerd Font Mono",
 			style = settings.font.style_map["Regular"],
-			size = 14.0,
+			size = 12.0,
 		},
 		color = colors.white,
 		padding_left = settings.paddings,
@@ -19,7 +19,7 @@ sbar.default({
 		font = {
 			family = "Inconsolata Nerd Font Mono",
 			style = settings.font.style_map["Regular"],
-			size = 14.0,
+			size = 12.0,
 		},
 		color = colors.white,
 		padding_left = settings.paddings,

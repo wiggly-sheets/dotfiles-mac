@@ -8,7 +8,6 @@ sbar.exec("killall cpu_load >/dev/null; $CONFIG_DIR/helpers/event_providers/cpu_
 
 local cpu = sbar.add("graph", "widgets.cpu", 42, {
 	position = "right",
-	graph = { color = colors.green },
 	background = {
 		height = 22,
 		color = { alpha = 0 },
@@ -44,15 +43,17 @@ cpu:subscribe("cpu_update", function(env)
 
 	if load >= 90 then
 		color = colors.red
+
 	elseif load >= 70 then
 		color = colors.orange
+		
+
 	elseif load >= 40 then
 		color = colors.yellow
-		-- else it stays green
 	end
 	cpu:set({
 		graph = { color = color },
-		label = { string = "cpu " .. load .. "%" },
+		label = { color = color, string = "CPU " .. load .. "%" }
 	})
 end)
 

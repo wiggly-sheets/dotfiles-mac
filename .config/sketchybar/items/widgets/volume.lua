@@ -26,12 +26,10 @@ local volume_icon = sbar.add("item", "widgets.volume2", {
 		drawing = false,
 		string = icons.volume._10,
 		width = "dynamic",
-		color = colors.yellow,
+		color =colors.yellow,
 		font = {
 			style = settings.font.style_map["Medium"],
-			size = 13.0,
-			color = colors.yellow,
-		},
+			size = 12.0,		},
 	},
 	label = {
 		width = "dynamic",

@@ -10,7 +10,7 @@ require("items.display")
 require("items.folder")
 require("items.lowpowermode")
 
-sbar.exec("sketchybar --move control_center after cal_down")
+sbar.exec("sketchybar --move control_center afterr cal_down")
 sbar.exec("sketchybar --move dnd before cal_down")
 sbar.exec("sketchybar --move mic after widgets.volume.padding")
 sbar.exec("sketchybar --move display after mic")

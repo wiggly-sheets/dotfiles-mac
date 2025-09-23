@@ -4,7 +4,6 @@ local settings = require("settings")
 
 local ram = sbar.add("graph", "widgets.ram", 42, {
 	position = "right",
-	graph = { color = colors.green },
 	background = {
 		height = 22,
 		color = { alpha = 0 },
@@ -47,6 +46,7 @@ ram:subscribe({ "routine", "forced", "system_woke" }, function(env)
 		local color = colors.green
 		if load >= 90 then
 			color = colors.red
+
 		elseif load >= 75 then
 			color = colors.orange
 		elseif load >= 50 then
@@ -55,7 +55,7 @@ ram:subscribe({ "routine", "forced", "system_woke" }, function(env)
 
 		ram:set({
 			graph = { color = color },
-			label = { string = "ram " .. load .. "%" },
+			label = { color = color, string = "RAM " .. load .. "%" },
 		})
 	end)
 end)

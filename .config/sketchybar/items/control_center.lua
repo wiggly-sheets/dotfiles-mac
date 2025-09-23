@@ -4,11 +4,11 @@ local control_center = sbar.add("item", "control_center", {
 	position = "right",
 	icon = {
 		drawing = true,
-		string = "􀜊", -- SF Symbol for control center (adjust as desired)
-		font = { family = "SF Pro", size = 15 },
+		string = "􀜊",
+		font = { family = "SF Pro", size = 13.5},
 
 		padding_left = 0,
-		padding_right = -5,
+		padding_right = -8,
 		color = colors.white,
 	},
 	background = {

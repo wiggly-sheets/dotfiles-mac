@@ -4,19 +4,21 @@ local settings = require("settings")
 local loc = require("utils.loc")
 local tbl = require("utils.tbl")
 
+-- Add the weather item
 local weather = sbar.add("item", "widgets.weather", {
 	position = "right",
 	icon = { drawing = false },
 	label = {
 		string = icons.loading,
-		font = { style = settings.default },
+		font = { style = settings.default, size = 14 },
 	},
-	update_freq = 60,
+	update_freq = 500,
 	padding_right = -30,
 	padding_left = 0,
 	click_script = 'osascript -e \'tell application "System Events" to tell process "Sparrow" to click menu bar item 1 of menu bar 2\'',
 })
 
+-- Bracket for background
 sbar.add("bracket", "widgets.weather.bracket", { weather.name }, {
 	background = { color = colors.bg1 },
 })
@@ -26,6 +28,7 @@ sbar.add("item", "widgets.weather.padding", {
 	width = 0,
 })
 
+-- Map weather condition to icon
 local function map_condition_to_icon(cond)
 	local condition = cond:lower():match("^%s*(.-)%s*$")
 	if condition == "sunny" then
@@ -50,23 +53,45 @@ local function map_condition_to_icon(cond)
 	return "?"
 end
 
+-- Map temperature to a color
+local function temp_to_color(tempF)
+	local t = tonumber(tempF)
+	if not t then return colors.white end
+
+	if t <= 50 then
+		return colors.blue    -- cold
+	elseif t <= 70 then
+		return colors.green   -- mild
+	elseif t <= 85 then
+		return colors.yellow  -- warm
+	else
+		return colors.red     -- hot
+	end
+end
+
+-- Load weather and set icon/label
 local function load_weather(weather_data)
 	local current_condition = weather_data.current_condition[1]
 	local temperature = current_condition.temp_F .. "°"
 	local condition = current_condition.weatherDesc[1].value
+	local color = temp_to_color(current_condition.temp_F)
+
 	weather:set({
 		icon = {
 			string = map_condition_to_icon(condition),
 			drawing = true,
+			color = color,
 		},
 		label = {
 			string = temperature,
 			padding_left = -2,
 			padding_right = 5,
+			color = color,
 		},
 	})
 end
 
+-- Subscribe to events and fetch weather
 weather:subscribe({ "routine", "forced", "system_woke" }, function()
 	sbar.exec("ipconfig getifaddr en0", function(wifi)
 		local loc_str = ""

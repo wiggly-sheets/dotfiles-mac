@@ -14,24 +14,24 @@ local cal_up = sbar.add("item", "cal_up", {
 		font = {
 			family = settings.default,
 			style = "Bold",
-			size = 12,
+			size = 11,
 		},
 	},
-	y_offset = 5,
+	y_offset =7,
 	click_script = 'osascript -e \'tell application "System Events" to tell process "Dato" to click menu bar item 1 of menu bar 2\'',
 })
 
 local cal_down = sbar.add("item", "cal_down", {
 	position = "right",
 	padding_left = -10,
-	padding_right = 0,
+	padding_right = -15,
 	y_offset = -5,
 	label = {
 		color = colors.white,
 		font = {
 			family = settings.default,
 			style = "Bold",
-			size = 12,
+			size = 11,
 		},
 	},
 	click_script = 'osascript -e \'tell application "System Events" to tell process "Dato" to click menu bar item 1 of menu bar 2\'',
