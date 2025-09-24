@@ -13,9 +13,11 @@ sbar.add("event", "swap_menus_and_spaces")
 local max_items = 15
 local menu_items = {}
 for i = 1, max_items, 1 do
-	local menu = sbar.add("item", "menu." .. i, {		padding_left = -6,
+	local menu = sbar.add("item", "menu." .. i, {	
+		padding_left = -6,
 		padding_right = -6,
 		drawing = false,
+		y_offset = 1,
 		icon = { drawing = true },
 		label = {
 			font = {

@@ -10,7 +10,7 @@ local cpu = sbar.add("graph", "widgets.cpu", 42, {
 	position = "right",
 	background = {
 		height = 22,
-		color = { alpha = 0 },
+		color = { alpha = 0},
 		border_color = { alpha = 0 },
 		drawing = true,
 		padding_right = 0,
@@ -39,7 +39,7 @@ cpu:subscribe("cpu_update", function(env)
 	local load = tonumber(env.total_load)
 	cpu:push({ load / 100. })
 
-	local color = colors.white
+	local color = colors.green
 
 	if load >= 90 then
 		color = colors.red

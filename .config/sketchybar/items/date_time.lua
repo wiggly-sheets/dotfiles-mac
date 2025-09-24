@@ -7,7 +7,7 @@ sbar.add("item", { position = "right", width = settings.group_paddings })
 local cal_up = sbar.add("item", "cal_up", {
 	position = "right",
 	padding_left = -10,
-	padding_right = 42,
+	padding_right = 43,
 	width = 0,
 	label = {
 		color = colors.white,

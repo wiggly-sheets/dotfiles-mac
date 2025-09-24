@@ -14,6 +14,7 @@ local apple = sbar.add("item", {
 	label = { drawing = false, width = 0 },
 	padding_left = 0,
 	padding_right = -3,
+	y_offset = 1,
 click_script = "$CONFIG_DIR/helpers/menus/bin/menus -s 0",
 })
 

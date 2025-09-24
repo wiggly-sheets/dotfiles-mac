@@ -29,8 +29,9 @@ for i = 1, 10, 1 do
 		icon = {
 			font = { family = "Inconsolata Nerd Font Mono", size = 12, style = "Bold" },
 			string = tostring(i), -- Placeholder before update
-			padding_left = 5,
-			padding_right = 5,
+			padding_left = 3,
+			padding_right = 2,
+			y_offset = 1,
 			color = colors.white,
 			highlight_color = colors.white,
 		},
@@ -132,7 +133,7 @@ space_window_observer:subscribe("space_windows_change", function(env)
 	end
 
 	if no_app then
-		icon_line = ""
+		icon_line = "—"
 	end
 
 	space_app_icons[sid] = icon_line

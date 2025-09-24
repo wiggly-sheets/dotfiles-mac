@@ -123,5 +123,11 @@ shift + cmd - m :  yabai -m config top_padding 8
 shift + cmd - n : yabai -m config top_padding 0
 
 
+#menu bar opacity
+cmd + shift - q : yabai -m config menubar_opacity 0.0
+cmd + shift - w : yabai -m config menubar_opacity 1.0
+
+
+
 
 
