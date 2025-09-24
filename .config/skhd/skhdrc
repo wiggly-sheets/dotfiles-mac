@@ -35,7 +35,7 @@ shift + alt - l : yabai -m window --swap east
 # move window and split
 ctrl + alt - j : yabai -m window --warp south
 ctrl + alt - k : yabai -m window --warp north
-ctrl + alt - h : yabai -m window--warp west
+ctrl + alt - h : yabai -m window --warp west
 ctrl + alt - l : yabai -m window --warp east
 
 # move window to display left and right
@@ -47,9 +47,8 @@ shift + alt - p : yabai -m window --space prev;
 shift + alt - n : yabai -m window --space next;
 
 # focus prev and next space 
-cmd + alt - p : yabai -m space --focus prev;
-cmd + alt - n : yabai -m space --focus next;
-:
+alt - p : yabai -m space --focus prev;
+alt - n : yabai -m space --focus next;
 
 # move window to space #
 shift + alt - 1 : yabai -m window --space 1;
@@ -104,11 +103,11 @@ shift + cmd + alt - n : yabai -m space --create && \
 # toggle sticky window -- window on all spaces
 cmd + ctrl - s : yabai -m window --toggle sticky
 
-# stop/start/restart yabai
+# restart yabai
 ctrl + alt - r : yabai --restart-service
 
 # restart skhd
-alt + cmd - r : skhd --restart-service
+cmd + alt - r : skhd --restart-service
 
 #restart sketchybar
 shift + cmd - r : sketchybar --reload
@@ -116,8 +115,9 @@ shift + cmd - r : sketchybar --reload
 # change current space layout
 shift + cmd - z : yabai -m space --layout bsp
 shift + cmd - x: yabai -m space --layout stack
-shift + cmd - c : yabai -m space --layout floa
-#padding for use when external display connected
+shift + cmd - c : yabai -m space --layout float
+
+# padding for use when external display connected
 shift + cmd - m :  yabai -m config top_padding 8
 #revert to notch padding
 shift + cmd - n : yabai -m config top_padding 0

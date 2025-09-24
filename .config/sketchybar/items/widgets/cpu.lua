@@ -39,7 +39,7 @@ cpu:subscribe("cpu_update", function(env)
 	local load = tonumber(env.total_load)
 	cpu:push({ load / 100. })
 
-	local color = colors.green
+	local color = colors.white
 
 	if load >= 90 then
 		color = colors.red

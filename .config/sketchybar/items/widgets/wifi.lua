@@ -69,8 +69,8 @@ local net_graph_up = sbar.add("graph", "widgets.net_graph_up", 42, {
 
 local up_history = {}
 local down_history = {}
-local max_up_history = 5
-local max_down_history = 5 -- number of values to average over for download
+local max_up_history = 1
+local max_down_history = 1 -- number of values to average over for download
 
 net_graph_up:subscribe("network_update", function(env)
 	local up = tonumber(env.upload:match("%d+")) or 0
