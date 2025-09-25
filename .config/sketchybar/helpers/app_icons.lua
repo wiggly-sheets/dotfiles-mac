@@ -247,6 +247,7 @@ return {
 	["mpv"] = ":mpv:",
 	["Mullvad Browser"] = ":mullvad_browser:",
 	["Music"] = ":music:",
+	["Chromatix"] = ":music",
 	["音乐"] = ":music:",
 	["Musique"] = ":music:",
 	["ミュージック"] = ":music:",
