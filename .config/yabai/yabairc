@@ -47,7 +47,7 @@ yabai -m config window_zoom_persist on
 yabai -m config window_topmost off # Disabled because browser popups will disappear if its enabled
 
 
-
+# pin these apps to certain spaces to set up workplaces
 yabai_rule app="^Zen$" space=2
 yabai_rule app="^Wezterm$" space=3
 yabai_rule app="^Calendar$" space=4
@@ -55,9 +55,24 @@ yabai_rule app="^Notes$" space =4
 yabai_rule app="^Mail$" space=4
 yabai_rule app="^Finder$" space=5
 
+#float apps that are buggy when managed 
+yabai -m rule --add app='^System Settings$' manage=off
+yabai -m rule --add app='^Calculator$' manage=off
+yabai -m rule --add app='^balenaEtcher$' manage=off
+yabai -m rule --add app='^Raspberry Pi Imager$' manage=off
+yabai -m rule --add app='^Blackmagic Disk Speed Test$' manage=off
+yabai -m rule --add app='^coconutBattery$' manage=off
+yabai -m rule --add app='^Raycast$' manage=off
+yabai -m rule --add app='^iPhone Mirroring$' manage=off
+yabai -m rule --add app='^Stickies$' manage=off
+yabai -m rule --add app='^VMware Fusion$' manage=off
+
+
+#assign keymaps to these in skhd
 # yabai -m window --opacity 0.1 && sleep $(yabai -m config window_opacity_duration) && yabai -m window --opacity 0.0
 
  # yabai -m signal --add label="flash_focus" event="window_focused" action="yabai -m window \$YABAI_WINDOW_ID --opacity 0.1 && sleep $(yabai -m config window_opacity_duration) && yabai -m window \$YABAI_WINDOW_ID --opacity 0.0"
+
 
 yabai -m config window_shadow off
 yabai -m config window_opacity on
