@@ -118,10 +118,9 @@ shift + cmd - x: yabai -m space --layout stack
 shift + cmd - c : yabai -m space --layout float
 
 # padding for use when external display connected
-shift + cmd - m :  yabai -m config top_padding 8
+shift + cmd - m :  yabai -m config external_bar main:8:0
 #revert to notch padding
-shift + cmd - n : yabai -m config top_padding 0
-
+shift + cmd - n : yabai -m config external_bar all:0:0
 
 #menu bar opacity
 cmd + shift - q : yabai -m config menubar_opacity 0.0

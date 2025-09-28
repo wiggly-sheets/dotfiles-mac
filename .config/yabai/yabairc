@@ -4,8 +4,11 @@
 yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 sudo yabai --load-sa
 
-yabai -m signal --add event=display_added action="yabai -m config top_padding 8"
-yabai -m signal --add event=display_removed action="yabai -m config top_padding 0"
+
+function yabai_rule {
+  yabai -m rule --add "$@"
+  yabai -m rule --apply "$@"
+}
 
 yabai -m config menubar_opacity 0.0
 
@@ -44,13 +47,21 @@ yabai -m config window_zoom_persist on
 yabai -m config window_topmost off # Disabled because browser popups will disappear if its enabled
 
 
+
+yabai_rule app="^Zen$" space=2
+yabai_rule app="^Wezterm$" space=3
+yabai_rule app="^Calendar$" space=4
+yabai_rule app="^Notes$" space =4
+yabai_rule app="^Mail$" space=4
+yabai_rule app="^Finder$" space=5
+
 # yabai -m window --opacity 0.1 && sleep $(yabai -m config window_opacity_duration) && yabai -m window --opacity 0.0
 
  # yabai -m signal --add label="flash_focus" event="window_focused" action="yabai -m window \$YABAI_WINDOW_ID --opacity 0.1 && sleep $(yabai -m config window_opacity_duration) && yabai -m window \$YABAI_WINDOW_ID --opacity 0.0"
 
 yabai -m config window_shadow off
 yabai -m config window_opacity on
-yabai -m config window_opacity_duration 0.0
+yabai -m config window_opacity_duration 0.10
 yabai -m config active_window_opacity 1.0
 yabai -m config normal_window_opacity 0.75
 
