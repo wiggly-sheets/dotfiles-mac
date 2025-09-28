@@ -100,7 +100,7 @@ shift + cmd + alt - n : yabai -m space --create && \
                  index="$(yabai -m query --spaces --display | jq 'map(select(."native-fullscreen" == 0))[-1].index')" && \
                  yabai -m space --focus "${index}"
 
-# toggle sticky window -- window on all spaces
+# toggle sticky window (window appears on all spaces)
 cmd + ctrl - s : yabai -m window --toggle sticky
 
 # restart yabai
@@ -123,8 +123,8 @@ shift + cmd - m :  yabai -m config external_bar main:8:0
 shift + cmd - n : yabai -m config external_bar all:0:0
 
 #menu bar opacity
-cmd + shift - q : yabai -m config menubar_opacity 0.0
-cmd + shift - w : yabai -m config menubar_opacity 1.0
+shift + cmd - q : yabai -m config menubar_opacity 0.0
+shift + cmd - w : yabai -m config menubar_opacity 1.0
 
 
 

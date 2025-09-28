@@ -26,6 +26,8 @@ yabai -m config window_zoom_persist true
 
 yabai -m config split_type auto
 
+yabai -m config auto_balance off
+
 
 yabai -m config window_animation_duration 0.25
 yabai -m config window_animation_easing easeOutElastic
@@ -68,7 +70,6 @@ yabai -m rule --add app='^Stickies$' manage=off
 yabai -m rule --add app='^VMware Fusion$' manage=off
 
 
-#assign keymaps to these in skhd
 # yabai -m window --opacity 0.1 && sleep $(yabai -m config window_opacity_duration) && yabai -m window --opacity 0.0
 
  # yabai -m signal --add label="flash_focus" event="window_focused" action="yabai -m window \$YABAI_WINDOW_ID --opacity 0.1 && sleep $(yabai -m config window_opacity_duration) && yabai -m window \$YABAI_WINDOW_ID --opacity 0.0"
@@ -86,7 +87,6 @@ yabai -m config mouse_follows_focus on
 # autoraise windows hovered by mouse
 yabai -m config focus_follows_mouse autoraise
 
-yabai -m config auto_balance off
 
 # modifier for clicking and dragging with mouse
 yabai -m config mouse_modifier alt
