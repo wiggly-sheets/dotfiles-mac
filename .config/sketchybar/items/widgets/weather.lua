@@ -66,8 +66,10 @@ local function temp_to_color(tempF)
 		return colors.green -- mild
 	elseif t <= 80 then
 		return colors.yellow -- warm
+	elseif t <= 90 then
+		return colors.orange -- hot
 	else
-		return colors.red -- hot
+		return colors.red -- very hot
 	end
 end
 
@@ -118,4 +120,3 @@ weather:subscribe({ "routine", "forced", "system_woke" }, function()
 		sbar.exec('curl "wttr.in/' .. loc_str .. '?format=j1"', load_weather)
 	end)
 end)
-

@@ -46,7 +46,6 @@ ram:subscribe({ "routine", "forced", "system_woke" }, function(env)
 		local color = colors.green
 		if load >= 90 then
 			color = colors.red
-
 		elseif load >= 75 then
 			color = colors.orange
 		elseif load >= 50 then

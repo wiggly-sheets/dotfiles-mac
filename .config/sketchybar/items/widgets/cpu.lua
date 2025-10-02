@@ -10,7 +10,7 @@ local cpu = sbar.add("graph", "widgets.cpu", 42, {
 	position = "right",
 	background = {
 		height = 22,
-		color = { alpha = 0},
+		color = { alpha = 0 },
 		border_color = { alpha = 0 },
 		drawing = true,
 		padding_right = 0,
@@ -43,23 +43,16 @@ cpu:subscribe("cpu_update", function(env)
 
 	if load >= 90 then
 		color = colors.red
-
 	elseif load >= 70 then
 		color = colors.orange
-		
-
 	elseif load >= 40 then
 		color = colors.yellow
 	end
 	cpu:set({
 		graph = { color = color },
-		label = { color = color, string = "CPU " .. load .. "%" }
+		label = { color = color, string = "CPU " .. load .. "%" },
 	})
 end)
-
--- cpu:subscribe("mouse.clicked", function(env)
---	sbar.exec("open -a 'Activity Monitor'")
---end)
 
 -- Background around the cpu item
 sbar.add("bracket", "widgets.cpu.bracket", { cpu.name }, {

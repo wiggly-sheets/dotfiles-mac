@@ -38,14 +38,14 @@ battery:subscribe({ "routine", "power_source_change", "system_woke" }, function(
 			charge = tonumber(charge)
 			label = charge .. "%"
 			-- Determine battery icon based on charge level
-			icon = charge > 90 and icons.battery._100
-				or charge > 75 and icons.battery._75
-				or charge > 50 and icons.battery._50
-				or charge > 25 and icons.battery._25
+			icon = charge >= 90 and icons.battery._100
+				or charge >= 70 and icons.battery._75
+				or charge >= 40 and icons.battery._50
+				or charge >= 20 and icons.battery._25
 				or icons.battery._0
 
 			-- Set color based on charge level
-			color = charge > 30 and colors.green or charge > 20 and colors.orange or colors.red
+			color = charge >= 30 and colors.green or charge >= 20 and colors.orange or colors.red
 		end
 
 		-- Set battery widget state based on parsed data
