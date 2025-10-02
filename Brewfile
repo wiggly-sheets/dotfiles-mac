@@ -1,3 +1,4 @@
+tap "achannarasappa/tap"
 tap "browsh-org/browsh"
 tap "felixkratz/formulae"
 tap "filosottile/musl-cross"
@@ -65,6 +66,8 @@ brew "brightness"
 brew "btop"
 # Console version of 2048
 brew "c2048"
+# Text-based personal organizer
+brew "calcurse"
 # GNU File, Shell, and Text utilities
 brew "coreutils"
 # Emacs dependency management
@@ -161,6 +164,8 @@ brew "libdvdcss"
 brew "handbrake", link: false
 # User-friendly cURL replacement (command-line HTTP client)
 brew "httpie"
+# Website copier/offline browser
+brew "httrack"
 # Fast, highly customisable system info script with LGBTQ+ pride flags
 brew "hyfetch"
 # Display an interface's bandwidth usage
@@ -229,6 +234,8 @@ brew "nerdfetch"
 brew "netcat"
 # Single-player roguelike video game
 brew "nethack"
+# RSS/Atom feed reader for text terminals
+brew "newsboat"
 # Graphical client for the Soulseek peer-to-peer network
 brew "nicotine-plus"
 # Space Invaders in the terminal
@@ -245,6 +252,8 @@ brew "nyancat"
 brew "onefetch"
 # Colossal Cave Adventure, the 1995 430-point version
 brew "open-adventure"
+# AI coding agent, built for the terminal
+brew "opencode"
 # Development kit for the Java programming language
 brew "openjdk"
 # Painless compression and decompression for your terminal
@@ -369,6 +378,8 @@ brew "zsh-autosuggestions"
 brew "zsh-syntax-highlighting"
 # Better and friendly vi(vim) mode plugin for ZSH
 brew "zsh-vi-mode"
+# Terminal stock ticker with live updates and position tracking
+brew "achannarasappa/tap/ticker"
 # The modern, text-based browser
 brew "browsh-org/browsh/browsh"
 # A window border system for macOS
@@ -433,6 +444,8 @@ cask "dolphin"
 cask "downie"
 # Tool for organising and renaming movies, TV shows, anime or music
 cask "filebot"
+# File finder
+cask "find-any-file"
 cask "font-dejavu-sans-mono-nerd-font"
 cask "font-fira-code-nerd-font"
 cask "font-hack-nerd-font"
@@ -491,6 +504,8 @@ cask "minecraft"
 cask "mission-control-plus"
 # Tool for editing metadata of audio files including MP3, FLAC, OGG, and more
 cask "mp3tag"
+# Music app blocker utility
+cask "music-decoy"
 # Free and open-source RSS reader
 cask "netnewswire"
 # Dual-pane file manager
@@ -547,10 +562,14 @@ cask "subler"
 cask "suspicious-package"
 # Quicklook extension for source files
 cask "syntax-highlight"
+# Instant fuzzy finder for files including system and hidden files
+cask "thelowtechguys-cling"
 # Connectivity software for the TI-84 Plus family of graphing calculators
 cask "ti-connect-ce"
 # Web browser focusing on security
 cask "tor-browser"
+# Batch rename utility
+cask "transnomino"
 # Newsreader and Usenet client
 cask "usenapp"
 # Virtual machines UI using QEMU
