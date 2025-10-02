@@ -148,6 +148,11 @@ use = "AnirudhG07/rich-preview"
 rev = "843c3fa"
 hash = "b4040931f0d2f9670ddb4923e55cd881"
 
+[[plugin.deps]]
+use = "yazi-rs/plugins:zoom"
+rev = "d1c8baa"
+hash = "9dee2bf990ea941ccf67df74bca45468"
+
 [[flavor.deps]]
 use = "kalidyasin/yazi-flavors:tokyonight-storm"
 rev = "fa19b40"
