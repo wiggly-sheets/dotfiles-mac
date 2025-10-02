@@ -9,18 +9,21 @@ for i = 1, 10 do
 	space_app_icons[i] = "—"
 end
 
--- Function to update space icon with number + layout, and label with icons
 local function update_space_display(space, space_id, is_selected)
-	sbar.exec("yabai -m query --spaces --space " .. space_id .. " | jq -r '.type'", function(output)
-		local icon_text = space_app_icons[space_id]
-		local space_text = "" .. tostring(space_id) .. ""
-
-		space:set({
-			icon = { string = space_text, highlight = is_selected, color = is_selected and colors.white or colors.grey },
-			label = { string = icon_text, highlight = is_selected, color = is_selected and colors.white or colors.grey },
-			--		background = { border_color = is_selected and colors.transparent or colors.transparent },
-		})
-	end)
+	local icon_text = space_app_icons[space_id]
+	local space_text = "" .. tostring(space_id) .. ""
+	space:set({
+		icon = {
+			string = space_text,
+			highlight = is_selected,
+			color = is_selected and colors.white or colors.grey,
+		},
+		label = {
+			string = icon_text,
+			highlight = is_selected,
+			color = is_selected and colors.white or colors.grey,
+		},
+	})
 end
 
 for i = 1, 10, 1 do
@@ -50,7 +53,7 @@ for i = 1, 10, 1 do
 			height = 24,
 			border_color = colors.transparent,
 		},
-		popup = { background = { border_width = 1, border_color = colors.transparent } },
+		popup = { background = { border_width = 0, border_color = colors.transparent } },
 	})
 	spaces[i] = space
 
