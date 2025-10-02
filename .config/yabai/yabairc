@@ -52,10 +52,10 @@ yabai -m config window_topmost off # Disabled because browser popups will disapp
 # pin these apps to certain spaces to set up workplaces
 yabai_rule app="^Zen$" space=2
 yabai_rule app="^WezTerm$" space=3
-yabai_rule app="^Calendar$" space=4
-yabai_rule app="^Notes$" space =4
-yabai_rule app="^Mail$" space=4
-yabai_rule app="^Finder$" space=5
+yabai_rule app="^Calendar$" space=5
+yabai_rule app="^Notes$" space=5
+yabai_rule app="^Mail$" space=5
+yabai_rule app="^Finder$" space=4
 
 #float apps that are buggy when managed 
 yabai -m rule --add app='^System Settings$' manage=off

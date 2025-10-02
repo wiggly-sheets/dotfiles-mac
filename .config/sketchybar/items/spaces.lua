@@ -129,7 +129,7 @@ space_window_observer:subscribe("space_windows_change", function(env)
 		no_app = false
 		local lookup = app_icons[app] or icons[app]
 		local icon = lookup or app_icons["Default"] -- Use default if no match
-		icon_line = icon_line .. icon
+		icon_line = icon_line .. string.rep(icon, count)
 	end
 
 	if no_app then
