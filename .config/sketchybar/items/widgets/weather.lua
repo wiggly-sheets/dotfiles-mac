@@ -56,16 +56,18 @@ end
 -- Map temperature to a color
 local function temp_to_color(tempF)
 	local t = tonumber(tempF)
-	if not t then return colors.white end
+	if not t then
+		return colors.white
+	end
 
-	if t <= 50 then
-		return colors.blue    -- cold
-	elseif t <= 70 then
-		return colors.green   -- mild
-	elseif t <= 85 then
-		return colors.yellow  -- warm
+	if t <= 40 then
+		return colors.blue -- cold
+	elseif t <= 60 then
+		return colors.green -- mild
+	elseif t <= 80 then
+		return colors.yellow -- warm
 	else
-		return colors.red     -- hot
+		return colors.red -- hot
 	end
 end
 
@@ -116,3 +118,4 @@ weather:subscribe({ "routine", "forced", "system_woke" }, function()
 		sbar.exec('curl "wttr.in/' .. loc_str .. '?format=j1"', load_weather)
 	end)
 end)
+
