@@ -2,7 +2,7 @@ local colors = require("colors")
 local icons = require("icons")
 
 local apple = sbar.add("item", {
- -- click_script = 'osascript -e \'tell application "System Events" to keystroke "a" using {command down, option down, control down}\'
+	click_script = 'osascript -e \'tell application "System Events" to keystroke "a" using {command down, option down, control down}\'',
 	icon = {
 		font = { size = 14 },
 		string = icons.apple,
@@ -15,6 +15,5 @@ local apple = sbar.add("item", {
 	padding_left = 0,
 	padding_right = -3,
 	y_offset = 1,
-click_script = "$CONFIG_DIR/helpers/menus/bin/menus -s 0",
+	--click_script = "$CONFIG_DIR/helpers/menus/bin/menus -s 0",
 })
-
