@@ -32,7 +32,7 @@ for i = 1, 10, 1 do
 		icon = {
 			font = { family = "Inconsolata Nerd Font Mono", size = 12, style = "Bold" },
 			string = tostring(i), -- Placeholder before update
-			padding_left = 3,
+			padding_left = 2,
 			padding_right = 2,
 			y_offset = 1,
 			color = colors.white,
