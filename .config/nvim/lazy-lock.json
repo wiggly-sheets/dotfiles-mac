@@ -4,7 +4,7 @@
   "LuaSnip": { "branch": "master", "commit": "458560534a73f7f8d7a11a146c801db00b081df0" },
   "alpha-nvim": { "branch": "main", "commit": "2b3cbcdd980cae1e022409289245053f62fb50f6" },
   "asciiart.nvim": { "branch": "main", "commit": "1164e505d403e5c1d8f893f8318626291924ffc3" },
-  "auto-session": { "branch": "main", "commit": "af683b2cb176aa8e0cddb3cdc2dada21f09bb09b" },
+  "auto-session": { "branch": "main", "commit": "26cee522872248bfe83f61e75a89283edd0e28aa" },
   "baleia.nvim": { "branch": "main", "commit": "880e97c02edf3148ba2bdc6305ac03eb3c3711e0" },
   "bufferline.nvim": { "branch": "main", "commit": "655133c3b4c3e5e05ec549b9f8cc2894ac6f51b3" },
   "cheatsheet.nvim": { "branch": "master", "commit": "9716f9aaa94dd1fd6ce59b5aae0e5f25e2a463ef" },
