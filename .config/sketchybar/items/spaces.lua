@@ -39,13 +39,13 @@ for i = 1, 10, 1 do
 			highlight_color = colors.white,
 		},
 		label = {
-			padding_right = 5,
+			padding_right = 2,
 			padding_left = 2,
 			color = colors.white,
 			highlight_color = colors.white,
 			font = "sketchybar-app-font:Regular:12.0",
 		},
-		padding_right = 0,
+		padding_right = 2,
 		padding_left = 2,
 		background = {
 			color = colors.transparent,
