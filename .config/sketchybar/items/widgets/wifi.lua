@@ -371,20 +371,25 @@ local function toggle_details()
 			ip:set({ label = result })
 		end)
 		sbar.exec(
-			"system_profiler SPAirPortDataType | sed -n '/Current Network Information:/,/PHY Mode:/ p' | head -2 | tail -1 | sed 's/^[[:space:]]*//' | sed 's/:$//'",
-			function(result)
-				ssid:set({ label = result })
-			end
+			sbar.exec(
+				"networksetup listpreferredwirelessnetworks en0 | awk 'NR==2 {sub(/^[ \t]+/, \"\"); print}'",
+				function(result)
+					ssid:set({ label = result })
+				end
+			),
+			sbar.exec(
+				"networksetup -getinfo Wi-Fi | awk -F 'Subnet mask: ' '/^Subnet mask: / {print $2}'",
+				function(result)
+					mask:set({ label = result })
+				end
+			),
+			sbar.exec("networksetup -getinfo Wi-Fi | awk -F 'Router: ' '/^Router: / {print $2}'", function(result)
+				router:set({ label = result })
+			end),
+			sbar.exec("route get default | awk '/interface: / {print $2}'", function(result)
+				network_interface:set({ label = result })
+			end)
 		)
-		sbar.exec("networksetup -getinfo Wi-Fi | awk -F 'Subnet mask: ' '/^Subnet mask: / {print $2}'", function(result)
-			mask:set({ label = result })
-		end)
-		sbar.exec("networksetup -getinfo Wi-Fi | awk -F 'Router: ' '/^Router: / {print $2}'", function(result)
-			router:set({ label = result })
-		end)
-		sbar.exec("route get default | awk '/interface: / {print $2}'", function(result)
-			network_interface:set({ label = result })
-		end)
 	else
 		wifi_bracket:set({ popup = { drawing = false } })
 	end
@@ -485,20 +490,25 @@ local function toggle_details()
 			ip:set({ label = result })
 		end)
 		sbar.exec(
-			"system_profiler SPAirPortDataType | sed -n '/Current Network Information:/,/PHY Mode:/ p' | head -2 | tail -1 | sed 's/^[[:space:]]*//' | sed 's/:$//'",
-			function(result)
-				ssid:set({ label = result })
-			end
+			sbar.exec(
+				"networksetup listpreferredwirelessnetworks en0 | awk 'NR==2 {sub(/^[ \t]+/, \"\"); print}'",
+				function(result)
+					ssid:set({ label = result })
+				end
+			),
+			sbar.exec(
+				"networksetup -getinfo Wi-Fi | awk -F 'Subnet mask: ' '/^Subnet mask: / {print $2}'",
+				function(result)
+					mask:set({ label = result })
+				end
+			),
+			sbar.exec("networksetup -getinfo Wi-Fi | awk -F 'Router: ' '/^Router: / {print $2}'", function(result)
+				router:set({ label = result })
+			end),
+			sbar.exec("route get default | awk '/interface: / {print $2}'", function(result)
+				network_interface:set({ label = result })
+			end)
 		)
-		sbar.exec("networksetup -getinfo Wi-Fi | awk -F 'Subnet mask: ' '/^Subnet mask: / {print $2}'", function(result)
-			mask:set({ label = result })
-		end)
-		sbar.exec("networksetup -getinfo Wi-Fi | awk -F 'Router: ' '/^Router: / {print $2}'", function(result)
-			router:set({ label = result })
-		end)
-		sbar.exec("route get default | awk '/interface: / {print $2}'", function(result)
-			network_interface:set({ label = result })
-		end)
 	else
 		wifi_bracket:set({ popup = { drawing = false } })
 	end
