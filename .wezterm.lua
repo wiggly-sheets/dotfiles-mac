@@ -10,7 +10,6 @@ config.front_end = "WebGpu"
 
 config.font = wezterm.font_with_fallback({
 	"Inconsolata Nerd Font Mono",
-	"IosevkaTermSlab Nerd Font Mono",
 	"JetBrains Mono",
 })
 config.font_size = 15
@@ -21,20 +20,19 @@ require("wezterm").on("format-window-title", function()
 	return "WezTerm"
 end)
 
-config.color_scheme = "Dark Pastel"
+config.color_scheme = "Tokyo Night"
 
 config.enable_kitty_graphics = true
 config.enable_tab_bar = false
 config.window_decorations = "RESIZE"
 
-config.warn_about_missing_glyphs = true
+config.warn_about_missing_glyphs = false
 
-config.default_cursor_style = "BlinkingUnderline"
 config.cursor_blink_rate = 500
 config.animation_fps = 50
 
-config.window_background_opacity = 0.5
-config.macos_window_background_blur = 20
+config.window_background_opacity = 0.2
+config.macos_window_background_blur = 10
 
 config.window_padding = {
 	left = 0,
