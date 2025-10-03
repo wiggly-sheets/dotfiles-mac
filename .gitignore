@@ -1,0 +1,102 @@
+# macOS system files
+.DS_Store
+.AppleDouble
+.LSOverride
+.Icon?
+._*
+.Spotlight-V100
+.Trashes
+.VolumeIcon.icns
+
+# Temporary files
+*.swp
+*.swo
+*.bak
+*.tmp
+*~
+*.orig
+*.rej
+
+# Logs
+*.log
+
+# Node / npm
+node_modules/
+npm-debug.log
+yarn-error.log
+package-lock.json
+yarn.lock
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.py[cod]
+
+# Ruby
+*.gem
+*.rbc
+.bundle/
+vendor/bundle/
+
+# Rust / Cargo
+target/
+
+# Go
+bin/
+*.exe
+*.test
+*.out
+
+# Java
+*.class
+*.jar
+*.war
+*.ear
+*.iml
+
+# IDEs / editors
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+*.nvim/
+*.swp
+*.undo
+*.cache
+*.tags
+
+# tmuxinator / session files
+*.tmux
+
+# Homebrew Casks / Stow dotfiles
+.stow-local
+.DS_Store
+.env.local
+.env
+
+# Terminal / shell stuff
+*.zcompdump
+*.zshrc.save
+*.zsh_history
+*.zsh_sessions
+
+# Misc
+*.png
+*.jpg
+*.jpeg
+*.ico
+*.pdf
+*.mp4
+*.mp3
+*.mov
+*.mkv
+
+# Dotfiles backup
+*.bak
+*.old
+*.backup
+
+# FZF / fzf-git temporary
+*.fzf
