@@ -44,8 +44,6 @@ local volume_icon = sbar.add("item", "widgets.volume2", {
 	},
 	click_script = 'osascript -e \'tell application "System Events" to tell process "SoundSource" to click menu bar item 1 of menu bar 2\'',
 })
-local colors = require("colors")
-local icons = require("icons")
 
 local mic = sbar.add("item", "mic", {
 	icon = {
@@ -109,22 +107,54 @@ local volume_bracket = sbar.add("bracket", "widgets.volume.bracket", {
 	popup = { align = "center" },
 })
 
+local function update_output_device_icon(volume)
+	sbar.exec("/opt/homebrew/bin/SwitchAudioSource -c", function(result)
+		local device = result:gsub("\n", "")
+		local icon
+
+		-- Device-specific icons
+		if device:match("AirPods Pro") then
+			icon = "􀪷" -- AirPods Pro
+		elseif device:match("AirPods Max") then
+			icon = "􀺹" -- AirPods Max
+		elseif device:match("Scarlett 2i2") then
+			icon = "􂡒" -- Scarlett 2i2 USB
+		elseif device:match("Sceptre") then
+			icon = "􀢹"
+		else
+			-- Fallback: use your existing volume-based icons
+			if volume == nil then
+				volume = 0
+			end
+			if volume > 60 then
+				icon = icons.volume._100
+			elseif volume > 30 then
+				icon = icons.volume._66
+			elseif volume > 10 then
+				icon = icons.volume._33
+			elseif volume > 0 then
+				icon = icons.volume._10
+			else
+				icon = icons.volume._0
+			end
+		end
+
+		volume_icon:set({ label = icon })
+	end)
+end
+
+-- Update both percent and icon when volume changes
 volume_percent:subscribe("volume_change", function(env)
-	local volume = tonumber(env.INFO)
-	local icon = icons.volume._0
-	if volume > 60 then
-		icon = icons.volume._100
-	elseif volume > 30 then
-		icon = icons.volume._66
-	elseif volume > 10 then
-		icon = icons.volume._33
-	elseif volume > 0 then
-		icon = icons.volume._10
-	end
+	local volume = tonumber(env.INFO) or 0
 
-	volume_icon:set({ label = icon })
-
+	-- Update the percent display
 	volume_percent:set({ label = volume .. "%" })
 
-	sbar.exec('osascript -e "set volume output volume (output volume of (get volume settings) + ' .. delta .. ')"')
+	-- Refresh icon depending on device
+	update_output_device_icon(volume)
+end)
+
+-- Periodic refresh to catch device switches (every routine tick)
+volume_icon:subscribe("routine", function()
+	update_output_device_icon()
 end)

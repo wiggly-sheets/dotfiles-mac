@@ -2,8 +2,6 @@ local icons = require("icons")
 local colors = require("colors")
 local settings = require("settings")
 
-local colors = require("colors")
-
 local lowpowermode = sbar.add("item", "lowpowermode", {
 	update_freq = 2,
 	position = "right",

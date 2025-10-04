@@ -5,7 +5,7 @@ local display = sbar.add("item", "display", {
 		drawing = true,
 		font = { family = "SF Pro", size = 12 },
 		color = colors.white,
-		padding_right = 5,
+		padding_right = 8,
 	},
 	label = {
 		drawing = true,
@@ -16,18 +16,16 @@ local display = sbar.add("item", "display", {
 	click_script = 'osascript -e \'tell application "System Events" to keystroke "d" using {command down, option down, control down}\'',
 })
 
--- Function to query displays and brightness using the same commands as your .sh file
 local function update_display()
 	local icons = {
-		main_only = "􀟛", -- Laptop
-		secondary_only = "􀙗", -- External monitor
-		both = "􂤓", -- Dual screen
-		none = "􀁟", -- None
+		main_only = "􀟛",
+		secondary_only = "􀙗",
+		both = "􂤓",
+		none = "􀁟",
 	}
 
 	local results = {}
 
-	-- Helper to get brightness in percent (returns nil if not connected)
 	local function get_brightness(display_name, callback)
 		local cmd = string.format('betterdisplaycli get --n="%s" --brightness=%%', display_name)
 		sbar.exec(cmd, function(result)
@@ -40,13 +38,11 @@ local function update_display()
 		end)
 	end
 
-	-- Query both displays like your .sh script
 	get_brightness("built-in", function(main_brightness)
 		results["main"] = main_brightness
 		get_brightness("sceptre", function(secondary_brightness)
 			results["secondary"] = secondary_brightness
 
-			-- Determine which are active
 			local label = ""
 			local icon = icons.none
 
@@ -73,7 +69,7 @@ local function update_display()
 end
 
 -- Subscribe to system/display events (no timed polling)
-display:subscribe({ "display_change", "brightness_change", "system_woke", "routine" }, update_display)
+display:subscribe({ "display_change", "brightness_change", "system_woke" }, update_display)
 
 -- Run once at load
 update_display()
