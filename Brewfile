@@ -108,6 +108,8 @@ brew "doge"
 brew "libyaml"
 # TUI todo manager
 brew "dooit"
+# Embeddable SQL OLAP Database Management System
+brew "duckdb"
 # Disk Usage/Free Utility - a better 'df' alternative
 brew "duf"
 # Classic text adventure game
@@ -176,6 +178,8 @@ brew "jq"
 brew "julia"
 # Command-line music player
 brew "kew"
+# Terminal UI for Apple Containers
+brew "lazycontainer"
 # Lazier way to manage everything docker
 brew "lazydocker"
 # Simple terminal UI for git commands
@@ -212,6 +216,8 @@ brew "media-info"
 brew "mkvtoolnix"
 # Drive some car across the moon
 brew "moon-buggy"
+# Remote terminal application
+brew "mosh"
 # Powerful paging program
 brew "most"
 # Command-line music player client for mpd
@@ -282,6 +288,8 @@ brew "rclone"
 brew "reattach-to-user-namespace"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
+# Wrapper around ripgrep that adds multiple rich file types
+brew "ripgrep-all"
 # Command-line deletion tool focused on safety, ergonomics, and performance
 brew "rm-improved"
 # Extremely fast tool to remove dupes and other lint from your filesystem
@@ -294,6 +302,8 @@ brew "ruby"
 brew "ruby-install"
 # CLI search and replace | Space Age seD
 brew "sad"
+# Interactive find and replace in the terminal
+brew "scooter"
 # Generate ASCII art with terminal, shell, and OS info
 brew "screenfetch"
 # Intuitive find & replace CLI
@@ -304,6 +314,8 @@ brew "sevenzip"
 brew "sl"
 # SMART hard drive monitoring
 brew "smartmontools"
+# Run a command at a particular time
+brew "snooze"
 # SOcket CAT: netcat on steroids
 brew "socat"
 # SOund eXchange: universal sound sample translator
@@ -318,6 +330,8 @@ brew "stow"
 brew "superfile"
 # Change macOS audio source from the command-line
 brew "switchaudio-osx"
+# Manipulate and query tags on macOS files
+brew "tag"
 # Command-line Kanban board/task manager with support for Trello
 brew "taskell"
 # Very fast implementation of tldr in Rust
@@ -356,6 +370,8 @@ brew "vscode-langservers-extracted"
 brew "wakeonlan"
 # Executes a program periodically, showing output fullscreen
 brew "watch"
+# Watch files and take action when they change
+brew "watchman"
 # Internet file retriever
 brew "wget"
 # Successor of GNU Wget, a file and recursive website downloader
@@ -428,12 +444,16 @@ cask "bettertouchtool@alpha"
 cask "burn"
 # OpenAI's official ChatGPT desktop app
 cask "chatgpt"
+# Image, video and clipboard optimiser
+cask "clop"
 # Tool to show live information about the batteries in various devices
 cask "coconutbattery"
 # Create and run Linux containers using lightweight virtual machines
 cask "container"
 # Download and manage your addons and mods
 cask "curseforge"
+# AI-powered translator
+cask "deepl"
 # Utility to enhance the Open and Save dialogs in applications
 cask "default-folder-x"
 # Voice and text chat software
@@ -484,8 +504,6 @@ cask "kegworks"
 cask "keka"
 # Open-source keystroke visualiser
 cask "keycastr"
-# Utility that shows the latest app updates
-cask "latest"
 # Host-based application firewall
 cask "little-snitch"
 # File system integration
@@ -510,6 +528,8 @@ cask "music-decoy"
 cask "netnewswire"
 # Dual-pane file manager
 cask "nimble-commander"
+# Open-source software for live streaming and screen recording
+cask "obs"
 # Finds large, unwanted files and deletes them
 cask "omnidisksweeper"
 # Verify system files structure, run miscellaneous maintenance and more
