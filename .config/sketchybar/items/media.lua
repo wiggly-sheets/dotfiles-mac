@@ -8,7 +8,6 @@ local media = sbar.add("item", "media", {
 		position = "right",
 		color = colors.white,
 	},
-	label = { drawing = false, width = 0 },
 	position = "right",
 	click_script = 'osascript -e \'tell application "System Events" to keystroke "o" using {command down, option down, control down}\'',
 })
