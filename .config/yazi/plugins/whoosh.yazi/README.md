@@ -22,6 +22,7 @@
 > - **Directory history** - Navigate back to previous directory with Backspace
 > - **Tab history navigation** - Browse and jump to recently visited directories with Tab key
 > - **Quick bookmark creation** - Create temporary bookmarks directly from navigation menu
+> - **Configurable menu shortcuts** - Override the default Tab/Backspace/Enter/Space bindings from `init.lua`
 
 <div style="text-align: center;">
   <img src="image/plugin.png" alt="Plugin preview" width="1100px">
@@ -87,9 +88,21 @@ require("whoosh"):setup {
   -- Key generation for auto-assigning bookmark keys
   keys = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ",
 
+  -- Configure the built-in menu action hotkeys
+  -- false - hide menu item
+  special_keys = {
+    create_temp = "<Enter>",         -- Create a temporary bookmark from the menu
+    fuzzy_search = "<Space>",        -- Launch fuzzy search (fzf)
+    history = "<Tab>",               -- Open directory history
+    previous_dir = "<Backspace>",    -- Jump back to the previous directory
+  },
+
   -- File path for storing user bookmarks
-  path = (ya.target_family() == "windows" and os.getenv("APPDATA") .. "\\yazi\\config\\bookmark") or
+  bookmarks_path = (ya.target_family() == "windows" and os.getenv("APPDATA") .. "\\yazi\\config\\bookmark") or
          (os.getenv("HOME") .. "/.config/yazi/bookmark"),
+
+  -- Replace home directory with "~"
+  home_alias_enabled = true,                            -- Toggle home aliasing in displays
 
   -- Path truncation in navigation menu
   path_truncate_enabled = false,                        -- Enable/disable path truncation
@@ -125,7 +138,7 @@ desc = "Jump bookmark by key"
 # Direct fuzzy search access
 [[mgr.prepend_keymap]]
 on = "}"
-run = "plugin whoosh fuzzy"
+run = "plugin whoosh jump_by_fzf"
 desc = "Direct fuzzy search for bookmarks"
 
 # Basic bookmark operations
@@ -151,6 +164,11 @@ run = "plugin whoosh save_cwd_temp"
 desc = "Add temporary bookmark (current directory)"
 
 # Jump to bookmarks
+[[mgr.prepend_keymap]]
+on = "<A-k>"
+run = "plugin whoosh key_k"
+desc = "Jump directly to bookmark with key k"
+
 [[mgr.prepend_keymap]]
 on = [ "]", "f" ]
 run = "plugin whoosh jump_by_fzf"
@@ -232,7 +250,46 @@ When using `jump_by_key`, you get access to a smart navigation menu with:
 The plugin provides two ways to navigate history:
 
 1. **Through navigation menu** - When using `jump_by_key`, press `<Tab>` to access history
-2. **Direct access** - Use the `history` command or Tab key binding for direct fzf access to history
+2. **Direct access** - Trigger the configured history special key (default `<Tab>`) for direct fzf access to history
+
+#### Neovim `<Tab>` keymap (yazi.nvim)
+
+When this plugin runs inside [mikavilpas/yazi.nvim](https://github.com/mikavilpas/yazi.nvim), the default `<Tab>` mapping (`cycle_open_buffers`) is handled by Neovim before Yazi sees it. If pressing `<Tab>` returns you to the buffer where Yazi was opened, disable or remap that key in the yazi.nvim configuration so the directory history picker can receive it:
+
+```lua
+  opts = {
+    keymaps = {
+      cycle_open_buffers = false,
+    },
+      -- OR
+    keymaps = {
+      cycle_open_buffers = "<S-Tab>",
+    },
+  },
+```
+
+Full config file example:
+
+```lua
+return {
+  "mikavilpas/yazi.nvim",
+  version = "*",
+  event = "VeryLazy",
+  dependencies = { { "nvim-lua/plenary.nvim", lazy = true } },
+  keys = {
+    { "<leader>-", mode = { "n", "v" }, "<cmd>Yazi<cr>", desc = "Open Yazi" },
+    { "<leader>cw", "<cmd>Yazi cwd<cr>", desc = "Open Yazi at CWD" },
+  },
+  opts = {
+    open_for_directories = false,
+    keymaps = {
+      cycle_open_buffers = false,
+    },
+  },
+
+  init = function() vim.g.loaded_netrwPlugin = 1 end,
+}
+```
 
 ### Bookmark Types
 
@@ -253,7 +310,9 @@ The plugin supports the following configuration options in the `setup()` functio
 | `bookmarks`                            | table   | `{}`                    | Pre-configured bookmarks (cannot be deleted through plugin)        |
 | `jump_notify`                          | boolean | `false`                 | Show notification when jumping to a bookmark                       |
 | `keys`                                 | string  | `"0123456789abcdef..."` | Characters used for auto-generating bookmark keys                  |
+| `special_keys`                         | table   | `see description`       | Override the built-in menu shortcuts (Enter/Space/Tab/Backspace); set to `false` to hide an item |
 | `path`                                 | string  | OS-dependent            | File path where user bookmarks are stored                          |
+| `home_alias_enabled`                  | boolean | `true`                  | Replace paths under the user's home directory with `~`              |
 | `path_truncate_enabled`                | boolean | `false`                 | Enable/disable path truncation in navigation menu                  |
 | `path_max_depth`                       | number  | `3`                     | Maximum path depth before truncation with "…" in navigation menu   |
 | `fzf_path_truncate_enabled`            | boolean | `false`                 | Enable/disable path truncation in fuzzy search (fzf)               |
@@ -352,6 +411,7 @@ This feature significantly improves readability in deeply nested directory struc
 | save_temp          | Add temporary bookmark for hovered file/directory             |
 | save_cwd_temp      | Add temporary bookmark for current working directory          |
 | jump_by_key        | Open navigation menu to jump to bookmark by key               |
+| key_<sequence>     | Jump instantly to bookmark matching the provided key sequence |
 | jump_by_fzf        | Open fuzzy search to jump to bookmark                         |
 | delete_by_key      | Delete bookmark by selecting with key                         |
 | delete_by_fzf      | Delete multiple bookmarks using fzf (TAB to select)           |
@@ -359,15 +419,21 @@ This feature significantly improves readability in deeply nested directory struc
 | delete_all_temp    | Delete all temporary bookmarks                                |
 | rename_by_key      | Rename bookmark by selecting with key                         |
 | rename_by_fzf      | Rename bookmark using fuzzy search                            |
-| history            | Show current tab's directory history via fzf                  |
-| fuzzy              | Direct fuzzy search for bookmarks                             |
+
+### Direct Key Shortcuts
+
+You can jump without opening the menu by calling the plugin with an inline key sequence:
+
+- `plugin whoosh key_<sequence>` - inline sequence such as `key_k`, `key_<Space>`, or `key_bb`.
+
+Sequences must be provided inline; whitespace-separated forms are not supported. The format matches the bookmark editing prompt, so you can mix plain characters, comma-separated tokens, and special keys like `<Space>` or `<A-l>`.
 
 ### Navigation Menu Controls
 
 When using `jump_by_key`, the following special controls are available:
 
-| Key | Action |
-|-----|--------|
+| Default key | Action |
+| ------------ | ------ |
 | `<Enter>` | Create temporary bookmark for current directory |
 | `<Space>` | Open fuzzy search |
 | `<Tab>` | Open directory history (only if history exists) |

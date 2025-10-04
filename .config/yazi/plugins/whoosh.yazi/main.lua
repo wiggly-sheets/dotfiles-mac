@@ -1,6 +1,13 @@
 --- @since 25.5.28
 local path_sep = package.config:sub(1, 1)
 
+local DEFAULT_SPECIAL_KEYS = {
+  create_temp = "<Enter>",
+  fuzzy_search = "<Space>",
+  history = "<Tab>",
+  previous_dir = "<Backspace>",
+}
+
 local function get_fzf_delimiter()
   if ya.target_family() == "windows" then
     return "--delimiter=\\t"
@@ -125,6 +132,90 @@ local function normalize_path(path)
   return normalized_path
 end
 
+local function apply_home_alias(path)
+  if not path or path == "" then
+    return path
+  end
+
+  local home_alias_enabled = get_state_attr("home_alias_enabled")
+  if home_alias_enabled == false then
+    return path
+  end
+
+  if path:sub(1, 1) == "~" then
+    return path
+  end
+
+  local home = os.getenv("HOME")
+  if ya.target_family() == "windows" and (not home or home == "") then
+    home = os.getenv("USERPROFILE")
+  end
+  if not home or home == "" then
+    return path
+  end
+
+  local normalized_home = normalize_path(home)
+  if not normalized_home or normalized_home == "" then
+    return path
+  end
+
+  local sep = path_sep
+
+  if ya.target_family() == "windows" then
+    local path_lower = path:lower()
+    local home_lower = normalized_home:lower()
+    if path_lower == home_lower then
+      return "~"
+    end
+    local prefix_lower = (normalized_home .. sep):lower()
+    if path_lower:sub(1, #prefix_lower) == prefix_lower then
+      return "~" .. path:sub(#normalized_home + 1)
+    end
+  else
+    if path == normalized_home then
+      return "~"
+    end
+    local prefix = normalized_home .. sep
+    if path:sub(1, #prefix) == prefix then
+      return "~" .. path:sub(#normalized_home + 1)
+    end
+  end
+
+  return path
+end
+
+local function normalize_special_key(value, default)
+  if value == nil then
+    return default
+  end
+  if value == false then
+    return nil
+  end
+  if type(value) == "string" then
+    local trimmed = value:gsub("^%s*(.-)%s*$", "%1")
+    if trimmed == "" then
+      return nil
+    end
+    return trimmed
+  end
+  if type(value) == "table" then
+    local seq = {}
+    for _, item in ipairs(value) do
+      if type(item) == "string" then
+        local trimmed = item:gsub("^%s*(.-)%s*$", "%1")
+        if trimmed ~= "" then
+          table.insert(seq, trimmed)
+        end
+      end
+    end
+    if #seq == 0 then
+      return nil
+    end
+    return seq
+  end
+  return default
+end
+
 local function truncate_long_folder_names(path, max_folder_length)
   if not max_folder_length or max_folder_length <= 0 then
     return path
@@ -155,14 +246,7 @@ end
 local function truncate_path(path, max_parts)
   max_parts = max_parts or 3
   local normalized_path = normalize_path(path)
-
-  local home = os.getenv("HOME")
-  if home and home ~= "" then
-    local startPos, endPos = string.find(normalized_path, home)
-    if startPos == 1 then
-      normalized_path = "~" .. normalized_path:sub(endPos + 1)
-    end
-  end
+  normalized_path = apply_home_alias(normalized_path)
 
   local parts = {}
   local separator = ya.target_family() == "windows" and "\\" or "/"
@@ -239,7 +323,7 @@ end
 
 local function path_to_desc(path)
   local path_truncate_enabled = get_state_attr("path_truncate_enabled")
-  local result_path = normalize_path(path)
+  local result_path = apply_home_alias(normalize_path(path))
 
   local path_truncate_long_names_enabled = get_state_attr("path_truncate_long_names_enabled")
   if path_truncate_long_names_enabled == true then
@@ -329,7 +413,7 @@ end
 
 local function path_to_desc_for_fzf(path)
   local fzf_path_truncate_enabled = get_state_attr("fzf_path_truncate_enabled")
-  local result_path = normalize_path(path)
+  local result_path = apply_home_alias(normalize_path(path))
 
   local fzf_path_truncate_long_names_enabled = get_state_attr("fzf_path_truncate_long_names_enabled")
   if fzf_path_truncate_long_names_enabled == true then
@@ -347,7 +431,7 @@ end
 
 local function path_to_desc_for_history(path)
   local history_fzf_path_truncate_enabled = get_state_attr("history_fzf_path_truncate_enabled")
-  local result_path = normalize_path(path)
+  local result_path = apply_home_alias(normalize_path(path))
 
   local history_fzf_path_truncate_long_names_enabled = get_state_attr("history_fzf_path_truncate_long_names_enabled")
   if history_fzf_path_truncate_long_names_enabled == true then
@@ -826,8 +910,16 @@ end
 
 local create_special_menu_items = function()
   local special_items = {}
-  table.insert(special_items, { desc = "Create temporary bookmark", on = "<Enter>", path = "__CREATE_TEMP__" })
-  table.insert(special_items, { desc = "Fuzzy search", on = "<Space>", path = "__FUZZY_SEARCH__" })
+  local special_keys = get_state_attr("special_keys") or DEFAULT_SPECIAL_KEYS
+  local create_temp_key = special_keys.create_temp
+  if create_temp_key then
+    table.insert(special_items, { desc = "Create temporary bookmark", on = create_temp_key, path = "__CREATE_TEMP__" })
+  end
+
+  local fuzzy_search_key = special_keys.fuzzy_search
+  if fuzzy_search_key then
+    table.insert(special_items, { desc = "Fuzzy search", on = fuzzy_search_key, path = "__FUZZY_SEARCH__" })
+  end
 
   local current_tab = get_current_tab_idx()
   local history = get_tab_history(current_tab)
@@ -842,14 +934,16 @@ local create_special_menu_items = function()
     end
   end
 
-  if filtered_history and #filtered_history > 0 then
-    table.insert(special_items, { desc = "Directory history", on = "<Tab>", path = "__HISTORY__" })
+  local history_key = special_keys.history
+  if history_key and filtered_history and #filtered_history > 0 then
+    table.insert(special_items, { desc = "Directory history", on = history_key, path = "__HISTORY__" })
   end
 
-  if filtered_history and filtered_history[1] then
+  local previous_dir_key = special_keys.previous_dir
+  if previous_dir_key and filtered_history and filtered_history[1] then
     local previous_dir = filtered_history[1]
     local display_path = path_to_desc(previous_dir)
-    table.insert(special_items, { desc = "<- " .. display_path, on = "<Backspace>", path = previous_dir })
+    table.insert(special_items, { desc = "<- " .. display_path, on = previous_dir_key, path = previous_dir })
   end
 
   return special_items
@@ -1058,6 +1152,62 @@ end
 
 local function _seq_to_string(seq)
   return table.concat(seq, ",")
+end
+
+local function find_path_by_key_sequence(seq)
+  if not seq or #seq == 0 then return nil end
+
+  local function matches(candidate)
+    if candidate == nil or candidate == "" then return false end
+    local candidate_seq = _seq_from_key(candidate)
+    if #candidate_seq == 0 then return false end
+    return _seq_equal(seq, candidate_seq)
+  end
+
+  for _, item in ipairs(create_special_menu_items() or {}) do
+    if matches(item.on) then
+      return item.path
+    end
+  end
+
+  local temp = get_temp_bookmarks()
+  for path, item in pairs(temp or {}) do
+    if matches(item.key) then
+      return path
+    end
+  end
+
+  local bookmarks = get_all_bookmarks()
+  for path, item in pairs(bookmarks or {}) do
+    if matches(item.key) then
+      return path
+    end
+  end
+
+  return nil
+end
+
+local function jump_by_key_spec(spec)
+  local cleaned = (spec or ""):gsub("^%s*(.-)%s*$", "%1")
+  if cleaned == "" then
+    ya.notify { title = "Bookmarks", content = "Missing key sequence", timeout = 1, level = "warn" }
+    return false
+  end
+
+  local seq = parse_keys_input(cleaned)
+  if #seq == 0 then
+    ya.notify { title = "Bookmarks", content = "Missing key sequence", timeout = 1, level = "warn" }
+    return false
+  end
+
+  local path = find_path_by_key_sequence(seq)
+  if not path then
+    ya.notify { title = "Bookmarks", content = "Bookmark not found for key: " .. _seq_to_string(seq), timeout = 1, level = "info" }
+    return false
+  end
+
+  action_jump(path)
+  return true
 end
 
 local generate_key = function()
@@ -1323,10 +1473,16 @@ end
 
 return {
   setup = function(state, options)
-    local default_path = (ya.target_family() == "windows" and os.getenv("APPDATA") .. "\\yazi\\config\\bookmark") or
-        (os.getenv("HOME") .. "/.config/yazi/bookmark")
-    state.path = options.path or default_path
+    local default_path = (ya.target_family() == "windows" and os.getenv("APPDATA") .. "\\yazi\\config\\bookmarks") or
+        (os.getenv("HOME") .. "/.config/yazi/bookmarks")
+    local bookmarks_path = options.bookmarks_path or options.path
+    if type(bookmarks_path) == "string" and bookmarks_path ~= '' then
+        state.path = bookmarks_path
+    else
+        state.path = default_path
+    end
     state.jump_notify = options.jump_notify == nil and false or options.jump_notify
+    state.home_alias_enabled = options.home_alias_enabled == nil and true or options.home_alias_enabled
     state.path_truncate_enabled = options.path_truncate_enabled == nil and false or options.path_truncate_enabled
     state.path_max_depth = options.path_max_depth or 3
     state.fzf_path_truncate_enabled = options.fzf_path_truncate_enabled == nil and false or
@@ -1347,6 +1503,16 @@ return {
         false or
         options.history_fzf_path_truncate_long_names_enabled
     state.history_fzf_path_max_folder_name_length = options.history_fzf_path_max_folder_name_length or 30
+
+    local special_keys_options = options.special_keys or {}
+    local special_keys = {}
+    for name, default_key in pairs(DEFAULT_SPECIAL_KEYS) do
+      local normalized = normalize_special_key(special_keys_options[name], default_key)
+      if normalized ~= nil then
+        special_keys[name] = normalized
+      end
+    end
+    state.special_keys = special_keys
 
     ensure_directory(state.path)
     local keys = options.keys or "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -1440,7 +1606,14 @@ return {
   end,
 
   entry = function(self, jobs)
-    local action = jobs.args[1]
+    local args = jobs.args or {}
+    local action = args[1]
+
+    if type(action) == "string" and action:sub(1, 4):lower() == "key_" then
+      jump_by_key_spec(action:sub(5))
+      return
+    end
+
     if not action then return end
 
     if action == "save" then
@@ -1484,16 +1657,6 @@ return {
       if path then
         local temp_b = get_temp_bookmarks()
         action_save(path, temp_b[path] ~= nil)
-      end
-    elseif action == "history" then
-      local selected_path = fzf_history()
-      if selected_path then
-        action_jump(selected_path)
-      end
-    elseif action == "fuzzy" then
-      local selected_path = fzf_find()
-      if selected_path then
-        action_jump(selected_path)
       end
     end
   end,

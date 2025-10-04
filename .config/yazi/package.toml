@@ -25,8 +25,8 @@ hash = "58bfa473bcac8574400e573787954512"
 
 [[plugin.deps]]
 use = "WhoSowSee/whoosh"
-rev = "14561ff"
-hash = "482ea74847bcc8c4a72a9fa7bb9def8"
+rev = "a2c91f1"
+hash = "8aec744656860856e09d1abe63151f77"
 
 [[plugin.deps]]
 use = "KKV9/compress"
@@ -70,8 +70,8 @@ hash = "901741afba1979739b4650324265162e"
 
 [[plugin.deps]]
 use = "uhs-robert/sshfs"
-rev = "1a466c8"
-hash = "216b0497421e49b7fda5f07d20435400"
+rev = "0d6e699"
+hash = "458a404b1b9d6e72ee27812629782a0b"
 
 [[plugin.deps]]
 use = "pirafrank/what-size"
