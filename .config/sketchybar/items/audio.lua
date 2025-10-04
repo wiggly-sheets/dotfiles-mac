@@ -44,6 +44,8 @@ local volume_icon = sbar.add("item", "widgets.volume2", {
 	},
 	click_script = 'osascript -e \'tell application "System Events" to tell process "SoundSource" to click menu bar item 1 of menu bar 2\'',
 })
+local colors = require("colors")
+local icons = require("icons")
 
 local mic = sbar.add("item", "mic", {
 	icon = {
@@ -63,9 +65,41 @@ local mic = sbar.add("item", "mic", {
 	},
 	position = "right",
 	update_freq = 5,
-	script = "~/.config/sketchybar/helpers/scripts/mic.sh",
 	click_script = 'osascript -e \'tell application "System Events" to tell process "SoundSource" to click menu bar item 1 of menu bar 2\'',
 })
+
+-- Function to update mic icon/label
+local function update_mic()
+	sbar.exec("osascript -e 'set volInfo to input volume of (get volume settings)'", function(result)
+		local volume = tonumber(result)
+
+		if not volume then
+			-- No valid input volume detected
+			mic:set({
+				icon = { string = "􀊳" },
+				label = { string = "" },
+			})
+		elseif volume == 0 then
+			-- Volume is zero but not muted
+			mic:set({
+				icon = { string = "􀊳" },
+				label = { string = "0%" },
+			})
+		else
+			-- Mic is unmuted and volume > 0
+			mic:set({
+				icon = { string = "􀊱" },
+				label = { string = volume .. "%" },
+			})
+		end
+	end)
+end
+
+-- Subscribe to routine updates
+mic:subscribe({ "routine" }, update_mic)
+
+-- Initialize at startup
+update_mic()
 
 local volume_bracket = sbar.add("bracket", "widgets.volume.bracket", {
 	volume_icon.name,

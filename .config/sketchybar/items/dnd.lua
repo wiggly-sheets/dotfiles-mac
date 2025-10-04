@@ -1,12 +1,31 @@
+local colors = require("colors")
+
 local dnd = sbar.add("item", "dnd", {
+	update_freq = 3,
 	label = {
 		drawing = true,
 		string = "􀆺",
 		font = { size = 15 },
+		color = colors.white,
 	},
 	position = "right",
-	script = "/Users/Zeb/.config/sketchybar/helpers/scripts/dnd.sh",
 	click_script = 'osascript -e \'tell application "Shortcuts" to run shortcut "Toggle DND"\'',
-	update_freq = 3,
 	padding_right = 20,
 })
+
+-- Simple update function — single sbar.exec call
+local function update_dnd()
+	sbar.exec(
+		"defaults read com.apple.controlcenter 'NSStatusItem VisibleCC FocusModes' 2>/dev/null | tr -d '%'",
+		function(result)
+			if result:match("1") then
+				dnd:set({ label = { color = colors.purple } })
+			else
+				dnd:set({ label = { color = colors.grey } })
+			end
+		end
+	)
+end
+
+-- Subscribe your DND item to the events
+dnd:subscribe({ "routine", "system_woke" }, update_dnd())

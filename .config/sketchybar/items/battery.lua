@@ -2,19 +2,35 @@ local icons = require("icons")
 local colors = require("colors")
 local settings = require("settings")
 
+local colors = require("colors")
+
 local lowpowermode = sbar.add("item", "lowpowermode", {
+	update_freq = 2,
 	position = "right",
 	label = {
-		font = {
-			family = "SF Pro",
-			size = 10.0,
-		},
+		font = { family = "SF Pro", size = 10 },
 		string = "􀋦",
+		color = colors.orange, -- default
 	},
-	script = "/Users/Zeb/.config/sketchybar/helpers/scripts/lowpowermode.sh",
 	click_script = [[osascript -e 'tell application "Shortcuts" to run shortcut "Toggle Low Power"']],
-	update_freq = 2,
 })
+
+-- Function to update low power mode color
+local function update_lowpowermode()
+	sbar.exec("pmset -g | grep lowpowermode | grep -o '[01]'", function(result)
+		result = result:match("%d") -- extract 0 or 1
+		if result == "1" then
+			lowpowermode:set({ label = { color = colors.green } }) -- green
+		else
+			lowpowermode:set({ label = { color = colors.orange } }) -- orange
+		end
+	end)
+end
+
+-- Subscribe to battery/power events
+lowpowermode:subscribe({ "power_source_change", "system_woke", "routine" }, update_lowpowermode)
+
+update_lowpowermode()
 
 local battery_percentage = sbar.add("item", "items.battery_percentage", {
 	position = "right",
