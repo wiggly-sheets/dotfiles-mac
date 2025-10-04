@@ -1,9 +1,8 @@
 local colors = require("colors")
 
-local display_item = sbar.add("item", "display", {
+local display = sbar.add("item", "display", {
 	icon = {
 		drawing = true,
-		string = "􀟛", -- default laptop icon
 		font = { family = "SF Pro", size = 12 },
 		color = colors.white,
 		padding_right = 5,
@@ -65,7 +64,7 @@ local function update_display()
 				label = "?"
 			end
 
-			display_item:set({
+			display:set({
 				icon = { string = icon, color = colors.white },
 				label = { string = label, color = colors.yellow },
 			})
@@ -74,7 +73,7 @@ local function update_display()
 end
 
 -- Subscribe to system/display events (no timed polling)
-display_item:subscribe({ "display_change", "brightness_change", "system_woke", "routine" }, update_display)
+display:subscribe({ "display_change", "brightness_change", "system_woke", "routine" }, update_display)
 
 -- Run once at load
 update_display()

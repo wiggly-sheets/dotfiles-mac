@@ -67,4 +67,5 @@ end
 
 menu_watcher:subscribe("front_app_switched", update_menus)
 menu_watcher:subscribe("space_windows_change", update_menus)
+
 return menu_watcher

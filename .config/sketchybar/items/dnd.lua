@@ -1,16 +1,15 @@
 local colors = require("colors")
 
 local dnd = sbar.add("item", "dnd", {
-	update_freq = 3,
 	label = {
 		drawing = true,
 		string = "􀆺",
 		font = { size = 15 },
-		color = colors.white,
 	},
 	position = "right",
 	click_script = 'osascript -e \'tell application "Shortcuts" to run shortcut "Toggle DND"\'',
 	padding_right = 20,
+	update_freq = 3,
 })
 
 -- Simple update function — single sbar.exec call
@@ -28,4 +27,6 @@ local function update_dnd()
 end
 
 -- Subscribe your DND item to the events
-dnd:subscribe({ "routine", "system_woke" }, update_dnd())
+dnd:subscribe({ "routine", "system_woke" }, update_dnd)
+
+update_dnd()
