@@ -5,20 +5,20 @@ local dnd = sbar.add("item", "dnd", {
 		drawing = true,
 		string = "􀆺",
 		font = { size = 15 },
+		color = colors.white,
 	},
 	position = "right",
 	click_script = 'osascript -e \'tell application "Shortcuts" to run shortcut "Toggle DND"\'',
 	padding_right = 20,
-	update_freq = 3,
+	update_freq = 2,
 })
 
--- Simple update function — single sbar.exec call
 local function update_dnd()
 	sbar.exec(
-		"defaults read com.apple.controlcenter 'NSStatusItem VisibleCC FocusModes' 2>/dev/null | tr -d '%'",
+		[[defaults read com.apple.controlcenter 'NSStatusItem VisibleCC FocusModes' 2>/dev/null]],
 		function(result)
 			if result:match("1") then
-				dnd:set({ label = { color = colors.purple } })
+				dnd:set({ label = { color = 0xffb39df3 } })
 			else
 				dnd:set({ label = { color = colors.grey } })
 			end

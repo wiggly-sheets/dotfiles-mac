@@ -4,7 +4,7 @@ local tbl = require("utils.tbl")
 
 local function load_config()
 	local config = {
-		font = require("helpers.default_font"), -- This is a font configuration for SF Pro and SF Mono (installed manually)
+		font = require("helpers.default_font"),
 		icons = "sf-symbols", -- alternatively available: NerdFont
 		weather = {
 			location = false,
