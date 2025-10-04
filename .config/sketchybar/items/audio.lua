@@ -19,7 +19,7 @@ local volume_percent = sbar.add("item", "widgets.volume1", {
 local volume_icon = sbar.add("item", "widgets.volume2", {
 	position = "right",
 	padding_right = -15,
-	padding_left = -5,
+	padding_left = 0,
 	drawing = true,
 	color = colors.yellow,
 	icon = {
@@ -45,17 +45,34 @@ local volume_icon = sbar.add("item", "widgets.volume2", {
 	click_script = 'osascript -e \'tell application "System Events" to tell process "SoundSource" to click menu bar item 1 of menu bar 2\'',
 })
 
+local mic = sbar.add("item", "mic", {
+	icon = {
+		drawing = true,
+		string = icons.mic.on,
+		font = { family = "SF Pro", size = 12 },
+		color = colors.white,
+		padding_right = 8,
+	},
+	label = {
+		padding_right = 3,
+		drawing = true,
+		width = "dynamic",
+		string = "??",
+		font = { family = "Inconsolata Nerd Font Mono" },
+		color = colors.yellow,
+	},
+	position = "right",
+	update_freq = 5,
+	script = "~/.config/sketchybar/helpers/scripts/mic.sh",
+	click_script = 'osascript -e \'tell application "System Events" to tell process "SoundSource" to click menu bar item 1 of menu bar 2\'',
+})
+
 local volume_bracket = sbar.add("bracket", "widgets.volume.bracket", {
 	volume_icon.name,
 	volume_percent.name,
 }, {
 	background = { color = colors.transparent },
 	popup = { align = "center" },
-})
-
-sbar.add("item", "widgets.volume.padding", {
-	position = "right",
-	width = 10,
 })
 
 volume_percent:subscribe("volume_change", function(env)

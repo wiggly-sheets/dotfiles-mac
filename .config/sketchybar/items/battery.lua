@@ -2,6 +2,20 @@ local icons = require("icons")
 local colors = require("colors")
 local settings = require("settings")
 
+local lowpowermode = sbar.add("item", "lowpowermode", {
+	position = "right",
+	label = {
+		font = {
+			family = "SF Pro",
+			size = 10.0,
+		},
+		string = "􀋦",
+	},
+	script = "/Users/Zeb/.config/sketchybar/helpers/scripts/lowpowermode.sh",
+	click_script = [[osascript -e 'tell application "Shortcuts" to run shortcut "Toggle Low Power"']],
+	update_freq = 2,
+})
+
 local battery_percentage = sbar.add("item", "items.battery_percentage", {
 	position = "right",
 	padding_right = 0,
