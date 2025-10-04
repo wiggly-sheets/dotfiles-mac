@@ -13,8 +13,6 @@ local weather = sbar.add("item", "widgets.weather", {
 		font = { style = settings.default, size = 14 },
 	},
 	update_freq = 500,
-	padding_right = -30,
-	padding_left = 0,
 	click_script = 'osascript -e \'tell application "System Events" to tell process "Sparrow" to click menu bar item 1 of menu bar 2\'',
 })
 
@@ -85,12 +83,12 @@ local function load_weather(weather_data)
 			string = map_condition_to_icon(condition),
 			drawing = true,
 			color = color,
+			padding_right = 5,
 		},
 		label = {
 			string = temperature,
-			padding_left = -2,
-			padding_right = 5,
 			color = color,
+			padding_right = 0,
 		},
 	})
 end

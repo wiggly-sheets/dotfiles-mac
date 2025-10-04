@@ -13,9 +13,9 @@ sbar.add("event", "swap_menus_and_spaces")
 local max_items = 15
 local menu_items = {}
 for i = 1, max_items, 1 do
-	local menu = sbar.add("item", "menu." .. i, {	
-		padding_left = -6,
-		padding_right = -6,
+	local menu = sbar.add("item", "menu." .. i, {
+		padding_left = 4,
+		padding_right = 4,
 		drawing = false,
 		y_offset = 1,
 		icon = { drawing = true },
@@ -27,7 +27,7 @@ for i = 1, max_items, 1 do
 			},
 		},
 		--	click_script = "$CONFIG_DIR/helpers/menus/bin/menus -s " .. i,
-	click_script = 'osascript -e \'tell application "System Events" to keystroke "m" using {command down, option down, control down}\'',
+		click_script = 'osascript -e \'tell application "System Events" to keystroke "m" using {command down, option down, control down}\'',
 	})
 
 	menu_items[i] = menu
@@ -44,15 +44,15 @@ sbar.add("bracket", { "/menu\\..*/" }, {
 
 local menu_padding = sbar.add("item", "menu.padding", {
 	drawing = true,
-	width = 9,
+	width = 5,
 	padding_left = 0,
 	padding_right = 0,
 })
 
 local function update_menus(env)
 	sbar.exec("$CONFIG_DIR/helpers/menus/bin/menus -l", function(menus)
-		sbar.set("/menu\\..*/", { drawing = false})
-		menu_padding:set({ drawing = true})
+		sbar.set("/menu\\..*/", { drawing = false })
+		menu_padding:set({ drawing = true })
 		id = 1
 		for menu in string.gmatch(menus, "[^\r\n]+") do
 			if id < max_items then

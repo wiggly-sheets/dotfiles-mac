@@ -4,12 +4,12 @@ local settings = require("settings")
 
 local ram = sbar.add("graph", "widgets.ram", 42, {
 	position = "right",
+	padding_right = -10,
 	background = {
 		height = 22,
 		color = { alpha = 0 },
 		border_color = { alpha = 0 },
 		drawing = true,
-		padding_right = -5,
 	},
 	icon = { string = icons.ram },
 	label = {
@@ -19,13 +19,11 @@ local ram = sbar.add("graph", "widgets.ram", 42, {
 			size = 9.0,
 		},
 		align = "right",
-		padding_right = 0,
 		width = 0,
 		y_offset = 10,
 	},
 	update_freq = 60,
 	updates = true,
-	padding_right = -12,
 	click_script = 'osascript -e \'tell application "System Events" to keystroke "r" using {command down, option down, control down}\'',
 })
 

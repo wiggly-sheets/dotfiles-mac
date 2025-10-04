@@ -2,27 +2,24 @@ local icons = require("icons")
 local colors = require("colors")
 local settings = require("settings")
 
--- Battery Widget --
-local battery = sbar.add("item", "widgets.battery", {
+local battery_percentage = sbar.add("item", "items.battery_percentage", {
 	position = "right",
+	padding_right = 0,
+	label = { font = { family = settings.default, size = 12 }, color = colors.green },
+	click_script = 'osascript -e \'tell application "System Events" to tell process "AirBattery" to click menu bar item 1 of menu bar 2\'',
+	update_freq = 60,
+})
+
+local battery = sbar.add("item", "items.battery", {
+	position = "right",
+	padding_right = -3,
+
 	icon = {
 		font = { style = settings.default },
 		color = colors.green,
-		padding_right = -1,
 	},
-	padding_left = 0,
-	padding_right = -10,
 	update_freq = 60,
 	click_script = 'osascript -e \'tell application "System Events" to keystroke "b" using {command down, option down, control down}\'',
-})
-
-local battery_percentage = sbar.add("item", "widgets.battery_percentage", {
-	position = "right",
-	label = { font = { family = settings.default, size = 12 }, color = colors.green },
-	click_script = 'osascript -e \'tell application "System Events" to tell process "AirBattery" to click menu bar item 1 of menu bar 2\'',
-	padding_left = -12,
-	padding_right = -10,
-	update_freq = 60,
 })
 
 -- Battery Updates --

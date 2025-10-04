@@ -23,8 +23,6 @@ local cpu = sbar.add("graph", "widgets.cpu", 42, {
 			size = 10.0,
 		},
 		align = "right",
-		padding_right = 0,
-		padding_left = 5,
 		width = 0,
 		y_offset = 10,
 	},

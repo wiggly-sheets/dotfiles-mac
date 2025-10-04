@@ -6,8 +6,7 @@ sbar.add("item", { position = "right", width = settings.group_paddings })
 
 local cal_up = sbar.add("item", "cal_up", {
 	position = "right",
-	padding_left = -10,
-	padding_right = 43,
+	padding_right = 0,
 	width = 0,
 	label = {
 		color = colors.white,
@@ -17,15 +16,14 @@ local cal_up = sbar.add("item", "cal_up", {
 			size = 11,
 		},
 	},
-	y_offset =7,
+	y_offset = 7,
 	click_script = 'osascript -e \'tell application "System Events" to tell process "Dato" to click menu bar item 1 of menu bar 2\'',
 })
 
 local cal_down = sbar.add("item", "cal_down", {
 	position = "right",
-	padding_left = -10,
-	padding_right = -15,
 	y_offset = -5,
+	padding_right = -10,
 	label = {
 		color = colors.white,
 		font = {
@@ -46,9 +44,6 @@ local cal_bracket = sbar.add("bracket", { cal_up.name, cal_down.name }, {
 	},
 	update_freq = 1,
 })
-
--- Padding item required because of bracket
-local spacing = sbar.add("item", { position = "right", width = 26 })
 
 cal_bracket:subscribe({ "forced", "routine", "system_woke" }, function(env)
 	local down_value = os.date("%a %b %d %Y")

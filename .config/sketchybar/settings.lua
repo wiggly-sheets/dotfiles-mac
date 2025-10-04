@@ -5,10 +5,7 @@ local tbl = require("utils.tbl")
 local function load_config()
 	local config = {
 		font = require("helpers.default_font"), -- This is a font configuration for SF Pro and SF Mono (installed manually)
-		group_paddings = 5,
-		hide_widgets = {},
 		icons = "sf-symbols", -- alternatively available: NerdFont
-		paddings = 5,
 		weather = {
 			location = false,
 			use_shortcut = false,

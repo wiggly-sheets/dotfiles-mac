@@ -4,8 +4,6 @@ local folder = sbar.add("item", "folder", {
 	icon = {
 		font = { family = "SF Pro", size = 13.5 },
 		string = "􀈖",
-		padding_left = 4,
-		padding_right = -10,
 		color = colors.white,
 	},
 	position = "right",

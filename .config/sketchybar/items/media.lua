@@ -1,6 +1,7 @@
 local colors = require("colors")
 
 local media = sbar.add("item", "media", {
+	padding_right = 5,
 	icon = {
 		font = { size = 13.5 },
 		string = "􀫀",
@@ -8,8 +9,6 @@ local media = sbar.add("item", "media", {
 		color = colors.white,
 	},
 	label = { drawing = false, width = 0 },
-	padding_left = 0,
-	padding_right = 5,
 	position = "right",
 	click_script = 'osascript -e \'tell application "System Events" to keystroke "o" using {command down, option down, control down}\'',
 })
