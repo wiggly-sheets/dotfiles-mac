@@ -116,11 +116,6 @@ net_graph_up:subscribe("network_update", function(env)
 	net_graph_up:push({ math.min(avg_up / 1000, 1) })
 end)
 
--- Match CPU widget style
--- sbar.add("bracket", "widgets.net_graph_bracket", { net_graph_up.name }, {
--- 	background = { color = colors.bg1 },
--- })
-
 -- Download network graph
 local net_graph_down = sbar.add("graph", "widgets.net_graph_down", 42, {
 	position = "right",
@@ -142,6 +137,8 @@ local net_graph_down = sbar.add("graph", "widgets.net_graph_down", 42, {
 
 local wifi = sbar.add("item", "wifi.status", {
 	position = "right",
+	padding_right = -2,
+	padding_left = 8,
 	icon = {
 		string = icons.wifi.disconnected,
 		font = {
@@ -236,11 +233,6 @@ wifi:subscribe({ "wifi_change", "system_woke", "network_update", "vpn_state_chan
 end)
 
 local popup_width = 250
-
-local wifi_padding = sbar.add("item", "widgets.wifi.padding", {
-	position = "right",
-	label = { drawing = false },
-})
 
 local wifi_bracket = sbar.add("bracket", "widgets.wifi.bracket", {
 	wifi.name,

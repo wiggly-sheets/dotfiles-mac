@@ -15,7 +15,7 @@ local cpu = sbar.add("graph", "widgets.cpu", 42, {
 		drawing = true,
 		padding_right = 0,
 	},
-	icon = { string = icons.cpu },
+	icon = { string = icons.cpu, padding_right = 3 },
 	label = {
 		string = "cpu ??%",
 		font = {

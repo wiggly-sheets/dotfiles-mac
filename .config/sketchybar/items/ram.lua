@@ -11,7 +11,7 @@ local ram = sbar.add("graph", "widgets.ram", 42, {
 		border_color = { alpha = 0 },
 		drawing = true,
 	},
-	icon = { string = icons.ram },
+	icon = { string = icons.ram, padding_right = 3 },
 	label = {
 		string = "ram ??%",
 		font = {
@@ -22,7 +22,7 @@ local ram = sbar.add("graph", "widgets.ram", 42, {
 		width = 0,
 		y_offset = 10,
 	},
-	update_freq = 60,
+	update_freq = 30,
 	updates = true,
 	click_script = 'osascript -e \'tell application "System Events" to keystroke "r" using {command down, option down, control down}\'',
 })
