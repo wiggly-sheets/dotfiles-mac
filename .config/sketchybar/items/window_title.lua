@@ -1,4 +1,49 @@
 local colors = require("colors")
+local settings = require("settings")
+local app_icons = require("helpers.app_icons")
+
+local front_app = sbar.add("item", "front_app", {
+	display = "active",
+	icon = {
+		drawing = true,
+		font = "sketchybar-app-font:16.0",
+		string = "",
+		padding_right = 0,
+		padding_left = 0,
+	},
+	label = {
+		drawing = false,
+		font = {
+			style = settings.font.style_map["Black"],
+			size = 12.0,
+		},
+		string = "",
+	},
+	updates = true,
+	position = "center",
+})
+
+front_app:subscribe("front_app_switched", function(env)
+	-- env.INFO is assumed to be the app name (e.g., "Safari")
+	local app = env.INFO
+	-- Look up the icon for the app; fall back to "Default" if none is found.
+	local icon = app_icons[app] or app_icons["Default"]
+
+	front_app:set({
+		-- Enable icon drawing and set the proper icon font, string, and color
+		icon = {
+			drawing = true,
+			string = icon,
+			font = "sketchybar-app-font:16.0",
+			padding_right = 5,
+		},
+		-- Set the app name as the label
+		label = {
+			string = app,
+			font = "IosevkaTermSlab Nerd Font",
+		},
+	})
+end)
 
 -- Window title item
 local window_title = sbar.add("item", "window_title", {
@@ -10,7 +55,6 @@ local window_title = sbar.add("item", "window_title", {
 		font = { family = "Inconsolata Nerd Font Mono", size = 12 },
 		color = colors.white,
 	},
-	update_freq = 1,
 })
 
 -- Cache previous title to avoid unnecessary updates
@@ -64,8 +108,10 @@ local function update_window_title()
 	end)
 end
 
--- Subscribe to routine + display change events
-window_title:subscribe({ "routine", "display_change" }, update_window_title)
+window_title:subscribe(
+	{ "window_focus", "front_app_switched", "space_change", "title_change", "display_change" },
+	update_window_title
+)
 
 -- Initialize at startup
 update_window_title()
