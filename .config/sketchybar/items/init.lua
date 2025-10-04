@@ -2,6 +2,10 @@
 require("items.apple")
 require("items.menus")
 require("items.spaces")
+--require("mpd.lua")
+
+--center items
+require("items.window_title")
 
 --right side items
 require("items.dnd")
