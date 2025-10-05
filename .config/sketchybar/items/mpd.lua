@@ -1,3 +1,5 @@
+local icons = require("icons")
+
 local mpd = sbar.add("item", "mpd", {
 	icon = {
 		string = "",
@@ -12,9 +14,9 @@ local mpd = sbar.add("item", "mpd", {
 		scroll_duration = 200,
 	},
 	updates = true,
-	update_freq = 5,
+	update_freq = 2,
 	position = "left",
-	click_script = "mpc toggle",
+	popup = { align = "center", horizontal = true },
 })
 
 local function update_mpd()
@@ -30,7 +32,10 @@ local function update_mpd()
 				sbar.exec("mpc current -f %album%", function(album)
 					sbar.exec("mpc current -f %title%", function(song)
 						mpd:set({
-							label = { string = artist .. "  " .. album .. "  " .. song, drawing = true },
+							label = {
+								string = artist .. "  " .. album .. "  " .. song,
+								drawing = true,
+							},
 							icon = { string = "", font = { size = 20 } },
 						})
 					end)
@@ -40,6 +45,38 @@ local function update_mpd()
 	end)
 end
 
+local back = sbar.add("item", "back", {
+
+	position = "popup." .. mpd.name,
+	icon = { string = icons.media.back },
+	click_script = "mpc next",
+})
+
+local play_pause = sbar.add("item", "play_pause", {
+
+	position = "popup." .. mpd.name,
+
+	icon = { string = icons.media.play_pause },
+
+	click_script = "mpc toggle",
+})
+
+local forward = sbar.add("item", "forward", {
+
+	position = "popup." .. mpd.name,
+	icon = { string = icons.media.forward },
+	click_script = "mpc next",
+})
+
 mpd:subscribe("routine", update_mpd)
+
+-- Popup toggle on click
+mpd:subscribe("mouse.clicked", function()
+	mpd:set({ popup = { drawing = true } })
+end)
+
+mpd:subscribe("mouse.exited.global", function()
+	mpd:set({ popup = { drawing = false } })
+end)
 
 update_mpd()

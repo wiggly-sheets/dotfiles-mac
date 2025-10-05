@@ -457,11 +457,6 @@ local wifi_down = sbar.add("item", "widgets.wifi2", {
 	click_script = 'osascript -e \'tell application "System Events" to keystroke "n" using {command down, option down, control down}\'',
 })
 
-wifi:subscribe("mouse.clicked", toggle_details)
-wifi:subscribe("mouse.exited.global", function()
-	wifi_bracket:set({ popup = { drawing = false } })
-end)
-
 wifi_up:subscribe("network_update", function(env)
 	local upload_str = env.upload:gsub("Bps", "B/s")
 	local download_str = env.download:gsub("Bps", "B/s")
