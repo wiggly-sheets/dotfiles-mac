@@ -1,39 +1,37 @@
 local mpd = sbar.add("item", "mpd", {
 	icon = {
-		string = "",
+		string = "",
 		font = "Inconsolata Nerd Font Mono",
+		padding_right = 5,
 	},
 	label = {
 		string = "",
 		font = "Inconsolata Nerd Font Mono",
+		max_chars = 15,
+		scroll_texts = true,
+		scroll_duration = 200,
 	},
 	updates = true,
 	update_freq = 5,
 	position = "left",
+	click_script = "mpc toggle",
 })
 
 local function update_mpd()
-	sbar.exec("mpc status | wc -l | tr -d ' '", function(line_count)
-		if tonumber(line_count) == 1 then
+	sbar.exec("mpc status", function(status)
+		if status and status:match("paused") then
 			-- No song playing
 			mpd:set({
-				icon = { string = "" },
+				icon = { string = "􀊅", font = { size = 20 } },
 				label = { string = "" },
 			})
 		else
 			sbar.exec("mpc current -f %artist%", function(artist)
-				sbar.exec("mpc current -f %title%", function(song)
-					sbar.exec("mpc current state", function(status)
-						local icon
-						if status ~= "playing" then
-							icon = "􀊖" -- playing
-						else
-							icon = "􀊘" -- paused
-						end
-						local output = artist:gsub("\n", "") .. " • " .. song:gsub("\n", "")
+				sbar.exec("mpc current -f %album%", function(album)
+					sbar.exec("mpc current -f %title%", function(song)
 						mpd:set({
-							icon = { string = icon, drawing = true },
-							label = { string = output, drawing = true },
+							label = { string = artist .. "  " .. album .. "  " .. song, drawing = true },
+							icon = { string = "", font = { size = 20 } },
 						})
 					end)
 				end)
@@ -43,4 +41,5 @@ local function update_mpd()
 end
 
 mpd:subscribe("routine", update_mpd)
+
 update_mpd()
