@@ -6,7 +6,7 @@ sbar.add("item", { position = "right", width = settings.group_paddings })
 
 local cal_up = sbar.add("item", "cal_up", {
 	position = "right",
-	padding_right = 0,
+	padding_right = -4,
 	width = 0,
 	label = {
 		color = colors.white,
@@ -23,7 +23,7 @@ local cal_up = sbar.add("item", "cal_up", {
 local cal_down = sbar.add("item", "cal_down", {
 	position = "right",
 	y_offset = -5,
-	padding_right = -8,
+	padding_right = -13,
 	label = {
 		color = colors.white,
 		font = {

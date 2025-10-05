@@ -6,10 +6,8 @@ local front_app = sbar.add("item", "front_app", {
 	display = "active",
 	icon = {
 		drawing = true,
-		font = "sketchybar-app-font:16.0",
+		font = "sketchybar-app-font:Regular:14.0",
 		string = "",
-		padding_right = 0,
-		padding_left = 0,
 	},
 	label = {
 		drawing = false,
@@ -19,6 +17,7 @@ local front_app = sbar.add("item", "front_app", {
 		},
 		string = "",
 	},
+	padding_right = -1,
 	updates = true,
 	position = "center",
 })
@@ -34,12 +33,11 @@ front_app:subscribe("front_app_switched", function(env)
 		icon = {
 			drawing = true,
 			string = icon,
-			font = "sketchybar-app-font:16.0",
-			padding_right = 5,
+			font = "sketchybar-app-font:Regular:14.0",
 		},
 		-- Set the app name as the label
 		label = {
-			string = app,
+			string = app .. ": ",
 			font = "IosevkaTermSlab Nerd Font",
 		},
 	})
@@ -57,17 +55,6 @@ local window_title = sbar.add("item", "window_title", {
 	},
 })
 
--- Cache previous title to avoid unnecessary updates
-local last_title = ""
-
--- Check if an external display is connected
-local function external_display_connected(callback)
-	sbar.exec("system_profiler SPDisplaysDataType | grep -i 'Display' | grep -v 'Built-In'", function(result)
-		callback(result and #result > 0)
-	end)
-end
-
--- Get frontmost window title
 local function get_front_window(callback)
 	sbar.exec("yabai -m query --windows --window | jq -r '.title'", function(title)
 		if title then
@@ -77,34 +64,37 @@ local function get_front_window(callback)
 	end)
 end
 
--- Update function
+-- Cache previous title to avoid unnecessary updates
+local last_title = ""
+
 local function update_window_title()
-	external_display_connected(function(connected)
-		if not connected then
-			-- Hide if no external display
+	-- Check for external display
+	sbar.exec("system_profiler SPDisplaysDataType | grep -i 'Display' | grep -v 'Built-In'", function(result)
+		local is_builtin_main = result and result:match("Main Display: Yes") and true or false
+
+		if is_builtin_main then
+			-- Main display is built-in, hide window title
 			window_title:set({ label = { drawing = false } })
 			last_title = ""
-			return
-		end
-
-		-- Only query window if display is connected
-		get_front_window(function(title)
-			-- Optional truncation
-			local max_len = 500
-			if #title > max_len then
-				title = title:sub(1, max_len) .. "…"
-			end
-
-			-- Only update if title changed
-			if title ~= last_title then
-				last_title = title
-				if title == "" then
-					window_title:set({ label = { drawing = false } })
+		else
+			-- External display exists, show title
+			get_front_window(function(title)
+				if title then
+					title = title:gsub("\n", ""):gsub("^%s*(.-)%s*$", "%1")
 				else
-					window_title:set({ label = { string = title, drawing = true } })
+					title = ""
 				end
-			end
-		end)
+
+				if title ~= last_title then
+					last_title = title
+					if title == "" then
+						window_title:set({ label = { drawing = false } })
+					else
+						window_title:set({ label = { string = title, drawing = true } })
+					end
+				end
+			end)
+		end
 	end)
 end
 

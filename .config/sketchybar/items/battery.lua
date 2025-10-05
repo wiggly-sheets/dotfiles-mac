@@ -10,9 +10,10 @@ local lowpowermode = sbar.add("item", "lowpowermode", {
 		string = "􀋦",
 		color = colors.orange, -- default
 	},
-	click_script = [[osascript -e 'tell application "Shortcuts" to run shortcut "Toggle Low Power"']],
 })
-
+lowpowermode:subscribe("mouse.clicked", function(env)
+	sbar.exec('shortcuts run "Toggle Low Power"')
+end)
 -- Function to update low power mode color
 local function update_lowpowermode()
 	sbar.exec("pmset -g | grep lowpowermode | grep -o '[01]'", function(result)
