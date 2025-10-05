@@ -38,7 +38,7 @@ local function toggle_caffeinate()
 			end)
 		else
 			-- Start caffeinate
-			sbar.exec("caffeinate", function()
+			sbar.exec("caffeinate -dimsu &", function()
 				update_caffeinate()
 			end)
 		end
