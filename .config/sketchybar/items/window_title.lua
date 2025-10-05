@@ -68,40 +68,53 @@ end
 local last_title = ""
 
 local function update_window_title()
-	-- Check for external display
-	sbar.exec("system_profiler SPDisplaysDataType | grep -i 'Display' | grep -v 'Built-In'", function(result)
-		local is_builtin_main = result and result:match("Main Display: Yes") and true or false
+	sbar.exec("system_profiler SPDisplaysDataType", function(result)
+		if not result then
+			return
+		end
 
-		if is_builtin_main then
-			-- Main display is built-in, hide window title
-			window_title:set({ label = { drawing = false } })
-			last_title = ""
-		else
-			-- External display exists, show title
+		local external_main = result:match("Sceptre")
+
+		-- Show only if Sceptre external monitor exists (alone or with Built-In Macbook screen)
+		if external_main then
 			get_front_window(function(title)
-				if title then
-					title = title:gsub("\n", ""):gsub("^%s*(.-)%s*$", "%1")
-				else
-					title = ""
-				end
-
 				if title ~= last_title then
 					last_title = title
-					if title == "" then
-						window_title:set({ label = { drawing = false } })
-					else
-						window_title:set({ label = { string = title, drawing = true } })
-					end
+					window_title:set({
+						label = {
+							string = title,
+							drawing = title ~= "",
+							updates = true,
+						},
+					})
 				end
 			end)
+		else
+			-- Hide if only Built-in is found
+			window_title:set({ label = { drawing = false, string = "" } })
+			last_title = ""
 		end
 	end)
 end
 
-window_title:subscribe(
-	{ "window_focus", "front_app_switched", "space_change", "title_change", "display_change" },
-	update_window_title
-)
+-- Subscribe correctly (don’t call the function)
+window_title:subscribe({
+	"window_focus",
+	"front_app_switched",
+	"space_change",
+	"title_change",
+	"display_change",
+}, update_window_title)
 
--- Initialize at startup
+-- Run once on startup
+update_window_title()
+
+window_title:subscribe({
+	"window_focus",
+	"front_app_switched",
+	"space_change",
+	"title_change",
+	"display_change",
+}, update_window_title())
+
 update_window_title()

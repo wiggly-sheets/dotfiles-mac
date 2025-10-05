@@ -101,22 +101,22 @@ useConfigColors=1
 # These mostly affect the library view.
 
 # Logo color:
-color=6
+color=1
 
 # Header color in library view:
-artistColor=6
+artistColor=2
 
 # Now playing song text in library view:
-titleColor=6
+titleColor=2
 
 # Color of enqueued songs in library view:
-enqueuedColor=6
+enqueuedColor=2
 
 
 [track cover]
 
 coverEnabled=1
-coverAnsi=0
+coverAnsi=1
 
 
 [mouse]

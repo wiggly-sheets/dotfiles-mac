@@ -2,7 +2,8 @@
 require("items.apple")
 require("items.menus")
 require("items.spaces")
---require("items.svim")
+-- require("items.mpd")
+require("items.svim")
 
 --center items
 require("items.window_title")
