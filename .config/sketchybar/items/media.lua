@@ -46,7 +46,7 @@ sbar.add("item", {
 -- State variables to hold current media info
 local artist = ""
 local album = ""
-local title = ""
+local song = ""
 
 local function clean(output)
 	if not output then
@@ -73,7 +73,7 @@ media:subscribe("routine", function()
 
 	-- 4. Fetch title
 	sbar.exec("media-control get | jq -r '.title'", function(output)
-		title = output
+		song = output
 	end)
 end)
 
@@ -89,7 +89,7 @@ local album_popup = sbar.add("item", "album_popup", {
 	},
 })
 
-local title_popup = sbar.add("item", "title_popup", {
+local title_popup = sbar.add("item", "song_popup", {
 	position = "popup.media",
 	label = {
 		drawing = true,
@@ -110,8 +110,8 @@ media:subscribe("routine", function()
 		end),
 
 		sbar.exec("media-control get | jq -r '.title'", function(output)
-			title = clean(output)
-			title_popup:set({ label = { string = "Title: " .. title }, drawing = true })
+			song = clean(output)
+			title_popup:set({ label = { string = "Song: " .. song }, drawing = true })
 		end)
 	)
 end)
