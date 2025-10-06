@@ -117,8 +117,8 @@ local weather = sbar.add("item", "widgets.weather", {
 		padding_right = 0,
 		font = {
 			family = settings.font.numbers,
-			style = settings.font.style_map["Bold"],
-			size = 14.0,
+			style = settings.font.style_map["Regular"],
+			size = 12.0,
 		},
 	},
 })
@@ -150,7 +150,7 @@ local function update_weather()
 	local url = string.format(
 		"curl -s 'http://api.weatherapi.com/v1/forecast.json?key=%s&q=%s&days=3'",
 		weather_vars.api_key or "auto:ip",
-		weather_vars.location or "Philadelphia"
+		weather_vars.location or "location"
 	)
 	sbar.exec(url, function(data)
 		local temp = math.floor(data.current.temp_f)
@@ -163,7 +163,7 @@ local function update_weather()
 				color = color,
 			},
 			label = {
-				string = string.format("%s°", temp),
+				string = string.format("%sF°", temp),
 				color = color,
 			},
 		})
