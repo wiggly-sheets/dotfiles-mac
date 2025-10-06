@@ -13,7 +13,7 @@ local mpd = sbar.add("item", "mpd", {
 		scroll_texts = true,
 		scroll_duration = 200,
 	},
-	updates = true,
+	updates = "when_shown",
 	update_freq = 2,
 	position = "left",
 	popup = { align = "center", horizontal = true },
@@ -72,7 +72,7 @@ mpd:subscribe("routine", update_mpd)
 
 -- Popup toggle on click
 mpd:subscribe("mouse.clicked", function()
-	mpd:set({ popup = { drawing = true } })
+	mpd:set({ popup = { drawing = "toggle" } })
 end)
 
 mpd:subscribe("mouse.exited.global", function()

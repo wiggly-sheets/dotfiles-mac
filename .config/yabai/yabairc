@@ -72,7 +72,7 @@ yabai -m rule --add app='^Raycast$' manage=off
 yabai -m rule --add app='^iPhone Mirroring$' manage=off
 yabai -m rule --add app='^Stickies$' manage=off
 yabai -m rule --add app='^VMware Fusion$' manage=off
-
+yabai -m rule --add app='^Stickies$' manage=off
 
 # yabai -m window --opacity 0.1 && sleep $(yabai -m config window_opacity_duration) && yabai -m window --opacity 0.0
 

@@ -11,27 +11,16 @@ local whitelist = {
 -- Media cover in the bar (small icon)
 local media = sbar.add("item", "media", {
 	position = "right",
-	update_freq = 5,
+	update_freq = 2,
+
 	label = { drawing = true },
 	icon = {
 		drawing = true,
 		string = "",
 		font = { size = 25 },
 	},
-	updates = true,
-	popup = { align = "center", horizontal = true },
-})
-
--- Popup items
-local media_artist = sbar.add("item", {
-	position = "popup." .. media.name,
-	label = { font = { size = 10 }, color = colors.white, max_chars = 18, width = 0 },
-	icon = { drawing = false },
-})
-local media_title = sbar.add("item", {
-	position = "popup." .. media.name,
-	label = { font = { size = 12 }, color = colors.white, max_chars = 24, width = 0 },
-	icon = { drawing = false },
+	updates = "when_shown",
+	popup = { align = "right", horizontal = true },
 })
 
 -- Media controls in popup
@@ -55,59 +44,83 @@ sbar.add("item", {
 })
 
 -- State variables to hold current media info
-local playing = false
 local artist = ""
 local album = ""
 local title = ""
 
+local function clean(output)
+	if not output then
+		return ""
+	end
+	output = output:gsub("^%s+", ""):gsub("%s+$", "") -- trim whitespace
+	if output == "null" or output == "nil" or output == "" then
+		return ""
+	end
+	return output
+end
+
 -- Routine to update playing status first
 media:subscribe("routine", function()
-	-- 1. Check playing
-	sbar.exec("media-control get | jq -r '.playing'", function(output)
-		playing = output == "true"
+	-- 1. Check playing(
+	sbar.exec("media-control get | jq -r '.artist'", function(output)
+		artist = output
+	end)
 
-		if playing then
-			-- 2. Fetch artist
-			sbar.exec("media-control get | jq -r '.artist // \"Unknown Artist\"'", function(output)
-				artist = output
-			end)
+	-- 3. Fetch album
+	sbar.exec("media-control get | jq -r '.album'", function(output)
+		album = output
+	end)
 
-			-- 3. Fetch album
-			sbar.exec("media-control get | jq -r '.album // \"Unknown Album\"'", function(output)
-				album = output
-			end)
-
-			-- 4. Fetch title
-			sbar.exec("media-control get | jq -r '.title // \"Unknown Title\"'", function(output)
-				title = output
-			end)
-		else
-			artist = ""
-			album = ""
-			title = ""
-		end
+	-- 4. Fetch title
+	sbar.exec("media-control get | jq -r '.title'", function(output)
+		title = output
 	end)
 end)
 
 local artist_popup = sbar.add("item", "artist_popup", {
 	position = "popup.media",
-	label = { string = "Artist: " .. artist },
+	label = { drawing = true },
 })
 
 local album_popup = sbar.add("item", "album_popup", {
 	position = "popup.media",
-	label = { string = "Album: " .. album },
+	label = {
+		drawing = true,
+	},
 })
 
 local title_popup = sbar.add("item", "title_popup", {
 	position = "popup.media",
-	label = { string = "Title: " .. title },
+	label = {
+		drawing = true,
+	},
 })
+
+media:subscribe("routine", function()
+	sbar.exec(
+		"media-control get | jq -r '.artist'",
+		function(output)
+			artist = clean(output)
+			artist_popup:set({ label = { string = "Artist: " .. artist }, drawing = true })
+		end,
+
+		sbar.exec("media-control get | jq -r '.album'", function(output)
+			album = clean(output)
+			album_popup:set({ label = { string = "Album: " .. album }, drawing = true })
+		end),
+
+		sbar.exec("media-control get | jq -r '.title'", function(output)
+			title = clean(output)
+			title_popup:set({ label = { string = "Title: " .. title }, drawing = true })
+		end)
+	)
+end)
+
 -- Popup toggle on click
 media:subscribe("mouse.clicked", function()
 	media:set({ popup = { drawing = "toggle" } })
 end)
 
-media_title:subscribe("mouse.exited.global", function()
-	media:set({ popup = { drawing = "toggle" } })
+media:subscribe("mouse.exited.global", function()
+	media:set({ popup = { drawing = false } })
 end)

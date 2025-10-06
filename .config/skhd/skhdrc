@@ -110,7 +110,7 @@ ctrl + alt - r : yabai --restart-service
 cmd + alt - r : skhd --restart-service
 
 #restart sketchybar
-shift + cmd - r : sketchybar --reload
+shift + cmd - r : brew services restart sketchybar
 
 # change current space layout
 shift + cmd - z : yabai -m space --layout bsp
