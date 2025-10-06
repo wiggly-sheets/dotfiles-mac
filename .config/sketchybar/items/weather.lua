@@ -131,26 +131,45 @@ local function get_icon(condition, is_day)
 	end
 end
 
-local function toggle_weather()
+-- 🌡️ Temperature → Color mapping
+local function get_temp_color(temp)
+	if temp <= 40 then
+		return colors.blue
+	elseif temp <= 60 then
+		return colors.green
+	elseif temp <= 75 then
+		return colors.yellow
+	elseif temp <= 85 then
+		return colors.orange
+	else
+		return colors.red
+	end
+end
+
+local function update_weather()
 	local url = string.format(
 		"curl -s 'http://api.weatherapi.com/v1/forecast.json?key=%s&q=%s&days=3'",
 		weather_vars.api_key or "auto:ip",
 		weather_vars.location or "Philadelphia"
 	)
 	sbar.exec(url, function(data)
+		local temp = math.floor(data.current.temp_f)
 		local icon = get_icon(data.current.condition.code, data.current.is_day)
+		local color = get_temp_color(temp)
 
 		weather:set({
 			icon = {
 				string = icon,
+				color = color,
 			},
 			label = {
-				string = string.format("%s°", math.floor(data.current.temp_f)),
+				string = string.format("%s°", temp),
+				color = color,
 			},
 		})
 	end)
 end
 
 weather:subscribe({ "forced", "routine", "system_woke" }, function(_)
-	toggle_weather()
+	update_weather()
 end)
