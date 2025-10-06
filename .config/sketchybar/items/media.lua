@@ -1,12 +1,10 @@
 local icons = require("icons")
 
-
-
 -- Media cover in the bar (small icon)
 local media = sbar.add("item", "media", {
 	position = "right",
 	update_freq = 2,
-
+	padding_right = 0,
 	label = { drawing = true },
 	icon = {
 		drawing = true,
@@ -111,17 +109,17 @@ media:subscribe("routine", function()
 end)
 
 -- Popup toggle on click
-media:subscribe("mouse.clicked", function(env)
-	if env.BUTTON == "left" then
-	media:set({ popup = { drawing = "toggle" } })
-	else
-		sbar.exec("media-control toggle-play-pause")
+media:subscribe(
+	"mouse.clicked",
+	function(env)
+		if env.BUTTON == "left" then
+			media:set({ popup = { drawing = "toggle" } })
+		else
+			sbar.exec("media-control toggle-play-pause")
+		end
+	end,
 
-end
-end,
-
-
-media:subscribe("mouse.exited.global", "mouse.exited", function()
-	media:set({ popup = { drawing = false } })
-end)
+	media:subscribe("mouse.exited.global", "mouse.exited", function()
+		media:set({ popup = { drawing = false } })
+	end)
 )

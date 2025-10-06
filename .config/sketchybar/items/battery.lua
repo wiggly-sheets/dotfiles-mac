@@ -8,7 +8,6 @@ local lowpowermode = sbar.add("item", "lowpowermode", {
 	label = {
 		font = { family = "SF Pro", size = 10 },
 		string = "􀋦",
-		color = colors.orange, -- default
 	},
 })
 lowpowermode:subscribe("mouse.clicked", function(env)

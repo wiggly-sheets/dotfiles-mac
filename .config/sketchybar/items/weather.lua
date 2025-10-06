@@ -1,120 +1,185 @@
+local weather_vars = require("helpers.weather_vars")
 local colors = require("colors")
-local icons = require("icons")
 local settings = require("settings")
-local loc = require("utils.loc")
-local tbl = require("utils.tbl")
 
--- Add the weather item
+local weather_icons_day = {
+	[1000] = "", -- Sunny/113
+	[1003] = "", -- Partly cloudy/116
+	[1006] = "", -- Cloudy/119
+	[1009] = "", -- Overcast/122
+	[1030] = "", -- Mist/143
+	[1063] = "", -- Patchy rain possible/176
+	[1066] = "", -- Patchy snow possible/179
+	[1069] = "", -- Patchy sleet possible/182
+	[1072] = "", -- Patchy freezing drizzle possible/185
+	[1087] = "", -- Thundery outbreaks possible/200
+	[1114] = "", -- Blowing snow/227
+	[1117] = "", -- Blizzard/230
+	[1135] = "", -- Fog/248
+	[1147] = "", -- Freezing fog/260
+	[1150] = "", -- Patchy light drizzle/263
+	[1153] = "", -- Light drizzle/266
+	[1168] = "", -- Freezing drizzle/281
+	[1171] = "", -- Heavy freezing drizzle/284
+	[1180] = "", -- Patchy light rain/293
+	[1183] = "", -- Light rain/296
+	[1186] = "", -- Moderate rain at times/299
+	[1189] = "", -- Moderate rain/302
+	[1192] = "", -- Heavy rain at times/305
+	[1195] = "", -- Heavy rain/308
+	[1198] = "", -- Light freezing rain/311
+	[1201] = "", -- Moderate or heavy freezing rain/314
+	[1204] = "", -- Light sleet/317
+	[1207] = "", -- Moderate or heavy sleet/320
+	[1210] = "", -- Patchy light snow/323
+	[1213] = "", -- Light snow/326
+	[1216] = "", -- Patchy moderate snow/329
+	[1219] = "", -- Moderate snow/332
+	[1222] = "", -- Patchy heavy snow/335
+	[1225] = "", -- Heavy snow/338
+	[1237] = "", -- Ice pellets/350
+	[1240] = "", -- Light rain shower/353
+	[1243] = "", -- Moderate or heavy rain shower/356
+	[1246] = "", -- Torrential rain shower/359
+	[1249] = "", -- Light sleet showers/362
+	[1252] = "", -- Moderate or heavy sleet showers/365
+	[1255] = "", -- Light snow showers/368
+	[1258] = "", -- Moderate or heavy snow showers/371
+	[1261] = "", -- Light showers of ice pellets/374
+	[1264] = "", -- Moderate or heavy showers of ice pellets/377
+	[1273] = "", -- Patchy light rain with thunder/386
+	[1276] = "", -- Moderate or heavy rain with thunder/389
+	[1279] = "", -- Patchy light snow with thunder/392
+	[1282] = "", -- Moderate or heavy snow with thunder/395
+}
+
+local weather_icons_night = {
+	[1000] = "", -- Clear/113
+	[1003] = "", -- Partly cloudy/116
+	[1006] = "", -- Cloudy/119
+	[1009] = "", -- Overcast/122
+	[1030] = "", -- Mist/143
+	[1063] = "", -- Patchy rain possible/176
+	[1066] = "", -- Patchy snow possible/179
+	[1069] = "", -- Patchy sleet possible/182
+	[1072] = "", -- Patchy freezing drizzle possible/185
+	[1087] = "", -- Thundery outbreaks possible/200
+	[1114] = "", -- Blowing snow/227
+	[1117] = "", -- Blizzard/230
+	[1135] = "", -- Fog/248
+	[1147] = "", -- Freezing fog/260
+	[1150] = "", -- Patchy light drizzle/263
+	[1153] = "", -- Light drizzle/266
+	[1168] = "", -- Freezing drizzle/281
+	[1171] = "", -- Heavy freezing drizzle/284
+	[1180] = "", -- Patchy light rain/293
+	[1183] = "", -- Light rain/296
+	[1186] = "", -- Moderate rain at times/299
+	[1189] = "", -- Moderate rain/302
+	[1192] = "", -- Heavy rain at times/305
+	[1195] = "", -- Heavy rain/308
+	[1198] = "", -- Light freezing rain/311
+	[1201] = "", -- Moderate or heavy freezing rain/314
+	[1204] = "", -- Light sleet/317
+	[1207] = "", -- Moderate or heavy sleet/320
+	[1210] = "", -- Patchy light snow/323
+	[1213] = "", -- Light snow/326
+	[1216] = "", -- Patchy moderate snow/329
+	[1219] = "", -- Moderate snow/332
+	[1222] = "", -- Patchy heavy snow/335
+	[1225] = "", -- Heavy snow/338
+	[1237] = "", -- Ice pellets/350
+	[1240] = "", -- Light rain shower/353
+	[1243] = "", -- Moderate or heavy rain shower/356
+	[1246] = "", -- Torrential rain shower/359
+	[1249] = "", -- Light sleet showers/362
+	[1252] = "", -- Moderate or heavy sleet showers/365
+	[1255] = "", -- Light snow showers/368
+	[1258] = "", -- Moderate or heavy snow showers/371
+	[1261] = "", -- Light showers of ice pellets/374
+	[1264] = "", -- Moderate or heavy showers of ice pellets/377
+	[1273] = "", -- Patchy light rain with thunder/386
+	[1276] = "", -- Moderate or heavy rain with thunder/389
+	[1279] = "", -- Patchy light snow with thunder/392
+	[1282] = "", -- Moderate or heavy snow with thunder/395
+}
+
 local weather = sbar.add("item", "widgets.weather", {
 	position = "right",
-	icon = { drawing = false },
-	label = {
-		string = icons.loading,
-		font = { style = settings.default, size = 14 },
-	},
-	update_freq = 500,
 	click_script = 'osascript -e \'tell application "System Events" to tell process "Sparrow" to click menu bar item 1 of menu bar 2\'',
+	icon = {
+		font = { family = "JetBrainsMono Nerd Font", style = "Regular", size = 14 },
+		padding_right = 2,
+		padding_left = 0,
+	},
+	update_freq = 3600,
+	label = {
+		font = {
+			family = settings.font.numbers,
+			style = settings.font.style_map["Bold"],
+			size = 14.0,
+		},
+		align = "right",
+	},
 })
 
--- Bracket for background
+local function get_icon(condition, is_day)
+	if is_day == 1 then
+		return weather_icons_day[condition] or condition
+	else
+		return weather_icons_night[condition] or condition
+	end
+end
+
 sbar.add("bracket", "widgets.weather.bracket", { weather.name }, {
 	background = { color = colors.bg1 },
 })
 
 sbar.add("item", "widgets.weather.padding", {
 	position = "right",
-	width = 0,
+	width = settings.group_paddings,
 })
 
--- Map weather condition to icon
-local function map_condition_to_icon(cond)
-	local condition = cond:lower():match("^%s*(.-)%s*$")
-	if condition == "sunny" then
-		return icons.weather.sunny
-	elseif condition == "cloudy" or condition == "overcast" or condition == "haze" then
-		return icons.weather.cloudy
-	elseif condition == "clear" then
-		return icons.weather.clear
-	elseif string.find(condition, "storm") or string.find(condition, "thunder") then
-		return icons.weather.stormy
-	elseif string.find(condition, "partly") then
-		return icons.weather.partly
-	elseif string.find(condition, "sleet") or string.find(condition, "freez") then
-		return icons.weather.sleet
-	elseif string.find(condition, "rain") or string.find(condition, "drizzle") then
-		return icons.weather.rainy
-	elseif string.find(condition, "snow") or string.find(condition, "ice") then
-		return icons.weather.snowy
-	elseif string.find(condition, "mist") or string.find(condition, "fog") then
-		return icons.weather.foggy
-	end
-	return "?"
-end
+local function toggle_weather()
+	sbar.remove("/weather.location/")
+	sbar.remove("/weather.condition/")
+	sbar.remove("/weather.day.*/")
+	sbar.remove("/weather.day.*.hourly.*/")
 
--- Map temperature to a color
-local function temp_to_color(tempF)
-	local t = tonumber(tempF)
-	if not t then
-		return colors.white
-	end
+	local url = string.format(
+		"curl -s 'http://api.weatherapi.com/v1/forecast.json?key=%s&q=%s&days=3'",
+		weather_vars.api_key or "auto:ip",
+		weather_vars.location or "Philadelphia"
+	)
+	sbar.exec(url, function(data)
+		local icon = get_icon(data.current.condition.code, data.current.is_day)
 
-	if t <= 40 then
-		return colors.blue -- cold
-	elseif t <= 60 then
-		return colors.green -- mild
-	elseif t <= 80 then
-		return colors.yellow -- warm
-	elseif t <= 90 then
-		return colors.orange -- hot
-	else
-		return colors.red -- very hot
-	end
-end
+		weather:set({
+			icon = {
+				string = icon,
+			},
+			label = {
+				string = string.format("%s°", math.floor(data.current.temp_f)),
+			},
+		})
 
--- Load weather and set icon/label
-local function load_weather(weather_data)
-	local current_condition = weather_data.current_condition[1]
-	local temperature = current_condition.temp_F .. "°"
-	local condition = current_condition.weatherDesc[1].value
-	local color = temp_to_color(current_condition.temp_F)
-
-	weather:set({
-		icon = {
-			string = map_condition_to_icon(condition),
-			drawing = true,
-			color = color,
-			padding_right = 5,
-		},
-		label = {
-			string = temperature,
-			color = color,
-			padding_right = 0,
-		},
-	})
-end
-
--- Subscribe to events and fetch weather
-weather:subscribe({ "routine", "forced", "system_woke" }, function()
-	sbar.exec("ipconfig getifaddr en0", function(wifi)
-		local loc_str = ""
-		if settings.weather.use_shortcut and wifi ~= "" then
-			sbar.exec('shortcuts run "Get Location" | tee', function(location)
-				local loc_tbl = tbl.from_string(location)
-				if loc_tbl and #loc_tbl > 2 then
-					local country = loc_tbl[#loc_tbl]
-					if country == "United States" then
-						local region = loc_tbl[#loc_tbl - 1]
-						local city, state, _ = region:match("^(.-)%s+(%a%a)%s+(%d%d%d%d%d)$")
-						if city and state then
-							loc_str = city .. "+" .. loc.state_abbrevation_to_name(state):gsub(" ", "+")
-						end
-					end
-				end
-			end)
+		for day_index, day_item in pairs(data.forecast.forecastday) do
+			local display_date = "Today"
+			if day_index == 2 then
+				display_date = "Tomorrow"
+			elseif day_index == 3 then
+				local two_days_later = os.time() + (2 * 24 * 60 * 60)
+				display_date = tostring(os.date("%A", two_days_later))
+			end
+			local day_icon = get_icon(day_item.day.condition.code, day_item.day.is_day)
 		end
-		if loc_str == "" and settings.weather.location then
-			loc_str = settings.weather.location
-		end
-		sbar.exec('curl "wttr.in/' .. loc_str .. '?format=j1"', load_weather)
 	end)
+end
+
+weather:subscribe({ "forced", "routine", "system_woke" }, function(_)
+	toggle_weather()
+end)
+
+weather:subscribe("mouse.clicked", function(_)
+	sbar.exec("")
 end)

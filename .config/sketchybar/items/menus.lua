@@ -5,10 +5,7 @@ local menu_watcher = sbar.add("item", {
 	drawing = false,
 	updates = true,
 })
-local space_menu_swap = sbar.add("item", {
-	drawing = false,
-	updates = true,
-})
+
 sbar.add("event", "swap_menus_and_spaces")
 local max_items = 15
 local menu_items = {}
@@ -65,7 +62,6 @@ local function update_menus(env)
 	end)
 end
 
-menu_watcher:subscribe("front_app_switched", update_menus)
-menu_watcher:subscribe("space_windows_change", update_menus)
+menu_watcher:subscribe("front_app_switched", "space_windows_change", update_menus)
 
 return menu_watcher

@@ -100,3 +100,6 @@ bin/
 
 # FZF / fzf-git temporary
 *.fzf
+
+#api keys
+.config/sketchybar/helpers/weather_vars.lua

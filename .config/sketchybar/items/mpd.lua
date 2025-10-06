@@ -75,11 +75,11 @@ mpd:subscribe("routine", update_mpd)
 
 -- Popup toggle on click
 mpd:subscribe("mouse.clicked", function(env)
-	if env.BUTTON == "left" then           -- "1" = left click
+	if env.BUTTON == "left" then
 		mpd:set({ popup = { drawing = "toggle" } })
-	elseif env.BUTTON == "right" then       -- "2" = right click
+	elseif env.BUTTON == "right" then
 		sbar.exec("mpc toggle")
-	else                                -- any other button
+	else -- any other button
 		sbar.exec("mpc stop")
 	end
 end)
