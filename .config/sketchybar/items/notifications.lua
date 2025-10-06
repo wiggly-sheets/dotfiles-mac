@@ -1,19 +1,20 @@
 local colors = require("colors")
+local settings = require("settings")
 
--- Add an item for notifications
 local notifications = sbar.add("item", "widgets.notifications", {
 	position = "right",
-	y_offset = 10,
-	padding_left = -20,
+	width = 5,
+	y_offset = 14,
+	padding_right = 10,
 	icon = {
 		font = { family = "JetBrainsMono Nerd Font", style = "Regular", size = 12 },
 		color = colors.red,
 	},
 	label = {
 		string = "",
-		font = { family = "JetBrainsMono Nerd Font", style = "Bold", size = 10 },
+		font = { family = settings.default, style = "Bold", size = 10 },
 	},
-	update_freq = 60,
+	update_freq = 3,
 })
 
 local function update_notifications()
@@ -27,7 +28,7 @@ local function update_notifications()
 		local count = tonumber(output) or 0
 		if count > 0 then
 			notifications:set({
-				icon = { string = "●" }, -- red dot
+				icon = { string = "●" },
 				label = { string = tostring(count) },
 			})
 		else
@@ -41,3 +42,9 @@ end
 
 notifications:subscribe({ "routine", "forced", "system_woke" }, update_notifications)
 update_notifications()
+
+notifications:subscribe("mouse.clicked", function(env)
+	if env.BUTTON == "left" then
+		sbar.exec("cliclick kd:fn t:n")
+	end
+end)

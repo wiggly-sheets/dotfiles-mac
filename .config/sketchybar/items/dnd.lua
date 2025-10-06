@@ -9,7 +9,7 @@ local dnd = sbar.add("item", "dnd", {
 	},
 	position = "right",
 	click_script = 'osascript -e \'tell application "Shortcuts" to run shortcut "Toggle DND"\'',
-	padding_right = 20,
+	padding_right = 12,
 	update_freq = 2,
 })
 
@@ -18,7 +18,7 @@ local function update_dnd()
 		[[defaults read com.apple.controlcenter 'NSStatusItem VisibleCC FocusModes' 2>/dev/null]],
 		function(result)
 			if result:match("1") then
-				dnd:set({ label = { color = 0xffb39df3 } })
+				dnd:set({ label = { color = 0xffb39df3 } }) -- hardcoded purple because it's different than magenta in color config to match system icon
 			else
 				dnd:set({ label = { color = colors.grey } })
 			end

@@ -11,6 +11,7 @@ local lowpowermode = sbar.add("item", "lowpowermode", {
 		string = "􀋦",
 	},
 })
+
 lowpowermode:subscribe("mouse.clicked", function(env)
 	sbar.exec('shortcuts run "Toggle Low Power"')
 end)
