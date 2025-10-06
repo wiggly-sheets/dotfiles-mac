@@ -86,6 +86,7 @@ local net_graph_up = sbar.add("graph", "widgets.net_graph_up", 42, {
 	},
 	updates = true,
 	y_offset = 7,
+	padding_right = -2,
 
 	update_freq = 30,
 	click_script = 'osascript -e \'tell application "System Events" to keystroke "n" using {command down, option down, control down}\'',

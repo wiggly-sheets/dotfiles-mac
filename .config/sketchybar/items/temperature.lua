@@ -8,10 +8,8 @@ local cpu_item = sbar.add("item", "cpu_temp", {
 	padding_left = -60,
 	y_offset = 10,
 	icon = { string = icons.cpu, padding_left = 3 },
-	label = { padding_left = 4 },
-	font = {
-		family = settings.default,
-	},
+	label = { padding_left = 4, font = { family = settings.default, size = 12 } },
+
 	click_script = 'osascript -e \'tell application "System Events" to keystroke "c" using {command down, option down, control down}\'',
 })
 
@@ -20,10 +18,8 @@ local gpu_item = sbar.add("item", "gpu_temp", {
 	position = "right",
 	y_offset = -5,
 	icon = { string = "􀧓", padding_left = 4 },
-	label = { padding_left = 4 },
-	font = {
-		family = settings.default,
-	},
+	label = { padding_left = 4, font = { family = settings.default, size = 12 } },
+
 	click_script = 'osascript -e \'tell application "System Events" to keystroke "c" using {command down, option down, control down}\'',
 })
 

@@ -18,7 +18,7 @@ local volume_percent = sbar.add("item", "widgets.volume1", {
 
 local volume_icon = sbar.add("item", "widgets.volume2", {
 	position = "right",
-	padding_right = -15,
+	padding_right = -18,
 	padding_left = 0,
 	drawing = true,
 	color = colors.yellow,
@@ -51,10 +51,10 @@ local mic = sbar.add("item", "mic", {
 		string = icons.mic.on,
 		font = { family = "SF Pro", size = 12 },
 		color = colors.white,
-		padding_right = 8,
+		padding_right = 3,
 	},
 	label = {
-		padding_right = 3,
+		padding_right = 1,
 		drawing = true,
 		width = "dynamic",
 		string = "??",
