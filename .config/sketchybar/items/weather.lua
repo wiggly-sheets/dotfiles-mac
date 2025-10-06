@@ -110,16 +110,16 @@ local weather = sbar.add("item", "widgets.weather", {
 	icon = {
 		font = { family = "JetBrainsMono Nerd Font", style = "Regular", size = 14 },
 		padding_right = 2,
-		padding_left = 0,
+		padding_left = 12,
 	},
 	update_freq = 3600,
 	label = {
+		padding_right = 0,
 		font = {
 			family = settings.font.numbers,
 			style = settings.font.style_map["Bold"],
 			size = 14.0,
 		},
-		align = "right",
 	},
 })
 
@@ -131,21 +131,7 @@ local function get_icon(condition, is_day)
 	end
 end
 
-sbar.add("bracket", "widgets.weather.bracket", { weather.name }, {
-	background = { color = colors.bg1 },
-})
-
-sbar.add("item", "widgets.weather.padding", {
-	position = "right",
-	width = settings.group_paddings,
-})
-
 local function toggle_weather()
-	sbar.remove("/weather.location/")
-	sbar.remove("/weather.condition/")
-	sbar.remove("/weather.day.*/")
-	sbar.remove("/weather.day.*.hourly.*/")
-
 	local url = string.format(
 		"curl -s 'http://api.weatherapi.com/v1/forecast.json?key=%s&q=%s&days=3'",
 		weather_vars.api_key or "auto:ip",
@@ -162,24 +148,9 @@ local function toggle_weather()
 				string = string.format("%s°", math.floor(data.current.temp_f)),
 			},
 		})
-
-		for day_index, day_item in pairs(data.forecast.forecastday) do
-			local display_date = "Today"
-			if day_index == 2 then
-				display_date = "Tomorrow"
-			elseif day_index == 3 then
-				local two_days_later = os.time() + (2 * 24 * 60 * 60)
-				display_date = tostring(os.date("%A", two_days_later))
-			end
-			local day_icon = get_icon(day_item.day.condition.code, day_item.day.is_day)
-		end
 	end)
 end
 
 weather:subscribe({ "forced", "routine", "system_woke" }, function(_)
 	toggle_weather()
-end)
-
-weather:subscribe("mouse.clicked", function(_)
-	sbar.exec("")
 end)

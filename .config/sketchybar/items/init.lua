@@ -9,6 +9,7 @@ require("items.mpd")
 require("items.window_title")
 
 --right side items
+require("items.notifications")
 require("items.dnd")
 require("items.date_time")
 require("items.control_center")

@@ -5,6 +5,7 @@ local settings = require("settings")
 local lowpowermode = sbar.add("item", "lowpowermode", {
 	update_freq = 2,
 	position = "right",
+	padding_right = -8,
 	label = {
 		font = { family = "SF Pro", size = 10 },
 		string = "􀋦",
