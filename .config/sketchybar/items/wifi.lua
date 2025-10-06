@@ -138,7 +138,7 @@ local net_graph_down = sbar.add("graph", "widgets.net_graph_down", 42, {
 local wifi = sbar.add("item", "wifi.status", {
 	position = "right",
 	padding_right = -2,
-	padding_left = 8,
+	padding_left = 2,
 	icon = {
 		string = icons.wifi.disconnected,
 		font = {
@@ -424,6 +424,7 @@ local wifi_up = sbar.add("item", "widgets.wifi1", {
 	},
 	label = {
 		padding_left = 3,
+		padding_right = 0,
 		font = {
 			style = settings.default,
 			size = 11.0,
@@ -446,6 +447,7 @@ local wifi_down = sbar.add("item", "widgets.wifi2", {
 	},
 	label = {
 		padding_left = 3,
+		padding_right = 0,
 		font = {
 			style = settings.default,
 			size = 11.0,
