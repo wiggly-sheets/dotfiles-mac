@@ -14,7 +14,7 @@ local notifications = sbar.add("item", "widgets.notifications", {
 		string = "",
 		font = { family = settings.default, style = "Bold", size = 10 },
 	},
-	update_freq = 3,
+	update_freq = 30,
 })
 
 local function update_notifications()
@@ -41,7 +41,6 @@ local function update_notifications()
 end
 
 notifications:subscribe({ "routine", "forced", "system_woke" }, update_notifications)
-update_notifications()
 
 notifications:subscribe("mouse.clicked", function(env)
 	if env.BUTTON == "left" then
