@@ -21,13 +21,7 @@ local mpd = sbar.add("item", "mpd", {
 
 local function update_mpd()
 	sbar.exec("mpc status", function(status)
-		if status and status:match("paused") then
-			-- No song playing
-			mpd:set({
-				icon = { string = "􀊅", font = { size = 20 } },
-				label = { string = "" },
-			})
-		else
+		if status and status:match("playing") then
 			sbar.exec("mpc current -f %artist%", function(artist)
 				sbar.exec("mpc current -f %album%", function(album)
 					sbar.exec("mpc current -f %title%", function(song)
@@ -41,6 +35,11 @@ local function update_mpd()
 					end)
 				end)
 			end)
+		else
+			mpd:set({
+				icon = { string = "􀊅", font = { size = 20 } },
+				label = { string = "" },
+			})
 		end
 	end)
 end
