@@ -1,12 +1,6 @@
-local colors = require("colors")
 local icons = require("icons")
 
--- Only track whitelisted apps
-local whitelist = {
-	["Chromatix"] = true,
-	["Podcasts"] = true,
-	["Zen"] = true,
-}
+
 
 -- Media cover in the bar (small icon)
 local media = sbar.add("item", "media", {
@@ -117,10 +111,17 @@ media:subscribe("routine", function()
 end)
 
 -- Popup toggle on click
-media:subscribe("mouse.clicked", function()
+media:subscribe("mouse.clicked", function(env)
+	if env.BUTTON == "left" then
 	media:set({ popup = { drawing = "toggle" } })
-end)
+	else
+		sbar.exec("media-control toggle-play-pause")
 
-media:subscribe("mouse.exited.global", function()
+end
+end,
+
+
+media:subscribe("mouse.exited.global", "mouse.exited", function()
 	media:set({ popup = { drawing = false } })
 end)
+)

@@ -35,15 +35,19 @@ local function update_mpd()
 					end)
 				end)
 			end)
-		else
+		elseif status and status:match("paused") then
 			mpd:set({
 				icon = { string = "􀊅", font = { size = 20 } },
+				label = { string = "" },
+			})
+		else
+			mpd:set({
+				icon = { string = "", font = { size = 20 } },
 				label = { string = "" },
 			})
 		end
 	end)
 end
-
 local back = sbar.add("item", "back", {
 
 	position = "popup." .. mpd.name,
@@ -70,11 +74,17 @@ local forward = sbar.add("item", "forward", {
 mpd:subscribe("routine", update_mpd)
 
 -- Popup toggle on click
-mpd:subscribe("mouse.clicked", function()
-	mpd:set({ popup = { drawing = "toggle" } })
+mpd:subscribe("mouse.clicked", function(env)
+	if env.BUTTON == "left" then           -- "1" = left click
+		mpd:set({ popup = { drawing = "toggle" } })
+	elseif env.BUTTON == "right" then       -- "2" = right click
+		sbar.exec("mpc toggle")
+	else                                -- any other button
+		sbar.exec("mpc stop")
+	end
 end)
 
-mpd:subscribe("mouse.exited.global", function()
+mpd:subscribe("mouse.exited.global", "mouse.exited", function()
 	mpd:set({ popup = { drawing = false } })
 end)
 
