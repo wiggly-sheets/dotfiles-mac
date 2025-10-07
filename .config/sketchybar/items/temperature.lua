@@ -5,7 +5,7 @@ local icons = require("icons")
 local cpu_item = sbar.add("item", "cpu_temp", {
 	update_freq = 10,
 	position = "right",
-	padding_left = -60,
+	padding_left = -54,
 	y_offset = 10,
 	icon = { string = icons.cpu, padding_left = 3 },
 	label = { padding_left = 4, font = { family = settings.default, size = 12 } },
@@ -44,6 +44,7 @@ local function update_temperatures()
 			label = {
 				string = cpu_temp .. "°C",
 				color = cpu_color,
+				font = { family = settings.default, size = 10 },
 			},
 		})
 	end)
@@ -67,6 +68,7 @@ local function update_temperatures()
 			label = {
 				string = gpu_temp .. "°C",
 				color = gpu_color,
+				font = { family = settings.default, size = 10 },
 			},
 		})
 	end)
