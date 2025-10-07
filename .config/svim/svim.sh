@@ -6,7 +6,7 @@
 # The variables $MODE and $CMDLINE hold the 
 # current editor and cmdline info
 
-# COLOR=0xff9dd274
+# COLOR=0xff9dd27
 # if [ "$MODE" = "" ]; then
 #   COLOR=0xffff6578
 # fi
