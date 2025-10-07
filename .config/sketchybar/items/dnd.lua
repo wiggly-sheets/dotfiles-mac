@@ -10,7 +10,7 @@ local dnd = sbar.add("item", "dnd", {
 	position = "right",
 	click_script = 'osascript -e \'tell application "Shortcuts" to run shortcut "Toggle DND"\'',
 	padding_right = 12,
-	update_freq = 2,
+	update_freq = 5,
 })
 
 local function update_dnd()

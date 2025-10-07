@@ -3,7 +3,7 @@ local icons = require("icons")
 -- Media cover in the bar (small icon)
 local media = sbar.add("item", "media", {
 	position = "right",
-	update_freq = 2,
+	update_freq = 5,
 	padding_right = 0,
 	padding_left = 2,
 	label = { drawing = true },

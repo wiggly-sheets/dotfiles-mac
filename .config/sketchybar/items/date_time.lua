@@ -24,7 +24,7 @@ local date = sbar.add("item", "date", {
 	position = "right",
 	y_offset = -5,
 	padding_right = -13,
-
+	update_freq = 60,
 	label = {
 		color = colors.white,
 		font = {
@@ -36,9 +36,12 @@ local date = sbar.add("item", "date", {
 })
 
 time:subscribe({ "forced", "routine", "system_woke" }, function()
-	local down_value = os.date("%a %b %d %Y")
 	local up_value = os.date("%H:%M:%S %Z")
 	time:set({ label = { string = up_value } })
+end)
+
+date:subscribe({ "forced", "routine", "system_woke" }, function()
+	local down_value = os.date("%a %b %d %Y")
 	date:set({ label = { string = down_value } })
 end)
 

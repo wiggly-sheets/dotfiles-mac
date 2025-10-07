@@ -20,7 +20,6 @@ require("items.weather")
 require("items.battery")
 require("items.display")
 require("items.audio")
-
 require("items.wifi")
 require("items.temperature")
 require("items.graphs")

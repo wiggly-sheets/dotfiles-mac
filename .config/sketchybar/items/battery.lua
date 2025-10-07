@@ -3,7 +3,7 @@ local colors = require("colors")
 local settings = require("settings")
 
 local lowpowermode = sbar.add("item", "lowpowermode", {
-	update_freq = 2,
+	update_freq = 5,
 	position = "right",
 	padding_right = -10,
 	padding_left = 2,
@@ -40,7 +40,7 @@ local battery_percentage = sbar.add("item", "items.battery_percentage", {
 	padding_left = 4,
 	label = { font = { family = settings.default, size = 12 }, color = colors.green },
 	click_script = 'osascript -e \'tell application "System Events" to tell process "AirBattery" to click menu bar item 1 of menu bar 2\'',
-	update_freq = 60,
+	update_freq = 300,
 })
 
 local battery = sbar.add("item", "items.battery", {
@@ -52,7 +52,7 @@ local battery = sbar.add("item", "items.battery", {
 		font = { style = settings.default },
 		color = colors.green,
 	},
-	update_freq = 60,
+	update_freq = 300,
 	click_script = 'osascript -e \'tell application "System Events" to keystroke "b" using {command down, option down, control down}\'',
 })
 

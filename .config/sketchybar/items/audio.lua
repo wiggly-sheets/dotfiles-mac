@@ -75,13 +75,13 @@ local function update_mic()
 		if not volume then
 			-- No valid input volume detected
 			mic:set({
-				icon = { string = "􀊳" },
+				icon = { string = "" },
 				label = { string = "" },
 			})
 		elseif volume == 0 then
 			-- Volume is zero but not muted
 			mic:set({
-				icon = { string = icons.mic.off },
+				icon = { string = icons.mic.muted },
 				label = { string = "0%" },
 			})
 		else
