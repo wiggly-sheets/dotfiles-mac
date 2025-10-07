@@ -13,7 +13,7 @@ local notifications = sbar.add("item", "widgets.notifications", {
 	icon = {
 		string = "",
 		color = colors.red,
-		font = { family = "JetBrainsMono Nerd Font", size = 10 },
+		font = { family = settings.default, size = 10 },
 	},
 	label = {
 		string = "",

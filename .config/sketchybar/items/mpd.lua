@@ -1,9 +1,10 @@
 local icons = require("icons")
+local settings = require("settings")
 
 local mpd = sbar.add("item", "mpd", {
 	icon = {
 		string = "",
-		font = "Inconsolata Nerd Font Mono",
+		font = settings.default,
 		padding_right = 5,
 	},
 	label = {

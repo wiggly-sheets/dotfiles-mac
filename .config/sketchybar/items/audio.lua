@@ -49,10 +49,10 @@ local mic = sbar.add("item", "mic", {
 	icon = {
 		drawing = true,
 		string = icons.mic.on,
-		font = { family = "SF Pro", size = 12 },
+		font = { size = 12 },
 		color = colors.white,
 		padding_right = 3,
-		padding_left = -2,
+		padding_left = 0,
 	},
 	label = {
 		padding_right = 1,
@@ -81,13 +81,13 @@ local function update_mic()
 		elseif volume == 0 then
 			-- Volume is zero but not muted
 			mic:set({
-				icon = { string = "􀊳" },
+				icon = { string = icons.mic.off },
 				label = { string = "0%" },
 			})
 		else
 			-- Mic is unmuted and volume > 0
 			mic:set({
-				icon = { string = "􀊱" },
+				icon = { string = icons.mic.on },
 				label = { string = volume .. "%" },
 			})
 		end

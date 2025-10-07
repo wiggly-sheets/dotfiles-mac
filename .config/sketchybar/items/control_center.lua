@@ -7,7 +7,7 @@ local control_center = sbar.add("item", "control_center", {
 	icon = {
 		drawing = true,
 		string = "􀜊",
-		font = { family = "SF Pro", size = 13.5 },
+		font = { size = 13.5 },
 
 		color = colors.white,
 	},

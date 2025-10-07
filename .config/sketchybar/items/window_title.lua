@@ -38,7 +38,7 @@ front_app:subscribe("front_app_switched", function(env)
 		-- Set the app name as the label
 		label = {
 			string = app .. ": ",
-			font = "IosevkaTermSlab Nerd Font",
+			font = settings.default,
 		},
 	})
 end)
@@ -50,7 +50,7 @@ local window_title = sbar.add("item", "window_title", {
 	label = {
 		drawing = false,
 		string = "",
-		font = { family = "Inconsolata Nerd Font Mono", size = 12 },
+		font = { family = settings.default, size = 12 },
 		color = colors.white,
 	},
 })

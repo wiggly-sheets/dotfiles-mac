@@ -9,7 +9,7 @@ local lowpowermode = sbar.add("item", "lowpowermode", {
 	padding_left = 2,
 	y_offset = -1,
 	label = {
-		font = { family = "SF Pro", size = 10 },
+		font = { size = 10 },
 		string = "􀋦",
 	},
 })

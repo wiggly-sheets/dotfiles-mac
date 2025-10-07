@@ -19,7 +19,7 @@ for i = 1, max_items, 1 do
 		label = {
 			font = {
 				style = settings.font.style_map[i == 1 and "Bold" or "Medium"],
-				family = "Inconsolata Nerd Font Mono",
+				family = settings.default,
 				size = 12,
 			},
 		},

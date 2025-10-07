@@ -2,7 +2,7 @@ local colors = require("colors")
 
 local folder = sbar.add("item", "folder", {
 	icon = {
-		font = { family = "SF Pro", size = 13.5 },
+		font = { size = 13.5 },
 		string = "􀈖",
 		color = colors.white,
 	},

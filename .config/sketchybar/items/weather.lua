@@ -108,11 +108,11 @@ local weather = sbar.add("item", "widgets.weather", {
 	position = "right",
 	click_script = 'osascript -e \'tell application "System Events" to tell process "Sparrow" to click menu bar item 1 of menu bar 2\'',
 	icon = {
-		font = { family = "JetBrainsMono Nerd Font", style = "Regular", size = 14 },
-		padding_right = 2,
-		padding_left = 12,
+		font = { family = settings.default, style = "Regular", size = 40 },
+		padding_right = 6,
+		padding_left = 6,
 	},
-	update_freq = 3600,
+	update_freq = 3600, --30 min updates
 	label = {
 		padding_right = 0,
 		font = {

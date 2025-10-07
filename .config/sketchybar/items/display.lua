@@ -1,16 +1,17 @@
 local colors = require("colors")
+local settings = require("settings")
 
 local display = sbar.add("item", "display", {
 	icon = {
 		drawing = true,
-		font = { family = "SF Pro", size = 12 },
+		font = { size = 12 },
 		color = colors.white,
 		padding_right = 4,
 		padding_left = -2,
 	},
 	label = {
 		drawing = true,
-		font = { family = "Inconsolata Nerd Font Mono" },
+		font = { family = settings.default },
 		color = colors.yellow,
 		padding_right = 0,
 	},
