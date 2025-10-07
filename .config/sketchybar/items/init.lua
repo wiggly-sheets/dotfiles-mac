@@ -1,5 +1,4 @@
 --left side items
-require("items.apple")
 require("items.menus")
 require("items.spaces")
 --require("items.svim")

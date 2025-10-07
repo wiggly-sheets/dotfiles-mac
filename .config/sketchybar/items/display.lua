@@ -11,7 +11,7 @@ local display = sbar.add("item", "display", {
 	},
 	label = {
 		drawing = true,
-		font = { family = settings.default },
+		font = { family = settings.default, size = 12 },
 		color = colors.yellow,
 		padding_right = 0,
 	},
