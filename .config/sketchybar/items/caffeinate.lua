@@ -1,9 +1,8 @@
 local caffeinate = sbar.add("item", "caffeinate", {
-	label = { drawing = false },
 	position = "right",
 	update_freq = 5,
-	padding_left = 2,
-	padding_right = 5,
+	padding_left = 3,
+	padding_right = 3,
 })
 
 -- Function to check if a caffeinate process is active

@@ -51,7 +51,7 @@ local mic = sbar.add("item", "mic", {
 		string = icons.mic.on,
 		font = { size = 12 },
 		color = colors.white,
-		padding_right = 3,
+		padding_right = 6,
 		padding_left = 0,
 	},
 	label = {

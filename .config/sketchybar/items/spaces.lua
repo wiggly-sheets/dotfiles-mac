@@ -3,45 +3,61 @@ local icons = require("icons")
 local app_icons = require("helpers.app_icons")
 
 local spaces = {}
-local space_app_icons = {}
+local space_app_icons = {} -- sid -> concatenated icon glyphs (string)
+local space_app_names = {} -- sid -> set/table of app names present in that space
+local space_contains_front_app = {} -- sid -> bool
+local space_selected = {} -- sid -> bool
+local current_front_app = nil
 
+-- init tables
 for i = 1, 10 do
 	space_app_icons[i] = "—"
+	space_app_names[i] = {}
+	space_contains_front_app[i] = false
+	space_selected[i] = false
 end
 
-local function update_space_display(space, space_id, is_selected)
-	local icon_text = space_app_icons[space_id]
-	local space_text = "" .. tostring(space_id) .. ""
+-- Helper: update how a space looks
+local function update_space_display(space, space_id, is_selected, has_front_app)
+	local icon_text = space_app_icons[space_id] or "—"
+	local space_text = tostring(space_id)
+
+	-- Space number / highlight: white if selected, otherwise grey
+	local icon_color = is_selected and colors.white or colors.grey
+	-- App icons string: white if that space contains the front app, otherwise grey
+	local label_color = has_front_app and colors.white or colors.grey
+
 	space:set({
 		icon = {
 			string = space_text,
 			highlight = is_selected,
-			color = is_selected and colors.white or colors.grey,
+			color = icon_color,
 		},
 		label = {
 			string = icon_text,
 			highlight = is_selected,
-			color = is_selected and colors.white or colors.grey,
+			color = label_color,
 		},
 	})
 end
 
-for i = 1, 10, 1 do
+-- Build spaces
+for i = 1, 10 do
 	local space = sbar.add("space", "space." .. i, {
 		space = i,
 		icon = {
 			font = { family = "Inconsolata Nerd Font Mono", size = 12, style = "Bold" },
-			string = tostring(i), -- Placeholder before update
+			string = tostring(i),
 			padding_left = 2,
 			padding_right = 2,
 			y_offset = 1,
-			color = colors.white,
+			color = colors.grey, -- default grey; updated on events
 			highlight_color = colors.white,
 		},
 		label = {
 			padding_right = 2,
 			padding_left = 2,
-			color = colors.white,
+			color = colors.grey,
 			highlight_color = colors.white,
 			font = "sketchybar-app-font:Regular:12.0",
 		},
@@ -53,7 +69,6 @@ for i = 1, 10, 1 do
 			height = 24,
 			border_color = colors.transparent,
 		},
-		popup = { background = { border_width = 0, border_color = colors.transparent } },
 	})
 	spaces[i] = space
 
@@ -89,19 +104,25 @@ for i = 1, 10, 1 do
 		},
 	})
 
-	-- Update space on change
+	-- When the space selection changes, update selected state & visuals
 	space:subscribe("space_change", function(env)
+		local sid = tonumber(env.SID) or i
 		local is_selected = env.SELECTED == "true"
-		update_space_display(space, env.SID, is_selected)
+		space_selected[sid] = is_selected
 
+		-- update bracket border
 		space_bracket:set({
 			background = {
 				border_color = is_selected and colors.white or colors.grey,
 				corner_radius = 10,
 			},
 		})
+
+		-- update that space's display (label color depends on whether it contains the front app)
+		update_space_display(space, sid, is_selected, space_contains_front_app[sid])
 	end)
 
+	-- Click handling
 	space:subscribe("mouse.clicked", function(env)
 		if env.BUTTON == "other" then
 			space_popup:set({ background = { image = "space." .. env.SID } })
@@ -117,22 +138,49 @@ for i = 1, 10, 1 do
 	end)
 end
 
+-- Listen for front app changes
+local front_app_listener = sbar.add("item", { drawing = false })
+front_app_listener:subscribe("front_app_switched", function(env)
+	current_front_app = env.INFO -- e.g. "Safari"
+
+	-- Re-evaluate which spaces contain that front app based on last-known space_app_names
+	for sid = 1, #space_app_names do
+		local appset = space_app_names[sid] or {}
+		local has = false
+		if current_front_app and appset[current_front_app] then
+			has = true
+		end
+		space_contains_front_app[sid] = has
+	end
+
+	-- Update visuals for all spaces
+	for sid, space in ipairs(spaces) do
+		update_space_display(space, sid, space_selected[sid], space_contains_front_app[sid])
+	end
+end)
+
+-- Track window changes and update space labels + app sets
 local space_window_observer = sbar.add("item", {
 	drawing = false,
 	updates = true,
 })
-
--- Track window changes and update space labels with icons
 space_window_observer:subscribe("space_windows_change", function(env)
-	local sid = env.INFO.space
+	local sid = tonumber(env.INFO.space)
+	if not sid then
+		return
+	end
+
 	local icon_line = ""
 	local no_app = true
+	local appset = {}
 
-	for app, count in pairs(env.INFO.apps) do
+	-- build icon string and app set
+	for app, count in pairs(env.INFO.apps or {}) do
 		no_app = false
 		local lookup = app_icons[app] or icons[app]
-		local icon = lookup or app_icons["Default"] -- Use default if no match
+		local icon = lookup or app_icons["Default"]
 		icon_line = icon_line .. string.rep(icon, count)
+		appset[app] = true
 	end
 
 	if no_app then
@@ -140,9 +188,13 @@ space_window_observer:subscribe("space_windows_change", function(env)
 	end
 
 	space_app_icons[sid] = icon_line
+	space_app_names[sid] = appset
 
+	-- Update whether this space contains the current front app (if known)
+	space_contains_front_app[sid] = (current_front_app and appset[current_front_app]) and true or false
+
+	-- Update displays for all spaces (use stored selected state)
 	for space_id, space in ipairs(spaces) do
-		local is_selected = (space_id == sid)
-		update_space_display(space, space_id, is_selected)
+		update_space_display(space, space_id, space_selected[space_id], space_contains_front_app[space_id])
 	end
 end)

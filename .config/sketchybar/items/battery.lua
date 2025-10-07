@@ -37,7 +37,7 @@ update_lowpowermode()
 local battery_percentage = sbar.add("item", "items.battery_percentage", {
 	position = "right",
 	padding_right = 0,
-	padding_left = 2,
+	padding_left = 4,
 	label = { font = { family = settings.default, size = 12 }, color = colors.green },
 	click_script = 'osascript -e \'tell application "System Events" to tell process "AirBattery" to click menu bar item 1 of menu bar 2\'',
 	update_freq = 60,
@@ -46,7 +46,7 @@ local battery_percentage = sbar.add("item", "items.battery_percentage", {
 local battery = sbar.add("item", "items.battery", {
 	position = "right",
 	padding_right = -3,
-	padding_left = 0,
+	padding_left = 2,
 
 	icon = {
 		font = { style = settings.default },

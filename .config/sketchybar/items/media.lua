@@ -4,7 +4,8 @@ local icons = require("icons")
 local media = sbar.add("item", "media", {
 	position = "right",
 	update_freq = 2,
-	padding_right = 0,
+	padding_right = 2,
+	padding_left = 2,
 	label = { drawing = true },
 	icon = {
 		drawing = true,
