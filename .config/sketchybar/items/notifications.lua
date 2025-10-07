@@ -50,7 +50,7 @@ end)
 
 notifications:subscribe("mouse.clicked", function(env)
 	if env.BUTTON == "left" then
-		sbar.exec("cliclick kd:fn t:n")
+		sbar.exec("osascript -e 'tell application \"System Events\" to key code 45 using {function down}'")
 	end
 end)
 

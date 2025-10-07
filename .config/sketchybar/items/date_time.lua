@@ -61,6 +61,6 @@ time:subscribe("mouse.clicked", function(env)
 			[[osascript -e 'tell application "System Events" to tell process "Dato" to click menu bar item 1 of menu bar 2']]
 		)
 	elseif env.BUTTON == "right" then
-		sbar.exec("cliclick kd:fn t:n")
+		sbar.exec("osascript -e 'tell application \"System Events\" to key code 45 using {function down}'")
 	end
 end)

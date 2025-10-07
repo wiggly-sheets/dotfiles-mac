@@ -42,7 +42,6 @@ for i = 1, max_items, 1 do
 			},
 		},
 		--	click_script = "$CONFIG_DIR/helpers/menus/bin/menus -s " .. i,
-		click_script = 'osascript -e \'tell application "System Events" to keystroke "m" using {command down, option down, control down}\'',
 	})
 
 	menu_items[i] = menu
@@ -81,5 +80,27 @@ local function update_menus(env)
 end
 
 menu_watcher:subscribe("front_app_switched", "space_windows_change", update_menus)
+
+for _, menu in ipairs(menu_items) do
+	menu:subscribe("mouse.clicked", function(env)
+		if env.BUTTON == "left" then
+			sbar.exec(
+				"osascript -e 'tell application \"System Events\" to key code 46 using {command down, option down, control down}'"
+			)
+		elseif env.BUTTON == "right" then
+			sbar.exec("yabai -m config menubar_opacity 1.0")
+		end
+	end)
+end
+
+apple:subscribe("mouse.clicked", function(env)
+	if env.BUTTON == "left" then
+		sbar.exec(
+			"osascript -e 'tell application \"System Events\" to key code 0 using {command down, option down, control down}'"
+		)
+	elseif env.BUTTON == "right" then
+		sbar.exec("yabai -m config menubar_opacity 1.0")
+	end
+end)
 
 return menu_watcher

@@ -11,11 +11,6 @@ local front_app = sbar.add("item", "front_app", {
 	},
 	label = {
 		drawing = false,
-		font = {
-			style = settings.font.style_map["Black"],
-			size = 12.0,
-		},
-		string = "",
 	},
 	padding_right = -1,
 	updates = true,
