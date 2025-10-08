@@ -28,7 +28,6 @@ source $HOMEBREW_PREFIX/share/powerlevel10k/powerlevel10k.zsh-theme
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 
-fastfetch
 
 
 # -----------------------------
@@ -165,3 +164,6 @@ spf() {
 
 # Created by `pipx` on 2025-09-21 19:29:37
 export PATH="$PATH:/Users/Zeb/.local/bin"
+
+fastfetch
+
