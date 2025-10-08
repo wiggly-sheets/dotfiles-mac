@@ -149,7 +149,7 @@ end
 
 local function update_weather()
 	local url = string.format(
-		"curl -s 'http://api.weatherapi.com/v1/forecast.json?key=%s&q=%s&days=3'",
+		"curl -s 'http://api.weatherapi.com/v1/forecast.json?key=%s&q=%s&days=1'",
 		weather_vars.api_key or "auto:ip",
 		weather_vars.location or "location"
 	)

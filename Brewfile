@@ -11,6 +11,7 @@ tap "koekeishiya/formulae"
 tap "lihaoyun6/tap"
 tap "lslqtz/formulae"
 tap "mhaeuser/mhaeuser"
+tap "narugit/tap"
 tap "nohajc/anylinuxfs"
 tap "notwadegrimridge/brew"
 tap "philocalyst/tap"
@@ -86,10 +87,14 @@ brew "chruby"
 brew "cliclick"
 # Console Matrix
 brew "cmatrix"
+# Music player with an ncurses based interface
+brew "cmus"
 # General-purpose scripting language
 brew "php"
 # Dependency Manager for PHP
 brew "composer"
+# Manage Apple Container with Docker Compose files
+brew "container-compose"
 # Package compiler and linker metadata toolkit
 brew "pkgconf"
 # Tools and libraries to manipulate images in many formats
@@ -144,6 +149,8 @@ brew "fzf"
 brew "forgit"
 # Infamous electronic fortune-cookie generator
 brew "fortune"
+# Terminal JSON viewer
+brew "fx"
 # GNU awk utility
 brew "gawk"
 # GitHub command-line tool
@@ -160,16 +167,22 @@ brew "go"
 brew "gping"
 # GNU grep, egrep and fgrep
 brew "grep"
+# Make JSON greppable
+brew "gron"
 # Access DVDs as block devices without the decryption
 brew "libdvdcss"
 # Open-source video transcoder available for Linux, Mac, and Windows
 brew "handbrake", link: false
 # User-friendly cURL replacement (command-line HTTP client)
 brew "httpie"
+# Ping-like tool for HTTP requests
+brew "httping"
 # Website copier/offline browser
 brew "httrack"
 # Fast, highly customisable system info script with LGBTQ+ pride flags
 brew "hyfetch"
+# Tool to report network interface bandwidth
+brew "ifstat"
 # Display an interface's bandwidth usage
 brew "iftop"
 # Lightweight and flexible command-line JSON processor
@@ -214,6 +227,8 @@ brew "media-control"
 brew "media-info"
 # Matroska media files manipulation tools
 brew "mkvtoolnix"
+# Terminal-based music player
+brew "moc"
 # Drive some car across the moon
 brew "moon-buggy"
 # Remote terminal application
@@ -223,13 +238,15 @@ brew "most"
 # Command-line music player client for mpd
 brew "mpc"
 # Music Player Daemon
-brew "mpd"
+brew "mpd", restart_service: :changed
+# Feature-rich command-line audio/video downloader
+brew "yt-dlp"
+# Media player based on MPlayer and mplayer2
+brew "mpv"
 # 'traceroute' and 'ping' in a single tool
 brew "mtr"
 # NCurses Disk Usage
 brew "ncdu"
-# Ncurses-based client for the Music Player Daemon
-brew "ncmpcpp"
 # Fast, highly customisable system info script
 brew "neofetch"
 # Ambitious Vim-fork focused on extensibility and agility
@@ -278,6 +295,8 @@ brew "pipx"
 brew "ponysay"
 # Theme for zsh
 brew "powerlevel10k"
+# Wrapper to colorize and simplify ping's output
+brew "prettyping"
 # Tool Command Language
 brew "tcl-tk"
 # Python interface to Tcl/Tk
@@ -294,12 +313,16 @@ brew "ripgrep-all"
 brew "rm-improved"
 # Extremely fast tool to remove dupes and other lint from your filesystem
 brew "rmlint"
+# Terminal based Media Player Client with album art support
+brew "rmpc"
 # Utility that provides fast incremental file transfer
 brew "rsync"
 # Powerful, clean, object-oriented scripting language
 brew "ruby"
 # Install Ruby, JRuby, Rubinius, TruffleRuby, or mruby
 brew "ruby-install"
+# Web search from the terminal
+brew "s-search"
 # CLI search and replace | Space Age seD
 brew "sad"
 # Interactive find and replace in the terminal
@@ -328,6 +351,8 @@ brew "stormy"
 brew "stow"
 # Modern and pretty fancy file manager for the terminal
 brew "superfile"
+# Nodejs-based tool for optimizing SVG vector graphics files
+brew "svgo"
 # Change macOS audio source from the command-line
 brew "switchaudio-osx"
 # Manipulate and query tags on macOS files
@@ -338,6 +363,8 @@ brew "taskell"
 brew "tealdeer"
 # Modernized, complete, self-contained TeX/LaTeX engine
 brew "tectonic"
+# User interface to the TELNET protocol
+brew "telnet"
 # Send macOS User Notifications from the command-line
 brew "terminal-notifier"
 # Powerful free data recovery utility
@@ -382,8 +409,6 @@ brew "wifi-password"
 brew "yazi"
 # Process YAML, JSON, XML, CSV and properties documents from the CLI
 brew "yq"
-# Feature-rich command-line audio/video downloader
-brew "yt-dlp"
 # Shell extension to navigate your filesystem faster
 brew "zoxide"
 # UNIX shell (command interpreter)
@@ -409,9 +434,11 @@ brew "jstkdng/programs/ueberzugpp"
 # Simple hotkey-daemon for macOS.
 brew "koekeishiya/formulae/skhd"
 # A tiling window manager for macOS based on binary space partitioning.
-brew "koekeishiya/formulae/yabai", args: ["HEAD"]
+brew "koekeishiya/formulae/yabai"
 # A background looping utility that maintains the battery level of Apple Silicon based Mac computers
 brew "lslqtz/formulae/bclm_loop"
+# Check Temperature by using Apple System Management Control (Smc) tool
+brew "narugit/tap/smctemp"
 # Mount any linux-supported filesystem read/write using nfs and a microVM
 brew "nohajc/anylinuxfs/anylinuxfs"
 # User-friendly, lightweight TUI for disk imaging
@@ -478,6 +505,7 @@ cask "font-jetbrains-mono-nerd-font"
 cask "font-meslo-lg-nerd-font"
 cask "font-roboto-mono-nerd-font"
 cask "font-sf-mono"
+cask "font-sf-mono-nerd-font-ligaturized"
 cask "font-sf-pro"
 cask "font-sketchybar-app-font"
 cask "font-symbols-only-nerd-font"
