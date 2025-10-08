@@ -98,8 +98,8 @@ require("whoosh"):setup {
   },
 
   -- File path for storing user bookmarks
-  bookmarks_path = (ya.target_family() == "windows" and os.getenv("APPDATA") .. "\\yazi\\config\\bookmark") or
-         (os.getenv("HOME") .. "/.config/yazi/bookmark"),
+  bookmarks_path = (ya.target_family() == "windows" and os.getenv("APPDATA") .. "\\yazi\\config\\plugins\\whoosh.yazi\\bookmarks") or
+         (os.getenv("HOME") .. "/.config/yazi/plugins/whoosh.yazi/bookmarks"),
 
   -- Replace home directory with "~"
   home_alias_enabled = true,                            -- Toggle home aliasing in displays
@@ -166,7 +166,7 @@ desc = "Add temporary bookmark (current directory)"
 # Jump to bookmarks
 [[mgr.prepend_keymap]]
 on = "<A-k>"
-run = "plugin whoosh key_k"
+run = "plugin whoosh jump_key_k"
 desc = "Jump directly to bookmark with key k"
 
 [[mgr.prepend_keymap]]
@@ -291,6 +291,16 @@ return {
 }
 ```
 
+If you prefer to keep Neovim's `<Tab>` binding but still want access to the history picker, remap whoosh's shortcut via `special_keys` in the `init.lua` file:
+
+```lua
+require("whoosh"):setup {
+  special_keys = {
+    history = "<H>",
+  },
+}
+```
+
 ### Bookmark Types
 
 The plugin supports three types of bookmarks:
@@ -406,25 +416,25 @@ This feature significantly improves readability in deeply nested directory struc
 
 | Command            | Description                                                   |
 | ------------------ | ------------------------------------------------------------- |
-| save               | Add bookmark for hovered file/directory                       |
-| save_cwd           | Add bookmark for current working directory                    |
-| save_temp          | Add temporary bookmark for hovered file/directory             |
-| save_cwd_temp      | Add temporary bookmark for current working directory          |
-| jump_by_key        | Open navigation menu to jump to bookmark by key               |
-| key_<sequence>     | Jump instantly to bookmark matching the provided key sequence |
-| jump_by_fzf        | Open fuzzy search to jump to bookmark                         |
-| delete_by_key      | Delete bookmark by selecting with key                         |
-| delete_by_fzf      | Delete multiple bookmarks using fzf (TAB to select)           |
-| delete_all         | Delete all user-created bookmarks (excludes config bookmarks) |
-| delete_all_temp    | Delete all temporary bookmarks                                |
-| rename_by_key      | Rename bookmark by selecting with key                         |
-| rename_by_fzf      | Rename bookmark using fuzzy search                            |
+| `save`             | Add bookmark for hovered file/directory                       |
+| `save_cwd`         | Add bookmark for current working directory                    |
+| `save_temp`        | Add temporary bookmark for hovered file/directory             |
+| `save_cwd_temp`    | Add temporary bookmark for current working directory          |
+| `jump_by_key`      | Open navigation menu to jump to bookmark by key               |
+| `jump_key_<keys>`  | Jump instantly to bookmark matching the provided key sequence |
+| `jump_by_fzf`      | Open fuzzy search to jump to bookmark                         |
+| `delete_by_key`    | Delete bookmark by selecting with key                         |
+| `delete_by_fzf`    | Delete multiple bookmarks using fzf (TAB to select)           |
+| `delete_all`       | Delete all user-created bookmarks (excludes config bookmarks) |
+| `delete_all_temp`  | Delete all temporary bookmarks                                |
+| `rename_by_key`    | Rename bookmark by selecting with key                         |
+| `rename_by_fzf`      | Rename bookmark using fuzzy search                            |
 
 ### Direct Key Shortcuts
 
 You can jump without opening the menu by calling the plugin with an inline key sequence:
 
-- `plugin whoosh key_<sequence>` - inline sequence such as `key_k`, `key_<Space>`, or `key_bb`.
+- `plugin whoosh jump_key_<keys>` - inline sequence such as `jump_key_k`, `jump_key_<Space>`, or `jump_key_bb`.
 
 Sequences must be provided inline; whitespace-separated forms are not supported. The format matches the bookmark editing prompt, so you can mix plain characters, comma-separated tokens, and special keys like `<Space>` or `<A-l>`.
 
@@ -432,13 +442,13 @@ Sequences must be provided inline; whitespace-separated forms are not supported.
 
 When using `jump_by_key`, the following special controls are available:
 
-| Default key | Action |
-| ------------ | ------ |
-| `<Enter>` | Create temporary bookmark for current directory |
-| `<Space>` | Open fuzzy search |
-| `<Tab>` | Open directory history (only if history exists) |
-| `<Backspace>` | Return to previous directory (if available) |
-| `[a-zA-Z0-9]` | Jump to bookmark with corresponding key |
+| Default key   | Action                                          |
+| ------------  | ----------------------------------------------- |
+| `<Enter>`     | Create temporary bookmark for current directory |
+| `<Space>`     | Open fuzzy search                               |
+| `<Tab>`       | Open directory history (only if history exists) |
+| `<Backspace>` | Return to previous directory (if available)     |
+| `[a-zA-Z0-9]` | Jump to bookmark with corresponding key         |
 
 ## Inspiration
 
