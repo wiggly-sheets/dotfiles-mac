@@ -1,4 +1,7 @@
-# -----------------------------
+fastfetch
+
+
+#-----------------------------
 # Instant prompt (Powerlevel10k) for fast startup
 # -----------------------------
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
@@ -69,7 +72,7 @@ setopt hist_verify
 alias c='clear'
 alias nv='nvim'
 alias vim='nvim'
-alias ff='fastfetch'
+alias ff='fastfetch -c all'
 alias top='btop'
 alias cd='z'
 alias cat='bat'
@@ -165,5 +168,4 @@ spf() {
 # Created by `pipx` on 2025-09-21 19:29:37
 export PATH="$PATH:/Users/Zeb/.local/bin"
 
-fastfetch
 
