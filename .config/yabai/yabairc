@@ -16,14 +16,8 @@ function yabai_rule {
 
 yabai -m config menubar_opacity 0.0
 
-# default layout (can be bsp, stack or float)
-yabai -m config layout bsp
 
-# override for space 1
-yabai -m config --space 5 layout stack
-
-yabai -m config window_origin_display focused
-
+yabai -m config window_origin_display
 yabai -m config window_insertion_point focused
 
 yabai -m config window_zoom_persist true

@@ -113,9 +113,10 @@ cmd + alt - r : skhd --restart-service
 shift + cmd - r : brew services restart sketchybar
 
 # change current space layout
-shift + cmd - z : yabai -m space --layout bsp
-shift + cmd - x: yabai -m space --layout stack
-shift + cmd - c : yabai -m space --layout float
+alt - z : yabai -m config space layout bsp
+alt - x : yabai -m config space layout stack
+alt - c : yabai -m config space layout float
+
 
 # padding for use when external display connected
 shift + cmd - m :  yabai -m config external_bar main:9:0
