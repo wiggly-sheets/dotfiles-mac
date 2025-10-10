@@ -14,8 +14,10 @@ function yabai_rule {
   yabai -m rule --apply "$@"
 }
 
-yabai -m config menubar_opacity 0.0
 
+yabai -m config default layout bsp
+
+yabai -m config menubar_opacity 0.0
 
 yabai -m config window_origin_display
 yabai -m config window_insertion_point focused
