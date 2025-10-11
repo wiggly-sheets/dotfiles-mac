@@ -113,6 +113,10 @@ brew "doge"
 brew "libyaml"
 # TUI todo manager
 brew "dooit"
+# Development kit for the Java programming language
+brew "openjdk"
+# Command-line interface for Cyberduck (a multi-protocol file transfer tool)
+brew "duck"
 # Embeddable SQL OLAP Database Management System
 brew "duckdb"
 # Disk Usage/Free Utility - a better 'df' alternative
@@ -245,8 +249,6 @@ brew "yt-dlp"
 brew "mpv"
 # 'traceroute' and 'ping' in a single tool
 brew "mtr"
-# NCurses Disk Usage
-brew "ncdu"
 # Fast, highly customisable system info script
 brew "neofetch"
 # Ambitious Vim-fork focused on extensibility and agility
@@ -277,8 +279,6 @@ brew "onefetch"
 brew "open-adventure"
 # AI coding agent, built for the terminal
 brew "opencode"
-# Development kit for the Java programming language
-brew "openjdk"
 # Painless compression and decompression for your terminal
 brew "ouch"
 # Minecraft package manager and launcher
@@ -429,10 +429,10 @@ brew "felixkratz/formulae/borders"
 brew "felixkratz/formulae/sketchybar"
 # Turns macOS input fields into real vim buffers
 brew "felixkratz/formulae/svim"
+# Simple hotkey daemon for macOS, written in Zig
+brew "jackielii/tap/skhd-zig"
 # Drop in replacement for ueberzug written in C++
 brew "jstkdng/programs/ueberzugpp"
-# Simple hotkey-daemon for macOS.
-brew "koekeishiya/formulae/skhd"
 # A tiling window manager for macOS based on binary space partitioning.
 brew "koekeishiya/formulae/yabai"
 # A background looping utility that maintains the battery level of Apple Silicon based Mac computers
@@ -479,6 +479,8 @@ cask "coconutbattery"
 cask "container"
 # Download and manage your addons and mods
 cask "curseforge"
+# Server and cloud storage browser
+cask "cyberduck"
 # AI-powered translator
 cask "deepl"
 # Utility to enhance the Open and Save dialogs in applications
@@ -522,6 +524,8 @@ cask "grandperspective"
 cask "halloy"
 # Open-source video transcoder
 cask "handbrake-app"
+# Chromium-based web browser
+cask "helium-browser"
 # Free and open-source media player
 cask "iina"
 # Vector graphics editor
@@ -548,6 +552,8 @@ cask "menuwhere"
 cask "minecraft"
 # Manage your windows in Mission Control
 cask "mission-control-plus"
+# Mounts servers and cloud storages as a disk on the desktop
+cask "mountain-duck"
 # Tool for editing metadata of audio files including MP3, FLAC, OGG, and more
 cask "mp3tag"
 # Music app blocker utility
@@ -594,6 +600,8 @@ cask "raycast"
 cask "redream"
 # Free and open-source page layout program
 cask "scribus"
+# Integrated development environment focused entirely on AppleScript
+cask "script-debugger"
 # Screenshot measurement and annotation tool
 cask "shottr"
 # Application to control your PlayStation 4 or PlayStation 5
@@ -614,6 +622,8 @@ cask "syntax-highlight"
 cask "thelowtechguys-cling"
 # Connectivity software for the TI-84 Plus family of graphing calculators
 cask "ti-connect-ce"
+# Multi-platform VNC client and server
+cask "tigervnc-viewer"
 # Web browser focusing on security
 cask "tor-browser"
 # Batch rename utility
@@ -664,6 +674,7 @@ mas "Shareful", id: 1522267256
 mas "Sparrow Weather", id: 6449440582
 mas "Star Wars®: Knights of the Old Republic™ II", id: 960778634
 mas "Swift Playground", id: 1496833156
+mas "Tailscale", id: 1475387142
 mas "TestFlight", id: 899247664
 mas "Xcode", id: 497799835
 vscode "aaron-bond.better-comments"
