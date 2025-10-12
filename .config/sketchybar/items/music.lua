@@ -34,7 +34,7 @@ local media = sbar.add("item", "media", {
 	position = "left",
 	update_freq = 2,
 	padding_right = 5,
-	padding_left = 2,
+	padding_left = 5,
 	label = {
 		string = "",
 		font = settings.default,
@@ -104,13 +104,13 @@ local function update_media()
 					})
 				else
 					-- Check if player is paused
-					sbar.exec("media-control get | jq -r '.paused'", function(p)
+					sbar.exec("media-control get | jq -r '.playing'", function(p)
 						p = clean(p)
-						if p == "true" then
+						if p == "false" then
 							-- paused
 							media:set({
 								icon = { string = "􀊅", font = settings.default, drawing = true },
-								label = { string = "", drawing = true },
+								label = { string = artist .. "  " .. album .. "  " .. song, drawing = true },
 							})
 						else
 							-- playing

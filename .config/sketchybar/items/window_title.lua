@@ -41,9 +41,11 @@ end)
 -- Window title item
 local window_title = sbar.add("item", "window_title", {
 	position = "center",
+	scroll_texts = false,
 	icon = { drawing = false },
 	label = {
 		drawing = false,
+		max_chars = 150,
 		string = "",
 		font = { family = settings.default, size = 12 },
 		color = colors.white,
