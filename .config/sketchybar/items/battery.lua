@@ -71,7 +71,7 @@ battery:subscribe({ "routine", "power_source_change", "system_woke" }, function(
 			-- Determine battery icon based on charge level
 			icon = charge >= 80 and icons.battery._100
 				or charge >= 60 and icons.battery._75
-				or charge >= 50 and icons.battery._50
+				or charge >= 40 and icons.battery._50
 				or charge >= 25 and icons.battery._25
 				or icons.battery._0
 
