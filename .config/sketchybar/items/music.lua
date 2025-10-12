@@ -6,6 +6,148 @@ local icons = require("icons")
 local settings = require("settings")
 
 --------------------------------------------------------
+--                    MEDIA ITEM
+--------------------------------------------------------
+
+local media = sbar.add("item", "media", {
+	position = "left",
+	update_freq = 2,
+	padding_right = 5,
+	padding_left = 2,
+	label = {
+		string = "",
+		font = settings.default,
+		max_chars = 15,
+		scroll_texts = true,
+		scroll_duration = 200,
+	},
+	icon = {
+		string = "",
+		font = { size = 20 },
+		padding_right = 5,
+	},
+	updates = "when_shown",
+	popup = { align = "center", horizontal = true },
+})
+
+local media = sbar.add("item", "media", {
+	position = "left",
+	update_freq = 2,
+	padding_right = 5,
+	padding_left = 2,
+	label = {
+		string = "",
+		font = settings.default,
+		max_chars = 15,
+		scroll_texts = true,
+		scroll_duration = 200,
+	},
+	icon = {
+		string = "",
+		font = { size = 20 },
+		padding_right = 5,
+	},
+	updates = "when_shown",
+	popup = { align = "center", horizontal = true },
+})
+
+-- Media Popup Controls
+sbar.add("item", {
+	position = "popup." .. media.name,
+	icon = { string = icons.media.back },
+	label = { drawing = false },
+	click_script = "media-control previous_track",
+})
+sbar.add("item", {
+	position = "popup." .. media.name,
+	icon = { string = icons.media.play_pause },
+	label = { drawing = false },
+	click_script = "media-control toggle-play-pause",
+})
+sbar.add("item", {
+	position = "popup." .. media.name,
+	icon = { string = icons.media.forward },
+	label = { drawing = false },
+	click_script = "media-control next-track",
+})
+
+-- Helper to clean jq output
+local function clean(output)
+	if not output then
+		return ""
+	end
+	output = output:gsub("^%s+", ""):gsub("%s+$", "")
+	if output == "null" or output == "nil" or output == "" then
+		return ""
+	end
+	return output
+end
+
+-- Update routine
+local function update_media()
+	local artist, album, song = "", "", ""
+
+	-- Fetch each field sequentially
+	sbar.exec("media-control get | jq -r '.artist'", function(a)
+		artist = clean(a)
+		sbar.exec("media-control get | jq -r '.album'", function(al)
+			album = clean(al)
+			sbar.exec("media-control get | jq -r '.title'", function(t)
+				song = clean(t)
+
+				-- Determine state
+				if artist == "" and album == "" and song == "" then
+					-- stopped / no player
+					media:set({
+						icon = { string = "", font = settings.default, drawing = true },
+						label = { string = "", drawing = true },
+					})
+				else
+					-- Check if player is paused
+					sbar.exec("media-control get | jq -r '.paused'", function(p)
+						p = clean(p)
+						if p == "true" then
+							-- paused
+							media:set({
+								icon = { string = "􀊅", font = settings.default, drawing = true },
+								label = { string = "", drawing = true },
+							})
+						else
+							-- playing
+							media:set({
+								icon = { string = "", font = settings.default, drawing = true },
+								label = { string = artist .. "  " .. album .. "  " .. song, drawing = true },
+							})
+						end
+					end)
+				end
+			end)
+		end)
+	end)
+end
+
+-- Subscribe to routine updates
+media:subscribe("routine", update_media)
+
+-- Click logic
+media:subscribe("mouse.clicked", function(env)
+	if env.BUTTON == "left" then
+		media:set({ popup = { drawing = "toggle" } })
+	elseif env.BUTTON == "right" then
+		sbar.exec("media-control toggle-play-pause")
+	else
+		sbar.exec("media-control stop")
+	end
+end)
+
+media:subscribe("mouse.exited.global", "mouse.exited", function()
+	media:set({ popup = { drawing = false } })
+end)
+
+-- Initial update
+update_media()
+
+--------------------------------------------------------
 --                    MPD ITEM
 --------------------------------------------------------
 
@@ -17,7 +159,7 @@ local mpd = sbar.add("item", "mpd", {
 	},
 	label = {
 		string = "",
-		font = "Inconsolata Nerd Font Mono",
+		font = settings.default,
 		max_chars = 15,
 		scroll_texts = true,
 		scroll_duration = 200,
@@ -94,113 +236,3 @@ mpd:subscribe("mouse.exited.global", "mouse.exited", function()
 end)
 
 update_mpd()
-
---------------------------------------------------------
---                    MEDIA ITEM
---------------------------------------------------------
-
-local media = sbar.add("item", "media", {
-	position = "right",
-	update_freq = 2,
-	padding_right = 5,
-	padding_left = 2,
-	label = {
-		string = "",
-		font = "Inconsolata Nerd Font Mono",
-		max_chars = 15,
-		scroll_texts = true,
-		scroll_duration = 200,
-	},
-	icon = {
-		string = "",
-		font = { size = 20 },
-		padding_right = 5,
-	},
-	updates = "when_shown",
-	popup = { align = "right", horizontal = true },
-})
-
--- Media Popup Controls
-sbar.add("item", {
-	position = "popup." .. media.name,
-	icon = { string = icons.media.back },
-	label = { drawing = false },
-	click_script = "media-control previous_track",
-})
-sbar.add("item", {
-	position = "popup." .. media.name,
-	icon = { string = icons.media.play_pause },
-	label = { drawing = false },
-	click_script = "media-control toggle-play-pause",
-})
-sbar.add("item", {
-	position = "popup." .. media.name,
-	icon = { string = icons.media.forward },
-	label = { drawing = false },
-	click_script = "media-control next-track",
-})
-
--- Cleanup helper
-local function clean(output)
-	if not output then
-		return ""
-	end
-	output = output:gsub("^%s+", ""):gsub("%s+$", "")
-	if output == "null" or output == "nil" or output == "" then
-		return ""
-	end
-	return output
-end
-
--- Media Update Routine
-local function update_media()
-	sbar.exec("media-control get | jq -r '.status'", function(status)
-		status = clean(status)
-
-		if status == "playing" then
-			sbar.exec("media-control get | jq -r '.artist'", function(artist)
-				sbar.exec("media-control get | jq -r '.album'", function(album)
-					sbar.exec("media-control get | jq -r '.title'", function(song)
-						local artist_clean = clean(artist)
-						local album_clean = clean(album)
-						local song_clean = clean(song)
-						local label_text = artist_clean .. "  " .. album_clean .. "  " .. song_clean
-						media:set({
-							icon = { string = "", font = { size = 20 } },
-							label = { string = label_text, drawing = true },
-						})
-					end)
-				end)
-			end)
-		elseif status == "paused" then
-			media:set({
-				icon = { string = "􀊅", font = { size = 20 } },
-				label = { string = "" },
-			})
-		else
-			media:set({
-				icon = { string = "", font = { size = 20 } },
-				label = { string = "" },
-			})
-		end
-	end)
-end
-
-media:subscribe("routine", update_media)
-
--- Click logic
-media:subscribe("mouse.clicked", function(env)
-	if env.BUTTON == "left" then
-		media:set({ popup = { drawing = "toggle" } })
-	elseif env.BUTTON == "right" then
-		sbar.exec("media-control toggle-play-pause")
-	else
-		sbar.exec("media-control stop")
-	end
-end)
-
-media:subscribe("mouse.exited.global", "mouse.exited", function()
-	media:set({ popup = { drawing = false } })
-end)
-
-update_media()
