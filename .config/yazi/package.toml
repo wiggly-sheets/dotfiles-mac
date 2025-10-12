@@ -25,8 +25,8 @@ hash = "58bfa473bcac8574400e573787954512"
 
 [[plugin.deps]]
 use = "WhoSowSee/whoosh"
-rev = "0899338"
-hash = "feeea394d143abfa49a4fddcb353d115"
+rev = "927f35d"
+hash = "fedcface47289871a7e7c583ff54d952"
 
 [[plugin.deps]]
 use = "KKV9/compress"
