@@ -15,7 +15,7 @@ function yabai_rule {
 }
 
 
-yabai -m config default layout bsp
+yabai -m config default layout stack
 
 yabai -m config menubar_opacity 0.0
 

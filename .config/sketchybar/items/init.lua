@@ -2,7 +2,7 @@
 require("items.menus")
 require("items.spaces")
 --require("items.svim")
-require("items.mpd")
+require("items.music")
 
 --center items
 require("items.window_title")
@@ -12,7 +12,6 @@ require("items.notifications")
 require("items.dnd")
 require("items.date_time")
 require("items.control_center")
-require("items.media")
 require("items.caffeinate")
 require("items.folder")
 require("items.weather")
