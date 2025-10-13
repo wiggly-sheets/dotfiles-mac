@@ -50,6 +50,18 @@ sbar.add("item", {
 	click_script = "media-control next-track",
 })
 
+-- Popup Song Info for Media
+local media_info = sbar.add("item", "media_info", {
+	position = "popup." .. media.name,
+	icon = { drawing = false },
+	label = {
+		string = "",
+		font = settings.default,
+		width = "dynamic",
+		align = "center",
+	},
+})
+
 -- Helper to clean jq output
 local function clean(output)
 	if not output then
@@ -81,25 +93,27 @@ local function update_media()
 						icon = { string = "", font = settings.default, drawing = true },
 						label = { string = "", drawing = true },
 					})
+					sbar.set("media_info", { label = { string = "" } })
 				else
 					-- Check if player is paused
 					sbar.exec("media-control get | jq -r '.playing'", function(p)
 						p = clean(p)
 						if p == "false" then
 							-- paused
+							local text = artist .. "  " .. album .. "  " .. song
 							media:set({
 								icon = { string = "􀊅", font = settings.default, drawing = true },
-								label = {
-									string = artist .. "  " .. album .. "  " .. song,
-									drawing = true,
-								},
+								label = { string = text, drawing = true },
 							})
+							sbar.set("media_info", { label = { string = text } })
 						else
 							-- playing
+							local text = artist .. "  " .. album .. "  " .. song
 							media:set({
 								icon = { string = "", font = settings.default, drawing = true },
-								label = { string = artist .. "  " .. album .. "  " .. song, drawing = true },
+								label = { string = text, drawing = true },
 							})
+							sbar.set("media_info", { label = { string = text } })
 						end
 					end)
 				end
@@ -151,47 +165,6 @@ local mpd = sbar.add("item", "mpd", {
 	position = "left",
 	popup = { align = "center", horizontal = true },
 })
--- Store last track info globally (or at least within this module)
-local last_artist, last_album, last_song = "", "", ""
-
-local function update_mpd()
-	sbar.exec("mpc status", function(status)
-		if status and status:match("playing") then
-			sbar.exec("mpc current -f %artist%", function(artist)
-				last_artist = artist or ""
-				sbar.exec("mpc current -f %album%", function(album)
-					last_album = album or ""
-					sbar.exec("mpc current -f %title%", function(song)
-						last_song = song or ""
-						mpd:set({
-							label = {
-								string = last_artist .. "  " .. last_album .. "  " .. last_song,
-								drawing = true,
-							},
-							icon = { string = "", font = { size = 20 } },
-						})
-					end)
-				end)
-			end)
-		elseif status and status:match("paused") then
-			-- Use last stored track info
-			mpd:set({
-				icon = { string = "􀊅", font = { size = 20 } },
-				label = {
-					string = last_artist .. "  " .. last_album .. "  " .. last_song,
-					drawing = true,
-				},
-			})
-		else
-			mpd:set({
-				icon = { string = "", font = { size = 20 } },
-				label = { string = "" },
-			})
-			-- Clear stored info when stopped
-			last_artist, last_album, last_song = "", "", ""
-		end
-	end)
-end
 
 -- MPD Popup Controls
 local back = sbar.add("item", "back", {
@@ -211,6 +184,57 @@ local forward = sbar.add("item", "forward", {
 	icon = { string = icons.media.forward },
 	click_script = "mpc next",
 })
+
+-- Popup Song Info for MPD
+local mpd_info = sbar.add("item", "mpd_info", {
+	position = "popup." .. mpd.name,
+	icon = { drawing = false },
+	label = {
+		string = "",
+		font = settings.default,
+		width = "dynamic",
+		align = "center",
+	},
+})
+
+-- Store last track info globally
+local last_artist, last_album, last_song = "", "", ""
+
+local function update_mpd()
+	sbar.exec("mpc status", function(status)
+		if status and status:match("playing") then
+			sbar.exec("mpc current -f %artist%", function(artist)
+				last_artist = artist or ""
+				sbar.exec("mpc current -f %album%", function(album)
+					last_album = album or ""
+					sbar.exec("mpc current -f %title%", function(song)
+						last_song = song or ""
+						local text = last_artist .. "  " .. last_album .. "  " .. last_song
+						mpd:set({
+							label = { string = text, drawing = true },
+							icon = { string = "", font = { size = 20 } },
+						})
+						sbar.set("mpd_info", { label = { string = text } })
+					end)
+				end)
+			end)
+		elseif status and status:match("paused") then
+			local text = last_artist .. "  " .. last_album .. "  " .. last_song
+			mpd:set({
+				icon = { string = "􀊅", font = { size = 20 } },
+				label = { string = text, drawing = true },
+			})
+			sbar.set("mpd_info", { label = { string = text } })
+		else
+			mpd:set({
+				icon = { string = "", font = { size = 20 } },
+				label = { string = "" },
+			})
+			sbar.set("mpd_info", { label = { string = "" } })
+			last_artist, last_album, last_song = "", "", ""
+		end
+	end)
+end
 
 mpd:subscribe("routine", update_mpd)
 
