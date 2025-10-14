@@ -86,7 +86,8 @@ alias kkk='nvim $(fzf --preview="bat --color=always {}")'
 alias cp='cp -i'
 alias mv='mv -i'
 alias rm='rm -i'
-
+alias i2p='open http://127.0.01:7657 && ssh -NL 7657:localhost:7657 zeb@192.168.1.191'
+ 
 export BAT_THEME=tokyonight_night
 
 # -----------------------------
@@ -121,8 +122,9 @@ eval "$(batman --export-env)"
 eval "$(thefuck --alias)"
 eval "$(thefuck --alias fk)"
 eval "$(zoxide init zsh)"
-source ~/.config/scripts/fzf-git.sh
 eval "$(register-python-argcomplete pipx)"
+source ~/.config/scripts/fzf-git.sh
+
 
 
 # -----------------------------
