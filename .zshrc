@@ -95,7 +95,6 @@ alias mv='mv -i'
 alias rm='rm -i'
 alias i2p='open http://127.0.01:7657 && ssh -NL 7657:localhost:7657 zeb@192.168.1.191'
  
-export BAT_THEME=tokyonight_night
 
 # -----------------------------
 # fzf defaults & functions
@@ -176,7 +175,8 @@ spf() {
 
 # Created by `pipx` on 2025-09-21 19:29:37
 export PATH="$PATH:/Users/Zeb/.local/bin"
-export NEOVIDE_CONFIG="/Users/Zeb/dotfiles/.config/neovide"
+
+export NEOVIDE_CONFIG="/Users/Zeb/dotfiles/.config/neovide/config.toml"
 
 export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense' # optional
 zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'

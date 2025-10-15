@@ -6,14 +6,14 @@ maximized = false
 mouse-cursor-icon = "arrow"
 #neovim-bin = "/usr/bin/nvim" # in reality found dynamically on $PATH if unset
 no-multigrid = false
-srgb = false # platform-specific: false (Linux/macOS) or true (Windows)
+srgb = true # platform-specific: false (Linux/macOS) or true (Windows)
 tabs = false
 title-hidden = true
 vsync = true
 wsl = false
 
 [font]
-normal = [Inconsolata Nerd Font Mono] # Will use the bundled Fira Code Nerd Font by default
+normal = "Inconsolata Nerd Font Mono" # Will use the bundled Fira Code Nerd Font by default
 size = 14.0
 
 [box-drawing]
