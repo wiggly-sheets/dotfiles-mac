@@ -47,7 +47,6 @@ local battery = sbar.add("item", "items.battery", {
 	position = "right",
 	padding_right = -3,
 	padding_left = 2,
-
 	icon = {
 		font = { style = settings.default },
 		color = colors.green,

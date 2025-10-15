@@ -2,6 +2,9 @@ local settings = require("settings")
 local colors = require("colors")
 local icons = require("icons")
 
+local click_script =
+	'osascript -e \'tell application "System Events" to keystroke "t" using {command down, option down, control down}\''
+
 local cpu_item = sbar.add("item", "cpu_temp", {
 	update_freq = 10,
 	position = "right",
@@ -10,7 +13,7 @@ local cpu_item = sbar.add("item", "cpu_temp", {
 	icon = { string = icons.cpu, padding_left = 3 },
 	label = { padding_left = 4, font = { family = settings.default, size = 12 } },
 
-	click_script = 'osascript -e \'tell application "System Events" to keystroke "c" using {command down, option down, control down}\'',
+	click_script = click_script,
 })
 
 local gpu_item = sbar.add("item", "gpu_temp", {
@@ -20,7 +23,7 @@ local gpu_item = sbar.add("item", "gpu_temp", {
 	icon = { string = "􀧓", padding_left = 4 },
 	label = { padding_left = 4, font = { family = settings.default, size = 12 } },
 
-	click_script = 'osascript -e \'tell application "System Events" to keystroke "c" using {command down, option down, control down}\'',
+	click_script = click_script,
 })
 
 -- Function to update temperatures

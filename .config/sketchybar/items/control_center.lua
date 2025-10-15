@@ -14,5 +14,5 @@ local control_center = sbar.add("item", "control_center", {
 	background = {
 		drawing = false,
 	},
-	click_script = 'osascript -e \'tell application "System Events" to tell process "ControlCenter" to click menu bar item 2 of menu bar 1\'',
+	click_script = 'osascript -e \'tell application "System Events" to tell process "ControlCenter" to click menu bar item 4 of menu bar 1\'',
 })

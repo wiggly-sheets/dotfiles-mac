@@ -1,6 +1,28 @@
 local colors = require("colors")
 local settings = require("settings")
 
+-- ======================
+-- Click scripts
+-- ======================
+
+local display_left_click =
+	'osascript -e \'tell application "System Events" to keystroke "d" using {command down, option down, control down}\''
+
+local display_right_click =
+	'osascript -e \'tell application "System Events" to tell process "Control Center" to click menu bar item 2 of menu bar 1\''
+
+local function handle_display_click(env)
+	if env.BUTTON == "left" then
+		sbar.exec(display_left_click)
+	elseif env.BUTTON == "right" then
+		sbar.exec(display_right_click)
+	end
+end
+
+-- ======================
+-- Display item
+-- ======================
+
 local display = sbar.add("item", "display", {
 	icon = {
 		drawing = true,
@@ -16,8 +38,14 @@ local display = sbar.add("item", "display", {
 		padding_right = 0,
 	},
 	position = "right",
-	click_script = 'osascript -e \'tell application "System Events" to keystroke "d" using {command down, option down, control down}\'',
 })
+
+-- Subscribe to mouse clicks
+display:subscribe("mouse.clicked", handle_display_click)
+
+-- ======================
+-- Update function
+-- ======================
 
 local function update_display()
 	local icons = {
@@ -71,8 +99,8 @@ local function update_display()
 	end)
 end
 
--- Subscribe to system/display events (no timed polling)
+-- Subscribe to display/system events
 display:subscribe({ "display_change", "brightness_change", "system_woke" }, update_display)
 
--- Run once at load
+-- Initial update
 update_display()

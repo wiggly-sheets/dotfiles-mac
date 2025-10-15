@@ -47,7 +47,6 @@ local wifi_up = sbar.add("item", "widgets.wifi1", {
 		string = "??? Bps",
 	},
 	y_offset = 8,
-	click_script = 'osascript -e \'tell application "System Events" to keystroke "n" using {command down, option down, control down}\'',
 })
 
 local wifi_down = sbar.add("item", "widgets.wifi2", {
@@ -68,8 +67,6 @@ local wifi_down = sbar.add("item", "widgets.wifi2", {
 		string = "??? Bps",
 	},
 	y_offset = -4,
-
-	click_script = 'osascript -e \'tell application "System Events" to keystroke "n" using {command down, option down, control down}\'',
 })
 
 -- Upload network graph
@@ -89,7 +86,6 @@ local net_graph_up = sbar.add("graph", "widgets.net_graph_up", 42, {
 	padding_right = -2,
 
 	update_freq = 30,
-	click_script = 'osascript -e \'tell application "System Events" to keystroke "n" using {command down, option down, control down}\'',
 })
 
 local up_history = {}
@@ -133,7 +129,6 @@ local net_graph_down = sbar.add("graph", "widgets.net_graph_down", 42, {
 	updates = true,
 	y_offset = -5,
 	update_freq = 30,
-	click_script = 'osascript -e \'tell application "System Events" to keystroke "n" using {command down, option down, control down}\'',
 })
 
 local wifi = sbar.add("item", "wifi.status", {
@@ -150,6 +145,7 @@ local wifi = sbar.add("item", "wifi.status", {
 	},
 	label = { drawing = false },
 })
+
 net_graph_down:subscribe("network_update", function(env)
 	local down = tonumber(env.download:match("%d+")) or 0
 
@@ -352,12 +348,10 @@ local function toggle_details()
 			ip:set({ label = result })
 		end)
 		sbar.exec(
-			sbar.exec(
-				"networksetup listpreferredwirelessnetworks en0 | awk 'NR==2 {sub(/^[ \t]+/, \"\"); print}'",
-				function(result)
-					ssid:set({ label = result })
-				end
-			),
+			"networksetup listpreferredwirelessnetworks en0 | awk 'NR==2 {sub(/^[ \t]+/, \"\"); print}'",
+			function(result)
+				ssid:set({ label = result })
+			end,
 			sbar.exec(
 				"networksetup -getinfo Wi-Fi | awk -F 'Subnet mask: ' '/^Subnet mask: / {print $2}'",
 				function(result)
@@ -434,7 +428,6 @@ local wifi_up = sbar.add("item", "widgets.wifi1", {
 		string = "??? Bps",
 	},
 	y_offset = 8,
-	click_script = 'osascript -e \'tell application "System Events" to keystroke "n" using {command down, option down, control down}\'',
 })
 
 local wifi_down = sbar.add("item", "widgets.wifi2", {
@@ -457,7 +450,6 @@ local wifi_down = sbar.add("item", "widgets.wifi2", {
 		string = "??? Bps",
 	},
 	y_offset = -4,
-	click_script = 'osascript -e \'tell application "System Events" to keystroke "n" using {command down, option down, control down}\'',
 })
 
 wifi_up:subscribe("network_update", function(env)
@@ -482,4 +474,59 @@ wifi_up:subscribe("network_update", function(env)
 			color = down_color,
 		},
 	})
+
+	-- your working Wi-Fi click AppleScript
+	local wifi_click_script =
+		'osascript -e \'tell application "System Events" to tell process "ControlCenter" to click menu bar item 3 of menu bar 1\''
+
+	-- keyboard shortcut command (Cmd+Opt+Ctrl+N)
+	local shortcut_script =
+		'osascript -e \'tell application "System Events" to keystroke "n" using {command down, option down, control down}\''
+	local vpn_click_script =
+		'osascript -e \'tell application "System Events" to tell process "Passepartout" to click menu bar item 1 of menu bar 2\''
+
+	-- Wi-Fi item
+	wifi:subscribe("mouse.clicked", function(env)
+		if env.BUTTON == "left" then
+			toggle_details()
+		elseif env.BUTTON == "right" then
+			sbar.exec(vpn_click_script)
+		end
+	end)
+
+	-- Wi-Fi up
+	wifi_up:subscribe("mouse.clicked", function(env)
+		if env.BUTTON == "left" then
+			sbar.exec(shortcut_script)
+		elseif env.BUTTON == "right" then
+			sbar.exec(wifi_click_script)
+		end
+	end)
+
+	-- Wi-Fi down
+	wifi_down:subscribe("mouse.clicked", function(env)
+		if env.BUTTON == "left" then
+			sbar.exec(shortcut_script)
+		elseif env.BUTTON == "right" then
+			sbar.exec(wifi_click_script)
+		end
+	end)
+
+	-- Net graph up
+	net_graph_up:subscribe("mouse.clicked", function(env)
+		if env.BUTTON == "left" then
+			sbar.exec(shortcut_script)
+		elseif env.BUTTON == "right" then
+			sbar.exec(wifi_click_script)
+		end
+	end)
+
+	-- Net graph down
+	net_graph_down:subscribe("mouse.clicked", function(env)
+		if env.BUTTON == "left" then
+			sbar.exec(shortcut_script)
+		elseif env.BUTTON == "right" then
+			sbar.exec(wifi_click_script)
+		end
+	end)
 end)

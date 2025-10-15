@@ -13,7 +13,6 @@ local volume_percent = sbar.add("item", "widgets.volume1", {
 		color = colors.yellow,
 		font = { style = settings.default },
 	},
-	click_script = 'osascript -e \'tell application "System Events" to tell process "SoundSource" to click menu bar item 1 of menu bar 2\'',
 })
 
 local volume_icon = sbar.add("item", "widgets.volume2", {
@@ -43,7 +42,6 @@ local volume_icon = sbar.add("item", "widgets.volume2", {
 			color = colors.yellow,
 		},
 	},
-	click_script = 'osascript -e \'tell application "System Events" to tell process "SoundSource" to click menu bar item 1 of menu bar 2\'',
 })
 
 local mic = sbar.add("item", "mic", {
@@ -66,7 +64,6 @@ local mic = sbar.add("item", "mic", {
 	},
 	position = "right",
 	update_freq = 5,
-	click_script = 'osascript -e \'tell application "System Events" to tell process "SoundSource" to click menu bar item 1 of menu bar 2\'',
 })
 
 -- Function to update mic icon/label
@@ -160,4 +157,41 @@ end)
 -- Periodic refresh to catch device switches (every routine tick)
 volume_icon:subscribe("routine", function()
 	update_output_device_icon()
+end)
+
+-- ======================
+-- Click scripts
+-- ======================
+
+-- Existing left-click: open SoundSource
+local left_click_script =
+	'osascript -e \'tell application "System Events" to tell process "SoundSource" to click menu bar item 1 of menu bar 2\''
+
+-- New right-click: Control Center menu bar item 5
+local right_click_script =
+	'osascript -e \'tell application "System Events" to tell process "ControlCenter" to click menu bar item 1 of menu bar 1\''
+
+-- Helper function
+local function handle_volume_click(item, env)
+	if env.BUTTON == "left" then
+		sbar.exec(left_click_script)
+	elseif env.BUTTON == "right" then
+		sbar.exec(right_click_script)
+	end
+end
+
+-- ======================
+-- Subscriptions
+-- ======================
+
+volume_percent:subscribe("mouse.clicked", function(env)
+	handle_volume_click("volume_percent", env)
+end)
+
+volume_icon:subscribe("mouse.clicked", function(env)
+	handle_volume_click("volume_icon", env)
+end)
+
+mic:subscribe("mouse.clicked", function(env)
+	handle_volume_click("mic", env)
 end)
