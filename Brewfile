@@ -3,7 +3,6 @@ tap "browsh-org/browsh"
 tap "felixkratz/formulae"
 tap "filosottile/musl-cross"
 tap "gcenx/wine"
-tap "homebrew/services"
 tap "jackielii/tap"
 tap "jstkdng/programs"
 tap "kegworks-app/kegworks"
@@ -45,6 +44,8 @@ brew "asitop"
 brew "astroterm"
 # Tool for generating GNU Standards-compliant Makefiles
 brew "automake"
+# Automatically restart SSH sessions and tunnels
+brew "autossh"
 # B2 Cloud Storage Command-Line Tools
 brew "b2-tools"
 # Terminal bandwidth utilization tool
@@ -69,6 +70,8 @@ brew "btop"
 brew "c2048"
 # Text-based personal organizer
 brew "calcurse"
+# Multi-shell multi-command argument completer
+brew "carapace"
 # GNU File, Shell, and Text utilities
 brew "coreutils"
 # Emacs dependency management
@@ -129,6 +132,8 @@ brew "dust"
 brew "duti"
 # Utilities for the ext2, ext3, and ext4 file systems
 brew "e2fsprogs"
+# Friendly and expressive shell
+brew "elvish"
 # Run arbitrary commands when files change
 brew "entr"
 # Perl lib for reading and writing EXIF metadata
@@ -147,6 +152,8 @@ brew "ffmpegthumbnailer"
 brew "figlet"
 # Collection of GNU find, xargs, and locate
 brew "findutils"
+# User-friendly command-line shell for UNIX-like operating systems
+brew "fish"
 # Command-line fuzzy finder written in Go
 brew "fzf"
 # Interactive git commands in the terminal
@@ -235,6 +242,8 @@ brew "mkvtoolnix"
 brew "moc"
 # Drive some car across the moon
 brew "moon-buggy"
+# Collection of tools that nobody wrote when UNIX was young
+brew "moreutils"
 # Remote terminal application
 brew "mosh"
 # Powerful paging program
@@ -253,6 +262,8 @@ brew "mtr"
 brew "neofetch"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
+# No Nonsense Neovim Client in Rust
+brew "neovide"
 # POSIX *nix fetch script using Nerdfonts
 brew "nerdfetch"
 # Utility for managing network connections
@@ -271,8 +282,12 @@ brew "nmap"
 brew "nowplaying-cli"
 # Send push notifications to your phone or desktop via PUT/POST
 brew "ntfy"
+# Modern shell for the GitHub era
+brew "nushell"
 # Renders an animated, color, ANSI-text loop of the Poptart Cat
 brew "nyancat"
+# Bash-compatible Unix shell with more consistent syntax and semantics
+brew "oil"
 # Command-line Git information tool
 brew "onefetch"
 # Colossal Cave Adventure, the 1995 430-point version
@@ -331,6 +346,8 @@ brew "scooter"
 brew "screenfetch"
 # Intuitive find & replace CLI
 brew "sd"
+# Smart session manager for the terminal
+brew "sesh"
 # 7-Zip is a file archiver with a high compression ratio
 brew "sevenzip"
 # Prints a steam locomotive if you type sl instead of ls
@@ -359,6 +376,8 @@ brew "switchaudio-osx"
 brew "tag"
 # Command-line Kanban board/task manager with support for Trello
 brew "taskell"
+# Enhanced, fully compatible version of the Berkeley C shell
+brew "tcsh"
 # Very fast implementation of tldr in Rust
 brew "tealdeer"
 # Modernized, complete, self-contained TeX/LaTeX engine
@@ -375,6 +394,8 @@ brew "thefuck"
 brew "tig"
 # Terminal multiplexer
 brew "tmux"
+# Tool for opening git repositories as tmux sessions
+brew "tmux-sessionizer"
 # Manage complex tmux sessions easily
 brew "tmuxinator"
 # Color-based alternative to figlet (uses libcaca)
@@ -387,6 +408,8 @@ brew "topgrade"
 brew "trash"
 # Display directories as trees (with optional color/HTML output)
 brew "tree"
+# Command-line tool for URL parsing and manipulation
+brew "trurl"
 # Language for application scale JavaScript development
 brew "typescript"
 # Simple terminal image viewer written in Rust
@@ -405,6 +428,8 @@ brew "wget"
 brew "wget2"
 # Show the current WiFi network password
 brew "wifi-password"
+# Friendly and fast tool for sending HTTP requests
+brew "xh"
 # Blazing fast terminal file manager written in Rust, based on async I/O
 brew "yazi"
 # Process YAML, JSON, XML, CSV and properties documents from the CLI
@@ -415,6 +440,8 @@ brew "zoxide"
 brew "zsh"
 # Fish-like fast/unobtrusive autosuggestions for zsh
 brew "zsh-autosuggestions"
+# Additional completion definitions for zsh
+brew "zsh-completions"
 # Fish shell like syntax highlighting for zsh
 brew "zsh-syntax-highlighting"
 # Better and friendly vi(vim) mode plugin for ZSH
@@ -429,10 +456,10 @@ brew "felixkratz/formulae/borders"
 brew "felixkratz/formulae/sketchybar"
 # Turns macOS input fields into real vim buffers
 brew "felixkratz/formulae/svim"
-# Simple hotkey daemon for macOS, written in Zig
-brew "jackielii/tap/skhd-zig"
 # Drop in replacement for ueberzug written in C++
 brew "jstkdng/programs/ueberzugpp"
+# Simple hotkey-daemon for macOS.
+brew "koekeishiya/formulae/skhd"
 # A tiling window manager for macOS based on binary space partitioning.
 brew "koekeishiya/formulae/yabai"
 # A background looping utility that maintains the battery level of Apple Silicon based Mac computers
@@ -467,6 +494,8 @@ cask "battery-toolkit"
 cask "betterdisplay"
 # Tool to customise input devices and automate computer systems
 cask "bettertouchtool@alpha"
+# File manager
+cask "bloom"
 # CD burning application
 cask "burn"
 # OpenAI's official ChatGPT desktop app
@@ -475,8 +504,12 @@ cask "chatgpt"
 cask "clop"
 # Tool to show live information about the batteries in various devices
 cask "coconutbattery"
+# Mount network shares quick and easy
+cask "connectmenow"
 # Create and run Linux containers using lightweight virtual machines
 cask "container"
+# Plain-text editor for web pages, program source codes and more
+cask "coteditor"
 # Download and manage your addons and mods
 cask "curseforge"
 # Server and cloud storage browser
@@ -495,23 +528,96 @@ cask "downie"
 cask "filebot"
 # File finder
 cask "find-any-file"
+cask "font-0xproto-nerd-font"
+cask "font-3270-nerd-font"
+cask "font-adwaita-mono-nerd-font"
+cask "font-agave-nerd-font"
+cask "font-anonymice-nerd-font"
+cask "font-arimo-nerd-font"
+cask "font-atkynson-mono-nerd-font"
+cask "font-aurulent-sans-mono-nerd-font"
+cask "font-bigblue-terminal-nerd-font"
+cask "font-bitstream-vera-sans-mono-nerd-font"
+cask "font-blex-mono-nerd-font"
+cask "font-cascadia-code-nf"
+cask "font-cascadia-mono-nf"
+cask "font-caskaydia-cove-nerd-font"
+cask "font-caskaydia-mono-nerd-font"
+cask "font-code-new-roman-nerd-font"
+cask "font-comic-shanns-mono-nerd-font"
+cask "font-commit-mono-nerd-font"
+cask "font-cousine-nerd-font"
+cask "font-d2coding-nerd-font"
+cask "font-daddy-time-mono-nerd-font"
 cask "font-dejavu-sans-mono-nerd-font"
+cask "font-departure-mono-nerd-font"
+cask "font-droid-sans-mono-nerd-font"
+cask "font-envy-code-r-nerd-font"
+cask "font-fantasque-sans-mono-nerd-font"
 cask "font-fira-code-nerd-font"
+cask "font-fira-mono-nerd-font"
+cask "font-geist-mono-nerd-font"
+cask "font-go-mono-nerd-font"
+cask "font-gohufont-nerd-font"
 cask "font-hack-nerd-font"
+cask "font-hasklug-nerd-font"
+cask "font-heavy-data-nerd-font"
+cask "font-hurmit-nerd-font"
+cask "font-im-writing-nerd-font"
+cask "font-inconsolata-go-nerd-font"
+cask "font-inconsolata-lgc-nerd-font"
 cask "font-inconsolata-nerd-font"
+cask "font-intone-mono-nerd-font"
 cask "font-iosevka"
 cask "font-iosevka-nerd-font"
 cask "font-iosevka-term-nerd-font"
 cask "font-iosevka-term-slab-nerd-font"
+cask "font-jetbrains-maple-mono-nf"
 cask "font-jetbrains-mono-nerd-font"
+cask "font-juisee-nf"
+cask "font-lekton-nerd-font"
+cask "font-liberation-nerd-font"
+cask "font-lilex-nerd-font"
+cask "font-m+-nerd-font"
+cask "font-maple-mono-nf"
+cask "font-maple-mono-nf-cn"
+cask "font-maple-mono-nl-nf"
+cask "font-maple-mono-nl-nf-cn"
+cask "font-maple-mono-normal-nf"
+cask "font-maple-mono-normal-nf-cn"
+cask "font-maple-mono-normal-nl-nf"
+cask "font-maple-mono-normal-nl-nf-cn"
+cask "font-martian-mono-nerd-font"
 cask "font-meslo-lg-nerd-font"
+cask "font-monaspace-nf"
+cask "font-monaspice-nerd-font"
+cask "font-monocraft-nerd-font"
+cask "font-monofur-nerd-font"
+cask "font-monoid-nerd-font"
+cask "font-mononoki-nerd-font"
+cask "font-noto-nerd-font"
+cask "font-open-dyslexic-nerd-font"
+cask "font-overpass-nerd-font"
+cask "font-profont-nerd-font"
+cask "font-proggy-clean-tt-nerd-font"
+cask "font-recursive-mono-nerd-font"
 cask "font-roboto-mono-nerd-font"
+cask "font-sauce-code-pro-nerd-font"
 cask "font-sf-mono"
+cask "font-sf-mono-for-powerline"
 cask "font-sf-mono-nerd-font-ligaturized"
 cask "font-sf-pro"
+cask "font-shure-tech-mono-nerd-font"
 cask "font-sketchybar-app-font"
+cask "font-space-mono-nerd-font"
 cask "font-symbols-only-nerd-font"
+cask "font-terminess-ttf-nerd-font"
+cask "font-tinos-nerd-font"
 cask "font-ubuntu-mono-nerd-font"
+cask "font-ubuntu-nerd-font"
+cask "font-ubuntu-sans-nerd-font"
+cask "font-victor-mono-nerd-font"
+cask "font-zed-mono-nerd-font"
 # Audio converter and CD ripper
 cask "freac"
 # Desktop client for GitHub repositories
@@ -536,6 +642,8 @@ cask "kegworks"
 cask "keka"
 # Open-source keystroke visualiser
 cask "keycastr"
+# Find shortcuts for any installed application
+cask "keyclu"
 # Host-based application firewall
 cask "little-snitch"
 # File system integration
@@ -558,10 +666,10 @@ cask "mountain-duck"
 cask "mp3tag"
 # Music app blocker utility
 cask "music-decoy"
+# Neovim Client
+cask "neovide-app"
 # Free and open-source RSS reader
 cask "netnewswire"
-# Dual-pane file manager
-cask "nimble-commander"
 # Open-source software for live streaming and screen recording
 cask "obs"
 # Finds large, unwanted files and deletes them
@@ -586,6 +694,8 @@ cask "plex"
 cask "popclip"
 # Install games and apps compiled for Microsoft Windows
 cask "porting-kit"
+# Command-line shell and scripting language
+cask "powershell"
 # Peer to peer Bitorrent client
 cask "qbittorrent"
 # Quick Look generator for Markdown files
@@ -650,14 +760,17 @@ cask "zoom"
 cask "zotero"
 mas "Actions", id: 1586435171
 mas "Blackmagic Disk Speed Test", id: 425264550
+mas "Bonjourr Startpage", id: 1615431236
 mas "Broadcasts", id: 1469995354
 mas "CloudMounter", id: 1130254674
 mas "Compressor", id: 424390742
+mas "Dark Night", id: 1592844577
 mas "Dato", id: 1470584107
 mas "Dropover", id: 1355679052
 mas "Final Cut Pro", id: 424389933
 mas "Folder Preview", id: 6698876601
 mas "Keynote", id: 409183694
+mas "Keyword Search", id: 1558453954
 mas "Klack", id: 6446206067
 mas "Knights of the Old Republic", id: 416608891
 mas "Logic Pro", id: 634148309
@@ -670,12 +783,15 @@ mas "Pages", id: 409201541
 mas "Passepartout", id: 1433648537
 mas "Pixelmator Pro", id: 1289583905
 mas "Poolsuite FM", id: 1514817810
+mas "Refined GitHub", id: 1519867270
 mas "Shareful", id: 1522267256
 mas "Sparrow Weather", id: 6449440582
 mas "Star Wars®: Knights of the Old Republic™ II", id: 960778634
 mas "Swift Playground", id: 1496833156
 mas "Tailscale", id: 1475387142
 mas "TestFlight", id: 899247664
+mas "uBlock Origin Lite", id: 6745342698
+mas "Velja", id: 1607635845
 mas "Xcode", id: 497799835
 vscode "aaron-bond.better-comments"
 vscode "adamraichu.docx-viewer"
