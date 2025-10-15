@@ -197,7 +197,7 @@ local function updateNetworkStatus()
 				else
 					-- WIFI/HOTSPOT CHECK using system_profiler
 					sbar.exec(
-						"networksetup listpreferredwirelessnetworks en0 | awk 'NR==2 {sub(/^[ \t]+/, \"\"); print}'",
+						"networksetup -listpreferredwirelessnetworks en0 | sed -n '2p' | sed 's/^[[:space:]]*//;s/[[:space:]]*$//'",
 						function(ssid_result)
 							local ssid_str = ssid_result or ""
 							if ssid_str:match("iPhone") then
@@ -348,7 +348,7 @@ local function toggle_details()
 			ip:set({ label = result })
 		end)
 		sbar.exec(
-			"networksetup listpreferredwirelessnetworks en0 | awk 'NR==2 {sub(/^[ \t]+/, \"\"); print}'",
+			"networksetup -listpreferredwirelessnetworks en0 | sed -n '2p' | sed 's/^[[:space:]]*//;s/[[:space:]]*$//'",
 			function(result)
 				ssid:set({ label = result })
 			end,
