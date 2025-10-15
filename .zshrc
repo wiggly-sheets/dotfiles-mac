@@ -55,6 +55,13 @@ esac
 # -----------------------------
 source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+ 
+if type brew &>/dev/null; then
+    FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+
+    autoload -Uz compinit
+    compinit
+  fi
 
 # -----------------------------
 # History setup
@@ -169,5 +176,20 @@ spf() {
 
 # Created by `pipx` on 2025-09-21 19:29:37
 export PATH="$PATH:/Users/Zeb/.local/bin"
+export NEOVIDE_CONFIG="/Users/Zeb/dotfiles/.config/neovide"
 
+export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense' # optional
+zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
+source <(carapace _carapace)
+zstyle ':completion:*:git:*' group-order 'main commands' 'alias commands' 'external commands'
 
+export PATH="/opt/homebrew/opt/curl/bin:$PATH"
+
+# The following lines were added by compinstall
+
+zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
+zstyle :compinstall filename '/Users/Zeb/.zshrc'
+
+autoload -Uz compinit
+compinit
+# End of lines added by compinstall
