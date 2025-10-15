@@ -134,6 +134,7 @@ return {
 	["Final Cut Pro"] = ":final_cut_pro:",
 	["Find My"] = ":find_my:",
 	["Finder"] = ":finder:",
+	["Bloom"] = ":finder:",
 	["访达"] = ":finder:",
 	["Firefox"] = ":firefox:",
 	["Firefox Developer Edition"] = ":firefox_developer_edition:",
