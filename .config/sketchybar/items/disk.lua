@@ -11,8 +11,8 @@ local disk = sbar.add("item", "disk", {
 	position = "right",
 	padding_left = 0,
 	y_offset = 0,
-	icon = { string = "", padding_left = 4 }, -- default icon
-	label = { padding_left = 4, font = { family = settings.default, size = 15 } },
+	icon = { string = "", padding_left = 2, padding_right = 2 }, -- default icon
+	label = { padding_left = 1, padding_right = 0, font = { family = settings.default, size = 15 } },
 
 	click_script = click_script, -- optional
 })

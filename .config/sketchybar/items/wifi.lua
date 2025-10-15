@@ -197,7 +197,7 @@ local function updateNetworkStatus()
 				else
 					-- WIFI/HOTSPOT CHECK using system_profiler
 					sbar.exec(
-						"system_profiler SPAirPortDataType | sed -n '/Current Network Information:/,/PHY Mode:/ p' | head -2 | tail -1 | sed 's/^[[:space:]]*//' | sed 's/:$//'",
+						"networksetup listpreferredwirelessnetworks en0 | awk 'NR==2 {sub(/^[ \t]+/, \"\"); print}'",
 						function(ssid_result)
 							local ssid_str = ssid_result or ""
 							if ssid_str:match("iPhone") then
