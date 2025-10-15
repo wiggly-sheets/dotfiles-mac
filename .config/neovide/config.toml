@@ -1,4 +1,4 @@
-#backtraces_path = "/path/to/neovide_backtraces.log" # see below for the default platform specific location
+backtraces_path = "/users/Zeb/neovide_backtraces.log" # see below for the default platform specific location
 fork = false
 frame = "none"
 idle = true

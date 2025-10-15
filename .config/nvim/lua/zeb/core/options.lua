@@ -66,12 +66,10 @@ if vim.g.neovide then
 	vim.api.nvim_set_keymap("t", "<D-v>", "<C-R>+", { noremap = true, silent = true })
 	vim.api.nvim_set_keymap("v", "<D-v>", "<C-R>+", { noremap = true, silent = true })
 
-	vim.o.guifont = "Inconsolata Nerd Font Mono:14" -- text below applies for VimScript
-
 	vim.g.neovide_refresh_rate = 60
-	vim.g.neovide_cursor_animation_length = 0.03
+	vim.g.neovide_cursor_animation_length = 0.05
 	vim.g.neovide_cursor_trail = 0.6
-
+	vim.g.neovide_floating_shadow = false
 	-- vim.opt.guicursor = {
 	--		"n-v-c:hor10-blinkon500-green,i-ci:hor10-blinkon500-yellow,r-cr:hor10-blinkon500-red,o:hor10-blinkon500-blue,v:hor10-blinkon500-purple",
 	--	}
@@ -82,8 +80,10 @@ if vim.g.neovide then
 	--  vim.g.neovide_cursor_vfx_mode = "ripple"
 	--	vim.g.neovide_cursor_vfx_mode = "wireframe"
 	vim.g.neovide_hide_mouse_when_typing = true
+	vim.g.neovide_detach_on_quit = "always_quit"
 
 	vim.g.neovide_opacity = 0.5 --  Adjust between 0.0 (fully transparent) to 1.0 (opaque)
-	vim.g.neovide_floating_blur_amount_x = 50.0
-	vim.g.neovide_floating_blur_amount_y = 50.0
+	vim.g.neovide_window_blurred = true
+	vim.g.neovide_floating_blur_amount_x = 2.0
+	vim.g.neovide_floating_blur_amount_y = 2.0
 end
