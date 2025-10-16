@@ -8,7 +8,7 @@ local click_script =
 local disk_icon = sbar.add("item", "disk_icon", {
 	update_freq = 60,
 	position = "right",
-	padding_left = -38,
+	padding_left = -36,
 	padding_right = 20,
 	y_offset = 8,
 	icon = { font = { size = 25 } },
@@ -28,11 +28,15 @@ local disk_label = sbar.add("item", "disk_label", {
 
 -- Shared update function
 local function update_disk()
-	sbar.exec("df -g /System/Volumes/Data | tail -1 | awk '{print $3, $2, $5}' | tr -d '%'", function(output)
-		local used, total, percent = output:match("(%d+)%s+(%d+)%s+(%d+)")
-		used = tonumber(used) or 0
-		total = tonumber(total) or 0
+	sbar.exec("df -k /System/Volumes/Data | tail -1 | awk '{print $3, $2, $5}' | tr -d '%'", function(output)
+		local used_kb, total_kb, percent = output:match("(%d+)%s+(%d+)%s+(%d+)")
+		used_kb = tonumber(used_kb) or 0
+		total_kb = tonumber(total_kb) or 1
 		percent = tonumber(percent) or 0
+
+		-- Convert KB → GB (decimal base-10) and round to nearest whole number
+		local used_gb = math.floor((used_kb * 1024 / 1e9) + 0.5)
+		local total_gb = math.floor((total_kb * 1024 / 1e9) + 0.5)
 
 		local icon = ""
 		local color = colors.green
@@ -71,7 +75,7 @@ local function update_disk()
 		})
 		disk_label:set({
 			label = {
-				string = string.format("%d/%dGB", used, total),
+				string = string.format("%d/%dGB", used_gb, total_gb),
 				color = color,
 			},
 		})
