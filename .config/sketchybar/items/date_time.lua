@@ -45,22 +45,28 @@ date:subscribe({ "forced", "routine", "system_woke" }, function()
 	date:set({ label = { string = down_value } })
 end)
 
+local left_click_script =
+	[[osascript -e 'tell application "System Events" to tell process "Dato" to click menu bar item 1 of menu bar 2']]
+local right_click_script =
+	'osascript -e \'tell application "System Events" to tell process "ControlCenter" to click menu bar item 2 of menu bar 1\''
+local middle_click_script = "open -a Calendar"
+
 date:subscribe("mouse.clicked", function(env)
 	if env.BUTTON == "left" then
-		sbar.exec(
-			[[osascript -e 'tell application "System Events" to tell process "Dato" to click menu bar item 1 of menu bar 2']]
-		)
+		sbar.exec(left_click_script)
 	elseif env.BUTTON == "right" then
-		sbar.exec("cliclick kd:fn t:n")
+		sbar.exec(right_click_script)
+	else
+		sbar.exec(middle_click_script)
 	end
 end)
 
 time:subscribe("mouse.clicked", function(env)
 	if env.BUTTON == "left" then
-		sbar.exec(
-			[[osascript -e 'tell application "System Events" to tell process "Dato" to click menu bar item 1 of menu bar 2']]
-		)
+		sbar.exec(left_click_script)
 	elseif env.BUTTON == "right" then
-		sbar.exec("osascript -e 'tell application \"System Events\" to key code 45 using {function down}'")
+		sbar.exec(right_click_script)
+	else
+		sbar.exec(middle_click_script)
 	end
 end)

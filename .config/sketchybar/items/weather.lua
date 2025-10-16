@@ -106,7 +106,6 @@ local weather_icons_night = {
 
 local weather = sbar.add("item", "widgets.weather", {
 	position = "right",
-	click_script = 'osascript -e \'tell application "System Events" to tell process "Sparrow" to click menu bar item 1 of menu bar 2\'',
 	icon = {
 		font = { family = "JetBrains Maple Mono", style = "Regular", size = 15 },
 		padding_right = 2,
@@ -173,4 +172,16 @@ end
 
 weather:subscribe({ "forced", "routine", "system_woke" }, function(_)
 	update_weather()
+end)
+
+local left_click_script =
+	'osascript -e \'tell application "System Events" to tell process "Sparrow" to click menu bar item 1 of menu bar 2\''
+local right_click_script = "open -a Weather"
+
+weather:subscribe("mouse.clicked", function(env)
+	if env.BUTTON == "left" then
+		sbar.exec(left_click_script)
+	elseif env.BUTTON == "right" then
+		sbar.exec(right_click_script)
+	end
 end)

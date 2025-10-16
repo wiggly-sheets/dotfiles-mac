@@ -79,7 +79,14 @@ local function update_menus(env)
 	end)
 end
 
-menu_watcher:subscribe("front_app_switched", "space_windows_change", update_menus)
+menu_watcher:subscribe(
+	"window_focus",
+	"front_app_switched",
+	"space_change",
+	"title_change",
+	"display_change",
+	update_menus
+)
 
 for _, menu in ipairs(menu_items) do
 	menu:subscribe("mouse.clicked", function(env)
