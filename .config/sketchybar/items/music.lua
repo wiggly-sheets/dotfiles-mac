@@ -1,13 +1,12 @@
---====================================================--
---  MPD + Media Items Combined for SketchyBar
---====================================================--
-
 local icons = require("icons")
 local settings = require("settings")
 
---------------------------------------------------------
---                    MEDIA ITEM
---------------------------------------------------------
+-- Whitelist apps by bundleIdentifier
+local allowed_bundle_ids = {
+	["com.colliderli.iina"] = true,
+	["com.apple.Music"] = true,
+	["com.chromatix.app"] = true,
+}
 
 local media = sbar.add("item", "media", {
 	position = "left",
@@ -30,7 +29,7 @@ local media = sbar.add("item", "media", {
 	popup = { align = "center", horizontal = true },
 })
 
--- Media Popup Controls
+-- Popup Controls
 sbar.add("item", {
 	position = "popup." .. media.name,
 	icon = { string = icons.media.back },
@@ -50,82 +49,70 @@ sbar.add("item", {
 	click_script = "media-control next-track",
 })
 
--- Popup Song Info for Media
 local media_info = sbar.add("item", "media_info", {
 	position = "popup." .. media.name,
 	icon = { drawing = false },
-	label = {
-		string = "",
-		font = settings.default,
-		width = "dynamic",
-		align = "center",
-	},
+	label = { string = "", font = settings.default, width = "dynamic", align = "center" },
 })
 
--- Helper to clean jq output
-local function clean(output)
-	if not output then
+local function clean(str)
+	if not str then
 		return ""
 	end
-	output = output:gsub("^%s+", ""):gsub("%s+$", "")
-	if output == "null" or output == "nil" or output == "" then
-		return ""
-	end
-	return output
+	str = str:gsub("^%s+", ""):gsub("%s+$", "")
+	return (str == "null" or str == "nil") and "" or str
 end
 
--- Update routine
 local function update_media()
-	local artist, album, song = "", "", ""
+	-- Get bundleIdentifier first
+	sbar.exec("media-control get | jq -r '.bundleIdentifier'", function(bundle_id)
+		bundle_id = clean(bundle_id)
 
-	-- Fetch each field sequentially
-	sbar.exec("media-control get | jq -r '.artist'", function(a)
-		artist = clean(a)
-		sbar.exec("media-control get | jq -r '.album'", function(al)
-			album = clean(al)
-			sbar.exec("media-control get | jq -r '.title'", function(t)
-				song = clean(t)
+		-- Hide widget if app is not whitelisted
+		if not allowed_bundle_ids[bundle_id] then
+			media:set({ icon = { drawing = false }, label = { drawing = false } })
+			sbar.set("media_info", { label = { string = "" } })
+			return
+		end
 
-				-- Determine state
-				if artist == "" and album == "" and song == "" then
-					-- stopped / no player
-					media:set({
-						icon = { string = "", font = settings.default, drawing = true },
-						label = { string = "", drawing = true },
-					})
-					sbar.set("media_info", { label = { string = "" } })
-				else
-					-- Check if player is paused
-					sbar.exec("media-control get | jq -r '.playing'", function(p)
-						p = clean(p)
-						if p == "false" then
-							-- paused
+		-- Fetch artist, album, song
+		local artist, album, song = "", "", ""
+		sbar.exec("media-control get | jq -r '.artist'", function(a)
+			artist = clean(a)
+			sbar.exec("media-control get | jq -r '.album'", function(al)
+				album = clean(al)
+				sbar.exec("media-control get | jq -r '.title'", function(t)
+					song = clean(t)
+					if artist == "" and album == "" and song == "" then
+						media:set({ icon = { string = "", drawing = false }, label = { string = "", drawing = false } })
+						sbar.set("media_info", { label = { string = "" } })
+					else
+						sbar.exec("media-control get | jq -r '.playing'", function(p)
+							p = clean(p)
 							local text = artist .. "  " .. album .. "  " .. song
-							media:set({
-								icon = { string = "􀊅", font = settings.default, drawing = true },
-								label = { string = text, drawing = true },
-							})
+							if p == "false" then
+								media:set({
+									icon = { string = "􀊅", font = settings.default, drawing = true },
+									label = { string = text, drawing = true },
+								})
+							else
+								media:set({
+									icon = { string = "", font = settings.default, drawing = true },
+									label = { string = text, drawing = true },
+								})
+							end
 							sbar.set("media_info", { label = { string = text } })
-						else
-							-- playing
-							local text = artist .. "  " .. album .. "  " .. song
-							media:set({
-								icon = { string = "", font = settings.default, drawing = true },
-								label = { string = text, drawing = true },
-							})
-							sbar.set("media_info", { label = { string = text } })
-						end
-					end)
-				end
+						end)
+					end
+				end)
 			end)
 		end)
 	end)
 end
 
--- Subscribe to routine updates
 media:subscribe("routine", update_media)
 
--- Click logic
+-- Mouse clicks
 media:subscribe("mouse.clicked", function(env)
 	if env.BUTTON == "left" then
 		media:set({ popup = { drawing = "toggle" } })
@@ -140,7 +127,6 @@ media:subscribe("mouse.exited.global", "mouse.exited", function()
 	media:set({ popup = { drawing = false } })
 end)
 
--- Initial update
 update_media()
 
 --------------------------------------------------------
