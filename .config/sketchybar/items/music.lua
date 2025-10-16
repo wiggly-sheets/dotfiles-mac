@@ -6,6 +6,7 @@ local allowed_bundle_ids = {
 	["com.colliderli.iina"] = true,
 	["com.apple.Music"] = true,
 	["com.chromatix.app"] = true,
+	["com.apple.Podcasts"] = true,
 }
 
 local media = sbar.add("item", "media", {
