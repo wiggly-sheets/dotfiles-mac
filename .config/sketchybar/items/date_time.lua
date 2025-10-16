@@ -14,7 +14,7 @@ local time = sbar.add("item", "time", {
 		font = {
 			family = settings.default,
 			style = "Bold",
-			size = 11,
+			size = 10,
 		},
 	},
 	y_offset = 7,
@@ -30,7 +30,7 @@ local date = sbar.add("item", "date", {
 		font = {
 			family = settings.default,
 			style = "Bold",
-			size = 11,
+			size = 10,
 		},
 	},
 })
