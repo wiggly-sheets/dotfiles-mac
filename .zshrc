@@ -21,7 +21,7 @@ export PATH="$PNPM_HOME:$GEM_HOME/bin:$PATH:/opt/homebrew/opt/openjdk/bin:$PATH"
 # -----------------------------
 # Oh My Zsh
 # -----------------------------
-plugins=(git tmux)
+plugins=(git tmux aliases alias-finder brew common-aliases copybuffer copyfile copypath cp gh macos ssh sudo tldr vi-mode zsh-navigation-tools zoxide zbell zsh-interactive-cd xcode)
 source "$ZSH/oh-my-zsh.sh" > /dev/null 2>&1
 
 # -----------------------------
@@ -29,9 +29,6 @@ source "$ZSH/oh-my-zsh.sh" > /dev/null 2>&1
 # -----------------------------
 source $HOMEBREW_PREFIX/share/powerlevel10k/powerlevel10k.zsh-theme
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-
-
 
 # -----------------------------
 # Editor
