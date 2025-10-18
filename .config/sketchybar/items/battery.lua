@@ -49,7 +49,7 @@ local battery_percentage = sbar.add("item", "items.battery_percentage", {
 
 local battery = sbar.add("item", "items.battery", {
 	position = "right",
-	padding_right = -30,
+	padding_right = -32,
 	padding_left = 2,
 	y_offset = -5,
 	icon = {
