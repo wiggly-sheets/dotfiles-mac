@@ -4,7 +4,6 @@
 yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 sudo yabai --load-sa
 
-
 # sketchybar window title events
 yabai -m signal --add event=window_focused action="sketchybar --trigger window_focus &> /dev/null"
 yabai -m signal --add event=window_title_changed action="sketchybar --trigger title_change &> /dev/null"
@@ -13,7 +12,6 @@ function yabai_rule {
   yabai -m rule --add "$@"
   yabai -m rule --apply "$@"
 }
-
 
 yabai -m config default layout stack
 
@@ -112,6 +110,6 @@ yabai -m config debug_output off
 
 
 # bootstrap jankyborders with yabai service
-#borders hidpi=on width=1.0 active_color="0xffffffff" style=uniform ax_focus=on order=below blacklist="Stats,Dropover,iPhone Mirroring,Passwords" &
+#borders hidpi=on width=1.0 active_color="#FFFFFFFF" style=round ax_focus=on order=below blacklist="Stats,Dropover,iPhone Mirroring,Passwords" &
 
 
