@@ -49,8 +49,8 @@ yabai -m config window_topmost off # Disabled because browser popups will disapp
 
 # pin these apps to certain spaces to set up workplaces
 yabai_rule app="^Zen$" space=1
-yabai_rule app="^WezTerm$" space=2
-yabai_rule app="^Bloom$" space=3
+yabai_rule app="^Bloom$" space=2
+yabai_rule app="^WezTerm$" space=3
 yabai_rule app="^Calendar$" space=4
 yabai_rule app="^Notes$" space=4
 yabai_rule app="^Mail$" space=4
@@ -67,6 +67,8 @@ yabai -m rule --add app='^iPhone Mirroring$' manage=off
 yabai -m rule --add app='^Stickies$' manage=off
 yabai -m rule --add app='^VMware Fusion$' manage=off
 yabai -m rule --add app='^Stickies$' manage=off
+yabai -m rule --add app='^Steam$' manage=off
+
 
 # yabai -m window --opacity 0.1 && sleep $(yabai -m config window_opacity_duration) && yabai -m window --opacity 0.0
 

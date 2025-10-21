@@ -27,9 +27,8 @@ local notifications = sbar.add("item", "widgets.notifications", {
 local function check_notifications()
 	local sql = [[select count(*) as cnt from record where style=1 and presented=false OR style=2;]]
 	local cmd = string.format("sqlite3 -readonly '%s' \"%s\"", notif_db, sql)
-
 	sbar.exec(cmd, function(output)
-		local count = tonumber(output) or 0
+local count = math.max((tonumber(output) or 0) - 1, 0)
 		if count > 0 then
 			notifications:set({
 				icon = { string = "●" },
