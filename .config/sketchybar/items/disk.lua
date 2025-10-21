@@ -25,8 +25,6 @@ local disk_label = sbar.add("item", "disk_label", {
 	label = { font = { family = settings.default, size = 11 } },
 	click_script = click_script,
 })
-
--- Shared update function
 local function update_disk()
 	sbar.exec("df -k /System/Volumes/Data | tail -1 | awk '{print $3, $2, $5}' | tr -d '%'", function(output)
 		local used_kb, total_kb, percent = output:match("(%d+)%s+(%d+)%s+(%d+)")
@@ -81,7 +79,6 @@ local function update_disk()
 		})
 	end)
 end
-
 -- Subscriptions for both
 disk_icon:subscribe({ "routine", "forced", "system_woke" }, update_disk)
 disk_label:subscribe({ "routine", "forced", "system_woke" }, update_disk)

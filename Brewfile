@@ -3,21 +3,26 @@ tap "browsh-org/browsh"
 tap "felixkratz/formulae"
 tap "filosottile/musl-cross"
 tap "gcenx/wine"
+tap "gromgit/brewtils"
+tap "gschurck/fuzzybrew"
 tap "jackielii/tap"
 tap "jstkdng/programs"
 tap "kegworks-app/kegworks"
 tap "koekeishiya/formulae"
 tap "lihaoyun6/tap"
 tap "lslqtz/formulae"
+tap "mateocerquetella/ricebarmac"
 tap "mhaeuser/mhaeuser"
 tap "narugit/tap"
 tap "nohajc/anylinuxfs"
 tap "notwadegrimridge/brew"
 tap "philocalyst/tap"
 tap "samtay/tui"
+tap "sikarugir-app/sikarugir"
 tap "slp/krun"
 tap "socsieng/tap"
 tap "thezoraiz/ascii-image-converter"
+tap "valkyrie00/bbrew"
 tap "waydabber/betterdisplay"
 tap "zackelia/formulae"
 # Portable ASCII art graphics library
@@ -132,6 +137,8 @@ brew "dust"
 brew "duti"
 # Utilities for the ext2, ext3, and ext4 file systems
 brew "e2fsprogs"
+# Easily install prebuilt binaries from GitHub
+brew "eget"
 # Friendly and expressive shell
 brew "elvish"
 # Run arbitrary commands when files change
@@ -170,6 +177,8 @@ brew "gh"
 brew "git"
 # Syntax-highlighting pager for git and diff output
 brew "git-delta"
+# Alternative to top/htop
+brew "glances"
 # GNU implementation of the famous stream editor
 brew "gnu-sed"
 # Open source programming language to build simple/reliable/efficient software
@@ -184,6 +193,8 @@ brew "gron"
 brew "libdvdcss"
 # Open-source video transcoder available for Linux, Mac, and Windows
 brew "handbrake", link: false
+# Improved top (interactive process viewer)
+brew "htop"
 # User-friendly cURL replacement (command-line HTTP client)
 brew "httpie"
 # Ping-like tool for HTTP requests
@@ -456,6 +467,10 @@ brew "felixkratz/formulae/borders"
 brew "felixkratz/formulae/sketchybar"
 # Turns macOS input fields into real vim buffers
 brew "felixkratz/formulae/svim"
+# Interactive TUI for Homebrew
+brew "gromgit/brewtils/taproom"
+# Fuzzy search for Homebrew packages
+brew "gschurck/fuzzybrew/fuzzybrew"
 # Drop in replacement for ueberzug written in C++
 brew "jstkdng/programs/ueberzugpp"
 # Simple hotkey-daemon for macOS.
@@ -476,6 +491,8 @@ brew "samtay/tui/tetris"
 brew "socsieng/tap/sendkeys"
 # Convert images into ascii art
 brew "thezoraiz/ascii-image-converter/ascii-image-converter"
+# A simple TUI tool to make your homebrew bold.
+brew "valkyrie00/bbrew/bbrew"
 # BetterDisplay CLI proxy
 brew "waydabber/betterdisplay/betterdisplaycli"
 # Get the battery level of all your devices on your Mac.
@@ -486,6 +503,8 @@ cask "alt-tab"
 cask "altserver"
 # Inspect application bundles
 cask "apparency"
+# Live wallpaper app
+cask "backdrop"
 # Tool to flash OS images to SD cards & USB drives
 cask "balenaetcher"
 # Control the platform power state of your Apple Silicon device
@@ -494,6 +513,8 @@ cask "battery-toolkit"
 cask "betterdisplay"
 # Tool to customise input devices and automate computer systems
 cask "bettertouchtool@alpha"
+# Monitors common persistence locations
+cask "blockblock"
 # File manager
 cask "bloom"
 # CD burning application
@@ -520,12 +541,18 @@ cask "deepl"
 cask "default-folder-x"
 # Voice and text chat software
 cask "discord"
+# Monitor DNS activity
+cask "dnsmonitor"
+# Open-source physical access (aka 'evil maid') attack detector
+cask "do-not-disturb"
 # Emulator to play GameCube and Wii games
 cask "dolphin"
 # Downloads videos from different websites
 cask "downie"
 # Tool for organising and renaming movies, TV shows, anime or music
 cask "filebot"
+# Monitor filesystem activity
+cask "filemonitor"
 # File finder
 cask "find-any-file"
 cask "font-0xproto-nerd-font"
@@ -620,6 +647,8 @@ cask "font-victor-mono-nerd-font"
 cask "font-zed-mono-nerd-font"
 # Audio converter and CD ripper
 cask "freac"
+# Free and open-source image editor
+cask "gimp"
 # Desktop client for GitHub repositories
 cask "github"
 # Virtual globe
@@ -628,22 +657,30 @@ cask "google-earth-pro"
 cask "grandperspective"
 # IRC client
 cask "halloy"
+# Desktop automation application
+cask "hammerspoon"
 # Open-source video transcoder
 cask "handbrake-app"
+# Automated organisation
+cask "hazel"
 # Chromium-based web browser
 cask "helium-browser"
 # Free and open-source media player
 cask "iina"
 # Vector graphics editor
 cask "inkscape"
-# Porting tool, to make Windows programs/games into native apps
-cask "kegworks"
+# Keyboard customiser
+cask "karabiner-elements"
 # File archiver
 cask "keka"
+# Automation software
+cask "keyboard-maestro"
 # Open-source keystroke visualiser
 cask "keycastr"
 # Find shortcuts for any installed application
 cask "keyclu"
+# Tool to show what is persistently installed on the computer
+cask "knockknock"
 # Host-based application firewall
 cask "little-snitch"
 # File system integration
@@ -660,6 +697,8 @@ cask "menuwhere"
 cask "minecraft"
 # Manage your windows in Mission Control
 cask "mission-control-plus"
+# Set of tools to create, alter and inspect Matroska files (MKV)
+cask "mkvtoolnix-app"
 # Mounts servers and cloud storages as a disk on the desktop
 cask "mountain-duck"
 # Tool for editing metadata of audio files including MP3, FLAC, OGG, and more
@@ -680,6 +719,8 @@ cask "onyx"
 cask "openemu"
 # Replacement for Docker Desktop
 cask "orbstack"
+# Monitors computer mic and webcam
+cask "oversight"
 # Share audio between two Bluetooth devices
 cask "pairpods"
 # Playstation 2 Emulator
@@ -696,24 +737,36 @@ cask "popclip"
 cask "porting-kit"
 # Command-line shell and scripting language
 cask "powershell"
+# Monitor process activity
+cask "processmonitor"
 # Peer to peer Bitorrent client
 cask "qbittorrent"
 # Quick Look generator for Markdown files
 cask "qlmarkdown"
 # A lightweight and high-performance screen recorder for macOS.
 cask "quickrecorder"
+# Protect your personal files
+cask "ransomwhere"
 # Imaging utility to install operating systems to a microSD card
 cask "raspberry-pi-imager"
 # Control your tools with a few keystrokes
 cask "raycast"
 # Dreamcast emulator
 cask "redream"
+# Scans, detects, and monitors keyboard taps
+cask "reikey"
+# macOS menu bar app for managing rice configurations
+cask "ricebarmac"
 # Free and open-source page layout program
 cask "scribus"
 # Integrated development environment focused entirely on AppleScript
 cask "script-debugger"
 # Screenshot measurement and annotation tool
 cask "shottr"
+# Porting tool, to make Windows programs/games into native apps
+cask "sikarugir"
+# Automatically checks computer's security
+cask "silentknight"
 # Application to control your PlayStation 4 or PlayStation 5
 cask "sony-ps-remote-play"
 # Sound and audio controller
@@ -728,6 +781,8 @@ cask "subler"
 cask "suspicious-package"
 # Quicklook extension for source files
 cask "syntax-highlight"
+# Tool to explore all the running tasks (processes)
+cask "taskexplorer"
 # Instant fuzzy finder for files including system and hidden files
 cask "thelowtechguys-cling"
 # Connectivity software for the TI-84 Plus family of graphing calculators
