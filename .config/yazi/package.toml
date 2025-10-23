@@ -1,7 +1,7 @@
 [[plugin.deps]]
 use = "gesellkammer/audio-preview"
 rev = "74dfea3"
-hash = "6f185a283a3756475272d147a3c1d29c"
+hash = "16b08cbb794b1b519bea4d18066c0d9f"
 
 [[plugin.deps]]
 use = "ahkohd/eza-preview"
@@ -91,12 +91,12 @@ hash = "f8530ee84fee95dbcc26bb1d8d8019c7"
 [[plugin.deps]]
 use = "MasouShizuka/close-and-restore-tab"
 rev = "5047217"
-hash = "bb24648b1f96f1cef8c1543742189aad"
+hash = "b52a6aa10d3ffde2525090a32dc878d8"
 
 [[plugin.deps]]
 use = "boydaihungst/file-extra-metadata"
 rev = "116a460"
-hash = "e65cd1dea5feb9ca58c33b870ca3070"
+hash = "c90b89405b306e9d3107ceb4ac4afa10"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:mactag"
@@ -145,8 +145,8 @@ hash = "a20327710c3a8d37ee0972128dcb6a31"
 
 [[plugin.deps]]
 use = "AnirudhG07/rich-preview"
-rev = "843c3fa"
-hash = "b4040931f0d2f9670ddb4923e55cd881"
+rev = "1eae795"
+hash = "90b1e3a244c84ac3b8e06a3421b20128"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:zoom"

@@ -191,3 +191,4 @@ zstyle :compinstall filename '/Users/Zeb/.zshrc'
 autoload -Uz compinit
 compinit
 # End of lines added by compinstall
+export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
