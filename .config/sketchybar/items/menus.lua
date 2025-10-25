@@ -3,7 +3,6 @@ local settings = require("settings")
 local icons = require("icons")
 
 local apple = sbar.add("item", {
-	click_script = 'osascript -e \'tell application "System Events" to keystroke "a" using {command down, option down, control down}\'',
 	icon = {
 		font = { size = 14 },
 		string = icons.apple,
@@ -16,7 +15,6 @@ local apple = sbar.add("item", {
 	padding_left = 0,
 	padding_right = 0,
 	y_offset = 1,
-	--click_script = "$CONFIG_DIR/helpers/menus/bin/menus -s 0",
 })
 
 local menu_watcher = sbar.add("item", {
@@ -41,7 +39,7 @@ for i = 1, max_items, 1 do
 				size = 12,
 			},
 		},
-		--	click_script = "$CONFIG_DIR/helpers/menus/bin/menus -s " .. i,
+		click_script = "$CONFIG_DIR/helpers/menus/bin/menus -s " .. i,
 	})
 
 	menu_items[i] = menu
@@ -85,15 +83,15 @@ menu_watcher:subscribe(
 	"space_change",
 	"title_change",
 	"display_change",
+	"forced",
+	"system_woke",
 	update_menus
 )
 
 for _, menu in ipairs(menu_items) do
 	menu:subscribe("mouse.clicked", function(env)
 		if env.BUTTON == "left" then
-			sbar.exec(
-				"osascript -e 'tell application \"System Events\" to key code 46 using {command down, option down, control down}'"
-			)
+			return
 		elseif env.BUTTON == "right" then
 			sbar.exec("yabai -m config menubar_opacity 1.0")
 		end
@@ -106,7 +104,9 @@ apple:subscribe("mouse.clicked", function(env)
 			"osascript -e 'tell application \"System Events\" to key code 0 using {command down, option down, control down}'"
 		)
 	elseif env.BUTTON == "right" then
-		sbar.exec("yabai -m config menubar_opacity 1.0")
+		sbar.exec(
+			"osascript -e 'tell application \"System Events\" to key code 46 using {command down, option down, control down}'"
+		)
 	end
 end)
 

@@ -1,7 +1,7 @@
 [[plugin.deps]]
 use = "gesellkammer/audio-preview"
 rev = "74dfea3"
-hash = "16b08cbb794b1b519bea4d18066c0d9f"
+hash = "6f185a283a3756475272d147a3c1d29c"
 
 [[plugin.deps]]
 use = "ahkohd/eza-preview"
@@ -10,7 +10,7 @@ hash = "cc3aef07a8b1c3fe820f1fbb9a5a2483"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:jump-to-char"
-rev = "9a52857"
+rev = "8f1d971"
 hash = "ce67445ebb1bf3d97b8e44f50904b2c5"
 
 [[plugin.deps]]
