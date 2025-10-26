@@ -2,7 +2,7 @@
 require("items.menus")
 require("items.divider")
 require("items.spaces")
-require("items.divider")
+require("items.divider2")
 require("items.music")
 
 --center items

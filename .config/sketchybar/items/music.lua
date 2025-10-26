@@ -4,7 +4,6 @@ local settings = require("settings")
 -- Whitelist apps by bundleIdentifier
 local allowed_bundle_ids = {
 	["com.colliderli.iina"] = true,
-	["com.apple.Music"] = true,
 	["com.chromatix.app"] = true,
 	["com.apple.Podcasts"] = true,
 }
