@@ -1,10 +1,12 @@
 local settings = require("settings")
 
 local divider = sbar.add("item", "divider", {
-	label = {
-		font = { size = 12, family = settings.default },
-		string = "|",
+	icon = {
+		font = { family = settings.default },
+		string = "│",
 		drawing = true,
 	},
-	padding_left = -5,
+	padding_left = 0,
+	padding_right = 5,
+	position = "left",
 })
