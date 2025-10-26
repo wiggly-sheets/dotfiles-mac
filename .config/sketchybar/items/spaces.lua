@@ -61,8 +61,8 @@ for i = 1, 10 do
 			highlight_color = colors.white,
 			font = "sketchybar-app-font:Regular:12.0",
 		},
-		padding_right = 2,
-		padding_left = 2,
+		padding_right = 0,
+		padding_left = 0,
 		background = {
 			color = colors.transparent,
 			border_width = 1,
@@ -113,8 +113,7 @@ for i = 1, 10 do
 		-- update bracket border
 		space_bracket:set({
 			background = {
-				border_color = is_selected and colors.white or colors.grey,
-				corner_radius = 10,
+				drawing = false,
 			},
 		})
 

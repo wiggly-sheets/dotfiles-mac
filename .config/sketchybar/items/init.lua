@@ -1,5 +1,6 @@
 --left side items
 require("items.menus")
+require("items.divider")
 require("items.spaces")
 --require("items.svim")
 require("items.music")

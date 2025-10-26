@@ -19,7 +19,7 @@ local left_click_script =
 	'osascript -e \'tell application "System Events" to tell process "ControlCenter" to click menu bar item 4 of menu bar 1\''
 
 local right_click_script =
-	'osascript -e \'tell application "System Events" to keystroke "a" using {command down, option down, control down}\''
+	'osascript -e \'tell application "System Events" to keystroke "i" using {command down, option down, control down}\''
 
 local middle_click_script = "open -a 'System Settings'"
 
