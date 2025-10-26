@@ -49,6 +49,7 @@ local left_click_script =
 	[[osascript -e 'tell application "System Events" to tell process "Dato" to click menu bar item 1 of menu bar 2']]
 local right_click_script =
 	'osascript -e \'tell application "System Events" to tell process "ControlCenter" to click menu bar item 2 of menu bar 1\''
+
 local middle_click_script = "open -a Calendar"
 
 date:subscribe("mouse.clicked", function(env)
