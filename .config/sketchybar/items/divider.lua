@@ -6,7 +6,7 @@ local divider = sbar.add("item", "divider", {
 		string = "│",
 		drawing = true,
 	},
-	padding_left = 0,
+	padding_left = -2,
 	padding_right = 5,
 	position = "left",
 })
