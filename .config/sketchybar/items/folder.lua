@@ -14,9 +14,10 @@ local left_click_script =
 	'osascript -e \'tell application "System Events" to tell process "Default Folder X" to click menu bar item 1 of menu bar 2\''
 
 local right_click_script =
-	'osascript -e \'tell application "System Events" to tell process "SystemUIServer" to click (first menu bar item of menu bar 1 whose name is not "Siri")\''
+	'osascript -e \'tell application "System Events" to tell process "CloudMounter" to click menu bar item 1 of menu bar 2\''
 
-local middle_click_script = "open -a Bloom"
+local middle_click_script =
+	'osascript -e \'tell application "System Events" to tell process "SystemUIServer" to click (first menu bar item of menu bar 1 whose name is not "Siri")\''
 
 folder:subscribe("mouse.clicked", function(env)
 	if env.BUTTON == "left" then
