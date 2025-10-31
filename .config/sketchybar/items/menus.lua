@@ -101,11 +101,11 @@ end
 apple:subscribe("mouse.clicked", function(env)
 	if env.BUTTON == "left" then
 		sbar.exec(
-			"osascript -e 'tell application \"System Events\" to key code 0 using {command down, option down, control down}'"
+			"osascript -e 'tell application \"System Events\" to key code 46 using {command down, option down, control down}'"
 		)
 	elseif env.BUTTON == "right" then
 		sbar.exec(
-			"osascript -e 'tell application \"System Events\" to key code 46 using {command down, option down, control down}'"
+			"osascript -e 'tell application \"System Events\" to key code 0 using {command down, option down, control down}'"
 		)
 	end
 end)

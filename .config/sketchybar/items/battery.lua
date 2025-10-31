@@ -7,7 +7,7 @@ local lowpowermode = sbar.add("item", "lowpowermode", {
 	update_freq = 5,
 	position = "right",
 	padding_right = -7,
-	padding_left = 0,
+	padding_left = -3,
 	y_offset = -1,
 	label = {
 		font = { size = 10 },

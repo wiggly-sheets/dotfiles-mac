@@ -41,6 +41,8 @@ brew "python@3.13"
 brew "aerc"
 # Simple system information tool written in Python
 brew "archey4"
+# Record and share terminal sessions
+brew "asciinema"
 # Aquarium animation in ASCII art
 brew "asciiquarium"
 # Perf monitoring CLI tool for Apple Silicon
@@ -83,6 +85,8 @@ brew "coreutils"
 brew "cask"
 # Console-based Audio Visualizer for ALSA
 brew "cava"
+# Console Bonsai is a bonsai tree generator, written in C using ncurses
+brew "cbonsai"
 # CloudFlare's PKI toolkit
 brew "cfssl"
 # Versatile and fast Unicode/ASCII/ANSI graphics renderer
@@ -113,6 +117,8 @@ brew "poppler"
 brew "copyparty"
 # Apjanke's fork of the classic cowsay project
 brew "cowsay"
+# Securely send things from one computer to another
+brew "croc"
 # DDC monitor controls (brightness) for Mac OSX command-line
 brew "ddcctl"
 # Command-line DNS client
@@ -173,6 +179,8 @@ brew "fx"
 brew "gawk"
 # GitHub command-line tool
 brew "gh"
+# Multi-platform software reverse engineering framework
+brew "ghidra"
 # Distributed revision control system
 brew "git"
 # Syntax-highlighting pager for git and diff output
@@ -187,6 +195,8 @@ brew "go"
 brew "gping"
 # GNU grep, egrep and fgrep
 brew "grep"
+# Command-line tool for generating regular expressions
+brew "grex"
 # Make JSON greppable
 brew "gron"
 # Access DVDs as block devices without the decryption
@@ -209,6 +219,8 @@ brew "ifstat"
 brew "iftop"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
+# Command-line note taker
+brew "jrnl"
 # Fast, Dynamic Programming Language
 brew "julia"
 # Command-line music player
@@ -233,6 +245,8 @@ brew "lolcat"
 brew "lua"
 # Package manager for the Lua programming language
 brew "luarocks"
+# Text-based web browser
+brew "lynx"
 # System information fetcher, with an emphasis on performance and minimalism
 brew "macchina"
 # Keep your Mac's application settings in sync
@@ -331,6 +345,8 @@ brew "python-tk@3.13"
 brew "rclone"
 # Reattach process (e.g., tmux) to background
 brew "reattach-to-user-namespace"
+# Perl-powered file rename script with many helpful built-ins
+brew "rename"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 # Wrapper around ripgrep that adds multiple rich file types
@@ -421,6 +437,8 @@ brew "trash"
 brew "tree"
 # Command-line tool for URL parsing and manipulation
 brew "trurl"
+# Command-line tool for sharing terminal over the web
+brew "ttyd"
 # Language for application scale JavaScript development
 brew "typescript"
 # Simple terminal image viewer written in Rust
@@ -509,6 +527,8 @@ cask "backdrop"
 cask "balenaetcher"
 # Control the platform power state of your Apple Silicon device
 cask "battery-toolkit"
+# Online gaming platform
+cask "battle-net"
 # Display management tool
 cask "betterdisplay"
 # Tool to customise input devices and automate computer systems
@@ -647,6 +667,8 @@ cask "font-victor-mono-nerd-font"
 cask "font-zed-mono-nerd-font"
 # Audio converter and CD ripper
 cask "freac"
+# Software reverse engineering (SRE) suite of tools
+cask "ghidra"
 # Free and open-source image editor
 cask "gimp"
 # Desktop client for GitHub repositories
@@ -667,8 +689,12 @@ cask "hazel"
 cask "helium-browser"
 # Free and open-source media player
 cask "iina"
+# Tool to optimise images to a smaller size
+cask "imageoptim"
 # Vector graphics editor
 cask "inkscape"
+# Download manager
+cask "jdownloader"
 # Keyboard customiser
 cask "karabiner-elements"
 # File archiver
@@ -703,6 +729,8 @@ cask "mkvtoolnix-app"
 cask "mountain-duck"
 # Tool for editing metadata of audio files including MP3, FLAC, OGG, and more
 cask "mp3tag"
+# Open-source music notation software
+cask "musescore"
 # Music app blocker utility
 cask "music-decoy"
 # Neovim Client
@@ -763,6 +791,8 @@ cask "scribus"
 cask "script-debugger"
 # Screenshot measurement and annotation tool
 cask "shottr"
+# Instant messaging application focusing on security
+cask "signal"
 # Porting tool, to make Windows programs/games into native apps
 cask "sikarugir"
 # Automatically checks computer's security
@@ -783,6 +813,8 @@ cask "suspicious-package"
 cask "syntax-highlight"
 # Tool to explore all the running tasks (processes)
 cask "taskexplorer"
+# Messaging app with a focus on speed and security
+cask "telegram"
 # Instant fuzzy finder for files including system and hidden files
 cask "thelowtechguys-cling"
 # Connectivity software for the TI-84 Plus family of graphing calculators
@@ -824,6 +856,7 @@ mas "Dato", id: 1470584107
 mas "Dropover", id: 1355679052
 mas "Final Cut Pro", id: 424389933
 mas "Folder Preview", id: 6698876601
+mas "Gifski", id: 1351639930
 mas "Keynote", id: 409183694
 mas "Keyword Search", id: 1558453954
 mas "Klack", id: 6446206067
@@ -848,6 +881,7 @@ mas "TestFlight", id: 899247664
 mas "uBlock Origin Lite", id: 6745342698
 mas "Velja", id: 1607635845
 mas "Xcode", id: 497799835
+mas "YABA", id: 6747272081
 vscode "aaron-bond.better-comments"
 vscode "adamraichu.docx-viewer"
 vscode "adamraichu.zip-viewer"
