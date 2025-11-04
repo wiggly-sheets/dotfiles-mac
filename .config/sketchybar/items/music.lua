@@ -1,5 +1,6 @@
 local icons = require("icons")
 local settings = require("settings")
+local colors = require("colors")
 
 -- Whitelist apps by bundleIdentifier
 local allowed_bundle_ids = {
@@ -92,13 +93,23 @@ local function update_media()
 							local text = artist .. "  " .. album .. "  " .. song
 							if p == "false" then
 								media:set({
-									icon = { string = "􀊅", font = settings.default, drawing = true },
-									label = { string = text, drawing = true },
+									icon = {
+										string = "",
+										font = settings.default,
+										drawing = true,
+										color = colors.grey,
+									},
+									label = { string = text, drawing = true, color = colors.grey },
 								})
 							else
 								media:set({
-									icon = { string = "", font = settings.default, drawing = true },
-									label = { string = text, drawing = true },
+									icon = {
+										string = "",
+										font = settings.default,
+										drawing = true,
+										color = colors.white,
+									},
+									label = { string = text, drawing = true, color = colors.white },
 								})
 							end
 							sbar.set("media_info", { label = { string = text } })
@@ -207,8 +218,8 @@ local function update_mpd()
 		elseif status and status:match("paused") then
 			local text = last_artist .. "  " .. last_album .. "  " .. last_song
 			mpd:set({
-				icon = { string = "􀊅", font = { size = 20 } },
-				label = { string = text, drawing = true },
+				icon = { string = "", font = { size = 20 }, color = colors.grey },
+				label = { string = text, drawing = true, color = colors.grey },
 			})
 			sbar.set("mpd_info", { label = { string = text } })
 		else

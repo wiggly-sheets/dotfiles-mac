@@ -91,7 +91,6 @@ alias cp='cp -i'
 alias mv='mv -i'
 alias rm='rm -i'
 alias i2p='open http://127.0.01:7657 && ssh -NL 7657:localhost:7657 zeb@192.168.1.191'
- 
 
 # -----------------------------
 # fzf defaults & functions

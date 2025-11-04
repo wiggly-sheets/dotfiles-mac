@@ -477,7 +477,7 @@ wifi_up:subscribe("network_update", function(env)
 
 	-- your working Wi-Fi click AppleScript
 	local wifi_click_script =
-		'osascript -e \'tell application "System Events" to tell process "ControlCenter" to click menu bar item 3 of menu bar 1\''
+		'osascript -e \'tell application "System Events" to tell process "ControlCenter" to click menu bar item 4 of menu bar 1\''
 
 	-- keyboard shortcut command (Cmd+Opt+Ctrl+N)
 	local shortcut_script =
