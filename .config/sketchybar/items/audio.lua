@@ -169,7 +169,7 @@ local left_click_script =
 
 -- New right-click: Control Center menu bar item 5
 local right_click_script =
-	'osascript -e \'tell application "System Events" to tell process "ControlCenter" to click menu bar item 1 of menu bar 1\''
+	'osascript -e \'tell application "System Events" to tell process "ControlCenter" to click (first menu bar item of menu bar 1 whose name is not "Wi-Fi")\''
 
 -- Helper function
 local function handle_volume_click(item, env)
