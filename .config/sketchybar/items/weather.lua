@@ -106,12 +106,12 @@ local weather_icons_night = {
 
 local weather = sbar.add("item", "widgets.weather", {
 	position = "right",
+	update_freq = 3600, --30 min updates
 	icon = {
 		font = { family = "JetBrains Maple Mono", style = "Regular", size = 15 },
 		padding_right = 2,
 		padding_left = 8,
 	},
-	update_freq = 3600, --30 min updates
 	label = {
 		y_offset = 1,
 		padding_right = 0,
@@ -170,7 +170,7 @@ local function update_weather()
 	end)
 end
 
-weather:subscribe({ "forced", "routine", "system_woke" }, function(_)
+weather:subscribe({ "forced", "routine", "system_woke" }, function()
 	update_weather()
 end)
 
