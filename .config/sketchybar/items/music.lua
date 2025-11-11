@@ -7,6 +7,7 @@ local allowed_bundle_ids = {
 	["com.colliderli.iina"] = true,
 	["com.chromatix.app"] = true,
 	["com.apple.Podcasts"] = true,
+	["com.highcaffeinecontent.radio"] = true,
 }
 
 local media = sbar.add("item", "media", {
@@ -17,7 +18,7 @@ local media = sbar.add("item", "media", {
 	label = {
 		string = "",
 		font = settings.default,
-		max_chars = 15,
+		max_chars = 20,
 		scroll_texts = true,
 		scroll_duration = 200,
 	},

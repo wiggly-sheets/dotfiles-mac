@@ -98,15 +98,20 @@ for _, menu in ipairs(menu_items) do
 	end)
 end
 
+local left_click_script =
+	"osascript -e 'tell application \"System Events\" to key code 46 using {command down, option down, control down}'"
+
+local right_click_script =
+	"osascript -e 'tell application \"System Events\" to key code 0 using {command down, option down, control down}'"
+local middle_click_script = "$CONFIG_DIR/helpers/menus/bin/menus -s 0"
+
 apple:subscribe("mouse.clicked", function(env)
 	if env.BUTTON == "left" then
-		sbar.exec(
-			"osascript -e 'tell application \"System Events\" to key code 46 using {command down, option down, control down}'"
-		)
+		sbar.exec(left_click_script)
 	elseif env.BUTTON == "right" then
-		sbar.exec(
-			"osascript -e 'tell application \"System Events\" to key code 0 using {command down, option down, control down}'"
-		)
+		sbar.exec(right_click_script)
+	elseif env.BUTTON == "other" then
+		sbar.exec(middle_click_script)
 	end
 end)
 
