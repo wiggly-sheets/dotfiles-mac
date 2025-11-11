@@ -18,7 +18,7 @@ local media = sbar.add("item", "media", {
 	label = {
 		string = "",
 		font = settings.default,
-		max_chars = 20,
+		max_chars = 30,
 		scroll_texts = true,
 		scroll_duration = 200,
 	},
@@ -154,7 +154,7 @@ local mpd = sbar.add("item", "mpd", {
 	label = {
 		string = "",
 		font = settings.default,
-		max_chars = 15,
+		max_chars = 30,
 		scroll_texts = true,
 		scroll_duration = 200,
 	},
