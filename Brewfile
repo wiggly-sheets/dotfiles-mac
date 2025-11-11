@@ -105,6 +105,8 @@ brew "cmus"
 brew "php"
 # Dependency Manager for PHP
 brew "composer"
+# Create and run Linux containers using lightweight virtual machines
+brew "container"
 # Manage Apple Container with Docker Compose files
 brew "container-compose"
 # Package compiler and linker metadata toolkit
@@ -185,6 +187,8 @@ brew "ghidra"
 brew "git"
 # Syntax-highlighting pager for git and diff output
 brew "git-delta"
+# Data validation using Python type hints
+brew "pydantic"
 # Alternative to top/htop
 brew "glances"
 # GNU implementation of the famous stream editor
@@ -209,6 +213,8 @@ brew "htop"
 brew "httpie"
 # Ping-like tool for HTTP requests
 brew "httping"
+# HTTP request visualizer with phase-by-phase timing breakdown
+brew "httptap"
 # Website copier/offline browser
 brew "httrack"
 # Fast, highly customisable system info script with LGBTQ+ pride flags
@@ -251,7 +257,7 @@ brew "lynx"
 brew "macchina"
 # Keep your Mac's application settings in sync
 brew "mackup"
-# Platform built on V8 to build network applications
+# Open-source, cross-platform JavaScript runtime environment
 brew "node"
 # Quickly generate a temporary email address
 brew "mailsy"
@@ -262,7 +268,7 @@ brew "media-control"
 # Unified display of technical and tag data for audio/video
 brew "media-info"
 # Matroska media files manipulation tools
-brew "mkvtoolnix"
+brew "mkvtoolnix", link: false
 # Terminal-based music player
 brew "moc"
 # Drive some car across the moon
@@ -337,6 +343,8 @@ brew "ponysay"
 brew "powerlevel10k"
 # Wrapper to colorize and simplify ping's output
 brew "prettyping"
+# Generic syntax highlighter
+brew "pygments"
 # Tool Command Language
 brew "tcl-tk"
 # Python interface to Tcl/Tk
@@ -345,6 +353,8 @@ brew "python-tk@3.13"
 brew "rclone"
 # Reattach process (e.g., tmux) to background
 brew "reattach-to-user-namespace"
+# Reddit, refined for the terminal
+brew "reddix"
 # Perl-powered file rename script with many helpful built-ins
 brew "rename"
 # Search tool like grep and The Silver Searcher
@@ -403,6 +413,8 @@ brew "switchaudio-osx"
 brew "tag"
 # Command-line Kanban board/task manager with support for Trello
 brew "taskell"
+# Utility to modify the macOS Accessibility Database (TCC.db)
+brew "tccutil"
 # Enhanced, fully compatible version of the Berkeley C shell
 brew "tcsh"
 # Very fast implementation of tldr in Rust
@@ -447,10 +459,14 @@ brew "viu"
 brew "vscode-langservers-extracted"
 # Sends magic packets to wake up network-devices
 brew "wakeonlan"
+# Manage the desktop wallpaper
+brew "wallpaper"
 # Executes a program periodically, showing output fullscreen
 brew "watch"
 # Watch files and take action when they change
 brew "watchman"
+# Command-line streaming torrent client
+brew "webtorrent-cli"
 # Internet file retriever
 brew "wget"
 # Successor of GNU Wget, a file and recursive website downloader
@@ -489,6 +505,8 @@ brew "felixkratz/formulae/svim"
 brew "gromgit/brewtils/taproom"
 # Fuzzy search for Homebrew packages
 brew "gschurck/fuzzybrew/fuzzybrew"
+# Simple hotkey daemon for macOS, written in Zig
+brew "jackielii/tap/skhd-zig", link: false
 # Drop in replacement for ueberzug written in C++
 brew "jstkdng/programs/ueberzugpp"
 # Simple hotkey-daemon for macOS.
@@ -521,8 +539,6 @@ cask "alt-tab"
 cask "altserver"
 # Inspect application bundles
 cask "apparency"
-# Live wallpaper app
-cask "backdrop"
 # Tool to flash OS images to SD cards & USB drives
 cask "balenaetcher"
 # Control the platform power state of your Apple Silicon device
@@ -533,12 +549,16 @@ cask "battle-net"
 cask "betterdisplay"
 # Tool to customise input devices and automate computer systems
 cask "bettertouchtool@alpha"
+# 3D creation suite
+cask "blender"
 # Monitors common persistence locations
 cask "blockblock"
 # File manager
 cask "bloom"
 # CD burning application
 cask "burn"
+# E-books management software
+cask "calibre"
 # OpenAI's official ChatGPT desktop app
 cask "chatgpt"
 # Image, video and clipboard optimiser
@@ -665,6 +685,8 @@ cask "font-ubuntu-nerd-font"
 cask "font-ubuntu-sans-nerd-font"
 cask "font-victor-mono-nerd-font"
 cask "font-zed-mono-nerd-font"
+# Audio player
+cask "foobar2000"
 # Audio converter and CD ripper
 cask "freac"
 # Software reverse engineering (SRE) suite of tools
@@ -707,8 +729,14 @@ cask "keycastr"
 cask "keyclu"
 # Tool to show what is persistently installed on the computer
 cask "knockknock"
+# Free and open-source painting and sketching program
+cask "krita"
+# Free cross-platform office suite, fresh version
+cask "libreoffice"
 # Host-based application firewall
 cask "little-snitch"
+# Trims video and audio files losslessly
+cask "losslesscut"
 # File system integration
 cask "macfuse"
 # Video format converter (transcoder)
@@ -725,8 +753,6 @@ cask "minecraft"
 cask "mission-control-plus"
 # Set of tools to create, alter and inspect Matroska files (MKV)
 cask "mkvtoolnix-app"
-# Mounts servers and cloud storages as a disk on the desktop
-cask "mountain-duck"
 # Tool for editing metadata of audio files including MP3, FLAC, OGG, and more
 cask "mp3tag"
 # Open-source music notation software
@@ -739,6 +765,8 @@ cask "neovide-app"
 cask "netnewswire"
 # Open-source software for live streaming and screen recording
 cask "obs"
+# Knowledge base that works on top of a local folder of plain text Markdown files
+cask "obsidian"
 # Finds large, unwanted files and deletes them
 cask "omnidisksweeper"
 # Verify system files structure, run miscellaneous maintenance and more
@@ -779,6 +807,8 @@ cask "ransomwhere"
 cask "raspberry-pi-imager"
 # Control your tools with a few keystrokes
 cask "raycast"
+# WinAMP clone written in SwiftUI
+cask "reamp"
 # Dreamcast emulator
 cask "redream"
 # Scans, detects, and monitors keyboard taps
@@ -831,14 +861,16 @@ cask "usenapp"
 cask "utm"
 # Binary releases of VS Code without MS branding/telemetry/licensing
 cask "vscodium"
+# Torrent streaming application
+cask "webtorrent"
 # GPU-accelerated cross-platform terminal emulator and multiplexer
 cask "wezterm@nightly"
+# Native desktop client for WhatsApp
+cask "whatsapp"
 # Wine wrapper built with SwiftUI
 cask "whisky"
 # Original Xbox Emulator
 cask "xemu"
-# Hides privacy indicators
-cask "yellowdot"
 # Gecko based web browser
 cask "zen"
 # Video communication and virtual meeting platform
@@ -871,7 +903,6 @@ mas "Pages", id: 409201541
 mas "Passepartout", id: 1433648537
 mas "Pixelmator Pro", id: 1289583905
 mas "Poolsuite FM", id: 1514817810
-mas "Refined GitHub", id: 1519867270
 mas "Shareful", id: 1522267256
 mas "Sparrow Weather", id: 6449440582
 mas "Star Wars®: Knights of the Old Republic™ II", id: 960778634
@@ -881,6 +912,7 @@ mas "TestFlight", id: 899247664
 mas "uBlock Origin Lite", id: 6745342698
 mas "Velja", id: 1607635845
 mas "Xcode", id: 497799835
+mas "Xmind", id: 1327661892
 mas "YABA", id: 6747272081
 vscode "aaron-bond.better-comments"
 vscode "adamraichu.docx-viewer"
