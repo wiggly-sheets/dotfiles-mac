@@ -70,9 +70,9 @@ if vim.g.neovide then
 	vim.g.neovide_cursor_animation_length = 0.05
 	vim.g.neovide_cursor_trail = 0.6
 	vim.g.neovide_floating_shadow = false
-	-- vim.opt.guicursor = {
-	--		"n-v-c:hor10-blinkon500-green,i-ci:hor10-blinkon500-yellow,r-cr:hor10-blinkon500-red,o:hor10-blinkon500-blue,v:hor10-blinkon500-purple",
-	--	}
+	vim.opt.guicursor = {
+		"n-v-c:hor10-blinkon500-green,i-ci:hor10-blinkon500-yellow,r-cr:hor10-blinkon500-red,o:hor10-blinkon500-blue,v:hor10-blinkon500-purple",
+	}
 	--  vim.g.neovide_cursor_vfx_mode = "railgun"
 	--  vim.g.neovide_cursor_vfx_mode = "torpedo"
 	--	vim.g.neovide_cursor_vfx_mode = "pixiedust"
