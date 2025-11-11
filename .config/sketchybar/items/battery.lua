@@ -56,7 +56,7 @@ local battery = sbar.add("item", "items.battery", {
 		font = { style = settings.default },
 		color = colors.green,
 	},
-	update_freq = 300,
+	update_freq = 30,
 })
 
 -- Shared click behavior for both battery items
@@ -92,7 +92,7 @@ battery:subscribe({ "routine", "power_source_change", "system_woke" }, function(
 			icon = charge >= 80 and icons.battery._100
 				or charge >= 60 and icons.battery._75
 				or charge >= 40 and icons.battery._50
-				or charge >= 25 and icons.battery._25
+				or charge >= 20 and icons.battery._25
 				or icons.battery._0
 
 			color = charge >= 30 and colors.green or charge >= 20 and colors.orange or colors.red
