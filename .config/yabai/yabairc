@@ -1,4 +1,4 @@
-# upon upgrading run this to upgrade sudoers file for scripting addition
+# upon updating run this
 # echo "$(whoami) ALL=(root) NOPASSWD: sha256:$(shasum -a 256 $(which yabai) | cut -d " " -f 1) $(which yabai) --load-sa" | sudo tee /private/etc/sudoers.d/yabai
 
 yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
@@ -18,9 +18,12 @@ yabai -m config default layout stack
 yabai -m config menubar_opacity 0.0
 
 yabai -m config window_origin_display
+
 yabai -m config window_insertion_point focused
 
 yabai -m config window_zoom_persist true
+
+yabai -m config window_topmost off # Disabled because browser popups will disappear if its enabled
 
 yabai -m config split_type auto
 
@@ -28,6 +31,7 @@ yabai -m config auto_balance off
 
 
 yabai -m config window_animation_duration 0.25
+
 yabai -m config window_animation_easing easeOutElastic
 
 yabai -m config split_ratio 0.5
@@ -42,12 +46,8 @@ yabai -m config left_padding 0
 yabai -m config right_padding 0
 yabai -m config window_gap 0
 
-yabai -m config window_zoom_persist on
 
-yabai -m config window_topmost off # Disabled because browser popups will disappear if its enabled
-
-
-# pin these apps to certain spaces to set up workplaces
+# pin apps to workspaces
 yabai_rule app="^Helium$" space=1
 yabai_rule app="^Bloom$" space=2
 yabai_rule app="^WezTerm$" space=3
@@ -55,7 +55,7 @@ yabai_rule app="^Calendar$" space=4
 yabai_rule app="^Notes$" space=4
 yabai_rule app="^Mail$" space=4
 
-#float apps that are buggy when managed 
+#float apps 
 yabai -m rule --add app='^System Settings$' manage=off
 yabai -m rule --add app='^Calculator$' manage=off
 yabai -m rule --add app='^balenaEtcher$' manage=off
@@ -69,12 +69,7 @@ yabai -m rule --add app='^VMware Fusion$' manage=off
 yabai -m rule --add app='^Stickies$' manage=off
 yabai -m rule --add app='^Steam$' manage=off
 
-
-# yabai -m window --opacity 0.1 && sleep $(yabai -m config window_opacity_duration) && yabai -m window --opacity 0.0
-
- # yabai -m signal --add label="flash_focus" event="window_focused" action="yabai -m window \$YABAI_WINDOW_ID --opacity 0.1 && sleep $(yabai -m config window_opacity_duration) && yabai -m window \$YABAI_WINDOW_ID --opacity 0.0"
-
-
+# window opacity
 yabai -m config window_shadow off
 yabai -m config window_opacity on
 yabai -m config window_opacity_duration 0.10
@@ -86,7 +81,6 @@ yabai -m config mouse_follows_focus on
 
 # autoraise windows hovered by mouse
 yabai -m config focus_follows_mouse autoraise
-
 
 # modifier for clicking and dragging with mouse
 yabai -m config mouse_modifier alt
@@ -105,11 +99,6 @@ yabai -m config event_feedback on
 yabai -m config insert_feedback_color 0xffffffff
 
 yabai -m config debug_output off
-
-
-# find all executable files in ~/.config/yabai and execute them
-# find "${HOME}/.config/yabai" -type f -perm +111 -exec {} \;
-
 
 # bootstrap jankyborders with yabai service
 #borders hidpi=on width=1.0 active_color="#FFFFFFFF" style=round ax_focus=on order=below blacklist="Stats,Dropover,iPhone Mirroring,Passwords" &

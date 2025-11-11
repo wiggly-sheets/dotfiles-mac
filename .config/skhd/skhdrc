@@ -4,12 +4,17 @@ alt - k : yabai -m window --focus north
 alt - h : yabai -m window --focus west
 alt - l : yabai -m window --focus east
 
+# switch current space layout
+alt - z : yabai -m space --layout stack
+alt - x : yabai -m space --layout bsp
+alt - c : yabai -m space --layout float
+
 #change focus between external displays (left and right)
 alt - s : yabai -m display --focus west
 alt - g : yabai -m display --focus east
 
 # rotate layout clockwise
-shift + alt - r : yabai -m space --rotate 270
+shift + alt - r : yabai -m space --rotate 90
 
 # flip along y-axis
 shift + alt - y : yabai -m space --mirror y-axis
@@ -24,7 +29,7 @@ shift + alt - t : yabai -m window --toggle float --grid 4:4:1:1:2:2
 shift + alt - m : yabai -m window --toggle zoom-fullscreen
 
 # balance out tree of windows (resize to occupy same area)
-shift + alt - e : yabai -m space --balance
+alt - b : yabai -m space --balance
 
 # swap windows
 shift + alt - j : yabai -m window --swap south
@@ -58,10 +63,13 @@ shift + alt - 4 : yabai -m window --space 4;
 shift + alt - 5 : yabai -m window --space 5;
 
 # destroy focused desktop
-cmd + alt - q : yabai -m space --destroy
+alt - q : yabai -m space --destroy
 
 # create new desktop
-cmd + alt - w : yabai -m space --create
+ alt - a : yabai -m space --create
+
+# create new desktop and follow focus 
+alt - w : yabai -m space --create; yabai -m space --focus last
 
 # send window to desktop and follow focus
 shift + cmd - x : yabai -m window --space recent; yabai -m space --focus recent
@@ -89,42 +97,25 @@ ctrl + cmd - 1 : yabai -m window --display 1; yabai -m display --focus 1
 ctrl + cmd - 2 : yabai -m window --display 2; yabai -m display --focus 2
 ctrl + cmd - 3 : yabai -m window --display 3; yabai -m display --focus 3
 
-# create desktop, move window and follow focus - uses jq for parsing json (brew install jq)
-shift + ctrl + cmd - n : yabai -m space --create && \
-                   index="$(yabai -m query --spaces --display | jq 'map(select(."native-fullscreen" == 0))[-1].index')" && \
-                   yabai -m window --space "${index}" && \
-                   yabai -m space --focus "${index}"
-
-# create desktop and follow focus - uses jq for parsing json (brew install jq)
-shift + cmd + alt - n : yabai -m space --create && \
-                 index="$(yabai -m query --spaces --display | jq 'map(select(."native-fullscreen" == 0))[-1].index')" && \
-                 yabai -m space --focus "${index}"
-
 # toggle sticky window (window appears on all spaces)
 cmd + ctrl - s : yabai -m window --toggle sticky
 
 # restart yabai
 ctrl + alt - r : yabai --restart-service
 
-# restart skhd
-cmd + alt - r : skhd --restart-service
-
 #restart sketchybar
 shift + cmd - r : brew services restart sketchybar
 
-# change current space layout
-alt - z : yabai -m space --layout bsp
-alt - x : yabai -m space --layout stack
-alt - c : yabai -m space --layout float
-
-
-# padding for use when external display connected
+# external display menu bar padding
 shift + cmd - m :  yabai -m config external_bar main:9:0
-#revert to notch padding
+
+# built-in display menu bar padding
 shift + cmd - n : yabai -m config external_bar all:0:0
 
-#menu bar opacity
+#menu bar invisible
 shift + cmd - q : yabai -m config menubar_opacity 0.0
+
+#menu bar viisble
 shift + cmd - w : yabai -m config menubar_opacity 1.0
 
 
