@@ -13,7 +13,9 @@ function yabai_rule {
   yabai -m rule --apply "$@"
 }
 
-yabai -m config default layout stack
+yabai -m config default layout bsp
+
+yabai -m config --space 1 layout stack
 
 yabai -m config menubar_opacity 0.0
 
@@ -28,7 +30,6 @@ yabai -m config window_topmost off # Disabled because browser popups will disapp
 yabai -m config split_type auto
 
 yabai -m config auto_balance off
-
 
 yabai -m config window_animation_duration 0.25
 
@@ -55,13 +56,12 @@ yabai_rule app="^Calendar$" space=4
 yabai_rule app="^Notes$" space=4
 yabai_rule app="^Mail$" space=4
 yabai_rule app="^Chromatix$" space=5
+yabai_rule app="ˆBroadcasts$" space=5
 yabai_rule app="^Zen$" space=6
 yabai_rule app="^Neovide$" space=7
 
 
-
-
-#float apps 
+# float apps 
 yabai -m rule --add app='^System Settings$' manage=off
 yabai -m rule --add app='^Calculator$' manage=off
 yabai -m rule --add app='^balenaEtcher$' manage=off
