@@ -133,7 +133,7 @@ ctrl + cmd - 2 : yabai -m window --display 2; yabai -m display --focus 2
 ctrl + cmd - 3 : yabai -m window --display 3; yabai -m display --focus 3
 
 # restart yabai
-ctrl + alt - r : yabai --restart-service
+ctrl + alt - y : yabai --restart-service
 
 #restart sketchybar
 shift + cmd - r : brew services restart sketchybar
@@ -145,10 +145,10 @@ shift + cmd - m : yabai -m config external_bar main:9:0
 shift + cmd - n : yabai -m config external_bar all:0:0
 
 #menu bar invisible
-shift + cmd - q : yabai -m config menubar_opacity 0.0
+shift + cmd - i : yabai -m config menubar_opacity 0.0
 
 #menu bar visible
-shift + cmd - w : yabai -m config menubar_opacity 1.0
+shift + cmd - v : yabai -m config menubar_opacity 1.0
 
 
 
