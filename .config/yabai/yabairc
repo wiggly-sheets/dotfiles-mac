@@ -93,11 +93,11 @@ yabai -m config focus_follows_mouse autoraise
 # modifier for clicking and dragging with mouse
 yabai -m config mouse_modifier alt
 
-# set modifier + left-click drag to move window	
-yabai -m config mouse_action1 move
+# set modifier + left-click drag to resize window	
+yabai -m config mouse_action1 resize
 
-# set modifier + right-click drag to resize window
-yabai -m config mouse_action2 resize
+# set modifier + right-click drag to move window
+yabai -m config mouse_action2 move
 
 yabai -m mouse_drop_action swap
 

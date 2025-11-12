@@ -35,7 +35,7 @@ return {
 			return {
 				" Neovim " .. nvim_ver_str,
 				" Plugins: " .. plugins_count,
-				" Lua: " .. _VERSION,
+				" " .. _VERSION,
 				" Shell: " .. zsh_ver,
 			}
 		end

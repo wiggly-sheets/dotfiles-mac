@@ -1,0 +1,69 @@
+{
+  "actions" : [
+    {
+      "actions" : [
+        {
+          "key" : "w",
+          "type" : "application",
+          "value" : "/Applications/WezTerm.app"
+        },
+        {
+          "key" : "s",
+          "type" : "application",
+          "value" : "/Applications/Safari.app"
+        },
+        {
+          "key" : "m",
+          "type" : "application",
+          "value" : "/System/Applications/Mail.app"
+        },
+        {
+          "key" : "l",
+          "type" : "application",
+          "value" : "/Applications/Chromatix.app"
+        },
+        {
+          "key" : "t",
+          "type" : "application",
+          "value" : "/System/Applications/Messages.app"
+        },
+        {
+          "key" : "b",
+          "type" : "application",
+          "value" : "/Applications/Helium.app"
+        },
+        {
+          "key" : "z",
+          "type" : "application",
+          "value" : "/Applications/Zen.app"
+        }
+      ],
+      "key" : "a",
+      "label" : "apps",
+      "type" : "group"
+    },
+    {
+      "actions" : [
+        {
+          "key" : "e",
+          "type" : "url",
+          "value" : "raycast://extensions/raycast/emoji-symbols/search-emoji-symbols"
+        },
+        {
+          "key" : "p",
+          "type" : "url",
+          "value" : "raycast://confetti"
+        },
+        {
+          "key" : "c",
+          "type" : "url",
+          "value" : "raycast://extensions/raycast/system/open-camera"
+        }
+      ],
+      "key" : "r",
+      "label" : "raycast",
+      "type" : "group"
+    }
+  ],
+  "type" : "group"
+}
