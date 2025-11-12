@@ -731,6 +731,8 @@ cask "keyclu"
 cask "knockknock"
 # Free and open-source painting and sketching program
 cask "krita"
+# Application launcher
+cask "leader-key"
 # Free cross-platform office suite, fresh version
 cask "libreoffice"
 # Host-based application firewall
@@ -753,6 +755,8 @@ cask "minecraft"
 cask "mission-control-plus"
 # Set of tools to create, alter and inspect Matroska files (MKV)
 cask "mkvtoolnix-app"
+# Mouse control with the keyboard
+cask "mouseless"
 # Tool for editing metadata of audio files including MP3, FLAC, OGG, and more
 cask "mp3tag"
 # Open-source music notation software
