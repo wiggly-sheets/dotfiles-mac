@@ -1,5 +1,5 @@
 backtraces_path = "/users/Zeb/neovide_backtraces.log" # see below for the default platform specific location
-fork = false
+fork = true
 frame = "none"
 idle = true
 maximized = false
