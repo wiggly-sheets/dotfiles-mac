@@ -15,9 +15,9 @@ alt - z : yabai -m space --layout stack
 alt - x : yabai -m space --layout bsp
 alt - c : yabai -m space --layout float
 
-#change focus between external displays (left and right)
-alt - s : yabai -m display --focus west
+# change focus between external displays (left and right)
 alt - g : yabai -m display --focus east
+alt - s : yabai -m display --focus west
 
 # rotate layout clockwise
 shift + alt - r : yabai -m space --rotate 90
@@ -34,7 +34,7 @@ shift + alt - f : yabai -m window --toggle float --grid 5:5:1:1:3:3
 # toggle sticky window (window appears on all spaces)
  cmd + ctrl - s : yabai -m window --toggle sticky
 
-# maximize a window
+# maximize window
 shift + alt - m : yabai -m window --toggle zoom-fullscreen
 
 # balance out tree of windows (resize to occupy same area)
@@ -52,6 +52,14 @@ ctrl + alt - k : yabai -m window --warp north
 ctrl + alt - h : yabai -m window --warp west
 ctrl + alt - l : yabai -m window --warp east
 
+# create stacked windows
+shift + ctrl - s : yabai -m window --insert stack
+shift + ctrl - n : yabai -m window --focus stack.next
+shift + ctrl - p : yabai -m window --focus stack.prev
+shift + ctrl - f : yabai -m window --focus stack.first
+shift + ctrl - l : yabai -m window --focus stack.last
+shift + ctrl - r : yabai -m window --focus stack.recent
+
 # move window to display left and right
 shift + alt - s : yabai -m window --display west; yabai -m display --focus west;
 shift + alt - g : yabai -m window --display east; yabai -m display --focus east;
@@ -61,6 +69,7 @@ shift + alt - p : yabai -m window --space prev;
 shift + alt - n : yabai -m window --space next;
 
 # focus prev and next space 
+alt - s : yabai -m display --focus west
 alt - p : yabai -m space --focus prev || yabai -m space --focus last
 alt - n : yabai -m space --focus next || yabai -m space --focus first
 
@@ -108,12 +117,12 @@ shift + cmd - 8 : yabai -m window --space  8; yabai -m space --focus 8
 shift + cmd - 9 : yabai -m window --space  9; yabai -m space --focus 9
 
 # focus monitor
-ctrl + alt - r  : yabai -m display --focus recent
-ctrl + alt - p  : yabai -m display --focus prev
+ctrl + alt - r : yabai -m display --focus recent
+ctrl + alt - p : yabai -m display --focus prev
 ctrl + alt - n : yabai -m display --focus next
-ctrl + alt - 1  : yabai -m display --focus 1
-ctrl + alt - 2  : yabai -m display --focus 2
-ctrl + alt - 3  : yabai -m display --focus 3
+ctrl + alt - 1 : yabai -m display --focus 1
+ctrl + alt - 2 : yabai -m display --focus 2
+ctrl + alt - 3 : yabai -m display --focus 3
 
 # send window to monitor and follow focus
 ctrl + cmd - r : yabai -m window --display recent; yabai -m display --focus recent
@@ -130,7 +139,7 @@ ctrl + alt - r : yabai --restart-service
 shift + cmd - r : brew services restart sketchybar
 
 # external display menu bar padding
-shift + cmd - m :  yabai -m config external_bar main:9:0
+shift + cmd - m : yabai -m config external_bar main:9:0
 
 # built-in display menu bar padding
 shift + cmd - n : yabai -m config external_bar all:0:0
