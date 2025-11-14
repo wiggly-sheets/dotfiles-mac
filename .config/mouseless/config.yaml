@@ -321,7 +321,7 @@ keymaps:
     right click: Ctrl
     right mouse button: R
     right mouse button (w/o overlay): null
-    show overlay: CommandLeft tap
+    show overlay: CommandLeft double tap
     subgrid nudge down:
     - D
     - K
