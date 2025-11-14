@@ -70,7 +70,7 @@ if vim.g.neovide then
 	vim.g.neovide_cursor_animation_length = 0.05
 	vim.g.neovide_cursor_trail = 0.6
 	vim.g.neovide_floating_shadow = false
-	vim.g.neovide_cursor_vfx_mode = "wireframe" -- railgun, torpedo, pixiedust, sonicboom, ripple, or wireframe
+	vim.g.neovide_cursor_vfx_mode = "pixiedust" -- railgun, torpedo, pixiedust, sonicboom, ripple, or wireframe
 	vim.g.neovide_hide_mouse_when_typing = true
 	vim.g.neovide_detach_on_quit = "always_quit"
 

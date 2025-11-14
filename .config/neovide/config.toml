@@ -10,6 +10,7 @@ tabs = false
 title-hidden = true
 vsync = true
 wsl = false
+neovim_bin = "/opt/homebrew/bin/nvim"
 
 [font]
 normal = "Inconsolata Nerd Font Mono" # Will use the bundled Fira Code Nerd Font by default
