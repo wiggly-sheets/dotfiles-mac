@@ -75,7 +75,10 @@ yabai -m rule --add app='^iPhone Mirroring$' manage=off
 yabai -m rule --add app='^Stickies$' manage=off
 yabai -m rule --add app='^VMware Fusion$' manage=off
 yabai -m rule --add app='^Stickies$' manage=off
+yabai -m rule --add app='^Leader Key$' manage=off
+yabai -m rule --add app='^Mouseless$' manage=off
 yabai -m rule --add app='^Steam$' manage=off
+
 
 # window opacity
 yabai -m config window_shadow off

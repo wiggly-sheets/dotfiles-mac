@@ -20,12 +20,9 @@ opt.ignorecase = true -- ignore case when searching
 opt.smartcase = true -- if you include mixed case in your search, assumes you want case-sensitive
 
 -- cursor line
-opt.cursorline = true -- highlight the current cursor line
+opt.cursorline = false -- highlight the current cursor line
 
 -- appearance
-
--- turn on termguicolors for nightfly colorscheme to work
--- (have to use iterm2 or any other true color terminal)
 opt.termguicolors = true
 opt.background = "dark" -- colorschemes that can be light or dark will be made dark
 opt.signcolumn = "yes" -- show sign column so that text doesn't shift
@@ -66,14 +63,16 @@ if vim.g.neovide then
 	vim.api.nvim_set_keymap("t", "<D-v>", "<C-R>+", { noremap = true, silent = true })
 	vim.api.nvim_set_keymap("v", "<D-v>", "<C-R>+", { noremap = true, silent = true })
 
+	-- visuals
 	vim.g.neovide_refresh_rate = 60
 	vim.g.neovide_cursor_animation_length = 0.05
-	vim.g.neovide_cursor_trail = 0.6
+	vim.g.neovide_cursor_trail = 1.0
 	vim.g.neovide_floating_shadow = false
 	vim.g.neovide_cursor_vfx_mode = "pixiedust" -- railgun, torpedo, pixiedust, sonicboom, ripple, or wireframe
 	vim.g.neovide_hide_mouse_when_typing = true
 	vim.g.neovide_detach_on_quit = "always_quit"
 
+	-- opacity
 	vim.g.neovide_opacity = 0.5
 	vim.g.neovide_window_blurred = true
 	vim.g.neovide_floating_blur_amount_x = 2.0
