@@ -23,14 +23,14 @@ end
 local display = sbar.add("item", "display", {
 	icon = {
 		drawing = true,
-		font = { size = 12 },
+		font = { size = 11 },
 		color = colors.white,
 		padding_right = 4,
 		padding_left = 0,
 	},
 	label = {
 		drawing = true,
-		font = { family = settings.default, size = 12 },
+		font = { family = settings.default, size = 11 },
 		color = colors.yellow,
 		padding_right = 0,
 	},

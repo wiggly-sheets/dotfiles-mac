@@ -19,8 +19,8 @@ local cpu = sbar.add("graph", "widgets.cpu", 42, {
 	label = {
 		string = "cpu ??%",
 		font = {
-			style = settings.default,
-			size = 10.0,
+			family = settings.default,
+			size = 8,
 		},
 		align = "right",
 		width = 0,
@@ -76,8 +76,8 @@ local ram = sbar.add("graph", "widgets.ram", 42, {
 	label = {
 		string = "ram ??%",
 		font = {
-			style = settings.default,
-			size = 9.0,
+			family = settings.default,
+			size = 8,
 		},
 		align = "right",
 		width = 0,

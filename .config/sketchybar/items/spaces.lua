@@ -1,6 +1,7 @@
 local colors = require("colors")
 local icons = require("icons")
 local app_icons = require("helpers.app_icons")
+local settings = require("settings")
 
 local spaces = {}
 local space_app_icons = {} -- sid -> concatenated icon glyphs (string)
@@ -46,12 +47,12 @@ for i = 1, 10 do
 	local space = sbar.add("space", "space." .. i, {
 		space = i,
 		icon = {
-			font = { family = "Inconsolata Nerd Font Mono", size = 12, style = "Bold" },
+			font = { family = settings.default, size = 11, style = "Bold" },
 			string = tostring(i),
 			padding_left = 2,
 			padding_right = 2,
-			y_offset = 1,
-			color = colors.grey, -- default grey; updated on events
+			y_offset = 0,
+			color = colors.grey,
 			highlight_color = colors.white,
 		},
 		label = {
@@ -59,7 +60,7 @@ for i = 1, 10 do
 			padding_left = 2,
 			color = colors.grey,
 			highlight_color = colors.white,
-			font = "sketchybar-app-font:Regular:12.0",
+			font = "sketchybar-app-font:Regular:11.0",
 		},
 		padding_right = 0,
 		padding_left = 0,

@@ -14,7 +14,7 @@ local apple = sbar.add("item", {
 	label = { drawing = false, width = 0 },
 	padding_left = 0,
 	padding_right = 0,
-	y_offset = 1,
+	y_offset = 0,
 })
 
 local menu_watcher = sbar.add("item", {
@@ -30,13 +30,13 @@ for i = 1, max_items, 1 do
 		padding_left = 4,
 		padding_right = 4,
 		drawing = false,
-		y_offset = 1,
+		y_offset = 0,
 		icon = { drawing = true },
 		label = {
 			font = {
 				style = settings.font.style_map[i == 1 and "Bold" or "Medium"],
 				family = settings.default,
-				size = 12,
+				size = 10,
 			},
 		},
 		click_script = "$CONFIG_DIR/helpers/menus/bin/menus -s " .. i,

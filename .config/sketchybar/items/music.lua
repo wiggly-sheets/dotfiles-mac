@@ -17,14 +17,14 @@ local media = sbar.add("item", "media", {
 	padding_left = 5,
 	label = {
 		string = "",
-		font = settings.default,
+		font = { family = settings.default, size = 10 },
 		max_chars = 20,
 		scroll_texts = true,
 		scroll_duration = 200,
 	},
 	icon = {
 		string = "",
-		font = { size = 20 },
+		font = { size = 12 },
 		padding_right = 5,
 	},
 	updates = "when_shown",
@@ -210,7 +210,7 @@ local function update_mpd()
 						local text = last_artist .. "  " .. last_album .. "  " .. last_song
 						mpd:set({
 							label = { string = text, drawing = true },
-							icon = { string = "", font = { size = 20 } },
+							icon = { string = "", font = { size = 10 } },
 						})
 						sbar.set("mpd_info", { label = { string = text } })
 					end)
@@ -219,13 +219,13 @@ local function update_mpd()
 		elseif status and status:match("paused") then
 			local text = last_artist .. "  " .. last_album .. "  " .. last_song
 			mpd:set({
-				icon = { string = "", font = { size = 20 }, color = colors.grey },
+				icon = { string = "", font = { size = 10 }, color = colors.grey },
 				label = { string = text, drawing = true, color = colors.grey },
 			})
 			sbar.set("mpd_info", { label = { string = text } })
 		else
 			mpd:set({
-				icon = { string = "", font = { size = 20 } },
+				icon = { string = "", font = { size = 10 } },
 				label = { string = "" },
 			})
 			sbar.set("mpd_info", { label = { string = "" } })

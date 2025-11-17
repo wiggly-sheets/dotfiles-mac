@@ -8,10 +8,10 @@ local click_script =
 local cpu_item = sbar.add("item", "cpu_temp", {
 	update_freq = 10,
 	position = "right",
-	padding_left = -54,
+	padding_left = -53,
 	y_offset = 10,
 	icon = { string = icons.cpu, padding_left = 5 },
-	label = { padding_left = 2, font = { family = settings.default, size = 12 } },
+	label = { padding_left = 2, font = { family = settings.default, size = 10 } },
 
 	click_script = click_script,
 })
@@ -47,7 +47,7 @@ local function update_temperatures()
 			label = {
 				string = cpu_temp .. "°C",
 				color = cpu_color,
-				font = { family = settings.default, size = 10 },
+				font = { family = settings.default, size = 8 },
 			},
 		})
 	end)
@@ -71,7 +71,7 @@ local function update_temperatures()
 			label = {
 				string = gpu_temp .. "°C",
 				color = gpu_color,
-				font = { family = settings.default, size = 10 },
+				font = { family = settings.default, size = 8 },
 			},
 		})
 	end)

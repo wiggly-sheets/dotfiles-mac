@@ -43,7 +43,7 @@ local battery_percentage = sbar.add("item", "items.battery_percentage", {
 	padding_right = 5,
 	padding_left = 10,
 	y_offset = 6,
-	label = { font = { family = settings.default, size = 11 }, color = colors.green },
+	label = { font = { family = settings.default, size = 10 }, color = colors.green },
 	update_freq = 30,
 })
 

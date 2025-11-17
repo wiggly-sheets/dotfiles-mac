@@ -9,10 +9,10 @@ config.window_close_confirmation = "NeverPrompt"
 config.front_end = "WebGpu"
 
 config.font = wezterm.font_with_fallback({
-	"Inconsolata Nerd Font Mono",
+	"Liga SFMono Nerd Font",
 	"JetBrains Mono",
 })
-config.font_size = 15
+config.font_size = 12
 
 TERM = "wezterm"
 

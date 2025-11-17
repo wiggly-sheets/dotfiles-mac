@@ -6,9 +6,9 @@ sbar.default({
 	updates = "when_shown",
 	icon = {
 		font = {
-			family = "Inconsolata Nerd Font Mono",
+			family = "Liga SFMono Nerd Font",
 			style = settings.font.style_map["Regular"],
-			size = 12.0,
+			size = 11.0,
 		},
 		color = colors.white,
 		padding_left = settings.paddings,
@@ -17,9 +17,9 @@ sbar.default({
 	},
 	label = {
 		font = {
-			family = "Inconsolata Nerd Font Mono",
+			family = "Liga SFMono Nerd Font",
 			style = settings.font.style_map["Regular"],
-			size = 12.0,
+			size = 11.0,
 		},
 		color = colors.white,
 		padding_left = settings.paddings,

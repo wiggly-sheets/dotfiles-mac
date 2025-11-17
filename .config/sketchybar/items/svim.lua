@@ -1,10 +1,11 @@
 local colors = require("colors")
+local settings = require("settings")
 
 -- Main item (the Vim mode indicator)
 local svim_mode = sbar.add("item", "svim.mode", {
 	position = "left",
-	icon = { string = "", font = "Hack Nerd Font Mono:Bold:28.0", color = colors.red },
-	label = { font = "Hack Nerd Font Mono:Bold:13.0", drawing = true },
+	icon = { string = "", font = settings.default, color = colors.red },
+	label = { font = settings.default, drawing = true },
 	popup = { align = "right", drawing = false },
 	updates = true,
 })

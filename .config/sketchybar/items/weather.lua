@@ -108,12 +108,11 @@ local weather = sbar.add("item", "widgets.weather", {
 	position = "right",
 	update_freq = 3600, --30 min updates
 	icon = {
-		font = { family = "JetBrains Maple Mono", style = "Regular", size = 15 },
+		font = { family = settings.default, style = "Regular", size = 13 },
 		padding_right = 2,
 		padding_left = 8,
 	},
 	label = {
-		y_offset = 1,
 		padding_right = 0,
 		font = {
 			family = settings.font.numbers,

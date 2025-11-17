@@ -34,14 +34,14 @@ local wifi_up = sbar.add("item", "widgets.wifi1", {
 	icon = {
 		font = {
 			style = settings.font.style_map["Regular"],
-			size = 11.0,
+			size = 9,
 		},
 		string = icons.wifi.upload,
 	},
 	label = {
 		font = {
-			style = settings.default,
-			size = 11.0,
+			family = settings.default,
+			size = 9,
 		},
 		color = colors.blue,
 		string = "??? Bps",
@@ -53,15 +53,15 @@ local wifi_down = sbar.add("item", "widgets.wifi2", {
 	position = "right",
 	icon = {
 		font = {
-			style = settings.font.style_map["Regular"],
-			size = 11.0,
+			family = settings.font.style_map["Regular"],
+			size = 9,
 		},
 		string = icons.wifi.download,
 	},
 	label = {
 		font = {
-			style = settings.default,
-			size = 11.0,
+			family = settings.default,
+			size = 9,
 		},
 		color = colors.green,
 		string = "??? Bps",
@@ -253,7 +253,7 @@ local ssid = sbar.add("item", {
 	align = "center",
 	label = {
 		font = {
-			size = 15,
+			size = 13,
 			style = settings.font.style_map["Bold"],
 		},
 		max_chars = 18,
@@ -413,7 +413,7 @@ local wifi_up = sbar.add("item", "widgets.wifi1", {
 	icon = {
 		font = {
 			style = settings.font.style_map["Bold"],
-			size = 11.0,
+			size = 9,
 		},
 		string = icons.wifi.upload,
 	},
@@ -422,7 +422,7 @@ local wifi_up = sbar.add("item", "widgets.wifi1", {
 		padding_right = 0,
 		font = {
 			style = settings.default,
-			size = 11.0,
+			size = 9,
 		},
 		color = colors.blue,
 		string = "??? Bps",
@@ -435,7 +435,7 @@ local wifi_down = sbar.add("item", "widgets.wifi2", {
 	icon = {
 		font = {
 			style = settings.font.style_map["Regular"],
-			size = 11.0,
+			size = 9,
 		},
 		string = icons.wifi.download,
 	},
@@ -444,7 +444,7 @@ local wifi_down = sbar.add("item", "widgets.wifi2", {
 		padding_right = 0,
 		font = {
 			style = settings.default,
-			size = 11.0,
+			size = 9,
 		},
 		color = colors.green,
 		string = "??? Bps",

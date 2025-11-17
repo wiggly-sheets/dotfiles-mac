@@ -13,11 +13,11 @@ local notifications = sbar.add("item", "widgets.notifications", {
 	icon = {
 		string = "",
 		color = colors.red,
-		font = { family = settings.default, size = 10 },
+		font = { family = settings.default, size = 8 },
 	},
 	label = {
 		string = "",
-		font = { family = settings.default, size = 12 },
+		font = { family = settings.default, size = 10 },
 	},
 	drawing = true, -- keep its space reserved so layout doesn't shift
 	update_freq = 30, -- check every 30 seconds
@@ -28,7 +28,7 @@ local function check_notifications()
 	local sql = [[select count(*) as cnt from record where style=1 and presented=false OR style=2;]]
 	local cmd = string.format("sqlite3 -readonly '%s' \"%s\"", notif_db, sql)
 	sbar.exec(cmd, function(output)
-local count = math.max((tonumber(output) or 0) - 1, 0)
+		local count = math.max((tonumber(output) or 0) - 1, 0)
 		if count > 0 then
 			notifications:set({
 				icon = { string = "●" },
