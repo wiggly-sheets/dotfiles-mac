@@ -13,8 +13,8 @@ wsl = false
 neovim_bin = "/opt/homebrew/bin/nvim"
 
 [font]
-normal = "Inconsolata Nerd Font Mono" # Will use the bundled Fira Code Nerd Font by default
-size = 14.0
+normal = "Liga SFMono Nerd Font"
+size = 13.0
 
 [box-drawing]
 # "font-glyph", "native" or "selected-native"
