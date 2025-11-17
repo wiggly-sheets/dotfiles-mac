@@ -114,6 +114,7 @@ local weather = sbar.add("item", "widgets.weather", {
 	},
 	label = {
 		padding_right = 0,
+		y_offset = -1,
 		font = {
 			family = settings.font.numbers,
 			style = settings.font.style_map["Regular"],

@@ -2,7 +2,7 @@ app_version: 0.4.3
 behavior_configs:
 - base_move_speed: 5.0
   base_wheel_speed: 16.0
-  free_mode_auto_off_s: 10
+  free_mode_auto_off_s: 0
   grid_action_level: subgrid
   hide_cursor_on_click: false
   hide_location: bottom_left
@@ -402,7 +402,7 @@ style_configs:
   - 0.32
   - 0.7
   cursor_size: 8
-  font_family: InconsolataNFM-Regular
+  font_family: LigaSFMonoNerdFont-Bold
   font_size_multiplier: 0.4
   font_weight: 500
   grid_line_style: lines
