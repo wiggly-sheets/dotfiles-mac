@@ -6,15 +6,15 @@ sbar.add("item", { position = "right", width = settings.group_paddings })
 
 local time = sbar.add("item", "time", {
 	position = "right",
-	padding_right = -6,
+	padding_right = -10,
 	update_freq = 1,
 	width = 0,
 	label = {
 		color = colors.white,
 		font = {
 			family = settings.default,
-			style = "Bold",
-			size = 8,
+			style = "Heavy",
+			size = 9,
 		},
 	},
 	y_offset = 7,
@@ -29,7 +29,7 @@ local date = sbar.add("item", "date", {
 		color = colors.white,
 		font = {
 			family = settings.default,
-			style = "Regular",
+			style = "Bold",
 			size = 8,
 		},
 	},

@@ -40,8 +40,8 @@ update_lowpowermode()
 -- ── Battery Widgets ───────────────────────────────────────────────
 local battery_percentage = sbar.add("item", "items.battery_percentage", {
 	position = "right",
-	padding_right = 5,
-	padding_left = 10,
+	padding_right = 3,
+	padding_left = 10.5,
 	y_offset = 6,
 	label = { font = { family = settings.default, size = 9 }, color = colors.green },
 	update_freq = 30,
