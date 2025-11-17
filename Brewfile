@@ -24,6 +24,7 @@ tap "socsieng/tap"
 tap "thezoraiz/ascii-image-converter"
 tap "valkyrie00/bbrew"
 tap "waydabber/betterdisplay"
+tap "wickenico/wailbrew"
 tap "zackelia/formulae"
 # Portable ASCII art graphics library
 brew "aalib"
@@ -65,6 +66,8 @@ brew "bastet"
 brew "bat"
 # Bash scripts that integrate bat with various command-line tools
 brew "bat-extras"
+# GNU binary tools for native development
+brew "binutils"
 # Parser generator
 brew "bison"
 # Get/set bluetooth power and discoverable state
@@ -97,6 +100,8 @@ brew "ffmpeg"
 brew "chruby"
 # Tool for emulating mouse and keyboard events
 brew "cliclick"
+# Statistics utility to count lines of code
+brew "cloc"
 # Console Matrix
 brew "cmatrix"
 # Music player with an ncurses based interface
@@ -119,6 +124,8 @@ brew "poppler"
 brew "copyparty"
 # Apjanke's fork of the classic cowsay project
 brew "cowsay"
+# CPU architecture fetching tool
+brew "cpufetch"
 # Securely send things from one computer to another
 brew "croc"
 # DDC monitor controls (brightness) for Mac OSX command-line
@@ -133,8 +140,6 @@ brew "dooit"
 brew "openjdk"
 # Command-line interface for Cyberduck (a multi-protocol file transfer tool)
 brew "duck"
-# Embeddable SQL OLAP Database Management System
-brew "duckdb"
 # Disk Usage/Free Utility - a better 'df' alternative
 brew "duf"
 # Classic text adventure game
@@ -206,7 +211,7 @@ brew "gron"
 # Access DVDs as block devices without the decryption
 brew "libdvdcss"
 # Open-source video transcoder available for Linux, Mac, and Windows
-brew "handbrake", link: false
+brew "handbrake"
 # Improved top (interactive process viewer)
 brew "htop"
 # User-friendly cURL replacement (command-line HTTP client)
@@ -227,8 +232,6 @@ brew "iftop"
 brew "jq"
 # Command-line note taker
 brew "jrnl"
-# Fast, Dynamic Programming Language
-brew "julia"
 # Command-line music player
 brew "kew"
 # Terminal UI for Apple Containers
@@ -595,96 +598,8 @@ cask "filebot"
 cask "filemonitor"
 # File finder
 cask "find-any-file"
-cask "font-0xproto-nerd-font"
-cask "font-3270-nerd-font"
-cask "font-adwaita-mono-nerd-font"
-cask "font-agave-nerd-font"
-cask "font-anonymice-nerd-font"
-cask "font-arimo-nerd-font"
-cask "font-atkynson-mono-nerd-font"
-cask "font-aurulent-sans-mono-nerd-font"
-cask "font-bigblue-terminal-nerd-font"
-cask "font-bitstream-vera-sans-mono-nerd-font"
-cask "font-blex-mono-nerd-font"
-cask "font-cascadia-code-nf"
-cask "font-cascadia-mono-nf"
-cask "font-caskaydia-cove-nerd-font"
-cask "font-caskaydia-mono-nerd-font"
-cask "font-code-new-roman-nerd-font"
-cask "font-comic-shanns-mono-nerd-font"
-cask "font-commit-mono-nerd-font"
-cask "font-cousine-nerd-font"
-cask "font-d2coding-nerd-font"
-cask "font-daddy-time-mono-nerd-font"
-cask "font-dejavu-sans-mono-nerd-font"
-cask "font-departure-mono-nerd-font"
-cask "font-droid-sans-mono-nerd-font"
-cask "font-envy-code-r-nerd-font"
-cask "font-fantasque-sans-mono-nerd-font"
-cask "font-fira-code-nerd-font"
-cask "font-fira-mono-nerd-font"
-cask "font-geist-mono-nerd-font"
-cask "font-go-mono-nerd-font"
-cask "font-gohufont-nerd-font"
-cask "font-hack-nerd-font"
-cask "font-hasklug-nerd-font"
-cask "font-heavy-data-nerd-font"
-cask "font-hurmit-nerd-font"
-cask "font-im-writing-nerd-font"
-cask "font-inconsolata-go-nerd-font"
-cask "font-inconsolata-lgc-nerd-font"
-cask "font-inconsolata-nerd-font"
-cask "font-intone-mono-nerd-font"
-cask "font-iosevka"
-cask "font-iosevka-nerd-font"
-cask "font-iosevka-term-nerd-font"
-cask "font-iosevka-term-slab-nerd-font"
-cask "font-jetbrains-maple-mono-nf"
-cask "font-jetbrains-mono-nerd-font"
-cask "font-juisee-nf"
-cask "font-lekton-nerd-font"
-cask "font-liberation-nerd-font"
-cask "font-lilex-nerd-font"
-cask "font-m+-nerd-font"
-cask "font-maple-mono-nf"
-cask "font-maple-mono-nf-cn"
-cask "font-maple-mono-nl-nf"
-cask "font-maple-mono-nl-nf-cn"
-cask "font-maple-mono-normal-nf"
-cask "font-maple-mono-normal-nf-cn"
-cask "font-maple-mono-normal-nl-nf"
-cask "font-maple-mono-normal-nl-nf-cn"
-cask "font-martian-mono-nerd-font"
-cask "font-meslo-lg-nerd-font"
 cask "font-monaspace-nf"
-cask "font-monaspice-nerd-font"
-cask "font-monocraft-nerd-font"
-cask "font-monofur-nerd-font"
-cask "font-monoid-nerd-font"
-cask "font-mononoki-nerd-font"
-cask "font-noto-nerd-font"
-cask "font-open-dyslexic-nerd-font"
-cask "font-overpass-nerd-font"
-cask "font-profont-nerd-font"
-cask "font-proggy-clean-tt-nerd-font"
-cask "font-recursive-mono-nerd-font"
-cask "font-roboto-mono-nerd-font"
-cask "font-sauce-code-pro-nerd-font"
-cask "font-sf-mono"
-cask "font-sf-mono-for-powerline"
-cask "font-sf-mono-nerd-font-ligaturized"
-cask "font-sf-pro"
-cask "font-shure-tech-mono-nerd-font"
 cask "font-sketchybar-app-font"
-cask "font-space-mono-nerd-font"
-cask "font-symbols-only-nerd-font"
-cask "font-terminess-ttf-nerd-font"
-cask "font-tinos-nerd-font"
-cask "font-ubuntu-mono-nerd-font"
-cask "font-ubuntu-nerd-font"
-cask "font-ubuntu-sans-nerd-font"
-cask "font-victor-mono-nerd-font"
-cask "font-zed-mono-nerd-font"
 # Audio player
 cask "foobar2000"
 # Audio converter and CD ripper
@@ -763,6 +678,8 @@ cask "mp3tag"
 cask "musescore"
 # Music app blocker utility
 cask "music-decoy"
+# Network information and diagnostics utility
+cask "neo-network-utility"
 # Neovim Client
 cask "neovide-app"
 # Free and open-source RSS reader
@@ -817,8 +734,6 @@ cask "reamp"
 cask "redream"
 # Scans, detects, and monitors keyboard taps
 cask "reikey"
-# macOS menu bar app for managing rice configurations
-cask "ricebarmac"
 # Free and open-source page layout program
 cask "scribus"
 # Integrated development environment focused entirely on AppleScript
@@ -855,6 +770,8 @@ cask "thelowtechguys-cling"
 cask "ti-connect-ce"
 # Multi-platform VNC client and server
 cask "tigervnc-viewer"
+# Utility to change the default backup interval of Time Machine
+cask "timemachineeditor"
 # Web browser focusing on security
 cask "tor-browser"
 # Batch rename utility
@@ -865,6 +782,8 @@ cask "usenapp"
 cask "utm"
 # Binary releases of VS Code without MS branding/telemetry/licensing
 cask "vscodium"
+# Manage Homebrew packages with a UI
+cask "wailbrew"
 # Torrent streaming application
 cask "webtorrent"
 # GPU-accelerated cross-platform terminal emulator and multiplexer
