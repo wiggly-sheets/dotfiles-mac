@@ -30,7 +30,7 @@ local display = sbar.add("item", "display", {
 	},
 	label = {
 		drawing = true,
-		font = { family = settings.default, size = 11 },
+		font = { family = settings.default, size = 10 },
 		color = colors.yellow,
 		padding_right = 0,
 	},

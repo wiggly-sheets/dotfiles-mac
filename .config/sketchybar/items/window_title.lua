@@ -6,7 +6,7 @@ local front_app = sbar.add("item", "front_app", {
 	display = "active",
 	icon = {
 		drawing = true,
-		font = "sketchybar-app-font:Regular:14.0",
+		font = "sketchybar-app-font:Regular:15.0",
 		string = "",
 	},
 	label = {
@@ -28,7 +28,7 @@ front_app:subscribe("front_app_switched", function(env)
 		icon = {
 			drawing = true,
 			string = icon,
-			font = "sketchybar-app-font:Regular:14.0",
+			font = "sketchybar-app-font:Regular:15.0",
 		},
 		-- Set the app name as the label
 		label = {
@@ -102,9 +102,6 @@ window_title:subscribe({
 	"title_change",
 	"display_change",
 }, update_window_title)
-
--- Run once on startup
-update_window_title()
 
 window_title:subscribe({
 	"window_focus",

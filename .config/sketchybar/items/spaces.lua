@@ -97,10 +97,12 @@ for i = 1, 10 do
 		padding_left = 0,
 		padding_right = 0,
 		background = {
+			border_color = colors.white,
+			border_width = 1,
 			drawing = true,
 			image = {
 				corner_radius = 8,
-				scale = 0.2,
+				scale = 0.3,
 			},
 		},
 	})

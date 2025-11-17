@@ -13,11 +13,11 @@ local notifications = sbar.add("item", "widgets.notifications", {
 	icon = {
 		string = "",
 		color = colors.red,
-		font = { family = settings.default, size = 8 },
+		font = { family = settings.default, size = 6 },
 	},
 	label = {
 		string = "",
-		font = { family = settings.default, size = 10 },
+		font = { family = settings.default, size = 8 },
 	},
 	drawing = true, -- keep its space reserved so layout doesn't shift
 	update_freq = 30, -- check every 30 seconds

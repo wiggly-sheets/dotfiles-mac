@@ -112,6 +112,6 @@ yabai -m config insert_feedback_color 0xffffffff
 yabai -m config debug_output off
 
 # bootstrap jankyborders with yabai service
-borders hidpi=on width=1.0 active_color="glow(0xFFFFFFFF)" inactive_color="0xBF000000" style=round ax_focus=on order=above blacklist="Stats,Dropover,iPhone Mirroring,Passwords" &
+borders hidpi=on width=1.0 active_color="glow(0xFFFFFFFF)" style=round ax_focus=on order=above blacklist="Stats,Dropover,iPhone Mirroring,Passwords" &
 
 

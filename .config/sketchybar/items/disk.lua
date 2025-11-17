@@ -8,10 +8,10 @@ local click_script =
 local disk_icon = sbar.add("item", "disk_icon", {
 	update_freq = 60,
 	position = "right",
-	padding_left = -38,
+	padding_left = -36,
 	padding_right = 20,
 	y_offset = 8,
-	icon = { font = { size = 15 } },
+	icon = { font = { size = 14 } },
 	click_script = click_script,
 })
 

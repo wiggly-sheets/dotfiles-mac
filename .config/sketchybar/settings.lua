@@ -5,7 +5,7 @@ local tbl = require("utils.tbl")
 local function load_config()
 	local config = {
 		font = require("helpers.default_font"),
-		icons = "sf-symbols", -- alternatively available: NerdFont
+		icons = "sf-symbols",
 		weather = {
 			location = false,
 			use_shortcut = false,
