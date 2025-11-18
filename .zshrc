@@ -1,8 +1,5 @@
 
 
-# startup commands welcome message
-figlet "welcome" | lolcat && pfetch && stormy && return
-
 #-----------------------------
 # Instant prompt (Powerlevel10k) for fast startup
 # -----------------------------
@@ -187,4 +184,7 @@ compinit
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 
 
+
+# startup commands welcome message
+figlet "welcome" | lolcat && pfetch && stormy && return
 
