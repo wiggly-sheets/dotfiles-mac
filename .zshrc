@@ -1,5 +1,7 @@
-fastfetch
 
+
+# startup commands welcome message
+figlet "welcome" | lolcat && pfetch && stormy && return
 
 #-----------------------------
 # Instant prompt (Powerlevel10k) for fast startup
@@ -183,3 +185,6 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+
+
+

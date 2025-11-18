@@ -91,7 +91,7 @@ local function update_media()
 					else
 						sbar.exec("media-control get | jq -r '.playing'", function(p)
 							p = clean(p)
-							local text = artist .. "  " .. album .. "  " .. song
+							local text = artist .. "   " .. album .. "   " .. song
 							if p == "false" then
 								media:set({
 									icon = {
@@ -207,7 +207,7 @@ local function update_mpd()
 					last_album = album or ""
 					sbar.exec("mpc current -f %title%", function(song)
 						last_song = song or ""
-						local text = last_artist .. "  " .. last_album .. "  " .. last_song
+						local text = last_artist .. "   " .. last_album .. "   " .. last_song
 						mpd:set({
 							label = { string = text, drawing = true },
 							icon = { string = "", font = { size = 10 } },
@@ -217,7 +217,7 @@ local function update_mpd()
 				end)
 			end)
 		elseif status and status:match("paused") then
-			local text = last_artist .. "  " .. last_album .. "  " .. last_song
+			local text = last_artist .. "   " .. last_album .. "   " .. last_song
 			mpd:set({
 				icon = { string = "", font = { size = 10 }, color = colors.grey },
 				label = { string = text, drawing = true, color = colors.grey },
