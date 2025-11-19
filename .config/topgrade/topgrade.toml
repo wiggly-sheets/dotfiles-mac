@@ -15,7 +15,7 @@ pre_sudo = false
 # sudo_command = "sudo"
 
 # Disable specific steps - same options as the command line flag
- disable = ["node", "yarn", "macports", "containers", "git_repos" ]
+ disable = ["node", "yarn", "macports", "containers", "git_repos", "gem", "ruby_gems" ]
 # Ignore failures for these steps
 # ignore_failures = ["powershell"]
 
