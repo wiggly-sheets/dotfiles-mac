@@ -10,7 +10,6 @@ config.front_end = "WebGpu"
 
 config.font = wezterm.font_with_fallback({
 	"Liga SFMono Nerd Font",
-	"JetBrains Mono",
 })
 config.font_size = 12
 

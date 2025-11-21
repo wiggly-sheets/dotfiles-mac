@@ -1,7 +1,7 @@
 [[plugin.deps]]
 use = "gesellkammer/audio-preview"
 rev = "74dfea3"
-hash = "6f185a283a3756475272d147a3c1d29c"
+hash = "16b08cbb794b1b519bea4d18066c0d9f"
 
 [[plugin.deps]]
 use = "ahkohd/eza-preview"
