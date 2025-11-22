@@ -17,7 +17,8 @@ local control_center = sbar.add("item", "control_center", {
 })
 local left_click_script = "cliclick kd:fn t:c"
 
-local right_click_script = "cliclick kd:fn t:s"
+local right_click_script =
+	'osascript -e \'tell application "System Events" to tell process "Only Switch" to click menu bar item 1 of menu bar 2\''
 
 local middle_click_script =
 	'osascript -e \'tell application "System Events" to tell process "SystemUIServer" to click (first menu bar item of menu bar 1 whose name is not "Siri")\''
