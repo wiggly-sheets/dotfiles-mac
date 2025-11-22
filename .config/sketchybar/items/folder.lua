@@ -17,7 +17,7 @@ local right_click_script =
 	'osascript -e \'tell application "System Events" to tell process "CloudMounter" to click menu bar item 1 of menu bar 2\''
 
 local middle_click_script =
-	'osascript -e \'tell application "System Events" to tell process "SystemUIServer" to click (first menu bar item of menu bar 1 whose name is not "Siri")\''
+	'osascript -e \'tell application "System Events" to tell process "MountMate" to click menu bar item 1 of menu bar 2\''
 
 folder:subscribe("mouse.clicked", function(env)
 	if env.BUTTON == "left" then

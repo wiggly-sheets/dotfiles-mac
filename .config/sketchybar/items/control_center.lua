@@ -19,7 +19,8 @@ local left_click_script = "cliclick kd:fn t:c"
 
 local right_click_script = "cliclick kd:fn t:s"
 
-local middle_click_script = "open -a 'System Settings'"
+local middle_click_script =
+	'osascript -e \'tell application "System Events" to tell process "SystemUIServer" to click (first menu bar item of menu bar 1 whose name is not "Siri")\''
 
 control_center:subscribe("mouse.clicked", function(env)
 	if env.BUTTON == "left" then
