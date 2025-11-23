@@ -37,6 +37,7 @@ sbar.add("item", {
 	icon = { string = icons.media.back },
 	label = { drawing = false },
 	click_script = "media-control previous-track",
+	padding_left = 5,
 })
 sbar.add("item", {
 	position = "popup." .. media.name,
@@ -49,12 +50,19 @@ sbar.add("item", {
 	icon = { string = icons.media.forward },
 	label = { drawing = false },
 	click_script = "media-control next-track",
+	padding_right = 5,
 })
 
 local media_info = sbar.add("item", "media_info", {
 	position = "popup." .. media.name,
 	icon = { drawing = false },
-	label = { string = "", font = settings.default, width = "dynamic", align = "center" },
+	label = {
+		string = "",
+		font = settings.default,
+		width = "dynamic",
+		align = "center",
+		padding_right = 5,
+	},
 })
 
 local function clean(str)
@@ -167,7 +175,10 @@ local mpd = sbar.add("item", "mpd", {
 -- MPD Popup Controls
 local back = sbar.add("item", "back", {
 	position = "popup." .. mpd.name,
-	icon = { string = icons.media.back },
+	icon = {
+		string = icons.media.back,
+		padding_left = 5,
+	},
 	click_script = "mpc prev",
 })
 
@@ -192,6 +203,7 @@ local mpd_info = sbar.add("item", "mpd_info", {
 		font = settings.default,
 		width = "dynamic",
 		align = "center",
+		padding_right = 5,
 	},
 })
 
