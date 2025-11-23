@@ -47,11 +47,10 @@ for i = 1, 10 do
 	local space = sbar.add("space", "space." .. i, {
 		space = i,
 		icon = {
-			font = { family = settings.default, size = 11, style = "Bold" },
+			font = { family = settings.default, size = 11, style = "Medium" },
 			string = tostring(i),
 			padding_left = 2,
 			padding_right = 2,
-			y_offset = 0,
 			color = colors.grey,
 			highlight_color = colors.white,
 		},
@@ -64,12 +63,6 @@ for i = 1, 10 do
 		},
 		padding_right = 0,
 		padding_left = 0,
-		background = {
-			color = colors.transparent,
-			border_width = 1,
-			height = 24,
-			border_color = colors.transparent,
-		},
 	})
 	spaces[i] = space
 
@@ -94,10 +87,10 @@ for i = 1, 10 do
 
 	local space_popup = sbar.add("item", {
 		position = "popup." .. space.name,
-		padding_left = 0,
-		padding_right = 0,
+		padding_left = 2,
+		padding_right = 2,
 		background = {
-			border_color = colors.white,
+			border_color = colors.dnd,
 			border_width = 1,
 			drawing = true,
 			image = {

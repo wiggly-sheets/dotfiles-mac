@@ -272,12 +272,14 @@ local hostname = sbar.add("item", {
 		align = "left",
 		string = "Hostname:",
 		width = popup_width / 2,
+		padding_left = 5,
 	},
 	label = {
 		max_chars = 20,
 		string = "????????????",
 		width = popup_width / 2,
 		align = "right",
+		padding_right = 5,
 	},
 })
 
@@ -287,11 +289,13 @@ local ip = sbar.add("item", {
 		align = "left",
 		string = "IP:",
 		width = popup_width / 2,
+		padding_left = 5,
 	},
 	label = {
 		string = "???.???.???.???",
 		width = popup_width / 2,
 		align = "right",
+		padding_right = 5,
 	},
 })
 
@@ -301,11 +305,13 @@ local mask = sbar.add("item", {
 		align = "left",
 		string = "Subnet mask:",
 		width = popup_width / 2,
+		padding_left = 5,
 	},
 	label = {
 		string = "???.???.???.???",
 		width = popup_width / 2,
 		align = "right",
+		padding_right = 5,
 	},
 })
 
@@ -315,11 +321,13 @@ local router = sbar.add("item", {
 		align = "left",
 		string = "Router:",
 		width = popup_width / 2,
+		padding_left = 5,
 	},
 	label = {
 		string = "???.???.???.???",
 		width = popup_width / 2,
 		align = "right",
+		padding_right = 5,
 	},
 })
 
@@ -329,11 +337,13 @@ local network_interface = sbar.add("item", {
 		align = "left",
 		string = "Network Interface:",
 		width = popup_width / 2,
+		padding_left = 5,
 	},
 	label = {
 		string = "????",
 		width = popup_width / 2,
 		align = "right",
+		padding_right = 5,
 	},
 })
 

@@ -13,7 +13,7 @@ local time = sbar.add("item", "time", {
 		color = colors.white,
 		font = {
 			family = settings.default,
-			style = "Heavy",
+			style = "Bold",
 			size = 9,
 		},
 	},
@@ -29,7 +29,7 @@ local date = sbar.add("item", "date", {
 		color = colors.white,
 		font = {
 			family = settings.default,
-			style = "Bold",
+			style = "Medium",
 			size = 8,
 		},
 	},
