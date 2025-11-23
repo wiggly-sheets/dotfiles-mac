@@ -12,7 +12,7 @@ local notifications = sbar.add("item", "widgets.notifications", {
 	padding_right = 10,
 	icon = {
 		string = "",
-		color = colors.red,
+		color = colors.notifications,
 		font = { family = settings.default, size = 6 },
 	},
 	label = {

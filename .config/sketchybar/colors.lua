@@ -10,6 +10,8 @@ return {
 	grey = 0xff787878,
 	transparent = 0x00000000,
 	dnd = 0xffdee3ed,
+	low_power = 0xff63981f,
+	notifications = 0xffc82d3b,
 
 	bar = {
 		bg = 0xFF555555,

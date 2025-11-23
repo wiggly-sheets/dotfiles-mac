@@ -27,7 +27,7 @@ local function update_lowpowermode()
 	sbar.exec("pmset -g | grep lowpowermode | grep -o '[01]'", function(result)
 		result = result:match("%d")
 		if result == "1" then
-			lowpowermode:set({ label = { color = colors.green } })
+			lowpowermode:set({ label = { color = colors.low_power } })
 		else
 			lowpowermode:set({ label = { color = colors.orange } })
 		end
