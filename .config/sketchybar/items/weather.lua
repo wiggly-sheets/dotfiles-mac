@@ -108,12 +108,12 @@ local weather = sbar.add("item", "widgets.weather", {
 	position = "right",
 	update_freq = 3600, --30 min updates
 	icon = {
-		font = { family = settings.default, style = "Regular", size = 13 },
+		font = { family = settings.default, style = "Regular", size = 15 },
 		padding_right = 2,
-		padding_left = 8,
+		padding_left = 5,
 	},
 	label = {
-		padding_right = 0,
+		padding_right = 3,
 		y_offset = -1,
 		font = {
 			family = settings.default,

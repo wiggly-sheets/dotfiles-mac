@@ -6,8 +6,8 @@ local settings = require("default")
 local lowpowermode = sbar.add("item", "lowpowermode", {
 	update_freq = 5,
 	position = "right",
-	padding_right = -7,
-	padding_left = -3,
+	padding_right = 0,
+	padding_left = -8,
 	y_offset = -1,
 	label = {
 		font = { size = 10 },
@@ -49,8 +49,8 @@ local battery_percentage = sbar.add("item", "items.battery_percentage", {
 
 local battery = sbar.add("item", "items.battery", {
 	position = "right",
-	padding_right = -28,
-	padding_left = 2,
+	padding_right = -35,
+	padding_left = 6,
 	y_offset = -5,
 	icon = {
 		font = { style = settings.default, size = 11 },

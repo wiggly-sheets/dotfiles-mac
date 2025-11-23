@@ -5,11 +5,11 @@ local dnd = sbar.add("item", "dnd", {
 		drawing = true,
 		string = "􀆺",
 		font = { size = 15 },
-		color = colors.white,
 	},
 	position = "right",
 	click_script = 'osascript -e \'tell application "Shortcuts" to run shortcut "Toggle DND"\'',
-	padding_right = 12,
+	padding_right = 8,
+	padding_left = 5,
 	update_freq = 5,
 })
 

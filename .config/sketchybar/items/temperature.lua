@@ -8,7 +8,7 @@ local click_script =
 local cpu_item = sbar.add("item", "cpu_temp", {
 	update_freq = 10,
 	position = "right",
-	padding_left = -53,
+	padding_left = -51,
 	y_offset = 10,
 	icon = { string = icons.cpu, padding_left = 5 },
 	label = { padding_left = 2, font = { family = settings.default, size = 10 } },

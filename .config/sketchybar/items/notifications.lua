@@ -47,11 +47,5 @@ notifications:subscribe({ "forced", "routine", "system_woke" }, function()
 	check_notifications()
 end)
 
-notifications:subscribe("mouse.clicked", function(env)
-	if env.BUTTON == "left" then
-		sbar.exec("osascript -e 'tell application \"System Events\" to key code 45 using {function down}'")
-	end
-end)
-
 -- Initial run
 check_notifications()

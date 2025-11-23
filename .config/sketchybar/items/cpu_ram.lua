@@ -13,9 +13,9 @@ local cpu = sbar.add("graph", "widgets.cpu", 42, {
 		color = { alpha = 0 },
 		border_color = { alpha = 0 },
 		drawing = true,
-		padding_right = 4,
+		padding_right = 8,
 	},
-	icon = { string = icons.cpu, padding_right = 3, padding_left = -2 },
+	icon = { string = icons.cpu, padding_right = 0, padding_left = 0 },
 	label = {
 		string = "cpu ??%",
 		font = {
@@ -65,14 +65,14 @@ sbar.add("item", "widgets.cpu.padding", {
 
 local ram = sbar.add("graph", "widgets.ram", 42, {
 	position = "right",
-	padding_right = -12,
+	padding_right = -5,
 	background = {
 		height = 22,
 		color = { alpha = 0 },
 		border_color = { alpha = 0 },
 		drawing = true,
 	},
-	icon = { string = icons.ram, padding_right = 3 },
+	icon = { string = icons.ram, padding_right = 0 },
 	label = {
 		string = "ram ??%",
 		font = {
