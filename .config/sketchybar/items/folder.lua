@@ -6,8 +6,6 @@ local folder = sbar.add("item", "folder", {
 		string = "􀈖",
 		color = colors.white,
 	},
-	padding_left = 2,
-	padding_right = 2,
 	position = "right",
 })
 local left_click_script =
