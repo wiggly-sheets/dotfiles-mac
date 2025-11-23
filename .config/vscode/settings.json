@@ -1,0 +1,36 @@
+{
+  "workbench.sideBar.location": "right",
+  "editor.cursorStyle": "underline-thin",
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.productIconTheme": "sf-symbol-icons",
+  "material-icon-theme.activeIconPack": "angular_ngrx",
+  "workbench.startupEditor": "none",
+  "extensions.experimental.affinity": {
+    "asvetliakov.vscode-neovim": 1
+  },
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "editor.formatOnType": true,
+  "workbench.experimental.share.enabled": true,
+  "[lua]": {
+    "editor.defaultFormatter": "JohnnyMorganz.stylua"
+  },
+  "git.openRepositoryInParentFolders": "always",
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "yaml.schemas": {
+    "file:///Users/Zeb/.vscode-oss/extensions/continue.continue-1.2.11-darwin-arm64/config-yaml-schema.json": [
+      ".continue/**/*.yaml"
+    ]
+  },
+  "workbench.colorTheme": "Tokyo Night",
+  "redhat.telemetry.enabled": true,
+  "editor.fontFamily": "Liga SFMono Pro",
+  "editor.fontLigatures": true,
+  "editor.cursorSmoothCaretAnimation": "explicit",
+  "editor.cursorBlinking": "phase",
+  "diffEditor.codeLens": true,
+  "workbench.settings.applyToAllProfiles": ["editor.fontFamily"],
+  "python.defaultInterpreterPath": "/Users/Zeb/Developer/programming-final-project/.venv/bin/python"
+}

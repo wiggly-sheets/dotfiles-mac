@@ -7,7 +7,7 @@ local lowpowermode = sbar.add("item", "lowpowermode", {
 	update_freq = 5,
 	position = "right",
 	padding_right = 0,
-	padding_left = -8,
+	padding_left = -6,
 	y_offset = -1,
 	label = {
 		font = { size = 10 },
@@ -40,7 +40,7 @@ update_lowpowermode()
 -- ── Battery Widgets ───────────────────────────────────────────────
 local battery_percentage = sbar.add("item", "items.battery_percentage", {
 	position = "right",
-	padding_right = 3,
+	padding_right = 5,
 	padding_left = 10.5,
 	y_offset = 6,
 	label = { font = { family = settings.default, size = 9 }, color = colors.green },
@@ -49,7 +49,7 @@ local battery_percentage = sbar.add("item", "items.battery_percentage", {
 
 local battery = sbar.add("item", "items.battery", {
 	position = "right",
-	padding_right = -35,
+	padding_right = -34,
 	padding_left = 6,
 	y_offset = -5,
 	icon = {
