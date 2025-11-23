@@ -92,7 +92,7 @@ bin/
 *.mp3
 *.mov
 *.mkv
-*.bin
+bin
 lazy-lock.json
 
 # Dotfiles backup
