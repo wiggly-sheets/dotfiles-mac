@@ -7,8 +7,9 @@ return {
 	yellow = 0xffdee3ed,
 	orange = 0xffdee3ed,
 	magenta = 0xffdee3ed,
-	grey = 0xffdee3ed,
+	grey = 0xff787878,
 	transparent = 0x00000000,
+	dnd = 0xffdee3ed,
 
 	bar = {
 		bg = 0xFF555555,

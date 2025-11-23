@@ -18,7 +18,7 @@ local function update_dnd()
 		[[defaults read com.apple.controlcenter 'NSStatusItem VisibleCC FocusModes' 2>/dev/null]],
 		function(result)
 			if result:match("1") then
-				dnd:set({ label = { color = 0xffb39df3 } }) -- hardcoded purple because it's different than magenta in color config to match system icon
+				dnd:set({ label = { color = colors.dnd } }) -- hardcoded purple because it's different than magenta in color config to match system icon
 			else
 				dnd:set({ label = { color = colors.grey } })
 			end
