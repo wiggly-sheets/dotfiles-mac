@@ -1,6 +1,6 @@
 local weather_vars = require("helpers.weather_vars")
 local colors = require("colors")
-local settings = require("settings")
+local settings = require("default")
 
 local weather_icons_day = {
 	[1000] = "", -- Sunny/113
@@ -116,8 +116,8 @@ local weather = sbar.add("item", "widgets.weather", {
 		padding_right = 0,
 		y_offset = -1,
 		font = {
-			family = settings.font.numbers,
-			style = settings.font.style_map["Regular"],
+			family = settings.default,
+			style = settings.default,
 			size = 11,
 		},
 	},

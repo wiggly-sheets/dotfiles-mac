@@ -1,5 +1,5 @@
 local colors = require("colors")
-local settings = require("settings")
+local settings = require("default")
 
 -- Path to macOS Notification Center database
 local notif_db = os.getenv("HOME") .. "/Library/Group Containers/group.com.apple.usernoted/db2/db"

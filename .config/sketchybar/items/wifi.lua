@@ -1,6 +1,6 @@
 local icons = require("icons")
 local colors = require("colors")
-local settings = require("settings")
+local settings = require("default")
 
 -- Execute the event provider binary which provides the event "network_update"
 -- for the current network interface, which is fired every 2.0 seconds.
@@ -33,7 +33,7 @@ local wifi_up = sbar.add("item", "widgets.wifi1", {
 	position = "right",
 	icon = {
 		font = {
-			style = settings.font.style_map["Regular"],
+			family = settings.default,
 			size = 9,
 		},
 		string = icons.wifi.upload,
@@ -53,7 +53,7 @@ local wifi_down = sbar.add("item", "widgets.wifi2", {
 	position = "right",
 	icon = {
 		font = {
-			family = settings.font.style_map["Regular"],
+			family = settings.default,
 			size = 9,
 		},
 		string = icons.wifi.download,
@@ -138,7 +138,7 @@ local wifi = sbar.add("item", "wifi.status", {
 	icon = {
 		string = icons.wifi.disconnected,
 		font = {
-			style = settings.default,
+			family = settings.default,
 			size = 14.0,
 		},
 		color = colors.red,
@@ -245,7 +245,7 @@ local ssid = sbar.add("item", {
 	icon = {
 		padding_right = 5,
 		font = {
-			style = settings.font.style_map["Bold"],
+			family = settings.default,
 		},
 		string = icons.wifi.router,
 	},
@@ -254,7 +254,7 @@ local ssid = sbar.add("item", {
 	label = {
 		font = {
 			size = 13,
-			style = settings.font.style_map["Bold"],
+			family = settings.default,
 		},
 		max_chars = 18,
 		string = "????????????",
@@ -412,7 +412,7 @@ local wifi_up = sbar.add("item", "widgets.wifi1", {
 	width = 0,
 	icon = {
 		font = {
-			style = settings.font.style_map["Bold"],
+			style = settings.default,
 			size = 9,
 		},
 		string = icons.wifi.upload,
@@ -421,7 +421,7 @@ local wifi_up = sbar.add("item", "widgets.wifi1", {
 		padding_left = 3,
 		padding_right = 0,
 		font = {
-			style = settings.default,
+			family = settings.default,
 			size = 9,
 		},
 		color = colors.blue,
@@ -434,7 +434,7 @@ local wifi_down = sbar.add("item", "widgets.wifi2", {
 	position = "right",
 	icon = {
 		font = {
-			style = settings.font.style_map["Regular"],
+			style = settings.default,
 			size = 9,
 		},
 		string = icons.wifi.download,
@@ -443,7 +443,7 @@ local wifi_down = sbar.add("item", "widgets.wifi2", {
 		padding_left = 3,
 		padding_right = 0,
 		font = {
-			style = settings.default,
+			family = settings.default,
 			size = 9,
 		},
 		color = colors.green,

@@ -1,5 +1,5 @@
 local colors = require("colors")
-local settings = require("settings")
+local settings = require("default")
 local icons = require("icons")
 
 local apple = sbar.add("item", {
@@ -27,14 +27,14 @@ local max_items = 15
 local menu_items = {}
 for i = 1, max_items, 1 do
 	local menu = sbar.add("item", "menu." .. i, {
-		padding_left = 4,
-		padding_right = 4,
+		padding_left = 2,
+		padding_right = 2,
 		drawing = false,
 		y_offset = 0,
 		icon = { drawing = true },
 		label = {
 			font = {
-				style = settings.font.style_map[i == 1 and "Bold" or "Medium"],
+				style = i == 1 and "Bold" or "Medium",
 				family = settings.default,
 				size = 10,
 			},

@@ -1,6 +1,6 @@
 local colors = require("colors")
 local icons = require("icons")
-local settings = require("settings")
+local settings = require("default")
 
 local volume_percent = sbar.add("item", "widgets.volume1", {
 	position = "right",
@@ -27,7 +27,7 @@ local volume_icon = sbar.add("item", "widgets.volume2", {
 		width = "dynamic",
 		color = colors.yellow,
 		font = {
-			style = settings.font.style_map["Medium"],
+			family = settings.default,
 			size = 12.0,
 		},
 	},
@@ -37,7 +37,7 @@ local volume_icon = sbar.add("item", "widgets.volume2", {
 		padding_left = 2,
 		drawing = true,
 		font = {
-			family = settings.font.style_map["Medium"],
+			family = settings.default,
 			size = 12.0,
 			color = colors.yellow,
 		},

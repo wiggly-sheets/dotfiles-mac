@@ -1,5 +1,5 @@
 local colors = require("colors")
-local settings = require("settings")
+local settings = require("default")
 
 -- Main item (the Vim mode indicator)
 local svim_mode = sbar.add("item", "svim.mode", {

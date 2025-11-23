@@ -1,7 +1,7 @@
 local colors = require("colors")
 local icons = require("icons")
 local app_icons = require("helpers.app_icons")
-local settings = require("settings")
+local settings = require("default")
 
 local spaces = {}
 local space_app_icons = {} -- sid -> concatenated icon glyphs (string)

@@ -1,6 +1,6 @@
 local icons = require("icons")
 local colors = require("colors")
-local settings = require("settings")
+local settings = require("default")
 
 -- Execute the event provider binary which provides the event "cpu_update" for
 -- the cpu load data, which is fired every 3.0 seconds.
@@ -13,7 +13,7 @@ local cpu = sbar.add("graph", "widgets.cpu", 42, {
 		color = { alpha = 0 },
 		border_color = { alpha = 0 },
 		drawing = true,
-		padding_right = 0,
+		padding_right = 4,
 	},
 	icon = { string = icons.cpu, padding_right = 3, padding_left = -2 },
 	label = {

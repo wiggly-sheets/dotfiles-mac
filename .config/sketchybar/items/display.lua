@@ -1,5 +1,5 @@
 local colors = require("colors")
-local settings = require("settings")
+local settings = require("default")
 
 -- ======================
 -- Click scripts

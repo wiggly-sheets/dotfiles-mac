@@ -1,5 +1,5 @@
 local icons = require("icons")
-local settings = require("settings")
+local settings = require("default")
 local colors = require("colors")
 
 -- Whitelist apps by bundleIdentifier

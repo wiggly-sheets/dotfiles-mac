@@ -1,30 +1,52 @@
-local settings = require("settings")
-local colors = require("colors")
+local colors = {
+	white = "0xFFFFFFFF",
+	transparent = "0x00000000",
+}
 
--- Equivalent to the --default domain
+-- === Defaults table ===
+local default = {
+	paddings = 1,
+	icons = "sf-symbols",
+	font = {
+		family = "Liga SFMono Nerd Font",
+		size = 11,
+		style_map = {
+			Regular = "Regular",
+			Semibold = "Semibold",
+			Bold = "Bold",
+			Heavy = "Heavy",
+			Black = "Black",
+		},
+	},
+}
+
+-- Helper function to generate font tables
+local function font(style)
+	return {
+		family = default.font.family,
+		style = default.font.style_map[style or "Regular"],
+		size = default.font.size,
+	}
+end
+
+-- === sbar.default domain setup ===
 sbar.default({
 	updates = "when_shown",
 	icon = {
-		font = {
-			family = "Liga SFMono Nerd Font",
-			style = settings.font.style_map["Regular"],
-			size = 11.0,
-		},
+		font = font("Regular"),
 		color = colors.white,
-		padding_left = settings.paddings,
-		padding_right = settings.paddings,
+		padding_left = default.paddings,
+		padding_right = default.paddings,
 		background = { image = { corner_radius = 0 } },
 	},
+
 	label = {
-		font = {
-			family = "Liga SFMono Nerd Font",
-			style = settings.font.style_map["Regular"],
-			size = 11.0,
-		},
+		font = font("Regular"),
 		color = colors.white,
-		padding_left = settings.paddings,
-		padding_right = settings.paddings,
+		padding_left = default.paddings,
+		padding_right = default.paddings,
 	},
+
 	background = {
 		height = 10,
 		width = 10,
@@ -39,6 +61,7 @@ sbar.default({
 			width = 10,
 		},
 	},
+
 	popup = {
 		background = {
 			border_width = 1,
@@ -50,7 +73,15 @@ sbar.default({
 		},
 		blur_radius = 50,
 	},
-	padding_left = 5,
-	padding_right = 5,
+
+	padding_left = default.paddings,
+	padding_right = default.paddings,
 	scroll_texts = true,
 })
+
+-- Return defaults in case other modules need them
+return {
+	default = default,
+	font = font,
+	colors = colors,
+}
