@@ -5,6 +5,7 @@ tap "filosottile/musl-cross"
 tap "gcenx/wine"
 tap "gromgit/brewtils"
 tap "gschurck/fuzzybrew"
+tap "homielab/mountmate", "https://github.com/homielab/mountmate"
 tap "jackielii/tap"
 tap "jstkdng/programs"
 tap "kegworks-app/kegworks"
@@ -17,6 +18,7 @@ tap "narugit/tap"
 tap "nohajc/anylinuxfs"
 tap "notwadegrimridge/brew"
 tap "philocalyst/tap"
+tap "rafaelswi/menubarusb"
 tap "samtay/tui"
 tap "sikarugir-app/sikarugir"
 tap "slp/krun"
@@ -36,6 +38,8 @@ brew "zstd"
 brew "openssl@3"
 # Library for command-line editing
 brew "readline"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.14"
 # Interpreted, interactive, object-oriented programming language
 brew "python@3.13"
 # Email client that runs in your terminal
@@ -96,20 +100,16 @@ brew "cfssl"
 brew "chafa"
 # Play, record, convert, and stream audio and video
 brew "ffmpeg"
-# Ruby environment tool
-brew "chruby"
 # Tool for emulating mouse and keyboard events
 brew "cliclick"
 # Statistics utility to count lines of code
 brew "cloc"
+# Cross-platform make
+brew "cmake"
 # Console Matrix
 brew "cmatrix"
 # Music player with an ncurses based interface
 brew "cmus"
-# General-purpose scripting language
-brew "php"
-# Dependency Manager for PHP
-brew "composer"
 # Create and run Linux containers using lightweight virtual machines
 brew "container"
 # Manage Apple Container with Docker Compose files
@@ -198,8 +198,6 @@ brew "pydantic"
 brew "glances"
 # GNU implementation of the famous stream editor
 brew "gnu-sed"
-# Open source programming language to build simple/reliable/efficient software
-brew "go"
 # Ping, but with a graph
 brew "gping"
 # GNU grep, egrep and fgrep
@@ -334,6 +332,8 @@ brew "ouch"
 brew "pacmc"
 # Pretty system information tool written in POSIX sh
 brew "pfetch"
+# General-purpose scripting language
+brew "php"
 # Display the PID number for a given process name
 brew "pidof"
 # Animated pipes terminal screensaver
@@ -372,8 +372,6 @@ brew "rmlint"
 brew "rmpc"
 # Utility that provides fast incremental file transfer
 brew "rsync"
-# Powerful, clean, object-oriented scripting language
-brew "ruby"
 # Install Ruby, JRuby, Rubinius, TruffleRuby, or mruby
 brew "ruby-install"
 # Web search from the terminal
@@ -438,8 +436,6 @@ brew "tig"
 brew "tmux"
 # Tool for opening git repositories as tmux sessions
 brew "tmux-sessionizer"
-# Manage complex tmux sessions easily
-brew "tmuxinator"
 # Color-based alternative to figlet (uses libcaca)
 brew "toilet"
 # Yet another typing test, but crab flavoured
@@ -509,11 +505,11 @@ brew "gromgit/brewtils/taproom"
 # Fuzzy search for Homebrew packages
 brew "gschurck/fuzzybrew/fuzzybrew"
 # Simple hotkey daemon for macOS, written in Zig
-brew "jackielii/tap/skhd-zig", link: false
+brew "jackielii/tap/skhd-zig"
 # Drop in replacement for ueberzug written in C++
 brew "jstkdng/programs/ueberzugpp"
 # Simple hotkey-daemon for macOS.
-brew "koekeishiya/formulae/skhd"
+brew "koekeishiya/formulae/skhd", link: false
 # A tiling window manager for macOS based on binary space partitioning.
 brew "koekeishiya/formulae/yabai"
 # A background looping utility that maintains the battery level of Apple Silicon based Mac computers
@@ -540,6 +536,8 @@ cask "airbattery"
 cask "alt-tab"
 # iOS App Store alternative
 cask "altserver"
+# Helper for Sindre Sorhus's apps
+cask "app-buddy"
 # Inspect application bundles
 cask "apparency"
 # Tool to flash OS images to SD cards & USB drives
@@ -598,7 +596,6 @@ cask "filebot"
 cask "filemonitor"
 # File finder
 cask "find-any-file"
-cask "font-monaspace-nf"
 cask "font-sketchybar-app-font"
 # Audio player
 cask "foobar2000"
@@ -632,6 +629,8 @@ cask "imageoptim"
 cask "inkscape"
 # Download manager
 cask "jdownloader"
+# Menu bar manager
+cask "jordanbaird-ice@beta"
 # Keyboard customiser
 cask "karabiner-elements"
 # File archiver
@@ -652,16 +651,22 @@ cask "leader-key"
 cask "libreoffice"
 # Host-based application firewall
 cask "little-snitch"
+# Discover, download, and run local LLMs
+cask "lm-studio"
 # Trims video and audio files losslessly
 cask "losslesscut"
 # File system integration
 cask "macfuse"
+# Speech recognition tool
+cask "macwhisper"
 # Video format converter (transcoder)
 cask "makemkv"
 # Display technical and tag data for video and audio files
 cask "mediainfo"
 # UI replacement for volume, brightness and now playing controls
 cask "mediamate"
+# Track your USB devices in the macOS menu bar
+cask "menubarusb"
 # Access the menu from anywhere
 cask "menuwhere"
 # Sandbox construction video game
@@ -670,6 +675,8 @@ cask "minecraft"
 cask "mission-control-plus"
 # Set of tools to create, alter and inspect Matroska files (MKV)
 cask "mkvtoolnix-app"
+# Menubar app to easily manage external drives
+cask "mountmate"
 # Mouse control with the keyboard
 cask "mouseless"
 # Tool for editing metadata of audio files including MP3, FLAC, OGG, and more
@@ -690,6 +697,8 @@ cask "obs"
 cask "obsidian"
 # Finds large, unwanted files and deletes them
 cask "omnidisksweeper"
+# System and utility switches
+cask "only-switch"
 # Verify system files structure, run miscellaneous maintenance and more
 cask "onyx"
 # Retro video game emulation
@@ -738,6 +747,8 @@ cask "reikey"
 cask "scribus"
 # Integrated development environment focused entirely on AppleScript
 cask "script-debugger"
+# App that enables mouse-free UI interaction
+cask "shortcat"
 # Screenshot measurement and annotation tool
 cask "shottr"
 # Instant messaging application focusing on security
@@ -805,6 +816,7 @@ mas "Blackmagic Disk Speed Test", id: 425264550
 mas "Bonjourr Startpage", id: 1615431236
 mas "Broadcasts", id: 1469995354
 mas "CloudMounter", id: 1130254674
+mas "Color Picker", id: 1545870783
 mas "Compressor", id: 424390742
 mas "Dark Night", id: 1592844577
 mas "Dato", id: 1470584107

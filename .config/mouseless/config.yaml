@@ -339,7 +339,7 @@ keymaps:
     toggle app enabled: null
     toggle continuous mode: Option+Shift
     toggle continuous mode until closed: '1'
-    toggle free mode: OptionLeft tap
+    toggle free mode: OptionLeft double tap
     toggle overlay: null
     toggle overlay lock: null
     undo last key: Backspace
