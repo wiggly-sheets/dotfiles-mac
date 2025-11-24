@@ -138,7 +138,7 @@ ctrl + cmd - a : yabai -m window --display west; yabai -m display --focus west;
 ctrl + cmd - g : yabai -m window --display east; yabai -m display --focus east;
 
 # restart yabai
-ctrl + alt - y : yabai --restart-service
+shift + cmd - y : yabai --restart-service
 
 # restart sketchybar
 shift + cmd - r : brew services restart sketchybar
