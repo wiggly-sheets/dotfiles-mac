@@ -1,4 +1,6 @@
 
+# startup commands welcome message
+figlet "welcome" | lolcat && pfetch && stormy
 
 #-----------------------------
 # Instant prompt (Powerlevel10k) for fast startup
@@ -183,8 +185,12 @@ compinit
 # End of lines added by compinstall
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/Zeb/.lmstudio/bin"
+# End of LM Studio CLI section
 
 
-# startup commands welcome message
-figlet "welcome" | lolcat && pfetch && stormy && return
+export PF_INFO="ascii title os host kernel uptime pkgs memory"
+
+
 
