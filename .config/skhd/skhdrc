@@ -105,8 +105,8 @@ shift + alt - r : yabai -m window --space recent;
 shift + cmd - x : yabai -m window --space recent; yabai -m space --focus recent
 shift + cmd - f : yabai -m window --space first; yabai -m space --focus first
 shift + cmd - e : yabai -m window --space last; yabai -m space --focus last
-shift + cmd - z : yabai -m window --space prev; yabai -m space --focus prev
-shift + cmd - c : yabai -m window --space next; yabai -m space --focus next
+shift + cmd - p : yabai -m window --space prev; yabai -m space --focus prev
+shift + cmd - n : yabai -m window --space next; yabai -m space --focus next
 shift + cmd - 1 : yabai -m window --space  1; yabai -m space --focus 1
 shift + cmd - 2 : yabai -m window --space  2; yabai -m space --focus 2
 shift + cmd - 3 : yabai -m window --space  3; yabai -m space --focus 3
@@ -116,6 +116,9 @@ shift + cmd - 6 : yabai -m window --space  6; yabai -m space --focus 6
 shift + cmd - 7 : yabai -m window --space  7; yabai -m space --focus 7
 shift + cmd - 8 : yabai -m window --space  8; yabai -m space --focus 8
 shift + cmd - 9 : yabai -m window --space  9; yabai -m space --focus 9
+
+# make new space, send window there, and follow focus
+shift + cmd - a : yabai -m space --create; yabai -m window --space last; yabai -m space --focus last;
 
 # focus display
 shift + ctrl + alt - r : yabai -m display --focus recent
@@ -145,7 +148,7 @@ shift + cmd - r : brew services restart sketchybar
 
 # menu bar padding for external or internal displays
 shift + cmd - m : yabai -m config external_bar main:9:0
-shift + cmd - n : yabai -m config external_bar all:0:0
+shift + cmd - d : yabai -m config external_bar all:0:0
 
 # native menu bar visbility
 shift + cmd - i : yabai -m config menubar_opacity 0.0
