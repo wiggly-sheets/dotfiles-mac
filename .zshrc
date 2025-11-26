@@ -194,3 +194,4 @@ export PF_INFO="ascii title os host kernel uptime pkgs memory"
 
 
 
+eval "$(atuin init zsh)"
