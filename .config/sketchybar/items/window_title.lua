@@ -12,7 +12,7 @@ local front_app = sbar.add("item", "front_app", {
 	label = {
 		drawing = false,
 	},
-	padding_right = -1,
+	padding_right = 2,
 	updates = true,
 	position = "center",
 })
