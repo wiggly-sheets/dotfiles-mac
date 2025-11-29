@@ -102,7 +102,7 @@ shift + alt - p : yabai -m window --space prev;
 shift + alt - r : yabai -m window --space recent;
 
 # send window to space & follow focus
-shift + cmd - x : yabai -m window --space recent && yabai -m space --focus recent
+shift + cmd - r : yabai -m window --space recent && yabai -m space --focus recent
 shift + cmd - f : yabai -m window --space first && yabai -m space --focus first
 shift + cmd - e : yabai -m window --space last && yabai -m space --focus last
 shift + cmd - p : yabai -m window --space prev && yabai -m space --focus prev
@@ -144,10 +144,10 @@ ctrl + cmd - g : yabai -m window --display east; yabai -m display --focus east;
 shift + cmd - y : yabai --restart-service
 
 # restart sketchybar
-shift + cmd - r : brew services restart sketchybar
+shift + cmd - s : brew services restart sketchybar
 
 # menu bar padding for external or internal displays
 shift + cmd - m : sh -c 'p=$(yabai -m config external_bar); [ "$p" = "all:0:0" ] && yabai -m config external_bar main:9:0 || yabai -m config external_bar all:0:0'
 
 # native menu bar visbility
-shift + cmd - i : sh -c 'o=$(yabai -m config menubar_opacity); [ "${o%.*}" = "1" ] && yabai -m config menubar_opacity 0.0 || yabai -m config menubar_opacity 1.0'
+shift + cmd - v : sh -c 'o=$(yabai -m config menubar_opacity); [ "${o%.*}" = "1" ] && yabai -m config menubar_opacity 0.0 || yabai -m config menubar_opacity 1.0'
