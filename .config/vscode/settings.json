@@ -2,7 +2,6 @@
   "workbench.sideBar.location": "right",
   "editor.cursorStyle": "underline-thin",
   "workbench.iconTheme": "material-icon-theme",
-  "workbench.productIconTheme": "sf-symbol-icons",
   "material-icon-theme.activeIconPack": "angular_ngrx",
   "workbench.startupEditor": "none",
   "extensions.experimental.affinity": {
@@ -24,7 +23,6 @@
       ".continue/**/*.yaml"
     ]
   },
-  "workbench.colorTheme": "Tokyo Night",
   "redhat.telemetry.enabled": true,
   "editor.fontFamily": "Liga SFMono Pro",
   "editor.fontLigatures": true,
@@ -32,5 +30,14 @@
   "editor.cursorBlinking": "phase",
   "diffEditor.codeLens": true,
   "workbench.settings.applyToAllProfiles": ["editor.fontFamily"],
-  "python.defaultInterpreterPath": "/Users/Zeb/Developer/programming-final-project/.venv/bin/python"
+  "python.defaultInterpreterPath": "/Users/Zeb/Developer/programming-final-project/.venv/bin/python",
+  "workbench.productIconTheme": "sf-symbol-icons",
+  "workbench.colorTheme": "Tokyo Night AltSynt",
+  "workbench.colorCustomizations": {
+    "terminal.background": "#00000000"
+  },
+  "terminal.integrated.gpuAcceleration": "off",
+  "window.systemColorTheme": "dark",
+  "window.autoDetectColorScheme": false,
+  "window.titleBarStyle": "custom"
 }
