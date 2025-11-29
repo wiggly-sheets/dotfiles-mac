@@ -1,7 +1,6 @@
 return {
 	"MeanderingProgrammer/render-markdown.nvim",
 	enabled = true,
-	require("render-markdown").setup({ latex = { enabled = false } }),
 	init = function()
 		-- Better color palette for markdown
 		local color_bg = "#1e1e2e" -- background for headings

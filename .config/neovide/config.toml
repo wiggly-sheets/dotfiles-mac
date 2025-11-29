@@ -13,12 +13,12 @@ wsl = false
 neovim_bin = "/opt/homebrew/bin/nvim"
 
 [font]
-normal = "Liga SFMono Nerd Font"
+normal = [ "Liga SFMono Nerd Font"] 
 size = 13.0
 
 [box-drawing]
 # "font-glyph", "native" or "selected-native"
-mode = "font-glyph"
+mode = "native"
 
 [box-drawing.sizes]
 default = [2, 4]  # Thin and thick values respectively, for all sizes

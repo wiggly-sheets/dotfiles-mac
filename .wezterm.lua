@@ -8,8 +8,7 @@ config.window_close_confirmation = "NeverPrompt"
 
 config.front_end = "WebGpu"
 
-config.font = wezterm.f
-ont_with_fallback({
+config.font = wezterm.font_with_fallback({
 	"Liga SFMono Nerd Font",
 })
 config.font_size = 12

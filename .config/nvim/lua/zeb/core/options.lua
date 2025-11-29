@@ -65,7 +65,7 @@ if vim.g.neovide then
 
 	-- visuals
 	vim.g.neovide_refresh_rate = 60
-	vim.g.neovide_cursor_animation_length = 0.05
+	vim.g.neovide_cursor_animation_length = 0.1
 	vim.g.neovide_cursor_trail = 1.0
 	vim.g.neovide_floating_shadow = false
 	vim.g.neovide_cursor_vfx_mode = "pixiedust" -- railgun, torpedo, pixiedust, sonicboom, ripple, or wireframe
