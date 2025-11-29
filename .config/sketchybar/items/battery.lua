@@ -71,6 +71,10 @@ local function handle_battery_click(env)
 		sbar.exec(
 			'osascript -e \'tell application "System Events" to tell process "AirBattery" to click menu bar item 1 of menu bar 2\''
 		)
+	else
+		sbar.exec(
+			'osascript -e \'tell application "System Events" to tell process "Battery Toolkit"  to click menu bar item 1 of menu bar 2\''
+		)
 	end
 end
 

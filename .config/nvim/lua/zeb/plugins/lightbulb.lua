@@ -1,4 +1,3 @@
--- ~/.config/nvim/lua/plugins/nvim-lightbulb.lua
 return {
 	"kosayoda/nvim-lightbulb",
 	event = "LspAttach",

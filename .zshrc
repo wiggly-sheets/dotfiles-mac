@@ -1,6 +1,6 @@
 
 # startup commands welcome message
-figlet "welcome" | lolcat && pfetch && stormy
+figlet "welcome", $USER | lolcat && pfetch && stormy && fortune
 
 #-----------------------------
 # Instant prompt (Powerlevel10k) for fast startup

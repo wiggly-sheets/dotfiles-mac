@@ -17,13 +17,12 @@ require("asciiart").setup({
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
+vim.o.laststatus = 0
+
 vim.opt.guicursor = "n-ci:hor30-iCursor,v-c-r-i-sm-t:ver25,a:blinkwait300-blinkon200-blinkoff150,"
 
--- Enable cursorline
-vim.o.cursorline = true
-
--- Make the cursorline use an underline instead of background
-vim.api.nvim_set_hl(0, "CursorLine", { underline = true, bg = "NONE" })
+-- Disable cursorline
+vim.api.nvim_set_hl(0, "CursorLine", { underline = false, bg = "NONE" })
 
 -- Highlight the line number of the current line
 vim.api.nvim_set_hl(0, "CursorLineNr", { fg = "#ff9e64", bold = true })
