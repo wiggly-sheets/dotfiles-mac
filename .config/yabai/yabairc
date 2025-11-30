@@ -29,7 +29,7 @@ yabai -m config split_type auto
 
 yabai -m config auto_balance off
 
-yabai -m config window_animation_duration 0.25
+yabai -m config window_animation_duration 0.2
 
 yabai -m config window_animation_easing easeOutElastic
 
@@ -47,7 +47,6 @@ yabai -m config right_padding 1
 # small window gaps for bsp
 yabai -m config window_gap 4
 
-
 # pin apps to workspaces
 yabai_rule app="^Helium$" space=1
 yabai_rule app="^Bloom$" space=2
@@ -59,7 +58,6 @@ yabai_rule app="^Chromatix$" space=5
 yabai_rule app="ˆBroadcasts$" space=5
 yabai_rule app="^Zen$" space=6
 yabai_rule app="^Neovide$" space=7
-
 
 # float apps 
 yabai -m rule --add app='^System Settings$' manage=off
@@ -77,11 +75,10 @@ yabai -m rule --add app='^Leader Key$' manage=off
 yabai -m rule --add app='^Mouseless$' manage=off
 yabai -m rule --add app='^Steam$' manage=off
 
-
 # window opacity
 yabai -m config window_shadow off
 yabai -m config window_opacity on
-yabai -m config window_opacity_duration 0.10
+yabai -m config window_opacity_duration 0.1
 yabai -m config active_window_opacity 1.0
 yabai -m config normal_window_opacity 0.75
 
@@ -110,6 +107,4 @@ yabai -m config insert_feedback_color 0xffffffff
 yabai -m config debug_output off
 
 # bootstrap jankyborders with yabai service
-borders hidpi=on width=1.0 active_color="glow(0xFFFFFFFF)" style=round ax_focus=on order=above blacklist="Stats,Dropover,iPhone Mirroring,Passwords" &
-
-
+borders hidpi=on width=1.0 active_color="glow(0xFFFFFFFF)" inactive_color=0xff1e1e1e style=round ax_focus=on order=above blacklist="Stats,Dropover,iPhone Mirroring,Passwords" &

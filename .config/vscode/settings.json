@@ -24,7 +24,7 @@
     ]
   },
   "redhat.telemetry.enabled": true,
-  "editor.fontFamily": "Liga SFMono Pro",
+  "editor.fontFamily": "Liga SFMono Nerd Font",
   "editor.fontLigatures": true,
   "editor.cursorSmoothCaretAnimation": "explicit",
   "editor.cursorBlinking": "phase",
