@@ -27,9 +27,6 @@ config.window_decorations = "RESIZE"
 
 config.warn_about_missing_glyphs = false
 
-config.cursor_blink_rate = 500
-config.animation_fps = 50
-
 config.window_background_opacity = 0.2
 config.macos_window_background_blur = 10
 
@@ -39,6 +36,12 @@ config.window_padding = {
 	top = 0,
 	bottom = 0,
 }
+
+config.cursor_blink_rate = 600
+config.max_fps = 120
+config.animation_fps = 60
+config.cursor_blink_ease_in = "Linear"
+config.cursor_blink_ease_out = "Linear"
 
 wezterm.on("user-var-changed", function(window, pane, name, value)
 	local overrides = window:get_config_overrides() or {}
