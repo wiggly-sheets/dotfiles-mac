@@ -59,7 +59,7 @@ ctrl - u : yabai -m window --toggle float && yabai -m window --toggle float
 ctrl - n : yabai -m window --focus stack.next || yabai -m window --focus stack.first
 ctrl - p : yabai -m window --focus stack.prev || yabai -m window --focus stack.last
 ctrl - f : yabai -m window --focus stack.first
-ctrl - l : yabai -m window --focus stack.last
+ctrl - e : yabai -m window --focus stack.last
 ctrl - r : yabai -m window --focus stack.recent
 
 # focus space 
