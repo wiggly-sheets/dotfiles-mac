@@ -72,6 +72,7 @@ alt - 6 : yabai -m space --focus 6
 alt - 7 : yabai -m space --focus 7
 alt - 8 : yabai -m space --focus 8
 alt - 9 : yabai -m space --focus 9
+alt - 0 : yabai -m space --focus 10
 alt - p : yabai -m space --focus prev || yabai -m space --focus last
 alt - n : yabai -m space --focus next || yabai -m space --focus first
 alt - f : yabai -m space --focus first
@@ -95,6 +96,7 @@ shift + alt - 6 : yabai -m window --space 6;
 shift + alt - 7 : yabai -m window --space 7;
 shift + alt - 8 : yabai -m window --space 8;
 shift + alt - 9 : yabai -m window --space 9;
+shift + alt - 0 : yabai -m window --space 10;
 shift + alt - f : yabai -m window --space first;
 shift + alt - e : yabai -m window --space last;
 shift + alt - n : yabai -m window --space next;
@@ -116,6 +118,7 @@ shift + cmd - 6 : yabai -m window --space  6 && yabai -m space --focus 6
 shift + cmd - 7 : yabai -m window --space  7 && yabai -m space --focus 7
 shift + cmd - 8 : yabai -m window --space  8 && yabai -m space --focus 8
 shift + cmd - 9 : yabai -m window --space  9 && yabai -m space --focus 9
+shift + cmd - 0 : yabai -m window --space 10 && yabai -m space --focus 10
 
 # make new space, send window there, and follow focus
 shift + cmd - a : yabai -m space --create && yabai -m window --space last && yabai -m space --focus last;

@@ -8,11 +8,12 @@ local folder = sbar.add("item", "folder", {
 	},
 	position = "right",
 })
+
 local left_click_script =
 	'osascript -e \'tell application "System Events" to tell process "Default Folder X" to click menu bar item 1 of menu bar 2\''
 
 local right_click_script =
-	'osascript -e \'tell application "System Events" to tell process "CloudMounter" to click menu bar item 1 of menu bar 2\''
+	'osascript -e \'tell application "System Events" to tell process "Mountain Duck" to click menu bar item 1 of menu bar 1\''
 
 local middle_click_script =
 	'osascript -e \'tell application "System Events" to tell process "MountMate" to click menu bar item 1 of menu bar 2\''

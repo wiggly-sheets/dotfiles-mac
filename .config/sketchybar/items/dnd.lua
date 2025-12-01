@@ -7,10 +7,9 @@ local dnd = sbar.add("item", "dnd", {
 		font = { size = 15 },
 	},
 	position = "right",
-	click_script = 'osascript -e \'tell application "Shortcuts" to run shortcut "Toggle DND"\'',
 	padding_right = 8,
 	padding_left = 5,
-	update_freq = 5,
+	update_freq = 10,
 })
 
 local function update_dnd()
@@ -25,6 +24,19 @@ local function update_dnd()
 		end
 	)
 end
+
+local left_click_script = 'osascript -e \'tell application "Shortcuts" to run shortcut "Toggle DND"\''
+
+local right_click_script =
+	'osascript -e \'tell application "System Events" to tell process "ControlCenter" to click menu bar item 0 of menu bar 1\''
+
+dnd:subscribe("mouse.clicked", function(env)
+	if env.BUTTON == "left" then
+		sbar.exec(left_click_script)
+	elseif env.BUTTON == "right" then
+		sbar.exec(right_click_script)
+	end
+end)
 
 -- Subscribe your DND item to the events
 dnd:subscribe({ "routine", "system_woke" }, update_dnd)

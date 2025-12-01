@@ -1,6 +1,6 @@
 local caffeinate = sbar.add("item", "caffeinate", {
 	position = "right",
-	update_freq = 5,
+	update_freq = 10,
 	padding_left = 2,
 	padding_right = 2,
 })
