@@ -493,6 +493,8 @@ wifi_up:subscribe("network_update", function(env)
 		'osascript -e \'tell application "System Events" to keystroke "n" using {command down, option down, control down}\''
 	local vpn_click_script =
 		'osascript -e \'tell application "System Events" to tell process "Passepartout" to click menu bar item 1 of menu bar 2\''
+	local tailscale_click_script =
+		'osascript -e \'tell application "System Events" to tell process "Tailscale" to click menu bar item 1 of menu bar 2\''
 
 	-- Wi-Fi item
 	wifi:subscribe("mouse.clicked", function(env)
@@ -500,6 +502,8 @@ wifi_up:subscribe("network_update", function(env)
 			toggle_details()
 		elseif env.BUTTON == "right" then
 			sbar.exec(vpn_click_script)
+		else
+			sbar.exec(tailscale_click_script)
 		end
 	end)
 
@@ -527,6 +531,7 @@ wifi_up:subscribe("network_update", function(env)
 			sbar.exec(shortcut_script)
 		elseif env.BUTTON == "right" then
 			sbar.exec(wifi_click_script)
+		else
 		end
 	end)
 

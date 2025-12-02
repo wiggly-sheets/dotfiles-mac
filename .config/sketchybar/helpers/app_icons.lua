@@ -193,6 +193,7 @@ return {
 	["Hammerspoon"] = ":hammerspoon:",
 	["HandBrake"] = ":handbrake:",
 	["Hazel"] = ":hazel:",
+	["HBO Max"] = ":hbo_max:",
 	["Helium"] = ":helium:",
 	["Home"] = ":home:",
 	["Home Assistant"] = ":home_assistant:",
