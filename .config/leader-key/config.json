@@ -3,14 +3,35 @@
     {
       "actions" : [
         {
+          "actions" : [
+            {
+              "key" : "h",
+              "type" : "application",
+              "value" : "/Applications/Helium.app"
+            },
+            {
+              "key" : "s",
+              "type" : "application",
+              "value" : "/Applications/Safari.app"
+            },
+            {
+              "key" : "z",
+              "type" : "application",
+              "value" : "/Applications/Zen.app"
+            },
+            {
+              "key" : "t",
+              "type" : "application",
+              "value" : "/Applications/Tor Browser.app"
+            }
+          ],
+          "key" : "b",
+          "type" : "group"
+        },
+        {
           "key" : "w",
           "type" : "application",
           "value" : "/Applications/WezTerm.app"
-        },
-        {
-          "key" : "s",
-          "type" : "application",
-          "value" : "/Applications/Safari.app"
         },
         {
           "key" : "m",
@@ -18,7 +39,7 @@
           "value" : "/System/Applications/Mail.app"
         },
         {
-          "key" : "l",
+          "key" : "c",
           "type" : "application",
           "value" : "/Applications/Chromatix.app"
         },
@@ -26,16 +47,6 @@
           "key" : "t",
           "type" : "application",
           "value" : "/System/Applications/Messages.app"
-        },
-        {
-          "key" : "b",
-          "type" : "application",
-          "value" : "/Applications/Helium.app"
-        },
-        {
-          "key" : "z",
-          "type" : "application",
-          "value" : "/Applications/Zen.app"
         },
         {
           "key" : "r",
