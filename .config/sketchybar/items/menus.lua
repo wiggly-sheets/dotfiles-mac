@@ -87,12 +87,15 @@ menu_watcher:subscribe(
 	"system_woke",
 	update_menus
 )
+local menu_click_script = "$CONFIG_DIR/helpers/menus/bin/menus -s 0"
 
 for _, menu in ipairs(menu_items) do
 	menu:subscribe("mouse.clicked", function(env)
 		if env.BUTTON == "left" then
 			return
 		elseif env.BUTTON == "right" then
+			sbar.exec(menu_click_script)
+		elseif env.BUTTON == "other" then
 			sbar.exec("yabai -m config menubar_opacity 1.0")
 		end
 	end)
@@ -103,7 +106,15 @@ local left_click_script =
 
 local right_click_script =
 	"osascript -e 'tell application \"System Events\" to key code 0 using {command down, option down, control down}'"
-local middle_click_script = "$CONFIG_DIR/helpers/menus/bin/menus -s 0"
+
+local middle_click_script = [[
+osascript -e 'tell application "System Events"
+    set thePic to do shell script "find ~/Pictures/Wallpapers -type f | gshuf -n 1"
+    repeat with d in desktops
+        set picture of d to thePic
+    end repeat
+end tell'
+]]
 
 apple:subscribe("mouse.clicked", function(env)
 	if env.BUTTON == "left" then

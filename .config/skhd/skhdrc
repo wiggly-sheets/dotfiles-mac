@@ -55,12 +55,15 @@ ctrl + alt - r : yabai -m window --warp recent
 
 # create & cycle through stacked windows
 ctrl - s : yabai -m window --insert stack
-ctrl - u : yabai -m window --toggle float && yabai -m window --toggle float
 ctrl - n : yabai -m window --focus stack.next || yabai -m window --focus stack.first
 ctrl - p : yabai -m window --focus stack.prev || yabai -m window --focus stack.last
 ctrl - f : yabai -m window --focus stack.first
 ctrl - e : yabai -m window --focus stack.last
 ctrl - r : yabai -m window --focus stack.recent
+
+# unstack a window
+ctrl - u : yabai -m window --toggle float && yabai -m window --toggle float 
+
 
 # focus space 
 alt - 1 : yabai -m space --focus 1
@@ -83,7 +86,7 @@ alt - r : yabai -m space --focus recent
 alt - w : yabai -m space --destroy && yabai -m space --focus recent
 alt - a : yabai -m space --create
 
-# create desktop and follow focus
+# create desktop & follow focus
 alt - t : yabai -m space --create; yabai -m space --focus last
 
 # move window to space
@@ -120,7 +123,7 @@ shift + cmd - 8 : yabai -m window --space  8 && yabai -m space --focus 8
 shift + cmd - 9 : yabai -m window --space  9 && yabai -m space --focus 9
 shift + cmd - 0 : yabai -m window --space 10 && yabai -m space --focus 10
 
-# make new space, send window there, and follow focus
+# make new space, send window to it, & follow focus
 shift + cmd - a : yabai -m space --create && yabai -m window --space last && yabai -m space --focus last;
 
 # focus display
@@ -129,7 +132,7 @@ shift + ctrl + alt - p : yabai -m display --focus prev
 shift + ctrl + alt - n : yabai -m display --focus next
 shift + ctrl + alt - 1 : yabai -m display --focus 1
 shift + ctrl + alt - 2 : yabai -m display --focus 2
-shift + ctrl + alt - 3 : yabai -m display --focus 3
+shift + ctrl + alt - 3 : yabai -m display --focus 3w
 shift + ctrl + alt - g : yabai -m display --focus east
 shift + ctrl + alt - a : yabai -m display --focus west
 

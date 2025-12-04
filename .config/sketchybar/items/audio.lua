@@ -161,26 +161,24 @@ end)
 -- Click scripts
 -- ======================
 
--- Existing left-click: open SoundSource
 local left_click_script =
 	'osascript -e \'tell application "System Events" to tell process "SoundSource" to click menu bar item 1 of menu bar 2\''
 
--- New right-click: Control Center menu bar item 5
 local right_click_script =
 	'osascript -e \'tell application "System Events" to tell process "ControlCenter" to click (first menu bar item of menu bar 1 whose name is not "Wi-Fi")\''
 
--- Helper function
+local middle_click_script =
+	'osascript -e \'tell application "System Events" to tell process "SystemUIServer" to click menu bar item 2 of menu bar 1\''
+
 local function handle_volume_click(item, env)
 	if env.BUTTON == "left" then
 		sbar.exec(left_click_script)
 	elseif env.BUTTON == "right" then
 		sbar.exec(right_click_script)
+	else
+		sbar.exec(middle_click_script)
 	end
 end
-
--- ======================
--- Subscriptions
--- ======================
 
 volume_percent:subscribe("mouse.clicked", function(env)
 	handle_volume_click("volume_percent", env)

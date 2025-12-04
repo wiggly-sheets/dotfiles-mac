@@ -28,7 +28,7 @@ end
 local left_click_script = 'osascript -e \'tell application "Shortcuts" to run shortcut "Toggle DND"\''
 
 local right_click_script =
-	'osascript -e \'tell application "System Events" to tell process "ControlCenter" to click menu bar item 0 of menu bar 1\''
+	'osascript -e \'tell application "System Events" to tell process "ControlCenter" to click menu bar item 3 of menu bar 1\''
 
 dnd:subscribe("mouse.clicked", function(env)
 	if env.BUTTON == "left" then
