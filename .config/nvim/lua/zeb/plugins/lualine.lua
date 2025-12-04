@@ -54,13 +54,8 @@ return {
 			},
 		}
 
-		-- custom formatter for Apple fileformat
 		local apple_format = function()
-			local fmt = vim.bo.fileformat
-			if fmt == "unix" then
-				return ""
-			end
-			return fmt
+			return vim.bo.fileformat == "unix" and "" or vim.bo.fileformat
 		end
 
 		require("lualine").setup({
@@ -96,7 +91,6 @@ return {
 				lualine_z = {},
 			},
 
-			-- WINBAR only
 			winbar = {
 				lualine_a = { "mode" },
 				lualine_b = { "branch", "diff", "diagnostics" },
@@ -112,7 +106,24 @@ return {
 			},
 		})
 
-		-- Force-transparent highlights after colorscheme/plugin load
+		----------------------------------------------------------------
+		-- 🔹 Winbar transparency (YOUR REQUESTED BLOCK INTEGRATED HERE)
+		----------------------------------------------------------------
+		vim.api.nvim_set_hl(0, "WinBar", { bg = "NONE" })
+		vim.api.nvim_set_hl(0, "WinBarNC", { bg = "NONE" })
+		vim.api.nvim_set_hl(0, "LualineWinbar", { bg = "NONE" })
+		vim.api.nvim_set_hl(0, "LualineWinbarNC", { bg = "NONE" })
+
+		-- ensure separators stay disabled for the floating-style winbar
+		require("lualine").setup({
+			options = {
+				component_separators = "",
+				section_separators = "",
+			},
+		})
+		----------------------------------------------------------------
+
+		-- 🔹 Force lualine highlight transparency once everything is loaded
 		vim.api.nvim_create_autocmd("User", {
 			pattern = "VeryLazy",
 			callback = function()
@@ -156,6 +167,36 @@ return {
 				}) do
 					vim.cmd("hi " .. group .. " guibg=NONE ctermbg=NONE")
 				end
+			end,
+		})
+
+		-- 🔹 Hide winbar in Alpha
+		vim.api.nvim_create_autocmd("FileType", {
+			pattern = {
+				"alpha", -- your splash screen
+				"neo-tree", -- file tree
+				"dashboard", -- if you use dashboard-nvim
+				"help", -- help pages
+				"qf", -- quickfix
+				"lazy", -- Lazy UI
+				"mason", -- Mason UI
+				"notify", -- notifications
+			},
+			callback = function()
+				vim.opt_local.winbar = nil
+			end,
+		})
+
+		-- 🔹 Fake inactive winbar behavior
+		vim.api.nvim_create_autocmd({ "WinEnter", "BufEnter" }, {
+			callback = function()
+				vim.wo.winbar = "%{%v:lua.require'lualine'.statusline()%}"
+			end,
+		})
+
+		vim.api.nvim_create_autocmd("WinLeave", {
+			callback = function()
+				vim.wo.winbar = ""
 			end,
 		})
 	end,
