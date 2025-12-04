@@ -1,0 +1,21 @@
+theme = "Tokyo Night Storm"
+
+[servers.undernet]
+nickname = "wigglysheets"
+server = "irc.undernet.org"
+port = 6660
+use_tls = false
+
+[servers.IRCHighway]
+nickname = "bigglysheets"
+server = "irc.irchighway.net"
+port = 6669
+use_tls = false
+
+[servers.liberachat]
+nickname = "wiggly-sheets"
+server = "irc.libera.chat"
+channels = ["#halloy"]
+
+[buffer.channel.topic]
+enabled = true
