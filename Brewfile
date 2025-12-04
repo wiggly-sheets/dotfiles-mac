@@ -54,6 +54,8 @@ brew "asciiquarium"
 brew "asitop"
 # Planetarium for your terminal
 brew "astroterm"
+# Improved shell history for zsh, bash, fish and nushell
+brew "atuin"
 # Tool for generating GNU Standards-compliant Makefiles
 brew "automake"
 # Automatically restart SSH sessions and tunnels
@@ -111,7 +113,7 @@ brew "cmatrix"
 # Music player with an ncurses based interface
 brew "cmus"
 # Create and run Linux containers using lightweight virtual machines
-brew "container"
+brew "container", link: false
 # Manage Apple Container with Docker Compose files
 brew "container-compose"
 # Package compiler and linker metadata toolkit
@@ -187,7 +189,7 @@ brew "gawk"
 # GitHub command-line tool
 brew "gh"
 # Multi-platform software reverse engineering framework
-brew "ghidra"
+brew "ghidra", link: false
 # Distributed revision control system
 brew "git"
 # Syntax-highlighting pager for git and diff output
@@ -290,6 +292,8 @@ brew "yt-dlp"
 brew "mpv"
 # 'traceroute' and 'ping' in a single tool
 brew "mtr"
+# Interactive cheatsheet tool for the command-line
+brew "navi"
 # Fast, highly customisable system info script
 brew "neofetch"
 # Ambitious Vim-fork focused on extensibility and agility
@@ -320,6 +324,8 @@ brew "nushell"
 brew "nyancat"
 # Bash-compatible Unix shell with more consistent syntax and semantics
 brew "oil"
+# Create, run, and share large language models (LLMs)
+brew "ollama"
 # Command-line Git information tool
 brew "onefetch"
 # Colossal Cave Adventure, the 1995 430-point version
@@ -330,6 +336,8 @@ brew "opencode"
 brew "ouch"
 # Minecraft package manager and launcher
 brew "pacmc"
+# Command-line tool to generate, analyze, convert and manipulate colors
+brew "pastel"
 # Pretty system information tool written in POSIX sh
 brew "pfetch"
 # General-purpose scripting language
@@ -500,8 +508,6 @@ brew "felixkratz/formulae/borders"
 brew "felixkratz/formulae/sketchybar"
 # Turns macOS input fields into real vim buffers
 brew "felixkratz/formulae/svim"
-# Interactive TUI for Homebrew
-brew "gromgit/brewtils/taproom"
 # Fuzzy search for Homebrew packages
 brew "gschurck/fuzzybrew/fuzzybrew"
 # Simple hotkey daemon for macOS, written in Zig
@@ -556,6 +562,8 @@ cask "blender"
 cask "blockblock"
 # File manager
 cask "bloom"
+# Mobile gaming platform
+cask "bluestacks"
 # CD burning application
 cask "burn"
 # E-books management software
@@ -590,6 +598,8 @@ cask "do-not-disturb"
 cask "dolphin"
 # Downloads videos from different websites
 cask "downie"
+# Launcher for *Epic Games* games
+cask "epic-games"
 # Tool for organising and renaming movies, TV shows, anime or music
 cask "filebot"
 # Monitor filesystem activity
@@ -601,12 +611,16 @@ cask "font-sketchybar-app-font"
 cask "foobar2000"
 # Audio converter and CD ripper
 cask "freac"
+# 3D parametric modeller
+cask "freecad"
 # Software reverse engineering (SRE) suite of tools
 cask "ghidra"
 # Free and open-source image editor
 cask "gimp"
 # Desktop client for GitHub repositories
 cask "github"
+# Game client
+cask "gog-galaxy"
 # Virtual globe
 cask "google-earth-pro"
 # Graphically shows disk usage within a file system
@@ -675,6 +689,8 @@ cask "minecraft"
 cask "mission-control-plus"
 # Set of tools to create, alter and inspect Matroska files (MKV)
 cask "mkvtoolnix-app"
+# Mounts servers and cloud storages as a disk on the desktop
+cask "mountain-duck"
 # Menubar app to easily manage external drives
 cask "mountmate"
 # Mouse control with the keyboard
@@ -747,6 +763,8 @@ cask "reikey"
 cask "scribus"
 # Integrated development environment focused entirely on AppleScript
 cask "script-debugger"
+# Tool that provides consistent, highly configurable symbols for apps
+cask "sf-symbols"
 # App that enables mouse-free UI interaction
 cask "shortcat"
 # Screenshot measurement and annotation tool
@@ -787,6 +805,8 @@ cask "timemachineeditor"
 cask "tor-browser"
 # Batch rename utility
 cask "transnomino"
+# Run commands and display their output on the desktop
+cask "ubersicht"
 # Newsreader and Usenet client
 cask "usenapp"
 # Virtual machines UI using QEMU
@@ -811,11 +831,11 @@ cask "zen"
 cask "zoom"
 # Collect, organise, cite, and share research sources
 cask "zotero"
+mas "2048 Game", id: 871033113
 mas "Actions", id: 1586435171
 mas "Blackmagic Disk Speed Test", id: 425264550
 mas "Bonjourr Startpage", id: 1615431236
 mas "Broadcasts", id: 1469995354
-mas "CloudMounter", id: 1130254674
 mas "Color Picker", id: 1545870783
 mas "Compressor", id: 424390742
 mas "Dark Night", id: 1592844577
@@ -824,6 +844,7 @@ mas "Dropover", id: 1355679052
 mas "Final Cut Pro", id: 424389933
 mas "Folder Preview", id: 6698876601
 mas "Gifski", id: 1351639930
+mas "HEIC Converter", id: 1294126402
 mas "Keynote", id: 409183694
 mas "Keyword Search", id: 1558453954
 mas "Klack", id: 6446206067
@@ -839,7 +860,9 @@ mas "Passepartout", id: 1433648537
 mas "Pixelmator Pro", id: 1289583905
 mas "Poolsuite FM", id: 1514817810
 mas "Shareful", id: 1522267256
+mas "Simple Comic", id: 1497435571
 mas "Sparrow Weather", id: 6449440582
+mas "Speediness", id: 1596706466
 mas "Star Wars®: Knights of the Old Republic™ II", id: 960778634
 mas "Swift Playground", id: 1496833156
 mas "Tailscale", id: 1475387142
@@ -877,6 +900,7 @@ vscode "gruntfuggly.todo-tree"
 vscode "gydunhn.vsc-essentials"
 vscode "gydunhn.vsc-essentials-core"
 vscode "ibm.output-colorizer"
+vscode "illixion.vscode-vibrancy-continued"
 vscode "iocave.monkey-patch"
 vscode "j-f1.sf-symbols"
 vscode "jdinhlife.gruvbox"
