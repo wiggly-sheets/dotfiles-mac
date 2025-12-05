@@ -214,11 +214,13 @@ enter_accept = true
 # common_prefix = ["sudo"]
 
 ## Set commands that will be completely ignored from stats
-# ignored_commands = [
-#   "cd",
-#   "ls",
-#   "vi"
-# ]
+ ignored_commands = [
+  "cd",
+   "ls",
+   "vi",
+   "c",
+   "clear",
+ ]
 
 [keys]
 # Defaults to true. If disabled, using the up/down key won't exit the TUI when scrolled past the first/last entry.
@@ -276,7 +278,7 @@ records = true
 ##    https://ogeon.github.io/docs/palette/master/palette/named/index.html
 ## If you provide a custom theme file, it should be  called "NAME.toml" and the theme below
 ## should be the stem, i.e. `theme = "NAME"` for your chosen NAME.
-# name = "autumn"
+name = "tokyo-night"
 
 ## Whether the theme manager should output normal or extra information to help fix themes.
 ## Boolean, true or false. If unset, left up to the theme manager.
