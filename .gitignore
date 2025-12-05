@@ -105,3 +105,6 @@ lazy-lock.json
 
 #api keys
 .config/sketchybar/helpers/weather_vars.lua
+
+#sketchybar theming file
+current_theme

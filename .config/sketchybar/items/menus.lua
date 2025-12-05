@@ -89,15 +89,20 @@ menu_watcher:subscribe(
 )
 
 local theme_file = os.getenv("HOME") .. "/.config/sketchybar/current_theme"
-local themes = { "tokyo-night", "white", "black" }
+local themes = { "tokyo-night", "white", "black", }
 
 local function cycle_theme()
-  -- read current theme
+  -- safely read current theme
   local f = io.open(theme_file, "r")
-  local current = f:read("*l")
-  f:close()
+  local current = f and f:read("*l") or nil
+  if f then f:close() end
 
-  -- find next index
+  -- if file missing or empty → default to first theme
+  if not current or current == "" then
+    current = themes[1]
+  end
+
+  -- find next theme
   local next_index = 1
   for i, t in ipairs(themes) do
     if t == current then
@@ -106,13 +111,13 @@ local function cycle_theme()
     end
   end
 
-  -- write new theme
+  -- write the next theme
   local f2 = io.open(theme_file, "w")
-  f2:write(themes[next_index])
-  f2:close()
+  if f2 then
+    f2:write(themes[next_index])
+    f2:close()
+  end
 
-  -- reload bar
-  sbar.exec("sketchybar --reload")
 end
 
 -- local menu_click_script = "$CONFIG_DIR/helpers/menus/bin/menus -s 0"
@@ -124,7 +129,7 @@ for _, menu in ipairs(menu_items) do
 		elseif env.BUTTON == "right" then
 			sbar.exec("yabai -m config menubar_opacity 1.0")
 		elseif env.BUTTON == "other" then
-			sbar.exec(cycle_theme)
+			cycle_theme()
 		end
 	end)
 end
