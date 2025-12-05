@@ -25,13 +25,13 @@ shift + alt - y : yabai -m space --mirror y-axis
 shift + alt - x : yabai -m space --mirror x-axis
 
 # toggle window float
-ctrl + alt - u : yabai -m window --toggle float --grid 5:5:1:1:3:3
+shift + alt - u : yabai -m window --toggle float --grid 5:5:1:1:3:3
 
 # toggle sticky window (window appears on all spaces)
-ctrl + alt - s : yabai -m window --toggle sticky
+shift + alt - s : yabai -m window --toggle sticky
 
 # maximize window
-ctrl + alt - m : yabai -m window --toggle zoom-fullscreen
+shift + alt - m : yabai -m window --toggle zoom-fullscreen
 
 # balance out tree of windows (resize to occupy same area)
 ctrl + alt - b : yabai -m space --balance
