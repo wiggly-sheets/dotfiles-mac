@@ -1,0 +1,21 @@
+# Stow local ignore file
+# When this file exists, it replaces stow's built-in defaults
+# See: https://www.gnu.org/software/stow/manual/html_node/Types-And-Syntax-Of-Ignore-Lists.html
+
+# Version control
+\.git
+\.gitignore
+\.gitmodules
+
+# Documentation
+^/README.*
+^/LICENSE.*
+^/COPYING
+
+# Backup files
+.+~
+\#.*\#
+
+# Scripts directory (keep in repo, don't stow to $HOME)
+^/scripts
+

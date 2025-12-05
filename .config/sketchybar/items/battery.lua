@@ -4,7 +4,7 @@ local settings = require("default")
 
 -- ── Low Power Mode ────────────────────────────────────────────────
 local lowpowermode = sbar.add("item", "lowpowermode", {
-	update_freq = 5,
+	update_freq = 10,
 	position = "right",
 	padding_right = 0,
 	padding_left = -8,
