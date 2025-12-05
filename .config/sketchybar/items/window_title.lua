@@ -8,9 +8,11 @@ local front_app = sbar.add("item", "front_app", {
 		drawing = true,
 		font = "sketchybar-app-font:Regular:15.0",
 		string = "",
+		color = colors.white
 	},
 	label = {
 		drawing = false,
+		color = colors.white
 	},
 	padding_right = 2,
 	updates = true,

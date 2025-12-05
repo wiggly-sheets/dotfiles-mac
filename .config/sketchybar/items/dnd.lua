@@ -19,7 +19,7 @@ local function update_dnd()
 			if result:match("1") then
 				dnd:set({ label = { color = colors.dnd } }) -- hardcoded purple because it's different than magenta in color config to match system icon
 			else
-				dnd:set({ label = { color = colors.grey } })
+				dnd:set({ label = { color = colors.white } })
 			end
 		end
 	)

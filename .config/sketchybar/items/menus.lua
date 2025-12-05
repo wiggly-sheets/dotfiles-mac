@@ -33,6 +33,7 @@ for i = 1, max_items, 1 do
 		y_offset = 0,
 		icon = { drawing = true },
 		label = {
+			color = colors.white,
 			font = {
 				style = i == 1 and "Bold" or "Medium",
 				family = settings.default,

@@ -18,6 +18,7 @@ local notifications = sbar.add("item", "widgets.notifications", {
 	label = {
 		string = "",
 		font = { family = settings.default, size = 8 },
+		color = colors.white
 	},
 	drawing = true, -- keep its space reserved so layout doesn't shift
 	update_freq = 30, -- check every 30 seconds

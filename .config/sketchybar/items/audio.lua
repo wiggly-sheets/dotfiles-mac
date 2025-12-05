@@ -34,10 +34,10 @@ local volume_icon = sbar.add("item", "widgets.volume2", {
 		padding_right = 2,
 		padding_left = 2,
 		drawing = true,
+		color = colors.yellow,
 		font = {
 			family = settings.default,
 			size = 12.0,
-			color = colors.yellow,
 		},
 	},
 })

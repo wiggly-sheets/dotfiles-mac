@@ -1,8 +1,11 @@
+local colors = require("colors")
 local caffeinate = sbar.add("item", "caffeinate", {
 	position = "right",
 	update_freq = 10,
 	padding_left = 2,
 	padding_right = 2,
+	icon = { 
+	color = colors.white,},
 })
 
 -- Function to check if a caffeinate process is active
