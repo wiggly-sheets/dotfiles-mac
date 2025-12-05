@@ -87,16 +87,44 @@ menu_watcher:subscribe(
 	"system_woke",
 	update_menus
 )
-local menu_click_script = "$CONFIG_DIR/helpers/menus/bin/menus -s 0"
+
+local theme_file = os.getenv("HOME") .. "/.config/sketchybar/current_theme"
+local themes = { "tokyo-night", "white", "black" }
+
+local function cycle_theme()
+  -- read current theme
+  local f = io.open(theme_file, "r")
+  local current = f:read("*l")
+  f:close()
+
+  -- find next index
+  local next_index = 1
+  for i, t in ipairs(themes) do
+    if t == current then
+      next_index = (i % #themes) + 1
+      break
+    end
+  end
+
+  -- write new theme
+  local f2 = io.open(theme_file, "w")
+  f2:write(themes[next_index])
+  f2:close()
+
+  -- reload bar
+  sbar.exec("sketchybar --reload")
+end
+
+-- local menu_click_script = "$CONFIG_DIR/helpers/menus/bin/menus -s 0"
 
 for _, menu in ipairs(menu_items) do
 	menu:subscribe("mouse.clicked", function(env)
 		if env.BUTTON == "left" then
 			return
 		elseif env.BUTTON == "right" then
-			sbar.exec(menu_click_script)
-		elseif env.BUTTON == "other" then
 			sbar.exec("yabai -m config menubar_opacity 1.0")
+		elseif env.BUTTON == "other" then
+			sbar.exec(cycle_theme)
 		end
 	end)
 end
