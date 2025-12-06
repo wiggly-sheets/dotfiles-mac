@@ -3,6 +3,21 @@ local icons = require("icons")
 local app_icons = require("helpers.app_icons")
 local settings = require("default")
 
+
+
+local divider = sbar.add("item", "divider", {
+	icon = {
+		font = { family = settings.default, size = 12 },
+		string = "│",
+		drawing = true,
+		color = colors.white,
+	},
+	padding_left = -2,
+	padding_right = 4,
+	position = "left",
+})
+
+
 local spaces = {}
 local space_app_icons = {} -- sid -> concatenated icon glyphs (string)
 local space_app_names = {} -- sid -> set/table of app names present in that space
@@ -193,3 +208,16 @@ space_window_observer:subscribe("space_windows_change", function(env)
 		update_space_display(space, space_id, space_selected[space_id], space_contains_front_app[space_id])
 	end
 end)
+
+
+local divider2 = sbar.add("item", "divider2", {
+	icon = {
+		font = { family = settings.default, size = 12 },
+		string = "│",
+		drawing = true,
+		color = colors.white
+	},
+	padding_left = -2,
+	padding_right = 0,
+	position = "left",
+})

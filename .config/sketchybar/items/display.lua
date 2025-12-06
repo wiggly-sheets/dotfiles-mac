@@ -8,6 +8,8 @@ local settings = require("default")
 local display_left_click =
 	'osascript -e \'tell application "System Events" to keystroke "d" using {command down, option down, control down}\''
 
+local display_right_click =
+	'osascript -e \'tell application "System Events" to tell process "Wallper" to click menu bar item 1 of menu bar 2\''
 local function handle_display_click(env)
 	if env.BUTTON == "left" then
 		sbar.exec(display_left_click)

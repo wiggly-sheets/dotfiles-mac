@@ -1,8 +1,6 @@
 --left side items
 require("items.menus")
-require("items.divider")
 require("items.spaces")
-require("items.divider2")
 require("items.music")
 
 --center items
