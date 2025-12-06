@@ -89,21 +89,41 @@ menu_watcher:subscribe(
 	update_menus
 )
 
+local theme_dir  = os.getenv("HOME") .. "/.config/sketchybar/themes"
 local theme_file = os.getenv("HOME") .. "/.config/sketchybar/current_theme"
-local themes = { "tokyo-night", "white", "black", }
+
+local function list_themes()
+  local themes = {}
+  local p = io.popen('ls "' .. theme_dir .. '"')
+  if not p then return themes end
+
+  for file in p:lines() do
+    -- ignore non-Lua files
+    if file:match("%.lua$") then
+      -- strip ".lua" → theme name
+      table.insert(themes, file:gsub("%.lua$", ""))
+    end
+  end
+
+  p:close()
+  table.sort(themes)  -- optional, but gives stable order
+  return themes
+end
 
 local function cycle_theme()
-  -- safely read current theme
+  local themes = list_themes()
+  if #themes == 0 then return end
+
+  -- read current theme
   local f = io.open(theme_file, "r")
-  local current = f and f:read("*l") or nil
+  local current = f and f:read("*l")
   if f then f:close() end
 
-  -- if file missing or empty → default to first theme
   if not current or current == "" then
     current = themes[1]
   end
 
-  -- find next theme
+  -- find next index
   local next_index = 1
   for i, t in ipairs(themes) do
     if t == current then
@@ -112,13 +132,12 @@ local function cycle_theme()
     end
   end
 
-  -- write the next theme
+  -- write next theme
   local f2 = io.open(theme_file, "w")
   if f2 then
     f2:write(themes[next_index])
     f2:close()
   end
-
 end
 
 -- local menu_click_script = "$CONFIG_DIR/helpers/menus/bin/menus -s 0"
