@@ -1,8 +1,10 @@
 # upon updating run this
-# echo "$(whoami) ALL=(root) NOPASSWD: sha256:$(shasum -a 256 $(which yabai) | cut -d " " -f 1) $(which yabai) --load-sa" | sudo tee /private/etc/sudoers.d/yabai
+echo "$(whoami) ALL=(root) NOPASSWD: sha256:$(shasum -a 256 $(which yabai) | cut -d " " -f 1) $(which yabai) --load-sa" | sudo tee /private/etc/sudoers.d/yabai
 
 yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 sudo yabai --load-sa
+
+yabai -m rule --add app="^Notes$" scratchpad=notes grid=6:6:1:1:4:4
 
 # sketchybar window title events
 yabai -m signal --add event=window_focused action="sketchybar --trigger window_focus &> /dev/null"
@@ -29,11 +31,11 @@ yabai -m config split_type auto
 
 yabai -m config auto_balance off
 
+yabai -m config split_ratio 0.5
+
 yabai -m config window_animation_duration 0.2
 
 yabai -m config window_animation_easing easeOutElastic
-
-yabai -m config split_ratio 0.5
 
 # New window spawns to the right if vertical split, or bottom if horizontal split
 yabai -m config window_placement first_child
@@ -45,19 +47,18 @@ yabai -m config left_padding 1
 yabai -m config right_padding 1
 
 # small window gaps for bsp
-yabai -m config window_gap 4
+yabai -m config window_gap 5
 
 # pin apps to workspaces
 yabai_rule app="^Helium$" space=1
-yabai_rule app="^Bloom$" space=2
-yabai_rule app="^WezTerm$" space=3
-yabai_rule app="^Calendar$" space=4
-yabai_rule app="^Notes$" space=4
-yabai_rule app="^Mail$" space=4
-yabai_rule app="^Chromatix$" space=5
-yabai_rule app="ˆBroadcasts$" space=5
-yabai_rule app="^Zen$" space=6
-yabai_rule app="^Neovide$" space=7
+yabai_rule app="^Zen$" space=2
+yabai_rule app="^Bloom$" space=3
+yabai_rule app="^WezTerm$" space=4
+yabai_rule app="^Calendar$" space=5
+yabai_rule app="^Notes$" space=5
+yabai_rule app="^Mail$" space=5
+yabai-rule app="^ChatGPT$" space=6
+yabai_rule app="^Chromatix$" space=7
 
 # float apps 
 yabai -m rule --add app='^System Settings$' manage=off
@@ -74,6 +75,8 @@ yabai -m rule --add app='^Stickies$' manage=off
 yabai -m rule --add app='^Leader Key$' manage=off
 yabai -m rule --add app='^Mouseless$' manage=off
 yabai -m rule --add app='^Steam$' manage=off
+yabai -m rule --add app='^QuickRecorder$' manage=off
+yabai -m rule --add app='^Ice$' manage=off
 
 # window opacity
 yabai -m config window_shadow off
@@ -107,4 +110,7 @@ yabai -m config insert_feedback_color 0xffffffff
 yabai -m config debug_output off
 
 # bootstrap jankyborders with yabai service
-borders hidpi=on width=1.0 active_color="glow(0xFFFFFFFF)" inactive_color=0xff1e1e1e style=round ax_focus=on order=above blacklist="Stats,Dropover,iPhone Mirroring,Passwords" &
+borders hidpi=on width=1.0 active_color="glow(0xFFFFFFFF)" inactive_color=0xff1e1e1e style=round ax_focus=on order=above blacklist="Stats,Dropover,iPhone Mirroring,Passwords,SoundSource" &
+
+# auto updating for HEAD from brew
+# YABAI_CERT=yabai-cert sh -c "$(curl -fsSL "https://git.io/update-yabai")" &

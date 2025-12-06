@@ -89,21 +89,47 @@ menu_watcher:subscribe(
 	update_menus
 )
 
+local theme_dir  = os.getenv("HOME") .. "/.config/sketchybar/themes/"
 local theme_file = os.getenv("HOME") .. "/.config/sketchybar/current_theme"
-local themes = { "tokyo-night", "white", "black", }
+
+-- Read theme names dynamically from theme_dir
+local function list_themes()
+  local themes = {}
+
+  -- List *.lua files only
+  local p = io.popen('ls -1 "' .. theme_dir .. '"')
+  if not p then return themes end
+
+  for file in p:lines() do
+    -- strip .lua extension
+    local name = file:match("^(.*)%.lua$")
+    if name then
+      table.insert(themes, name)
+    end
+  end
+  p:close()
+
+  table.sort(themes)  -- alphabetical order
+  return themes
+end
 
 local function cycle_theme()
-  -- safely read current theme
+  local themes = list_themes()
+  if #themes == 0 then
+    return -- nothing to do
+  end
+
+  -- read current theme safely
   local f = io.open(theme_file, "r")
   local current = f and f:read("*l") or nil
   if f then f:close() end
 
-  -- if file missing or empty → default to first theme
+  -- fallback to first theme if missing or empty
   if not current or current == "" then
     current = themes[1]
   end
 
-  -- find next theme
+  -- find current index
   local next_index = 1
   for i, t in ipairs(themes) do
     if t == current then
@@ -112,15 +138,13 @@ local function cycle_theme()
     end
   end
 
-  -- write the next theme
+  -- write next theme to the file
   local f2 = io.open(theme_file, "w")
   if f2 then
     f2:write(themes[next_index])
     f2:close()
   end
-
 end
-
 
 -- local menu_click_script = "$CONFIG_DIR/helpers/menus/bin/menus -s 0"
 
@@ -132,6 +156,7 @@ for _, menu in ipairs(menu_items) do
 			sbar.exec("yabai -m config menubar_opacity 1.0")
 		elseif env.BUTTON == "other" then
 			cycle_theme()
+			sbar.exec("sketchybar --reload")
 		end
 	end)
 end

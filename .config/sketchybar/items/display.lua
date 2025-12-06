@@ -10,11 +10,17 @@ local display_left_click =
 
 local display_right_click =
 	'osascript -e \'tell application "System Events" to tell process "Wallper" to click menu bar item 1 of menu bar 2\''
-local function handle_display_click(env)
+
+	local display_middle_click =
+	'osascript -e \'tell application "System Events" to tell process "Flux" to click menu bar item 1 of menu bar 2\''
+
+	local function handle_display_click(env)
 	if env.BUTTON == "left" then
 		sbar.exec(display_left_click)
 	elseif env.BUTTON == "right" then
 		sbar.exec(display_right_click)
+	elseif env.BUTTON == "other" then
+		sbar.exec(display_middle_click)
 	end
 end
 
