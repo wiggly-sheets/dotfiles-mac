@@ -146,6 +146,12 @@ local function cycle_theme()
   end
 end
 
+
+local function theme_click_script() 
+	cycle_theme() 
+	sbar.exec("sketchybar --reload")
+end
+
 -- local menu_click_script = "$CONFIG_DIR/helpers/menus/bin/menus -s 0"
 
 for _, menu in ipairs(menu_items) do
@@ -155,8 +161,7 @@ for _, menu in ipairs(menu_items) do
 		elseif env.BUTTON == "right" then
 			sbar.exec("yabai -m config menubar_opacity 1.0")
 		elseif env.BUTTON == "other" then
-			cycle_theme()
-			sbar.exec("sketchybar --reload")
+			theme_click_script()
 		end
 	end)
 end
