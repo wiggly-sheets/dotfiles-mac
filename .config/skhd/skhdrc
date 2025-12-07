@@ -65,7 +65,7 @@ shift + cmd - l : yabai -m window --resize right:50:0 2> /dev/null || yabai -m w
 # switch current space layout
 alt - s : yabai -m space --layout stack
 alt - b : yabai -m space --layout bsp
-alt - u : yabai -m space --layout float
+alt - u : yabai -m space --layout float
 
 # move spaces
 alt - o : sh -c 'yabai -m space --move prev || yabai -m space --move last;  sketchybar --trigger space_change && sketchybar --trigger space_windows_change'
@@ -111,7 +111,7 @@ ctrl + alt - f : yabai -m window --warp first
 ctrl + alt - e : yabai -m window --warp last
 ctrl + alt - r : yabai -m window --warp recent
 
-# toggle split type
+#  split type
 rcmd - s : yabai -m window --toggle split
 
 # set split for current window to vertical
@@ -158,12 +158,20 @@ alt - f : yabai -m space --focus first
 alt - e : yabai -m space --focus last
 alt - r : yabai -m space --focus recent
 
-# create & destroy desktop
-alt - a : yabai -m space --create
-alt - w : yabai -m space --destroy
+# Focus next space of current display, else wrap to the first space of the current display if the current space is the last space of its display
+alt - g : ~/dotfiles/.config/yabai/scripts/display_space_next.sh
 
-# create desktop & follow focus
-alt - t : yabai -m space --create; yabai -m space --focus last
+# Focus previous space of current display, else wrap to the last space of the current display if the current space is the first space of its display
+alt - d : ~/dotfiles/.config/yabai/scripts/display_space_prev.sh
+
+# create space
+alt - a : yabai -m space --create
+
+# destroy space, move destroyed space windows to previous space, & focus previous space
+alt - w : ~/dotfiles/.config/yabai/scripts/destroy_space.sh
+
+# create space & follow focus
+alt - t : ~/dotfiles/.config/yabai/scripts/new_space_focus.sh
 
 # move window to space
 shift + alt - 1 : yabai -m window --space 1;
@@ -204,42 +212,42 @@ shift + cmd - 9 : yabai -m window --space  9 && yabai -m space --focus 9
 shift + cmd - 0 : yabai -m window --space 10 && yabai -m space --focus 10
 
 # make new space, send window to it, & follow focus
-shift + cmd - a : yabai -m space --create && yabai -m window --space last && yabai -m space --focus last;
+shift + cmd - a : ~/dotfiles/.config/yabai/scripts/new_space_follow_focus.sh
 
 # make new space & send window to it 
-shift + alt - a : yabai -m space --create && yabai -m window --space last;
+shift + alt - a :  ~/dotfiles/.config/yabai/scripts/new_space_window.sh
 
 # focus display
 rcmd - r : yabai -m display --focus recent
 rcmd - p : yabai -m display --focus prev || -- yabai -m display --focus last
 rcmd - n : yabai -m display --focus next || yabai -m display --focus first
-rcmd - 1 : yabai -m display --focus 1
-rcmd - 2 : yabai -m display --focus 2
-rcmd - 3 : yabai -m display --focus 3
 rcmd - l : yabai -m display --focus east
 rcmd - h : yabai -m display --focus west
 rcmd - j : yabai -m display --focus south
 rcmd - k : yabai -m display --focus north
+rcmd - 1 : yabai -m display --focus 1
+rcmd - 2 : yabai -m display --focus 2
+rcmd - 3 : yabai -m display --focus 3
 
 # send window to display and follow focus
 meh - r : yabai -m window --display recent && yabai -m display --focus recent;
 meh - p : yabai -m window --display prev && yabai -m display --focus prev;
 meh - n : yabai -m window --display next && yabai -m display --focus next;
+meh - f : yabai -m window --display first && yabai -m display --focus first;
+meh - e : yabai -m window --display last && yabai -m display --focus last;
 meh - 1 : yabai -m window --display 1 && yabai -m display --focus 1;
 meh - 2 : yabai -m window --display 2 && yabai -m display --focus 2;
 meh - 3 : yabai -m window --display 3 && yabai -m display --focus 3;
-meh - f : yabai -m window --display first && yabai -m display --focus first;
-meh - e : yabai -m window --display last && yabai -m display --focus last;
 
 # send space to display
-ctrl + cmd - n : sh -c 'yabai -m space --display next  || yabai -m space --display first;  sketchybar --trigger space_change && sketchybar --trigger space_windows_change'
-ctrl + cmd - p : sh -c 'yabai -m space --display prev  || yabai -m space --display last;   sketchybar --trigger space_change && sketchybar --trigger space_windows_change'
-ctrl + cmd - 1 : sh -c 'yabai -m space --display 1;     sketchybar --trigger space_change && sketchybar --trigger space_windows_change'
-ctrl + cmd - 2 : sh -c 'yabai -m space --display 2;     sketchybar --trigger space_change && sketchybar --trigger space_windows_change'
-ctrl + cmd - 3 : sh -c 'yabai -m space --display 3;     sketchybar --trigger space_change && sketchybar --trigger space_windows_change'
+ctrl + cmd - n : sh -c 'yabai -m space --display next || yabai -m space --display first;  sketchybar --trigger space_change && sketchybar --trigger space_windows_change'
+ctrl + cmd - p : sh -c 'yabai -m space --display prev || yabai -m space --display last;   sketchybar --trigger space_change && sketchybar --trigger space_windows_change'
 ctrl + cmd - r : sh -c 'yabai -m space --display recent; sketchybar --trigger space_change && sketchybar --trigger space_windows_change'
-ctrl + cmd - f : sh -c 'yabai -m space --display first;  sketchybar --trigger space_change && sketchybar --trigger space_windows_change'
-ctrl + cmd - e : sh -c 'yabai -m space --display last;   sketchybar --trigger space_change && sketchybar --trigger space_windows_change'
+ctrl + cmd - f : sh -c 'yabai -m space --display first; sketchybar --trigger space_change && sketchybar --trigger space_windows_change'
+ctrl + cmd - e : sh -c 'yabai -m space --display last; sketchybar --trigger space_change && sketchybar --trigger space_windows_change'
+ctrl + cmd - 1 : sh -c 'yabai -m space --display 1; sketchybar --trigger space_change && sketchybar --trigger space_windows_change'
+ctrl + cmd - 2 : sh -c 'yabai -m space --display 2; sketchybar --trigger space_change && sketchybar --trigger space_windows_change'
+ctrl + cmd - 3 : sh -c 'yabai -m space --display 3; sketchybar --trigger space_change && sketchybar --trigger space_windows_change'
 
 # notes scratchpad
 meh - s : yabai -m window --toggle scratchpad || open -a TextEdit
@@ -253,8 +261,8 @@ shift + cmd - y : yabai --restart-service
 # restart sketchybar
 shift + cmd - s : sketchybar --reload
 
-# menu bar padding, window gaps, and padding for internal or external display
+# toggle menu bar padding, window gaps, and padding for internal or external display
 shift + cmd - m : sh -c 'p=$(yabai -m config external_bar); if [ "$p" = "all:0:0" ]; then yabai -m config external_bar main:9:0 && yabai -m config window_gap 10 && yabai -m config top_padding 0 && yabai -m config bottom_padding 10 && yabai -m config left_padding 10 && yabai -m config right_padding 10; else yabai -m config external_bar all:0:0 && yabai -m config window_gap 5 && yabai -m config top_padding 1 && yabai -m config bottom_padding 1 && yabai -m config left_padding 1 && yabai -m config right_padding 1; fi'
 
-# native menu bar visbility
+# toggle native menu bar visbility
 shift + cmd - v : sh -c 'o=$(yabai -m config menubar_opacity); [ "${o%.*}" = "1" ] && yabai -m config menubar_opacity 0.0 || yabai -m config menubar_opacity 1.0'
