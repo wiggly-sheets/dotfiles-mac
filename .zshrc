@@ -91,6 +91,8 @@ alias kkk='nvim $(fzf --preview="bat --color=always {}")'
 alias cp='cp -i'
 alias mv='mv -i'
 alias rm='rm -i'
+alias lg='lazygit'
+alias up='topgrade'
 alias i2p='open http://127.0.01:7657 && ssh -NL 7657:localhost:7657 zeb@192.168.1.191'
 
 # -----------------------------

@@ -8,16 +8,55 @@
 
 # Define process groups for reuse (New in skhd.zig!)
 .define terminal_apps ["wezterm", "terminal"]
-.define native_apps ["wezterm", "chrome", "whatsapp"]
-.define browser_apps ["chrome", "safari", "firefox", "edge", "helium", "zen"]
+.define native_apps ["wezterm", "helium", "zen", "safari", "whatsapp"]
+.define browser_apps ["safari", "helium", "zen"]
 
-# change window focus within space
-alt - j : yabai -m window --focus south
-alt - k : yabai -m window --focus north
-alt - h : yabai -m window --focus west
-alt - l : yabai -m window --focus east
+# Linux-style word navigation and deletion
+ctrl - backspace [
+    @native_apps ~         # Terminal apps handle natively
+    *            | alt - backspace  # Other apps: delete word
+]
 
-# Resize windows vim-style
+ctrl - left [
+    @native_apps ~         # Terminal apps handle natively
+    *            | alt - left       # Other apps: move word left
+]
+
+ctrl - right [
+    @native_apps ~         # Terminal apps handle natively
+    *            | alt - right      # Other apps: move word right
+]
+
+# Home/End key behavior (with shift for selection)
+home [
+    @native_apps ~         # Terminal apps handle natively
+    *            | cmd - left       # Other apps: line start
+]
+
+shift - home [
+    @native_apps ~         # Terminal apps handle natively
+    *            | cmd + shift - left  # Other apps: select to line start
+]
+
+# Ctrl+Home/End for document navigation
+ctrl - home [
+    @native_apps ~         # Terminal apps handle natively
+    *            | cmd - up         # Other apps: document start
+]
+
+ctrl - end [
+    @native_apps ~         # Terminal apps handle natively
+    *            | cmd - down       # Other apps: document end
+]
+
+# change window focus
+alt - j : yabai -m window --focus south || yabai -m display --focus south
+alt - k : yabai -m window --focus north || yabai -m display --focus north
+alt - h : yabai -m window --focus west || yabai -m display --focus west
+alt - l : yabai -m window --focus east || yabai -m display --focus east
+alt - c : yabai -m window --focus mouse 
+
+# Resize windows
 shift + cmd - h : yabai -m window --resize right:-50:0 2> /dev/null || yabai -m window --resize left:-20:0 2> /dev/null
 shift + cmd - j : yabai -m window --resize bottom:0:50 2> /dev/null || yabai -m window --resize top:0:20 2> /dev/null
 shift + cmd - k : yabai -m window --resize bottom:0:-50 2> /dev/null || yabai -m window --resize top:0:-20 2> /dev/null
@@ -29,8 +68,8 @@ alt - b : yabai -m space --layout bsp
 alt - u : yabai -m space --layout float
 
 # move spaces
-alt - o : sh -c 'yabai -m space --move prev  || yabai -m space --move last;  sketchybar --trigger space_change && sketchybar --trigger space_windows_change'
-alt - m : sh -c 'yabai -m space --move next  || yabai -m space --move first; sketchybar --trigger space_change && sketchybar --trigger space_windows_change'
+alt - o : sh -c 'yabai -m space --move prev || yabai -m space --move last;  sketchybar --trigger space_change && sketchybar --trigger space_windows_change'
+alt - m : sh -c 'yabai -m space --move next || yabai -m space --move first; sketchybar --trigger space_change && sketchybar --trigger space_windows_change'
 
 # rotate layout clockwise
 shift + alt - c : yabai -m space --rotate 90
@@ -52,7 +91,7 @@ shift + alt - m : yabai -m window --toggle zoom-fullscreen
 shift + alt - z : yabai -m window --toggle native-fullscreen
 shift + alt - o : yabai -m window --toggle zoom-parent
 
-# balance out tree of windows (resize to occupy same area)
+# balance tree of windows (resize to occupy same area)
 shift + alt - b : yabai -m space --balance
 
 # swap windows
@@ -73,22 +112,26 @@ ctrl + alt - e : yabai -m window --warp last
 ctrl + alt - r : yabai -m window --warp recent
 
 # toggle split type
-ctrl + alt - s : yabai -m window --toggle split
+rcmd - s : yabai -m window --toggle split
 
 # set split for current window to vertical
-ctrl + alt - v : \
+ctrl + cmd - v : \
   if [[ "$(yabai -m query --windows --window | jq -r '.\"split-type\"')" == "horizontal" ]]; then \
     yabai -m window --toggle split; \
   fi
 
-# Set split for current window to horizontal
-ctrl + alt - b : \
+# set split for current window to horizontal
+ctrl + cmd - h : \
   if [[ "$(yabai -m query --windows --window | jq -r '.\"split-type\"')" == "vertical" ]]; then \
     yabai -m window --toggle split; \
   fi
 
 # create & cycle through stacked windows
 ctrl - s : yabai -m window --insert stack
+ctrl - h : yabai -m window --stack west
+ctrl - j : yabai -m window --stack south
+ctrl - k : yabai -m window --stack north
+ctrl - l : yabai -m window --stack east
 ctrl - n : yabai -m window --focus stack.next || yabai -m window --focus stack.first
 ctrl - p : yabai -m window --focus stack.prev || yabai -m window --focus stack.last
 ctrl - f : yabai -m window --focus stack.first
@@ -116,8 +159,8 @@ alt - e : yabai -m space --focus last
 alt - r : yabai -m space --focus recent
 
 # create & destroy desktop
-alt - w : yabai -m space --destroy
 alt - a : yabai -m space --create
+alt - w : yabai -m space --destroy
 
 # create desktop & follow focus
 alt - t : yabai -m space --create; yabai -m space --focus last
@@ -143,7 +186,7 @@ shift + alt - r : yabai -m window --space recent;
 shift + cmd - r : yabai -m window --space recent && yabai -m space --focus recent
 shift + cmd - f : yabai -m window --space first && yabai -m space --focus first
 shift + cmd - e : yabai -m window --space last && yabai -m space --focus last
-shift + cmd - p :yabai -m window --space prev \
+shift + cmd - p : yabai -m window --space prev \
   && yabai -m space --focus prev \
   || { yabai -m window --space last; yabai -m space --focus last; }
 shift + cmd - n : yabai -m window --space next \
@@ -167,40 +210,42 @@ shift + cmd - a : yabai -m space --create && yabai -m window --space last && yab
 shift + alt - a : yabai -m space --create && yabai -m window --space last;
 
 # focus display
-meh - r : yabai -m display --focus recent
-meh - p : yabai -m display --focus prev
-meh - n : yabai -m display --focus next
-meh - 1 : yabai -m display --focus 1
-meh - 2 : yabai -m display --focus 2
-meh - 3 : yabai -m display --focus 3
-meh - g : yabai -m display --focus east
-meh - a : yabai -m display --focus west
+rcmd - r : yabai -m display --focus recent
+rcmd - p : yabai -m display --focus prev || -- yabai -m display --focus last
+rcmd - n : yabai -m display --focus next || yabai -m display --focus first
+rcmd - 1 : yabai -m display --focus 1
+rcmd - 2 : yabai -m display --focus 2
+rcmd - 3 : yabai -m display --focus 3
+rcmd - l : yabai -m display --focus east
+rcmd - h : yabai -m display --focus west
+rcmd - j : yabai -m display --focus south
+rcmd - k : yabai -m display --focus north
 
 # send window to display and follow focus
-ctrl + cmd - r : yabai -m window --display recent && yabai -m display --focus recent;
-ctrl + cmd - p : yabai -m window --display prev && yabai -m display --focus prev;
-ctrl + cmd - n : yabai -m window --display next; &&yabai -m display --focus next;
-ctrl + cmd - 1 : yabai -m window --display 1 && yabai -m display --focus 1;
-ctrl + cmd - 2 : yabai -m window --display 2 && yabai -m display --focus 2;
-ctrl + cmd - 3 : yabai -m window --display 3 && yabai -m display --focus 3;
-ctrl + cmd - a : yabai -m window --display west && yabai -m display --focus west;
-ctrl + cmd - g : yabai -m window --display east && yabai -m display --focus east;
+meh - r : yabai -m window --display recent && yabai -m display --focus recent;
+meh - p : yabai -m window --display prev && yabai -m display --focus prev;
+meh - n : yabai -m window --display next && yabai -m display --focus next;
+meh - 1 : yabai -m window --display 1 && yabai -m display --focus 1;
+meh - 2 : yabai -m window --display 2 && yabai -m display --focus 2;
+meh - 3 : yabai -m window --display 3 && yabai -m display --focus 3;
+meh - f : yabai -m window --display first && yabai -m display --focus first;
+meh - e : yabai -m window --display last && yabai -m display --focus last;
 
 # send space to display
-rcmd - n : yabai -m space --display next || yabai -m space --display first
-rcmd - p : yabai -m space --display prev || yabai -m space --display last
-rcmd - 1 : yabai -m space --display 1
-rcmd - 2 : yabai -m space --display 2
-rcmd - 3 : yabai -m space --display 3
-rcmd - r : yabai -m space --display recent
-rcmd - f : yabai -m space --display first
-rcmd - e : yabai -m space --display last
+ctrl + cmd - n : sh -c 'yabai -m space --display next  || yabai -m space --display first;  sketchybar --trigger space_change && sketchybar --trigger space_windows_change'
+ctrl + cmd - p : sh -c 'yabai -m space --display prev  || yabai -m space --display last;   sketchybar --trigger space_change && sketchybar --trigger space_windows_change'
+ctrl + cmd - 1 : sh -c 'yabai -m space --display 1;     sketchybar --trigger space_change && sketchybar --trigger space_windows_change'
+ctrl + cmd - 2 : sh -c 'yabai -m space --display 2;     sketchybar --trigger space_change && sketchybar --trigger space_windows_change'
+ctrl + cmd - 3 : sh -c 'yabai -m space --display 3;     sketchybar --trigger space_change && sketchybar --trigger space_windows_change'
+ctrl + cmd - r : sh -c 'yabai -m space --display recent; sketchybar --trigger space_change && sketchybar --trigger space_windows_change'
+ctrl + cmd - f : sh -c 'yabai -m space --display first;  sketchybar --trigger space_change && sketchybar --trigger space_windows_change'
+ctrl + cmd - e : sh -c 'yabai -m space --display last;   sketchybar --trigger space_change && sketchybar --trigger space_windows_change'
 
 # notes scratchpad
 meh - s : yabai -m window --toggle scratchpad || open -a TextEdit
 
 # show all scratchpad windows if inaccessible due to yabai restart or crash
-meh - f : yabai -m window --scratchpad recover
+meh - a : yabai -m window --scratchpad recover
 
 # restart yabai
 shift + cmd - y : yabai --restart-service
@@ -208,8 +253,8 @@ shift + cmd - y : yabai --restart-service
 # restart sketchybar
 shift + cmd - s : sketchybar --reload
 
-# menu bar padding & window gaps for internal or external displays
-
+# menu bar padding, window gaps, and padding for internal or external display
+shift + cmd - m : sh -c 'p=$(yabai -m config external_bar); if [ "$p" = "all:0:0" ]; then yabai -m config external_bar main:9:0 && yabai -m config window_gap 10 && yabai -m config top_padding 0 && yabai -m config bottom_padding 10 && yabai -m config left_padding 10 && yabai -m config right_padding 10; else yabai -m config external_bar all:0:0 && yabai -m config window_gap 5 && yabai -m config top_padding 1 && yabai -m config bottom_padding 1 && yabai -m config left_padding 1 && yabai -m config right_padding 1; fi'
 
 # native menu bar visbility
 shift + cmd - v : sh -c 'o=$(yabai -m config menubar_opacity); [ "${o%.*}" = "1" ] && yabai -m config menubar_opacity 0.0 || yabai -m config menubar_opacity 1.0'
