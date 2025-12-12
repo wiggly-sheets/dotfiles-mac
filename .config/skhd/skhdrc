@@ -99,16 +99,16 @@ shift + alt - o : yabai -m window --toggle zoom-parent
 shift + alt - b : yabai -m space --balance
 
 # swap windows
-shift + alt - j : yabai -m window --swap south
-shift + alt - k : yabai -m window --swap north
-shift + alt - h : yabai -m window --swap west
-shift + alt - l : yabai -m window --swap east
+shift + alt - j : yabai -m window --swap south || yabai -m window --display south
+shift + alt - k : yabai -m window --swap north || yabai -m window --display north
+shift + alt - h : yabai -m window --swap west || yabai -m window --display west
+shift + alt - l : yabai -m window --swap east || yabai -m window --display east
 
 # move window and split
-ctrl + alt - j : yabai -m window --warp south
-ctrl + alt - k : yabai -m window --warp north
-ctrl + alt - h : yabai -m window --warp west
-ctrl + alt - l : yabai -m window --warp east
+ctrl + alt - j : yabai -m window --warp south || yabai -m window --display south
+ctrl + alt - k : yabai -m window --warp north || yabai -m window --display north
+ctrl + alt - h : yabai -m window --warp west || yabai -m window --display west
+ctrl + alt - l : yabai -m window --warp east || yabai -m window --display east
 ctrl + alt - n : yabai -m window --warp next
 ctrl + alt - p : yabai -m window --warp prev
 ctrl + alt - f : yabai -m window --warp first

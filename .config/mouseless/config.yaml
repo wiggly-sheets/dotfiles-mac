@@ -313,9 +313,9 @@ keymaps:
     middle mouse button: E
     middle mouse button (w/o overlay): null
     move down: K
-    move left: H
+    move left: J
     move right: L
-    move up: J
+    move up: I
     release hold/drag: Escape
     repeat last mouse action: null
     right click: Ctrl

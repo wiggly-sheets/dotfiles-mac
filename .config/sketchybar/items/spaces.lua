@@ -3,8 +3,6 @@ local icons = require("icons")
 local app_icons = require("helpers.app_icons")
 local settings = require("default")
 
-
-
 local divider = sbar.add("item", "divider", {
 	icon = {
 		font = { family = settings.default, size = 12 },
@@ -16,7 +14,6 @@ local divider = sbar.add("item", "divider", {
 	padding_right = 4,
 	position = "left",
 })
-
 
 local spaces = {}
 local space_app_icons = {} -- sid -> concatenated icon glyphs (string)
