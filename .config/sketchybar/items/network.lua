@@ -486,7 +486,7 @@ wifi_up:subscribe("network_update", function(env)
 	})
 
 	local wifi_click_script =
-		'osascript -e \'tell application "System Events" to tell process "ControlCenter" to click menu bar item 4 of menu bar 1 \''
+		'osascript -e \'tell application "System Events" to tell process "ControlCenter" to click menu bar item 3 of menu bar 1 \''
 	local shortcut_script =
 		'osascript -e \'tell application "System Events" to keystroke "n" using {command down, option down, control down}\''
 	local vpn_click_script =

@@ -17,9 +17,9 @@ local function update_dnd()
 		[[defaults read com.apple.controlcenter 'NSStatusItem VisibleCC FocusModes' 2>/dev/null]],
 		function(result)
 			if result:match("1") then
-				dnd:set({ label = { color = colors.dnd } }) -- hardcoded purple because it's different than magenta in color config to match system icon
+				dnd:set({ label = { color = colors.dnd } })
 			else
-				dnd:set({ label = { color = colors.white } })
+				dnd:set({ label = { color = colors.grey } })
 			end
 		end
 	)
@@ -28,7 +28,7 @@ end
 local left_click_script = 'osascript -e \'tell application "Shortcuts" to run shortcut "Toggle DND"\''
 
 local right_click_script =
-	'osascript -e \'tell application "System Events" to tell process "ControlCenter" to click menu bar item 3 of menu bar 1\''
+	'osascript -e \'tell application "System Events" to tell process "ControlCenter" to click menu bar item 5 of menu bar 1\''
 
 dnd:subscribe("mouse.clicked", function(env)
 	if env.BUTTON == "left" then

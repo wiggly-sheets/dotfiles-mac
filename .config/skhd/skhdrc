@@ -270,3 +270,5 @@ shift + cmd - m : sh -c 'p=$(yabai -m config external_bar); if [ "$p" = "all:0:0
 
 # toggle native menu bar visbility
 shift + cmd - v : sh -c 'o=$(yabai -m config menubar_opacity); [ "${o%.*}" = "1" ] && yabai -m config menubar_opacity 0.0 || yabai -m config menubar_opacity 1.0'
+
+shift + ctrl + alt - b : sketchybar --bar hidden=toggle
