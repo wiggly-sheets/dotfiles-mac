@@ -83,6 +83,47 @@ yabai -m rule --add app='^IINA$' manage=off
 yabai -m rule --add app='^TheBoringNotch$' manage=off
 yabai -m rule --add app='^Numi$' manage=off
 yabai -m rule --add app='^Mousecape$' manage=off
+yabai -m rule --add app='^Finder$' manage=off
+yabai -m rule --add app='^MediaMate$' manage=off
+yabai -m rule --add app='^2048 Game$' manage=off
+yabai -m rule --add app='^BlueStacks$' manage=off
+yabai -m rule --add app='^BresinkSoftwareUpdater$' manage=off
+yabai -m rule --add app='^Clop$' manage=off
+yabai -m rule --add app='^Speediness$' manage=off
+yabai -m rule --add app='^BetterDisplay$' manage=off
+yabai -m rule --add app='^Find Any File$' manage=off
+yabai -m rule --add app='^ConnectMeNow4$' manage=off
+yabai -m rule --add app='^Cyberduck$' manage=off
+yabai -m rule --add app='^Mountain Duck$' manage=off
+yabai -m rule --add app='^KeyClu$' manage=off
+yabai -m rule --add app='^KeyCastr$' manage=off
+yabai -m rule --add app='^reAMP$' manage=off
+yabai -m rule --add app='^Menuwhere$' manage=off
+yabai -m rule --add app='^OnyX$' manage=off
+yabai -m rule --add app='^Shortcat$' manage=off
+yabai -m rule --add app='^PopClip$' manage=off
+yabai -m rule --add app='^PoolsuiteFM$' manage=off
+yabai -m rule --add app='^MountMate$' manage=off
+yabai -m rule --add app='^App Buddy$' manage=off
+yabai -m rule --add app='^Default Folder X$' manage=off
+yabai -m rule --add app='^Dato$' manage=off
+yabai -m rule --add app='^OmniDiskSweeper$' manage=off
+yabai -m rule --add app='^Network Utility$' manage=off
+yabai -m rule --add app='^ImageOptim$' manage=off
+yabai -m rule --add app='^GrandPerspective$' manage=off
+yabai -m rule --add app='^Keka$' manage=off
+yabai -m rule --add app='^Creator$' manage=off
+yabai -m rule --add app='^Whisky$' manage=off
+yabai -m rule --add app='^Battery Toolkit$' manage=off
+yabai -m rule --add app='^BetterDiscord$' manage=off
+yabai -m rule --add app='^Aliento$' manage=off
+yabai -m rule --add app='^Dropover$' manage=off
+yabai -m rule --add app='^Flux$' manage=off
+yabai -m rule --add app='^SilentKnight$' manage=off
+yabai -m rule --add app='^Tailscale$' manage=off
+yabai -m rule --add app='^Little Snitch$' manage=off
+yabai -m rule --add app='^TimeMachineEditor$' manage=off
+yabai -m rule --add app='^TinkerTool$' manage=off
 
 # window opacity
 yabai -m config window_shadow off
@@ -117,7 +158,7 @@ yabai -m config insert_feedback_color 0xFFFFFFFF
 yabai -m config debug_output off
 
 # bootstrap jankyborders with yabai service
-borders hidpi=on width=1.0 active_color="glow(0xFFFFFFFF)" inactive_color="glow(0xff1e1e1e)" style=round ax_focus=on order=above blacklist="Stats,Dropover,iPhone Mirroring,Passwords,SoundSource,Stickies" &
+borders hidpi=on width=1.0 active_color="glow(0xFFFFFFFF)" inactive_color="0x0xff1e1e1e" style=round ax_focus=on order=above blacklist="Stats,Dropover,iPhone Mirroring,Passwords,SoundSource,Stickies" &
 
 # auto updating HEAD from brew
 YABAI_CERT=yabai-cert sh -c "$(curl -fsSL "https://git.io/update-yabai")" &
