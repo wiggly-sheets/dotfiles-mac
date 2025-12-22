@@ -12,10 +12,12 @@ yabai -m signal --add event=window_focused action="sketchybar --trigger window_f
 yabai -m signal --add event=window_title_changed action="sketchybar --trigger title_change &> /dev/null"
 
 # rule for setting up unmanaged apps
-function yabai_rule {
+yabai_rule() {
   yabai -m rule --add "$@"
   yabai -m rule --apply "$@"
 }
+
+GRID_CENTER="6:6:1:1:4:4"
 
 yabai -m config default layout bsp
 
@@ -61,69 +63,79 @@ yabai_rule app="^Mail$" space=5
 yabai_rule app="^ChatGPT$" space=6
 yabai_rule app="^Chromatix$" space=7
 
-# float apps 
-yabai -m rule --add app='^System Settings$' manage=off
-yabai -m rule --add app='^Calculator$' manage=off
-yabai -m rule --add app='^balenaEtcher$' manage=off
-yabai -m rule --add app='^Raspberry Pi Imager$' manage=off
-yabai -m rule --add app='^Blackmagic Disk Speed Test$' manage=off
-yabai -m rule --add app='^coconutBattery$' manage=off
-yabai -m rule --add app='^Raycast$' manage=off
-yabai -m rule --add app='^iPhone Mirroring$' manage=off
-yabai -m rule --add app='^Stickies$' manage=off
-yabai -m rule --add app='^VMware Fusion$' manage=off
-yabai -m rule --add app='^Stickies$' manage=off
-yabai -m rule --add app='^Leader Key$' manage=off
-yabai -m rule --add app='^Mouseless$' manage=off
-yabai -m rule --add app='^Steam$' manage=off
-yabai -m rule --add app='^QuickRecorder$' manage=off
-yabai -m rule --add app='^Ice$' manage=off
-yabai -m rule --add app='^Shottr$' manage=off
-yabai -m rule --add app='^IINA$' manage=off
-yabai -m rule --add app='^TheBoringNotch$' manage=off
-yabai -m rule --add app='^Numi$' manage=off
-yabai -m rule --add app='^Mousecape$' manage=off
-yabai -m rule --add app='^Finder$' manage=off
-yabai -m rule --add app='^MediaMate$' manage=off
-yabai -m rule --add app='^2048 Game$' manage=off
-yabai -m rule --add app='^BlueStacks$' manage=off
-yabai -m rule --add app='^BresinkSoftwareUpdater$' manage=off
-yabai -m rule --add app='^Clop$' manage=off
-yabai -m rule --add app='^Speediness$' manage=off
-yabai -m rule --add app='^BetterDisplay$' manage=off
-yabai -m rule --add app='^Find Any File$' manage=off
-yabai -m rule --add app='^ConnectMeNow4$' manage=off
-yabai -m rule --add app='^Cyberduck$' manage=off
-yabai -m rule --add app='^Mountain Duck$' manage=off
-yabai -m rule --add app='^KeyClu$' manage=off
-yabai -m rule --add app='^KeyCastr$' manage=off
-yabai -m rule --add app='^reAMP$' manage=off
-yabai -m rule --add app='^Menuwhere$' manage=off
-yabai -m rule --add app='^OnyX$' manage=off
-yabai -m rule --add app='^Shortcat$' manage=off
-yabai -m rule --add app='^PopClip$' manage=off
-yabai -m rule --add app='^PoolsuiteFM$' manage=off
-yabai -m rule --add app='^MountMate$' manage=off
-yabai -m rule --add app='^App Buddy$' manage=off
-yabai -m rule --add app='^Default Folder X$' manage=off
-yabai -m rule --add app='^Dato$' manage=off
-yabai -m rule --add app='^OmniDiskSweeper$' manage=off
-yabai -m rule --add app='^Network Utility$' manage=off
-yabai -m rule --add app='^ImageOptim$' manage=off
-yabai -m rule --add app='^GrandPerspective$' manage=off
-yabai -m rule --add app='^Keka$' manage=off
-yabai -m rule --add app='^Creator$' manage=off
-yabai -m rule --add app='^Whisky$' manage=off
-yabai -m rule --add app='^Battery Toolkit$' manage=off
-yabai -m rule --add app='^BetterDiscord$' manage=off
-yabai -m rule --add app='^Aliento$' manage=off
-yabai -m rule --add app='^Dropover$' manage=off
-yabai -m rule --add app='^Flux$' manage=off
-yabai -m rule --add app='^SilentKnight$' manage=off
-yabai -m rule --add app='^Tailscale$' manage=off
-yabai -m rule --add app='^Little Snitch$' manage=off
-yabai -m rule --add app='^TimeMachineEditor$' manage=off
-yabai -m rule --add app='^TinkerTool$' manage=off
+# Float apps
+FLOAT_APPS=(
+  "^System Settings$"
+  "^Calculator$"
+  "^balenaEtcher$"
+  "^Raspberry Pi Imager$"
+  "^Blackmagic Disk Speed Test$"
+  "^coconutBattery$"
+  "^Raycast$"
+  "^iPhone Mirroring$"
+  "^Stickies$"
+  "^VMware Fusion$"
+  "^Leader Key$"
+  "^Mouseless$"
+  "^Steam$"
+  "^QuickRecorder$"
+  "^Ice$"
+  "^Shottr$"
+  "^IINA$"
+  "^TheBoringNotch$"
+  "^Numi$"
+  "^Mousecape$"
+  "^Finder$"
+  "^MediaMate$"
+  "^2048 Game$"
+  "^BlueStacks$"
+  "^BresinkSoftwareUpdater$"
+  "^Clop$"
+  "^Speediness$"
+  "^BetterDisplay$"
+  "^Find Any File$"
+  "^ConnectMeNow4$"
+  "^Cyberduck$"
+  "^Mountain Duck$"
+  "^KeyClu$"
+  "^KeyCastr$"
+  "^reAMP$"
+  "^Menuwhere$"
+  "^OnyX$"
+  "^Shortcat$"
+  "^PopClip$"
+  "^PoolsuiteFM$"
+  "^MountMate$"
+  "^App Buddy$"
+  "^Default Folder X$"
+  "^Dato$"
+  "^OmniDiskSweeper$"
+  "^Network Utility$"
+  "^ImageOptim$"
+  "^GrandPerspective$"
+  "^Keka$"
+  "^Creator$"
+  "^Whisky$"
+  "^Battery Toolkit$"
+  "^BetterDiscord$"
+  "^Aliento$"
+  "^Dropover$"
+  "^Flux$"
+  "^SilentKnight$"
+  "^Tailscale$"
+  "^Little Snitch$"
+  "^TimeMachineEditor$"
+  "^TinkerTool$"
+  "^Archive Utility$"
+  "^Photo Booth$"
+)
+
+for app in "${FLOAT_APPS[@]}"; do
+  yabai_rule \
+    app="$app" \
+    manage=off \
+    grid="$GRID_CENTER"
+done
 
 # window opacity
 yabai -m config window_shadow off
@@ -158,7 +170,7 @@ yabai -m config insert_feedback_color 0xFFFFFFFF
 yabai -m config debug_output off
 
 # bootstrap jankyborders with yabai service
-borders hidpi=on width=1.0 active_color="glow(0xFFFFFFFF)" inactive_color="0x0xff1e1e1e" style=round ax_focus=on order=above blacklist="Stats,Dropover,iPhone Mirroring,Passwords,SoundSource,Stickies" &
+borders hidpi=on width=1.0 active_color="glow(0xFFFFFFFF)" inactive_color="0x0xff1e1e1e" style=round ax_focus=off order=above blacklist="Stats,Dropover,iPhone Mirroring,Passwords,SoundSource,Stickies" &
 
 # auto updating HEAD from brew
 YABAI_CERT=yabai-cert sh -c "$(curl -fsSL "https://git.io/update-yabai")" &

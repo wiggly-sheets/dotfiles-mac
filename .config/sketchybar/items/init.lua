@@ -21,3 +21,6 @@ require("items.network")
 require("items.disk")
 require("items.temperature")
 require("items.cpu_ram")
+
+-- startup animation
+require("items.startup_animation")

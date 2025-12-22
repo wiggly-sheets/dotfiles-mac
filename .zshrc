@@ -1,6 +1,6 @@
 
 # startup commands welcome message
-figlet "welcome", $USER | lolcat && pfetch && stormy && echo "--------------------------------------------------------" && fortune
+figlet "welcome," $USER | lolcat && echo && pfetch | lolcat && echo && stormy | lolcat && echo && fortune | cowsay -r | lolcat;
 
 #-----------------------------
 # Instant prompt (Powerlevel10k) for fast startup
@@ -94,6 +94,7 @@ alias rm='rm -i'
 alias lg='lazygit'
 alias up='topgrade'
 alias i2p='open http://127.0.01:7657 && ssh -NL 7657:localhost:7657 zeb@192.168.1.191'
+alias ac='cd && clear'
 
 # -----------------------------
 # fzf defaults & functions
