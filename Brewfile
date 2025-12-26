@@ -12,6 +12,7 @@ tap "kegworks-app/kegworks"
 tap "koekeishiya/formulae"
 tap "lihaoyun6/tap"
 tap "lslqtz/formulae"
+tap "matars/gitfetch"
 tap "mateocerquetella/ricebarmac"
 tap "mhaeuser/mhaeuser"
 tap "narugit/tap"
@@ -19,10 +20,12 @@ tap "nohajc/anylinuxfs"
 tap "notwadegrimridge/brew"
 tap "philocalyst/tap"
 tap "rafaelswi/menubarusb"
+tap "rgcr/formulae"
 tap "samtay/tui"
 tap "sikarugir-app/sikarugir"
 tap "slp/krun"
 tap "socsieng/tap"
+tap "theboredteam/boring-notch"
 tap "thezoraiz/ascii-image-converter"
 tap "valkyrie00/bbrew"
 tap "waydabber/betterdisplay"
@@ -78,6 +81,8 @@ brew "binutils"
 brew "bison"
 # Get/set bluetooth power and discoverable state
 brew "blueutil"
+# Yet another cross-platform graphical process/system monitor
+brew "bottom"
 # Change macOS display brightness from the command-line
 brew "brightness"
 # Resource monitor. C++ version and continuation of bashtop and bpytop
@@ -208,6 +213,8 @@ brew "grep"
 brew "grex"
 # Make JSON greppable
 brew "gron"
+# Tool for glamorous shell scripts
+brew "gum"
 # Access DVDs as block devices without the decryption
 brew "libdvdcss"
 # Open-source video transcoder available for Linux, Mac, and Windows
@@ -274,6 +281,8 @@ brew "media-info"
 brew "mkvtoolnix", link: false
 # Terminal-based music player
 brew "moc"
+# Deep clean and optimize your Mac
+brew "mole"
 # Drive some car across the moon
 brew "moon-buggy"
 # Collection of tools that nobody wrote when UNIX was young
@@ -285,7 +294,7 @@ brew "most"
 # Command-line music player client for mpd
 brew "mpc"
 # Music Player Daemon
-brew "mpd", restart_service: :changed
+brew "mpd"
 # Feature-rich command-line audio/video downloader
 brew "yt-dlp"
 # Media player based on MPlayer and mplayer2
@@ -330,6 +339,8 @@ brew "ollama"
 brew "onefetch"
 # Colossal Cave Adventure, the 1995 430-point version
 brew "open-adventure"
+# Search tool like grep and The Silver Searcher
+brew "ripgrep"
 # AI coding agent, built for the terminal
 brew "opencode"
 # Painless compression and decompression for your terminal
@@ -354,6 +365,8 @@ brew "ponysay"
 brew "powerlevel10k"
 # Wrapper to colorize and simplify ping's output
 brew "prettyping"
+# Monitor data's progress through a pipe
+brew "pv"
 # Generic syntax highlighter
 brew "pygments"
 # Tool Command Language
@@ -368,8 +381,6 @@ brew "reattach-to-user-namespace"
 brew "reddix"
 # Perl-powered file rename script with many helpful built-ins
 brew "rename"
-# Search tool like grep and The Silver Searcher
-brew "ripgrep"
 # Wrapper around ripgrep that adds multiple rich file types
 brew "ripgrep-all"
 # Command-line deletion tool focused on safety, ergonomics, and performance
@@ -456,6 +467,8 @@ brew "trash"
 brew "tree"
 # Command-line tool for URL parsing and manipulation
 brew "trurl"
+# Digital clock in ncurses
+brew "tty-clock"
 # Command-line tool for sharing terminal over the web
 brew "ttyd"
 # Language for application scale JavaScript development
@@ -517,15 +530,19 @@ brew "jstkdng/programs/ueberzugpp"
 # Simple hotkey-daemon for macOS.
 brew "koekeishiya/formulae/skhd", link: false
 # A tiling window manager for macOS based on binary space partitioning.
-brew "koekeishiya/formulae/yabai"
+brew "koekeishiya/formulae/yabai", args: ["HEAD"]
 # A background looping utility that maintains the battery level of Apple Silicon based Mac computers
 brew "lslqtz/formulae/bclm_loop"
+# A neofetch alternative for GitHub quick view
+brew "matars/gitfetch/gitfetch"
 # Check Temperature by using Apple System Management Control (Smc) tool
 brew "narugit/tap/smctemp"
 # Mount any linux-supported filesystem read/write using nfs and a microVM
 brew "nohajc/anylinuxfs/anylinuxfs"
 # User-friendly, lightweight TUI for disk imaging
 brew "philocalyst/tap/caligula"
+# Swiss Army Knife for macOS
+brew "rgcr/formulae/m-cli"
 # Tetris in your terminal
 brew "samtay/tui/tetris"
 # Command-line tool for automating keystrokes and mouse events
@@ -534,8 +551,6 @@ brew "socsieng/tap/sendkeys"
 brew "thezoraiz/ascii-image-converter/ascii-image-converter"
 # A simple TUI tool to make your homebrew bold.
 brew "valkyrie00/bbrew/bbrew"
-# BetterDisplay CLI proxy
-brew "waydabber/betterdisplay/betterdisplaycli"
 # Get the battery level of all your devices on your Mac.
 cask "airbattery"
 # Enable Windows-like alt-tab
@@ -552,6 +567,8 @@ cask "balenaetcher"
 cask "battery-toolkit"
 # Online gaming platform
 cask "battle-net"
+# Installer for BetterDiscord
+cask "betterdiscord-installer"
 # Display management tool
 cask "betterdisplay"
 # Tool to customise input devices and automate computer systems
@@ -564,6 +581,8 @@ cask "blockblock"
 cask "bloom"
 # Mobile gaming platform
 cask "bluestacks"
+# Not so boring notch That Rocks 🎸🎶 
+cask "boring-notch"
 # CD burning application
 cask "burn"
 # E-books management software
@@ -590,6 +609,8 @@ cask "deepl"
 cask "default-folder-x"
 # Voice and text chat software
 cask "discord"
+# Show available disk space on APFS volumes
+cask "diskspace"
 # Monitor DNS activity
 cask "dnsmonitor"
 # Open-source physical access (aka 'evil maid') attack detector
@@ -606,6 +627,10 @@ cask "filebot"
 cask "filemonitor"
 # File finder
 cask "find-any-file"
+# Screen colour temperature controller
+cask "flux-app"
+# Focusrite interface controller
+cask "focusrite-control"
 cask "font-sketchybar-app-font"
 # Audio player
 cask "foobar2000"
@@ -613,6 +638,8 @@ cask "foobar2000"
 cask "freac"
 # 3D parametric modeller
 cask "freecad"
+# Use to eliminate months of up-front work and evaluate how well your game runs
+cask "game-porting-toolkit"
 # Software reverse engineering (SRE) suite of tools
 cask "ghidra"
 # Free and open-source image editor
@@ -707,6 +734,8 @@ cask "neo-network-utility"
 cask "neovide-app"
 # Free and open-source RSS reader
 cask "netnewswire"
+# Calculator and converter application
+cask "numi"
 # Open-source software for live streaming and screen recording
 cask "obs"
 # Knowledge base that works on top of a local folder of plain text Markdown files
@@ -775,6 +804,8 @@ cask "signal"
 cask "sikarugir"
 # Automatically checks computer's security
 cask "silentknight"
+# Team communication and collaboration software
+cask "slack"
 # Application to control your PlayStation 4 or PlayStation 5
 cask "sony-ps-remote-play"
 # Sound and audio controller
@@ -840,6 +871,7 @@ mas "Color Picker", id: 1545870783
 mas "Compressor", id: 424390742
 mas "Dark Night", id: 1592844577
 mas "Dato", id: 1470584107
+mas "Developer", id: 640199958
 mas "Dropover", id: 1355679052
 mas "Final Cut Pro", id: 424389933
 mas "Folder Preview", id: 6698876601
@@ -859,13 +891,13 @@ mas "Pages", id: 409201541
 mas "Passepartout", id: 1433648537
 mas "Pixelmator Pro", id: 1289583905
 mas "Poolsuite FM", id: 1514817810
+mas "Refined GitHub", id: 1519867270
 mas "Shareful", id: 1522267256
 mas "Simple Comic", id: 1497435571
 mas "Sparrow Weather", id: 6449440582
 mas "Speediness", id: 1596706466
 mas "Star Wars®: Knights of the Old Republic™ II", id: 960778634
 mas "Swift Playground", id: 1496833156
-mas "Tailscale", id: 1475387142
 mas "TestFlight", id: 899247664
 mas "uBlock Origin Lite", id: 6745342698
 mas "Velja", id: 1607635845
