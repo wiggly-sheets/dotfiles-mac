@@ -22,7 +22,6 @@ local menu_watcher = sbar.add("item", {
 	updates = true,
 })
 
-sbar.add("event", "swap_menus_and_spaces")
 local max_items = 15
 local menu_items = {}
 for i = 1, max_items, 1 do
@@ -89,75 +88,101 @@ menu_watcher:subscribe(
 	update_menus
 )
 
-local theme_dir  = os.getenv("HOME") .. "/.config/sketchybar/themes/"
+local theme_dir = os.getenv("HOME") .. "/.config/sketchybar/themes/"
 local theme_file = os.getenv("HOME") .. "/.config/sketchybar/current_theme"
 
 -- Read theme names dynamically from theme_dir
 local function list_themes()
-  local themes = {}
+	local themes = {}
 
-  -- List *.lua files only
-  local p = io.popen('ls -1 "' .. theme_dir .. '"')
-  if not p then return themes end
+	-- List *.lua files only
+	local p = io.popen('ls -1 "' .. theme_dir .. '"')
+	if not p then
+		return themes
+	end
 
-  for file in p:lines() do
-    -- strip .lua extension
-    local name = file:match("^(.*)%.lua$")
-    if name then
-      table.insert(themes, name)
-    end
-  end
-  p:close()
+	for file in p:lines() do
+		-- strip .lua extension
+		local name = file:match("^(.*)%.lua$")
+		if name then
+			table.insert(themes, name)
+		end
+	end
+	p:close()
 
-  table.sort(themes)  -- alphabetical order
-  return themes
+	table.sort(themes) -- alphabetical order
+	return themes
 end
 
 local function cycle_theme()
-  local themes = list_themes()
-  if #themes == 0 then
-    return -- nothing to do
-  end
+	local themes = list_themes()
+	if #themes == 0 then
+		return -- nothing to do
+	end
 
-  -- read current theme safely
-  local f = io.open(theme_file, "r")
-  local current = f and f:read("*l") or nil
-  if f then f:close() end
+	-- read current theme safely
+	local f = io.open(theme_file, "r")
+	local current = f and f:read("*l") or nil
+	if f then
+		f:close()
+	end
 
-  -- fallback to first theme if missing or empty
-  if not current or current == "" then
-    current = themes[1]
-  end
+	-- fallback to first theme if missing or empty
+	if not current or current == "" then
+		current = themes[1]
+	end
 
-  -- find current index
-  local next_index = 1
-  for i, t in ipairs(themes) do
-    if t == current then
-      next_index = (i % #themes) + 1
-      break
-    end
-  end
+	-- find current index
+	local next_index = 1
+	for i, t in ipairs(themes) do
+		if t == current then
+			next_index = (i % #themes) + 1
+			break
+		end
+	end
 
-  -- write next theme to the file
-  local f2 = io.open(theme_file, "w")
-  if f2 then
-    f2:write(themes[next_index])
-    f2:close()
-  end
+	-- write next theme to the file
+	local f2 = io.open(theme_file, "w")
+	if f2 then
+		f2:write(themes[next_index])
+		f2:close()
+	end
 end
 
-
-local function theme_click_script() 
-	cycle_theme() 
+local function theme_click_script()
+	cycle_theme()
 	sbar.exec("sketchybar --reload")
 end
 
 -- local menu_click_script = "$CONFIG_DIR/helpers/menus/bin/menus -s 0"
-
-for _, menu in ipairs(menu_items) do
+for i, menu in ipairs(menu_items) do
 	menu:subscribe("mouse.clicked", function(env)
 		if env.BUTTON == "left" then
-			return
+			-- run menu action
+			sbar.exec("$CONFIG_DIR/helpers/menus/bin/menus -s " .. i)
+
+			-- highlight this item
+			menu:set({
+				background = {
+					drawing = true,
+					color = 0x40FFFFFF,
+					corner_radius = 20,
+					height = 20,
+					x_offset = 1,
+					y_offset = -1,
+				},
+			})
+
+			-- un-highlight all others
+			for _, other in ipairs(menu_items) do
+				if other ~= menu then
+					other:set({
+						background = {
+							drawing = false,
+						},
+					})
+				end
+			end
 		elseif env.BUTTON == "right" then
 			sbar.exec("yabai -m config menubar_opacity 1.0")
 		elseif env.BUTTON == "other" then
@@ -165,6 +190,18 @@ for _, menu in ipairs(menu_items) do
 		end
 	end)
 end
+
+local clear_highlights = function()
+	for _, menu in ipairs(menu_items) do
+		menu:set({
+			background = { drawing = false },
+		})
+	end
+end
+
+menu_watcher:subscribe("mouse.exited.global", "mouse.entered.global", function(env)
+	clear_highlights()
+end)
 
 local left_click_script =
 	"osascript -e 'tell application \"System Events\" to key code 46 using {command down, option down, control down}'"
@@ -183,12 +220,40 @@ end tell'
 
 apple:subscribe("mouse.clicked", function(env)
 	if env.BUTTON == "left" then
+		-- highlight this item
+		apple:set({
+			background = {
+				drawing = true,
+				color = 0x40FFFFFF,
+				corner_radius = 20,
+				height = 20,
+				x_offset = 3,
+			},
+		})
 		sbar.exec(left_click_script)
 	elseif env.BUTTON == "right" then
+		-- highlight this item
+		apple:set({
+			background = {
+				drawing = true,
+				color = 0x40FFFFFF,
+				corner_radius = 20,
+				height = 20,
+				x_offset = 3,
+			},
+		})
 		sbar.exec(right_click_script)
 	elseif env.BUTTON == "other" then
 		sbar.exec(middle_click_script)
 	end
+end)
+
+apple:subscribe("mouse.exited.global", "mouse.entered.global", function()
+	apple:set({
+		background = {
+			drawing = false,
+		},
+	})
 end)
 
 return menu_watcher

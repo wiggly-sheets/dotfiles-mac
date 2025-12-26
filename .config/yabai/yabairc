@@ -128,6 +128,11 @@ FLOAT_APPS=(
   "^TinkerTool$"
   "^Archive Utility$"
   "^Photo Booth$"
+  "^Wallper$"
+  "^Steam$"
+  "^GOG Galaxy$"
+  "^Epic Games Launcher$"
+  "^Battle.net$"c
 )
 
 for app in "${FLOAT_APPS[@]}"; do
