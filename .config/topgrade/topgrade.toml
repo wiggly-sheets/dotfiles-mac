@@ -89,6 +89,7 @@ no_self_update = false
 [post_commands]
 # "Emacs Snapshot" = "rm -rf ~/.emacs.d/elpa.bak && cp -rl ~/.emacs.d/elpa ~/.emacs.d/elpa.bak"
 "Brew Cleanup" = "brew cleanup --prune=all"
+"Brew Bundle" = "brew bundle dump --describe --force --file=~/dotfiles/brewfile"
 
 
 
