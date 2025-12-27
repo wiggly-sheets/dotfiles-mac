@@ -192,9 +192,6 @@ export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 export PATH="$PATH:/Users/Zeb/.lmstudio/bin"
 # End of LM Studio CLI section
 
-
 export PF_INFO="ascii title os host kernel uptime pkgs memory"
-
-
 
 eval "$(atuin init zsh)"

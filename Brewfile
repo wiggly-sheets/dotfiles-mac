@@ -347,6 +347,8 @@ brew "opencode"
 brew "ouch"
 # Minecraft package manager and launcher
 brew "pacmc"
+# PAM module for reattaching to the user's GUI (Aqua) session
+brew "pam-reattach"
 # Command-line tool to generate, analyze, convert and manipulate colors
 brew "pastel"
 # Pretty system information tool written in POSIX sh
@@ -806,6 +808,8 @@ cask "sikarugir"
 cask "silentknight"
 # Team communication and collaboration software
 cask "slack"
+# Displays all open files and sockets in use by all running processes
+cask "sloth"
 # Application to control your PlayStation 4 or PlayStation 5
 cask "sony-ps-remote-play"
 # Sound and audio controller
@@ -818,6 +822,8 @@ cask "steam"
 cask "subler"
 # Application for inspecting installer packages
 cask "suspicious-package"
+# Replacement for RCDefaultApps, written in Swift
+cask "swiftdefaultappsprefpane"
 # Quicklook extension for source files
 cask "syntax-highlight"
 # Tool to explore all the running tasks (processes)
@@ -877,6 +883,7 @@ mas "Final Cut Pro", id: 424389933
 mas "Folder Preview", id: 6698876601
 mas "Gifski", id: 1351639930
 mas "HEIC Converter", id: 1294126402
+mas "InfoCard", id: 1110195348
 mas "Keynote", id: 409183694
 mas "Keyword Search", id: 1558453954
 mas "Klack", id: 6446206067
@@ -885,6 +892,7 @@ mas "Logic Pro", id: 634148309
 mas "Mactracker", id: 430255202
 mas "MainStage", id: 634159523
 mas "Motion", id: 434290957
+mas "MyWallpaper", id: 1552826194
 mas "Night Sky X", id: 475772902
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
@@ -892,18 +900,22 @@ mas "Passepartout", id: 1433648537
 mas "Pixelmator Pro", id: 1289583905
 mas "Poolsuite FM", id: 1514817810
 mas "Refined GitHub", id: 1519867270
+mas "Sandkorn", id: 1377973524
 mas "Shareful", id: 1522267256
 mas "Simple Comic", id: 1497435571
 mas "Sparrow Weather", id: 6449440582
 mas "Speediness", id: 1596706466
 mas "Star Wars®: Knights of the Old Republic™ II", id: 960778634
+mas "Startup Manager", id: 1296723195
 mas "Swift Playground", id: 1496833156
 mas "TestFlight", id: 899247664
 mas "uBlock Origin Lite", id: 6745342698
+mas "Unsplash Wallpapers", id: 1284863847
 mas "Velja", id: 1607635845
 mas "Xcode", id: 497799835
 mas "Xmind", id: 1327661892
 mas "YABA", id: 6747272081
+mas "ZeroDuplicates", id: 6738340521
 vscode "aaron-bond.better-comments"
 vscode "adamraichu.docx-viewer"
 vscode "adamraichu.zip-viewer"
