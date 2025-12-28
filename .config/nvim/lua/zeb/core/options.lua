@@ -2,6 +2,54 @@ vim.cmd("let g:netrw_liststyle = 3")
 
 local opt = vim.opt -- for conciseness
 
+opt.backup = false -- disable backup
+
+opt.nu = true -- indent current line number
+
+opt.hidden = true -- allow hidden buffers
+
+opt.undodir = "~/.nvim/undodir"
+
+opt.ignorecase = true
+
+opt.tabstop = 4
+
+opt.softtabstop = 0
+opt.shiftwidth = 4
+opt.expandtab = true
+opt.smartindent = true
+
+opt.ignorecase = true
+
+opt.smartcase = true
+
+opt.splitbelow = true
+opt.splitright = true
+
+opt.listchars = {
+	tab = "| ",
+	eol = "┐",
+	trail = "⋅",
+}
+
+opt.mouse = "a"
+
+opt.scrolloff = 8
+
+opt.errorbells = false
+
+opt.incsearch = true
+
+opt.hlsearch = false
+
+opt.list = true
+
+opt.updatetime = 100
+
+opt.spelllang = "en_us"
+
+opt.spell = true
+
 -- line numbers
 opt.relativenumber = true -- show relative line numbers
 opt.number = true -- shows absolute line number on cursor line (when relative number is on)
@@ -13,7 +61,7 @@ opt.expandtab = true -- expand tab to spaces
 opt.autoindent = true -- copy indent from current line when starting new one
 
 -- line wrapping
-opt.wrap = true -- disable line wrapping
+opt.wrap = true -- enable line wrapping
 
 -- search settings
 opt.ignorecase = true -- ignore case when searching
@@ -40,7 +88,7 @@ opt.splitbelow = true -- split horizontal window to the bottom
 -- turn off swapfile
 opt.swapfile = false
 
---------- neovide stuff
+--------- neovide stuff -------------------
 if vim.g.neovide then
 	vim.keymap.set("n", "<D-s>", ":w<CR>") -- Save
 	vim.keymap.set("v", "<D-c>", '"+y') -- Copy
