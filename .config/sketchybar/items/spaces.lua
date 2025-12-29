@@ -30,30 +30,40 @@ for i = 1, 10 do
 	space_selected[i] = false
 end
 
--- Helper: update how a space looks
 local function update_space_display(space, space_id, is_selected, has_front_app)
-	local icon_text = space_app_icons[space_id] or "—"
-	local space_text = tostring(space_id)
+	-- Get the layout dynamically
+	sbar.exec("yabai -m query --spaces --space " .. space_id .. " | jq -r '.type'", function(output)
+		local layout = output:gsub("%s+", "") -- bsp, float, stack
+		local layout_letter = "-"
+		if layout == "bsp" then
+			layout_letter = "b"
+		elseif layout == "float" then
+			layout_letter = "f"
+		elseif layout == "stack" then
+			layout_letter = "s"
+		end
 
-	-- Space number / highlight: white if selected, otherwise grey
-	local icon_color = is_selected and colors.white or colors.grey
-	-- App icons string: white if that space contains the front app, otherwise grey
-	local label_color = has_front_app and colors.white or colors.grey
+		local icon_text = space_app_icons[space_id] or "—"
+		local space_text = tostring(space_id) .. layout_letter
 
-	space:set({
-		icon = {
-			string = space_text,
-			highlight = is_selected,
-			color = icon_color,
-		},
-		label = {
-			string = icon_text,
-			highlight = is_selected,
-			color = label_color,
-		},
-	})
+		-- Colors
+		local icon_color = is_selected and colors.white or colors.grey
+		local label_color = has_front_app and colors.white or colors.grey
+
+		space:set({
+			icon = {
+				string = space_text,
+				highlight = is_selected,
+				color = icon_color,
+			},
+			label = {
+				string = icon_text,
+				highlight = is_selected,
+				color = label_color,
+			},
+		})
+	end)
 end
-
 -- Build spaces
 for i = 1, 10 do
 	local space = sbar.add("space", "space." .. i, {
@@ -93,8 +103,8 @@ for i = 1, 10 do
 		space = i,
 		script = "",
 		width = 2,
-		padding_left = 5,
-		padding_right = 5,
+		padding_left = 0,
+		padding_right = 0,
 	})
 
 	local space_popup = sbar.add("item", {
@@ -113,7 +123,7 @@ for i = 1, 10 do
 	})
 
 	-- When the space selection changes, update selected state & visuals
-	space:subscribe("space_change", function(env)
+	space:subscribe("space_change", "space_windows_change", "front_app_switched", "display_changed", function(env)
 		local sid = tonumber(env.SID) or i
 		local is_selected = env.SELECTED == "true"
 		space_selected[sid] = is_selected
@@ -140,8 +150,20 @@ for i = 1, 10 do
 		end
 	end)
 
-	space:subscribe("mouse.exited", function(_)
-		space:set({ popup = { drawing = false } })
+	space:subscribe("mouse.entered", function()
+		space:set({
+			background = {
+				drawing = true,
+				color = 0x40FFFFFF,
+				corner_radius = 20,
+				height = 20,
+				x_offset = 0,
+			},
+		})
+	end)
+
+	space:subscribe("mouse.exited", function()
+		space:set({ popup = { drawing = false }, background = { drawing = false } })
 	end)
 end
 
@@ -206,15 +228,37 @@ space_window_observer:subscribe("space_windows_change", function(env)
 	end
 end)
 
-
-local divider2 = sbar.add("item", "divider2", {
-	icon = {
-		font = { family = settings.default, size = 12 },
-		string = "│",
-		drawing = true,
-		color = colors.white
-	},
-	padding_left = -2,
-	padding_right = 0,
+local add_space_button = sbar.add("item", "add_space_button", {
 	position = "left",
+	icon = { string = "+", font = { size = 15 }, color = colors.grey },
 })
+
+add_space_button:subscribe("mouse.clicked", function(env)
+	if env.BUTTON == "left" then
+		sbar.exec("yabai -m space --create")
+	elseif env.BUTTON == "right" then
+		sbar.exec("~/dotfiles/.config/yabai/scripts/new_space_focus.sh")
+	end
+end)
+
+add_space_button:subscribe("mouse.entered", function()
+	add_space_button:set({
+		background = {
+			drawing = true,
+			color = 0x40FFFFFF,
+			corner_radius = 20,
+			height = 20,
+			x_offset = -1,
+		},
+		icon = { color = colors.white },
+	})
+end)
+
+add_space_button:subscribe("mouse.exited", "mouse.entered.global", "mouse.exited.global", function()
+	add_space_button:set({
+		background = {
+			drawing = false,
+		},
+		icon = { color = colors.grey },
+	})
+end)

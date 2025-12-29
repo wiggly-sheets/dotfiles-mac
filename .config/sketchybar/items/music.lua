@@ -10,6 +10,19 @@ local allowed_bundle_ids = {
 	["com.highcaffeinecontent.radio"] = true,
 }
 
+local divider2 = sbar.add("item", "divider2", {
+	icon = {
+		font = { family = settings.default, size = 12 },
+		string = "│",
+		drawing = true,
+		color = colors.white,
+	},
+	drawing = false,
+	padding_left = -2,
+	padding_right = 0,
+	position = "left",
+})
+
 local media = sbar.add("item", "media", {
 	position = "left",
 	update_freq = 5,
@@ -109,6 +122,9 @@ local function update_media()
 										color = colors.grey,
 									},
 									label = { string = text, drawing = true, color = colors.grey },
+									divider2:set({
+										drawing = true,
+									}),
 								})
 							else
 								media:set({
@@ -119,6 +135,9 @@ local function update_media()
 										color = colors.white,
 									},
 									label = { string = text, drawing = true, color = colors.white },
+									divider2:set({
+										drawing = true,
+									}),
 								})
 							end
 							sbar.set("media_info", { label = { string = text } })
@@ -148,3 +167,24 @@ media:subscribe("mouse.exited.global", "mouse.exited", function()
 end)
 
 update_media()
+
+-- ======== Hover effects ========
+local function add_hover(item)
+	item:subscribe("mouse.entered", function()
+		item:set({
+			background = {
+				drawing = true,
+				color = 0x40FFFFFF,
+				corner_radius = 20,
+				height = 20,
+				x_offset = 0,
+			},
+		})
+	end)
+
+	item:subscribe({ "mouse.exited", "mouse.entered.global", "mouse.exited.global" }, function()
+		item:set({ background = { drawing = false } })
+	end)
+end
+
+add_hover(media)

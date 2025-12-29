@@ -12,6 +12,7 @@ return {
 	dnd = 0xffdee3ed,
 	low_power = 0xff63981f,
 	notifications = 0xffc82d3b,
+	background = 0x40FFFFFF,
 
 	bar = {
 		bg = 0xFF555555,

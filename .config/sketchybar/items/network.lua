@@ -542,3 +542,65 @@ wifi_up:subscribe("network_update", function(env)
 		end
 	end)
 end)
+
+-- ======== Hover effects ========
+local function add_hover(item)
+	item:subscribe("mouse.entered", function()
+		item:set({
+			background = {
+				drawing = true,
+				color = 0x40FFFFFF,
+				corner_radius = 10,
+				height = 30,
+				x_offset = 0,
+				y_offset = 5,
+			},
+		})
+	end)
+
+	item:subscribe({ "mouse.exited", "mouse.entered.global", "mouse.exited.global" }, function()
+		item:set({ background = { drawing = false } })
+	end)
+end
+
+add_hover(wifi_up)
+add_hover(wifi_down)
+
+wifi:subscribe("mouse.entered", function()
+	wifi:set({
+		background = {
+			drawing = true,
+			color = 0x40FFFFFF,
+			corner_radius = 10,
+			height = 20,
+			x_offset = 0,
+			y_offset = 0,
+		},
+	})
+end)
+
+wifi:subscribe({ "mouse.exited", "mouse.entered.global", "mouse.exited.global" }, function()
+	wifi:set({ background = { drawing = false } })
+end)
+
+-- ======== Hover effects ========
+local function add_hover(item)
+	item:subscribe("mouse.entered", function()
+		item:set({
+			background = {
+				drawing = true,
+				color = 0x40FFFFFF,
+				corner_radius = 20,
+				height = 30,
+				x_offset = 0,
+			},
+		})
+	end)
+
+	item:subscribe({ "mouse.exited", "mouse.entered.global", "mouse.exited.global" }, function()
+		item:set({ background = { drawing = true, height = 10, color = colors.transparent } })
+	end)
+end
+
+add_hover(net_graph_down)
+add_hover(net_graph_up)

@@ -71,3 +71,27 @@ time:subscribe("mouse.clicked", function(env)
 		sbar.exec(middle_click_script)
 	end
 end)
+
+-- ======== Hover effects ========
+local function add_hover(item)
+	item:subscribe("mouse.entered", function()
+		date:set({
+			background = {
+				drawing = true,
+				color = 0x40FFFFFF,
+				corner_radius = 20,
+				height = 30,
+				x_offset = 0,
+				y_offset = 5,
+			},
+		})
+	end)
+
+	item:subscribe({ "mouse.exited", "mouse.entered.global", "mouse.exited.global" }, function()
+		date:set({ background = { drawing = false } })
+		time:set({ background = { drawing = false } })
+	end)
+end
+
+add_hover(date)
+add_hover(time)

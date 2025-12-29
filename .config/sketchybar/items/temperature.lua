@@ -5,7 +5,7 @@ local icons = require("icons")
 local click_script =
 	'osascript -e \'tell application "System Events" to keystroke "t" using {command down, option down, control down}\''
 
-local cpu_item = sbar.add("item", "cpu_temp", {
+local cpu_temp_item = sbar.add("item", "cpu_temp", {
 	update_freq = 10,
 	position = "right",
 	padding_left = -51,
@@ -16,7 +16,7 @@ local cpu_item = sbar.add("item", "cpu_temp", {
 	click_script = click_script,
 })
 
-local gpu_item = sbar.add("item", "gpu_temp", {
+local gpu_temp_item = sbar.add("item", "gpu_temp", {
 	update_freq = 10,
 	position = "right",
 	y_offset = -5,
@@ -43,7 +43,7 @@ local function update_temperatures()
 		else
 			cpu_color = colors.blue
 		end
-		cpu_item:set({
+		cpu_temp_item:set({
 			label = {
 				string = cpu_temp .. "°C",
 				color = cpu_color,
@@ -67,7 +67,7 @@ local function update_temperatures()
 		else
 			gpu_color = colors.blue
 		end
-		gpu_item:set({
+		gpu_temp_item:set({
 			label = {
 				string = gpu_temp .. "°C",
 				color = gpu_color,
@@ -78,8 +78,29 @@ local function update_temperatures()
 end
 
 -- Subscribe to events
-cpu_item:subscribe({ "routine", "forced", "system_woke" }, update_temperatures)
-gpu_item:subscribe({ "routine", "forced", "system_woke" }, update_temperatures)
+cpu_temp_item:subscribe({ "routine", "forced", "system_woke" }, update_temperatures)
+gpu_temp_item:subscribe({ "routine", "forced", "system_woke" }, update_temperatures)
 
--- Initial update
-update_temperatures()
+-- ======== Hover effects ========
+local function add_hover(item)
+	item:subscribe("mouse.entered", function()
+		gpu_temp_item:set({
+			background = {
+				drawing = true,
+				color = 0x40FFFFFF,
+				corner_radius = 15,
+				height = 40,
+				x_offset = 0,
+				y_offset = 5,
+			},
+		})
+	end)
+
+	item:subscribe({ "mouse.exited", "mouse.entered.global", "mouse.exited.global" }, function()
+		cpu_temp_item:set({ background = { drawing = false } })
+		gpu_temp_item:set({ background = { drawing = false } })
+	end)
+end
+
+add_hover(cpu_temp_item)
+add_hover(gpu_temp_item)

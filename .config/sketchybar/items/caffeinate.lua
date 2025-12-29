@@ -4,8 +4,9 @@ local caffeinate = sbar.add("item", "caffeinate", {
 	update_freq = 10,
 	padding_left = 2,
 	padding_right = 2,
-	icon = { 
-	color = colors.white,},
+	icon = {
+		color = colors.white,
+	},
 })
 
 -- Function to check if a caffeinate process is active
@@ -48,8 +49,30 @@ local function toggle_caffeinate()
 		end
 	end)
 end
+
 caffeinate:subscribe("mouse.clicked", toggle_caffeinate)
 caffeinate:subscribe("routine", "forced", update_caffeinate)
+
+-- ======== Hover effects ========
+local function add_hover(item)
+	item:subscribe("mouse.entered", function()
+		item:set({
+			background = {
+				drawing = true,
+				color = 0x40FFFFFF,
+				corner_radius = 20,
+				height = 20,
+				x_offset = 0,
+			},
+		})
+	end)
+
+	item:subscribe({ "mouse.exited", "mouse.entered.global", "mouse.exited.global" }, function()
+		item:set({ background = { drawing = false } })
+	end)
+end
+
+add_hover(caffeinate)
 
 -- Initialize on startup
 update_caffeinate()

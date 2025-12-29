@@ -111,4 +111,25 @@ mpd:subscribe("mouse.exited.global", "mouse.exited", function()
 	mpd:set({ popup = { drawing = false } })
 end)
 
+-- ======== Hover effects ========
+local function add_hover(item)
+	item:subscribe("mouse.entered", function()
+		item:set({
+			background = {
+				drawing = true,
+				color = 0x40FFFFFF,
+				corner_radius = 20,
+				height = 20,
+				x_offset = 0,
+			},
+		})
+	end)
+
+	item:subscribe({ "mouse.exited", "mouse.entered.global", "mouse.exited.global" }, function()
+		item:set({ background = { drawing = false } })
+	end)
+end
+
+add_hover(mpd)
+
 update_mpd()

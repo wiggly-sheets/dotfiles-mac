@@ -17,7 +17,7 @@ local cpu = sbar.add("graph", "widgets.cpu", 42, {
 	},
 	icon = { string = icons.cpu, padding_right = 0, padding_left = 0, color = colors.white },
 	label = {
-		string = "cpu ??%",
+		string = "cpu __%",
 		font = {
 			family = settings.default,
 			size = 8,
@@ -74,7 +74,7 @@ local ram = sbar.add("graph", "widgets.ram", 42, {
 	},
 	icon = { string = icons.ram, padding_right = 0, color = colors.white },
 	label = {
-		string = "ram ??%",
+		string = "ram __%",
 		font = {
 			family = settings.default,
 			size = 8,
@@ -117,3 +117,24 @@ ram:subscribe({ "routine", "forced", "system_woke" }, function(env)
 		})
 	end)
 end)
+-- ======== Hover effects ========
+local function add_hover(item)
+	item:subscribe("mouse.entered", function()
+		item:set({
+			background = {
+				drawing = true,
+				color = 0x40FFFFFF,
+				corner_radius = 20,
+				height = 22,
+				x_offset = 0,
+			},
+		})
+	end)
+
+	item:subscribe({ "mouse.exited", "mouse.entered.global", "mouse.exited.global" }, function()
+		item:set({ background = { drawing = true, height = 22, color = colors.transparent } })
+	end)
+end
+
+add_hover(cpu)
+add_hover(ram)

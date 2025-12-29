@@ -11,10 +11,10 @@ local display_left_click =
 local display_right_click =
 	'osascript -e \'tell application "System Events" to tell process "Wallper" to click menu bar item 1 of menu bar 2\''
 
-	local display_middle_click =
+local display_middle_click =
 	'osascript -e \'tell application "System Events" to tell process "Flux" to click menu bar item 1 of menu bar 2\''
 
-	local function handle_display_click(env)
+local function handle_display_click(env)
 	if env.BUTTON == "left" then
 		sbar.exec(display_left_click)
 	elseif env.BUTTON == "right" then
@@ -106,6 +106,27 @@ end
 
 -- Subscribe to display/system events
 display:subscribe({ "display_change", "brightness_change", "system_woke" }, update_display)
+
+-- ======== Hover effects ========
+local function add_hover(item)
+	item:subscribe("mouse.entered", function()
+		item:set({
+			background = {
+				drawing = true,
+				color = 0x40FFFFFF,
+				corner_radius = 20,
+				height = 20,
+				x_offset = 0,
+			},
+		})
+	end)
+
+	item:subscribe({ "mouse.exited", "mouse.entered.global", "mouse.exited.global" }, function()
+		item:set({ background = { drawing = false } })
+	end)
+end
+
+add_hover(display)
 
 -- Initial update
 update_display()

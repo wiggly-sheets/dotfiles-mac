@@ -7,14 +7,13 @@ local apple = sbar.add("item", {
 		font = { size = 14 },
 		string = icons.apple,
 		position = "left",
-		padding_left = 7,
+		padding_left = 2,
 		padding_right = 2,
 		color = colors.white,
 	},
 	label = { drawing = false, width = 0 },
 	padding_left = 0,
 	padding_right = 0,
-	y_offset = 0,
 })
 
 local menu_watcher = sbar.add("item", {
@@ -26,7 +25,7 @@ local max_items = 15
 local menu_items = {}
 for i = 1, max_items, 1 do
 	local menu = sbar.add("item", "menu." .. i, {
-		padding_left = 2,
+		padding_left = 0,
 		padding_right = 2,
 		drawing = false,
 		y_offset = 0,
@@ -77,16 +76,7 @@ local function update_menus(env)
 	end)
 end
 
-menu_watcher:subscribe(
-	"window_focus",
-	"front_app_switched",
-	"space_change",
-	"title_change",
-	"display_change",
-	"forced",
-	"system_woke",
-	update_menus
-)
+menu_watcher:subscribe("front_app_switched", "display_change", "forced", "system_woke", update_menus)
 
 local theme_dir = os.getenv("HOME") .. "/.config/sketchybar/themes/"
 local theme_file = os.getenv("HOME") .. "/.config/sketchybar/current_theme"
@@ -155,6 +145,7 @@ local function theme_click_script()
 end
 
 -- local menu_click_script = "$CONFIG_DIR/helpers/menus/bin/menus -s 0"
+
 for i, menu in ipairs(menu_items) do
 	menu:subscribe("mouse.clicked", function(env)
 		if env.BUTTON == "left" then
@@ -199,17 +190,34 @@ local clear_highlights = function()
 	end
 end
 
-menu_watcher:subscribe("mouse.exited.global", "mouse.entered.global", function(env)
-	clear_highlights()
-end)
+for i, menu in ipairs(menu_items) do
+	menu:subscribe("mouse.exited", function()
+		clear_highlights()
+	end)
+end
 
-local left_click_script =
+for i, menu in ipairs(menu_items) do
+	menu:subscribe("mouse.entered", function(env)
+		menu:set({
+			background = {
+				drawing = true,
+				color = 0x40FFFFFF,
+				corner_radius = 20,
+				height = 20,
+				x_offset = 1,
+				y_offset = -1,
+			},
+		})
+	end)
+end
+
+local left_apple_script =
 	"osascript -e 'tell application \"System Events\" to key code 46 using {command down, option down, control down}'"
 
-local right_click_script =
+local right_apple_script =
 	"osascript -e 'tell application \"System Events\" to key code 0 using {command down, option down, control down}'"
 
-local middle_click_script = [[
+local middle_apple_script = [[
 osascript -e 'tell application "System Events"
     set thePic to do shell script "find ~/Pictures/Wallpapers -type f | gshuf -n 1"
     repeat with d in desktops
@@ -227,10 +235,10 @@ apple:subscribe("mouse.clicked", function(env)
 				color = 0x40FFFFFF,
 				corner_radius = 20,
 				height = 20,
-				x_offset = 3,
+				x_offset = 2,
 			},
 		})
-		sbar.exec(left_click_script)
+		sbar.exec(left_apple_script)
 	elseif env.BUTTON == "right" then
 		-- highlight this item
 		apple:set({
@@ -239,19 +247,32 @@ apple:subscribe("mouse.clicked", function(env)
 				color = 0x40FFFFFF,
 				corner_radius = 20,
 				height = 20,
-				x_offset = 3,
+				x_offset = 2,
 			},
 		})
-		sbar.exec(right_click_script)
+		sbar.exec(right_apple_script)
 	elseif env.BUTTON == "other" then
-		sbar.exec(middle_click_script)
+		sbar.exec(middle_apple_script)
 	end
 end)
 
-apple:subscribe("mouse.exited.global", "mouse.entered.global", function()
+apple:subscribe("mouse.exited", function()
 	apple:set({
 		background = {
 			drawing = false,
+		},
+	})
+end)
+
+apple:subscribe("mouse.entered", function()
+	apple:set({
+		background = {
+			drawing = true,
+			color = 0x40FFFFFF,
+			corner_radius = 10,
+			height = 20,
+			x_offset = 2,
+			width = 0,
 		},
 	})
 end)

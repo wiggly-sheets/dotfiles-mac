@@ -33,14 +33,22 @@ local function update_disk()
 		local total_gb = math.floor(total / 1e9 + 0.5)
 
 		local icon, color = "󰝦", colors.green
-		if percent >= 95 then icon, color = "󰪥", colors.red
-		elseif percent >= 88 then icon, color = "󰪤", colors.orange
-		elseif percent >= 76 then icon, color = "󰪣", colors.orange
-		elseif percent >= 64 then icon, color = "󰪢", colors.yellow
-		elseif percent >= 52 then icon, color = "󰪡", colors.yellow
-		elseif percent >= 40 then icon, color = "󰪠", colors.green
-		elseif percent >= 28 then icon, color = "󰪟", colors.green
-		elseif percent >= 16 then icon, color = "󰪞", colors.green
+		if percent >= 95 then
+			icon, color = "󰪥", colors.red
+		elseif percent >= 88 then
+			icon, color = "󰪤", colors.orange
+		elseif percent >= 76 then
+			icon, color = "󰪣", colors.orange
+		elseif percent >= 64 then
+			icon, color = "󰪢", colors.yellow
+		elseif percent >= 52 then
+			icon, color = "󰪡", colors.yellow
+		elseif percent >= 40 then
+			icon, color = "󰪠", colors.green
+		elseif percent >= 28 then
+			icon, color = "󰪟", colors.green
+		elseif percent >= 16 then
+			icon, color = "󰪞", colors.green
 		end
 
 		disk_icon:set({ icon = { string = icon, color = color } })
@@ -50,7 +58,7 @@ end
 
 -- Left-click script (keyboard shortcut)
 local left_click_script =
-'osascript -e \'tell application "System Events" to keystroke "s" using {command down, option down, control down}\''
+	'osascript -e \'tell application "System Events" to keystroke "s" using {command down, option down, control down}\''
 
 -- Handle clicks
 local function handle_disk_click(env)
@@ -66,5 +74,27 @@ disk_label:subscribe("mouse.clicked", handle_disk_click)
 disk_icon:subscribe({ "routine", "forced", "system_woke" }, update_disk)
 disk_label:subscribe({ "routine", "forced", "system_woke" }, update_disk)
 
--- Initial update
+-- ======== Hover effects ========
+local function add_hover(item)
+	item:subscribe("mouse.entered", function()
+		item:set({
+			background = {
+				drawing = true,
+				color = 0x40FFFFFF,
+				corner_radius = 20,
+				height = 30,
+				x_offset = 0,
+				y_offset = 5,
+			},
+		})
+	end)
+
+	item:subscribe({ "mouse.exited", "mouse.entered.global", "mouse.exited.global" }, function()
+		item:set({ background = { drawing = false } })
+	end)
+end
+
+add_hover(disk_label)
+
+-- Initialupdate
 update_disk()
