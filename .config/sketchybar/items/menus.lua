@@ -235,7 +235,7 @@ apple:subscribe("mouse.clicked", function(env)
 				color = 0x40FFFFFF,
 				corner_radius = 20,
 				height = 20,
-				x_offset = 2,
+				x_offset = 1,
 			},
 		})
 		sbar.exec(left_apple_script)
@@ -247,7 +247,7 @@ apple:subscribe("mouse.clicked", function(env)
 				color = 0x40FFFFFF,
 				corner_radius = 20,
 				height = 20,
-				x_offset = 2,
+				x_offset = 1,
 			},
 		})
 		sbar.exec(right_apple_script)
@@ -271,7 +271,7 @@ apple:subscribe("mouse.entered", function()
 			color = 0x40FFFFFF,
 			corner_radius = 10,
 			height = 20,
-			x_offset = 2,
+			x_offset = 1,
 			width = 0,
 		},
 	})

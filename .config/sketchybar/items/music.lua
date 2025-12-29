@@ -14,13 +14,13 @@ local divider2 = sbar.add("item", "divider2", {
 	icon = {
 		font = { family = settings.default, size = 12 },
 		string = "│",
-		drawing = true,
 		color = colors.white,
+		drawing = false,
 	},
-	drawing = false,
 	padding_left = -2,
 	padding_right = 0,
 	position = "left",
+	update_freq = 5,
 })
 
 local media = sbar.add("item", "media", {
@@ -95,6 +95,7 @@ local function update_media()
 		if not allowed_bundle_ids[bundle_id] then
 			media:set({ icon = { drawing = false }, label = { drawing = false } })
 			sbar.set("media_info", { label = { string = "" } })
+			divider2:set({ icon = { drawing = false } })
 			return
 		end
 
@@ -109,6 +110,7 @@ local function update_media()
 					if artist == "" and album == "" and song == "" then
 						media:set({ icon = { string = "", drawing = false }, label = { string = "", drawing = false } })
 						sbar.set("media_info", { label = { string = "" } })
+						divider2:set({ icon = { drawing = false } })
 					else
 						sbar.exec("media-control get | jq -r '.playing'", function(p)
 							p = clean(p)
@@ -123,7 +125,7 @@ local function update_media()
 									},
 									label = { string = text, drawing = true, color = colors.grey },
 									divider2:set({
-										drawing = true,
+										icon = { drawing = true },
 									}),
 								})
 							else
@@ -136,7 +138,7 @@ local function update_media()
 									},
 									label = { string = text, drawing = true, color = colors.white },
 									divider2:set({
-										drawing = true,
+										icon = { drawing = true },
 									}),
 								})
 							end

@@ -132,7 +132,8 @@ FLOAT_APPS=(
   "^Steam$"
   "^GOG Galaxy$"
   "^Epic Games Launcher$"
-  "^Battle.net$"c
+  "^Battle.net$"
+  "^Folder Preview$"
 )
 
 for app in "${FLOAT_APPS[@]}"; do
