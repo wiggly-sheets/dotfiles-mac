@@ -17,7 +17,7 @@ yabai -m space --focus "$NEW_SPACE_INDEX"
 # Move new space
 yabai -m space --move "$TARGET_INDEX"
 
-ORIGINAL_INDEX=$((CURRENT_INDEX - 1))
+ORIGINAL_INDEX=$((TARGET_INDEX - 1))
 
 yabai -m space --focus "$ORIGINAL_INDEX"
 
