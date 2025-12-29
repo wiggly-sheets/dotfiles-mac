@@ -80,6 +80,18 @@ ctrl + alt - space : yabai -m space --layout $(yabai -m query --spaces --space |
 alt - o : sh -c 'yabai -m space --move prev || yabai -m space --move last;  sketchybar --trigger space_change && sketchybar --trigger space_windows_change'
 alt - m : sh -c 'yabai -m space --move next || yabai -m space --move first; sketchybar --trigger space_change && sketchybar --trigger space_windows_change'
 
+# move spaces to specific indices
+hyper - 1 : yabai -m space --move 1 && sketchybar --trigger space_change && sketchybar --trigger space_windows_change
+hyper - 2 : yabai -m space --move 2 && sketchybar --trigger space_change && sketchybar --trigger space_windows_change
+hyper - 3 : yabai -m space --move 3 && sketchybar --trigger space_change && sketchybar --trigger space_windows_change
+hyper - 4 : yabai -m space --move 4 && sketchybar --trigger space_change && sketchybar --trigger space_windows_change
+hyper - 5 : yabai -m space --move 5 && sketchybar --trigger space_change && sketchybar --trigger space_windows_change
+hyper - 6 : yabai -m space --move 6 && sketchybar --trigger space_change && sketchybar --trigger space_windows_change
+hyper - 7 : yabai -m space --move 7 && sketchybar --trigger space_change && sketchybar --trigger space_windows_change
+hyper - 8 : yabai -m space --move 8 && sketchybar --trigger space_change && sketchybar --trigger space_windows_change
+hyper - 9 : yabai -m space --move 9 && sketchybar --trigger space_change && sketchybar --trigger space_windows_change
+hyper - 0 : yabai -m space --move 10 && sketchybar --trigger space_change && sketchybar --trigger space_windows_change
+
 # swap spaces if on same display, else swap windows if on different displays
 ctrl + alt + cmd - 1 : yabai -m space --swap 1 && sketchybar --trigger space_change && sketchybar --trigger space_windows_change
 ctrl + alt + cmd - 2 : yabai -m space --swap 2 && sketchybar --trigger space_change && sketchybar --trigger space_windows_change
@@ -96,17 +108,6 @@ ctrl + alt + cmd - p : yabai -m space --swap prev && sketchybar --trigger space_
 ctrl + alt + cmd - n : yabai -m space --swap next && sketchybar --trigger space_change && sketchybar --trigger space_windows_change || yabai -m space --swap first && sketchybar --trigger space_change && sketchybar --trigger space_windows_change
 ctrl + alt + cmd - e : yabai -m space --swap last && sketchybar --trigger space_change && sketchybar --trigger space_windows_change
 ctrl + alt + cmd - f : yabai -m space --swap first && sketchybar --trigger space_change && sketchybar --trigger space_windows_change
-
-hyper - 1 : yabai -m space --move 1 && sketchybar --trigger space_change && sketchybar --trigger space_windows_change
-hyper - 2 : yabai -m space --move 2 && sketchybar --trigger space_change && sketchybar --trigger space_windows_change
-hyper - 3 : yabai -m space --move 3 && sketchybar --trigger space_change && sketchybar --trigger space_windows_change
-hyper - 4 : yabai -m space --move 4 && sketchybar --trigger space_change && sketchybar --trigger space_windows_change
-hyper - 5 : yabai -m space --move 5 && sketchybar --trigger space_change && sketchybar --trigger space_windows_change
-hyper - 6 : yabai -m space --move 6 && sketchybar --trigger space_change && sketchybar --trigger space_windows_change
-hyper - 7 : yabai -m space --move 7 && sketchybar --trigger space_change && sketchybar --trigger space_windows_change
-hyper - 8 : yabai -m space --move 8 && sketchybar --trigger space_change && sketchybar --trigger space_windows_change
-hyper - 9 : yabai -m space --move 9 && sketchybar --trigger space_change && sketchybar --trigger space_windows_change
-hyper - 0 : yabai -m space --move 10 && sketchybar --trigger space_change && sketchybar --trigger space_windows_change
 
 # rotate layout clockwise
 shift + alt - c : yabai -m space --rotate 90
@@ -222,31 +223,33 @@ shift + alt - p : yabai -m window --space prev || yabai -m window --space last;
 shift + alt - r : yabai -m window --space recent;
 
 # send window to space & follow focus
-shift + cmd - r : yabai -m window --space recent && yabai -m space --focus recent
-shift + cmd - f : yabai -m window --space first && yabai -m space --focus first
-shift + cmd - e : yabai -m window --space last && yabai -m space --focus last
-shift + cmd - p : yabai -m window --space prev \
-  && yabai -m space --focus prev \
-  || { yabai -m window --space last; yabai -m space --focus last; }
-shift + cmd - n : yabai -m window --space next \
-  && yabai -m space --focus next \
-  || { yabai -m window --space first; yabai -m space --focus first; }
-shift + cmd - 1 : yabai -m window --space  1 && yabai -m space --focus 1
-shift + cmd - 2 : yabai -m window --space  2 && yabai -m space --focus 2
-shift + cmd - 3 : yabai -m window --space  3 && yabai -m space --focus 3
-shift + cmd - 4 : yabai -m window --space  4 && yabai -m space --focus 4
-shift + cmd - 5 : yabai -m window --space  5 && yabai -m space --focus 5
-shift + cmd - 6 : yabai -m window --space  6 && yabai -m space --focus 6
-shift + cmd - 7 : yabai -m window --space  7 && yabai -m space --focus 7
-shift + cmd - 8 : yabai -m window --space  8 && yabai -m space --focus 8
-shift + cmd - 9 : yabai -m window --space  9 && yabai -m space --focus 9
-shift + cmd - 0 : yabai -m window --space 10 && yabai -m space --focus 10
+shift + cmd - r : yabai -m window --space recent --focus
+shift + cmd - f : yabai -m window --space first --focus 
+shift + cmd - e : yabai -m window --space last --focus 
+shift + cmd - p : yabai -m window --space prev -- focus|| yabai -m window --space last --focus
+shift + cmd - n : yabai -m window --space next --focus || yabai -m window --space first -- focus
+shift + cmd - 1 : yabai -m window --space 1 --focus
+shift + cmd - 2 : yabai -m window --space 2 --focus
+shift + cmd - 3 : yabai -m window --space 3 --focus
+shift + cmd - 4 : yabai -m window --space 4 --focus
+shift + cmd - 5 : yabai -m window --space 5 --focus
+shift + cmd - 6 : yabai -m window --space 6 --focus
+shift + cmd - 7 : yabai -m window --space 7 --focus
+shift + cmd - 8 : yabai -m window --space 8 --focus
+shift + cmd - 9 : yabai -m window --space 9 --focus
+shift + cmd - 0 : yabai -m window --space 10 --focus
 
 # make new space, send window to it, & follow focus
 shift + cmd - a : ~/dotfiles/.config/yabai/scripts/new_space_follow_focus.sh
 
 # make new space & send window to it 
 shift + alt - a :  ~/dotfiles/.config/yabai/scripts/new_space_window.sh
+
+# make new space 1 index after current space
+ctrl - a : ~/dotfiles/.config/yabai/scripts/new_space_close.sh
+
+# make new space 1 index after current space & follow focus
+ctrl - t : ~/dotfiles/.config/yabai/scripts/new_space_close_follow.sh
 
 # focus display
 rcmd - r : yabai -m display --focus recent

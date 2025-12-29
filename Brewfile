@@ -495,6 +495,8 @@ brew "wget"
 brew "wget2"
 # Show the current WiFi network password
 brew "wifi-password"
+# Why is this running?
+brew "witr"
 # Friendly and fast tool for sending HTTP requests
 brew "xh"
 # Blazing fast terminal file manager written in Rust, based on async I/O
@@ -897,6 +899,7 @@ mas "Night Sky X", id: 475772902
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
 mas "Passepartout", id: 1433648537
+mas "PDFgear", id: 6469021132
 mas "Pixelmator Pro", id: 1289583905
 mas "Poolsuite FM", id: 1514817810
 mas "Refined GitHub", id: 1519867270
@@ -983,4 +986,3 @@ vscode "venage5603.tokyo-night-dark-enhanced"
 vscode "vscode-icons-team.vscode-icons"
 vscode "waderyan.gitblame"
 vscode "yzhang.markdown-all-in-one"
-vscode "zenclabs.previewjs"
