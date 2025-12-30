@@ -161,6 +161,20 @@ ctrl + alt - r : yabai -m window --warp recent
 # toggle split type for current window
 rcmd - s : yabai -m window --toggle split
 
+# set split for current window to vertical
+ctrl + cmd - v : \
+  SPLIT_TYPE="$(yabai -m query --windows --window | jq -r '.["split-type"]')" && \
+  if [ "$SPLIT_TYPE" = "horizontal" ]; then \
+    yabai -m window --toggle split; \
+  fi
+
+  # set split for current window to horizontal
+ctrl + cmd - h : \
+  SPLIT_TYPE="$(yabai -m query --windows --window | jq -r '.["split-type"]')" && \
+  if [ "$SPLIT_TYPE" = "vertical" ]; then \
+    yabai -m window --toggle split; \
+  fi
+
 # create & cycle through stacked windows
 ctrl - s : yabai -m window --insert stack
 ctrl - h : yabai -m window --stack west

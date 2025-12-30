@@ -553,7 +553,7 @@ brew "samtay/tui/tetris"
 brew "socsieng/tap/sendkeys"
 # Convert images into ascii art
 brew "thezoraiz/ascii-image-converter/ascii-image-converter"
-# A simple TUI tool to make your homebrew bold.
+# Modern TUI for managing Homebrew packages and casks on macOS and Linux
 brew "valkyrie00/bbrew/bbrew"
 # Get the battery level of all your devices on your Mac.
 cask "airbattery"
