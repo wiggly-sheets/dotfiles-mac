@@ -139,8 +139,7 @@ builtin setopt no_aliases no_sh_glob brace_expand
   typeset -g POWERLEVEL9K_ICON_BEFORE_CONTENT=true
 
   # Add an empty line before each prompt.
-  typeset -g POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
-
+  typeset -g POWERLEVEL9K_PROMPT_ADD_NEWLINE=false
   # Connect left prompt lines with these symbols.
   typeset -g POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX=
   typeset -g POWERLEVEL9K_MULTILINE_NEWLINE_PROMPT_PREFIX=
@@ -370,7 +369,7 @@ builtin setopt no_aliases no_sh_glob brace_expand
 
     if (( $1 )); then
       # Styling for up-to-date Git status.
-      local       meta='%f'     # default foreground
+      local       meta='%f195'     # default foreground
       local      clean='%002F'   # green foreground
       local   modified='%003F'  # yellow foreground
       local  untracked='%004F'   # blue foreground
