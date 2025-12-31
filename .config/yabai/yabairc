@@ -40,8 +40,8 @@ yabai -m config window_animation_duration 0.1
 
 yabai -m config window_animation_easing easeOutElastic
 
-# New window spawns to the left if vertical split, or top if horizontal split
-yabai -m config window_placement first_child
+# New window spawns to the right if vertical split, or bottom if horizontal split
+yabai -m config window_placement second_child
 
 # padding of 1 required for borders
 yabai -m config top_padding 1

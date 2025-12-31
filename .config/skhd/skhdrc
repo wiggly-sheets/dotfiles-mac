@@ -169,7 +169,7 @@ ctrl + cmd - v : \
   fi
 
   # set split for current window to horizontal
-ctrl + cmd - h : \
+ctrl + cmd - g : \
   SPLIT_TYPE="$(yabai -m query --windows --window | jq -r '.["split-type"]')" && \
   if [ "$SPLIT_TYPE" = "vertical" ]; then \
     yabai -m window --toggle split; \

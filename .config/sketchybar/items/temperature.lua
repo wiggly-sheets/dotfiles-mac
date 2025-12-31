@@ -3,7 +3,7 @@ local colors = require("colors")
 local icons = require("icons")
 
 local click_script =
-	'osascript -e \'tell application "System Events" to keystroke "t" using {command down, option down, control down}\''
+	'osascript -e \'tell application "System Events" to keystroke "]" using {command down, option down, control down}\''
 
 local cpu_temp_item = sbar.add("item", "cpu_temp", {
 	update_freq = 10,

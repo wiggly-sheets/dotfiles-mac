@@ -7,7 +7,7 @@ local lowpowermode = sbar.add("item", "lowpowermode", {
 	update_freq = 10,
 	position = "right",
 	padding_right = -2,
-	padding_left = -8,
+	padding_left = -6,
 	y_offset = -1,
 	label = {
 		font = { size = 10 },
@@ -40,7 +40,7 @@ update_lowpowermode()
 -- ── Combined Battery Item ─────────────────────────────────────────
 local battery_item = sbar.add("item", "battery", {
 	position = "right",
-	padding_left = 6,
+	padding_left = 3,
 	padding_right = 5,
 	y_offset = 0,
 	color = colors.green,
@@ -53,7 +53,7 @@ local battery_item = sbar.add("item", "battery", {
 	label = {
 		drawing = true,
 		string = "__%", -- initial label
-		padding_left = 4,
+		padding_left = 2,
 		padding_right = 2,
 		font = { family = settings.default, size = 10 },
 		color = colors.green,

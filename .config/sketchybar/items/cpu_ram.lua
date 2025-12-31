@@ -6,7 +6,7 @@ local settings = require("default")
 -- the cpu load data, which is fired every 3.0 seconds.
 sbar.exec("killall cpu_load >/dev/null; $CONFIG_DIR/helpers/event_providers/cpu_load/bin/cpu_load cpu_update 3.0")
 
-local cpu = sbar.add("graph", "widgets.cpu", 42, {
+local cpu = sbar.add("graph", "cpu", 42, {
 	position = "right",
 	background = {
 		height = 22,
@@ -26,7 +26,6 @@ local cpu = sbar.add("graph", "widgets.cpu", 42, {
 		width = 0,
 		y_offset = 10,
 	},
-	click_script = 'osascript -e \'tell application "System Events" to keystroke "c" using {command down, option down, control down}\'',
 
 	updates = true,
 	update_freq = 30,
@@ -53,17 +52,17 @@ cpu:subscribe("cpu_update", function(env)
 end)
 
 -- Background around the cpu item
-sbar.add("bracket", "widgets.cpu.bracket", { cpu.name }, {
+sbar.add("bracket", "cpu.bracket", { cpu.name }, {
 	background = { color = colors.bg1 },
 })
 
 -- Background around the cpu item
-sbar.add("item", "widgets.cpu.padding", {
+sbar.add("item", "cpu.padding", {
 	position = "right",
 	width = settings.group_paddings,
 })
 
-local ram = sbar.add("graph", "widgets.ram", 42, {
+local ram = sbar.add("graph", "ram", 42, {
 	position = "right",
 	padding_right = -5,
 	background = {
@@ -85,14 +84,13 @@ local ram = sbar.add("graph", "widgets.ram", 42, {
 	},
 	update_freq = 30,
 	updates = true,
-	click_script = 'osascript -e \'tell application "System Events" to keystroke "r" using {command down, option down, control down}\'',
 })
 
-sbar.add("bracket", "widgets.ram.bracket", { ram.name }, {
+sbar.add("bracket", "ram.bracket", { ram.name }, {
 	background = { color = colors.bg1 },
 })
 
-sbar.add("item", "widgets.ram.padding", {
+sbar.add("item", "ram.padding", {
 	position = "right",
 	width = settings.group_paddings,
 })
@@ -138,3 +136,27 @@ end
 
 add_hover(cpu)
 add_hover(ram)
+
+local left_cpu_click =
+	'osascript -e \'tell application "System Events" to keystroke ";" using {command down, option down, control down}\''
+
+local right_cpu_click =
+	'osascript -e \'tell application "System Events" to keystroke "g" using {command down, option down, control down}\''
+
+cpu:subscribe("mouse.clicked", function(env)
+	if env.BUTTON == "left" then
+		sbar.exec(left_cpu_click)
+	elseif env.BUTTON == "right" then
+		sbar.exec(right_cpu_click)
+	end
+end)
+
+local left_ram_click =
+	'osascript -e \'tell application "System Events" to keystroke "z" using {command down, option down, control down}\''
+
+ram:subscribe("mouse.clicked", function(env)
+	if env.BUTTON == "left" then
+		sbar.exec(left_ram_click)
+	else
+	end
+end)

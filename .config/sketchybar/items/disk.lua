@@ -58,7 +58,7 @@ end
 
 -- Left-click script (keyboard shortcut)
 local left_click_script =
-	'osascript -e \'tell application "System Events" to keystroke "s" using {command down, option down, control down}\''
+	'osascript -e \'tell application "System Events" to keystroke "[" using {command down, option down, control down}\''
 
 -- Handle clicks
 local function handle_disk_click(env)
