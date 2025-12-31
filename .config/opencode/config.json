@@ -35,7 +35,7 @@
     "model_list": "<leader>m",
     "model_cycle_recent": "f2",
     "model_cycle_recent_reverse": "shift+f2",
-    "command_list": "ctrl+p",
+    "command_list": "ctrl+q",
     "agent_list": "<leader>a",
     "agent_cycle": "tab",
     "agent_cycle_reverse": "shift+tab",
