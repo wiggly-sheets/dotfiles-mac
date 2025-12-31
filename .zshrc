@@ -18,6 +18,7 @@ export PNPM_HOME="$HOME/Library/pnpm"
 export NVIM_APPNAME=nvim
 export GEM_HOME="$(ruby -e 'puts Gem.user_dir')"
 export PATH="$PNPM_HOME:$GEM_HOME/bin:$PATH:/opt/homebrew/opt/openjdk/bin:$PATH"
+export XDG_CONFIG_HOME="$HOME/.config"
 
 # -----------------------------
 # Oh My Zsh
@@ -194,4 +195,17 @@ export PATH="$PATH:/Users/Zeb/.lmstudio/bin"
 
 export PF_INFO="ascii title os host kernel uptime pkgs memory"
 
+export ATUIN_NOBIND="true"
 eval "$(atuin init zsh)"
+
+bindkey '^x' atuin-search
+
+# bind to the up key, which depends on terminal mode
+bindkey '^[[A' atuin-up-search
+bindkey '^[OA' atuin-up-search
+
+
+bindkey '^ ' autosuggest-execute
+
+
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=blue,bold,underline"

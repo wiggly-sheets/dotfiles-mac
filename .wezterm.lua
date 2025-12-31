@@ -21,14 +21,16 @@ end)
 
 config.color_scheme = "Tokyo Night"
 
+config.colors = { background = "black", foreground = "white" }
+
 config.enable_kitty_graphics = true
 config.enable_tab_bar = false
 config.window_decorations = "RESIZE"
 
 config.warn_about_missing_glyphs = false
 
-config.window_background_opacity = 0.2
-config.macos_window_background_blur = 10
+config.window_background_opacity = 0.1
+config.macos_window_background_blur = 50
 
 config.window_padding = {
 	left = 8,

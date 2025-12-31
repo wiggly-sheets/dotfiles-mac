@@ -1,7 +1,8 @@
 return {
 	{
 		"folke/tokyonight.nvim",
-		priority = 1000, -- make sure to load this before all the other start plugins
+		priority = 1000, -- make sure to load this before all the other plugins
+		style = "night",
 		config = function()
 			local transparent = true
 			local bg = "#000000"
@@ -13,6 +14,7 @@ return {
 			local fg_dark = "#B4D0E9"
 			local fg_gutter = "#627E97"
 			local border = "#547998"
+			local comments = "#999999"
 
 			require("tokyonight").setup({
 				style = "night",
@@ -31,12 +33,16 @@ return {
 					colors.bg_sidebar = bg_dark
 					colors.bg_statusline = bg_dark
 					colors.bg_visual = bg_visual
-					colors.border = border
+					colors.border = bg
 					colors.fg = fg
 					colors.fg_dark = fg_dark
 					colors.fg_float = fg
 					colors.fg_gutter = fg_gutter
 					colors.fg_sidebar = fg_dark
+				end,
+				on_highlights = function(hl)
+					hl.comment = { fg = comments }
+					hl.Comment = { fg = comments }
 				end,
 			})
 			-- load the colorscheme here
