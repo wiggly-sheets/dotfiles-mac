@@ -62,6 +62,10 @@ if type brew &>/dev/null; then
     compinit
   fi
 
+bindkey '^ ' autosuggest-execute
+
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=blue,bold,underline"
+
 # -----------------------------
 # History setup
 # -----------------------------
@@ -195,17 +199,14 @@ export PATH="$PATH:/Users/Zeb/.lmstudio/bin"
 
 export PF_INFO="ascii title os host kernel uptime pkgs memory"
 
+
+
+# atuin
 export ATUIN_NOBIND="true"
 eval "$(atuin init zsh)"
-
 bindkey '^x' atuin-search
-
 # bind to the up key, which depends on terminal mode
 bindkey '^[[A' atuin-up-search
 bindkey '^[OA' atuin-up-search
 
 
-bindkey '^ ' autosuggest-execute
-
-
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=blue,bold,underline"
