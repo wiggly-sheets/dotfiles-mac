@@ -31,8 +31,6 @@ tap "valkyrie00/bbrew"
 tap "waydabber/betterdisplay"
 tap "wickenico/wailbrew"
 tap "zackelia/formulae"
-# Portable ASCII art graphics library
-brew "aalib"
 # General-purpose data compression with high compression ratio
 brew "xz"
 # Zstandard is a real-time compression algorithm
@@ -42,11 +40,7 @@ brew "openssl@3"
 # Library for command-line editing
 brew "readline"
 # Interpreted, interactive, object-oriented programming language
-brew "python@3.14"
-# Interpreted, interactive, object-oriented programming language
 brew "python@3.13"
-# Email client that runs in your terminal
-brew "aerc"
 # Simple system information tool written in Python
 brew "archey4"
 # Record and share terminal sessions
@@ -59,12 +53,6 @@ brew "asitop"
 brew "astroterm"
 # Improved shell history for zsh, bash, fish and nushell
 brew "atuin"
-# Tool for generating GNU Standards-compliant Makefiles
-brew "automake"
-# Automatically restart SSH sessions and tunnels
-brew "autossh"
-# B2 Cloud Storage Command-Line Tools
-brew "b2-tools"
 # Terminal bandwidth utilization tool
 brew "bandwhich"
 # Bourne-Again SHell, a UNIX command interpreter
@@ -75,16 +63,12 @@ brew "bastet"
 brew "bat"
 # Bash scripts that integrate bat with various command-line tools
 brew "bat-extras"
-# GNU binary tools for native development
-brew "binutils"
-# Parser generator
-brew "bison"
+# Breadth-first version of find
+brew "bfs"
 # Get/set bluetooth power and discoverable state
 brew "blueutil"
 # Yet another cross-platform graphical process/system monitor
 brew "bottom"
-# Change macOS display brightness from the command-line
-brew "brightness"
 # Resource monitor. C++ version and continuation of bashtop and bpytop
 brew "btop"
 # Console version of 2048
@@ -93,16 +77,10 @@ brew "c2048"
 brew "calcurse"
 # Multi-shell multi-command argument completer
 brew "carapace"
-# GNU File, Shell, and Text utilities
-brew "coreutils"
-# Emacs dependency management
-brew "cask"
 # Console-based Audio Visualizer for ALSA
 brew "cava"
 # Console Bonsai is a bonsai tree generator, written in C using ncurses
 brew "cbonsai"
-# CloudFlare's PKI toolkit
-brew "cfssl"
 # Versatile and fast Unicode/ASCII/ANSI graphics renderer
 brew "chafa"
 # Play, record, convert, and stream audio and video
@@ -111,12 +89,8 @@ brew "ffmpeg"
 brew "cliclick"
 # Statistics utility to count lines of code
 brew "cloc"
-# Cross-platform make
-brew "cmake"
 # Console Matrix
 brew "cmatrix"
-# Music player with an ncurses based interface
-brew "cmus"
 # Create and run Linux containers using lightweight virtual machines
 brew "container", link: false
 # Manage Apple Container with Docker Compose files
@@ -127,16 +101,18 @@ brew "pkgconf"
 brew "imagemagick"
 # PDF rendering library (based on the xpdf-3.0 code base)
 brew "poppler"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.14"
 # Portable file server
 brew "copyparty"
+# GNU File, Shell, and Text utilities
+brew "coreutils"
 # Apjanke's fork of the classic cowsay project
 brew "cowsay"
 # CPU architecture fetching tool
 brew "cpufetch"
-# Securely send things from one computer to another
-brew "croc"
-# DDC monitor controls (brightness) for Mac OSX command-line
-brew "ddcctl"
+# POSIX-compliant descendant of NetBSD's ash (the Almquist SHell)
+brew "dash-shell"
 # Command-line DNS client
 brew "doge"
 # YAML Parser
@@ -155,12 +131,6 @@ brew "dungeon"
 brew "dust"
 # Select default apps for documents and URL schemes on macOS
 brew "duti"
-# Utilities for the ext2, ext3, and ext4 file systems
-brew "e2fsprogs"
-# Easily install prebuilt binaries from GitHub
-brew "eget"
-# Friendly and expressive shell
-brew "elvish"
 # Run arbitrary commands when files change
 brew "entr"
 # Perl lib for reading and writing EXIF metadata
@@ -179,8 +149,6 @@ brew "ffmpegthumbnailer"
 brew "figlet"
 # Collection of GNU find, xargs, and locate
 brew "findutils"
-# User-friendly command-line shell for UNIX-like operating systems
-brew "fish"
 # Command-line fuzzy finder written in Go
 brew "fzf"
 # Interactive git commands in the terminal
@@ -231,6 +199,8 @@ brew "httptap"
 brew "httrack"
 # Fast, highly customisable system info script with LGBTQ+ pride flags
 brew "hyfetch"
+# Command-line benchmarking tool
+brew "hyperfine"
 # Tool to report network interface bandwidth
 brew "ifstat"
 # Display an interface's bandwidth usage
@@ -251,10 +221,6 @@ brew "lazygit"
 brew "lazyssh"
 # Pager program similar to more
 brew "less"
-# Portable Foreign Function Interface library
-brew "libffi"
-# Library to communicate with iOS devices natively
-brew "libimobiledevice"
 # Rainbows and unicorns in your console!
 brew "lolcat"
 # Powerful, lightweight programming language
@@ -279,8 +245,6 @@ brew "media-control"
 brew "media-info"
 # Matroska media files manipulation tools
 brew "mkvtoolnix", link: false
-# Terminal-based music player
-brew "moc"
 # Deep clean and optimize your Mac
 brew "mole"
 # Drive some car across the moon
@@ -323,16 +287,10 @@ brew "nicotine-plus"
 brew "ninvaders"
 # Port scanning utility for large networks
 brew "nmap"
-# Retrieves currently playing media, and simulates media actions
-brew "nowplaying-cli"
 # Send push notifications to your phone or desktop via PUT/POST
 brew "ntfy"
-# Modern shell for the GitHub era
-brew "nushell"
 # Renders an animated, color, ANSI-text loop of the Poptart Cat
 brew "nyancat"
-# Bash-compatible Unix shell with more consistent syntax and semantics
-brew "oil"
 # Create, run, and share large language models (LLMs)
 brew "ollama"
 # Command-line Git information tool
@@ -343,8 +301,6 @@ brew "open-adventure"
 brew "ripgrep"
 # AI coding agent, built for the terminal
 brew "opencode"
-# Painless compression and decompression for your terminal
-brew "ouch"
 # Minecraft package manager and launcher
 brew "pacmc"
 # PAM module for reattaching to the user's GUI (Aqua) session
@@ -353,8 +309,6 @@ brew "pam-reattach"
 brew "pastel"
 # Pretty system information tool written in POSIX sh
 brew "pfetch"
-# General-purpose scripting language
-brew "php"
 # Display the PID number for a given process name
 brew "pidof"
 # Animated pipes terminal screensaver
@@ -393,8 +347,6 @@ brew "rmlint"
 brew "rmpc"
 # Utility that provides fast incremental file transfer
 brew "rsync"
-# Install Ruby, JRuby, Rubinius, TruffleRuby, or mruby
-brew "ruby-install"
 # Web search from the terminal
 brew "s-search"
 # CLI search and replace | Space Age seD
@@ -413,8 +365,6 @@ brew "sevenzip"
 brew "sl"
 # SMART hard drive monitoring
 brew "smartmontools"
-# Run a command at a particular time
-brew "snooze"
 # SOcket CAT: netcat on steroids
 brew "socat"
 # SOund eXchange: universal sound sample translator
@@ -437,12 +387,8 @@ brew "tag"
 brew "taskell"
 # Utility to modify the macOS Accessibility Database (TCC.db)
 brew "tccutil"
-# Enhanced, fully compatible version of the Berkeley C shell
-brew "tcsh"
 # Very fast implementation of tldr in Rust
 brew "tealdeer"
-# Modernized, complete, self-contained TeX/LaTeX engine
-brew "tectonic"
 # User interface to the TELNET protocol
 brew "telnet"
 # Send macOS User Notifications from the command-line
@@ -467,14 +413,10 @@ brew "topgrade"
 brew "trash"
 # Display directories as trees (with optional color/HTML output)
 brew "tree"
-# Command-line tool for URL parsing and manipulation
-brew "trurl"
 # Digital clock in ncurses
 brew "tty-clock"
 # Command-line tool for sharing terminal over the web
 brew "ttyd"
-# Language for application scale JavaScript development
-brew "typescript"
 # Simple terminal image viewer written in Rust
 brew "viu"
 # Language servers for HTML, CSS, JavaScript, and JSON extracted from vscode
@@ -493,8 +435,6 @@ brew "webtorrent-cli"
 brew "wget"
 # Successor of GNU Wget, a file and recursive website downloader
 brew "wget2"
-# Show the current WiFi network password
-brew "wifi-password"
 # Why is this running?
 brew "witr"
 # Friendly and fast tool for sending HTTP requests
@@ -515,10 +455,6 @@ brew "zsh-completions"
 brew "zsh-syntax-highlighting"
 # Better and friendly vi(vim) mode plugin for ZSH
 brew "zsh-vi-mode"
-# Terminal stock ticker with live updates and position tracking
-brew "achannarasappa/tap/ticker"
-# The modern, text-based browser
-brew "browsh-org/browsh/browsh"
 # A window border system for macOS
 brew "felixkratz/formulae/borders"
 # Custom macOS statusbar with shell plugin, interaction and graph support
@@ -531,12 +467,8 @@ brew "gschurck/fuzzybrew/fuzzybrew"
 brew "jackielii/tap/skhd-zig"
 # Drop in replacement for ueberzug written in C++
 brew "jstkdng/programs/ueberzugpp"
-# Simple hotkey-daemon for macOS.
-brew "koekeishiya/formulae/skhd", link: false
 # A tiling window manager for macOS based on binary space partitioning.
 brew "koekeishiya/formulae/yabai", args: ["HEAD"]
-# A background looping utility that maintains the battery level of Apple Silicon based Mac computers
-brew "lslqtz/formulae/bclm_loop"
 # A neofetch alternative for GitHub quick view
 brew "matars/gitfetch/gitfetch"
 # Check Temperature by using Apple System Management Control (Smc) tool
@@ -555,6 +487,8 @@ brew "socsieng/tap/sendkeys"
 brew "thezoraiz/ascii-image-converter/ascii-image-converter"
 # Modern TUI for managing Homebrew packages and casks on macOS and Linux
 brew "valkyrie00/bbrew/bbrew"
+# BetterDisplay CLI proxy
+brew "waydabber/betterdisplay/betterdisplaycli"
 # Get the battery level of all your devices on your Mac.
 cask "airbattery"
 # Enable Windows-like alt-tab
@@ -605,6 +539,8 @@ cask "container"
 cask "coteditor"
 # Download and manage your addons and mods
 cask "curseforge"
+# Customise menu item keyboard shortcuts
+cask "customshortcuts"
 # Server and cloud storage browser
 cask "cyberduck"
 # AI-powered translator
@@ -770,8 +706,6 @@ cask "plex"
 cask "popclip"
 # Install games and apps compiled for Microsoft Windows
 cask "porting-kit"
-# Command-line shell and scripting language
-cask "powershell"
 # Monitor process activity
 cask "processmonitor"
 # Peer to peer Bitorrent client
