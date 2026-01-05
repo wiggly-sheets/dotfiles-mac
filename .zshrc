@@ -92,7 +92,7 @@ alias lsgit='eza --long --color=always --icons=always --tree --all --git --git-r
 alias fvim='~/.config/scripts/fzf_listoldfiles.sh'
 alias ovim="~/.config/scripts/zoxide_openfiles_nvim.sh"
 alias fman="compgen -c | fzf | xargs man"
-alias kkk='nvim $(fzf --preview="bat --color=always {}")'
+alias kk='nvim $(fzf --preview="bat --color=always {}")'
 alias cp='cp -i'
 alias mv='mv -i'
 alias rm='rm -i'
@@ -106,9 +106,18 @@ alias af='anifetch -ff example.mp4'
 # fzf defaults & functions
 # -----------------------------
 export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
-export FZF_DEFAULT_OPTS="--preview 'bat --style=numbers --color=always --line-range :500 {}'"
+#export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+#export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
+
+export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
+  --color=fg:#d0d0d0,fg+:#d0d0d0,,bg:-1,bg+:#262626
+  --color=hl:#5f87af,hl+:#5fd7ff,info:#afaf87,marker:#87ff00
+  --color=prompt:#d7005f,spinner:#af5fff,pointer:#af5fff,header:#87afaf
+  --color=border:#262626,label:#aeaeae,query:#d9d9d9
+  --border="rounded" --border-label="" --preview-window="border-rounded" --prompt="> "
+  --marker=">" --pointer="◆" --separator="─" --scrollbar="│"
+  --preview "bat --style=numbers --color=always --line-range :500 {}"
+  '
 
 show_file_or_dir_preview="if [ -d {} ]; then eza --tree --color=always {} | head -200; else bat -n --color=always --line-range :500 {}; fi"
 
