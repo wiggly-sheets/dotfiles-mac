@@ -584,23 +584,55 @@ wifi:subscribe({ "mouse.exited", "mouse.entered.global", "mouse.exited.global" }
 end)
 
 -- ======== Hover effects ========
-local function add_hover(item)
-	item:subscribe("mouse.entered", function()
-		item:set({
-			background = {
-				drawing = true,
-				color = 0x40FFFFFF,
-				corner_radius = 20,
-				height = 30,
-				x_offset = 0,
-			},
-		})
-	end)
 
-	item:subscribe({ "mouse.exited", "mouse.entered.global", "mouse.exited.global" }, function()
-		item:set({ background = { drawing = true, height = 10, color = colors.transparent } })
-	end)
-end
+net_graph_down:subscribe("mouse.entered", function()
+	net_graph_up:set({
+		background = {
+			drawing = true,
+			color = 0x40FFFFFF,
+			corner_radius = 20,
+			height = 10,
+			y_offset = 0,
+		},
+	})
+	net_graph_down:set({
+		background = {
+			drawing = true,
+			color = 0x40FFFFFF,
+			corner_radius = 20,
+			height = 10,
+			x_offset = 0,
+		},
+	})
+end)
 
-add_hover(net_graph_down)
-add_hover(net_graph_up)
+net_graph_up:subscribe("mouse.entered", function()
+	net_graph_up:set({
+		background = {
+			drawing = true,
+			color = 0x40FFFFFF,
+			corner_radius = 20,
+			height = 10,
+			y_offset = 0,
+		},
+	})
+	net_graph_down:set({
+		background = {
+			drawing = true,
+			color = 0x40FFFFFF,
+			corner_radius = 20,
+			height = 10,
+			x_offset = 0,
+		},
+	})
+end)
+
+net_graph_down:subscribe({ "mouse.exited", "mouse.entered.global", "mouse.exited.global" }, function()
+	net_graph_up:set({ background = { drawing = true, height = 10, color = colors.transparent } })
+	net_graph_down:set({ background = { drawing = true, height = 10, color = colors.transparent } })
+end)
+
+net_graph_up:subscribe({ "mouse.exited", "mouse.entered.global", "mouse.exited.global" }, function()
+	net_graph_down:set({ background = { drawing = true, height = 20, color = colors.transparent } })
+	net_graph_up:set({ background = { drawing = true, height = 10, color = colors.transparent } })
+end)
