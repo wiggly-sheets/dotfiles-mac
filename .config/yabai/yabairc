@@ -134,6 +134,7 @@ FLOAT_APPS=(
   "^Epic Games Launcher$"
   "^Battle.net$"
   "^Folder Preview$"
+  "^Plexamp$"
 )
 
 for app in "${FLOAT_APPS[@]}"; do

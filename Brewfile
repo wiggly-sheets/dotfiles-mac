@@ -92,7 +92,7 @@ brew "cloc"
 # Console Matrix
 brew "cmatrix"
 # Create and run Linux containers using lightweight virtual machines
-brew "container", link: false
+brew "container"
 # Manage Apple Container with Docker Compose files
 brew "container-compose"
 # Package compiler and linker metadata toolkit
@@ -162,7 +162,7 @@ brew "gawk"
 # GitHub command-line tool
 brew "gh"
 # Multi-platform software reverse engineering framework
-brew "ghidra", link: false
+brew "ghidra"
 # Distributed revision control system
 brew "git"
 # Syntax-highlighting pager for git and diff output
@@ -244,7 +244,7 @@ brew "media-control"
 # Unified display of technical and tag data for audio/video
 brew "media-info"
 # Matroska media files manipulation tools
-brew "mkvtoolnix", link: false
+brew "mkvtoolnix"
 # Deep clean and optimize your Mac
 brew "mole"
 # Drive some car across the moon
@@ -702,6 +702,8 @@ cask "permute"
 cask "pingplace"
 # Home media player
 cask "plex"
+# Music player focusing on visuals
+cask "plexamp"
 # Used to access context-specific actions when text is selected
 cask "popclip"
 # Install games and apps compiled for Microsoft Windows
