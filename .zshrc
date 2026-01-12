@@ -101,7 +101,8 @@ alias up='topgrade'
 alias i2p='open http://127.0.01:7657 && ssh -NL 7657:localhost:7657 zeb@192.168.1.191'
 alias ac='cd && clear'
 alias af='anifetch -ff example.mp4'
-
+alias tg='topgrade'
+alias src='source ~/.zshrc'
 # -----------------------------
 # fzf defaults & functions
 # -----------------------------
