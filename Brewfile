@@ -83,7 +83,7 @@ brew "cava"
 brew "cbonsai"
 # Versatile and fast Unicode/ASCII/ANSI graphics renderer
 brew "chafa"
-# Play, record, convert, and stream audio and video
+# Play, record, convert, and stream select audio and video codecs
 brew "ffmpeg"
 # Tool for emulating mouse and keyboard events
 brew "cliclick"
@@ -97,7 +97,7 @@ brew "container"
 brew "container-compose"
 # Package compiler and linker metadata toolkit
 brew "pkgconf"
-# Tools and libraries to manipulate images in many formats
+# Tools and libraries to manipulate images in select formats
 brew "imagemagick"
 # PDF rendering library (based on the xpdf-3.0 code base)
 brew "poppler"
@@ -143,6 +143,8 @@ brew "fastfetch"
 brew "fd"
 # Download assets from a commit, branch, or tag of GitHub repositories
 brew "fetch"
+# Play, record, convert, and stream many audio and video codecs
+brew "ffmpeg-full"
 # Create thumbnails for your video files
 brew "ffmpegthumbnailer"
 # Banner-like program prints strings as ASCII art
@@ -490,7 +492,7 @@ brew "valkyrie00/bbrew/bbrew"
 # BetterDisplay CLI proxy
 brew "waydabber/betterdisplay/betterdisplaycli"
 # Get the battery level of all your devices on your Mac.
-cask "airbattery"
+cask "lihaoyun6/tap/airbattery"
 # Enable Windows-like alt-tab
 cask "alt-tab"
 # iOS App Store alternative
@@ -502,7 +504,7 @@ cask "apparency"
 # Tool to flash OS images to SD cards & USB drives
 cask "balenaetcher"
 # Control the platform power state of your Apple Silicon device
-cask "battery-toolkit"
+cask "mhaeuser/mhaeuser/battery-toolkit"
 # Online gaming platform
 cask "battle-net"
 # Installer for BetterDiscord
@@ -520,7 +522,7 @@ cask "bloom"
 # Mobile gaming platform
 cask "bluestacks"
 # Not so boring notch That Rocks 🎸🎶 
-cask "boring-notch"
+cask "theboredteam/boring-notch/boring-notch"
 # CD burning application
 cask "burn"
 # E-books management software
@@ -579,7 +581,7 @@ cask "freac"
 # 3D parametric modeller
 cask "freecad"
 # Use to eliminate months of up-front work and evaluate how well your game runs
-cask "game-porting-toolkit"
+cask "gcenx/wine/game-porting-toolkit"
 # Software reverse engineering (SRE) suite of tools
 cask "ghidra"
 # Free and open-source image editor
@@ -647,7 +649,7 @@ cask "mediainfo"
 # UI replacement for volume, brightness and now playing controls
 cask "mediamate"
 # Track your USB devices in the macOS menu bar
-cask "menubarusb"
+cask "rafaelswi/menubarusb/menubarusb"
 # Access the menu from anywhere
 cask "menuwhere"
 # Sandbox construction video game
@@ -690,6 +692,8 @@ cask "onyx"
 cask "openemu"
 # Replacement for Docker Desktop
 cask "orbstack"
+# WebKit based web browser
+cask "orion"
 # Monitors computer mic and webcam
 cask "oversight"
 # Share audio between two Bluetooth devices
@@ -699,7 +703,7 @@ cask "pcsx2"
 # Converts and edits video, audio or image files
 cask "permute"
 # Control where notifications appear on your screen.
-cask "pingplace"
+cask "notwadegrimridge/brew/pingplace"
 # Home media player
 cask "plex"
 # Music player focusing on visuals
@@ -715,7 +719,7 @@ cask "qbittorrent"
 # Quick Look generator for Markdown files
 cask "qlmarkdown"
 # A lightweight and high-performance screen recorder for macOS.
-cask "quickrecorder"
+cask "lihaoyun6/tap/quickrecorder"
 # Protect your personal files
 cask "ransomwhere"
 # Imaging utility to install operating systems to a microSD card
@@ -741,7 +745,7 @@ cask "shottr"
 # Instant messaging application focusing on security
 cask "signal"
 # Porting tool, to make Windows programs/games into native apps
-cask "sikarugir"
+cask "kegworks-app/kegworks/sikarugir"
 # Automatically checks computer's security
 cask "silentknight"
 # Team communication and collaboration software
@@ -789,7 +793,7 @@ cask "utm"
 # Binary releases of VS Code without MS branding/telemetry/licensing
 cask "vscodium"
 # Manage Homebrew packages with a UI
-cask "wailbrew"
+cask "wickenico/wailbrew/wailbrew"
 # Torrent streaming application
 cask "webtorrent"
 # GPU-accelerated cross-platform terminal emulator and multiplexer
@@ -834,7 +838,6 @@ mas "MyWallpaper", id: 1552826194
 mas "Night Sky X", id: 475772902
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
-mas "Passepartout", id: 1433648537
 mas "PDFgear", id: 6469021132
 mas "Pixelmator Pro", id: 1289583905
 mas "Poolsuite FM", id: 1514817810
