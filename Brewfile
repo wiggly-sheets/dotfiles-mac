@@ -92,7 +92,7 @@ brew "cloc"
 # Console Matrix
 brew "cmatrix"
 # Create and run Linux containers using lightweight virtual machines
-brew "container"
+brew "container", link: false
 # Manage Apple Container with Docker Compose files
 brew "container-compose"
 # Package compiler and linker metadata toolkit
@@ -235,6 +235,8 @@ brew "lynx"
 brew "macchina"
 # Keep your Mac's application settings in sync
 brew "mackup"
+# Apple Silicon Monitor Top written in Go Lang
+brew "mactop"
 # Open-source, cross-platform JavaScript runtime environment
 brew "node"
 # Quickly generate a temporary email address
@@ -289,8 +291,6 @@ brew "nicotine-plus"
 brew "ninvaders"
 # Port scanning utility for large networks
 brew "nmap"
-# Send push notifications to your phone or desktop via PUT/POST
-brew "ntfy"
 # Renders an animated, color, ANSI-text loop of the Poptart Cat
 brew "nyancat"
 # Create, run, and share large language models (LLMs)
@@ -385,8 +385,6 @@ brew "svgo"
 brew "switchaudio-osx"
 # Manipulate and query tags on macOS files
 brew "tag"
-# Command-line Kanban board/task manager with support for Trello
-brew "taskell"
 # Utility to modify the macOS Accessibility Database (TCC.db)
 brew "tccutil"
 # Very fast implementation of tldr in Rust
@@ -511,6 +509,8 @@ cask "battle-net"
 cask "betterdiscord-installer"
 # Display management tool
 cask "betterdisplay"
+# Utility improving 3rd party mouse performance and functionalities
+cask "bettermouse"
 # Tool to customise input devices and automate computer systems
 cask "bettertouchtool@alpha"
 # 3D creation suite
@@ -823,6 +823,7 @@ mas "Developer", id: 640199958
 mas "Dropover", id: 1355679052
 mas "Final Cut Pro", id: 424389933
 mas "Folder Preview", id: 6698876601
+mas "Gemini 2", id: 1090488118
 mas "Gifski", id: 1351639930
 mas "HEIC Converter", id: 1294126402
 mas "InfoCard", id: 1110195348
@@ -831,7 +832,6 @@ mas "Keyword Search", id: 1558453954
 mas "Klack", id: 6446206067
 mas "Knights of the Old Republic", id: 416608891
 mas "Logic Pro", id: 634148309
-mas "Mactracker", id: 430255202
 mas "MainStage", id: 634159523
 mas "Motion", id: 434290957
 mas "MyWallpaper", id: 1552826194
@@ -857,7 +857,6 @@ mas "Velja", id: 1607635845
 mas "Xcode", id: 497799835
 mas "Xmind", id: 1327661892
 mas "YABA", id: 6747272081
-mas "ZeroDuplicates", id: 6738340521
 vscode "aaron-bond.better-comments"
 vscode "adamraichu.docx-viewer"
 vscode "adamraichu.zip-viewer"

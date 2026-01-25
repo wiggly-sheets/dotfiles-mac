@@ -188,7 +188,7 @@ ctrl - e : yabai -m window --focus stack.last
 ctrl - r : yabai -m window --focus stack.recent
 
 # unstack a window
-ctrl - u : yabai -m window --toggle float && yabai -m window --toggle float 
+ctrl - u : yabai -m window --toggle float && yabai -m window --toggle float
 
 # focus space
 alt - 1 : yabai -m space --focus 1
@@ -241,8 +241,8 @@ shift + alt - r : yabai -m window --space recent;
 
 # send window to space & follow focus
 shift + cmd - r : yabai -m window --space recent --focus
-shift + cmd - f : yabai -m window --space first --focus 
-shift + cmd - e : yabai -m window --space last --focus 
+shift + cmd - f : yabai -m window --space first --focus
+shift + cmd - e : yabai -m window --space last --focus
 shift + cmd - p : yabai -m window --space prev -- focus|| yabai -m window --space last --focus
 shift + cmd - n : yabai -m window --space next --focus || yabai -m window --space first -- focus
 shift + cmd - 1 : yabai -m window --space 1 --focus
@@ -256,7 +256,7 @@ shift + cmd - 8 : yabai -m window --space 8 --focus
 shift + cmd - 9 : yabai -m window --space 9 --focus
 shift + cmd - 0 : yabai -m window --space 10 --focus
 
-# make new space at last index & send window to it 
+# make new space at last index & send window to it
 shift + alt - a :  ~/dotfiles/.config/yabai/scripts/new_space_window.sh
 
 # make new space at last index, send window to it, & follow focus
@@ -315,7 +315,10 @@ shift + cmd - s : sketchybar --reload
 # toggle sketchybar visbility
 shift + cmd - b : sketchybar --bar hidden=toggle
 
-# toggle borders visiblity
+# borders visibility on
+shift + cmd - x : borders active_color=0xFFFFFFFF
+
+# borders visiblity off
 shift + cmd - z : borders active_color=0x00000000
 
 # toggle menu bar padding, window gaps, and padding for internal or external displa

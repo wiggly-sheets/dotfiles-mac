@@ -372,7 +372,7 @@ style_configs:
   - 0.6901960784313725
   - 0.7058823529411765
   - 0.6823529411764706
-  - 0.0
+  - 0.3
   char_spacing_cell_width_ratio: 0.5
   char_spacing_font_size_ratio: 0.5
   char_spacing_strategy: cell_width_relative
@@ -445,4 +445,4 @@ style_configs:
   - 0.06
   - 1.0
   text_y_offset: 0.0
-  window_opacity: 1.0
+  window_opacity: 1
