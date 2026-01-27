@@ -539,6 +539,8 @@ cask "connectmenow"
 cask "container"
 # Plain-text editor for web pages, program source codes and more
 cask "coteditor"
+# Tool to run Windows software
+cask "crossover"
 # Download and manage your addons and mods
 cask "curseforge"
 # Customise menu item keyboard shortcuts
@@ -700,6 +702,8 @@ cask "oversight"
 cask "pairpods"
 # Playstation 2 Emulator
 cask "pcsx2"
+# Utility to uninstall apps and remove leftover files from old/uninstalled apps
+cask "pearcleaner"
 # Converts and edits video, audio or image files
 cask "permute"
 # Control where notifications appear on your screen.
@@ -831,6 +835,7 @@ mas "Keynote", id: 409183694
 mas "Keyword Search", id: 1558453954
 mas "Klack", id: 6446206067
 mas "Knights of the Old Republic", id: 416608891
+mas "Lickable Menu Bar", id: 6444217677
 mas "Logic Pro", id: 634148309
 mas "MainStage", id: 634159523
 mas "Motion", id: 434290957
@@ -838,6 +843,7 @@ mas "MyWallpaper", id: 1552826194
 mas "Night Sky X", id: 475772902
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
+mas "Parcel", id: 375589283
 mas "PDFgear", id: 6469021132
 mas "Pixelmator Pro", id: 1289583905
 mas "Poolsuite FM", id: 1514817810
