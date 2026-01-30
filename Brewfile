@@ -781,7 +781,7 @@ cask "thelowtechguys-cling"
 # Connectivity software for the TI-84 Plus family of graphing calculators
 cask "ti-connect-ce"
 # Multi-platform VNC client and server
-cask "tigervnc-viewer"
+cask "tigervnc"
 # Utility to change the default backup interval of Time Machine
 cask "timemachineeditor"
 # Web browser focusing on security
@@ -831,19 +831,21 @@ mas "Gemini 2", id: 1090488118
 mas "Gifski", id: 1351639930
 mas "HEIC Converter", id: 1294126402
 mas "InfoCard", id: 1110195348
-mas "Keynote", id: 409183694
+mas "Keynote", id: 361285480
 mas "Keyword Search", id: 1558453954
 mas "Klack", id: 6446206067
 mas "Knights of the Old Republic", id: 416608891
 mas "Lickable Menu Bar", id: 6444217677
 mas "Logic Pro", id: 634148309
+mas "Mactracker", id: 430255202
 mas "MainStage", id: 634159523
 mas "Motion", id: 434290957
 mas "MyWallpaper", id: 1552826194
 mas "Night Sky X", id: 475772902
-mas "Numbers", id: 409203825
-mas "Pages", id: 409201541
+mas "Numbers", id: 361304891
+mas "Pages", id: 361309726
 mas "Parcel", id: 375589283
+mas "Passepartout", id: 1433648537
 mas "PDFgear", id: 6469021132
 mas "Pixelmator Pro", id: 1289583905
 mas "Poolsuite FM", id: 1514817810
