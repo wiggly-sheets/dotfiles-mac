@@ -7,7 +7,7 @@ local apple = sbar.add("item", {
 		font = { size = 14 },
 		string = icons.apple,
 		position = "left",
-		padding_left = 2,
+		padding_left = 5,
 		padding_right = 2,
 		color = colors.white,
 	},
@@ -38,7 +38,6 @@ for i = 1, max_items, 1 do
 				size = 10,
 			},
 		},
-		click_script = "$CONFIG_DIR/helpers/menus/bin/menus -s " .. i,
 	})
 
 	menu_items[i] = menu
@@ -81,6 +80,16 @@ menu_watcher:subscribe("front_app_switched", "display_change", "forced", "system
 local theme_dir = os.getenv("HOME") .. "/.config/sketchybar/themes/"
 local theme_file = os.getenv("HOME") .. "/.config/sketchybar/current_theme"
 
+local function get_current_theme()
+	local f = io.open(theme_file, "r")
+	if not f then
+		return nil
+	end
+	local t = f:read("*l")
+	f:close()
+	return t
+end
+
 -- Read theme names dynamically from theme_dir
 local function list_themes()
 	local themes = {}
@@ -104,47 +113,108 @@ local function list_themes()
 	return themes
 end
 
-local function cycle_theme()
+local wallpaper_cache = {
+	list = nil,
+	last_scan = 0,
+	ttl = 10, -- seconds
+}
+
+local function list_wallpapers()
+	local now = os.time()
+
+	-- return cached results if still fresh
+	if wallpaper_cache.list and (now - wallpaper_cache.last_scan) < wallpaper_cache.ttl then
+		return wallpaper_cache.list
+	end
+
+	local wallpapers = {}
+	local p = io.popen('find "$HOME/Pictures/Wallpapers" -type f')
+	if not p then
+		return wallpapers
+	end
+
+	for file in p:lines() do
+		table.insert(wallpapers, file)
+	end
+	p:close()
+
+	table.sort(wallpapers)
+
+	wallpaper_cache.list = wallpapers
+	wallpaper_cache.last_scan = now
+
+	return wallpapers
+end
+
+local function clear_popup(prefix)
+	sbar.remove("/" .. prefix .. "\\..*/")
+	sbar.remove("/.*\\.header/")
+end
+
+local function open_theme_popup(anchor)
+	clear_popup("theme.item")
+	clear_popup("wallpaper.item")
+
+	-- Header
+	sbar.add("item", "theme.header", {
+		position = "popup." .. anchor.name,
+		label = {
+			string = "Themes",
+			font = { family = settings.default, size = 11, style = "Bold" },
+		},
+		padding_left = 10,
+		padding_right = 10,
+	})
+
+	local current = get_current_theme()
 	local themes = list_themes()
-	if #themes == 0 then
-		return -- nothing to do
+
+	for i, theme in ipairs(themes) do
+		local is_active = theme == current
+		sbar.add("item", "theme.item." .. i, {
+			position = "popup." .. anchor.name,
+			label = theme,
+			background = {
+				drawing = is_active,
+				color = is_active and 0x40FFFFFF or colors.transparent,
+				corner_radius = 6,
+			},
+			click_script = "echo '" .. theme .. "' > " .. theme_file .. " && sketchybar --reload",
+		})
 	end
 
-	-- read current theme safely
-	local f = io.open(theme_file, "r")
-	local current = f and f:read("*l") or nil
-	if f then
-		f:close()
-	end
-
-	-- fallback to first theme if missing or empty
-	if not current or current == "" then
-		current = themes[1]
-	end
-
-	-- find current index
-	local next_index = 1
-	for i, t in ipairs(themes) do
-		if t == current then
-			next_index = (i % #themes) + 1
-			break
-		end
-	end
-
-	-- write next theme to the file
-	local f2 = io.open(theme_file, "w")
-	if f2 then
-		f2:write(themes[next_index])
-		f2:close()
-	end
+	anchor:set({ popup = { drawing = "toggle" } })
 end
 
-local function theme_click_script()
-	cycle_theme()
-	sbar.exec("sketchybar --reload")
-end
+local function open_wallpaper_popup(anchor)
+	clear_popup("wallpaper.item")
+	clear_popup("theme.item")
 
--- local menu_click_script = "$CONFIG_DIR/helpers/menus/bin/menus -s 0"
+	-- Header
+	sbar.add("item", "wallpaper.header", {
+		position = "popup." .. anchor.name,
+		label = {
+			string = "Wallpapers",
+			font = { family = settings.default, size = 11, style = "Bold" },
+		},
+		padding_left = 10,
+		padding_right = 10,
+	})
+
+	local wallpapers = list_wallpapers()
+
+	for i, wp in ipairs(wallpapers) do
+		sbar.add("item", "wallpaper.item." .. i, {
+			position = "popup." .. anchor.name,
+			label = wp:match("([^/]+)$"),
+			click_script = 'osascript -e \'tell application "System Events" to set picture of every desktop to "'
+				.. wp
+				.. "\"'",
+		})
+	end
+
+	anchor:set({ popup = { drawing = "toggle", height = 25 } })
+end
 
 for i, menu in ipairs(menu_items) do
 	menu:subscribe("mouse.clicked", function(env)
@@ -175,9 +245,9 @@ for i, menu in ipairs(menu_items) do
 				end
 			end
 		elseif env.BUTTON == "right" then
-			sbar.exec("yabai -m config menubar_opacity 1.0")
+			open_wallpaper_popup(menu)
 		elseif env.BUTTON == "other" then
-			theme_click_script()
+			open_theme_popup(menu)
 		end
 	end)
 end
@@ -217,15 +287,6 @@ local left_apple_script =
 local right_apple_script =
 	"osascript -e 'tell application \"System Events\" to key code 0 using {command down, option down, control down}'"
 
-local middle_apple_script = [[
-osascript -e 'tell application "System Events"
-    set thePic to do shell script "find ~/Pictures/Wallpapers -type f | gshuf -n 1"
-    repeat with d in desktops
-        set picture of d to thePic
-    end repeat
-end tell'
-]]
-
 apple:subscribe("mouse.clicked", function(env)
 	if env.BUTTON == "left" then
 		-- highlight this item
@@ -240,7 +301,6 @@ apple:subscribe("mouse.clicked", function(env)
 		})
 		sbar.exec(left_apple_script)
 	elseif env.BUTTON == "right" then
-		-- highlight this item
 		apple:set({
 			background = {
 				drawing = true,
@@ -251,8 +311,6 @@ apple:subscribe("mouse.clicked", function(env)
 			},
 		})
 		sbar.exec(right_apple_script)
-	elseif env.BUTTON == "other" then
-		sbar.exec(middle_apple_script)
 	end
 end)
 

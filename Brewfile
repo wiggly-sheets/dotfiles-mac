@@ -95,14 +95,14 @@ brew "cmatrix"
 brew "container", link: false
 # Manage Apple Container with Docker Compose files
 brew "container-compose"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.14"
 # Package compiler and linker metadata toolkit
 brew "pkgconf"
 # Tools and libraries to manipulate images in select formats
 brew "imagemagick"
 # PDF rendering library (based on the xpdf-3.0 code base)
 brew "poppler"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.14"
 # Portable file server
 brew "copyparty"
 # GNU File, Shell, and Text utilities
@@ -164,7 +164,7 @@ brew "gawk"
 # GitHub command-line tool
 brew "gh"
 # Multi-platform software reverse engineering framework
-brew "ghidra"
+brew "ghidra", link: false
 # Distributed revision control system
 brew "git"
 # Syntax-highlighting pager for git and diff output
@@ -638,6 +638,8 @@ cask "libreoffice"
 cask "little-snitch"
 # Discover, download, and run local LLMs
 cask "lm-studio"
+# Software for Logitech devices
+cask "logi-options+"
 # Trims video and audio files losslessly
 cask "losslesscut"
 # File system integration
@@ -784,6 +786,8 @@ cask "ti-connect-ce"
 cask "tigervnc"
 # Utility to change the default backup interval of Time Machine
 cask "timemachineeditor"
+# Alter the character of your TonePrint pedal
+cask "toneprint"
 # Web browser focusing on security
 cask "tor-browser"
 # Batch rename utility
