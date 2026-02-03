@@ -194,7 +194,7 @@ local function add_hover(item)
 				color = 0x40FFFFFF,
 				corner_radius = 20,
 				height = 20,
-				x_offset = 0,
+				x_offset = 2,
 			},
 		})
 	end)

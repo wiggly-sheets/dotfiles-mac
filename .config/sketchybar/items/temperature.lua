@@ -88,7 +88,7 @@ local function add_hover(item)
 			background = {
 				drawing = true,
 				color = 0x40FFFFFF,
-				corner_radius = 15,
+				corner_radius = 20,
 				height = 40,
 				x_offset = 0,
 				y_offset = 5,

@@ -101,10 +101,13 @@ local function list_themes()
 	end
 
 	for file in p:lines() do
-		-- strip .lua extension
-		local name = file:match("^(.*)%.lua$")
-		if name then
-			table.insert(themes, name)
+		-- Skip hidden files (dotfiles)
+		if not file:match("^%.") then
+			-- strip .lua extension
+			local name = file:match("^(.*)%.lua$")
+			if name then
+				table.insert(themes, name)
+			end
 		end
 	end
 	p:close()
@@ -134,7 +137,11 @@ local function list_wallpapers()
 	end
 
 	for file in p:lines() do
-		table.insert(wallpapers, file)
+		-- Skip hidden files (dotfiles)
+		local basename = file:match("([^/]+)$")
+		if basename and not basename:match("^%.") then
+			table.insert(wallpapers, file)
+		end
 	end
 	p:close()
 
@@ -177,13 +184,16 @@ local function open_theme_popup(anchor)
 			background = {
 				drawing = is_active,
 				color = is_active and 0x40FFFFFF or colors.transparent,
-				corner_radius = 6,
+				corner_radius = 20,
 			},
 			click_script = "echo '" .. theme .. "' > " .. theme_file .. " && sketchybar --reload",
 		})
 	end
 
-	anchor:set({ popup = { drawing = "toggle" } })
+	anchor:subscribe("mouse.exited.global", function()
+		clear_popup("theme.item")
+		clear_popup("wallpaper.item")
+	end)
 end
 
 local function open_wallpaper_popup(anchor)
@@ -203,17 +213,36 @@ local function open_wallpaper_popup(anchor)
 
 	local wallpapers = list_wallpapers()
 
+	local function get_current_wallpaper()
+		local f = io.popen("osascript -e 'tell application \"System Events\" to get picture of every desktop'")
+		if not f then
+			return nil
+		end
+		local result = f:read("*a")
+		f:close()
+		result = result:gsub("%s+$", "") -- trim trailing whitespace
+		return result
+	end
+
+	local current_wp = get_current_wallpaper()
+
 	for i, wp in ipairs(wallpapers) do
+		local is_active = current_wp and current_wp:match(wp:match("([^/]+)$")) -- simple match by filename
 		sbar.add("item", "wallpaper.item." .. i, {
 			position = "popup." .. anchor.name,
 			label = wp:match("([^/]+)$"),
+			background = {
+				drawing = is_active and true or false,
+				color = is_active and 0x40FFFFFF or colors.transparent,
+				corner_radius = 20,
+			},
 			click_script = 'osascript -e \'tell application "System Events" to set picture of every desktop to "'
 				.. wp
 				.. "\"'",
 		})
 	end
 
-	anchor:set({ popup = { drawing = "toggle", height = 25 } })
+	anchor:set({ popup = { drawing = "toggle", height = 25, align = "center" } })
 end
 
 for i, menu in ipairs(menu_items) do
@@ -287,6 +316,9 @@ local left_apple_script =
 local right_apple_script =
 	"osascript -e 'tell application \"System Events\" to key code 0 using {command down, option down, control down}'"
 
+local middle_apple_script =
+	'o=$(yabai -m config menubar_opacity); awk "BEGIN{exit !($o>=1)}" && { yabai -m config menubar_opacity 0.0; sketchybar --bar hidden=false; } || { yabai -m config menubar_opacity 1.0; sketchybar --bar hidden=true; }'
+
 apple:subscribe("mouse.clicked", function(env)
 	if env.BUTTON == "left" then
 		-- highlight this item
@@ -311,15 +343,18 @@ apple:subscribe("mouse.clicked", function(env)
 			},
 		})
 		sbar.exec(right_apple_script)
+	elseif env.BUTTON == "other" then
+		apple:set({
+			background = {
+				drawing = true,
+				color = 0x40FFFFFF,
+				corner_radius = 20,
+				height = 20,
+				x_offset = 1,
+			},
+			sbar.exec(middle_apple_script),
+		})
 	end
-end)
-
-apple:subscribe("mouse.exited", function()
-	apple:set({
-		background = {
-			drawing = false,
-		},
-	})
 end)
 
 apple:subscribe("mouse.entered", function()
@@ -329,8 +364,16 @@ apple:subscribe("mouse.entered", function()
 			color = 0x40FFFFFF,
 			corner_radius = 10,
 			height = 20,
-			x_offset = 1,
+			x_offset = 2,
 			width = 0,
+		},
+	})
+end)
+
+apple:subscribe("mouse.exited", function()
+	apple:set({
+		background = {
+			drawing = false,
 		},
 	})
 end)

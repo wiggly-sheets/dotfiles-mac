@@ -8,19 +8,24 @@ local settings = require("default")
 local display_left_click =
 	'osascript -e \'tell application "System Events" to keystroke "d" using {command down, option down, control down}\''
 
-local display_right_click =
+local display_wallper_click =
 	'osascript -e \'tell application "System Events" to tell process "Wallper" to click menu bar item 1 of menu bar 2\''
 
-local display_middle_click =
+local display_flux_click =
 	'osascript -e \'tell application "System Events" to tell process "Flux" to click menu bar item 1 of menu bar 2\''
+
+local display_switch_click =
+	'p=$(yabai -m config external_bar); if [ "$p" = "all:0:0" ]; then yabai -m config external_bar main:9:0 && yabai -m config window_gap 10 && yabai -m config top_padding 0 && yabai -m config bottom_padding 10 && yabai -m config left_padding 10 && yabai -m config right_padding 10; else yabai -m config external_bar all:0:0 && yabai -m config window_gap 5 && yabai -m config top_padding 1 && yabai -m config bottom_padding 1 && yabai -m config left_padding 1 && yabai -m config right_padding 1; fi'
 
 local function handle_display_click(env)
 	if env.BUTTON == "left" then
 		sbar.exec(display_left_click)
 	elseif env.BUTTON == "right" then
-		sbar.exec(display_right_click)
+		sbar.exec(display_flux_click)
 	elseif env.BUTTON == "other" then
-		sbar.exec(display_middle_click)
+		sbar.exec(display_switch_click)
+	elseif env.MODIFIER == "cmd" then
+		sbar.exec(display_wallper_click)
 	end
 end
 
