@@ -28,7 +28,7 @@ yabai -m config window_insertion_point focused
 yabai -m config window_zoom_persist true
 
 # Disabled because browser popups will disappear if its enabled
-yabai -m config window_topmost off 
+yabai -m config window_topmost off
 
 yabai -m config split_type auto
 
@@ -163,7 +163,7 @@ yabai -m config focus_follows_mouse autoraise
 # modifier for clicking and dragging with mouse
 yabai -m config mouse_modifier alt
 
-# set modifier + left-click drag to resize window	
+# set modifier + left-click drag to resize window
 yabai -m config mouse_action1 resize
 
 # set modifier + right-click drag to move window
@@ -179,7 +179,7 @@ yabai -m config insert_feedback_color 0xFFFFFFFF
 yabai -m config debug_output off
 
 # bootstrap jankyborders with yabai service
-borders hidpi=on width=1.0 active_color="glow(0xFFFFFFFF)" inactive_color="0x0xff1e1e1e" style=round ax_focus=on order=above blacklist="Stats,Dropover,iPhone Mirroring,Passwords,SoundSource,Stickies" &
+borders hidpi=on width=1.0 active_color="(0xFFFFFFFF)" inactive_color="0x0xff1e1e1e" style=round ax_focus=on order=above blacklist="Stats,Dropover,iPhone Mirroring,Passwords,SoundSource,Stickies" &
 
 # auto updating HEAD from brew
 YABAI_CERT=yabai-cert sh -c "$(curl -fsSL "https://git.io/update-yabai")" &

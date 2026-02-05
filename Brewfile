@@ -97,12 +97,6 @@ brew "container", link: false
 brew "container-compose"
 # Interpreted, interactive, object-oriented programming language
 brew "python@3.14"
-# Package compiler and linker metadata toolkit
-brew "pkgconf"
-# Tools and libraries to manipulate images in select formats
-brew "imagemagick"
-# PDF rendering library (based on the xpdf-3.0 code base)
-brew "poppler"
 # Portable file server
 brew "copyparty"
 # GNU File, Shell, and Text utilities
@@ -175,6 +169,8 @@ brew "pydantic"
 brew "glances"
 # GNU implementation of the famous stream editor
 brew "gnu-sed"
+# Package compiler and linker metadata toolkit
+brew "pkgconf"
 # Ping, but with a graph
 brew "gping"
 # GNU grep, egrep and fgrep
@@ -207,6 +203,8 @@ brew "hyperfine"
 brew "ifstat"
 # Display an interface's bandwidth usage
 brew "iftop"
+# Tools and libraries to manipulate images in select formats
+brew "imagemagick"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
 # Command-line note taker
@@ -319,6 +317,8 @@ brew "pipes-sh"
 brew "pipx"
 # Cowsay but with ponies
 brew "ponysay"
+# PDF rendering library (based on the xpdf-3.0 code base)
+brew "poppler"
 # Theme for zsh
 brew "powerlevel10k"
 # Wrapper to colorize and simplify ping's output

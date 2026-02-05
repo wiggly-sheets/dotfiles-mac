@@ -24,7 +24,7 @@ local function handle_display_click(env)
 		sbar.exec(display_flux_click)
 	elseif env.BUTTON == "other" then
 		sbar.exec(display_switch_click)
-	elseif env.MODIFIER == "cmd" then
+	elseif env.MODIFIER == "cmd" and env.BUTTON == "left" then
 		sbar.exec(display_wallper_click)
 	end
 end

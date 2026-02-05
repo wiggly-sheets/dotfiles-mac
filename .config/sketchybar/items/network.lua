@@ -573,7 +573,7 @@ wifi:subscribe("mouse.entered", function()
 			color = 0x40FFFFFF,
 			corner_radius = 10,
 			height = 20,
-			x_offset = 0,
+			x_offset = 1,
 			y_offset = 0,
 		},
 	})
