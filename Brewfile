@@ -499,6 +499,8 @@ cask "altserver"
 cask "app-buddy"
 # Inspect application bundles
 cask "apparency"
+# Multi-track audio editor and recorder
+cask "audacity"
 # Tool to flash OS images to SD cards & USB drives
 cask "balenaetcher"
 # Control the platform power state of your Apple Silicon device
@@ -614,8 +616,6 @@ cask "imageoptim"
 cask "inkscape"
 # Download manager
 cask "jdownloader"
-# Menu bar manager
-cask "jordanbaird-ice@beta"
 # Keyboard customiser
 cask "karabiner-elements"
 # File archiver
@@ -778,6 +778,8 @@ cask "syntax-highlight"
 cask "taskexplorer"
 # Messaging app with a focus on speed and security
 cask "telegram"
+# Menu bar manager
+cask "thaw"
 # Instant fuzzy finder for files including system and hidden files
 cask "thelowtechguys-cling"
 # Connectivity software for the TI-84 Plus family of graphing calculators
