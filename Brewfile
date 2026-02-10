@@ -7,6 +7,7 @@ tap "gromgit/brewtils"
 tap "gschurck/fuzzybrew"
 tap "homielab/mountmate", "https://github.com/homielab/mountmate"
 tap "jackielii/tap"
+tap "jsattler/tap"
 tap "jstkdng/programs"
 tap "kegworks-app/kegworks"
 tap "koekeishiya/formulae"
@@ -413,6 +414,8 @@ brew "topgrade"
 brew "trash"
 # Display directories as trees (with optional color/HTML output)
 brew "tree"
+# Command-line utility to manage Tarantool applications
+brew "tt"
 # Digital clock in ncurses
 brew "tty-clock"
 # Command-line tool for sharing terminal over the web
@@ -477,6 +480,8 @@ brew "narugit/tap/smctemp"
 brew "nohajc/anylinuxfs/anylinuxfs"
 # User-friendly, lightweight TUI for disk imaging
 brew "philocalyst/tap/caligula"
+# Terminal-based typing test built with Rust and Ratatui
+brew "philocalyst/tap/ttyper"
 # Swiss Army Knife for macOS
 brew "rgcr/formulae/m-cli"
 # Tetris in your terminal
@@ -507,12 +512,16 @@ cask "balenaetcher"
 cask "mhaeuser/mhaeuser/battery-toolkit"
 # Online gaming platform
 cask "battle-net"
+# The macOS screen recorder you deserve - always free and open source
+cask "jsattler/tap/bettercapture"
 # Installer for BetterDiscord
 cask "betterdiscord-installer"
 # Display management tool
 cask "betterdisplay"
 # Utility improving 3rd party mouse performance and functionalities
 cask "bettermouse"
+# Screen capturing and editing tool
+cask "bettershot"
 # Tool to customise input devices and automate computer systems
 cask "bettertouchtool@alpha"
 # 3D creation suite
@@ -662,6 +671,8 @@ cask "minecraft"
 cask "mission-control-plus"
 # Set of tools to create, alter and inspect Matroska files (MKV)
 cask "mkvtoolnix-app"
+# Smooths scrolling and set mouse scroll directions independently
+cask "mos"
 # Mounts servers and cloud storages as a disk on the desktop
 cask "mountain-duck"
 # Menubar app to easily manage external drives
@@ -724,8 +735,6 @@ cask "processmonitor"
 cask "qbittorrent"
 # Quick Look generator for Markdown files
 cask "qlmarkdown"
-# A lightweight and high-performance screen recorder for macOS.
-cask "lihaoyun6/tap/quickrecorder"
 # Protect your personal files
 cask "ransomwhere"
 # Imaging utility to install operating systems to a microSD card
@@ -746,8 +755,6 @@ cask "script-debugger"
 cask "sf-symbols"
 # App that enables mouse-free UI interaction
 cask "shortcat"
-# Screenshot measurement and annotation tool
-cask "shottr"
 # Instant messaging application focusing on security
 cask "signal"
 # Porting tool, to make Windows programs/games into native apps
