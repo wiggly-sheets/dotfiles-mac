@@ -221,3 +221,4 @@ bindkey '^[[A' atuin-up-search
 bindkey '^[OA' atuin-up-search
 
 
+eval "$(atuin init zsh)"

@@ -464,6 +464,8 @@ brew "felixkratz/formulae/borders"
 brew "felixkratz/formulae/sketchybar"
 # Turns macOS input fields into real vim buffers
 brew "felixkratz/formulae/svim"
+# Interactive TUI for Homebrew
+brew "gromgit/brewtils/taproom"
 # Fuzzy search for Homebrew packages
 brew "gschurck/fuzzybrew/fuzzybrew"
 # Simple hotkey daemon for macOS, written in Zig
@@ -721,6 +723,8 @@ cask "pearcleaner"
 cask "permute"
 # Control where notifications appear on your screen.
 cask "notwadegrimridge/brew/pingplace"
+# Allows installation and use of software designed for Windows
+cask "playonmac"
 # Home media player
 cask "plex"
 # Music player focusing on visuals
@@ -821,6 +825,8 @@ cask "whatsapp"
 cask "whisky"
 # Original Xbox Emulator
 cask "xemu"
+# Open-source version of the X.Org X Window System
+cask "xquartz"
 # Gecko based web browser
 cask "zen"
 # Video communication and virtual meeting platform
