@@ -321,8 +321,7 @@ shift + cmd - x : borders active_color=0xFFFFFFFF
 # borders visiblity off
 shift + cmd - z : borders active_color=0x00000000
 
-# toggle menu bar padding, window gaps, and padding for internal or external displa
-shift + cmd - m : sh -c 'p=$(yabai -m config external_bar); if [ "$p" = "all:0:0" ]; then yabai -m config external_bar main:9:0 && yabai -m config window_gap 10 && yabai -m config top_padding 0 && yabai -m config bottom_padding 10 && yabai -m config left_padding 10 && yabai -m config right_padding 10; else yabai -m config external_bar all:0:0 && yabai -m config window_gap 5 && yabai -m config top_padding 1 && yabai -m config bottom_padding 1 && yabai -m config left_padding 1 && yabai -m config right_padding 1; fi'
-
+# toggle menu bar padding, window gaps, and padding for internal or external display, and adjust sketchybar height for external display
+shift + cmd - m : sh -c 'p=$(yabai -m config external_bar); if [ "$p" = "all:0:0" ]; then yabai -m config external_bar main:9:0 && yabai -m config window_gap 10 && yabai -m config top_padding 0 && yabai -m config bottom_padding 10 && yabai -m config left_padding 10 && yabai -m config right_padding 10 && sketchybar --bar y_offset=3; else yabai -m config external_bar all:0:0 && yabai -m config window_gap 5 && yabai -m config top_padding 1 && yabai -m config bottom_padding 1 && yabai -m config left_padding 1 && yabai -m config right_padding 1 && sketchybar --bar y_offset=0; fi'
 # toggle native menu bar visbility
 shift + cmd - v : sh -c 'o=$(yabai -m config menubar_opacity); awk "BEGIN{exit !($o>=1)}" && { yabai -m config menubar_opacity 0.0; sketchybar --bar hidden=false; } || { yabai -m config menubar_opacity 1.0; sketchybar --bar hidden=true; }'

@@ -137,6 +137,9 @@ FLOAT_APPS=(
   "^Plexamp$"
   "^MacWhisper$"
   "^Cotypist$"
+  "^Logi Options+$"
+  "^bettershot$"
+  "BetterCapture"
 )
 
 for app in "${FLOAT_APPS[@]}"; do

@@ -28,7 +28,6 @@ for i = 1, max_items, 1 do
 		padding_left = 0,
 		padding_right = 2,
 		drawing = false,
-		y_offset = 0,
 		icon = { drawing = true },
 		label = {
 			color = colors.white,
