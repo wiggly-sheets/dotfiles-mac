@@ -8,11 +8,11 @@ local front_app = sbar.add("item", "front_app", {
 		drawing = true,
 		font = "sketchybar-app-font:Regular:15.0",
 		string = "",
-		color = colors.white
+		color = colors.white,
 	},
 	label = {
 		drawing = false,
-		color = colors.white
+		color = colors.white,
 	},
 	padding_right = 2,
 	updates = true,
@@ -27,23 +27,24 @@ front_app:subscribe("front_app_switched", function(env)
 
 	front_app:set({
 		-- Enable icon drawing and set the proper icon font, string, and color
-			icon = {
+		icon = {
 			background = {
-                image = "app." .. env.INFO,
-				scale = .75,
-                drawing = true,
-            },
-	--		icon = {
-	--		drawing = true,
-	--		string = icon,
-	--		font = "sketchybar-app-font:Regular:15.0",
-	--	},
-		-- Set the app name as the label
-		label = {
-			string = app .. ": ",
-			font = settings.default,
+				image = "app." .. env.INFO,
+				scale = 0.50,
+				drawing = true,
+			},
+			--		icon = {
+			--		drawing = true,
+			--		string = icon,
+			--		font = "sketchybar-app-font:Regular:15.0",
+			--	},
+			-- Set the app name as the label
+			label = {
+				string = app .. ": ",
+				font = settings.default,
+			},
 		},
-	}})
+	})
 end)
 
 -- Window title item
