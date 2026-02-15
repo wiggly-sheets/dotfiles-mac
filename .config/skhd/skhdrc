@@ -316,10 +316,10 @@ shift + cmd - s : sketchybar --reload
 shift + cmd - b : sketchybar --bar hidden=toggle
 
 # borders visibility on
-shift + cmd - x : borders active_color=0xFFFFFFFF
+shift + cmd - z : borders active_color=0xFFFFFFFF
 
 # borders visiblity off
-shift + cmd - z : borders active_color=0x00000000
+shift + cmd - x : borders active_color=0x00000000
 
 # toggle menu bar padding, window gaps, and padding for internal or external display, and adjust sketchybar height for external display
 shift + cmd -m : ~/dotfiles/.config/yabai/scripts/layout.sh

@@ -30,7 +30,7 @@ front_app:subscribe("front_app_switched", function(env)
 		icon = {
 			background = {
 				image = "app." .. env.INFO,
-				scale = 0.50,
+				scale = 0.01,
 				drawing = true,
 			},
 			--		icon = {
