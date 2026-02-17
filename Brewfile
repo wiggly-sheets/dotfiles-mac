@@ -627,6 +627,8 @@ cask "imageoptim"
 cask "inkscape"
 # Download manager
 cask "jdownloader"
+# Pie menu
+cask "kando"
 # Keyboard customiser
 cask "karabiner-elements"
 # File archiver
@@ -777,6 +779,8 @@ cask "soundsource"
 cask "stats"
 # Video game digital distribution service
 cask "steam"
+# Open-source media center
+cask "stremio"
 # Mux and tag mp4 files
 cask "subler"
 # Application for inspecting installer packages
@@ -839,6 +843,7 @@ mas "Blackmagic Disk Speed Test", id: 425264550
 mas "Bonjourr Startpage", id: 1615431236
 mas "Broadcasts", id: 1469995354
 mas "Color Picker", id: 1545870783
+mas "Colorful Folder", id: 1576476152
 mas "Compressor", id: 424390742
 mas "Dark Night", id: 1592844577
 mas "Dato", id: 1470584107
@@ -849,6 +854,7 @@ mas "Folder Preview", id: 6698876601
 mas "Gemini 2", id: 1090488118
 mas "Gifski", id: 1351639930
 mas "HEIC Converter", id: 1294126402
+mas "IconizeFolder", id: 6478772538
 mas "InfoCard", id: 1110195348
 mas "Keynote", id: 361285480
 mas "Keyword Search", id: 1558453954
@@ -867,6 +873,7 @@ mas "Parcel", id: 375589283
 mas "Passepartout", id: 1433648537
 mas "PDFgear", id: 6469021132
 mas "Pixelmator Pro", id: 1289583905
+mas "Plash", id: 1494023538
 mas "Poolsuite FM", id: 1514817810
 mas "Refined GitHub", id: 1519867270
 mas "Sandkorn", id: 1377973524
@@ -878,6 +885,7 @@ mas "Star Wars®: Knights of the Old Republic™ II", id: 960778634
 mas "Startup Manager", id: 1296723195
 mas "Swift Playground", id: 1496833156
 mas "TestFlight", id: 899247664
+mas "Tinted Folders Pro", id: 1529959811
 mas "uBlock Origin Lite", id: 6745342698
 mas "Unsplash Wallpapers", id: 1284863847
 mas "Velja", id: 1607635845
