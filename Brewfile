@@ -809,6 +809,8 @@ cask "toneprint"
 cask "tor-browser"
 # Batch rename utility
 cask "transnomino"
+# Easy to use text extraction tool
+cask "trex"
 # Run commands and display their output on the desktop
 cask "ubersicht"
 # Newsreader and Usenet client

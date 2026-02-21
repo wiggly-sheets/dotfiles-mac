@@ -74,7 +74,7 @@ local function update_menus(env)
 	end)
 end
 
-menu_watcher:subscribe("front_app_switched", "display_change", "forced", "system_woke", update_menus)
+menu_watcher:subscribe("front_app_switched", "space_change", "display_change", "forced", "system_woke", update_menus)
 
 local theme_dir = os.getenv("HOME") .. "/.config/sketchybar/themes/"
 local theme_file = os.getenv("HOME") .. "/.config/sketchybar/current_theme"
