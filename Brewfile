@@ -1,5 +1,7 @@
 tap "achannarasappa/tap"
 tap "browsh-org/browsh"
+tap "catskull/homebrew", "https://github.com/catskull/homebrew"
+tap "edde746/plezy", "https://github.com/edde746/plezy"
 tap "felixkratz/formulae"
 tap "filosottile/musl-cross"
 tap "gcenx/wine"
@@ -22,6 +24,7 @@ tap "notwadegrimridge/brew"
 tap "philocalyst/tap"
 tap "rafaelswi/menubarusb"
 tap "rgcr/formulae"
+tap "ruittenb/tap"
 tap "samtay/tui"
 tap "sikarugir-app/sikarugir"
 tap "slp/krun"
@@ -32,6 +35,7 @@ tap "valkyrie00/bbrew"
 tap "waydabber/betterdisplay"
 tap "wickenico/wailbrew"
 tap "zackelia/formulae"
+tap "zimengxiong/tools"
 # General-purpose data compression with high compression ratio
 brew "xz"
 # Zstandard is a real-time compression algorithm
@@ -576,6 +580,8 @@ cask "do-not-disturb"
 cask "dolphin"
 # Downloads videos from different websites
 cask "downie"
+# Matrix collaboration client
+cask "element"
 # Launcher for *Epic Games* games
 cask "epic-games"
 # Tool for organising and renaming movies, TV shows, anime or music
@@ -707,8 +713,8 @@ cask "omnidisksweeper"
 cask "only-switch"
 # Verify system files structure, run miscellaneous maintenance and more
 cask "onyx"
-# Retro video game emulation
-cask "openemu"
+# Retro video game emulation for macOS (ARM build)
+cask "catskull/homebrew/openemu-arm"
 # Replacement for Docker Desktop
 cask "orbstack"
 # WebKit based web browser
@@ -731,6 +737,8 @@ cask "playonmac"
 cask "plex"
 # Music player focusing on visuals
 cask "plexamp"
+# Modern Plex client built with Flutter
+cask "edde746/plezy/plezy"
 # Used to access context-specific actions when text is selected
 cask "popclip"
 # Install games and apps compiled for Microsoft Windows
@@ -775,6 +783,10 @@ cask "sloth"
 cask "sony-ps-remote-play"
 # Sound and audio controller
 cask "soundsource"
+# Space navigation and management utility with Yabai support
+cask "zimengxiong/tools/spacecommand"
+# View and navigate Spaces (Virtual Desktops) from the menu bar
+cask "ruittenb/tap/spaceman"
 # System monitor for the menu bar
 cask "stats"
 # Video game digital distribution service
@@ -856,6 +868,7 @@ mas "Folder Preview", id: 6698876601
 mas "Gemini 2", id: 1090488118
 mas "Gifski", id: 1351639930
 mas "HEIC Converter", id: 1294126402
+mas "Ice Cubes", id: 6444915884
 mas "IconizeFolder", id: 6478772538
 mas "InfoCard", id: 1110195348
 mas "Keynote", id: 361285480
@@ -932,7 +945,6 @@ vscode "kevingamer3d2.selene-vscode"
 vscode "kevinrose.vsc-python-indent"
 vscode "kisstkondoros.vscode-gutter-preview"
 vscode "learn-pack.learnpack-vscode"
-vscode "louisyoungx.shibuya"
 vscode "magicstack.magicpython"
 vscode "mechatroner.rainbow-csv"
 vscode "mgesbert.python-path"
