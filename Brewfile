@@ -729,8 +729,6 @@ cask "pcsx2"
 cask "pearcleaner"
 # Converts and edits video, audio or image files
 cask "permute"
-# Control where notifications appear on your screen.
-cask "notwadegrimridge/brew/pingplace"
 # Allows installation and use of software designed for Windows
 cask "playonmac"
 # Home media player
