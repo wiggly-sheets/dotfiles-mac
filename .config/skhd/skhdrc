@@ -1,4 +1,4 @@
-# Use custom shell (skips interactive shell overhead)
+ # Use custom shell (skips interactive shell overhead)
 .shell "/bin/dash"
 
 # Blacklist applications (skip hotkey processing)
