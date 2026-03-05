@@ -8,7 +8,7 @@ local notif_db = os.getenv("HOME") .. "/Library/Group Containers/group.com.apple
 local notifications = sbar.add("item", "widgets.notifications", {
 	position = "right",
 	width = 5,
-	y_offset = 14,
+	y_offset = 12,
 	padding_right = 12,
 	icon = {
 		string = "",
@@ -18,7 +18,7 @@ local notifications = sbar.add("item", "widgets.notifications", {
 	label = {
 		string = "",
 		font = { family = settings.default, size = 8 },
-		color = colors.white
+		color = colors.white,
 	},
 	drawing = true, -- keep its space reserved so layout doesn't shift
 	update_freq = 30, -- check every 30 seconds

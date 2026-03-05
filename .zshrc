@@ -211,8 +211,6 @@ export PATH="$PATH:/Users/Zeb/.lmstudio/bin"
 
 export PF_INFO="ascii title os host kernel uptime pkgs memory"
 
-
-
 # atuin
 export ATUIN_NOBIND="true"
 eval "$(atuin init zsh)"
@@ -221,5 +219,5 @@ bindkey '^x' atuin-search
 bindkey '^[[A' atuin-up-search
 bindkey '^[OA' atuin-up-search
 
-
 eval "$(atuin init zsh)"
+export PATH="/opt/homebrew/opt/lua@5.4/bin:$PATH"
