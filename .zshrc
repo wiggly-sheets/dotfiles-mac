@@ -122,7 +122,7 @@ eval "$(zoxide init zsh)"
 # ------------------------------------------------
 command -v batman >/dev/null && eval "$(batman --export-env)"
 command -v thefuck >/dev/null && eval "$(thefuck --alias fk)"
-command -v pipx >/dev/null && eval "$(register-python-argcomplete pipx)"
+#command -v pipx >/dev/null && eval "$(register-python-argcomplete pipx)"
 command -v carapace >/dev/null && source <(carapace _carapace)
 
 # ------------------------------------------------
