@@ -230,8 +230,6 @@ brew "less"
 brew "lolcat"
 # Powerful, lightweight programming language
 brew "lua"
-# Powerful, lightweight programming language
-brew "lua@5.4"
 # Package manager for the Lua programming language
 brew "luarocks"
 # Text-based web browser
