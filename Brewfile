@@ -210,6 +210,8 @@ brew "ifstat"
 brew "iftop"
 # Tools and libraries to manipulate images in select formats
 brew "imagemagick"
+# Tools and libraries to manipulate images in many formats
+brew "imagemagick-full"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
 # Command-line note taker

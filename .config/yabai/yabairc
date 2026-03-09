@@ -43,11 +43,11 @@ yabai -m config window_animation_easing easeOutElastic
 # New window spawns to the right if vertical split, or bottom if horizontal split
 yabai -m config window_placement second_child
 
-# padding of 1 required for borders
-yabai -m config top_padding 1
-yabai -m config bottom_padding 1
-yabai -m config left_padding 1
-yabai -m config right_padding 1
+# padding of 1 required for borders -- 0 for no borders
+yabai -m config top_padding 0
+yabai -m config bottom_padding 0
+yabai -m config left_padding 0
+yabai -m config right_padding 0
 
 #  window gaps
 yabai -m config window_gap 5
@@ -182,7 +182,7 @@ yabai -m config insert_feedback_color 0xFFFFFFFF
 yabai -m config debug_output off
 
 # bootstrap jankyborders with yabai service
-borders hidpi=on width=1.0 active_color="(0xFFFFFFFF)" inactive_color="0x0xff1e1e1e" style=round ax_focus=on order=above blacklist="Stats,Dropover,iPhone Mirroring,Passwords,SoundSource,Stickies" &
+# borders hidpi=on width=1.0 active_color="(0xFFFFFFFF)" inactive_color="0x0xff1e1e1e" style=round ax_focus=on order=above blacklist="Stats,Dropover,iPhone Mirroring,Passwords,SoundSource,Stickies" &
 
 # auto updating HEAD from brew
 YABAI_CERT=yabai-cert sh -c "$(curl -fsSL "https://git.io/update-yabai")" &

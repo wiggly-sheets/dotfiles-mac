@@ -1,0 +1,15 @@
+#!/bin/bash
+
+options=(
+hidpi=on
+width=1.0
+active_color=0xFFFFFFFF
+inactive_color=0x0xff1e1e1e
+style=round
+ax_focus=on
+order=above
+blacklist="Stats,Dropover,iPhone Mirroring,Passwords,SoundSource,Stickies"
+)
+
+borders "${options[@]}"
+
