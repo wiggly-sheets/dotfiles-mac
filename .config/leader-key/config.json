@@ -3,59 +3,33 @@
     {
       "actions" : [
         {
-          "actions" : [
-            {
-              "key" : "h",
-              "type" : "application",
-              "value" : "/Applications/Helium.app"
-            },
-            {
-              "key" : "s",
-              "type" : "application",
-              "value" : "/Applications/Safari.app"
-            },
-            {
-              "key" : "z",
-              "type" : "application",
-              "value" : "/Applications/Zen.app"
-            },
-            {
-              "key" : "t",
-              "type" : "application",
-              "value" : "/Applications/Tor Browser.app"
-            }
-          ],
-          "key" : "b",
-          "type" : "group"
+          "key" : "h",
+          "type" : "application",
+          "value" : "/Applications/Helium.app"
         },
         {
-          "key" : "w",
+          "key" : "s",
           "type" : "application",
-          "value" : "/Applications/WezTerm.app"
+          "value" : "/Applications/Safari.app"
         },
         {
-          "key" : "m",
+          "key" : "z",
           "type" : "application",
-          "value" : "/System/Applications/Mail.app"
-        },
-        {
-          "key" : "c",
-          "type" : "application",
-          "value" : "/Applications/Chromatix.app"
+          "value" : "/Applications/Zen.app"
         },
         {
           "key" : "t",
           "type" : "application",
-          "value" : "/System/Applications/Messages.app"
+          "value" : "/Applications/Tor Browser.app"
         },
         {
-          "key" : "r",
+          "key" : "o",
           "type" : "application",
-          "value" : "/System/Applications/Reminders.app"
+          "value" : "/Applications/Orion.app"
         }
       ],
-      "key" : "a",
-      "label" : "apps",
+      "key" : "b",
+      "label" : "Browser",
       "type" : "group"
     },
     {
@@ -77,7 +51,135 @@
         }
       ],
       "key" : "r",
-      "label" : "raycast",
+      "label" : "Raycast",
+      "type" : "group"
+    },
+    {
+      "actions" : [
+        {
+          "key" : "w",
+          "type" : "application",
+          "value" : "/Applications/WezTerm.app"
+        },
+        {
+          "key" : "i",
+          "type" : "application",
+          "value" : "/Applications/iTerm.app"
+        },
+        {
+          "key" : "t",
+          "type" : "application",
+          "value" : "/System/Applications/Utilities/Terminal.app"
+        }
+      ],
+      "key" : "t",
+      "label" : "Terminal",
+      "type" : "group"
+    },
+    {
+      "actions" : [
+        {
+          "key" : "w",
+          "type" : "application",
+          "value" : "/Applications/WhatsApp.app"
+        },
+        {
+          "key" : "s",
+          "type" : "application",
+          "value" : "/Applications/Signal.app"
+        },
+        {
+          "key" : "m",
+          "type" : "application",
+          "value" : "/System/Applications/Mail.app"
+        },
+        {
+          "key" : "i",
+          "type" : "application",
+          "value" : "/System/Applications/Messages.app"
+        },
+        {
+          "key" : "t",
+          "type" : "application",
+          "value" : "/Applications/Telegram.app"
+        }
+      ],
+      "key" : "m",
+      "label" : "Messaging",
+      "type" : "group"
+    },
+    {
+      "actions" : [
+        {
+          "key" : "n",
+          "type" : "application",
+          "value" : "/System/Applications/Notes.app"
+        },
+        {
+          "key" : "r",
+          "type" : "application",
+          "value" : "/System/Applications/Reminders.app"
+        },
+        {
+          "key" : "p",
+          "type" : "application",
+          "value" : "/Applications/Pages Creator Studio.app"
+        },
+        {
+          "key" : "k",
+          "type" : "application",
+          "value" : "/Applications/Keynote Creator Studio.app"
+        },
+        {
+          "key" : "l",
+          "type" : "application",
+          "value" : "/Applications/LibreOffice.app"
+        },
+        {
+          "key" : "s",
+          "type" : "application",
+          "value" : "/Applications/Numbers Creator Studio.app"
+        },
+        {
+          "key" : "c",
+          "type" : "application",
+          "value" : "/System/Applications/Calculator.app"
+        },
+        {
+          "key" : "d",
+          "type" : "application",
+          "value" : "/System/Applications/Calendar.app"
+        }
+      ],
+      "key" : "p",
+      "label" : "Productivity",
+      "type" : "group"
+    },
+    {
+      "actions" : [
+        {
+          "key" : "c",
+          "type" : "application",
+          "value" : "/Applications/Chromatix.app"
+        },
+        {
+          "key" : "p",
+          "type" : "application",
+          "value" : "/Applications/Plexamp.app"
+        },
+        {
+          "key" : "m",
+          "type" : "application",
+          "value" : "/System/Applications/Music.app"
+        },
+        {
+          "key" : "i",
+          "type" : "application",
+          "value" : "/Applications/IINA.app"
+        }
+      ],
+      "key" : "a",
+      "label" : "Music",
       "type" : "group"
     }
   ],
