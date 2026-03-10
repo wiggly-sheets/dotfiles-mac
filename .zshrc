@@ -20,6 +20,15 @@ setopt share_history
 setopt hist_expire_dups_first
 setopt hist_verify
 export EDITOR="nvim"
+ZSH="$HOME/.oh-my-zsh"
+ZSH_TMUX_AUTOSTART=true
+export PNPM_HOME="$HOME/Library/pnpm"
+export NVIM_APPNAME=nvim
+export GEM_HOME="$(ruby -e 'puts Gem.user_dir')"
+export PATH="$PNPM_HOME:$GEM_HOME/bin:$PATH:/opt/homebrew/opt/openjdk/bin:$PATH"
+export NEOVIDE_CONFIG="/Users/Zeb/dotfiles/.config/neovide/config.toml"
+export EZA_CONFIG_DIR="/Users/Zeb/dotfiles/.config/eza/"
+export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense' # optional
 
 # ------------------------------------------------
 # Homebrew / Linuxbrew paths
@@ -44,7 +53,7 @@ if command -v brew >/dev/null 2>&1; then
     export PATH="$HOMEBREW_PREFIX/bin:$HOMEBREW_PREFIX/sbin:$HOMEBREW_PREFIX/opt/curl/bin:$HOMEBREW_PREFIX/opt/openjdk/bin:$PATH"
 fi
 # ------------------------------------------------
-# Welcome banner (safe)
+# Welcome banner
 # ------------------------------------------------
 if command -v figlet >/dev/null && command -v lolcat >/dev/null; then
     figlet "Welcome, $USER" | lolcat
@@ -137,7 +146,12 @@ alias top='btop'
 alias cd='z'
 alias cat='bat'
 alias ls='eza --long --color=always --icons=always --all'
-alias lstree='eza --tree --icons=always --all'
+alias lstree='eza --long --color=always --icons=always --all --tree'
+alias lsgit='eza --long --color=always --icons=always --tree --all --git --git-repos'
+alias fvim='~/.config/scripts/fzf_listoldfiles.sh'
+alias ovim="~/.config/scripts/zoxide_openfiles_nvim.sh"
+alias fman="compgen -c | fzf | xargs man"
+alias kk='nvim $(fzf --preview="bat --color=always {}")'
 alias cp='cp -i'
 alias mv='mv -i'
 alias rm='rm -i'
@@ -145,6 +159,10 @@ alias lg='lazygit'
 alias up='topgrade'
 alias tg='topgrade'
 alias src='source ~/.zshrc'
+alias i2p='open http://127.0.01:7657 && ssh -NL 7657:localhost:7657 zeb@192.168.1.191'
+alias freenet='open http://127.0.0.1:7509 && ssh -NL 7509:localhost:7509 zeb@192.168.1.191'
+alias ac='cd && clear'
+alias af='anifetch -ff example.mp4'
 
 # ------------------------------------------------
 # Functions
