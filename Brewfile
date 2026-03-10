@@ -330,6 +330,8 @@ brew "poppler"
 brew "powerlevel10k"
 # Wrapper to colorize and simplify ping's output
 brew "prettyping"
+# OpenBSD and Darwin versions of pgrep, pkill, and pfind
+brew "proctools"
 # Monitor data's progress through a pipe
 brew "pv"
 # Generic syntax highlighter
@@ -633,6 +635,8 @@ cask "iina"
 cask "imageoptim"
 # Vector graphics editor
 cask "inkscape"
+# Terminal emulator as alternative to Apple's Terminal app
+cask "iterm2"
 # Download manager
 cask "jdownloader"
 # Pie menu
