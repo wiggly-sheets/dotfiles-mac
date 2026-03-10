@@ -306,7 +306,7 @@ meh - s : yabai -m window --toggle scratchpad || open -a TextEdit
 # show all scratchpad windows if inaccessible due to yabai restart or crash
 meh - a : yabai -m window --scratchpad recover
 
-# restart yabai/borders
+# restart yabai
 shift + cmd - y : yabai --restart-service
 
 # restart sketchybar
@@ -315,11 +315,8 @@ shift + cmd - s : sketchybar --reload
 # toggle sketchybar visbility
 shift + cmd - b : sketchybar --bar hidden=toggle
 
-# borders visibility on
-shift + cmd - z : ~/dotfiles/.config/yabai/scripts/borders_on.sh
-
-# borders visiblity off
-shift + cmd - x : ~/dotfiles/.config/yabai/scripts/borders_off.sh
+# toggle borders visiblity
+shift + cmd - c : ~/dotfiles/.config/yabai/scripts/borders_toggle.sh
 
 # toggle menu bar padding, window gaps, and padding for internal or external display, and adjust sketchybar height for external display
 shift + cmd -m : ~/dotfiles/.config/yabai/scripts/layout.sh
