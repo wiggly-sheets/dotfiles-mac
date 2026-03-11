@@ -47,7 +47,7 @@ local battery_item = sbar.add("item", "battery", {
 	icon = {
 		drawing = true,
 		string = icons.battery._100, -- initial icon
-		font = { family = settings.default, size = 12 },
+		font = { family = settings.default, size = 11 },
 		color = colors.green,
 	},
 	label = {

@@ -20,7 +20,7 @@ require("items.battery")
 require("items.display")
 require("items.audio")
 require("items.network")
-require("items.disk")
+require("items.storage")
 require("items.temperature")
 require("items.cpu_ram")
 

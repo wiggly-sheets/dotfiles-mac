@@ -2,11 +2,12 @@ local colors = require("colors")
 
 local folder = sbar.add("item", "folder", {
 	icon = {
-		font = { size = 13.5 },
+		font = { size = 13 },
 		string = "􀈖",
 		color = colors.white,
 	},
 	position = "right",
+	padding_right = -2,
 })
 
 local left_click_script =

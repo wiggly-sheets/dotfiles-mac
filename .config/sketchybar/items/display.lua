@@ -2,6 +2,28 @@ local colors = require("colors")
 local settings = require("default")
 
 -- ======================
+-- Display item
+-- ======================
+
+local display = sbar.add("item", "display", {
+	icon = {
+		drawing = true,
+		font = { size = 11 },
+		color = colors.white,
+		padding_right = 4,
+		padding_left = 0,
+	},
+	label = {
+		drawing = true,
+		font = { family = settings.default, size = 10 },
+		color = colors.yellow,
+		padding_right = 0,
+		padding_left = 0,
+	},
+	position = "right",
+})
+
+-- ======================
 -- Click scripts
 -- ======================
 
@@ -27,27 +49,6 @@ local function handle_display_click(env)
 		sbar.exec(display_wallper_click)
 	end
 end
-
--- ======================
--- Display item
--- ======================
-
-local display = sbar.add("item", "display", {
-	icon = {
-		drawing = true,
-		font = { size = 11 },
-		color = colors.white,
-		padding_right = 4,
-		padding_left = 0,
-	},
-	label = {
-		drawing = true,
-		font = { family = settings.default, size = 10 },
-		color = colors.yellow,
-		padding_right = 0,
-	},
-	position = "right",
-})
 
 -- Subscribe to mouse clicks
 display:subscribe("mouse.clicked", handle_display_click)

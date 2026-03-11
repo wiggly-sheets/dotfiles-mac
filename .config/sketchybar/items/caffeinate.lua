@@ -1,9 +1,10 @@
 local colors = require("colors")
+
 local caffeinate = sbar.add("item", "caffeinate", {
 	position = "right",
 	update_freq = 10,
 	padding_left = 2,
-	padding_right = 2,
+	padding_right = 0,
 	icon = {
 		color = colors.white,
 	},
@@ -24,11 +25,11 @@ local function update_caffeinate()
 	is_caffeinated(function(active)
 		if active then
 			caffeinate:set({
-				icon = { string = "􀸙", font = { size = 14 } },
+				icon = { string = "􀸙", font = { size = 13 } },
 			})
 		else
 			caffeinate:set({
-				icon = { string = "􀸘", font = { size = 14 } },
+				icon = { string = "􀸘", font = { size = 13 } },
 			})
 		end
 	end)

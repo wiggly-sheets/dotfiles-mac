@@ -134,12 +134,12 @@ local net_graph_down = sbar.add("graph", "widgets.net_graph_down", 42, {
 local wifi = sbar.add("item", "wifi.status", {
 	position = "right",
 	padding_right = -2,
-	padding_left = -2,
+	padding_left = -4,
 	icon = {
 		string = icons.wifi.disconnected,
 		font = {
 			family = settings.default,
-			size = 14.0,
+			size = 13.0,
 		},
 		color = colors.red,
 	},
