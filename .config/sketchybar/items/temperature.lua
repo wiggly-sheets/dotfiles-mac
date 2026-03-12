@@ -9,7 +9,7 @@ local cpu_temp_item = sbar.add("item", "cpu_temp", {
 	update_freq = 10,
 	position = "right",
 	padding_left = -51,
-	y_offset = 10,
+	y_offset = 7,
 	icon = { string = icons.cpu, padding_left = 5, color = colors.white },
 	label = { padding_left = 2, font = { family = settings.default, size = 10 } },
 
@@ -19,7 +19,7 @@ local cpu_temp_item = sbar.add("item", "cpu_temp", {
 local gpu_temp_item = sbar.add("item", "gpu_temp", {
 	update_freq = 10,
 	position = "right",
-	y_offset = -5,
+	y_offset = -6,
 	icon = { string = "􀧓", padding_left = 0, color = colors.white },
 	label = { padding_left = 2, font = { family = settings.default, size = 12 } },
 

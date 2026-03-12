@@ -46,7 +46,7 @@ local wifi_up = sbar.add("item", "widgets.wifi1", {
 		color = colors.blue,
 		string = "??? Bps",
 	},
-	y_offset = 8,
+	y_offset = 4,
 })
 
 local wifi_down = sbar.add("item", "widgets.wifi2", {
@@ -84,33 +84,69 @@ local net_graph_up = sbar.add("graph", "widgets.net_graph_up", 42, {
 	updates = true,
 	y_offset = 7,
 	padding_right = -2,
-
-	update_freq = 30,
 })
 
+-- History buffers for smoothing and dynamic scaling
 local up_history = {}
 local down_history = {}
-local max_up_history = 1
-local max_down_history = 1 -- number of values to average over for download
+
+-- how many samples to keep for smoothing
+local history_size = 6
+
+-- Convert rate strings like "123 Bps", "12 KBps", "1.2 MBps" into bytes/sec
+local function parse_rate(rate_str)
+	if not rate_str then
+		return 0
+	end
+
+	local value, unit = rate_str:match("([%d%.]+)%s*(%a+)")
+	value = tonumber(value) or 0
+
+	if not unit then
+		return value
+	end
+
+	unit = unit:lower()
+
+	if unit:match("kb") then
+		return value * 1024
+	elseif unit:match("mb") then
+		return value * 1024 * 1024
+	elseif unit:match("gb") then
+		return value * 1024 * 1024 * 1024
+	else
+		return value
+	end
+end
 
 net_graph_up:subscribe("network_update", function(env)
-	local up = tonumber(env.upload:match("%d+")) or 0
+	local up = parse_rate(env.upload)
 
-	-- add new value to history
+	-- store history
 	table.insert(up_history, up)
-	if #up_history > max_up_history then
+	if #up_history > history_size then
 		table.remove(up_history, 1)
 	end
 
-	-- calculate average
+	-- moving average smoothing
 	local sum = 0
 	for _, v in ipairs(up_history) do
 		sum = sum + v
 	end
 	local avg_up = sum / #up_history
 
-	-- normalize and push
-	net_graph_up:push({ math.min(avg_up / 1000, 1) })
+	-- Convert bytes/sec to a log scale based on real network units
+	-- 0 = bytes, 1 = KB, 2 = MB, 3 = GB
+	local unit_scale = math.log(avg_up + 1) / math.log(1024)
+
+	-- Normalize to graph height where:
+	-- ~KB sits low, ~MB sits high
+	local normalized = math.min(unit_scale / 3, 1)
+
+	-- small floor so idle traffic still shows movement
+	normalized = math.max(normalized, 0.02)
+
+	net_graph_up:push({ normalized })
 end)
 
 -- Download network graph
@@ -128,13 +164,12 @@ local net_graph_down = sbar.add("graph", "widgets.net_graph_down", 42, {
 	},
 	updates = true,
 	y_offset = -5,
-	update_freq = 30,
 })
 
 local wifi = sbar.add("item", "wifi.status", {
 	position = "right",
 	padding_right = -2,
-	padding_left = -4,
+	padding_left = -6,
 	icon = {
 		string = icons.wifi.disconnected,
 		font = {
@@ -147,23 +182,33 @@ local wifi = sbar.add("item", "wifi.status", {
 })
 
 net_graph_down:subscribe("network_update", function(env)
-	local down = tonumber(env.download:match("%d+")) or 0
+	local down = parse_rate(env.download)
 
-	-- add new value to history
+	-- store history
 	table.insert(down_history, down)
-	if #down_history > max_down_history then
+	if #down_history > history_size then
 		table.remove(down_history, 1)
 	end
 
-	-- calculate average
+	-- moving average smoothing
 	local sum = 0
 	for _, v in ipairs(down_history) do
 		sum = sum + v
 	end
 	local avg_down = sum / #down_history
 
-	-- normalize and push
-	net_graph_down:push({ math.min(avg_down / 1000, 1) })
+	-- Convert bytes/sec to a log scale based on real network units
+	-- 0 = bytes, 1 = KB, 2 = MB, 3 = GB
+	local unit_scale = math.log(avg_down + 1) / math.log(1024)
+
+	-- Normalize to graph height where:
+	-- ~KB sits low, ~MB sits high
+	local normalized = math.min(unit_scale / 3, 1)
+
+	-- prevent flat idle line
+	normalized = math.max(normalized, 0.02)
+
+	net_graph_down:push({ normalized })
 end)
 
 -- updates wifi logo based on conditions (connected, disconnected, vpn, ethernet)

@@ -2,7 +2,7 @@ local colors = require("colors")
 
 local control_center = sbar.add("item", "control_center", {
 	position = "right",
-	padding_right = -2,
+	padding_right = -4,
 	padding_left = 0,
 	icon = {
 		drawing = true,

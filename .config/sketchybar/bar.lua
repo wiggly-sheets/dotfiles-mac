@@ -1,17 +1,19 @@
 ---- Equivalent to the --bar domain
 local colors = require("colors")
+
 sbar.bar({
 
 	display = "main",
-	height = 40,
+	height = 30,
 	color = 0x0A0A0A0D,
-	--color = colors.transparent,
-	blur_radius = 10,
-	corner_radius = 0,
+	y_offset = 6,
+	blur_radius = 20,
+	corner_radius = 60,
 	padding_right = 0,
 	padding_left = 0,
 	topmost = "window",
-	border_color = 0x00000000,
-	border_width = 0.0,
-	margin = 0,
+	border_color = colors.grey,
+	border_width = 1.0,
+	margin = 6,
+	shadow = "off",
 })

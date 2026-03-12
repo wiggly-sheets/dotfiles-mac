@@ -7,8 +7,8 @@ local dnd = sbar.add("item", "dnd", {
 		font = { size = 15 },
 	},
 	position = "right",
-	padding_right = 8,
-	padding_left = 5,
+	padding_right = 3,
+	padding_left = 3,
 	update_freq = 10,
 })
 

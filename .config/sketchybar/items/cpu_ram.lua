@@ -24,7 +24,7 @@ local cpu = sbar.add("graph", "cpu", 42, {
 		},
 		align = "right",
 		width = 0,
-		y_offset = 10,
+		y_offset = 8,
 	},
 
 	updates = true,
@@ -64,7 +64,7 @@ sbar.add("item", "cpu.padding", {
 
 local ram = sbar.add("graph", "ram", 42, {
 	position = "right",
-	padding_right = -5,
+	padding_right = -6,
 	background = {
 		height = 22,
 		color = { alpha = 0 },
@@ -80,7 +80,7 @@ local ram = sbar.add("graph", "ram", 42, {
 		},
 		align = "right",
 		width = 0,
-		y_offset = 10,
+		y_offset = 8,
 	},
 	update_freq = 30,
 	updates = true,

@@ -7,7 +7,7 @@ local disk_icon = sbar.add("item", "disk_icon", {
 	position = "right",
 	padding_left = -30,
 	padding_right = 18,
-	y_offset = 8,
+	y_offset = 6,
 	icon = { font = { size = 14 } },
 })
 

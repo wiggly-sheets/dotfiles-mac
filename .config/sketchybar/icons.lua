@@ -8,17 +8,6 @@ local icons = {
 		dnd_off = "􀆹",
 		ram = "􀫦",
 		music = "􀑪",
-		weather = {
-			sunny = "􀆬",
-			partly = "􀇕",
-			cloudy = "􀇃",
-			rainy = "􀇉",
-			snowy = "􀇥",
-			clear = "􀆺",
-			foggy = "􀇋",
-			stormy = "􀇟",
-			sleet = "􀇑",
-		},
 		mic = {
 			muted = "􀊳",
 			on = "􀊱",
@@ -46,6 +35,8 @@ local icons = {
 			_25 = "􀛩",
 			_0 = "􀛪",
 			charging = "􀢋",
+			low_power_on = "􀋦",
+			low_power_off = "􀋥",
 		},
 		wifi = {
 			upload = "􀄨",
