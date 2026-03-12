@@ -3,7 +3,6 @@ if [[ -d /home/linuxbrew/.linuxbrew/bin ]]; then
     export PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:$PATH"
 fi
 
-
 # ------------------------------------------------
 # OS detection
 # ------------------------------------------------
@@ -163,6 +162,8 @@ alias i2p='open http://127.0.01:7657 && ssh -NL 7657:localhost:7657 zeb@192.168.
 alias freenet='open http://127.0.0.1:7509 && ssh -NL 7509:localhost:7509 zeb@192.168.1.191'
 alias ac='cd && clear'
 alias af='anifetch -ff example.mp4'
+alias lc='lazydocker'
+alias lssh='lazyssh'
 
 # ------------------------------------------------
 # Functions

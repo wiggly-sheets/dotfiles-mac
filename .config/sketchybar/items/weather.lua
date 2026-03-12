@@ -1,98 +1,69 @@
 local weather_vars = require("helpers.weather_vars")
 local colors = require("colors")
 local settings = require("default")
+local icons = require("icons")
 
-local icons = {
-	day = {
-		clear = "",
-		partly = "",
-		cloud = "",
-		fog = "",
-		rain = "",
-		shower = "",
-		snow = "",
-		sleet = "",
-		ice = "",
-		thunder = "",
-		snow_thunder = "",
+-- Condition codes grouped by icon type (shorter + easier to maintain)
+local condition_groups = {
+	clear = { 1000 },
+	partly = { 1003 },
+	cloud = { 1006, 1009 },
+
+	fog = { 1030, 1135, 1147 },
+
+	rain = {
+		1063,
+		1072,
+		1150,
+		1153,
+		1168,
+		1171,
+		1180,
+		1183,
+		1186,
+		1189,
+		1192,
+		1195,
+		1198,
+		1201,
 	},
-	night = {
-		clear = "",
-		partly = "",
-		cloud = "",
-		fog = "",
-		rain = "",
-		shower = "",
-		snow = "",
-		sleet = "",
-		ice = "",
-		thunder = "",
-		snow_thunder = "",
+
+	shower = { 1240, 1243, 1246 },
+
+	snow = {
+		1066,
+		1114,
+		1117,
+		1210,
+		1213,
+		1216,
+		1219,
+		1222,
+		1225,
+		1255,
+		1258,
 	},
+
+	sleet = { 1069, 1204, 1207, 1249, 1252 },
+
+	ice = { 1237, 1261, 1264 },
+
+	thunder = { 1087, 1273, 1276 },
+
+	snow_thunder = { 1279, 1282 },
 }
 
-local conditions = {
-	[1000] = "clear",
-	[1003] = "partly",
-	[1006] = "cloud",
-	[1009] = "cloud",
-
-	[1030] = "fog",
-	[1135] = "fog",
-	[1147] = "fog",
-
-	[1063] = "rain",
-	[1072] = "rain",
-	[1150] = "rain",
-	[1153] = "rain",
-	[1168] = "rain",
-	[1171] = "rain",
-	[1180] = "rain",
-	[1183] = "rain",
-	[1186] = "rain",
-	[1189] = "rain",
-	[1192] = "rain",
-	[1195] = "rain",
-	[1198] = "rain",
-	[1201] = "rain",
-
-	[1240] = "shower",
-	[1243] = "shower",
-	[1246] = "shower",
-
-	[1066] = "snow",
-	[1114] = "snow",
-	[1117] = "snow",
-	[1210] = "snow",
-	[1213] = "snow",
-	[1216] = "snow",
-	[1219] = "snow",
-	[1222] = "snow",
-	[1225] = "snow",
-	[1255] = "snow",
-	[1258] = "snow",
-
-	[1069] = "sleet",
-	[1204] = "sleet",
-	[1207] = "sleet",
-	[1249] = "sleet",
-	[1252] = "sleet",
-
-	[1237] = "ice",
-	[1261] = "ice",
-	[1264] = "ice",
-
-	[1087] = "thunder",
-	[1273] = "thunder",
-	[1276] = "thunder",
-
-	[1279] = "snow_thunder",
-	[1282] = "snow_thunder",
-}
+-- Build lookup table used by get_icon()
+local conditions = {}
+for group, codes in pairs(condition_groups) do
+	for _, code in ipairs(codes) do
+		conditions[code] = group
+	end
+end
 
 local weather = sbar.add("item", "widgets.weather", {
 	position = "right",
-	update_freq = 3600, --30 min updates
+	update_freq = 3600,
 	icon = {
 		font = { family = settings.default, style = "Regular", size = 13 },
 		padding_right = 0,
@@ -111,10 +82,11 @@ local weather = sbar.add("item", "widgets.weather", {
 local function get_icon(code, is_day)
 	local period = is_day == 1 and "day" or "night"
 	local group = conditions[code] or "cloud"
-	return icons[period][group]
+	return icons.weather[period][group]
 end
 
--- 🌡️ Temperature → Color mapping
+-- Temperature → Color mapping
+
 local function get_temp_color(temp)
 	if temp <= 40 then
 		return colors.blue
@@ -129,25 +101,49 @@ local function get_temp_color(temp)
 	end
 end
 
+-- Weather condition → Icon color mapping
+local function get_condition_color(code)
+	local group = conditions[code] or "cloud"
+
+	local map = {
+		clear = 0xFFFFD75F,
+		partly = 0xFFFFD75F,
+		cloud = 0xFFFFFFFF,
+		fog = 0xFFE0E0E0,
+		rain = 0xFF6CA0FF,
+		shower = 0xFF6CA0FF,
+		snow = 0xFFBFEFFF,
+		sleet = 0xFF9ED0FF,
+		ice = 0xFF9ED0FF,
+		thunder = 0xFFFF9A3C,
+		snow_thunder = 0xFFC8A6FF,
+	}
+
+	return map[group] or 0xFFFFFFFF
+end
+
 local function update_weather()
 	local url = string.format(
 		"curl -s 'http://api.weatherapi.com/v1/forecast.json?key=%s&q=%s&days=1'",
 		weather_vars.api_key,
 		weather_vars.location or "auto:ip"
 	)
+
 	sbar.exec(url, function(data)
 		local temp = math.floor(data.current.temp_f)
-		local icon = get_icon(data.current.condition.code, data.current.is_day)
-		local color = get_temp_color(temp)
+		local code = data.current.condition.code
+		local icon = get_icon(code, data.current.is_day)
+		local temp_color = get_temp_color(temp)
+		local icon_color = get_condition_color(code)
 
 		weather:set({
 			icon = {
 				string = icon,
-				color = color,
+				color = icon_color,
 			},
 			label = {
 				string = string.format("%s°F", temp),
-				color = color,
+				color = temp_color,
 			},
 		})
 	end)
@@ -169,7 +165,7 @@ weather:subscribe("mouse.clicked", function(env)
 	end
 end)
 
--- ======== Hover effects ========
+-- Hover effects
 local function add_hover(item)
 	item:subscribe("mouse.entered", function()
 		item:set({
