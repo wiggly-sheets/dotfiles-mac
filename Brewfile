@@ -22,6 +22,7 @@ tap "narugit/tap"
 tap "nohajc/anylinuxfs"
 tap "notwadegrimridge/brew"
 tap "philocalyst/tap"
+tap "playcover/playcover"
 tap "rafaelswi/menubarusb"
 tap "rgcr/formulae"
 tap "ruittenb/tap"
@@ -735,6 +736,8 @@ cask "pcsx2"
 cask "pearcleaner"
 # Converts and edits video, audio or image files
 cask "permute"
+# Sideload iOS apps and games
+cask "playcover/playcover/playcover-community"
 # Allows installation and use of software designed for Windows
 cask "playonmac"
 # Home media player

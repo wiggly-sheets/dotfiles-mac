@@ -2,106 +2,92 @@ local weather_vars = require("helpers.weather_vars")
 local colors = require("colors")
 local settings = require("default")
 
-local weather_icons_day = {
-	[1000] = "", -- Sunny/113
-	[1003] = "", -- Partly cloudy/116
-	[1006] = "", -- Cloudy/119
-	[1009] = "", -- Overcast/122
-	[1030] = "", -- Mist/143
-	[1063] = "", -- Patchy rain possible/176
-	[1066] = "", -- Patchy snow possible/179
-	[1069] = "", -- Patchy sleet possible/182
-	[1072] = "", -- Patchy freezing drizzle possible/185
-	[1087] = "", -- Thundery outbreaks possible/200
-	[1114] = "", -- Blowing snow/227
-	[1117] = "", -- Blizzard/230
-	[1135] = "", -- Fog/248
-	[1147] = "", -- Freezing fog/260
-	[1150] = "", -- Patchy light drizzle/263
-	[1153] = "", -- Light drizzle/266
-	[1168] = "", -- Freezing drizzle/281
-	[1171] = "", -- Heavy freezing drizzle/284
-	[1180] = "", -- Patchy light rain/293
-	[1183] = "", -- Light rain/296
-	[1186] = "", -- Moderate rain at times/299
-	[1189] = "", -- Moderate rain/302
-	[1192] = "", -- Heavy rain at times/305
-	[1195] = "", -- Heavy rain/308
-	[1198] = "", -- Light freezing rain/311
-	[1201] = "", -- Moderate or heavy freezing rain/314
-	[1204] = "", -- Light sleet/317
-	[1207] = "", -- Moderate or heavy sleet/320
-	[1210] = "", -- Patchy light snow/323
-	[1213] = "", -- Light snow/326
-	[1216] = "", -- Patchy moderate snow/329
-	[1219] = "", -- Moderate snow/332
-	[1222] = "", -- Patchy heavy snow/335
-	[1225] = "", -- Heavy snow/338
-	[1237] = "", -- Ice pellets/350
-	[1240] = "", -- Light rain shower/353
-	[1243] = "", -- Moderate or heavy rain shower/356
-	[1246] = "", -- Torrential rain shower/359
-	[1249] = "", -- Light sleet showers/362
-	[1252] = "", -- Moderate or heavy sleet showers/365
-	[1255] = "", -- Light snow showers/368
-	[1258] = "", -- Moderate or heavy snow showers/371
-	[1261] = "", -- Light showers of ice pellets/374
-	[1264] = "", -- Moderate or heavy showers of ice pellets/377
-	[1273] = "", -- Patchy light rain with thunder/386
-	[1276] = "", -- Moderate or heavy rain with thunder/389
-	[1279] = "", -- Patchy light snow with thunder/392
-	[1282] = "", -- Moderate or heavy snow with thunder/395
+local icons = {
+	day = {
+		clear = "",
+		partly = "",
+		cloud = "",
+		fog = "",
+		rain = "",
+		shower = "",
+		snow = "",
+		sleet = "",
+		ice = "",
+		thunder = "",
+		snow_thunder = "",
+	},
+	night = {
+		clear = "",
+		partly = "",
+		cloud = "",
+		fog = "",
+		rain = "",
+		shower = "",
+		snow = "",
+		sleet = "",
+		ice = "",
+		thunder = "",
+		snow_thunder = "",
+	},
 }
 
-local weather_icons_night = {
-	[1000] = "", -- Clear/113
-	[1003] = "", -- Partly cloudy/116
-	[1006] = "", -- Cloudy/119
-	[1009] = "", -- Overcast/122
-	[1030] = "", -- Mist/143
-	[1063] = "", -- Patchy rain possible/176
-	[1066] = "", -- Patchy snow possible/179
-	[1069] = "", -- Patchy sleet possible/182
-	[1072] = "", -- Patchy freezing drizzle possible/185
-	[1087] = "", -- Thundery outbreaks possible/200
-	[1114] = "", -- Blowing snow/227
-	[1117] = "", -- Blizzard/230
-	[1135] = "", -- Fog/248
-	[1147] = "", -- Freezing fog/260
-	[1150] = "", -- Patchy light drizzle/263
-	[1153] = "", -- Light drizzle/266
-	[1168] = "", -- Freezing drizzle/281
-	[1171] = "", -- Heavy freezing drizzle/284
-	[1180] = "", -- Patchy light rain/293
-	[1183] = "", -- Light rain/296
-	[1186] = "", -- Moderate rain at times/299
-	[1189] = "", -- Moderate rain/302
-	[1192] = "", -- Heavy rain at times/305
-	[1195] = "", -- Heavy rain/308
-	[1198] = "", -- Light freezing rain/311
-	[1201] = "", -- Moderate or heavy freezing rain/314
-	[1204] = "", -- Light sleet/317
-	[1207] = "", -- Moderate or heavy sleet/320
-	[1210] = "", -- Patchy light snow/323
-	[1213] = "", -- Light snow/326
-	[1216] = "", -- Patchy moderate snow/329
-	[1219] = "", -- Moderate snow/332
-	[1222] = "", -- Patchy heavy snow/335
-	[1225] = "", -- Heavy snow/338
-	[1237] = "", -- Ice pellets/350
-	[1240] = "", -- Light rain shower/353
-	[1243] = "", -- Moderate or heavy rain shower/356
-	[1246] = "", -- Torrential rain shower/359
-	[1249] = "", -- Light sleet showers/362
-	[1252] = "", -- Moderate or heavy sleet showers/365
-	[1255] = "", -- Light snow showers/368
-	[1258] = "", -- Moderate or heavy snow showers/371
-	[1261] = "", -- Light showers of ice pellets/374
-	[1264] = "", -- Moderate or heavy showers of ice pellets/377
-	[1273] = "", -- Patchy light rain with thunder/386
-	[1276] = "", -- Moderate or heavy rain with thunder/389
-	[1279] = "", -- Patchy light snow with thunder/392
-	[1282] = "", -- Moderate or heavy snow with thunder/395
+local conditions = {
+	[1000] = "clear",
+	[1003] = "partly",
+	[1006] = "cloud",
+	[1009] = "cloud",
+
+	[1030] = "fog",
+	[1135] = "fog",
+	[1147] = "fog",
+
+	[1063] = "rain",
+	[1072] = "rain",
+	[1150] = "rain",
+	[1153] = "rain",
+	[1168] = "rain",
+	[1171] = "rain",
+	[1180] = "rain",
+	[1183] = "rain",
+	[1186] = "rain",
+	[1189] = "rain",
+	[1192] = "rain",
+	[1195] = "rain",
+	[1198] = "rain",
+	[1201] = "rain",
+
+	[1240] = "shower",
+	[1243] = "shower",
+	[1246] = "shower",
+
+	[1066] = "snow",
+	[1114] = "snow",
+	[1117] = "snow",
+	[1210] = "snow",
+	[1213] = "snow",
+	[1216] = "snow",
+	[1219] = "snow",
+	[1222] = "snow",
+	[1225] = "snow",
+	[1255] = "snow",
+	[1258] = "snow",
+
+	[1069] = "sleet",
+	[1204] = "sleet",
+	[1207] = "sleet",
+	[1249] = "sleet",
+	[1252] = "sleet",
+
+	[1237] = "ice",
+	[1261] = "ice",
+	[1264] = "ice",
+
+	[1087] = "thunder",
+	[1273] = "thunder",
+	[1276] = "thunder",
+
+	[1279] = "snow_thunder",
+	[1282] = "snow_thunder",
 }
 
 local weather = sbar.add("item", "widgets.weather", {
@@ -122,12 +108,10 @@ local weather = sbar.add("item", "widgets.weather", {
 	},
 })
 
-local function get_icon(condition, is_day)
-	if is_day == 1 then
-		return weather_icons_day[condition] or condition
-	else
-		return weather_icons_night[condition] or condition
-	end
+local function get_icon(code, is_day)
+	local period = is_day == 1 and "day" or "night"
+	local group = conditions[code] or "cloud"
+	return icons[period][group]
 end
 
 -- 🌡️ Temperature → Color mapping
@@ -148,8 +132,8 @@ end
 local function update_weather()
 	local url = string.format(
 		"curl -s 'http://api.weatherapi.com/v1/forecast.json?key=%s&q=%s&days=1'",
-		weather_vars.api_key or "auto:ip",
-		weather_vars.location or "location"
+		weather_vars.api_key,
+		weather_vars.location or "auto:ip"
 	)
 	sbar.exec(url, function(data)
 		local temp = math.floor(data.current.temp_f)

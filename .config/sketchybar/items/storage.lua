@@ -5,8 +5,8 @@ local colors = require("colors")
 local disk_icon = sbar.add("item", "disk_icon", {
 	update_freq = 60,
 	position = "right",
-	padding_left = -34,
-	padding_right = 20,
+	padding_left = -30,
+	padding_right = 18,
 	y_offset = 8,
 	icon = { font = { size = 14 } },
 })
@@ -52,7 +52,7 @@ local function update_disk()
 		end
 
 		disk_icon:set({ icon = { string = icon, color = color } })
-		disk_label:set({ label = { string = string.format("%d/%dGB", used_gb, total_gb), color = color } })
+		disk_label:set({ label = { string = string.format("%d/%dG", used_gb, total_gb), color = color } })
 	end)
 end
 
