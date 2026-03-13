@@ -87,7 +87,15 @@ menu_watcher = sbar.add("item", {
 	updates = true,
 })
 
-menu_watcher:subscribe("front_app_switched", "space_change", "display_change", "forced", "system_woke", update_menus)
+menu_watcher:subscribe(
+	"front_app_switched",
+	"application_windows_change",
+	"space_change",
+	"display_change",
+	"forced",
+	"system_woke",
+	update_menus
+)
 
 menu_toggle:subscribe("mouse.clicked", function()
 	menus_expanded = not menus_expanded

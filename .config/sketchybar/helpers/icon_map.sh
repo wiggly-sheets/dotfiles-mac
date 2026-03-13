@@ -231,6 +231,9 @@ function __icon_map() {
    "ClickUp")
         icon_result=":click_up:"
         ;;
+   "CLion")
+        icon_result=":clion:"
+        ;;
    "Clock")
         icon_result=":clock:"
         ;;
@@ -1142,6 +1145,9 @@ function __icon_map() {
         ;;
    "Stickies")
         icon_result=":stickies:"
+        ;;
+   "Stremio")
+        icon_result=":stremio:"
         ;;
    "Studio 3T")
         icon_result=":studio_3t:"
