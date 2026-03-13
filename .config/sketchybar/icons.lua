@@ -13,6 +13,7 @@ local icons = {
 	folder = "􀈖",
 	notification = "●",
 	vim = "",
+	menus = { expand = ">", contract = "<" },
 	storage = {
 		empty = "󰝦",
 		full = "󰪥",

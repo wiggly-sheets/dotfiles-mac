@@ -16,10 +16,7 @@ local apple = sbar.add("item", {
 	padding_right = 0,
 })
 
-local menu_watcher = sbar.add("item", {
-	drawing = false,
-	updates = true,
-})
+local menus_expanded = false
 
 local max_items = 15
 local menu_items = {}
@@ -27,7 +24,7 @@ for i = 1, max_items, 1 do
 	local menu = sbar.add("item", "menu." .. i, {
 		padding_left = 0,
 		padding_right = 2,
-		drawing = false,
+		drawing = i == 1,
 		icon = { drawing = true },
 		label = {
 			color = colors.white,
@@ -42,39 +39,72 @@ for i = 1, max_items, 1 do
 	menu_items[i] = menu
 end
 
+local menu_toggle = sbar.add("item", "menus.toggle", {
+	icon = {
+		string = icons.menus.expand,
+		font = { family = settings.default, size = 12, style = "Bold" },
+		color = colors.white,
+	},
+	label = { drawing = false },
+	padding_left = 2,
+	padding_right = 4,
+	position = "left",
+})
+
 sbar.add("bracket", { "/menu\\..*/" }, {
 	background = {
 		color = colors.bg1,
 		border_color = colors.transparent,
 		height = 20,
 	},
-	width = 50,
-})
-
-local menu_padding = sbar.add("item", "menu.padding", {
-	drawing = true,
-	width = 5,
-	padding_left = 0,
-	padding_right = 0,
 })
 
 local function update_menus(env)
 	sbar.exec("$CONFIG_DIR/helpers/menus/bin/menus -l", function(menus)
 		sbar.set("/menu\\..*/", { drawing = false })
-		menu_padding:set({ drawing = true })
 		id = 1
 		for menu in string.gmatch(menus, "[^\r\n]+") do
 			if id < max_items then
-				menu_items[id]:set({ label = menu, drawing = true })
+				menu_items[id]:set({
+					label = menu,
+					drawing = (id == 1) or menus_expanded,
+				})
 			else
 				break
 			end
 			id = id + 1
 		end
+
+		-- hide any remaining preallocated menu items
+		for i = id, max_items do
+			menu_items[i]:set({ drawing = false })
+		end
 	end)
 end
 
+menu_watcher = sbar.add("item", {
+	drawing = false,
+	updates = true,
+})
+
 menu_watcher:subscribe("front_app_switched", "space_change", "display_change", "forced", "system_woke", update_menus)
+
+menu_toggle:subscribe("mouse.clicked", function()
+	menus_expanded = not menus_expanded
+
+	menu_toggle:set({
+		icon = { string = menus_expanded and icons.menus.contract or icons.menus.expand },
+	})
+
+	for i = 2, #menu_items do
+		menu_items[i]:set({ drawing = menus_expanded })
+	end
+
+	-- force update after first expansion to trim any empty menu items
+	if menus_expanded then
+		update_menus()
+	end
+end)
 
 local theme_dir = os.getenv("HOME") .. "/.config/sketchybar/themes/"
 local theme_file = os.getenv("HOME") .. "/.config/sketchybar/current_theme"
