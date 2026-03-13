@@ -224,7 +224,7 @@ local function updateNetworkStatus()
 				if tonumber(vpnStatus) == 1 then
 					-- VPN ACTIVE (highest priority)
 					wifi:set({
-						icon = { string = "􀎡", color = colors.white },
+						icon = { string = icons.wifi.vpn, color = colors.white },
 						label = { string = "VPN", color = colors.white },
 					})
 				elseif tonumber(hasInternet) == 0 then
@@ -236,7 +236,7 @@ local function updateNetworkStatus()
 				elseif activeInterface and tonumber(activeInterface:match("^en(%d+)")) >= 1 then
 					-- ETHERNET
 					wifi:set({
-						icon = { string = "􀤆", color = colors.white },
+						icon = { string = icons.wifi.ethernet, color = colors.white },
 						label = { string = "Ethernet", color = colors.green },
 					})
 				else
@@ -248,7 +248,7 @@ local function updateNetworkStatus()
 							if ssid_str:match("iPhone") then
 								-- Detected hotspot
 								wifi:set({
-									icon = { string = "􀉤", color = colors.white },
+									icon = { string = icons.wifi.hotspot, color = colors.white },
 									label = { string = "Hotspot", color = colors.blue },
 								})
 							else

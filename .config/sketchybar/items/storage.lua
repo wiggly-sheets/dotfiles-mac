@@ -1,5 +1,6 @@
 local settings = require("default")
 local colors = require("colors")
+local icons = require("icons")
 
 -- Disk icon item
 local disk_icon = sbar.add("item", "disk_icon", {
@@ -32,23 +33,23 @@ local function update_disk()
 		local used_gb = math.floor(used / 1e9 + 0.5)
 		local total_gb = math.floor(total / 1e9 + 0.5)
 
-		local icon, color = "󰝦", colors.green
+		local icon, color = icons.storage.empty, colors.green
 		if percent >= 95 then
-			icon, color = "󰪥", colors.red
+			icon, color = icons.storage.full, colors.red
 		elseif percent >= 88 then
-			icon, color = "󰪤", colors.orange
+			icon, color = icons.storage.almost_full, colors.orange
 		elseif percent >= 76 then
-			icon, color = "󰪣", colors.orange
+			icon, color = icons.storage.nearly_full, colors.orange
 		elseif percent >= 64 then
-			icon, color = "󰪢", colors.yellow
+			icon, color = icons.storage.mostly_full, colors.yellow
 		elseif percent >= 52 then
-			icon, color = "󰪡", colors.yellow
+			icon, color = icons.storage.half, colors.yellow
 		elseif percent >= 40 then
-			icon, color = "󰪠", colors.green
+			icon, color = icons.storage.one_third, colors.green
 		elseif percent >= 28 then
-			icon, color = "󰪟", colors.green
+			icon, color = icons.storage.one_quarter, colors.green
 		elseif percent >= 16 then
-			icon, color = "󰪞", colors.green
+			icon, color = icons.storage.low, colors.green
 		end
 
 		disk_icon:set({ icon = { string = icon, color = color } })

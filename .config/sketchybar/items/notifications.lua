@@ -1,5 +1,6 @@
 local colors = require("colors")
 local settings = require("default")
+local icons = require("icons")
 
 -- Path to macOS Notification Center database
 local notif_db = os.getenv("HOME") .. "/Library/Group Containers/group.com.apple.usernoted/db2/db"
@@ -9,7 +10,7 @@ local notifications = sbar.add("item", "widgets.notifications", {
 	position = "right",
 	width = 5,
 	y_offset = 10,
-	padding_right = 8,
+	padding_right = 15,
 	icon = {
 		string = "",
 		color = colors.notifications,
@@ -32,7 +33,7 @@ local function check_notifications()
 		local count = math.max((tonumber(output) or 0) - 1, 0)
 		if count > 0 then
 			notifications:set({
-				icon = { string = "●" },
+				icon = { string = icons.notifications },
 				label = { string = tostring(count) },
 			})
 		else

@@ -118,7 +118,7 @@ local function update_media()
 							if p == "false" then
 								media:set({
 									icon = {
-										string = "",
+										string = icons.music,
 										font = settings.default,
 										drawing = true,
 										color = colors.grey,
@@ -131,7 +131,7 @@ local function update_media()
 							else
 								media:set({
 									icon = {
-										string = "",
+										string = icons.music,
 										font = settings.default,
 										drawing = true,
 										color = colors.white,

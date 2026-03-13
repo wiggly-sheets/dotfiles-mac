@@ -1,15 +1,17 @@
 local colors = require("colors")
+local icons = require("icons")
 
 local dnd = sbar.add("item", "dnd", {
 	label = {
 		drawing = true,
-		string = "􀆺",
+		string = icons.dnd,
 		font = { size = 15 },
 	},
 	position = "right",
-	padding_right = 3,
+	padding_right = 2,
 	padding_left = 3,
 	update_freq = 10,
+	y_offset = 2,
 })
 
 local function update_dnd()

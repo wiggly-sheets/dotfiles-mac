@@ -1,4 +1,5 @@
 local colors = require("colors")
+local icons = require("icons")
 
 local control_center = sbar.add("item", "control_center", {
 	position = "right",
@@ -6,7 +7,7 @@ local control_center = sbar.add("item", "control_center", {
 	padding_left = 0,
 	icon = {
 		drawing = true,
-		string = "􀜊",
+		string = icons.control_center,
 		font = { size = 13 },
 
 		color = colors.white,

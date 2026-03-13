@@ -1,12 +1,13 @@
 local colors = require("colors")
 local settings = require("default")
+local icons = require("icons")
 
 sbar.add("event", "svim_update")
 
 -- Main item (the Vim mode indicator)
 local svim_mode = sbar.add("item", "svim.mode", {
 	position = "left",
-	icon = { string = "", font = settings.default, color = colors.transparent },
+	icon = { string = icons.vim, font = settings.default, color = colors.transparent },
 	label = { font = settings.default },
 	popup = { align = "right" },
 	updates = true,

@@ -1,9 +1,10 @@
 local colors = require("colors")
+local icons = require("icons")
 
 local folder = sbar.add("item", "folder", {
 	icon = {
 		font = { size = 13 },
-		string = "􀈖",
+		string = icons.folder,
 		color = colors.white,
 	},
 	position = "right",

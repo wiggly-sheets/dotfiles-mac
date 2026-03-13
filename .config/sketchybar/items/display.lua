@@ -1,5 +1,6 @@
 local colors = require("colors")
 local settings = require("default")
+local icons = require("icons")
 
 -- ======================
 -- Display item
@@ -59,10 +60,10 @@ display:subscribe("mouse.clicked", handle_display_click)
 
 local function update_display()
 	local icons = {
-		main_only = "􀟛",
-		secondary_only = "􀙗",
-		both = "􂤓",
-		none = "􀁟",
+		main_only = icons.display.main_only,
+		secondary_only = icons.display.secondary_only,
+		both = icons.display.both,
+		none = icons.display.none,
 	}
 
 	local results = {}
