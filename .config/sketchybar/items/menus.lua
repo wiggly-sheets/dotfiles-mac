@@ -89,8 +89,8 @@ menu_watcher = sbar.add("item", {
 
 menu_watcher:subscribe(
 	"front_app_switched",
-	"application_windows_change",
 	"space_change",
+	"space_windows_change",
 	"display_change",
 	"forced",
 	"system_woke",

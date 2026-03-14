@@ -13,7 +13,7 @@ local allowed_bundle_ids = {
 local divider2 = sbar.add("item", "divider2", {
 	icon = {
 		font = { family = settings.default, size = 12 },
-		string = "│",
+		string = icons.divider,
 		color = colors.white,
 		drawing = false,
 	},

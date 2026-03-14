@@ -73,13 +73,13 @@ volume_item:subscribe("volume_change", function(env)
 		device = device:gsub("\n", ""):match("^%s*(.-)%s*$")
 		local icon
 		if device:match("AirPods Pro") then
-			icon = "􀪷"
+			icon = icons.audio.airpods_pro
 		elseif device:match("AirPods Max") then
-			icon = "􀺹"
+			icon = icons.audio.airpods_max
 		elseif device:match("Scarlett 2i2") then
-			icon = "􂡒"
+			icon = icons.audio.scarlett
 		elseif device:match("Sceptre") then
-			icon = "􀢹"
+			icon = icons.audio.sceptre
 		else
 			if volume == nil then
 				volume = 0

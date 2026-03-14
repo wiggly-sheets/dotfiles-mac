@@ -11,8 +11,10 @@ local icons = {
 	control_center = "􀜊",
 	dnd = "􀆺",
 	folder = "􀈖",
-	notification = "●",
+	notifications = "●",
 	vim = "",
+	divider = "│",
+	audio = { airpods_pro = "􀪷", airpods_max = "􀺹", scarlett = "􂡒", sceptre = "􀢹" },
 	menus = { expand = ">", contract = "<" },
 	storage = {
 		empty = "󰝦",

@@ -9,9 +9,9 @@ local dnd = sbar.add("item", "dnd", {
 	},
 	position = "right",
 	padding_right = 2,
-	padding_left = 3,
+	padding_left = 2,
 	update_freq = 10,
-	y_offset = 2,
+	y_offset = 1,
 })
 
 local function update_dnd()

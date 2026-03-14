@@ -6,9 +6,10 @@ local settings = require("default")
 local divider = sbar.add("item", "divider", {
 	icon = {
 		font = { family = settings.default, size = 12 },
-		string = "│",
+		string = icons.divider,
 		drawing = true,
 		color = colors.white,
+		y_offset = 1,
 	},
 	padding_left = -2,
 	padding_right = 4,
@@ -169,64 +170,80 @@ end
 
 -- Listen for front app changes
 local front_app_listener = sbar.add("item", { drawing = false })
-front_app_listener:subscribe("front_app_switched", function(env)
-	current_front_app = env.INFO -- e.g. "Safari"
+front_app_listener:subscribe(
+	"front_app_switched",
+	"display_change",
+	"space_windows_change",
+	"space_change",
+	"forced",
+	"system_woke",
+	function(env)
+		current_front_app = env.INFO -- e.g. "Safari"
 
-	-- Re-evaluate which spaces contain that front app based on last-known space_app_names
-	for sid = 1, #space_app_names do
-		local appset = space_app_names[sid] or {}
-		local has = false
-		if current_front_app and appset[current_front_app] then
-			has = true
+		-- Re-evaluate which spaces contain that front app based on last-known space_app_names
+		for sid = 1, #space_app_names do
+			local appset = space_app_names[sid] or {}
+			local has = false
+			if current_front_app and appset[current_front_app] then
+				has = true
+			end
+			space_contains_front_app[sid] = has
 		end
-		space_contains_front_app[sid] = has
-	end
 
-	-- Update visuals for all spaces
-	for sid, space in ipairs(spaces) do
-		update_space_display(space, sid, space_selected[sid], space_contains_front_app[sid])
+		-- Update visuals for all spaces
+		for sid, space in ipairs(spaces) do
+			update_space_display(space, sid, space_selected[sid], space_contains_front_app[sid])
+		end
 	end
-end)
+)
 
 -- Track window changes and update space labels + app sets
 local space_window_observer = sbar.add("item", {
 	drawing = false,
 	updates = true,
 })
-space_window_observer:subscribe("space_windows_change", function(env)
-	local sid = tonumber(env.INFO.space)
-	if not sid then
-		return
+space_window_observer:subscribe(
+	"space_windows_change",
+	"front_app_switched",
+	"display_change",
+	"space_change",
+	"forced",
+	"system_woke",
+	function(env)
+		local sid = tonumber(env.INFO.space)
+		if not sid then
+			return
+		end
+
+		local icon_line = ""
+		local no_app = true
+		local appset = {}
+
+		-- build icon string and app set
+		for app, count in pairs(env.INFO.apps or {}) do
+			no_app = false
+			local lookup = app_icons[app] or icons[app]
+			local icon = lookup or app_icons["Default"]
+			icon_line = icon_line .. string.rep(icon, count)
+			appset[app] = true
+		end
+
+		if no_app then
+			icon_line = "—"
+		end
+
+		space_app_icons[sid] = icon_line
+		space_app_names[sid] = appset
+
+		-- Update whether this space contains the current front app (if known)
+		space_contains_front_app[sid] = (current_front_app and appset[current_front_app]) and true or false
+
+		-- Update displays for all spaces (use stored selected state)
+		for space_id, space in ipairs(spaces) do
+			update_space_display(space, space_id, space_selected[space_id], space_contains_front_app[space_id])
+		end
 	end
-
-	local icon_line = ""
-	local no_app = true
-	local appset = {}
-
-	-- build icon string and app set
-	for app, count in pairs(env.INFO.apps or {}) do
-		no_app = false
-		local lookup = app_icons[app] or icons[app]
-		local icon = lookup or app_icons["Default"]
-		icon_line = icon_line .. string.rep(icon, count)
-		appset[app] = true
-	end
-
-	if no_app then
-		icon_line = "—"
-	end
-
-	space_app_icons[sid] = icon_line
-	space_app_names[sid] = appset
-
-	-- Update whether this space contains the current front app (if known)
-	space_contains_front_app[sid] = (current_front_app and appset[current_front_app]) and true or false
-
-	-- Update displays for all spaces (use stored selected state)
-	for space_id, space in ipairs(spaces) do
-		update_space_display(space, space_id, space_selected[space_id], space_contains_front_app[space_id])
-	end
-end)
+)
 
 local add_space_button = sbar.add("item", "add_space_button", {
 	position = "left",

@@ -1,7 +1,24 @@
+local icons = require("icons")
+local settings = require("default")
+local colors = require("colors")
+
 --------------------------------------------------------
 --                    MPD ITEM
 --------------------------------------------------------
 local settings = require("settings")
+
+local divider3 = sbar.add("item", "divider3", {
+	icon = {
+		font = { family = settings.default, size = 12 },
+		string = icons.divider,
+		color = colors.white,
+		drawing = false,
+	},
+	padding_left = -2,
+	padding_right = 0,
+	position = "left",
+	update_freq = 5,
+})
 
 local mpd = sbar.add("item", "mpd", {
 	icon = {
