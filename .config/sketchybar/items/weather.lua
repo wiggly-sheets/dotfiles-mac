@@ -106,17 +106,17 @@ local function get_condition_color(code)
 	local group = conditions[code] or "cloud"
 
 	local map = {
-		clear = 0xFFFFD75F,
-		partly = 0xFFFFD75F,
-		cloud = 0xFFFFFFFF,
-		fog = 0xFFE0E0E0,
-		rain = 0xFF6CA0FF,
-		shower = 0xFF6CA0FF,
-		snow = 0xFFBFEFFF,
-		sleet = 0xFF9ED0FF,
-		ice = 0xFF9ED0FF,
-		thunder = 0xFFFF9A3C,
-		snow_thunder = 0xFFC8A6FF,
+		clear = colors.yellow, -- bright sun
+		partly = colors.yellow, -- still sun-dominant
+		cloud = colors.white, -- neutral clouds
+		fog = colors.grey, -- muted visibility
+		rain = colors.blue, -- water / rain
+		shower = colors.blue, -- same family as rain
+		snow = colors.white, -- snow
+		sleet = colors.blue, -- icy precipitation
+		ice = colors.blue, -- frozen water
+		thunder = colors.orange, -- lightning / storm energy
+		snow_thunder = colors.magenta, -- unusual / severe combo
 	}
 
 	return map[group] or 0xFFFFFFFF
