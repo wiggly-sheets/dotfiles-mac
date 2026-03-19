@@ -45,6 +45,8 @@ brew "zstd"
 brew "openssl@3"
 # Library for command-line editing
 brew "readline"
+# Command-line interface for SQLite
+brew "sqlite"
 # Interpreted, interactive, object-oriented programming language
 brew "python@3.13"
 # Simple system information tool written in Python
@@ -119,6 +121,8 @@ brew "doge"
 brew "libyaml"
 # TUI todo manager
 brew "dooit"
+# Terminal dashboard for Docker monitoring across multiple hosts
+brew "dtop"
 # Development kit for the Java programming language
 brew "openjdk"
 # Command-line interface for Cyberduck (a multi-protocol file transfer tool)
@@ -816,6 +820,8 @@ cask "telegram"
 cask "thaw"
 # Instant fuzzy finder for files including system and hidden files
 cask "thelowtechguys-cling"
+# Time Machine log viewer & status inspector
+cask "thetimemachinemechanic"
 # Connectivity software for the TI-84 Plus family of graphing calculators
 cask "ti-connect-ce"
 # Multi-platform VNC client and server

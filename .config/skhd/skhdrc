@@ -7,8 +7,8 @@
 ]
 
 # Define process groups for reuse
-.define terminal_apps ["wezterm", "terminal"]
-.define native_apps ["wezterm", "helium", "zen", "safari", "whatsapp"]
+.define terminal_apps ["wezterm", "terminal", "iterm"]
+.define native_apps ["wezterm", "helium", "zen", "safari", "orion", "iterm", "whatsapp"]
 .define browser_apps ["safari", "helium", "zen"]
 
 # Linux-style word navigation and deletion
