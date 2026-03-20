@@ -135,7 +135,13 @@ update_battery()
 -- Hover effects
 local function add_hover(item)
 	item:subscribe({ "mouse.exited", "mouse.entered.global", "mouse.exited.global" }, function()
-		item:set({ background = { drawing = false } })
+		lowpowermode:set(
+			{ background = { drawing = false } },
+			battery_time:set(
+				{ background = { drawing = false } },
+				battery_item:set({ background = { drawing = false } })
+			)
+		)
 	end)
 end
 add_hover(lowpowermode)
@@ -159,7 +165,7 @@ battery_item:subscribe(
 	battery_time:subscribe(
 		"mouse.entered",
 		function()
-			battery_time:set(battery_item:set({
+			battery_item:set({
 				background = {
 					drawing = true,
 					color = 0x40FFFFFF,
@@ -167,7 +173,7 @@ battery_item:subscribe(
 					height = 20,
 					x_offset = 10,
 				},
-			}))
+			})
 		end,
 
 		lowpowermode:subscribe("mouse.entered", function()
