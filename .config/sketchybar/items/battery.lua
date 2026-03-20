@@ -37,7 +37,7 @@ update_lowpowermode()
 -- ── Combined Battery Item ─────────────────────────────────────────
 local battery_item = sbar.add("item", "battery", {
 	position = "right",
-	padding_left = 3,
+	padding_left = 10,
 	padding_right = 5,
 	y_offset = 0,
 	color = colors.green,
@@ -46,13 +46,31 @@ local battery_item = sbar.add("item", "battery", {
 		string = icons.battery._100, -- initial icon
 		font = { family = settings.default, size = 11 },
 		color = colors.green,
+		padding_left = 20,
 	},
 	label = {
 		drawing = true,
-		string = "__%", -- initial label
+		string = "__%",
+		y_offset = 5,
 		padding_left = 2,
 		padding_right = 2,
 		font = { family = settings.default, size = 10 },
+		color = colors.green,
+	},
+	update_freq = 30,
+})
+
+-- Time label (stacked under percentage)
+local battery_time = sbar.add("item", "battery_time", {
+	position = "right",
+	padding_left = 2,
+	padding_right = -70,
+	y_offset = -5,
+	icon = { drawing = false },
+	label = {
+		drawing = true,
+		string = "__:__",
+		font = { family = settings.default, size = 9 },
 		color = colors.green,
 	},
 	update_freq = 30,
@@ -76,6 +94,7 @@ local function handle_battery_click(env)
 end
 
 battery_item:subscribe("mouse.clicked", handle_battery_click)
+battery_time:subscribe("mouse.clicked", handle_battery_click)
 
 -- Update battery status
 local function update_battery()
@@ -86,6 +105,8 @@ local function update_battery()
 		local charging = batt_info:find("AC Power") and true or false
 
 		local _, _, charge = batt_info:find("(%d+)%%")
+		local time_remaining = batt_info:match("(%d+:%d+)")
+
 		if charge then
 			charge = tonumber(charge)
 			label = charge .. "%"
@@ -102,6 +123,9 @@ local function update_battery()
 			icon = { string = charging and icons.battery.charging or icon, color = color },
 			label = { string = label, color = color },
 		})
+		battery_time:set({
+			label = { string = time_remaining or "__:__", color = color },
+		})
 	end)
 end
 
@@ -116,6 +140,7 @@ local function add_hover(item)
 end
 add_hover(lowpowermode)
 add_hover(battery_item)
+add_hover(battery_time)
 
 battery_item:subscribe(
 	"mouse.entered",
@@ -126,20 +151,35 @@ battery_item:subscribe(
 				color = 0x40FFFFFF,
 				corner_radius = 20,
 				height = 20,
-				x_offset = 0,
+				x_offset = 10,
 			},
 		})
 	end,
 
-	lowpowermode:subscribe("mouse.entered", function()
-		lowpowermode:set({
-			background = {
-				drawing = true,
-				color = 0x40FFFFFF,
-				corner_radius = 20,
-				height = 20,
-				x_offset = 2,
-			},
-		})
-	end)
+	battery_time:subscribe(
+		"mouse.entered",
+		function()
+			battery_time:set(battery_item:set({
+				background = {
+					drawing = true,
+					color = 0x40FFFFFF,
+					corner_radius = 20,
+					height = 20,
+					x_offset = 10,
+				},
+			}))
+		end,
+
+		lowpowermode:subscribe("mouse.entered", function()
+			lowpowermode:set({
+				background = {
+					drawing = true,
+					color = 0x40FFFFFF,
+					corner_radius = 20,
+					height = 20,
+					x_offset = 2,
+				},
+			})
+		end)
+	)
 )

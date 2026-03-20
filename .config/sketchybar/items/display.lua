@@ -18,7 +18,7 @@ local display = sbar.add("item", "display", {
 		drawing = true,
 		font = { family = settings.default, size = 10 },
 		color = colors.yellow,
-		padding_right = 0,
+		padding_right = 16,
 		padding_left = 0,
 	},
 	position = "right",
@@ -122,7 +122,7 @@ local function add_hover(item)
 				color = 0x40FFFFFF,
 				corner_radius = 20,
 				height = 20,
-				x_offset = 0,
+				x_offset = -10,
 			},
 		})
 	end)
