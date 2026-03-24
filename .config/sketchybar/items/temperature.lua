@@ -87,7 +87,7 @@ local function add_hover(item)
 		gpu_temp_item:set({
 			background = {
 				drawing = true,
-				color = 0x40FFFFFF,
+				color = colors.hover,
 				corner_radius = 20,
 				height = 40,
 				x_offset = 0,

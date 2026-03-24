@@ -11,6 +11,7 @@ return {
 
 	grey = 0xff565f89, -- muted UI elements
 	transparent = 0x00000000,
+	hover = 0x40FFFFFF,
 
 	-- keep your custom ones
 	dnd = 0xffbb9af7,

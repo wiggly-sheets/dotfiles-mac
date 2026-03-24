@@ -262,7 +262,7 @@ add_space_button:subscribe("mouse.entered", function()
 	add_space_button:set({
 		background = {
 			drawing = true,
-			color = 0x40FFFFFF,
+			color = colors.hover,
 			corner_radius = 20,
 			height = 20,
 			x_offset = -1,

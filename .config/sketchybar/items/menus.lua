@@ -220,7 +220,7 @@ local function open_theme_popup(anchor)
 			label = theme,
 			background = {
 				drawing = is_active,
-				color = is_active and 0x40FFFFFF or colors.transparent,
+				color = is_active and colors.hover or colors.transparent,
 				corner_radius = 20,
 			},
 			click_script = "echo '" .. theme .. "' > " .. theme_file .. " && sketchybar --reload",
@@ -270,7 +270,7 @@ local function open_wallpaper_popup(anchor)
 			label = wp:match("([^/]+)$"),
 			background = {
 				drawing = is_active and true or false,
-				color = is_active and 0x40FFFFFF or colors.transparent,
+				color = is_active and colors.hover or colors.transparent,
 				corner_radius = 20,
 			},
 			click_script = 'osascript -e \'tell application "System Events" to set picture of every desktop to "'
@@ -292,7 +292,7 @@ for i, menu in ipairs(menu_items) do
 			menu:set({
 				background = {
 					drawing = true,
-					color = 0x40FFFFFF,
+					color = colors.hover,
 					corner_radius = 20,
 					height = 20,
 					x_offset = 1,
@@ -337,7 +337,7 @@ for i, menu in ipairs(menu_items) do
 		menu:set({
 			background = {
 				drawing = true,
-				color = 0x40FFFFFF,
+				color = colors.hover,
 				corner_radius = 20,
 				height = 20,
 				x_offset = 1,
@@ -362,7 +362,7 @@ apple:subscribe("mouse.clicked", function(env)
 		apple:set({
 			background = {
 				drawing = true,
-				color = 0x40FFFFFF,
+				color = colors.hover,
 				corner_radius = 20,
 				height = 20,
 				x_offset = 2,
@@ -384,7 +384,7 @@ apple:subscribe("mouse.clicked", function(env)
 		apple:set({
 			background = {
 				drawing = true,
-				color = 0x40FFFFFF,
+				color = colors.hover,
 				corner_radius = 20,
 				height = 20,
 				x_offset = 2,
@@ -398,7 +398,7 @@ apple:subscribe("mouse.entered", function()
 	apple:set({
 		background = {
 			drawing = true,
-			color = 0x40FFFFFF,
+			color = colors.hover,
 			corner_radius = 10,
 			height = 20,
 			x_offset = 2,
@@ -409,6 +409,26 @@ end)
 
 apple:subscribe("mouse.exited", function()
 	apple:set({
+		background = {
+			drawing = false,
+		},
+	})
+end)
+
+menu_toggle:subscribe("mouse.entered", function()
+	menu_toggle:set({
+		background = {
+			drawing = true,
+			color = colors.hover,
+			corner_radius = 10,
+			height = 20,
+			x_offset = 1,
+		},
+	})
+end)
+
+menu_toggle:subscribe("mouse.exited", function()
+	menu_toggle:set({
 		background = {
 			drawing = false,
 		},

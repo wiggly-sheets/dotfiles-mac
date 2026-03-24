@@ -78,7 +78,7 @@ local function add_hover(item)
 		date:set({
 			background = {
 				drawing = true,
-				color = 0x40FFFFFF,
+				color = colors.hover,
 				corner_radius = 20,
 				height = 30,
 				x_offset = 0,

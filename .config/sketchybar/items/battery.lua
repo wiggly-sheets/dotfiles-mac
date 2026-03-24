@@ -7,7 +7,7 @@ local lowpowermode = sbar.add("item", "lowpowermode", {
 	update_freq = 10,
 	position = "right",
 	padding_right = -2,
-	padding_left = -8,
+	padding_left = -4,
 	y_offset = 0,
 	label = { drawing = true, font = { size = 10 } },
 })
@@ -37,8 +37,8 @@ update_lowpowermode()
 -- ── Combined Battery Item ─────────────────────────────────────────
 local battery_item = sbar.add("item", "battery", {
 	position = "right",
-	padding_left = 10,
-	padding_right = 5,
+	padding_left = -2,
+	padding_right = 0,
 	y_offset = 0,
 	color = colors.green,
 	icon = {
@@ -46,12 +46,15 @@ local battery_item = sbar.add("item", "battery", {
 		string = icons.battery._100, -- initial icon
 		font = { family = settings.default, size = 11 },
 		color = colors.green,
-		padding_left = 20,
+		--	padding_left = 40,
+		padding_left = 5,
+		padding_right = 0,
 	},
 	label = {
 		drawing = true,
 		string = "__%",
-		y_offset = 5,
+		y_offset = 0,
+		--	y_offset = 5,
 		padding_left = 2,
 		padding_right = 2,
 		font = { family = settings.default, size = 10 },
@@ -61,20 +64,21 @@ local battery_item = sbar.add("item", "battery", {
 })
 
 -- Time label (stacked under percentage)
-local battery_time = sbar.add("item", "battery_time", {
-	position = "right",
-	padding_left = 2,
-	padding_right = -70,
-	y_offset = -5,
-	icon = { drawing = false },
-	label = {
-		drawing = true,
-		string = "__:__",
-		font = { family = settings.default, size = 9 },
-		color = colors.green,
-	},
-	update_freq = 30,
-})
+--local battery_time = sbar.add("item", "battery_time", {
+--	position = "right",
+--	padding_left = 0,
+--	padding_right = -90,
+--	y_offset = -5,
+--	icon = { drawing = false },
+--	label = {
+--		drawing = true,
+--		string = "__:__",
+--		font = { family = settings.default, size = 8 },
+--		color = colors.green,
+--		padding_left = 2,
+--	},
+--	update_freq = 30,
+--})
 
 -- Click behavior for battery item
 local function handle_battery_click(env)
@@ -94,7 +98,7 @@ local function handle_battery_click(env)
 end
 
 battery_item:subscribe("mouse.clicked", handle_battery_click)
-battery_time:subscribe("mouse.clicked", handle_battery_click)
+-- battery_time:subscribe("mouse.clicked", handle_battery_click)
 
 -- Update battery status
 local function update_battery()
@@ -123,9 +127,9 @@ local function update_battery()
 			icon = { string = charging and icons.battery.charging or icon, color = color },
 			label = { string = label, color = color },
 		})
-		battery_time:set({
-			label = { string = time_remaining or "__:__", color = color },
-		})
+		--		battery_time:set({
+		--			label = { string = time_remaining or "__:__", color = color },
+		--	})
 	end)
 end
 
@@ -137,16 +141,16 @@ local function add_hover(item)
 	item:subscribe({ "mouse.exited", "mouse.entered.global", "mouse.exited.global" }, function()
 		lowpowermode:set(
 			{ background = { drawing = false } },
-			battery_time:set(
-				{ background = { drawing = false } },
-				battery_item:set({ background = { drawing = false } })
-			)
+			--			battery_time:set(
+			{ background = { drawing = false } },
+			battery_item:set({ background = { drawing = false } })
 		)
+		--		)
 	end)
 end
 add_hover(lowpowermode)
 add_hover(battery_item)
-add_hover(battery_time)
+--add_hover(battery_time)
 
 battery_item:subscribe(
 	"mouse.entered",
@@ -154,38 +158,36 @@ battery_item:subscribe(
 		battery_item:set({
 			background = {
 				drawing = true,
-				color = 0x40FFFFFF,
+				color = colors.hover,
 				corner_radius = 20,
 				height = 20,
-				x_offset = 10,
 			},
 		})
 	end,
 
-	battery_time:subscribe(
-		"mouse.entered",
-		function()
-			battery_item:set({
-				background = {
-					drawing = true,
-					color = 0x40FFFFFF,
-					corner_radius = 20,
-					height = 20,
-					x_offset = 10,
-				},
-			})
-		end,
+	--	battery_time:subscribe(
+	"mouse.entered",
+	function()
+		battery_item:set({
+			background = {
+				drawing = true,
+				color = colors.hover,
+				corner_radius = 20,
+				height = 20,
+			},
+		})
+	end,
 
-		lowpowermode:subscribe("mouse.entered", function()
-			lowpowermode:set({
-				background = {
-					drawing = true,
-					color = 0x40FFFFFF,
-					corner_radius = 20,
-					height = 20,
-					x_offset = 2,
-				},
-			})
-		end)
-	)
+	lowpowermode:subscribe("mouse.entered", function()
+		lowpowermode:set({
+			background = {
+				drawing = true,
+				color = colors.hover,
+				corner_radius = 20,
+				height = 20,
+				x_offset = 2,
+			},
+		})
+	end)
 )
+--)

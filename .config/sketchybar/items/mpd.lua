@@ -135,7 +135,7 @@ local function add_hover(item)
 		item:set({
 			background = {
 				drawing = true,
-				color = 0x40FFFFFF,
+				color = colors.hover,
 				corner_radius = 20,
 				height = 20,
 				x_offset = 0,
