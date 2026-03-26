@@ -21,7 +21,7 @@ end)
 
 config.color_scheme = "Tokyo Night"
 
-config.colors = { background = "black", foreground = "white" }
+-- config.colors = { background = "black", foreground = "white" }
 
 config.enable_kitty_graphics = true
 config.enable_tab_bar = false

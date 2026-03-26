@@ -70,7 +70,8 @@ local weather = sbar.add("item", "widgets.weather", {
 		padding_left = 5,
 	},
 	label = {
-		padding_right = 2,
+		padding_right = 0,
+		padding_left = 0,
 		font = {
 			family = settings.default,
 			style = settings.default,

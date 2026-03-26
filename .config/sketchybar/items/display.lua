@@ -11,7 +11,7 @@ local display = sbar.add("item", "display", {
 		drawing = true,
 		font = { size = 11 },
 		color = colors.white,
-		padding_right = 4,
+		padding_right = 2,
 		padding_left = 0,
 	},
 	label = {

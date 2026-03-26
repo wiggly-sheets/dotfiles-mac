@@ -3,7 +3,7 @@ local icons = require("icons")
 
 local control_center = sbar.add("item", "control_center", {
 	position = "right",
-	padding_right = -4,
+	padding_right = -5,
 	padding_left = 0,
 	icon = {
 		drawing = true,

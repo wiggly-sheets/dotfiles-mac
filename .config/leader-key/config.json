@@ -26,6 +26,11 @@
           "key" : "o",
           "type" : "application",
           "value" : "/Applications/Orion.app"
+        },
+        {
+          "key" : "c",
+          "type" : "application",
+          "value" : "/Applications/Google Chrome.app"
         }
       ],
       "key" : "b",

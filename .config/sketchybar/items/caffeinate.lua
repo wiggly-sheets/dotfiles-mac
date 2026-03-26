@@ -4,8 +4,8 @@ local icons = require("icons")
 local caffeinate = sbar.add("item", "caffeinate", {
 	position = "right",
 	update_freq = 10,
-	padding_left = 2,
-	padding_right = 0,
+	padding_left = 0,
+	padding_right = -2,
 	icon = {
 		color = colors.white,
 	},

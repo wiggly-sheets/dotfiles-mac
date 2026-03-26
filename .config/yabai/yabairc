@@ -169,10 +169,10 @@ yabai -m config focus_follows_mouse autoraise
 yabai -m config mouse_modifier alt
 
 # set modifier + left-click drag to resize window
-yabai -m config mouse_action1 resize
+yabai -m config mouse_action1 move
 
 # set modifier + right-click drag to move window
-yabai -m config mouse_action2 move
+yabai -m config mouse_action2 resize
 
 # swap windows on mouse drop
 yabai -m mouse_drop_action swap

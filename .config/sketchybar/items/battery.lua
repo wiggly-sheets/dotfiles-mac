@@ -6,7 +6,7 @@ local settings = require("default")
 local lowpowermode = sbar.add("item", "lowpowermode", {
 	update_freq = 10,
 	position = "right",
-	padding_right = -2,
+	padding_right = -3,
 	padding_left = -4,
 	y_offset = 0,
 	label = { drawing = true, font = { size = 10 } },

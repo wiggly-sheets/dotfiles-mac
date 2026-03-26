@@ -16,7 +16,7 @@ local volume_item = sbar.add("item", "volume", {
 		drawing = true,
 		string = "__%",
 		width = "dynamic",
-		padding_left = 3,
+		padding_left = 2,
 		padding_right = 2,
 		color = colors.yellow,
 		font = { family = settings.default, size = 10.0 },
