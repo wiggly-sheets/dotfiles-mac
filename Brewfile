@@ -620,6 +620,8 @@ cask "gimp"
 cask "github"
 # Game client
 cask "gog-galaxy"
+# Web browser
+cask "google-chrome"
 # Virtual globe
 cask "google-earth-pro"
 # Graphically shows disk usage within a file system
@@ -877,6 +879,7 @@ mas "Dato", id: 1470584107
 mas "Developer", id: 640199958
 mas "Dropover", id: 1355679052
 mas "Final Cut Pro", id: 424389933
+mas "Folder Peek", id: 1615988943
 mas "Folder Preview", id: 6698876601
 mas "Gemini 2", id: 1090488118
 mas "Gifski", id: 1351639930

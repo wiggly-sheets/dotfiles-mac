@@ -426,7 +426,7 @@ local function toggle_details()
 end
 
 wifi:subscribe("mouse.clicked", toggle_details)
-wifi:subscribe("mouse.exited.global", function()
+wifi:subscribe("mouse.exited.global", "mouse.exited", function()
 	wifi_bracket:set({ popup = { drawing = false } })
 end)
 

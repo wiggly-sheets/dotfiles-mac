@@ -222,6 +222,11 @@ alt - t : ~/dotfiles/.config/yabai/scripts/new_space_focus.sh
 # destroy space, move destroyed space windows to previous space, & focus previous space
 alt - w : ~/dotfiles/.config/yabai/scripts/destroy_space.sh
 
+# create space, move windows from current space to new space, and follow focus
+cmd + shift - t : ~/dotfiles/.config/yabai/scripts/move_space_windows_follow.sh
+
+alt + shift - t : ~/dotfiles/.config/yabai/scripts/move_space_windows.sh
+
 # move window to space
 shift + alt - 1 : yabai -m window --space 1;
 shift + alt - 2 : yabai -m window --space 2;
