@@ -1,5 +1,5 @@
 # ================================
-# sudo + scripting addition
+# scripting addition
 # ================================
 echo "$(whoami) ALL=(root) NOPASSWD: sha256:$(shasum -a 256 $(which yabai) | cut -d " " -f 1) $(which yabai) --load-sa" | sudo tee /private/etc/sudoers.d/yabai
 
@@ -18,7 +18,7 @@ yabai -m signal --add event=window_focused action="sketchybar --trigger window_f
 yabai -m signal --add event=window_title_changed action="sketchybar --trigger title_change &> /dev/null"
 
 # ================================
-# helper for rules
+# helper for float rules
 # ================================
 yabai_rule() {
   yabai -m rule --add "$@"
@@ -28,7 +28,7 @@ yabai_rule() {
 GRID_CENTER="6:6:1:1:4:4"
 
 # ================================
-# YABAI CONFIG (grouped)
+# MAIN CONFIG
 # ================================
 CONFIGS=(
   "layout bsp"
@@ -87,7 +87,7 @@ for cfg in "${CONFIGS[@]}"; do
 done
 
 # ================================
-# PIN APPS TO SPACES
+# PIN APPS TO SPACES == SETUP WORKSPACES
 # ================================
 SPACE_RULES=(
   "^Helium$:1"
@@ -108,7 +108,7 @@ for rule in "${SPACE_RULES[@]}"; do
 done
 
 # ================================
-# FLOAT APPS
+# FLOAT/UNMANAGED APPS
 # ================================
 FLOAT_APPS=(
   "^System Settings$"
@@ -206,3 +206,5 @@ done
 # auto-update yabai (HEAD)
 # ================================
 YABAI_CERT=yabai-cert sh -c "$(curl -fsSL "https://git.io/update-yabai")" &
+
+osascript -e 'display notification "yabai configuration loaded"'
