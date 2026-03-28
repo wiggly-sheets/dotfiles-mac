@@ -97,7 +97,7 @@ menu_watcher:subscribe(
 	update_menus
 )
 
-menu_toggle:subscribe("mouse.clicked", function()
+local function toggle_menus()
 	menus_expanded = not menus_expanded
 
 	menu_toggle:set({
@@ -112,6 +112,10 @@ menu_toggle:subscribe("mouse.clicked", function()
 	if menus_expanded then
 		update_menus()
 	end
+end
+
+menu_toggle:subscribe("mouse.clicked", function()
+	toggle_menus()
 end)
 
 local theme_dir = os.getenv("HOME") .. "/.config/sketchybar/themes/"
@@ -433,6 +437,14 @@ menu_toggle:subscribe("mouse.exited", function()
 			drawing = false,
 		},
 	})
+end)
+
+menu_toggle:subscribe("mouse.scrolled.global", function()
+	toggle_menus()
+end)
+
+apple:subscribe("mouse.scrolled", function()
+	sbar.exec("sketchybar --reload")
 end)
 
 return menu_watcher

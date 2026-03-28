@@ -521,6 +521,8 @@ cask "app-buddy"
 cask "apparency"
 # Multi-track audio editor and recorder
 cask "audacity"
+# Records audio from any application
+cask "audio-hijack"
 # Tool to flash OS images to SD cards & USB drives
 cask "balenaetcher"
 # Control the platform power state of your Apple Silicon device
@@ -585,6 +587,8 @@ cask "diskspace"
 cask "dnsmonitor"
 # Open-source physical access (aka 'evil maid') attack detector
 cask "do-not-disturb"
+# Advanced Dock preferences
+cask "dockey"
 # Emulator to play GameCube and Wii games
 cask "dolphin"
 # Downloads videos from different websites
@@ -593,6 +597,8 @@ cask "downie"
 cask "element"
 # Launcher for *Epic Games* games
 cask "epic-games"
+# Audio playback
+cask "farrago"
 # Tool for organising and renaming movies, TV shows, anime or music
 cask "filebot"
 # Monitor filesystem activity
@@ -642,6 +648,8 @@ cask "iina"
 cask "imageoptim"
 # Vector graphics editor
 cask "inkscape"
+# Your internet connection status at a glance
+cask "istherenet"
 # Terminal emulator as alternative to Apple's Terminal app
 cask "iterm2"
 # Download manager
@@ -672,8 +680,12 @@ cask "little-snitch"
 cask "lm-studio"
 # Software for Logitech devices
 cask "logi-options+"
+# Cable-free audio router
+cask "loopback"
 # Trims video and audio files losslessly
 cask "losslesscut"
+# Clipboard manager
+cask "maccy"
 # File system integration
 cask "macfuse"
 # Speech recognition tool
@@ -800,6 +812,8 @@ cask "soundsource"
 cask "zimengxiong/tools/spacecommand"
 # View and navigate Spaces (Virtual Desktops) from the menu bar
 cask "ruittenb/tap/spaceman"
+# Run anything at startup by simply placing it in a special folder
+cask "startupfolder"
 # System monitor for the menu bar
 cask "stats"
 # Video game digital distribution service

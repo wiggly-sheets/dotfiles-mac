@@ -53,6 +53,24 @@
           "key" : "c",
           "type" : "url",
           "value" : "raycast://extensions/raycast/system/open-camera"
+        },
+        {
+          "iconPath" : "link",
+          "key" : "f",
+          "type" : "url",
+          "value" : "raycast://extensions/raycast/file-search/search-files"
+        },
+        {
+          "iconPath" : "link",
+          "key" : "z",
+          "type" : "url",
+          "value" : "raycast://extensions/erykksc/fuzzy-file-search/search-for-files"
+        },
+        {
+          "iconPath" : "link",
+          "key" : "b",
+          "type" : "url",
+          "value" : "raycast://extensions/raycast/raycast/toggle-bounce-animation"
         }
       ],
       "key" : "r",
