@@ -14,7 +14,5 @@ for win in $windows; do
   yabai -m window "$win" --space "$new_space"
 done
 
-# optional follow focus
-if [ "$1" = "follow" ]; then
-  yabai -m space --focus "$new_space"
-fi
+yabai -m space --focus "$new_space"
+

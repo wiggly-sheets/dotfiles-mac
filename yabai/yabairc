@@ -205,6 +205,6 @@ done
 # ================================
 # auto-update yabai (HEAD)
 # ================================
-YABAI_CERT=yabai-cert sh -c "$(curl -fsSL "https://git.io/update-yabai")" &
+#YABAI_CERT=yabai-cert sh -c "$(curl -fsSL "https://git.io/update-yabai")" &
 
 osascript -e 'display notification "yabai configuration loaded"'

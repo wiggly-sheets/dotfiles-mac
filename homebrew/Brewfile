@@ -272,7 +272,7 @@ brew "most"
 # Command-line music player client for mpd
 brew "mpc"
 # Music Player Daemon
-brew "mpd"
+brew "mpd", restart_service: :changed
 # Feature-rich command-line audio/video downloader
 brew "yt-dlp"
 # Media player based on MPlayer and mplayer2

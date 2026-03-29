@@ -80,6 +80,8 @@ ctrl + alt - space : yabai -m space --layout $(yabai -m query --spaces --space |
 alt - o : sh -c 'yabai -m space --move prev || yabai -m space --move last;  sketchybar --trigger space_change && sketchybar --trigger space_windows_change'
 alt - m : sh -c 'yabai -m space --move next || yabai -m space --move first; sketchybar --trigger space_change && sketchybar --trigger space_windows_change'
 
+# hyper = caps lock key
+
 # move spaces to specific indices
 hyper - 1 : yabai -m space --move 1 && sketchybar --trigger space_change && sketchybar --trigger space_windows_change
 hyper - 2 : yabai -m space --move 2 && sketchybar --trigger space_change && sketchybar --trigger space_windows_change
@@ -91,6 +93,8 @@ hyper - 7 : yabai -m space --move 7 && sketchybar --trigger space_change && sket
 hyper - 8 : yabai -m space --move 8 && sketchybar --trigger space_change && sketchybar --trigger space_windows_change
 hyper - 9 : yabai -m space --move 9 && sketchybar --trigger space_change && sketchybar --trigger space_windows_change
 hyper - 0 : yabai -m space --move 10 && sketchybar --trigger space_change && sketchybar --trigger space_windows_change
+
+# ctrl + alt + cmd = fn key
 
 # swap spaces if on same display, else swap windows if on different displays
 ctrl + alt + cmd - 1 : yabai -m space --swap 1 && sketchybar --trigger space_change && sketchybar --trigger space_windows_change
@@ -208,24 +212,25 @@ alt - e : yabai -m space --focus last
 alt - r : yabai -m space --focus recent
 
 # Focus next space of current display, else wrap to the first space of the current display if the current space is the last space of its display
-alt - g : ~/dotfiles/.config/yabai/scripts/display_space_next.sh
+alt - g : ~/dotfiles/yabai/scripts/display_space_next.sh
 
 # Focus previous space of current display, else wrap to the last space of the current display if the current space is the first space of its display
-alt - d : ~/dotfiles/.config/yabai/scripts/display_space_prev.sh
+alt - d : ~/dotfiles/yabai/scripts/display_space_prev.sh
 
 # create space
 alt - a : yabai -m space --create
 
 # create space & follow focus
-alt - t : ~/dotfiles/.config/yabai/scripts/new_space_focus.sh
+alt - t : ~/dotfiles/yabai/scripts/new_space_focus.sh
 
 # destroy space, move destroyed space windows to previous space, & focus previous space
-alt - w : ~/dotfiles/.config/yabai/scripts/destroy_space.sh
+alt - w : ~/dotfiles/yabai/scripts/destroy_space.sh
 
 # create space, move windows from current space to new space, and follow focus
-cmd + shift - t : ~/dotfiles/.config/yabai/scripts/move_space_windows_follow.sh
+cmd + shift - t : ~/dotfiles/yabai/scripts/move_space_windows_follow.sh
 
-alt + shift - t : ~/dotfiles/.config/yabai/scripts/move_space_windows.sh
+# create space and move windows from current space to new space
+alt + shift - t : ~/dotfiles/yabai/scripts/move_space_windows.sh
 
 # move window to space
 shift + alt - 1 : yabai -m window --space 1;
@@ -262,16 +267,16 @@ shift + cmd - 9 : yabai -m window --space 9 --focus
 shift + cmd - 0 : yabai -m window --space 10 --focus
 
 # make new space at last index & send window to it
-shift + alt - a :  ~/dotfiles/.config/yabai/scripts/new_space_window.sh
+shift + alt - a : ~/dotfiles/yabai/scripts/new_space_window.sh
 
 # make new space at last index, send window to it, & follow focus
-shift + cmd - a : ~/dotfiles/.config/yabai/scripts/new_space_follow_focus.sh
+shift + cmd - a : ~/dotfiles/yabai/scripts/new_space_follow_focus.sh
 
 # make new space 1 index after current space
-ctrl - a : ~/dotfiles/.config/yabai/scripts/new_space_close.sh
+ctrl - a : ~/dotfiles/yabai/scripts/new_space_close.sh
 
 # make new space 1 index after current space & follow focus
-ctrl - t : ~/dotfiles/.config/yabai/scripts/new_space_close_follow.sh
+ctrl - t : ~/dotfiles/yabai/scripts/new_space_close_follow.sh
 
 # focus display
 rcmd - r : yabai -m display --focus recent
@@ -284,6 +289,8 @@ rcmd - k : yabai -m display --focus north
 rcmd - 1 : yabai -m display --focus 1
 rcmd - 2 : yabai -m display --focus 2
 rcmd - 3 : yabai -m display --focus 3
+
+# meh = right alt/option key
 
 # send window to display and follow focus
 meh - r : yabai -m window --display recent --focus;
@@ -321,10 +328,10 @@ shift + cmd - s : sketchybar --reload
 shift + cmd - b : sketchybar --bar hidden=toggle
 
 # toggle borders visiblity
-shift + cmd - c : ~/dotfiles/.config/yabai/scripts/borders_toggle.sh
+shift + cmd - c : ~/dotfiles/yabai/scripts/borders_toggle.sh
 
 # toggle menu bar padding, window gaps, and padding for internal or external display, and adjust sketchybar height for external display
-shift + cmd -m : ~/dotfiles/.config/yabai/scripts/layout.sh
+shift + cmd -m : ~/dotfiles/yabai/scripts/layout.sh
 
 # toggle native menu bar visbility
 shift + cmd - v : sh -c 'o=$(yabai -m config menubar_opacity); awk "BEGIN{exit !($o>=1)}" && { yabai -m config menubar_opacity 0.0; sketchybar --bar hidden=false; } || { yabai -m config menubar_opacity 1.0; sketchybar --bar hidden=true; }'
