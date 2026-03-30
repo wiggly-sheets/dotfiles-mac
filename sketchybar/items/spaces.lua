@@ -3,19 +3,6 @@ local icons = require("icons")
 local app_icons = require("helpers.app_icons")
 local settings = require("default")
 
--- local divider = sbar.add("item", "divider", {
---	icon = {
---		font = { family = settings.default, size = 12 },
---		string = icons.divider,
---		drawing = true,
---		color = colors.white,
---		y_offset = 1,
---	},
---	padding_left = -2,
---	padding_right = 4,
---	position = "left",
---})
-
 local spaces = {}
 local space_app_icons = {} -- sid -> concatenated icon glyphs (string)
 local space_app_names = {} -- sid -> set/table of app names present in that space
@@ -140,11 +127,13 @@ for i = 1, 10 do
 		update_space_display(space, sid, is_selected, space_contains_front_app[sid])
 	end)
 
+	local rename_space_click =
+		'osascript -e \'tell application "System Events" to tell process "SpacesRenamer" to click menu bar item 1 of menu bar 2\''
+
 	-- Click handling
 	space:subscribe("mouse.clicked", function(env)
 		if env.BUTTON == "other" then
-			space_popup:set({ background = { image = "space." .. env.SID } })
-			space:set({ popup = { drawing = "toggle" } })
+			sbar.exec(rename_space_click)
 		else
 			local op = (env.BUTTON == "right") and "--destroy" or "--focus"
 			sbar.exec("yabai -m space " .. op .. " " .. env.SID)
@@ -165,6 +154,11 @@ for i = 1, 10 do
 
 	space:subscribe("mouse.exited", function()
 		space:set({ popup = { drawing = false }, background = { drawing = false } })
+	end)
+
+	space:subscribe("mouse.scrolled", function(env)
+		space_popup:set({ background = { image = "space." .. env.SID } })
+		space:set({ popup = { drawing = "toggle" } })
 	end)
 end
 
@@ -254,7 +248,9 @@ add_space_button:subscribe("mouse.clicked", function(env)
 	if env.BUTTON == "left" then
 		sbar.exec("yabai -m space --create")
 	elseif env.BUTTON == "right" then
-		sbar.exec("~/dotfiles/.config/yabai/scripts/new_space_focus.sh")
+		sbar.exec("~/dotfiles/yabai/scripts/new_space_focus.sh")
+	elseif env.BUTTON == "other" then
+		sbar.exec("~/dotfiles/yabai/scripts/new_space_close.sh")
 	end
 end)
 

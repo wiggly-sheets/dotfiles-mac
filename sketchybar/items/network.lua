@@ -538,6 +538,8 @@ wifi_up:subscribe("network_update", function(env)
 		'osascript -e \'tell application "System Events" to tell process "Passepartout" to click menu bar item 1 of menu bar 2\''
 	local tailscale_click_script =
 		'osascript -e \'tell application "System Events" to tell process "Tailscale" to click menu bar item 1 of menu bar 2\''
+	local little_snitch_click_script = "open -a 'Little Snitch Network Monitor'"
+	--	'osascript -e \'tell application "System Events" to tell process "Little Snitch" to click menu bar item 1 of menu bar 2\''
 
 	-- Wi-Fi item
 	wifi:subscribe("mouse.clicked", function(env)
@@ -556,6 +558,8 @@ wifi_up:subscribe("network_update", function(env)
 			sbar.exec(shortcut_script)
 		elseif env.BUTTON == "right" then
 			sbar.exec(wifi_click_script)
+		else
+			sbar.exec(little_snitch_click_script)
 		end
 	end)
 
@@ -565,6 +569,8 @@ wifi_up:subscribe("network_update", function(env)
 			sbar.exec(shortcut_script)
 		elseif env.BUTTON == "right" then
 			sbar.exec(wifi_click_script)
+		else
+			sbar.exec(little_snitch_click_script)
 		end
 	end)
 
@@ -575,6 +581,7 @@ wifi_up:subscribe("network_update", function(env)
 		elseif env.BUTTON == "right" then
 			sbar.exec(wifi_click_script)
 		else
+			sbar.exec(little_snitch_click_script)
 		end
 	end)
 
@@ -584,6 +591,8 @@ wifi_up:subscribe("network_update", function(env)
 			sbar.exec(shortcut_script)
 		elseif env.BUTTON == "right" then
 			sbar.exec(wifi_click_script)
+		else
+			sbar.exec(little_snitch_click_script)
 		end
 	end)
 end)

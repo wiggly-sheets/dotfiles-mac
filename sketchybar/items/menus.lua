@@ -357,8 +357,7 @@ local left_apple_script =
 local right_apple_script =
 	"osascript -e 'tell application \"System Events\" to key code 0 using {command down, option down, control down}'"
 
-local middle_apple_script =
-	'o=$(yabai -m config menubar_opacity); awk "BEGIN{exit !($o>=1)}" && { yabai -m config menubar_opacity 0.0; sketchybar --bar hidden=false; } || { yabai -m config menubar_opacity 1.0; sketchybar --bar hidden=true; }'
+local middle_apple_script = "sketchybar --bar hidden=toggle"
 
 apple:subscribe("mouse.clicked", function(env)
 	if env.BUTTON == "left" then
@@ -443,8 +442,8 @@ menu_toggle:subscribe("mouse.scrolled.global", function()
 	toggle_menus()
 end)
 
-apple:subscribe("mouse.scrolled", function()
-	sbar.exec("sketchybar --reload")
-end)
+-- apple:subscribe("mouse.scrolled", function()
+--	sbar.exec("sketchybar --reload")
+--end)
 
 return menu_watcher

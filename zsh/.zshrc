@@ -150,7 +150,7 @@ alias lsgit='eza --long --color=always --icons=always --tree --all --git --git-r
 alias fvim='~/.config/scripts/fzf_listoldfiles.sh'
 alias ovim="~/.config/scripts/zoxide_openfiles_nvim.sh"
 alias fman="compgen -c | fzf | xargs man"
-alias kk='nvim $(fzf --preview="bat --color=always {}")'
+alias fz='nvim $(fzf --preview="bat --color=always {}")'
 alias cp='cp -i'
 alias mv='mv -i'
 alias rm='rm -i'

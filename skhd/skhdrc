@@ -333,5 +333,5 @@ shift + cmd - c : ~/dotfiles/yabai/scripts/borders_toggle.sh
 # toggle menu bar padding, window gaps, and padding for internal or external display, and adjust sketchybar height for external display
 shift + cmd -m : ~/dotfiles/yabai/scripts/layout.sh
 
-# toggle native menu bar visbility
-shift + cmd - v : sh -c 'o=$(yabai -m config menubar_opacity); awk "BEGIN{exit !($o>=1)}" && { yabai -m config menubar_opacity 0.0; sketchybar --bar hidden=false; } || { yabai -m config menubar_opacity 1.0; sketchybar --bar hidden=true; }'
+# toggle native menu bar & sketchybar visbility
+shift + cmd - v : ~/dotfiles/yabai/scripts/menubar_toggle.sh

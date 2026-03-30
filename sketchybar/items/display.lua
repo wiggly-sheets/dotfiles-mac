@@ -31,13 +31,13 @@ local display = sbar.add("item", "display", {
 local display_left_click =
 	'osascript -e \'tell application "System Events" to keystroke "d" using {command down, option down, control down}\''
 
-local display_wallper_click =
-	'osascript -e \'tell application "System Events" to tell process "Wallper" to click menu bar item 1 of menu bar 2\''
-
 local display_flux_click =
 	'osascript -e \'tell application "System Events" to tell process "Flux" to click menu bar item 1 of menu bar 2\''
 
-local display_switch_click = "~/dotfiles/.config/yabai/scripts/layout.sh"
+local display_wallper_click =
+	'osascript -e \'tell application "System Events" to tell process "Wallper" to click menu bar item 1 of menu bar 2\''
+
+local display_switch_click = "~/dotfiles/yabai/scripts/layout.sh"
 
 local function handle_display_click(env)
 	if env.BUTTON == "left" then
@@ -46,7 +46,7 @@ local function handle_display_click(env)
 		sbar.exec(display_flux_click)
 	elseif env.BUTTON == "other" then
 		sbar.exec(display_switch_click)
-	elseif env.MODIFIER == "cmd" and env.BUTTON == "left" then
+	elseif env.MODIFIER == "cmd" then
 		sbar.exec(display_wallper_click)
 	end
 end
