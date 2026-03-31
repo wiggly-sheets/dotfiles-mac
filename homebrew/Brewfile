@@ -5,6 +5,7 @@ tap "edde746/plezy", "https://github.com/edde746/plezy"
 tap "felixkratz/formulae"
 tap "filosottile/musl-cross"
 tap "gcenx/wine"
+tap "gechr/tap"
 tap "gromgit/brewtils"
 tap "gschurck/fuzzybrew"
 tap "homielab/mountmate", "https://github.com/homielab/mountmate"
@@ -15,6 +16,7 @@ tap "kegworks-app/kegworks"
 tap "koekeishiya/formulae"
 tap "lihaoyun6/tap"
 tap "lslqtz/formulae"
+tap "malpern/tap"
 tap "matars/gitfetch"
 tap "mateocerquetella/ricebarmac"
 tap "mhaeuser/mhaeuser"
@@ -487,6 +489,8 @@ brew "jackielii/tap/skhd-zig"
 brew "jstkdng/programs/ueberzugpp"
 # A tiling window manager for macOS based on binary space partitioning.
 brew "koekeishiya/formulae/yabai", args: ["HEAD"]
+# Coordinates SketchyBar and the native macOS menu bar
+brew "malpern/tap/sketchybar-toggle"
 # A neofetch alternative for GitHub quick view
 brew "matars/gitfetch/gitfetch"
 # Check Temperature by using Apple System Management Control (Smc) tool
@@ -688,6 +692,8 @@ cask "losslesscut"
 cask "maccy"
 # File system integration
 cask "macfuse"
+# Graphical user interface for the command terminal
+cask "macpilot"
 # Speech recognition tool
 cask "macwhisper"
 # Video format converter (transcoder)
@@ -868,6 +874,8 @@ cask "webtorrent"
 cask "wezterm@nightly"
 # Native desktop client for WhatsApp
 cask "whatsapp"
+# Menu bar utility for viewing and switching macOS Spaces
+cask "gechr/tap/whichspace"
 # Wine wrapper built with SwiftUI
 cask "whisky"
 # Original Xbox Emulator
@@ -908,6 +916,7 @@ mas "Knights of the Old Republic", id: 416608891
 mas "Lickable Menu Bar", id: 6444217677
 mas "Logic Pro", id: 634148309
 mas "Mactracker", id: 430255202
+mas "Magic Disk Benchmark", id: 1608793370
 mas "MainStage", id: 634159523
 mas "Motion", id: 434290957
 mas "MyWallpaper", id: 1552826194
