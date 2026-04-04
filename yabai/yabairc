@@ -8,8 +8,11 @@ yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 sudo yabai --load-sa
 
 # ================================
-# run the script to allow space renaming
+# run the script to allow space renaming with spacesrenamer.app
 # ================================
+
+yabai -m signal --add event=dock_did_restart action="/Users/Zeb/Developer/spacesrenamerpackage/run.sh"
+
 /Users/Zeb/Developer/spacesrenamerpackage/run.sh
 
 # ================================
@@ -23,6 +26,9 @@ yabai -m rule --add app="^TextEdit$" scratchpad=scratchpad grid=6:6:6:0:8:8
 yabai -m signal --add event=window_focused action="sketchybar --trigger window_focus &> /dev/null"
 yabai -m signal --add event=window_title_changed action="sketchybar --trigger title_change &> /dev/null"
 
+# focus window after active space changes
+yabai -m signal --add event=space_changed action="yabai -m window --focus \$(yabai -m query --windows --space | jq .[0].id)"
+
 # ================================
 # helper for float rules
 # ================================
@@ -30,8 +36,6 @@ yabai_rule() {
   yabai -m rule --add "$@"
   yabai -m rule --apply "$@"
 }
-
-GRID_CENTER="6:6:1:1:4:4"
 
 # ================================
 # MAIN CONFIG
@@ -96,15 +100,10 @@ done
 # PIN APPS TO SPACES == SETUP WORKSPACES
 # ================================
 SPACE_RULES=(
-  "^Helium$:1"
-  "^Zen$:2"
-  "^Bloom$:3"
-  "^WezTerm$:4"
-  "^Calendar$:5"
-  "^Notes$:5"
-  "^Mail$:5"
-  "^ChatGPT$:6"
-  "^Chromatix$:7"
+  "^Orion$:1"
+  "^Bloom$:2"
+  "^Mail$:3"
+  "^iTerm$:4"
 )
 
 for rule in "${SPACE_RULES[@]}"; do
@@ -116,6 +115,9 @@ done
 # ================================
 # FLOAT/UNMANAGED APPS
 # ================================
+
+GRID_CENTER="6:6:1:1:4:4"
+
 FLOAT_APPS=(
   "^System Settings$"
   "^Calculator$"
@@ -200,7 +202,9 @@ for app in "${FLOAT_APPS[@]}"; do
   yabai_rule \
     app="$app" \
     manage=off \
-    grid="$GRID_CENTER"
+    grid="$GRID_CENTER" \
+    sub-layer=above \
+
 done
 
 # ================================

@@ -14,6 +14,7 @@ tap "jsattler/tap"
 tap "jstkdng/programs"
 tap "kegworks-app/kegworks"
 tap "koekeishiya/formulae"
+tap "krishkrosh/apps"
 tap "lihaoyun6/tap"
 tap "lslqtz/formulae"
 tap "malpern/tap"
@@ -854,6 +855,8 @@ cask "timemachineeditor"
 cask "toneprint"
 # Web browser focusing on security
 cask "tor-browser"
+# Turn your MacBook's trackpad into a precise digital weighing scale
+cask "krishkrosh/apps/trackweight"
 # Batch rename utility
 cask "transnomino"
 # Easy to use text extraction tool
