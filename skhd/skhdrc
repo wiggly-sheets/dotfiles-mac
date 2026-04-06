@@ -256,7 +256,7 @@ shift + alt - r : yabai -m window --space recent;
 shift + cmd - r : yabai -m window --space recent --focus
 shift + cmd - f : yabai -m window --space first --focus
 shift + cmd - e : yabai -m window --space last --focus
-shift + cmd - p : yabai -m window --space prev -- focus|| yabai -m window --space last --focus
+shift + cmd - p : yabai -m window --space prev --focus|| yabai -m window --space last --focus
 shift + cmd - n : yabai -m window --space next --focus || yabai -m window --space first -- focus
 shift + cmd - 1 : yabai -m window --space 1 --focus
 shift + cmd - 2 : yabai -m window --space 2 --focus
