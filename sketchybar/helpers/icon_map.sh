@@ -81,6 +81,9 @@ function __icon_map() {
    "Anytype")
         icon_result=":anytype:"
         ;;
+   "ApiArk")
+        icon_result=":apiark:"
+        ;;
    "Apifox")
         icon_result=":apifox:"
         ;;
@@ -156,8 +159,8 @@ function __icon_map() {
    "Blitzit")
         icon_result=":blitzit:"
         ;;
-   "Bluetooth File Exchange")
-        icon_result=":bluetooth_file_exchange:"
+   "Bluetooth File Exchange" | "Bluetooth")
+        icon_result=":bluetooth:"
         ;;
    "BluOS Controller")
         icon_result=":bluos_controller:"
@@ -381,7 +384,7 @@ function __icon_map() {
    "FaceTime" | "FaceTime 通话")
         icon_result=":face_time:"
         ;;
-   "Feishu")
+   "Feishu" | "飞书" | "飞书会议")
         icon_result=":feishu:"
         ;;
    "Figma")
@@ -414,11 +417,17 @@ function __icon_map() {
    "FL Studio")
         icon_result=":flstudio:"
         ;;
+   "Fluxer")
+        icon_result=":fluxer:"
+        ;;
    "FMOD Studio")
         icon_result=":fmod:"
         ;;
    "Folx")
         icon_result=":folx:"
+        ;;
+   "Font Book")
+        icon_result=":font_book:"
         ;;
    "foobar2000")
         icon_result=":foobar2000:"
@@ -521,6 +530,9 @@ function __icon_map() {
         ;;
    "Hyperkey")
         icon_result=":hyperkey:"
+        ;;
+   "iA Writer")
+        icon_result=":ia_writer:"
         ;;
    "IntelliJ IDEA")
         icon_result=":idea:"
@@ -960,6 +972,9 @@ function __icon_map() {
    "Plexamp")
         icon_result=":plexamp:"
         ;;
+   "Plezy")
+        icon_result=":plezy:"
+        ;;
    "Podcasts" | "播客")
         icon_result=":podcasts:"
         ;;
@@ -1076,6 +1091,9 @@ function __icon_map() {
         ;;
    "Scribus")
         icon_result=":scribus:"
+        ;;
+   "Script Debugger")
+        icon_result=":script_debugger:"
         ;;
    "Script Editor")
         icon_result=":script_editor:"
@@ -1221,6 +1239,9 @@ function __icon_map() {
    "TIDAL")
         icon_result=":tidal:"
         ;;
+   "TigerVNC")
+        icon_result=":tigervnc:"
+        ;;
    "Timery")
         icon_result=":timery:"
         ;;
@@ -1365,7 +1386,7 @@ function __icon_map() {
    "Zed")
         icon_result=":zed:"
         ;;
-   "Zen" | "Zen Browser")
+   "Zen" | "Zen Browser" | "Twilight")
         icon_result=":zen_browser:"
         ;;
    "Zeplin")

@@ -176,6 +176,10 @@ brew "ghidra", link: false
 brew "git"
 # Syntax-highlighting pager for git and diff output
 brew "git-delta"
+# Tool Command Language
+brew "tcl-tk"
+# Tcl/Tk UI for the git revision control system
+brew "git-gui"
 # Data validation using Python type hints
 brew "pydantic"
 # Alternative to top/htop
@@ -344,8 +348,6 @@ brew "proctools"
 brew "pv"
 # Generic syntax highlighter
 brew "pygments"
-# Tool Command Language
-brew "tcl-tk"
 # Python interface to Tcl/Tk
 brew "python-tk@3.13"
 # Rsync for cloud storage
@@ -898,6 +900,7 @@ mas "Bonjourr Startpage", id: 1615431236
 mas "Broadcasts", id: 1469995354
 mas "Color Picker", id: 1545870783
 mas "Colorful Folder", id: 1576476152
+mas "Comet", id: 1146204813
 mas "Compressor", id: 424390742
 mas "Dark Night", id: 1592844577
 mas "Dato", id: 1470584107
@@ -992,6 +995,8 @@ vscode "mechatroner.rainbow-csv"
 vscode "mgesbert.python-path"
 vscode "mhutchie.git-graph"
 vscode "moshfeu.diff-merge"
+vscode "ms-azuretools.vscode-containers"
+vscode "ms-azuretools.vscode-docker"
 vscode "ms-python.debugpy"
 vscode "ms-python.python"
 vscode "ms-toolsai.jupyter"

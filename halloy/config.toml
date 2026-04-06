@@ -17,5 +17,29 @@ nickname = "wiggly-sheets"
 server = "irc.libera.chat"
 channels = ["#halloy"]
 
+[servers.oftc]
+nickname = "wiggly-sheets"
+server = "irc.oftc.net"
+port = 6697
+channels = []
+
+[servers.hybridIRC]
+nickname = "wiggly-sheets"
+server = "irc.hybridirc.com"
+port = 6697
+channels = []
+
+[servers.IRCnet]
+nickname = "wiggly-sheets"
+server = "irc.ircnet.com"
+port = 6667
+use_tls = false
+
+[servers.p2pnet]
+nickname = "wiggly-sheets"
+server = "irc.p2p-network.net"
+port = 6667
+use_tls = false
+
 [buffer.channel.topic]
 enabled = true
