@@ -61,7 +61,7 @@ for group, codes in pairs(condition_groups) do
 	end
 end
 
-local weather = sbar.add("item", "widgets.weather", {
+local weather = sbar.add("item", "weather", {
 	position = "right",
 	update_freq = 3600,
 	icon = {

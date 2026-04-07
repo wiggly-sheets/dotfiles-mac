@@ -29,7 +29,7 @@ start_network_load()
 sbar.add("event", "system_woke"):subscribe("system_woke", start_network_load)
 sbar.add("event", "network_change"):subscribe("network_change", start_network_load)
 
-local wifi_up = sbar.add("item", "widgets.wifi1", {
+local wifi_up = sbar.add("item", "wifi1", {
 	position = "right",
 	icon = {
 		font = {
@@ -49,7 +49,7 @@ local wifi_up = sbar.add("item", "widgets.wifi1", {
 	y_offset = 4,
 })
 
-local wifi_down = sbar.add("item", "widgets.wifi2", {
+local wifi_down = sbar.add("item", "wifi2", {
 	position = "right",
 	icon = {
 		font = {
@@ -70,7 +70,7 @@ local wifi_down = sbar.add("item", "widgets.wifi2", {
 })
 
 -- Upload network graph
-local net_graph_up = sbar.add("graph", "widgets.net_graph_up", 42, {
+local net_graph_up = sbar.add("graph", "net_graph_up", 42, {
 	position = "right",
 	graph = {
 		color = colors.blue,
@@ -150,7 +150,7 @@ net_graph_up:subscribe("network_update", function(env)
 end)
 
 -- Download network graph
-local net_graph_down = sbar.add("graph", "widgets.net_graph_down", 42, {
+local net_graph_down = sbar.add("graph", "net_graph_down", 42, {
 	position = "right",
 	padding_right = -49,
 	graph = {
@@ -276,7 +276,7 @@ end)
 
 local popup_width = 250
 
-local wifi_bracket = sbar.add("bracket", "widgets.wifi.bracket", {
+local wifi_bracket = sbar.add("bracket", "wifi.bracket", {
 	wifi.name,
 	wifi_up.name,
 	wifi_down.name,
@@ -462,7 +462,7 @@ wifi:subscribe({ "wifi_change", "system_woke", "network_update", "vpn_state_chan
 	sbar.delay(1, updateNetworkStatus)
 end)
 
-local wifi_up = sbar.add("item", "widgets.wifi1", {
+local wifi_up = sbar.add("item", "wifi1", {
 	position = "right",
 	width = 0,
 	icon = {
@@ -485,7 +485,7 @@ local wifi_up = sbar.add("item", "widgets.wifi1", {
 	y_offset = 8,
 })
 
-local wifi_down = sbar.add("item", "widgets.wifi2", {
+local wifi_down = sbar.add("item", "wifi2", {
 	position = "right",
 	icon = {
 		font = {

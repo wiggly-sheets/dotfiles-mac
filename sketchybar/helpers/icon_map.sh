@@ -51,6 +51,9 @@ function __icon_map() {
    "AirPort Utility")
         icon_result=":airport_utility:"
         ;;
+   "AirVPN" | "Eddie")
+        icon_result=":airvpn:"
+        ;;
    "Alacritty")
         icon_result=":alacritty:"
         ;;

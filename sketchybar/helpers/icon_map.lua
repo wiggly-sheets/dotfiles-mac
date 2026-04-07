@@ -16,6 +16,8 @@ return {
 	[ [[Affinity Publisher 2]] ] = ":affinity_publisher_2:",
 	[ [[Airmail]] ] = ":airmail:",
 	[ [[AirPort Utility]] ] = ":airport_utility:",
+	[ [[AirVPN]] ] = ":airvpn:",
+	[ [[Eddie]] ] = ":airvpn:",
 	[ [[Alacritty]] ] = ":alacritty:",
 	[ [[Alfred]] ] = ":alfred:",
 	[ [[AltTab]] ] = ":alttab:",

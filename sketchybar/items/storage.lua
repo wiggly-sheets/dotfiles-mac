@@ -3,7 +3,7 @@ local colors = require("colors")
 local icons = require("icons")
 
 -- Disk icon item
-local disk_icon = sbar.add("item", "disk_icon", {
+local disk_icon = sbar.add("item", "storage_icon", {
 	update_freq = 60,
 	position = "right",
 	padding_left = -30,
@@ -13,7 +13,7 @@ local disk_icon = sbar.add("item", "disk_icon", {
 })
 
 -- Disk label item
-local disk_label = sbar.add("item", "disk_label", {
+local disk_label = sbar.add("item", "storage_label", {
 	update_freq = 60,
 	position = "right",
 	padding_left = -2,

@@ -15,7 +15,7 @@ local icons = {
 	vim = "",
 	divider = "│",
 	audio = { airpods_pro = "􀪷", airpods_max = "􀺹", scarlett = "􂡒", sceptre = "􀢹" },
-	menus = { expand = ">", contract = "<" },
+	menus = { expand = "􀆉", contract = "􀆊" },
 	storage = {
 		empty = "󰝦",
 		full = "󰪥",
