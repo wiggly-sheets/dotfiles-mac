@@ -70,7 +70,7 @@ sbar.set("toggle_items", {
 -- Force reapply after SketchyBar finishes loading everything
 sbar.exec("sleep 0.1 && sketchybar --trigger toggle_items_init")
 
-toggle_items:subscribe("mouse.clicked", function()
+local function toggle()
 	hidden = not hidden
 	set_items(not hidden)
 	sbar.set("toggle_items", {
@@ -78,6 +78,10 @@ toggle_items:subscribe("mouse.clicked", function()
 			string = hidden and icons.menus.expand or icons.menus.contract,
 		},
 	})
+end
+
+toggle_items:subscribe("mouse.clicked", function()
+	toggle()
 end)
 
 toggle_items:subscribe("toggle_items_init", function()
@@ -104,3 +108,7 @@ local function add_hover(item)
 end
 
 add_hover(toggle_items)
+
+toggle_items:subscribe("mouse.scrolled.global", function()
+	toggle()
+end)

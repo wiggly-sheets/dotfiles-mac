@@ -225,7 +225,7 @@ local function updateNetworkStatus()
 					-- VPN ACTIVE (highest priority)
 					wifi:set({
 						icon = { string = icons.wifi.vpn, color = colors.white },
-						label = { string = "VPN", color = colors.white },
+						label = { string = "", color = colors.white },
 					})
 				elseif tonumber(hasInternet) == 0 then
 					-- DISCONNECTED
@@ -237,7 +237,7 @@ local function updateNetworkStatus()
 					-- ETHERNET
 					wifi:set({
 						icon = { string = icons.wifi.ethernet, color = colors.white },
-						label = { string = "Ethernet", color = colors.green },
+						label = { string = "", color = colors.green },
 					})
 				else
 					-- WIFI/HOTSPOT CHECK using system_profiler
@@ -249,7 +249,7 @@ local function updateNetworkStatus()
 								-- Detected hotspot
 								wifi:set({
 									icon = { string = icons.wifi.hotspot, color = colors.white },
-									label = { string = "Hotspot", color = colors.blue },
+									label = { string = "", color = colors.blue },
 								})
 							else
 								-- Normal Wi-Fi
@@ -426,8 +426,9 @@ local function toggle_details()
 end
 
 wifi:subscribe("mouse.clicked", toggle_details)
-wifi:subscribe("mouse.exited.global", "mouse.exited", function()
-	wifi_bracket:set({ popup = { drawing = false } })
+
+wifi:subscribe("mouse.exited.global", function()
+	toggle_details()
 end)
 
 wifi_up:subscribe("network_update", function(env)
@@ -620,6 +621,8 @@ end
 add_hover(wifi_up)
 add_hover(wifi_down)
 
+-- ======== Hover effects ========
+
 wifi:subscribe("mouse.entered", function()
 	wifi:set({
 		background = {
@@ -633,11 +636,9 @@ wifi:subscribe("mouse.entered", function()
 	})
 end)
 
-wifi:subscribe({ "mouse.exited", "mouse.entered.global", "mouse.exited.global" }, function()
+wifi:subscribe("mouse.exited", function()
 	wifi:set({ background = { drawing = false } })
 end)
-
--- ======== Hover effects ========
 
 net_graph_down:subscribe("mouse.entered", function()
 	net_graph_up:set({

@@ -4,14 +4,13 @@ local icons = require("icons")
 local dnd = sbar.add("item", "dnd", {
 	label = {
 		drawing = true,
-		string = icons.dnd,
+		string = icons.dnd_off,
 		font = { size = 15 },
 	},
 	position = "right",
 	padding_right = 4,
 	padding_left = 0,
 	update_freq = 10,
-	y_offset = 1,
 })
 
 local function update_dnd()
@@ -19,9 +18,9 @@ local function update_dnd()
 		[[defaults read com.apple.controlcenter 'NSStatusItem VisibleCC FocusModes' 2>/dev/null]],
 		function(result)
 			if result:match("1") then
-				dnd:set({ label = { color = colors.dnd } })
+				dnd:set({ label = { string = icons.dnd.on, color = colors.dnd } })
 			else
-				dnd:set({ label = { color = colors.grey } })
+				dnd:set({ label = { string = icons.dnd.off, color = colors.grey } })
 			end
 		end
 	)
