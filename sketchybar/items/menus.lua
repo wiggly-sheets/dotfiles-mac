@@ -2,7 +2,7 @@ local colors = require("colors")
 local settings = require("default")
 local icons = require("icons")
 
-local apple = sbar.add("item", {
+local apple = sbar.add("item", "apple", {
 	icon = {
 		font = { size = 14 },
 		string = icons.apple,
@@ -42,7 +42,7 @@ end
 local menu_toggle = sbar.add("item", "menus.toggle", {
 	icon = {
 		string = icons.menus.expand,
-		font = { family = settings.default, size = 12, style = "Bold" },
+		font = { family = settings.default, size = 12 },
 		color = colors.white,
 	},
 	label = { drawing = false },

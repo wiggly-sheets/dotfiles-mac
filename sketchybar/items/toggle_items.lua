@@ -30,9 +30,9 @@ local items_to_toggle = {
 local toggle_items = sbar.add("item", "toggle_items", {
 	position = "right",
 	icon = {
-		font = settings.default,
 		string = icons.menus.contract,
 		color = colors.white,
+		font = { family = settings.default, size = 12 },
 	},
 	label = {
 		drawing = false,
