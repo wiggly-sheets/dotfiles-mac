@@ -2,7 +2,7 @@ local colors = require("colors")
 local icons = require("icons")
 local settings = require("default")
 
-local hidden = false
+local hidden = true
 
 local items_to_toggle = {
 	"weather",
@@ -59,6 +59,17 @@ local function set_items(visible)
 	end
 end
 
+-- Initialize hidden state on load (force after all items are created)
+set_items(not hidden)
+sbar.set("toggle_items", {
+	icon = {
+		string = hidden and icons.menus.expand or icons.menus.contract,
+	},
+})
+
+-- Force reapply after SketchyBar finishes loading everything
+sbar.exec("sleep 0.1 && sketchybar --trigger toggle_items_init")
+
 toggle_items:subscribe("mouse.clicked", function()
 	hidden = not hidden
 	set_items(not hidden)
@@ -67,6 +78,10 @@ toggle_items:subscribe("mouse.clicked", function()
 			string = hidden and icons.menus.expand or icons.menus.contract,
 		},
 	})
+end)
+
+toggle_items:subscribe("toggle_items_init", function()
+	set_items(not hidden)
 end)
 
 -- ======== Hover effects ========
