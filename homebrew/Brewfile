@@ -310,8 +310,6 @@ brew "ninvaders"
 brew "nmap"
 # Renders an animated, color, ANSI-text loop of the Poptart Cat
 brew "nyancat"
-# Create, run, and share large language models (LLMs)
-brew "ollama"
 # Command-line Git information tool
 brew "onefetch"
 # Colossal Cave Adventure, the 1995 430-point version
@@ -612,6 +610,8 @@ cask "filebot"
 cask "filemonitor"
 # File finder
 cask "find-any-file"
+# Change the behavior of the fn keys depending on the active application
+cask "fluor"
 # Screen colour temperature controller
 cask "flux-app"
 # Focusrite interface controller
@@ -741,6 +741,8 @@ cask "numi"
 cask "obs"
 # Knowledge base that works on top of a local folder of plain text Markdown files
 cask "obsidian"
+# Get up and running with large language models locally
+cask "ollama-app"
 # Finds large, unwanted files and deletes them
 cask "omnidisksweeper"
 # System and utility switches
