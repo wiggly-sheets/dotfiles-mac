@@ -46,8 +46,8 @@ local menu_toggle = sbar.add("item", "menus.toggle", {
 		color = colors.white,
 	},
 	label = { drawing = false },
-	padding_left = 2,
-	padding_right = 4,
+	padding_left = 1,
+	padding_right = 1,
 	position = "left",
 })
 

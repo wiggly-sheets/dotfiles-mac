@@ -194,7 +194,9 @@ COMPLETION_WAITING_DOTS="true"
 HIST_STAMPS="mm/dd/yyyy"
 export PF_INFO="ascii title os host kernel uptime pkgs memory"
 
-eval $(thefuck --alias)
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/Zeb/.lmstudio/bin"
+# End of LM Studio CLI section

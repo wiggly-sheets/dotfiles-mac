@@ -196,6 +196,7 @@ FLOAT_APPS=(
   "^bettershot$"
   "^BetterCapture$"
   "^Time Machine$"
+  "^Eddie$"
 )
 
 for app in "${FLOAT_APPS[@]}"; do

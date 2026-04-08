@@ -895,6 +895,7 @@ cask "zoom"
 cask "zotero"
 mas "2048 Game", id: 871033113
 mas "Actions", id: 1586435171
+mas "Apple Configurator", id: 1037126344
 mas "Blackmagic Disk Speed Test", id: 425264550
 mas "Bonjourr Startpage", id: 1615431236
 mas "Broadcasts", id: 1469995354
