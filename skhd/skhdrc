@@ -1,4 +1,4 @@
- # Use custom shell (skips interactive shell overhead)
+# Use custom shell (skips interactive shell overhead)
 .shell "/bin/dash"
 
 # Blacklist applications (skip hotkey processing)
@@ -114,7 +114,10 @@ ctrl + alt + cmd - e : yabai -m space --swap last && sketchybar --trigger space_
 ctrl + alt + cmd - f : yabai -m space --swap first && sketchybar --trigger space_change && sketchybar --trigger space_windows_change
 
 # rotate layout clockwise
-shift + alt - c : yabai -m space --rotate 90
+shift + alt - c : yabai -m space --rotate 270
+
+#rotate layout counterclockwise
+shift + alt - v : yabai -m space --rotate 90
 
 # flip along y-axis
 shift + alt - y : yabai -m space --mirror y-axis
