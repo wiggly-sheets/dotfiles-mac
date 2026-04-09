@@ -9,7 +9,7 @@ return {
 	magenta = 0xff000000,
 	grey = 0xff000000,
 	transparent = 0x00000000,
-	dnd = 0xffdee3ed,
+	dnd = 0xff000000,
 	low_power = 0xff63981f,
 	notifications = 0xffc82d3b,
 	hover = 0x40FFFFFF,

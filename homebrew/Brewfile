@@ -7,6 +7,7 @@ tap "filosottile/musl-cross"
 tap "gcenx/wine"
 tap "gechr/tap"
 tap "gromgit/brewtils"
+tap "gromgit/fuse"
 tap "gschurck/fuzzybrew"
 tap "homielab/mountmate", "https://github.com/homielab/mountmate"
 tap "jackielii/tap"
@@ -482,6 +483,8 @@ brew "felixkratz/formulae/sketchybar"
 brew "felixkratz/formulae/svim"
 # Interactive TUI for Homebrew
 brew "gromgit/brewtils/taproom"
+# Read-write NTFS driver for FUSE
+brew "gromgit/fuse/ntfs-3g-mac"
 # Fuzzy search for Homebrew packages
 brew "gschurck/fuzzybrew/fuzzybrew"
 # Simple hotkey daemon for macOS, written in Zig

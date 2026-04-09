@@ -6,7 +6,7 @@ sbar.add("item", { position = "right", width = settings.group_paddings })
 
 local time = sbar.add("item", "time", {
 	position = "right",
-	padding_right = -9,
+	padding_right = -8,
 	update_freq = 1,
 	width = 0,
 	label = {

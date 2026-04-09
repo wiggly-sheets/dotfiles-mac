@@ -10,7 +10,7 @@ local notifications = sbar.add("item", "widgets.notifications", {
 	position = "right",
 	width = 5,
 	y_offset = 10,
-	padding_right = 18,
+	padding_right = 15,
 	icon = {
 		padding_right = -2,
 		padding_left = 0,
@@ -20,7 +20,6 @@ local notifications = sbar.add("item", "widgets.notifications", {
 	},
 	label = {
 		string = "",
-		y_offset = 0,
 		font = { family = settings.default, size = 8 },
 		color = colors.white,
 	},
