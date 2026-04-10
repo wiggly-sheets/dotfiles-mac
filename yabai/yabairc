@@ -15,6 +15,7 @@ yabai -m signal --add event=dock_did_restart action="/Users/Zeb/Developer/spaces
 
 /Users/Zeb/Developer/spacesrenamerpackage/run.sh
 
+
 # ================================
 # scratchpad setup
 # ================================
@@ -96,14 +97,24 @@ for cfg in "${CONFIGS[@]}"; do
   yabai -m config $cfg
 done
 
+# mission-control desktop labels
+yabai -m space 1 --label browser
+yabai -m space 2 --label mail
+yabai -m space 3 --label files
+yabai -m space 4 --label notes
+yabai -m sapce 5 --label terminal
+
+
 # ================================
 # PIN APPS TO SPACES == SETUP WORKSPACES
 # ================================
 SPACE_RULES=(
   "^Orion$:1"
-  "^Bloom$:2"
-  "^Mail$:3"
-  "^iTerm$:4"
+  "^Mail$:2"
+  "^Bloom$:3"
+  "^Notes$:4"
+  "^Calendar$:4"
+  "^iTerm$:5"
 )
 
 for rule in "${SPACE_RULES[@]}"; do
