@@ -152,7 +152,6 @@ FLOAT_APPS=(
   "^Steam$"
   "^BetterCapture$"
   "^Thaw$"
-  "^bettershot$"
   "^IINA$"
   "^TheBoringNotch$"
   "^Numi$"
@@ -211,11 +210,11 @@ FLOAT_APPS=(
   "^MacWhisper$"
   "^Cotypist$"
   "^Logi Options+$"
-  "^bettershot$"
   "^BetterCapture$"
   "^Time Machine$"
   "^Eddie$"
-  "^macshot$"
+  "^Shottr$"
+  "^Star Wars - The Old Republic Launcher$"
 )
 
 for app in "${FLOAT_APPS[@]}"; do

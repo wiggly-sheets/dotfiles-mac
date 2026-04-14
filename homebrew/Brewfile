@@ -34,11 +34,14 @@ tap "samtay/tui"
 tap "sikarugir-app/sikarugir"
 tap "slp/krun"
 tap "socsieng/tap"
+tap "sw33tlie/macshot"
 tap "theboredteam/boring-notch"
 tap "thezoraiz/ascii-image-converter"
+tap "typewhisper/tap"
 tap "valkyrie00/bbrew"
 tap "waydabber/betterdisplay"
 tap "wickenico/wailbrew"
+tap "xykong/tap"
 tap "zackelia/formulae"
 tap "zimengxiong/tools"
 # General-purpose data compression with high compression ratio
@@ -95,6 +98,8 @@ brew "cava"
 brew "cbonsai"
 # Versatile and fast Unicode/ASCII/ANSI graphics renderer
 brew "chafa"
+# Accurate source port of Doom
+brew "chocolate-doom"
 # Play, record, convert, and stream select audio and video codecs
 brew "ffmpeg"
 # Tool for emulating mouse and keyboard events
@@ -241,6 +246,8 @@ brew "lazygit"
 brew "lazyssh"
 # Pager program similar to more
 brew "less"
+# Convert pixel information into colored ASCII art
+brew "libcaca"
 # Rainbows and unicorns in your console!
 brew "lolcat"
 # Powerful, lightweight programming language
@@ -309,6 +316,8 @@ brew "nicotine-plus"
 brew "ninvaders"
 # Port scanning utility for large networks
 brew "nmap"
+# Interactive GPU process monitor
+brew "nvtop"
 # Renders an animated, color, ANSI-text loop of the Poptart Cat
 brew "nyancat"
 # Command-line Git information tool
@@ -483,8 +492,6 @@ brew "felixkratz/formulae/sketchybar"
 brew "felixkratz/formulae/svim"
 # Interactive TUI for Homebrew
 brew "gromgit/brewtils/taproom"
-# Read-write NTFS driver for FUSE
-brew "gromgit/fuse/ntfs-3g-mac"
 # Fuzzy search for Homebrew packages
 brew "gschurck/fuzzybrew/fuzzybrew"
 # Simple hotkey daemon for macOS, written in Zig
@@ -545,8 +552,6 @@ cask "betterdiscord-installer"
 cask "betterdisplay"
 # Utility improving 3rd party mouse performance and functionalities
 cask "bettermouse"
-# Screen capturing and editing tool
-cask "bettershot"
 # Tool to customise input devices and automate computer systems
 cask "bettertouchtool@alpha"
 # 3D creation suite
@@ -569,6 +574,10 @@ cask "chatgpt"
 cask "clop"
 # Tool to show live information about the batteries in various devices
 cask "coconutbattery"
+# OpenAI's coding agent that runs in your terminal
+cask "codex"
+# OpenAI's Codex desktop app for managing coding agents
+cask "codex-app"
 # Mount network shares quick and easy
 cask "connectmenow"
 # Create and run Linux containers using lightweight virtual machines
@@ -595,12 +604,16 @@ cask "diskspace"
 cask "dnsmonitor"
 # Open-source physical access (aka 'evil maid') attack detector
 cask "do-not-disturb"
+# Window peeking utility app
+cask "dockdoor"
 # Advanced Dock preferences
 cask "dockey"
 # Emulator to play GameCube and Wii games
 cask "dolphin"
 # Downloads videos from different websites
 cask "downie"
+# Electronic Arts game launcher
+cask "ea"
 # Matrix collaboration client
 cask "element"
 # Launcher for *Epic Games* games
@@ -617,6 +630,8 @@ cask "find-any-file"
 cask "fluor"
 # Screen colour temperature controller
 cask "flux-app"
+# Beautiful Markdown previews in macOS Finder QuickLook
+cask "xykong/tap/flux-markdown"
 # Focusrite interface controller
 cask "focusrite-control"
 cask "font-sketchybar-app-font"
@@ -704,6 +719,8 @@ cask "macpilot"
 cask "macwhisper"
 # Video format converter (transcoder)
 cask "makemkv"
+# Markdown editor
+cask "markedit"
 # Display technical and tag data for video and audio files
 cask "mediainfo"
 # UI replacement for volume, brightness and now playing controls
@@ -718,8 +735,6 @@ cask "minecraft"
 cask "mission-control-plus"
 # Set of tools to create, alter and inspect Matroska files (MKV)
 cask "mkvtoolnix-app"
-# Smooths scrolling and set mouse scroll directions independently
-cask "mos"
 # Mounts servers and cloud storages as a disk on the desktop
 cask "mountain-duck"
 # Menubar app to easily manage external drives
@@ -754,6 +769,8 @@ cask "only-switch"
 cask "onyx"
 # Retro video game emulation for macOS (ARM build)
 cask "catskull/homebrew/openemu-arm"
+# Real-time strategy game engine for Westwood games
+cask "openra"
 # Replacement for Docker Desktop
 cask "orbstack"
 # WebKit based web browser
@@ -768,6 +785,8 @@ cask "pcsx2"
 cask "pearcleaner"
 # Converts and edits video, audio or image files
 cask "permute"
+# Open Source Universal 2D Graphics Editor
+cask "pixieditor"
 # Sideload iOS apps and games
 cask "playcover/playcover/playcover-community"
 # Allows installation and use of software designed for Windows
@@ -788,6 +807,8 @@ cask "processmonitor"
 cask "qbittorrent"
 # Quick Look generator for Markdown files
 cask "qlmarkdown"
+# A lightweight and high-performance screen recorder for macOS.
+cask "lihaoyun6/tap/quickrecorder"
 # Protect your personal files
 cask "ransomwhere"
 # Imaging utility to install operating systems to a microSD card
@@ -800,6 +821,8 @@ cask "reamp"
 cask "redream"
 # Scans, detects, and monitors keyboard taps
 cask "reikey"
+# Emoji picker optimised for blind people
+cask "rocket"
 # Free and open-source page layout program
 cask "scribus"
 # Integrated development environment focused entirely on AppleScript
@@ -808,6 +831,8 @@ cask "script-debugger"
 cask "sf-symbols"
 # App that enables mouse-free UI interaction
 cask "shortcat"
+# Screenshot measurement and annotation tool
+cask "shottr"
 # Instant messaging application focusing on security
 cask "signal"
 # Porting tool, to make Windows programs/games into native apps
@@ -836,6 +861,8 @@ cask "steam"
 cask "stremio"
 # Mux and tag mp4 files
 cask "subler"
+# Kart racing game
+cask "supertuxkart"
 # Application for inspecting installer packages
 cask "suspicious-package"
 # Replacement for RCDefaultApps, written in Swift
@@ -868,6 +895,8 @@ cask "krishkrosh/apps/trackweight"
 cask "transnomino"
 # Easy to use text extraction tool
 cask "trex"
+# Speech-to-text and AI text processing for macOS
+cask "typewhisper/tap/typewhisper"
 # Run commands and display their output on the desktop
 cask "ubersicht"
 # Newsreader and Usenet client
@@ -900,6 +929,7 @@ cask "zoom"
 cask "zotero"
 mas "2048 Game", id: 871033113
 mas "Actions", id: 1586435171
+mas "Amphetamine", id: 937984704
 mas "Apple Configurator", id: 1037126344
 mas "Blackmagic Disk Speed Test", id: 425264550
 mas "Bonjourr Startpage", id: 1615431236
@@ -924,12 +954,13 @@ mas "InfoCard", id: 1110195348
 mas "Keynote", id: 361285480
 mas "Keyword Search", id: 1558453954
 mas "Klack", id: 6446206067
-mas "Knights of the Old Republic", id: 416608891
 mas "Lickable Menu Bar", id: 6444217677
 mas "Logic Pro", id: 634148309
 mas "Mactracker", id: 430255202
 mas "Magic Disk Benchmark", id: 1608793370
 mas "MainStage", id: 634159523
+mas "Meal Planner", id: 6460821436
+mas "Mela", id: 1568924476
 mas "Motion", id: 434290957
 mas "MyWallpaper", id: 1552826194
 mas "Night Sky X", id: 475772902
@@ -941,6 +972,7 @@ mas "PDFgear", id: 6469021132
 mas "Pixelmator Pro", id: 1289583905
 mas "Plash", id: 1494023538
 mas "Poolsuite FM", id: 1514817810
+mas "Recipe Keeper", id: 1315583175
 mas "Refined GitHub", id: 1519867270
 mas "Sandkorn", id: 1377973524
 mas "Shareful", id: 1522267256
@@ -948,7 +980,6 @@ mas "Simple Comic", id: 1497435571
 mas "Sink It for Reddit", id: 6449873635
 mas "Sparrow Weather", id: 6449440582
 mas "Speediness", id: 1596706466
-mas "Star Wars®: Knights of the Old Republic™ II", id: 960778634
 mas "Startup Manager", id: 1296723195
 mas "Swift Playground", id: 1496833156
 mas "TestFlight", id: 899247664

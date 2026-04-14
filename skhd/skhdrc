@@ -233,10 +233,16 @@ alt - t : ~/dotfiles/yabai/scripts/new_space_focus.sh
 alt - w : ~/dotfiles/yabai/scripts/destroy_space.sh
 
 # create space, move windows from current space to new space, and follow focus
-cmd + shift - t : ~/dotfiles/yabai/scripts/move_space_windows_follow.sh
+cmd + shift - w : ~/dotfiles/yabai/scripts/move_space_windows_follow.sh
 
 # create space and move windows from current space to new space
-alt + shift - t : ~/dotfiles/yabai/scripts/move_space_windows.sh
+alt + shift - w : ~/dotfiles/yabai/scripts/move_space_windows.sh
+
+# create space one after current space, and move current window there
+alt + shift - t : ~/dotfiles/yabai/scripts/new_space_after_move.sh
+
+# create space one after current space, move current window there, and follow foucs
+cmd + shift - t : ~/dotfiles/yabai/scripts/new_space_after_move_focus.sh
 
 # move window to space
 shift + alt - 1 : yabai -m window --space 1;
@@ -279,10 +285,10 @@ shift + alt - a : ~/dotfiles/yabai/scripts/new_space_window.sh
 shift + cmd - a : ~/dotfiles/yabai/scripts/new_space_follow_focus.sh
 
 # make new space 1 index after current space
-ctrl - a : ~/dotfiles/yabai/scripts/new_space_close.sh
+ctrl - a : ~/dotfiles/yabai/scripts/new_space_after.sh
 
 # make new space 1 index after current space & follow focus
-ctrl - t : ~/dotfiles/yabai/scripts/new_space_close_follow.sh
+ctrl - t : ~/dotfiles/yabai/scripts/new_space_after_follow.sh
 
 # focus display
 rcmd - r : yabai -m display --focus recent
@@ -336,7 +342,7 @@ shift + cmd - b : sketchybar --bar hidden=toggle
 # toggle borders visiblity
 shift + cmd - c : ~/dotfiles/yabai/scripts/borders_toggle.sh
 
-# toggle menu bar padding, window gaps, and padding for internal or external display, and adjust sketchybar height for external display
+# toggle menu bar padding, window gaps, sketchybar height, and padding for internal or external display
 shift + cmd -m : ~/dotfiles/yabai/scripts/layout.sh
 
 # toggle native menu bar & sketchybar visbility
