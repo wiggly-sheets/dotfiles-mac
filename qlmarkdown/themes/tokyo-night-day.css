@@ -1,0 +1,44 @@
+:root {
+  --textPrimary: #3760bf;
+  --background: #e1e2e7;
+  --body-border-color: #c0caf5;
+  --link: #2e7de9;
+  --link-highlight: rgba(46, 125, 233, 0.1);
+  --code-background: #d5d6db;
+  --hr-background: #c0caf5;
+  --thead-background: #d5d6db;
+  --thead-border: #c0caf5;
+  --tr-border: #c0caf5;
+  --tr-alt-background: #d5d6db;
+  --kbd-background: #d5d6db;
+  --kbd-color: #3760bf;
+  --kbd-border: #c0caf5;
+  --blockquote-color: #848cb5;
+  --blockquote-border: #c0caf5;
+  --heading-color: #1a1b26;
+  --header-bottom-border: #c0caf5;
+  --h6-color: #848cb5;
+  --frame-border: #c0caf5;
+  --frame-color: #3760bf;
+  --mention-color: #2e7de9;
+  --keyword-color: #9854f1;
+
+  /* Highlight */
+  --hl_Background: #d5d6db;
+  --hl_Number: #b15c00;
+  --hl_Escape: #9854f1;
+  --hl_String: #587539;
+  --hl_String_Pre_Processor: #c64343;
+  --hl_Block_Comment: #848cb5;
+  --hl_Line_Comment: #848cb5;
+  --hl_Pre_Processor: #8c6c3e;
+  --hl_Line_Number: #a1a6c5;
+  --hl_Operator: #007197;
+  --hl_Interpolation: #0f4b6e;
+  --hl_Keyword-1: #9854f1;
+  --hl_Keyword-2: #2e7de9;
+  --hl_Keyword-3: #3760bf;
+  --hl_Keyword-4: #007197;
+  --hl_Keyword-5: #c64343;
+  --hl_Keyword-6: #0f4b6e;
+}
