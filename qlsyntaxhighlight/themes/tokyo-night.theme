@@ -1,0 +1,41 @@
+Description="Tokyo Night"
+
+Categories = {"dark"}
+
+Default        = { Colour="#c0caf5" } -- fg
+Canvas         = { Colour="#1a1b26" } -- bg
+Number         = { Colour="#ff9e64" } -- orange
+Escape         = { Colour="#bb9af7" } -- purple
+String         = { Colour="#9ece6a" } -- green
+StringPreProc  = { Colour="#f7768e" } -- red
+BlockComment   = { Colour="#565f89" } -- comment gray
+LineComment    = { Colour="#565f89" }
+PreProcessor   = { Colour="#e0af68" } -- yellow
+LineNum        = { Colour="#3b4261" } -- muted line numbers
+Operator       = { Colour="#89ddff" } -- cyan
+Interpolation  = { Colour="#c0caf5" }
+
+Keywords = {
+  { Colour= "#bb9af7" }, -- purple
+  { Colour= "#7aa2f7" }, -- blue
+  { Colour= "#7aa2f7" },
+  { Colour= "#7dcfff" }, -- light blue / cyan
+  { Colour= "#f7768e" }, -- red
+  { Colour= "#2ac3de" }, -- teal
+}
+
+SemanticTokenTypes = {
+  { Type = 'type', Style = Keywords[2] },
+  { Type = 'class', Style = Keywords[1] },
+  { Type = 'struct', Style = Keywords[4] },
+  { Type = 'interface', Style = Keywords[1] },
+  { Type = 'parameter', Style = Keywords[6] },
+  { Type = 'variable', Style = Default },
+  { Type = 'enumMember', Style = Keywords[5] },
+  { Type = 'function', Style = Keywords[4] },
+  { Type = 'method', Style = Keywords[4] },
+  { Type = 'keyword', Style = Keywords[1]},
+  { Type = 'number', Style = Number },
+  { Type = 'regexp', Style = Keywords[6] },
+  { Type = 'operator', Style = Operator },
+}

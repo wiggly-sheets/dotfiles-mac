@@ -18,11 +18,13 @@ tap "koekeishiya/formulae"
 tap "krishkrosh/apps"
 tap "lihaoyun6/tap"
 tap "lslqtz/formulae"
+tap "m1ten/othyn"
 tap "malpern/tap"
 tap "matars/gitfetch"
 tap "mateocerquetella/ricebarmac"
 tap "mhaeuser/mhaeuser"
 tap "narugit/tap"
+tap "neur0map/tap"
 tap "nohajc/anylinuxfs"
 tap "notwadegrimridge/brew"
 tap "philocalyst/tap"
@@ -48,6 +50,8 @@ tap "zimengxiong/tools"
 brew "xz"
 # Zstandard is a real-time compression algorithm
 brew "zstd"
+# Apple Intelligence from the command-line, with OpenAi-compatible API server
+brew "apfel"
 # Cryptography and SSL/TLS Toolkit
 brew "openssl@3"
 # Library for command-line editing
@@ -376,6 +380,8 @@ brew "rmlint"
 brew "rmpc"
 # Utility that provides fast incremental file transfer
 brew "rsync"
+# Status/progress bar for rsync
+brew "rsyncy"
 # Web search from the terminal
 brew "s-search"
 # CLI search and replace | Space Age seD
@@ -506,6 +512,8 @@ brew "malpern/tap/sketchybar-toggle"
 brew "matars/gitfetch/gitfetch"
 # Check Temperature by using Apple System Management Control (Smc) tool
 brew "narugit/tap/smctemp"
+# TUI dashboard that unifies 34 package managers into one searchable view
+brew "neur0map/tap/gpk"
 # Mount any linux-supported filesystem read/write using nfs and a microVM
 brew "nohajc/anylinuxfs/anylinuxfs"
 # User-friendly, lightweight TUI for disk imaging
@@ -538,6 +546,8 @@ cask "apparency"
 cask "audacity"
 # Records audio from any application
 cask "audio-hijack"
+# A simple auto clicker for macOS in swift
+cask "m1ten/othyn/autoclicker"
 # Tool to flash OS images to SD cards & USB drives
 cask "balenaetcher"
 # Control the platform power state of your Apple Silicon device
@@ -823,6 +833,8 @@ cask "redream"
 cask "reikey"
 # Emoji picker optimised for blind people
 cask "rocket"
+# GUI for rsync
+cask "rsyncui"
 # Free and open-source page layout program
 cask "scribus"
 # Integrated development environment focused entirely on AppleScript
