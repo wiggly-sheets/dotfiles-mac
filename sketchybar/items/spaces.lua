@@ -57,7 +57,7 @@ for i = 1, 10 do
 	local space = sbar.add("space", "space." .. i, {
 		space = i,
 		icon = {
-			font = { family = settings.default, size = 11, style = "Medium" },
+			font = { family = settings.default, size = 11, style = "Bold" },
 			string = tostring(i),
 			padding_left = 2,
 			padding_right = 2,

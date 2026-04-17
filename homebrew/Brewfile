@@ -154,6 +154,8 @@ brew "entr"
 brew "exiftool"
 # Modern, maintained replacement for ls
 brew "eza"
+# Command-line batch renaming tool
+brew "f2"
 # Like neofetch, but much faster because written mostly in C
 brew "fastfetch"
 # Simple, fast and user-friendly alternative to find
@@ -474,6 +476,8 @@ brew "wget2"
 brew "witr"
 # Friendly and fast tool for sending HTTP requests
 brew "xh"
+# Bring your favorite shell wherever you go through the ssh
+brew "xxh"
 # Blazing fast terminal file manager written in Rust, based on async I/O
 brew "yazi"
 # Process YAML, JSON, XML, CSV and properties documents from the CLI
@@ -498,6 +502,8 @@ brew "felixkratz/formulae/sketchybar"
 brew "felixkratz/formulae/svim"
 # Interactive TUI for Homebrew
 brew "gromgit/brewtils/taproom"
+# Read-write NTFS driver for FUSE
+brew "gromgit/fuse/ntfs-3g-mac"
 # Fuzzy search for Homebrew packages
 brew "gschurck/fuzzybrew/fuzzybrew"
 # Simple hotkey daemon for macOS, written in Zig
@@ -554,6 +560,8 @@ cask "balenaetcher"
 cask "mhaeuser/mhaeuser/battery-toolkit"
 # Online gaming platform
 cask "battle-net"
+# Text, code, and markup editor
+cask "bbedit"
 # The macOS screen recorder you deserve - always free and open source
 cask "jsattler/tap/bettercapture"
 # Installer for BetterDiscord
@@ -580,6 +588,8 @@ cask "burn"
 cask "calibre"
 # OpenAI's official ChatGPT desktop app
 cask "chatgpt"
+# Anthropic's official Claude AI desktop app
+cask "claude"
 # Image, video and clipboard optimiser
 cask "clop"
 # Tool to show live information about the batteries in various devices
@@ -661,8 +671,6 @@ cask "gimp"
 cask "github"
 # Game client
 cask "gog-galaxy"
-# Web browser
-cask "google-chrome"
 # Virtual globe
 cask "google-earth-pro"
 # Graphically shows disk usage within a file system
@@ -813,6 +821,8 @@ cask "popclip"
 cask "porting-kit"
 # Monitor process activity
 cask "processmonitor"
+# Open-source application manager and system cleaner
+cask "puremac"
 # Peer to peer Bitorrent client
 cask "qbittorrent"
 # Quick Look generator for Markdown files
@@ -974,7 +984,6 @@ mas "MainStage", id: 634159523
 mas "Meal Planner", id: 6460821436
 mas "Mela", id: 1568924476
 mas "Motion", id: 434290957
-mas "MyWallpaper", id: 1552826194
 mas "Night Sky X", id: 475772902
 mas "Numbers", id: 361304891
 mas "Pages", id: 361309726
@@ -990,6 +999,7 @@ mas "Sandkorn", id: 1377973524
 mas "Shareful", id: 1522267256
 mas "Simple Comic", id: 1497435571
 mas "Sink It for Reddit", id: 6449873635
+mas "SnippetsLab", id: 1006087419
 mas "Sparrow Weather", id: 6449440582
 mas "Speediness", id: 1596706466
 mas "Startup Manager", id: 1296723195

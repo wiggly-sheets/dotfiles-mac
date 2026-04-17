@@ -11,9 +11,9 @@ sudo yabai --load-sa
 # run the script to allow space renaming with spacesrenamer.app
 # ================================
 
-yabai -m signal --add event=dock_did_restart action="/Users/Zeb/Developer/spacesrenamerpackage/run.sh"
+yabai -m signal --add event=dock_did_restart action="~/dotfiles/mac/tweaks/spacesrenamer/run.sh"
 
-/Users/Zeb/Developer/spacesrenamerpackage/run.sh
+~/dotfiles/mac/tweaks/spacesrenamer/run.sh
 
 # ================================
 # scratchpad setup
