@@ -26,11 +26,6 @@
           "key" : "o",
           "type" : "application",
           "value" : "/Applications/Orion.app"
-        },
-        {
-          "key" : "c",
-          "type" : "application",
-          "value" : "/Applications/Google Chrome.app"
         }
       ],
       "key" : "b",
@@ -203,6 +198,55 @@
       ],
       "key" : "a",
       "label" : "Music",
+      "type" : "group"
+    },
+    {
+      "actions" : [
+        {
+          "key" : "v",
+          "type" : "application",
+          "value" : "/Applications/VSCodium.app"
+        },
+        {
+          "key" : "x",
+          "type" : "application",
+          "value" : "/Applications/Xcode.app"
+        },
+        {
+          "key" : "b",
+          "type" : "application",
+          "value" : "/Applications/BBEdit.app"
+        },
+        {
+          "key" : "e",
+          "type" : "application",
+          "value" : "/Applications/CotEditor.app"
+        }
+      ],
+      "key" : "c",
+      "label" : "Code",
+      "type" : "group"
+    },
+    {
+      "actions" : [
+        {
+          "key" : "o",
+          "type" : "application",
+          "value" : "/Applications/ChatGPT.app"
+        },
+        {
+          "key" : "a",
+          "type" : "application",
+          "value" : "/Applications/Claude.app"
+        },
+        {
+          "key" : "c",
+          "type" : "application",
+          "value" : "/Applications/Codex.app"
+        }
+      ],
+      "key" : "i",
+      "label" : "AI",
       "type" : "group"
     }
   ],

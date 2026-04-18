@@ -196,6 +196,8 @@ brew "git-gui"
 brew "pydantic"
 # Alternative to top/htop
 brew "glances"
+# Render markdown on the CLI
+brew "glow"
 # GNU implementation of the famous stream editor
 brew "gnu-sed"
 # Package compiler and linker metadata toolkit
@@ -544,6 +546,8 @@ cask "lihaoyun6/tap/airbattery"
 cask "alt-tab"
 # iOS App Store alternative
 cask "altserver"
+# Memory training application
+cask "anki"
 # Helper for Sindre Sorhus's apps
 cask "app-buddy"
 # Inspect application bundles
@@ -663,16 +667,22 @@ cask "freac"
 cask "freecad"
 # Use to eliminate months of up-front work and evaluate how well your game runs
 cask "gcenx/wine/game-porting-toolkit"
+# Disk space cleaner that finds and deletes duplicated and similar files
+cask "gemini"
 # Software reverse engineering (SRE) suite of tools
 cask "ghidra"
 # Free and open-source image editor
 cask "gimp"
 # Desktop client for GitHub repositories
 cask "github"
+# Git client focusing on productivity
+cask "gitkraken"
 # Game client
 cask "gog-galaxy"
 # Virtual globe
 cask "google-earth-pro"
+# Native desktop AI assistant from Google
+cask "google-gemini"
 # Graphically shows disk usage within a file system
 cask "grandperspective"
 # IRC client
@@ -821,8 +831,6 @@ cask "popclip"
 cask "porting-kit"
 # Monitor process activity
 cask "processmonitor"
-# Open-source application manager and system cleaner
-cask "puremac"
 # Peer to peer Bitorrent client
 cask "qbittorrent"
 # Quick Look generator for Markdown files
@@ -841,6 +849,8 @@ cask "reamp"
 cask "redream"
 # Scans, detects, and monitors keyboard taps
 cask "reikey"
+# File sync and share software
+cask "resilio-sync"
 # Emoji picker optimised for blind people
 cask "rocket"
 # GUI for rsync
@@ -861,6 +871,8 @@ cask "signal"
 cask "kegworks-app/kegworks/sikarugir"
 # Automatically checks computer's security
 cask "silentknight"
+# PDF viewer designed for reading research papers and technical books
+cask "sioyek"
 # Team communication and collaboration software
 cask "slack"
 # Displays all open files and sockets in use by all running processes
@@ -869,6 +881,8 @@ cask "sloth"
 cask "sony-ps-remote-play"
 # Sound and audio controller
 cask "soundsource"
+# Graphical client for Git version control
+cask "sourcetree"
 # Space navigation and management utility with Yabai support
 cask "zimengxiong/tools/spacecommand"
 # View and navigate Spaces (Virtual Desktops) from the menu bar
@@ -925,6 +939,8 @@ cask "ubersicht"
 cask "usenapp"
 # Virtual machines UI using QEMU
 cask "utm"
+# Custom Discord App
+cask "vesktop"
 # Binary releases of VS Code without MS branding/telemetry/licensing
 cask "vscodium"
 # Manage Homebrew packages with a UI
@@ -967,12 +983,13 @@ mas "Dropover", id: 1355679052
 mas "Final Cut Pro", id: 424389933
 mas "Folder Peek", id: 1615988943
 mas "Folder Preview", id: 6698876601
-mas "Gemini 2", id: 1090488118
+mas "Gapplin", id: 768053424
 mas "Gifski", id: 1351639930
 mas "HEIC Converter", id: 1294126402
 mas "Ice Cubes", id: 6444915884
 mas "IconizeFolder", id: 6478772538
 mas "InfoCard", id: 1110195348
+mas "JuxtaText", id: 6504801865
 mas "Keynote", id: 361285480
 mas "Keyword Search", id: 1558453954
 mas "Klack", id: 6446206067
@@ -1002,6 +1019,7 @@ mas "Sink It for Reddit", id: 6449873635
 mas "SnippetsLab", id: 1006087419
 mas "Sparrow Weather", id: 6449440582
 mas "Speediness", id: 1596706466
+mas "Sprinkles", id: 1500209074
 mas "Startup Manager", id: 1296723195
 mas "Swift Playground", id: 1496833156
 mas "TestFlight", id: 899247664
