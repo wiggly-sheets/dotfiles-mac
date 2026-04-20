@@ -14,7 +14,7 @@
 # Linux-style word navigation and deletion
 ctrl - backspace [
     @native_apps ~         # Terminal apps handle natively
-    *            | alt - backspace  # Other apps: delete word
+    *            | alt - backspace  # Other apps: delete 
 ]
 
 ctrl - left [
@@ -35,7 +35,7 @@ home [
 
 shift - home [
     @native_apps ~         # Terminal apps handle natively
-    *            | cmd + shift - left  # Other apps: select to line start
+    *            | cmd - right  # Other apps: select to line start
 ]
 
 # Ctrl+Home/End for document navigation
@@ -72,13 +72,13 @@ cmd + ctrl - k : yabai -m window --insert north
 
 # resize & move floating windows
 cmd + shift - left : yabai -m window --toggle float; yabai -m window --grid 1:2:0:0:1:1
-cmd + shift - right :  yabai -m window --toggle float; yabai -m window --grid 1:2:1:0:1:1
-cmd + shift - up :  yabai -m window --toggle float; yabai -m window --grid 1:1:0:0:1:1
-cmd + shift - down :  yabai -m window --toggle float; yabai -m window --grid 5:5:1:1:3:3
-alt + shift - up  :  yabai -m window --toggle float; yabai -m window --grid 2:1:0:0:1:1
-alt + shift - down :  yabai -m window --toggle float; yabai -m window --grid 2:1:0:1:1:1
-alt + shift - left  :  yabai -m window --toggle float; yabai -m window --grid 1:3:0:0:1:1
-alt + shift - right :  yabai -m window --toggle float; yabai -m window --grid 1:3:2:0:1:1 
+cmd + shift - right : yabai -m window --toggle float; yabai -m window --grid 1:2:1:0:1:1
+cmd + shift - up : yabai -m window --toggle float; yabai -m window --grid 2:1:0:0:1:1
+cmd + shift - down : yabai -m window --toggle float; yabai -m window --grid 2:1:0:1:1:1
+alt + shift - up : yabai -m window --toggle float; yabai -m window --grid 1:1:0:0:1:1
+alt + shift - down : yabai -m window --toggle float; yabai -m window --grid 5:5:1:1:3:3 
+alt + shift - left : yabai -m window --toggle float; yabai -m window --grid 1:3:0:0:1:1
+alt + shift - right : yabai -m window --toggle float; yabai -m window --grid 1:3:2:0:1:1 
 
 # raise window to top of layer
 alt - up : yabai -m window --raise
@@ -183,6 +183,9 @@ ctrl + alt - p : yabai -m window --warp prev || yabai -m window --warp last
 ctrl + alt - f : yabai -m window --warp first
 ctrl + alt - e : yabai -m window --warp last
 ctrl + alt - r : yabai -m window --warp recent
+
+# toggle global split type
+rcmd - t : /Users/Zeb/dotfiles/yabai/scripts/split.sh
 
 # toggle split type for current window
 rcmd - s : yabai -m window --toggle split
@@ -308,7 +311,7 @@ ctrl - t : ~/dotfiles/yabai/scripts/new_space_after_follow.sh
 
 # focus display
 rcmd - r : yabai -m display --focus recent
-rcmd - p : yabai -m display --focus prev || -- yabai -m display --focus last
+rcmd - p : yabai -m display --focus prev || yabai -m display --focus last
 rcmd - n : yabai -m display --focus next || yabai -m display --focus first
 rcmd - l : yabai -m display --focus east
 rcmd - h : yabai -m display --focus west
@@ -340,9 +343,8 @@ ctrl + cmd - 1 : sh -c 'yabai -m space --display 1 --focus; sketchybar --trigger
 ctrl + cmd - 2 : sh -c 'yabai -m space --display 2 --focus; sketchybar --trigger space_change; sketchybar --trigger space_windows_change'
 ctrl + cmd - 3 : sh -c 'yabai -m space --display 3 --focus; sketchybar --trigger space_change; sketchybar --trigger space_windows_change'
 
-
 # notes scratchpad
-meh - s : yabai -m window --toggle scratchpad || open -a TextEdit
+meh - s : yabai -m window --toggle scratchpad || open -a Stickies
 
 # show all scratchpad windows if inaccessible due to yabai restart or crash
 meh - a : yabai -m window --scratchpad recover
@@ -364,3 +366,6 @@ shift + cmd -m : ~/dotfiles/yabai/scripts/layout.sh
 
 # toggle native menu bar & sketchybar visbility
 shift + cmd - v : ~/dotfiles/yabai/scripts/menubar_toggle.sh
+
+# toggle active window opacity between opaque and semi-transparent
+shift + cmd - g : ~/dotfiles/yabai/scripts/opacity.sh

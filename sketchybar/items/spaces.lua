@@ -1,6 +1,6 @@
 local colors = require("colors")
 local icons = require("icons")
-local app_icons = require("helpers.app_icons")
+local app_icons = require("helpers.icon_map")
 local settings = require("default")
 
 local spaces = {}
@@ -144,7 +144,7 @@ for i = 1, 10 do
 		space:set({
 			background = {
 				drawing = true,
-				color = 0x40FFFFFF,
+				color = colors.hover,
 				corner_radius = 20,
 				height = 20,
 				x_offset = 0,

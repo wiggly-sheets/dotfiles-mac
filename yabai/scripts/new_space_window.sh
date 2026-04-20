@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # 1. capture current window
 win=$(yabai -m query --windows --window | jq -r ".id")
 

@@ -19,6 +19,7 @@ local apple = sbar.add("item", "apple", {
 local menus_expanded = false
 
 local max_items = 15
+
 local menu_items = {}
 for i = 1, max_items, 1 do
 	local menu = sbar.add("item", "menu." .. i, {
@@ -46,8 +47,8 @@ local menu_toggle = sbar.add("item", "menus.toggle", {
 		color = colors.white,
 	},
 	label = { drawing = false },
-	padding_left = 0,
-	padding_right = 1,
+	padding_left = 1,
+	padding_right = 2,
 	position = "left",
 })
 

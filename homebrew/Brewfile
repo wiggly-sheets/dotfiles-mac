@@ -654,7 +654,7 @@ cask "find-any-file"
 cask "fluor"
 # Screen colour temperature controller
 cask "flux-app"
-# Beautiful Markdown previews in macOS Finder QuickLook
+# Markdown previews in Finder QuickLook with diagrams and math
 cask "xykong/tap/flux-markdown"
 # Focusrite interface controller
 cask "focusrite-control"

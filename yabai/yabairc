@@ -18,7 +18,7 @@ yabai -m signal --add event=dock_did_restart action="~/dotfiles/mac/tweaks/space
 # ================================
 # scratchpad setup
 # ================================
-yabai -m rule --add app="^TextEdit$" scratchpad=scratchpad grid=6:6:6:0:8:8
+yabai -m rule --add app="^Stickies$" scratchpad=scratchpad grid=6:6:6:0:8:8
 
 # ================================
 # sketchybar window title events
@@ -41,17 +41,19 @@ yabai -m signal --add event=window_minimized active=yes action="if \$(yabai -m q
 # ================================
 CONFIGS=(
   "layout bsp"
-  "window_origin_display"
+  "window_origin_display focused"
   "window_insertion_point focused"
-  "window_zoom_persist true"
+  "window_zoom_persist false"
 
   # Disabled because browser popups will disappear if enabled
   "window_topmost off"
-
-  "split_type auto"
+  
+  # bsp settings
+  "split_type horizontal"
   "auto_balance off"
   "split_ratio 0.50"
 
+  # window animations
   "window_animation_duration 0.10"
   "window_animation_easing ease_in_out_expo"
 
