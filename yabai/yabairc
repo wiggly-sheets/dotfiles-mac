@@ -49,12 +49,12 @@ CONFIGS=(
   "window_topmost off"
   
   # bsp settings
-  "split_type horizontal"
+  "split_type auto"
   "auto_balance off"
   "split_ratio 0.50"
 
   # window animations
-  "window_animation_duration 0.10"
+  "window_animation_duration 0.05"
   "window_animation_easing ease_in_out_expo"
 
   # New window placement behavior
@@ -217,6 +217,7 @@ FLOAT_APPS=(
   "^Eddie$"
   "^Shottr$"
   "^Star Wars - The Old Republic Launcher$"
+  "^Folder Preview Pro$"
 )
 
 for app in "${FLOAT_APPS[@]}"; do

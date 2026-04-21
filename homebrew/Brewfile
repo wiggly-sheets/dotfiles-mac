@@ -658,6 +658,8 @@ cask "flux-app"
 cask "xykong/tap/flux-markdown"
 # Focusrite interface controller
 cask "focusrite-control"
+# Quick Look extension for folders
+cask "folder-preview-pro"
 cask "font-sketchybar-app-font"
 # Audio player
 cask "foobar2000"
@@ -982,7 +984,6 @@ mas "Developer", id: 640199958
 mas "Dropover", id: 1355679052
 mas "Final Cut Pro", id: 424389933
 mas "Folder Peek", id: 1615988943
-mas "Folder Preview", id: 6698876601
 mas "Gapplin", id: 768053424
 mas "Gifski", id: 1351639930
 mas "HEIC Converter", id: 1294126402

@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+
+<key>BBEditDocumentType</key>
+<string>ColorScheme</string>
+
+<key>BackgroundColor</key>
+<string>hsla(0.58, 0.35, 0.96, 1.000)</string>
+
+<key>ColorSchemeFormatVersion</key>
+<integer>3</integer>
+
+<key>DifferenceHighlightColor</key>
+<string>hsla(0.55, 0.25, 0.85, 1.000)</string>
+
+<key>HighlightInsertionPoint</key>
+<false/>
+
+<key>InsertionPointLineHighlightColor</key>
+<string>hsla(0.60, 0.30, 0.90, 1.000)</string>
+
+<key>InvisibleOthersColor</key>
+<string>hsla(0.60, 0.10, 0.70, 1.000)</string>
+
+<key>InvisibleSpacesColor</key>
+<string>hsla(0.60, 0.10, 0.60, 1.000)</string>
+
+<key>PrimaryHighlightColor</key>
+<string>hsla(0.60, 0.30, 0.85, 1.000)</string>
+
+<key>SecondaryHighlightColor</key>
+<string>hsla(0.60, 0.20, 0.80, 1.000)</string>
+
+<key>SpellingColor</key>
+<string>hsla(0.00, 0.70, 0.60, 1.000)</string>
+
+<key>UseCustomHighlightColor</key>
+<true/>
+
+<!-- Core Syntax -->
+<key>com.barebones.bblm.keyword</key>
+<string>hsla(0.65, 0.60, 0.45, 1.000)</string>
+
+<key>com.barebones.bblm.string</key>
+<string>hsla(0.30, 0.50, 0.45, 1.000)</string>
+
+<key>com.barebones.bblm.comment</key>
+<string>hsla(0.60, 0.10, 0.60, 1.000)</string>
+
+<key>com.barebones.bblm.variable</key>
+<string>hsla(0.55, 0.60, 0.50, 1.000)</string>
+
+<key>com.barebones.bblm.number</key>
+<string>hsla(0.08, 0.70, 0.50, 1.000)</string>
+
+<key>com.barebones.bblm.code</key>
+<string>hsla(0.60, 0.20, 0.40, 1.000)</string>
+
+<!-- Strings / regex / markup -->
+<key>com.barebones.bblm.JavaScript.regexp</key>
+<string>hsla(0.30, 0.50, 0.45, 1.000)</string>
+
+<key>com.barebones.bblm.Pyth.decorator</key>
+<string>hsla(0.65, 0.60, 0.45, 1.000)</string>
+
+<key>com.barebones.bblm.Pyth.triple-string</key>
+<string>hsla(0.30, 0.50, 0.45, 1.000)</string>
+
+<key>com.barebones.bblm.TeX.math-string</key>
+<string>hsla(0.30, 0.50, 0.45, 1.000)</string>
+
+<key>com.barebones.bblm.TeX.param-content</key>
+<string>hsla(0.55, 0.60, 0.50, 1.000)</string>
+
+<key>com.barebones.bblm.TeX.verbatim</key>
+<string>hsla(0.55, 0.60, 0.50, 1.000)</string>
+
+<!-- Comments + structure -->
+<key>com.barebones.bblm.preprocessor</key>
+<string>hsla(0.65, 0.60, 0.45, 1.000)</string>
+
+<key>com.barebones.bblm.predefined-symbol</key>
+<string>hsla(0.55, 0.60, 0.50, 1.000)</string>
+
+<key>com.barebones.bblm.syntax-error</key>
+<string>hsla(0.00, 0.70, 0.60, 1.000)</string>
+
+<!-- HTML / XML -->
+<key>com.barebones.bblm.html.attribute-name</key>
+<string>hsla(0.55, 0.60, 0.50, 1.000)</string>
+
+<key>com.barebones.bblm.html.attribute-value</key>
+<string>hsla(0.30, 0.50, 0.45, 1.000)</string>
+
+<key>com.barebones.bblm.sgml-tag</key>
+<string>hsla(0.65, 0.60, 0.45, 1.000)</string>
+
+<key>com.barebones.bblm.sgml-entity</key>
+<string>hsla(0.55, 0.60, 0.50, 1.000)</string>
+
+<!-- Markdown -->
+<key>com.barebones.bblm.markdown.Emph</key>
+<string>hsla(0.65, 0.60, 0.45, 1.000)</string>
+
+<key>com.barebones.bblm.markdown.InlineCode</key>
+<string>hsla(0.55, 0.60, 0.50, 1.000)</string>
+
+<key>com.barebones.bblm.markdown.Pre</key>
+<string>hsla(0.55, 0.60, 0.50, 1.000)</string>
+
+<key>com.barebones.bblm.markdown.LinkDefUrl</key>
+<string>hsla(0.30, 0.50, 0.45, 1.000)</string>
+
+<key>com.barebones.bblm.markdown.ListItemMarker</key>
+<string>hsla(0.65, 0.60, 0.45, 1.000)</string>
+
+<!-- Regex -->
+<key>com.barebones.bblm.grep.metachar</key>
+<string>hsla(0.65, 0.60, 0.45, 1.000)</string>
+
+<key>com.barebones.bblm.grep.repeat</key>
+<string>hsla(0.55, 0.60, 0.50, 1.000)</string>
+
+<key>com.barebones.bblm.grep.escape-sequence</key>
+<string>hsla(0.55, 0.60, 0.50, 1.000)</string>
+
+<!-- Misc -->
+<key>com.barebones.bblm.file-include</key>
+<string>hsla(0.55, 0.60, 0.50, 1.000)</string>
+
+<key>com.barebones.bblm.indexed-symbol</key>
+<string>hsla(0.55, 0.60, 0.50, 1.000)</string>
+
+</dict>
+</plist>
