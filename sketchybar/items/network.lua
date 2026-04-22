@@ -26,8 +26,6 @@ end
 start_network_load()
 
 -- re-run when system wakes or network changes
-sbar.add("event", "system_woke"):subscribe("system_woke", start_network_load)
-sbar.add("event", "network_change"):subscribe("network_change", start_network_load)
 
 local wifi_up = sbar.add("item", "wifi1", {
 	position = "right",
@@ -81,7 +79,6 @@ local net_graph_up = sbar.add("graph", "net_graph_up", 42, {
 		border_color = { alpha = 0 },
 		drawing = true,
 	},
-	updates = true,
 	y_offset = 7,
 	padding_right = -2,
 })
@@ -162,7 +159,6 @@ local net_graph_down = sbar.add("graph", "net_graph_down", 42, {
 		border_color = { alpha = 0 },
 		drawing = true,
 	},
-	updates = true,
 	y_offset = -5,
 })
 
@@ -469,7 +465,7 @@ local wifi_up = sbar.add("item", "wifi1", {
 	icon = {
 		font = {
 			style = settings.default,
-			size = 9,
+			size = 11,
 		},
 		string = icons.wifi.upload,
 	},
@@ -478,7 +474,7 @@ local wifi_up = sbar.add("item", "wifi1", {
 		padding_right = 0,
 		font = {
 			family = settings.default,
-			size = 9,
+			size = 8,
 		},
 		color = colors.blue,
 		string = "??? Bps",
@@ -500,7 +496,7 @@ local wifi_down = sbar.add("item", "wifi2", {
 		padding_right = 0,
 		font = {
 			family = settings.default,
-			size = 9,
+			size = 8,
 		},
 		color = colors.green,
 		string = "??? Bps",
@@ -537,9 +533,10 @@ wifi_up:subscribe("network_update", function(env)
 		'osascript -e \'tell application "System Events" to keystroke "u" using {command down, option down, control down}\''
 	local vpn_click_script =
 		'osascript -e \'tell application "System Events" to tell process "Passepartout" to click menu bar item 1 of menu bar 2\''
-	local tailscale_click_script =
-		'osascript -e \'tell application "System Events" to tell process "Tailscale" to click menu bar item 1 of menu bar 2\''
 	local little_snitch_click_script = "open -a 'Little Snitch Network Monitor'"
+
+	--	local tailscale_click_script =
+	--		'osascript -e \'tell application "System Events" to tell process "Tailscale" to click menu bar item 1 of menu bar 2\''
 	--	'osascript -e \'tell application "System Events" to tell process "Little Snitch" to click menu bar item 1 of menu bar 2\''
 
 	-- Wi-Fi item
@@ -547,9 +544,9 @@ wifi_up:subscribe("network_update", function(env)
 		if env.BUTTON == "left" then
 			toggle_details()
 		elseif env.BUTTON == "right" then
-			sbar.exec(vpn_click_script)
+			sbar.exec(wifi_click_script)
 		else
-			sbar.exec(tailscale_click_script)
+			sbar.exec(vpn_click_script)
 		end
 	end)
 
@@ -558,8 +555,6 @@ wifi_up:subscribe("network_update", function(env)
 		if env.BUTTON == "left" then
 			sbar.exec(shortcut_script)
 		elseif env.BUTTON == "right" then
-			sbar.exec(wifi_click_script)
-		else
 			sbar.exec(little_snitch_click_script)
 		end
 	end)
@@ -569,8 +564,6 @@ wifi_up:subscribe("network_update", function(env)
 		if env.BUTTON == "left" then
 			sbar.exec(shortcut_script)
 		elseif env.BUTTON == "right" then
-			sbar.exec(wifi_click_script)
-		else
 			sbar.exec(little_snitch_click_script)
 		end
 	end)
@@ -580,8 +573,6 @@ wifi_up:subscribe("network_update", function(env)
 		if env.BUTTON == "left" then
 			sbar.exec(shortcut_script)
 		elseif env.BUTTON == "right" then
-			sbar.exec(wifi_click_script)
-		else
 			sbar.exec(little_snitch_click_script)
 		end
 	end)
@@ -591,8 +582,6 @@ wifi_up:subscribe("network_update", function(env)
 		if env.BUTTON == "left" then
 			sbar.exec(shortcut_script)
 		elseif env.BUTTON == "right" then
-			sbar.exec(wifi_click_script)
-		else
 			sbar.exec(little_snitch_click_script)
 		end
 	end)

@@ -19,7 +19,7 @@ local disk_label = sbar.add("item", "storage_label", {
 	padding_left = -2,
 	padding_right = 0,
 	y_offset = -5,
-	label = { font = { family = settings.default, size = 9 } },
+	label = { font = { family = settings.default, size = 8 } },
 })
 
 -- Update disk icon/label (used/total) only
@@ -83,7 +83,7 @@ local function add_hover(item)
 				drawing = true,
 				color = colors.hover,
 				corner_radius = 20,
-				height = 30,
+				height = 25,
 				x_offset = 2,
 				y_offset = 5,
 			},

@@ -23,12 +23,15 @@ local items_to_toggle = {
 	"net_graph_down",
 	"volume",
 	"mic",
+	"bluetooth",
 	"storage_label",
 	"storage_icon",
 }
 
 local toggle_items = sbar.add("item", "toggle_items", {
 	position = "right",
+	padding_left = 2,
+	padding_right = 0,
 	icon = {
 		string = icons.menus.contract,
 		color = colors.white,
@@ -37,8 +40,6 @@ local toggle_items = sbar.add("item", "toggle_items", {
 	label = {
 		drawing = false,
 	},
-	padding_left = 2,
-	padding_right = 2,
 })
 
 local function set_items(visible)

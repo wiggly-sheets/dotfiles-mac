@@ -8,12 +8,10 @@ local apple = sbar.add("item", "apple", {
 		string = icons.apple,
 		position = "left",
 		padding_left = 5,
-		padding_right = 2,
+		padding_right = 0,
 		color = colors.white,
 	},
 	label = { drawing = false, width = 0 },
-	padding_left = 0,
-	padding_right = 0,
 })
 
 local menus_expanded = false

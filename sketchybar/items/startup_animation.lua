@@ -27,13 +27,10 @@ local function unlock()
 			height = 30,
 			margin = 6,
 			shadow = "off",
-			corner_radius = 60,
-			blur_radius = 20,
 		})
 	end)
 end
 
--- subscribe with per-event handlers
 animator:subscribe("lock", function()
 	lock()
 end)

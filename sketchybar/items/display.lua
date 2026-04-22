@@ -11,22 +11,22 @@ local display = sbar.add("item", "display", {
 		drawing = true,
 		font = { size = 11 },
 		color = colors.white,
-		padding_right = 2,
-		padding_left = 0,
+		padding_right = 4,
+		padding_left = 2,
+		y_offset = 6,
 	},
 	label = {
 		drawing = true,
 		font = { family = settings.default, size = 10 },
 		color = colors.yellow,
 		padding_right = 0,
-		padding_left = 0,
+		padding_left = -20,
+		y_offset = -6,
 	},
 	position = "right",
+	updates = true,
+	padding_left = 6,
 })
-
--- ======================
--- Click scripts
--- ======================
 
 local display_left_click =
 	'osascript -e \'tell application "System Events" to keystroke "d" using {command down, option down, control down}\''
@@ -51,12 +51,7 @@ local function handle_display_click(env)
 	end
 end
 
--- Subscribe to mouse clicks
 display:subscribe("mouse.clicked", handle_display_click)
-
--- ======================
--- Update function
--- ======================
 
 local function update_display()
 	local icons = {
@@ -134,5 +129,4 @@ end
 
 add_hover(display)
 
--- Initial update
 update_display()

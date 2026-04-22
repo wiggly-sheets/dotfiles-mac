@@ -5,6 +5,7 @@ local settings = require("default")
 -- ── Low Power Mode ────────────────────────────────────────────────
 local lowpowermode = sbar.add("item", "lowpowermode", {
 	update_freq = 10,
+	updates = "when_shown",
 	position = "right",
 	padding_right = -3,
 	padding_left = -4,
@@ -35,29 +36,27 @@ lowpowermode:subscribe({ "power_source_change", "system_woke", "routine", "force
 update_lowpowermode()
 
 -- ── Combined Battery Item ─────────────────────────────────────────
-local battery_item = sbar.add("item", "battery", {
+local battery = sbar.add("item", "battery", {
 	position = "right",
-	padding_left = -2,
+	padding_left = 2,
 	padding_right = 0,
-	y_offset = 0,
+	y_offset = 6,
 	color = colors.green,
 	icon = {
 		drawing = true,
-		string = icons.battery._100, -- initial icon
-		font = { family = settings.default, size = 11 },
+		string = icons.battery._100,
+		font = { family = settings.default, size = 12 },
 		color = colors.green,
-		--	padding_left = 40,
-		padding_left = 5,
+		padding_left = 0,
 		padding_right = 0,
 	},
 	label = {
 		drawing = true,
 		string = "__%",
-		y_offset = 0,
-		--	y_offset = 5,
-		padding_left = 2,
+		y_offset = -12,
+		padding_left = -16,
 		padding_right = 2,
-		font = { family = settings.default, size = 10 },
+		font = { family = settings.default, size = 9 },
 		color = colors.green,
 	},
 	update_freq = 30,
@@ -97,7 +96,7 @@ local function handle_battery_click(env)
 	end
 end
 
-battery_item:subscribe("mouse.clicked", handle_battery_click)
+battery:subscribe("mouse.clicked", handle_battery_click)
 -- battery_time:subscribe("mouse.clicked", handle_battery_click)
 
 -- Update battery status
@@ -114,16 +113,16 @@ local function update_battery()
 		if charge then
 			charge = tonumber(charge)
 			label = charge .. "%"
-			icon = charge >= 80 and icons.battery._100
-				or charge >= 60 and icons.battery._75
-				or charge >= 40 and icons.battery._50
-				or charge >= 20 and icons.battery._25
+			icon = charge >= 85 and icons.battery._100
+				or charge >= 65 and icons.battery._75
+				or charge >= 45 and icons.battery._50
+				or charge >= 25 and icons.battery._25
 				or icons.battery._0
 
 			color = charge >= 30 and colors.green or charge >= 20 and colors.orange or colors.red
 		end
 
-		battery_item:set({
+		battery:set({
 			icon = { string = charging and icons.battery.charging or icon, color = color },
 			label = { string = label, color = color },
 		})
@@ -133,7 +132,7 @@ local function update_battery()
 	end)
 end
 
-battery_item:subscribe({ "routine", "power_source_change", "system_woke" }, update_battery)
+battery:subscribe({ "routine", "power_source_change", "system_woke" }, update_battery)
 update_battery()
 
 -- Hover effects
@@ -143,37 +142,25 @@ local function add_hover(item)
 			{ background = { drawing = false } },
 			--			battery_time:set(
 			{ background = { drawing = false } },
-			battery_item:set({ background = { drawing = false } })
+			battery:set({ background = { drawing = false } })
 		)
 		--		)
 	end)
 end
 add_hover(lowpowermode)
-add_hover(battery_item)
+add_hover(battery)
 --add_hover(battery_time)
 
-battery_item:subscribe(
+battery:subscribe(
 	"mouse.entered",
 	function()
-		battery_item:set({
+		battery:set({
 			background = {
 				drawing = true,
 				color = colors.hover,
 				corner_radius = 20,
-				height = 20,
-			},
-		})
-	end,
-
-	--	battery_time:subscribe(
-	"mouse.entered",
-	function()
-		battery_item:set({
-			background = {
-				drawing = true,
-				color = colors.hover,
-				corner_radius = 20,
-				height = 20,
+				height = 30,
+				y_offset = -5,
 			},
 		})
 	end,

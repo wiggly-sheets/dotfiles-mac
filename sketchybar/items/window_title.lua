@@ -15,7 +15,6 @@ local front_app = sbar.add("item", "front_app", {
 		color = colors.white,
 	},
 	padding_right = 2,
-	updates = true,
 	position = "center",
 })
 
@@ -118,6 +117,7 @@ local function update_window_title()
 			-- Hide if only Built-in is found
 			window_title:set({ label = { drawing = false, string = "" } })
 			last_title = ""
+			front_app:set({ label = { drawing = false, string = "" } })
 		end
 	end)
 end

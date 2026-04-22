@@ -5,10 +5,10 @@ local dnd = sbar.add("item", "dnd", {
 	label = {
 		drawing = true,
 		string = icons.dnd_off,
-		font = { size = 15 },
+		font = { size = 13 },
 	},
 	position = "right",
-	padding_right = 5,
+	padding_right = 0,
 	padding_left = 0,
 	update_freq = 10,
 })

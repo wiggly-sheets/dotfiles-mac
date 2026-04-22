@@ -12,7 +12,6 @@ local cpu_temp_item = sbar.add("item", "cpu_temp", {
 	y_offset = 7,
 	icon = { string = icons.cpu, padding_left = 5, color = colors.white },
 	label = { padding_left = 2, font = { family = settings.default, size = 10 } },
-
 	click_script = click_script,
 })
 
@@ -22,7 +21,6 @@ local gpu_temp_item = sbar.add("item", "gpu_temp", {
 	y_offset = -6,
 	icon = { string = icons.gpu, padding_left = 0, color = colors.white },
 	label = { padding_left = 2, font = { family = settings.default, size = 12 } },
-
 	click_script = click_script,
 })
 
@@ -89,7 +87,7 @@ local function add_hover(item)
 				drawing = true,
 				color = colors.hover,
 				corner_radius = 20,
-				height = 40,
+				height = 25,
 				x_offset = 0,
 				y_offset = 5,
 			},

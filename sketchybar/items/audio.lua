@@ -2,15 +2,17 @@ local colors = require("colors")
 local icons = require("icons")
 local settings = require("default")
 
--- Volume item
-local volume_item = sbar.add("item", "volume", {
+local volume = sbar.add("item", "volume", {
 	position = "right",
+	y_offset = 6,
 	icon = {
+		padding_left = 2,
+		padding_right = 2,
 		drawing = true,
 		string = icons.volume._0,
 		width = "dynamic",
 		color = colors.white,
-		font = { family = settings.default, size = 12.0 },
+		font = { family = settings.default, size = 11.0 },
 	},
 	label = {
 		drawing = true,
@@ -21,20 +23,20 @@ local volume_item = sbar.add("item", "volume", {
 		color = colors.yellow,
 		font = { family = settings.default, size = 10.0 },
 	},
+	updates = "true",
 })
 
--- Mic item
-local mic_item = sbar.add("item", "mic", {
+local mic = sbar.add("item", "mic", {
 	icon = {
 		drawing = true,
 		string = icons.mic.on,
-		font = { size = 12 },
+		font = { size = 11 },
 		color = colors.white,
-		padding_right = 2,
-		padding_left = 3,
+		padding_right = 5,
+		padding_left = 2,
 	},
 	label = {
-		padding_right = 0,
+		padding_right = 2,
 		padding_left = 2,
 		drawing = true,
 		width = "dynamic",
@@ -43,32 +45,33 @@ local mic_item = sbar.add("item", "mic", {
 		color = colors.yellow,
 	},
 	position = "right",
-	update_freq = 5,
+	update_freq = 10,
+	padding_right = -40,
+	padding_left = 4,
+	y_offset = -6,
 })
 
--- ======== Mic update function ========
 local function update_mic()
 	sbar.exec("osascript -e 'set volInfo to input volume of (get volume settings)'", function(result)
 		local vol = tonumber(result)
 
 		if not vol then
-			mic_item:set({ icon = { string = "" }, label = { string = "" } })
+			mic:set({ icon = { string = "" }, label = { string = "" } })
 		elseif vol == 0 then
-			mic_item:set({ icon = { string = icons.mic.muted }, label = { string = "0%" } })
+			mic:set({ icon = { string = icons.mic.muted }, label = { string = "0%" } })
 		else
-			mic_item:set({ icon = { string = icons.mic.on }, label = { string = vol .. "%" } })
+			mic:set({ icon = { string = icons.mic.on }, label = { string = vol .. "%" } })
 		end
 	end)
 end
 
-mic_item:subscribe({ "routine" }, update_mic)
+mic:subscribe({ "routine", "volume_change", "forced", "system_woke" }, update_mic)
 
 update_mic()
 
--- ======== Volume update subscriptions ========
-volume_item:subscribe("volume_change", function(env)
-	local volume = tonumber(env.INFO) or 0
-	volume_item:set({ label = volume .. "%" })
+volume:subscribe("volume_change", "forced", "system_woke", function(env)
+	local level = tonumber(env.INFO) or 0
+	volume:set({ label = level .. "%" })
 	sbar.exec("/opt/homebrew/bin/SwitchAudioSource -c", function(device)
 		device = device:gsub("\n", ""):match("^%s*(.-)%s*$")
 		local icon
@@ -86,9 +89,9 @@ volume_item:subscribe("volume_change", function(env)
 			end
 			if volume >= 75 then
 				icon = icons.volume._100
-			elseif volume >= 40 then
+			elseif volume >= 50 then
 				icon = icons.volume._66
-			elseif volume >= 20 then
+			elseif volume >= 25 then
 				icon = icons.volume._33
 			elseif volume > 0 then
 				icon = icons.volume._10
@@ -96,16 +99,14 @@ volume_item:subscribe("volume_change", function(env)
 				icon = icons.volume._0
 			end
 		end
-		volume_item:set({ icon = icon })
+		volume:set({ icon = icon })
 	end)
 end)
 
--- ======== Click handling ========
 local left_click_script =
 	'osascript -e \'tell application "System Events" to tell process "SoundSource" to click menu bar item 1 of menu bar 2\''
+
 local right_click_script =
-	'osascript -e \'tell application "System Events" to tell process "ControlCenter" to click (first menu bar item of menu bar 1 whose name is not "Wi-Fi")\''
-local middle_click_script =
 	'osascript -e \'tell application "System Events" to tell process "SystemUIServer" to click menu bar item 2 of menu bar 1\''
 
 local function handle_volume_click(env)
@@ -113,32 +114,60 @@ local function handle_volume_click(env)
 		sbar.exec(left_click_script)
 	elseif env.BUTTON == "right" then
 		sbar.exec(right_click_script)
-	else
-		sbar.exec(middle_click_script)
 	end
 end
 
-volume_item:subscribe("mouse.clicked", handle_volume_click)
-mic_item:subscribe("mouse.clicked", handle_volume_click)
+volume:subscribe("mouse.clicked", handle_volume_click)
+mic:subscribe("mouse.clicked", handle_volume_click)
 
--- ======== Hover effects ========
-local function add_hover(item)
-	item:subscribe("mouse.entered", function()
-		item:set({
-			background = {
-				drawing = true,
-				color = colors.hover,
-				corner_radius = 20,
-				height = 20,
-				x_offset = 0,
-			},
-		})
-	end)
+volume:subscribe("mouse.entered", function()
+	volume:set({
+		background = {
+			drawing = true,
+			color = colors.hover,
+			corner_radius = 20,
+			height = 10,
+			y_offset = 0,
+		},
+	})
+	mic:set({
+		background = {
+			drawing = true,
+			color = colors.hover,
+			corner_radius = 20,
+			height = 10,
+			x_offset = 0,
+		},
+	})
+end)
 
-	item:subscribe({ "mouse.exited", "mouse.entered.global", "mouse.exited.global" }, function()
-		item:set({ background = { drawing = false } })
-	end)
-end
+mic:subscribe("mouse.entered", function()
+	volume:set({
+		background = {
+			drawing = true,
+			color = colors.hover,
+			corner_radius = 20,
+			height = 10,
+			y_offset = 0,
+		},
+	})
+	mic:set({
+		background = {
+			drawing = true,
+			color = colors.hover,
+			corner_radius = 20,
+			height = 10,
+			x_offset = 0,
+		},
+	})
+end)
 
-add_hover(volume_item)
-add_hover(mic_item)
+volume:subscribe({ "mouse.exited", "mouse.entered.global", "mouse.exited.global" }, function()
+	volume:set({ background = { drawing = true, height = 20, color = colors.transparent } })
+	mic:set({ background = { drawing = true, height = 10, color = colors.transparent } })
+end)
+
+mic:subscribe({ "mouse.exited", "mouse.entered.global", "mouse.exited.global" }, function()
+	volume:set({ background = { drawing = true, height = 10, color = colors.transparent } })
+	mic:set({ background = { drawing = true, height = 10, color = colors.transparent } })
+end)

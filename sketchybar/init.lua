@@ -7,7 +7,6 @@ require("bar")
 require("default")
 require("items")
 sbar.hotload(true)
--- sbar.exec("pkill -x sketchybar-toggle; sketchybar-toggle &")
 sbar.end_config()
 
 -- Run the event loop of the sketchybar module (without this there will be no

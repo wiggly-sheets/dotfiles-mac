@@ -6,7 +6,7 @@ sbar.add("item", { position = "right", width = settings.group_paddings })
 
 local time = sbar.add("item", "time", {
 	position = "right",
-	padding_right = -8,
+	padding_right = 18,
 	update_freq = 1,
 	width = 0,
 	label = {
@@ -23,7 +23,7 @@ local time = sbar.add("item", "time", {
 local date = sbar.add("item", "date", {
 	position = "right",
 	y_offset = -5,
-	padding_right = -12,
+	padding_right = 14,
 	update_freq = 60,
 	label = {
 		color = colors.white,
@@ -80,7 +80,7 @@ local function add_hover(item)
 				drawing = true,
 				color = colors.hover,
 				corner_radius = 20,
-				height = 30,
+				height = 25,
 				x_offset = 0,
 				y_offset = 5,
 			},

@@ -15,8 +15,8 @@ return {
 	hover = 0x40FFFFFF,
 
 	bar = {
-		bg = 0x00000000,
-		border = 0x00000000,
+		bg = 0x0A0A0A0D,
+		border = 0xff787878,
 	},
 	popup = {
 		bg = 0x00000000,

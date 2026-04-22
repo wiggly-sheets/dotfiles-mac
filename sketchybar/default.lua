@@ -1,12 +1,8 @@
-local colors = {
-	white = "0xFFFFFFFF",
-	transparent = "0x00000000",
-}
+local colors = require("colors")
 
 -- === Defaults table ===
 local default = {
 	paddings = 1,
-	icons = "sf-symbols",
 	font = {
 		family = "Liga SFMono Nerd Font",
 		size = 11,
@@ -15,7 +11,6 @@ local default = {
 			Semibold = "Semibold",
 			Bold = "Bold",
 			Heavy = "Heavy",
-			Black = "Black",
 		},
 	},
 }
@@ -52,7 +47,8 @@ sbar.default({
 		width = 10,
 		corner_radius = 0,
 		border_width = 0,
-		border_color = colors.transparent,
+		color = colors.bar_bg,
+		border_color = colors.bar.border,
 		image = {
 			corner_radius = 0,
 			border_color = colors.transparent,
@@ -61,13 +57,12 @@ sbar.default({
 			width = 10,
 		},
 	},
-
 	popup = {
 		background = {
 			border_width = 1,
 			corner_radius = 20,
-			border_color = colors.white,
-			color = "0x0A0A0A0D",
+			border_color = colors.bar.border,
+			color = colors.bar.bg,
 			shadow = { drawing = false },
 			blur_radius = 20,
 		},
