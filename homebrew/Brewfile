@@ -162,8 +162,6 @@ brew "fastfetch"
 brew "fd"
 # Download assets from a commit, branch, or tag of GitHub repositories
 brew "fetch"
-# Play, record, convert, and stream many audio and video codecs
-brew "ffmpeg-full"
 # Create thumbnails for your video files
 brew "ffmpegthumbnailer"
 # Banner-like program prints strings as ASCII art
@@ -236,8 +234,6 @@ brew "ifstat"
 brew "iftop"
 # Tools and libraries to manipulate images in select formats
 brew "imagemagick"
-# Tools and libraries to manipulate images in many formats
-brew "imagemagick-full"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
 # Command-line note taker
@@ -344,6 +340,8 @@ brew "pam-reattach"
 brew "pastel"
 # Pretty system information tool written in POSIX sh
 brew "pfetch"
+# General-purpose scripting language
+brew "php"
 # Display the PID number for a given process name
 brew "pidof"
 # Animated pipes terminal screensaver
@@ -626,8 +624,6 @@ cask "discord"
 cask "diskspace"
 # Monitor DNS activity
 cask "dnsmonitor"
-# Open-source physical access (aka 'evil maid') attack detector
-cask "do-not-disturb"
 # Window peeking utility app
 cask "dockdoor"
 # Advanced Dock preferences
@@ -875,6 +871,8 @@ cask "kegworks-app/kegworks/sikarugir"
 cask "silentknight"
 # PDF viewer designed for reading research papers and technical books
 cask "sioyek"
+# Bluesky Social client
+cask "sky"
 # Team communication and collaboration software
 cask "slack"
 # Displays all open files and sockets in use by all running processes
@@ -978,7 +976,7 @@ mas "Color Picker", id: 1545870783
 mas "Colorful Folder", id: 1576476152
 mas "Comet", id: 1146204813
 mas "Compressor", id: 424390742
-mas "Dark Night", id: 1592844577
+mas "darker", id: 1637413102
 mas "Dato", id: 1470584107
 mas "Developer", id: 640199958
 mas "Dropover", id: 1355679052

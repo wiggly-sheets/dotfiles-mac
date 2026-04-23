@@ -103,11 +103,14 @@ local function toggle_menus()
 		icon = { string = menus_expanded and icons.menus.contract or icons.menus.expand },
 	})
 
-	for i = 2, #menu_items do
-		menu_items[i]:set({ drawing = menus_expanded })
-	end
+	sbar.animate("tanh", 20, function()
+		for i = 2, #menu_items do
+			menu_items[i]:set({
+				drawing = menus_expanded,
+			})
+		end
+	end)
 
-	-- force update after first expansion to trim any empty menu items
 	if menus_expanded then
 		update_menus()
 	end
@@ -130,7 +133,6 @@ local function get_current_theme()
 	return t
 end
 
--- Read theme names dynamically from theme_dir
 local function list_themes()
 	local themes = {}
 
@@ -139,7 +141,6 @@ local function list_themes()
 	if not p then
 		return themes
 	end
-
 	for file in p:lines() do
 		-- Skip hidden files (dotfiles)
 		if not file:match("^%.") then

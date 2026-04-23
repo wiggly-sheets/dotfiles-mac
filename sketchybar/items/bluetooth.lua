@@ -4,13 +4,13 @@ local settings = require("default")
 
 local bluetooth = sbar.add("item", "bluetooth", {
 	position = "right",
-	padding_left = 2,
-	padding_right = -4,
+	padding_left = 4,
+	padding_right = -5,
 	update_freq = 10,
 	icon = {
 		string = icons.bluetooth.on,
 		color = colors.white,
-		font = { family = settings.default, size = 14 },
+		font = { family = settings.default, size = 15 },
 	},
 	updates = "when_shown",
 	click_script = 'osascript -e \'tell application "System Events" to tell process "ControlCenter" to click (first menu bar item of menu bar 1 whose name is not "Wi-Fi")\'',

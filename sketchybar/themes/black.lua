@@ -7,23 +7,20 @@ return {
 	yellow = 0xff000000,
 	orange = 0xff000000,
 	magenta = 0xff000000,
-	grey = 0xff000000,
+	grey = 0x4d010101,
 	transparent = 0x00000000,
 	dnd = 0xff000000,
 	low_power = 0xff63981f,
 	notifications = 0xffc82d3b,
 	hover = 0x40FFFFFF,
-
 	bar = {
 		bg = 0x0A0A0A0D,
-		border = 0xff787878,
+		border = 0xff000000,
 	},
 	popup = {
 		bg = 0x00000000,
-		border = 0x00000000,
+		border = 0x80010101,
 	},
-	bg1 = 0x00000000,
-	bg2 = 0x00000000,
 
 	with_alpha = function(color, alpha)
 		if alpha > 1.0 or alpha < 0.0 then

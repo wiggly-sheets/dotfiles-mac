@@ -9,7 +9,7 @@ local time_machine = sbar.add("item", "time_machine", {
 	icon = { color = colors.white, font = { size = 13 }, string = icons.time_machine.default },
 	click_script = 'osascript -e \'tell application "System Events" to tell process "SystemUIServer" to click (first menu bar item of menu bar 1 whose name is not "Siri")\'',
 	update_freq = 10,
-	label = { padding_right = 4 },
+	label = { padding_right = 0 },
 })
 
 local function update_tm()
@@ -42,13 +42,7 @@ local function update_tm()
 	end)
 end
 
--- Run once on load
 update_tm()
-
--- Poll (Time Machine is slow-moving anyway)
-time_machine:set({
-	update_freq = 60,
-})
 
 time_machine:subscribe("routine", function()
 	update_tm()

@@ -84,16 +84,16 @@ volume:subscribe("volume_change", "forced", "system_woke", function(env)
 		elseif device:match("Sceptre") then
 			icon = icons.audio.sceptre
 		else
-			if volume == nil then
-				volume = 0
+			if level == nil then
+				level = 0
 			end
-			if volume >= 75 then
+			if level >= 75 then
 				icon = icons.volume._100
-			elseif volume >= 50 then
+			elseif level >= 50 then
 				icon = icons.volume._66
-			elseif volume >= 25 then
+			elseif level >= 25 then
 				icon = icons.volume._33
-			elseif volume > 0 then
+			elseif level > 0 then
 				icon = icons.volume._10
 			else
 				icon = icons.volume._0

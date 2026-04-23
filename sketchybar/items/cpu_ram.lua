@@ -17,15 +17,15 @@ local cpu = sbar.add("graph", "cpu", 42, {
 		drawing = true,
 		padding_right = 4,
 	},
-	icon = { string = icons.cpu, padding_right = 0, padding_left = 0, color = colors.white },
+	icon = { string = icons.cpu, padding_right = 2, padding_left = 0, color = colors.white },
 	label = {
 		font = {
 			family = settings.default,
-			size = 8,
+			size = 6,
 		},
 		align = "right",
 		width = 0,
-		padding_right = 25,
+		padding_right = 30,
 		y_offset = 2,
 	},
 	update_freq = 30,
@@ -64,25 +64,25 @@ sbar.add("item", "cpu.padding", {
 
 local ram = sbar.add("graph", "ram", 42, {
 	position = "right",
-	padding_right = -53,
+	padding_right = -64,
 	y_offset = -6,
-	padding_left = 10,
+	padding_left = 3,
 	background = {
 		height = 10,
 		color = { alpha = 0 },
 		border_color = { alpha = 0 },
 		drawing = true,
 	},
-	icon = { string = icons.ram, padding_right = 0, color = colors.white },
+	icon = { string = icons.ram, padding_right = 2, color = colors.white },
 	label = {
 		font = {
 			family = settings.default,
-			size = 8,
+			size = 6,
 		},
 		align = "right",
 		width = 0,
 		y_offset = 4,
-		padding_right = 25,
+		padding_right = 30,
 	},
 	update_freq = 30,
 })

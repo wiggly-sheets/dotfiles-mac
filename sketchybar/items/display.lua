@@ -25,7 +25,8 @@ local display = sbar.add("item", "display", {
 	},
 	position = "right",
 	updates = true,
-	padding_left = 6,
+	padding_left = 2,
+	padding_right = 4,
 })
 
 local display_left_click =
