@@ -5,16 +5,12 @@ local settings = require("default")
 
 local spaces = {}
 local space_app_icons = {} -- sid -> concatenated icon glyphs (string)
-local space_app_names = {} -- sid -> set/table of app names present in that space
 local space_contains_front_app = {} -- sid -> bool
 local space_selected = {} -- sid -> bool
-local current_front_app = nil
 
 -- init tables
 for i = 1, 10 do
 	space_app_icons[i] = "—"
-	space_app_names[i] = {}
-	space_contains_front_app[i] = false
 	space_selected[i] = false
 end
 
@@ -123,18 +119,12 @@ for i = 1, 10 do
 			},
 		})
 
-		-- update that space's display (label color depends on whether it contains the front app)
-		update_space_display(space, sid, is_selected, space_contains_front_app[sid])
+		update_space_display(space, sid, is_selected)
 	end)
-
-	local rename_space_click =
-		'osascript -e \'tell application "System Events" to tell process "SpacesRenamer" to click menu bar item 1 of menu bar 2\''
 
 	-- Click handling
 	space:subscribe("mouse.clicked", function(env)
-		if env.BUTTON == "other" then
-			sbar.exec(rename_space_click)
-		else
+		if env.BUTTON then
 			local op = (env.BUTTON == "right") and "--destroy" or "--focus"
 			sbar.exec("yabai -m space " .. op .. " " .. env.SID)
 		end
@@ -161,35 +151,6 @@ for i = 1, 10 do
 		space:set({ popup = { drawing = "toggle" } })
 	end)
 end
-
--- Listen for front app changes
-local front_app_listener = sbar.add("item", { drawing = false })
-front_app_listener:subscribe(
-	"front_app_switched",
-	"display_change",
-	"space_windows_change",
-	"space_change",
-	"forced",
-	"system_woke",
-	function(env)
-		current_front_app = env.INFO -- e.g. "Safari"
-
-		-- Re-evaluate which spaces contain that front app based on last-known space_app_names
-		for sid = 1, #space_app_names do
-			local appset = space_app_names[sid] or {}
-			local has = false
-			if current_front_app and appset[current_front_app] then
-				has = true
-			end
-			space_contains_front_app[sid] = has
-		end
-
-		-- Update visuals for all spaces
-		for sid, space in ipairs(spaces) do
-			update_space_display(space, sid, space_selected[sid], space_contains_front_app[sid])
-		end
-	end
-)
 
 -- Track window changes and update space labels + app sets
 local space_window_observer = sbar.add("item", {
@@ -227,10 +188,6 @@ space_window_observer:subscribe(
 		end
 
 		space_app_icons[sid] = icon_line
-		space_app_names[sid] = appset
-
-		-- Update whether this space contains the current front app (if known)
-		space_contains_front_app[sid] = (current_front_app and appset[current_front_app]) and true or false
 
 		-- Update displays for all spaces (use stored selected state)
 		for space_id, space in ipairs(spaces) do

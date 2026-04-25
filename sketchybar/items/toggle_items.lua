@@ -43,14 +43,13 @@ local toggle_items = sbar.add("item", "toggle_items", {
 })
 
 local function set_items(visible)
-	sbar.animate("tanh", 25, function()
-		for _, item in ipairs(items_to_toggle) do
-			sbar.set(item, {
-				drawing = visible,
-			})
-		end
-	end)
+	for _, item in ipairs(items_to_toggle) do
+		sbar.set(item, {
+			drawing = visible,
+		})
+	end
 end
+
 -- Initialize hidden state on load (force after all items are created)
 set_items(not hidden)
 sbar.set("toggle_items", {

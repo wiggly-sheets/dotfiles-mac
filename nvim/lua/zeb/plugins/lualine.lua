@@ -88,34 +88,45 @@ return {
 			},
 
 			winbar = {
-				lualine_a = { "mode" },
+				lualine_a = {
+					{
+						"mode",
+						fmt = function(str)
+							return " " .. str
+						end,
+						separator = { left = "", right = "" },
+					},
+				},
 				lualine_b = { "branch", "diff", "diagnostics" },
-				lualine_c = { "filename", "selectioncount" }, 
+				lualine_c = { "filename", "selectioncount" },
 				lualine_x = {
-	{
-  function()
-    local buf = vim.api.nvim_get_current_buf()
-    local clients = vim.lsp.get_active_clients({ bufnr = buf })
-    if #clients == 0 then return "" end
+					{
+						function()
+							local buf = vim.api.nvim_get_current_buf()
+							local clients = vim.lsp.get_active_clients({ bufnr = buf })
+							if #clients == 0 then
+								return ""
+							end
 
-    local names = {}
-    for _, client in ipairs(clients) do
-      table.insert(names, client.name)
-    end
+							local names = {}
+							for _, client in ipairs(clients) do
+								table.insert(names, client.name)
+							end
 
-    return table.concat(names, ", ")
-  end,
-  icon = "",
-  cond = function()
-    return #vim.lsp.get_active_clients({ bufnr = vim.api.nvim_get_current_buf() }) > 0
-  end,
-},
- 				 "encoding",
- 				 "fileformat",
-  				 "filetype",
- 				 "filesize",
-  				 "searchcount",
-},				lualine_y = { "progress" },
+							return table.concat(names, ", ")
+						end,
+						icon = "",
+						cond = function()
+							return #vim.lsp.get_active_clients({ bufnr = vim.api.nvim_get_current_buf() }) > 0
+						end,
+					},
+					"encoding",
+					"fileformat",
+					"filetype",
+					"filesize",
+					"searchcount",
+				},
+				lualine_y = { "progress" },
 				lualine_z = { "location" },
 			},
 

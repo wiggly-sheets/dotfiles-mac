@@ -2,16 +2,24 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>0C9CFAFE-05DD-4A04-87AA-2FF8EDB5F613_details</key>
+	<true/>
 	<key>23277D75-B7A7-4D04-960B-53C7BF9F3917_details</key>
 	<false/>
 	<key>6DCAEC84-5091-4878-8B4C-3197660DC6C8_details</key>
 	<true/>
+	<key>72ED0724-A8EE-445C-B1FF-BCC36D56BA72_details</key>
+	<false/>
 	<key>B1EDC6C8-F3FD-467E-9F04-9F9B4419F9C4_details</key>
 	<true/>
+	<key>BB14649E-CAFF-4152-80A7-05FDA66DF8FC_details</key>
+	<true/>
 	<key>Battery_barChart_position</key>
-	<integer>0</integer>
-	<key>Battery_batteryDetails_position</key>
 	<integer>2</integer>
+	<key>Battery_bar_chart_color</key>
+	<string>utilization</string>
+	<key>Battery_batteryDetails_position</key>
+	<integer>1</integer>
 	<key>Battery_battery_additional</key>
 	<string>none</string>
 	<key>Battery_battery_chargerInside</key>
@@ -29,13 +37,13 @@
 	<key>Battery_color</key>
 	<true/>
 	<key>Battery_label_position</key>
-	<integer>1</integer>
+	<integer>0</integer>
 	<key>Battery_mini_position</key>
 	<integer>4</integer>
 	<key>Battery_notifications_high</key>
-	<string></string>
+	<string>1.0</string>
 	<key>Battery_notifications_low</key>
-	<string>low</string>
+	<string>0.2</string>
 	<key>Battery_oneView</key>
 	<true/>
 	<key>Battery_popup_keyboardShortcut</key>
@@ -54,7 +62,7 @@
 	<key>Battery_timeFormat</key>
 	<string>short</string>
 	<key>Battery_widget</key>
-	<string>bar_chart</string>
+	<string>label</string>
 	<key>Bluetooth_position</key>
 	<integer>7</integer>
 	<key>Bluetooth_sensors_mode</key>
@@ -65,6 +73,8 @@
 	<false/>
 	<key>C1671B3B-DFD0-45FD-8281-E89C1F33FFD8_details</key>
 	<false/>
+	<key>CE40DD64-E0D9-4781-B47A-CF1C459866A3_details</key>
+	<true/>
 	<key>CPU_barChart_position</key>
 	<integer>2</integer>
 	<key>CPU_chartColor</key>
@@ -100,7 +110,7 @@
 		<integer>59</integer>
 		<integer>55</integer>
 		<integer>58</integer>
-		<integer>8</integer>
+		<integer>41</integer>
 	</array>
 	<key>CPU_position</key>
 	<integer>3</integer>
@@ -128,6 +138,8 @@
 	<false/>
 	<key>CombinedModules_spacing</key>
 	<string>none</string>
+	<key>D490CDC9-F4EB-4944-9D1D-C7A821BA2CAA_details</key>
+	<false/>
 	<key>DE52D400-8635-486D-A4E5-1B5D7F0DBFC7_details</key>
 	<false/>
 	<key>Disk_C1671B3B-DFD0-45FD-8281-E89C1F33FFD8_popup</key>
@@ -151,7 +163,7 @@
 		<integer>59</integer>
 		<integer>55</integer>
 		<integer>58</integer>
-		<integer>1</integer>
+		<integer>33</integer>
 	</array>
 	<key>Disk_position</key>
 	<integer>1</integer>
@@ -199,10 +211,17 @@
 	<true/>
 	<key>GPU_mini_position</key>
 	<integer>0</integer>
+	<key>GPU_popup_keyboardShortcut</key>
+	<array>
+		<integer>59</integer>
+		<integer>55</integer>
+		<integer>58</integer>
+		<integer>5</integer>
+	</array>
 	<key>GPU_position</key>
 	<integer>2</integer>
 	<key>GPU_state</key>
-	<false/>
+	<true/>
 	<key>GPU_tachometer_position</key>
 	<integer>4</integer>
 	<key>GPU_updateInterval</key>
@@ -219,44 +238,48 @@
 	<string>{880, 448}</string>
 	<key>NSOSPLastRootDirectory</key>
 	<data>
-	Ym9va+wCAAAAAAQQMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAxAEA
-	AAQAAAADAwAAAAQAAAUAAAABAQAAVXNlcnMAAAADAAAAAQEAAFplYgAJAAAAAQEAAERv
-	Y3VtZW50cwAAAAwAAAABBgAAEAAAACAAAAAsAAAACAAAAAQDAABkQgAAAAAAAAgAAAAE
-	AwAAtHUAAAAAAAAIAAAABAMAACrUAAAAAAAADAAAAAEGAABUAAAAZAAAAHQAAAAIAAAA
-	AAQAAEHEFkKRgAAAGAAAAAECAAACAAAAAAAAAB8CAAAAAAAAHwIAAAAAAAAAAAAAAQUA
-	AAgAAAAEAwAAAQAAAAAAAAAEAAAAAwMAAPUBAAAIAAAAAQkAAGZpbGU6Ly8vDQAAAAEB
-	AABNYWNpbnRvc2ggU1NEAAAACAAAAAQDAAAAUKEbcwAAAAgAAAAABAAAQcapP0eAAAAk
-	AAAAAQEAADNDQTEwODNGLTEyRTAtNEZEOS04QjBELTUyQjU3MjNFNUE0MxgAAAABAgAA
-	gQAAAAEAAADvEwAAAQAAAO8TAAABAAAAAQAAAAEBAAAvAAAAMAAAAAECAABkbmliAAAA
-	AAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABzY29kAgAAAAAAAADwAAAA/v///wEA
-	AAAAAAAAEwAAAAQQAABAAAAAAAAAAAUQAACEAAAAAAAAABAQAACoAAAAAAAAAEAQAACY
-	AAAAAAAAAAIgAACAAQAAAAAAAAUgAADsAAAAAAAAABAgAAD8AAAAAAAAABEgAAA0AQAA
-	AAAAABIgAAAUAQAAAAAAABMgAAAkAQAAAAAAACAgAABgAQAAAAAAADAgAADIAAAAAAAA
-	AAHAAADQAAAAAAAAABHAAAAgAAAAAAAAABLAAADgAAAAAAAAAAHQAADIAAAAAAAAABDQ
-	AAAEAAAAAAAAABfwAAAsAAAAAAAAACLwAACMAQAAAAAAAA==
+	Ym9va0ADAAAAAAUQQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+	AAAAAAAAAAAAAAAAAPwBAAAEAAAAAwMAAAAEAAAFAAAAAQEAAFVzZXJzAAAAAwAAAAEB
+	AABaZWIACQAAAAEBAABEb3dubG9hZHMAAAAMAAAAAQYAABAAAAAgAAAALAAAAAgAAAAE
+	AwAAZEIAAAAAAAAIAAAABAMAALR1AAAAAAAACAAAAAQDAAA6ewAAAAAAAAwAAAABBgAA
+	VAAAAGQAAAB0AAAACAAAAAAEAABBwVOc/AAAABgAAAABAgAAAgAAAAAAAAAfAgAAAAAA
+	AB8CAAAAAAAAAAAAAAEFAAAIAAAABAMAAAEAAAAAAAAABAAAAAMDAAD1AQAACAAAAAEJ
+	AABmaWxlOi8vLw0AAAABAQAATWFjaW50b3NoIFNTRAAAAAgAAAAEAwAAAABgqmcAAAAI
+	AAAAAAQAAEHHWNHAAAAAJAAAAAEBAAAzQ0ExMDgzRi0xMkUwLTRGRDktOEIwRC01MkI1
+	NzIzRTVBNDMYAAAAAQIAAIEAAAABAAAA7xMAAAEAAADvEwAAAQAAAAEAAAABAQAALwAA
+	ADAAAAABAgAAZG5pYgAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAZm53ZAIA
+	AAAAAAAALwAAAAEBAABOU1VSTEJvb2ttYXJrUXVhcmFudGluZU1vdW50ZWROZXR3b3Jr
+	Vm9sdW1lc0tleQD8AAAA/v///wEAAAAAAAAAFAAAAAQQAABAAAAAAAAAAAUQAACEAAAA
+	AAAAABAQAACoAAAAAAAAAEAQAACYAAAAAAAAAAIgAACAAQAAAAAAAAUgAADsAAAAAAAA
+	ABAgAAD8AAAAAAAAABEgAAA0AQAAAAAAABIgAAAUAQAAAAAAABMgAAAkAQAAAAAAACAg
+	AABgAQAAAAAAADAgAADIAAAAAAAAAAHAAADQAAAAAAAAABHAAAAgAAAAAAAAABLAAADg
+	AAAAAAAAAAHQAADIAAAAAAAAABDQAAAEAAAAAAAAABfwAAAsAAAAAAAAACLwAACMAQAA
+	AAAAAMQBAIDIAAAAAAAAAA==
 	</data>
 	<key>NSStatusItem Preferred Position Battery</key>
-	<real>5515</real>
+	<real>433</real>
 	<key>NSStatusItem Preferred Position CPU</key>
 	<real>552</real>
 	<key>NSStatusItem Preferred Position CPU_mini</key>
-	<real>5781</real>
+	<real>686</real>
 	<key>NSStatusItem Preferred Position Disk</key>
 	<real>204</real>
 	<key>NSStatusItem Preferred Position Disk_bar_chart</key>
-	<real>5719</real>
+	<real>607</real>
 	<key>NSStatusItem Preferred Position GPU</key>
 	<real>139</real>
+	<key>NSStatusItem Preferred Position GPU_mini</key>
+	<real>727</real>
 	<key>NSStatusItem Preferred Position Network</key>
-	<real>5576</real>
+	<real>628</real>
 	<key>NSStatusItem Preferred Position RAM</key>
 	<real>609</real>
 	<key>NSStatusItem Preferred Position RAM_mini</key>
-	<real>5740</real>
+	<real>768</real>
 	<key>NSStatusItem Preferred Position Sensors</key>
 	<real>386</real>
 	<key>NSStatusItem Preferred Position Sensors_sensors</key>
-	<real>5683</real>
+	<real>650</real>
 	<key>NSStatusItem Restore Position Battery_battery</key>
 	<integer>488</integer>
 	<key>NSStatusItem Restore Position Battery_battery_details</key>
@@ -265,8 +288,6 @@
 	<integer>563</integer>
 	<key>NSStatusItem Restore Position Disk_mini</key>
 	<integer>358</integer>
-	<key>NSStatusItem Restore Position GPU_mini</key>
-	<integer>431</integer>
 	<key>NSStatusItem Restore Position Network_speed</key>
 	<integer>636</integer>
 	<key>NSStatusItem Restore Position RAM_line_chart</key>
@@ -288,6 +309,8 @@
 	</dict>
 	<key>NSWindow Frame NSNavPanelAutosaveName</key>
 	<string>455 469 800 448 0 0 1710 1074 </string>
+	<key>NSWindow Frame eu.exelban.Stats.Settings.WindowFrame</key>
+	<string>493 350 728 480 0 0 1710 1073 </string>
 	<key>Network_VPNMode</key>
 	<false/>
 	<key>Network_base</key>
@@ -298,6 +321,8 @@
 	<string>none</string>
 	<key>Network_downloadColor</key>
 	<string>secondGreen</string>
+	<key>Network_interfaceDetails</key>
+	<true/>
 	<key>Network_label_position</key>
 	<integer>1</integer>
 	<key>Network_networkChart_position</key>
@@ -317,7 +342,7 @@
 		<integer>59</integer>
 		<integer>55</integer>
 		<integer>58</integer>
-		<integer>45</integer>
+		<integer>32</integer>
 	</array>
 	<key>Network_position</key>
 	<integer>0</integer>
@@ -422,7 +447,7 @@
 		<integer>59</integer>
 		<integer>55</integer>
 		<integer>58</integer>
-		<integer>15</integer>
+		<integer>6</integer>
 	</array>
 	<key>RAM_position</key>
 	<integer>4</integer>
@@ -453,13 +478,13 @@
 	<key>SSD_mini_color</key>
 	<string>utilization</string>
 	<key>Sensors_barChart_position</key>
-	<integer>3</integer>
+	<integer>2</integer>
 	<key>Sensors_fanValue</key>
 	<string>rpm</string>
 	<key>Sensors_hid</key>
 	<false/>
 	<key>Sensors_label_position</key>
-	<integer>2</integer>
+	<integer>3</integer>
 	<key>Sensors_mini_position</key>
 	<integer>1</integer>
 	<key>Sensors_popup_fanValue</key>
@@ -469,7 +494,7 @@
 		<integer>59</integer>
 		<integer>55</integer>
 		<integer>58</integer>
-		<integer>17</integer>
+		<integer>30</integer>
 	</array>
 	<key>Sensors_position</key>
 	<integer>6</integer>
@@ -496,6 +521,8 @@
 	<key>Sensors_widget</key>
 	<string>sensors</string>
 	<key>ble_90-9c-4a-a2-a8-6e</key>
+	<false/>
+	<key>disk4_details</key>
 	<false/>
 	<key>disk4s1_details</key>
 	<true/>
@@ -554,7 +581,7 @@
 	<key>setupProcess</key>
 	<true/>
 	<key>support_ts</key>
-	<integer>1764265157</integer>
+	<integer>1775820509</integer>
 	<key>telemetry</key>
 	<true/>
 	<key>temperature_units</key>
@@ -564,6 +591,6 @@
 	<key>updater_check_ts</key>
 	<integer>1759706607</integer>
 	<key>version</key>
-	<string>2.11.61</string>
+	<string>2.12.11</string>
 </dict>
 </plist>

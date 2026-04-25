@@ -102,18 +102,17 @@ local function toggle_menus()
 	menu_toggle:set({
 		icon = { string = menus_expanded and icons.menus.contract or icons.menus.expand },
 	})
-
-	sbar.animate("tanh", 20, function()
-		for i = 2, #menu_items do
-			menu_items[i]:set({
-				drawing = menus_expanded,
-			})
+	for i = 2, #menu_items do
+		menu_items[i]:set({
+			drawing = menus_expanded,
+		})
+		if menus_expanded then
+			update_menus()
 		end
-	end)
-
-	if menus_expanded then
-		update_menus()
 	end
+end
+if menus_expanded then
+	update_menus()
 end
 
 menu_toggle:subscribe("mouse.clicked", function()

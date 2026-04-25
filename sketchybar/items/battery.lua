@@ -60,6 +60,7 @@ local battery = sbar.add("item", "battery", {
 		color = colors.green,
 	},
 	update_freq = 30,
+	updates = true,
 })
 
 -- Time label (stacked under percentage)
