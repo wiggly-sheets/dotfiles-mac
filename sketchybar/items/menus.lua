@@ -403,7 +403,7 @@ apple:subscribe("mouse.entered", function()
 			color = colors.hover,
 			corner_radius = 10,
 			height = 20,
-			x_offset = 2,
+			x_offset = 3,
 			width = 0,
 		},
 	})

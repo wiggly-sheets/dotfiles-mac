@@ -215,6 +215,17 @@ ctrl - p : yabai -m window --focus stack.prev || yabai -m window --focus stack.l
 ctrl - f : yabai -m window --focus stack.first
 ctrl - e : yabai -m window --focus stack.last
 ctrl - r : yabai -m window --focus stack.recent
+ctrl - 1 : yabai -m window --focus stack.1
+ctrl - 2 : yabai -m window --focus stack.2
+ctrl - 3 : yabai -m window --focus stack.3
+ctrl - 4 : yabai -m window --focus stack.4
+ctrl - 5 : yabai -m window --focus stack.5
+ctrl - 6 : yabai -m window --focus stack.6
+ctrl - 7 : yabai -m window --focus stack.7
+ctrl - 8 : yabai -m window --focus stack.8
+ctrl - 9 : yabai -m window --focus stack.9
+ctrl - 0 : yabai -m window --focus stack.10
+
 
 # unstack a window
 ctrl - u : yabai -m window --toggle float; yabai -m window --toggle float
@@ -359,13 +370,16 @@ shift + cmd - s : sketchybar --reload
 shift + cmd - b : sketchybar --bar hidden=toggle
 
 # toggle borders visiblity
-shift + cmd - c : ~/dotfiles/yabai/scripts/borders_toggle.sh
+shift + cmd - c : ~/dotfiles/yabai/scripts/borders.sh
 
 # toggle menu bar padding, window gaps, sketchybar height, and padding for internal or external display
 shift + cmd -m : ~/dotfiles/yabai/scripts/layout.sh
 
 # toggle native menu bar & sketchybar visbility
-shift + cmd - v : ~/dotfiles/yabai/scripts/menubar_toggle.sh
+shift + cmd - v : ~/dotfiles/yabai/scripts/menubar.sh
 
 # toggle active window opacity between opaque and semi-transparent
 shift + cmd - g : ~/dotfiles/yabai/scripts/opacity.sh
+
+# toggle between whether mouse dropping window on top of another swaps them or stacks them
+shift + cmd - d : ~/dotfiles/yabai/scripts/mouse_action.sh

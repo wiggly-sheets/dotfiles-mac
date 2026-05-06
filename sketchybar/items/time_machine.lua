@@ -20,7 +20,12 @@ local function update_tm()
 			sbar.exec(
 				"tmutil status | awk -F'= ' '/_raw_Percent|Percent/ && !/totalBytes/ {gsub(/[^0-9.]/,\"\",$2); sum+=$2; count++} END {printf \"%.0f\", (sum/count) * 100}'",
 				function(percent)
-					if tonumber(percent) >= 1 then
+					if tonumber(percent) == 100 then
+						time_machine:set({
+							icon = { string = icons.time_machine.default },
+							label = { string = "" },
+						})
+					elseif tonumber(percent) >= 1 then
 						time_machine:set({
 							icon = { string = icons.time_machine.running },
 							label = { string = percent .. "%" },

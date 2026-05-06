@@ -218,6 +218,7 @@ FLOAT_APPS=(
   "^Shottr$"
   "^Star Wars - The Old Republic Launcher$"
   "^Folder Preview Pro$"
+  "^Klack$"
 )
 
 for app in "${FLOAT_APPS[@]}"; do

@@ -81,6 +81,7 @@ bin/
 *.zshrc.save
 *.zsh_history
 *.zsh_sessions
+*.zcompdump_capture
 
 # Misc
 *.png
