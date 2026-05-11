@@ -1,5 +1,12 @@
+--------------------------------
+-- START GENERAL HAMMERSPOON CONFIG
+--------------------------------
 hs.loadSpoon("SpoonInstall")
 hs.allowAppleScript(true)
+
+--------------------------------
+-- END GENERAL HAMMERSPOON CONFIG
+--------------------------------
 
 --------------------------------
 -- START VIM CONFIG
@@ -44,7 +51,6 @@ vim:bindHotKeys({
 -- END VIM CONFIG
 --------------------------------
 
-
 --------------------------------
 -- START YABAI GRID SPACES CONFIG
 --------------------------------
@@ -55,7 +61,7 @@ spoon.YabaiGridSpaces
 		yabaiPath = "/opt/homebrew/bin/yabai",
 		numberOfColumns = 3,
 		gridDisplayTimeout = 2,
-	    gridScale = .2,
+		gridScale = 0.2,
 	})
 	:bindHotKeys({
 		-- https://www.hammerspoon.org/docs/hs.hotkey.html
@@ -70,7 +76,7 @@ spoon.YabaiGridSpaces
 		moveWindowWest = { { "cmd", "ctrl", "shift" }, "h" },
 	})
 	:start()
-	
+
 --------------------------------
 -- END YABAI GRID SPACES CONFIG
 --------------------------------
