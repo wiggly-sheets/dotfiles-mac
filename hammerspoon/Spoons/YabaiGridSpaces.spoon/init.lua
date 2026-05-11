@@ -341,7 +341,7 @@ local function getTargetSpace(grid, direction)
       if wrapAround then
         -- @TODO
       else
-        if targetColumn < 0 or targetColumn >= grid.cols or targetRow < 0 or targetColumn >= grid.rows then
+if targetColumn < 0 or targetColumn >= grid.cols or targetRow < 0 or targetRow >= grid.rows then
           return
         end
       end
