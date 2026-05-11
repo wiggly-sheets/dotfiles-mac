@@ -831,7 +831,7 @@ cask "playonmac"
 cask "plex"
 # Music player focusing on visuals
 cask "plexamp"
-# Modern Plex client built with Flutter
+# Modern Plex and Jellyfin client built with Flutter
 cask "edde746/plezy/plezy"
 # Used to access context-specific actions when text is selected
 cask "popclip"
@@ -1048,6 +1048,7 @@ mas "Tinted Folders Pro", id: 1529959811
 mas "uBlock Origin Lite", id: 6745342698
 mas "Unsplash Wallpapers", id: 1284863847
 mas "Velja", id: 1607635845
+mas "Vimari", id: 1480933944
 mas "Xcode", id: 497799835
 mas "Xmind", id: 1327661892
 mas "YABA", id: 6747272081
