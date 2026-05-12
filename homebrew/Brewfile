@@ -949,7 +949,7 @@ cask "krishkrosh/apps/trackweight"
 cask "transnomino"
 # Easy to use text extraction tool
 cask "trex"
-# Speech-to-text and AI text processing for macOS
+# Speech-to-text and AI text processing
 cask "typewhisper/tap/typewhisper"
 # Run commands and display their output on the desktop
 cask "ubersicht"

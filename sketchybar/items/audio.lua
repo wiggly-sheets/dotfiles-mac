@@ -32,7 +32,7 @@ local mic = sbar.add("item", "mic", {
 		string = icons.mic.on,
 		font = { size = 11 },
 		color = colors.white,
-		padding_right = 5,
+		padding_right = 2,
 		padding_left = 2,
 	},
 	label = {
@@ -46,7 +46,7 @@ local mic = sbar.add("item", "mic", {
 	},
 	position = "right",
 	update_freq = 10,
-	padding_right = -40,
+	padding_right = -45,
 	padding_left = 4,
 	y_offset = -6,
 })
