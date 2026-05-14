@@ -32,7 +32,7 @@ yabai -m signal --add event=space_changed action="yabai -m window --focus mouse"
 # focus window after window destruction
 yabai -m signal --add event=window_destroyed active=yes action="yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse &> /dev/null || yabai -m window --focus \$(yabai -m query --windows --space | jq .[0].id) &> /dev/null"
 
-#focus window after window minimization
+# focus window after window minimization
 yabai -m signal --add event=window_minimized active=yes action="if \$(yabai -m query --windows --window \$YABAI_WINDOW_ID | jq -r '.\"is-floating\"'); then yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse &> /dev/null || yabai -m window --focus \$(yabai -m query --windows --space | jq .[0].id) &> /dev/null; fi"
 
 
@@ -146,8 +146,8 @@ FLOAT_APPS=(
   "^Blackmagic Disk Speed Test$"
   "^coconutBattery$"
   "^Raycast$"
+  "^Raycast Beta$"
   "^iPhone Mirroring$"
-  "^Stickies$"
   "^VMware Fusion$"
   "^Leader Key$"
   "^Mouseless$"
@@ -231,13 +231,13 @@ for app in "${FLOAT_APPS[@]}"; do
 done
 
 # ================================
-# optional: jankyborders
+# jankyborders
 # ================================
 # borders hidpi=on width=1.0 active_color="(0xFFFFFFFF)" inactive_color="0x0xff1e1e1e" style=round ax_focus=on order=above blacklist="Stats,Dropover,iPhone Mirroring,Passwords,SoundSource,Stickies" &
 
 # ================================
 # auto-update yabai (HEAD)
 # ================================
-#YABAI_CERT=yabai-cert sh -c "$(curl -fsSL "https://git.io/update-yabai")" &
+# YABAI_CERT=yabai-cert sh -c "$(curl -fsSL "https://git.io/update-yabai")" &
 
 osascript -e 'display notification "yabai configuration loaded"'

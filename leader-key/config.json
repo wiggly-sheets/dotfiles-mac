@@ -37,35 +37,23 @@
         {
           "key" : "e",
           "type" : "url",
-          "value" : "raycast://extensions/raycast/emoji-symbols/search-emoji-symbols"
+          "value" : "raycast-x://extensions/raycast/emoji-symbols/search-emoji-symbols"
         },
         {
           "key" : "p",
           "type" : "url",
-          "value" : "raycast://confetti"
+          "value" : "raycast-x://extensions/raycast/raycast/confetti"
         },
         {
           "key" : "c",
           "type" : "url",
-          "value" : "raycast://extensions/raycast/system/open-camera"
-        },
-        {
-          "iconPath" : "link",
-          "key" : "f",
-          "type" : "url",
-          "value" : "raycast://extensions/raycast/file-search/search-files"
-        },
-        {
-          "iconPath" : "link",
-          "key" : "z",
-          "type" : "url",
-          "value" : "raycast://extensions/erykksc/fuzzy-file-search/search-for-files"
+          "value" : "raycast-x://extensions/raycast/raycast/open-camera"
         },
         {
           "iconPath" : "link",
           "key" : "b",
           "type" : "url",
-          "value" : "raycast://extensions/raycast/raycast/toggle-bounce-animation"
+          "value" : "raycast-x://extensions/raycast/raycast/toggle-bounce-animation"
         }
       ],
       "key" : "r",

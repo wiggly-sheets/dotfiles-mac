@@ -35,7 +35,7 @@ vim:shouldShowAlertInNormalMode(true)
 vim:setAlertFont("Liga SFMono Nerd Font")
 
 -- Enter normal mode by typing a key sequence
--- vim:enterWithSequence("jk")
+vim:enterWithSequence("jk")
 
 -- if you want to bind a single key to entering vim, remove the
 -- :enterWithSequence('jk') line above and uncomment the bindHotKeys line
@@ -44,9 +44,9 @@ vim:setAlertFont("Liga SFMono Nerd Font")
 -- To customize the hot key you want, see the mods and key parameters at:
 -- https://www.hammerspoon.org/docs/hs.hotkey.html#bind
 --
-vim:bindHotKeys({
-	enter = { {}, "escape" },
-})
+-- vim:bindHotKeys({
+--	enter = { {}, "escape" },
+-- })
 --------------------------------
 -- END VIM CONFIG
 --------------------------------
