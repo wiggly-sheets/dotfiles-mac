@@ -1,6 +1,6 @@
 local settings = require("default")
 local colors = require("colors")
-local icons = require("icons")
+local icons = require("helpers.icons")
 
 local click_script =
 	'osascript -e \'tell application "System Events" to keystroke "]" using {command down, option down, control down}\''

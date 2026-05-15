@@ -1,6 +1,6 @@
 local colors = require("colors")
 local settings = require("default")
-local icons = require("icons")
+local icons = require("helpers.icons")
 
 sbar.add("event", "svim_update")
 

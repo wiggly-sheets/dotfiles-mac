@@ -1,10 +1,7 @@
-local icons = require("icons")
+local icons = require("helpers.icons")
 local settings = require("default")
 local colors = require("colors")
 
---------------------------------------------------------
---                    MPD ITEM
---------------------------------------------------------
 local settings = require("settings")
 
 local divider3 = sbar.add("item", "divider3", {

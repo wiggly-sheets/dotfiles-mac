@@ -1,5 +1,5 @@
 local colors = require("colors")
-local icons = require("icons")
+local icons = require("helpers.icons")
 
 local control_center = sbar.add("item", "control_center", {
 	position = "right",

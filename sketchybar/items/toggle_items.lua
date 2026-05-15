@@ -1,5 +1,5 @@
 local colors = require("colors")
-local icons = require("icons")
+local icons = require("helpers.icons")
 local settings = require("default")
 
 local hidden = true
@@ -26,11 +26,12 @@ local items_to_toggle = {
 	"bluetooth",
 	"storage_label",
 	"storage_icon",
+	"padding",
 }
 
 local toggle_items = sbar.add("item", "toggle_items", {
 	position = "right",
-	padding_left = 2,
+	padding_left = 5,
 	padding_right = 0,
 	icon = {
 		string = icons.menus.contract,

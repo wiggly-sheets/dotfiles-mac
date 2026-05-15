@@ -15,7 +15,7 @@ local left_bracket = sbar.add("bracket", "left_bracket", { "apple", "add_space_b
 local right_bracket = sbar.add("bracket", "right_bracket", {
 	"date",
 	"toggle_items",
-	"ram",
+	"padding",
 }, {
 	background = {
 		drawing = true,

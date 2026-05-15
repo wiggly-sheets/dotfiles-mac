@@ -1,4 +1,3 @@
-local sbar = require("sketchybar")
 -- register events
 sbar.add("event", "lock", "com.apple.screenIsLocked")
 sbar.add("event", "unlock", "com.apple.screenIsUnlocked")

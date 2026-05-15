@@ -1,6 +1,6 @@
 local settings = require("default")
 local colors = require("colors")
-local icons = require("icons")
+local icons = require("helpers.icons")
 
 local time_machine = sbar.add("item", "time_machine", {
 	position = "right",

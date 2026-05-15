@@ -1,4 +1,4 @@
-local icons = require("icons")
+local icons = require("helpers.icons")
 local colors = require("colors")
 local settings = require("default")
 
@@ -7,20 +7,24 @@ local settings = require("default")
 
 local function start_network_load()
 	sbar.exec("route get default 2>/dev/null | awk '/interface: / {print $2}'", function(iface)
-		iface = iface and iface:match("^%s*(.-)%s*$") -- trim whitespace
+		iface = iface and iface:match("^%s*(.-)%s*$")
 		if not iface or iface == "" then
 			return
 		end
 
 		sbar.exec(
 			string.format(
-				"killall network_load >/dev/null 2>&1; "
+				"killall network_load >/dev/null 2>&1; sleep 0.1; "
+					.. '[ -x "$CONFIG_DIR/helpers/event_providers/network_load/bin/network_load" ] && '
 					.. "$CONFIG_DIR/helpers/event_providers/network_load/bin/network_load %s network_update 2.0 &",
 				iface
 			)
 		)
 	end)
 end
+
+-- Re-run when network state changes
+sbar.subscribe("wifi_change", "system_woke", start_network_load)
 
 -- run immediately at startup
 start_network_load()

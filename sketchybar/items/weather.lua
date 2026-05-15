@@ -1,7 +1,7 @@
 local weather_vars = require("helpers.weather_vars")
 local colors = require("colors")
 local settings = require("default")
-local icons = require("icons")
+local icons = require("helpers.icons")
 
 -- Condition codes grouped by icon type (shorter + easier to maintain)
 local condition_groups = {
@@ -73,7 +73,7 @@ local weather = sbar.add("item", "weather", {
 	},
 	label = {
 		padding_right = 0,
-		padding_left = -18,
+		padding_left = -16,
 		y_offset = -6,
 		font = {
 			family = settings.default,

@@ -1,4 +1,4 @@
-local icons = require("icons")
+local icons = require("helpers.icons")
 local colors = require("colors")
 local settings = require("default")
 
@@ -7,7 +7,7 @@ local lowpowermode = sbar.add("item", "lowpowermode", {
 	update_freq = 10,
 	updates = "when_shown",
 	position = "right",
-	padding_right = -3,
+	padding_right = -1,
 	padding_left = -4,
 	y_offset = 0,
 	label = { drawing = true, font = { size = 10 } },

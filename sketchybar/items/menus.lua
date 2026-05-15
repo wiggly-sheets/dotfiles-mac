@@ -1,6 +1,6 @@
 local colors = require("colors")
 local settings = require("default")
-local icons = require("icons")
+local icons = require("helpers.icons")
 local icon_map = require("helpers.icon_map")
 
 local apple = sbar.add("item", "apple", {
@@ -8,8 +8,8 @@ local apple = sbar.add("item", "apple", {
 		font = { size = 14 },
 		string = icons.apple,
 		position = "left",
-		padding_left = 5,
-		padding_right = 0,
+		padding_left = 6,
+		padding_right = 2,
 		color = colors.white,
 	},
 	label = { drawing = false, width = 0 },
@@ -46,7 +46,7 @@ local front_app = sbar.add("item", "front_app", {
 		drawing = true,
 		font = "sketchybar-app-font:Regular:11.0",
 		padding_right = 0,
-		padding_left = -2,
+		padding_left = -3,
 		color = colors.white,
 	},
 })
@@ -69,7 +69,7 @@ local menu_toggle = sbar.add("item", "menus.toggle", {
 		color = colors.white,
 	},
 	label = { drawing = false },
-	padding_left = 1,
+	padding_left = 2,
 	padding_right = 2,
 	position = "left",
 })
@@ -383,18 +383,13 @@ apple:subscribe("mouse.clicked", function(env)
 	elseif env.BUTTON == "right" then
 		sbar.exec(right_apple_script)
 	elseif env.BUTTON == "other" then
-		apple:set({
-			background = {
-				drawing = true,
-				color = colors.hover,
-				corner_radius = 20,
-				height = 20,
-				x_offset = 2,
-			},
-			sbar.exec(middle_apple_script),
-		})
+		sbar.exec(middle_apple_script)
 	end
 end)
+
+--apple:subscribe("mouse.scrolled", function()
+--	sbar.exec("sketchybar --reload")
+--end)
 
 apple:subscribe("mouse.entered", function()
 	apple:set({
@@ -439,10 +434,6 @@ end)
 
 menu_toggle:subscribe("mouse.scrolled.global", function()
 	toggle_menus()
-end)
-
-apple:subscribe("mouse.scrolled", function()
-	sbar.exec("sketchybar --reload")
 end)
 
 return menu_watcher

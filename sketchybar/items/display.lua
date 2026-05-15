@@ -1,18 +1,14 @@
 local colors = require("colors")
 local settings = require("default")
-local icons = require("icons")
-
--- ======================
--- Display item
--- ======================
+local icons = require("helpers.icons")
 
 local display = sbar.add("item", "display", {
 	icon = {
 		drawing = true,
 		font = { size = 11 },
 		color = colors.white,
-		padding_right = 4,
-		padding_left = 2,
+		padding_right = 5,
+		padding_left = 4,
 		y_offset = 6,
 	},
 	label = {

@@ -1,4 +1,4 @@
-local icons = require("icons")
+local icons = require("helpers.icons")
 local colors = require("colors")
 local settings = require("default")
 
@@ -50,6 +50,10 @@ cpu:subscribe("cpu_update", function(env)
 		label = { color = color, string = load .. "%" },
 	})
 end)
+local padding = sbar.add("item", "padding_left", {
+	position = "right",
+	padding_left = 5,
+})
 
 -- Background around the cpu item
 sbar.add("bracket", "cpu.bracket", { cpu.name }, {
@@ -64,7 +68,7 @@ sbar.add("item", "cpu.padding", {
 
 local ram = sbar.add("graph", "ram", 42, {
 	position = "right",
-	padding_right = -65,
+	padding_right = -78,
 	y_offset = -6,
 	padding_left = 3,
 	background = {
@@ -219,3 +223,5 @@ ram:subscribe({ "mouse.exited", "mouse.entered.global", "mouse.exited.global" },
 	ram:set({ background = { drawing = true, height = 10, color = colors.transparent } })
 	cpu:set({ background = { drawing = true, height = 10, color = colors.transparent } })
 end)
+
+sbar.add("item", "padding", { position = "right", padding_left = 2 })
