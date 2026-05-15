@@ -361,7 +361,7 @@ meh - s : yabai -m window --toggle scratchpad || open -a Stickies
 meh - d : yabai -m window --scratchpad recover
 
 # enter mission control
-ctrl + shift - m :/Applications/missionControlFullDesktopBar.app/Contents/MacOS/missionControlFullDesktopBar -m drag -i && sleep .25 && pkill "missionControlFullDesktopBar"
+ctrl + shift - m : /Applications/missionControlFullDesktopBar.app/Contents/MacOS/missionControlFullDesktopBar -m drag -i && sleep .25 && pkill "missionControlFullDesktopBar"
 
 # show desktop
 ctrl + shift - d : yabai -m space --toggle show-desktop

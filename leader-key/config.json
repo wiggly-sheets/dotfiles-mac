@@ -236,6 +236,27 @@
       "key" : "i",
       "label" : "AI",
       "type" : "group"
+    },
+    {
+      "actions" : [
+        {
+          "key" : "a",
+          "type" : "application",
+          "value" : "/Applications/FlowFinder.app"
+        },
+        {
+          "key" : "b",
+          "type" : "application",
+          "value" : "/Applications/Bloom.app"
+        },
+        {
+          "key" : "f",
+          "type" : "command",
+          "value" : "open -a Finder"
+        }
+      ],
+      "key" : "f",
+      "type" : "group"
     }
   ],
   "type" : "group"

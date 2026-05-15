@@ -3,7 +3,7 @@ require("items.menus")
 require("items.spaces")
 --require("items.svim")
 --require("items.music")
--- require("items.mpd")
+--require("items.mpd")
 
 --center items
 require("items.window_title")

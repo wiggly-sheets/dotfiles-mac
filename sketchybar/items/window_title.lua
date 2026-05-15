@@ -1,8 +1,8 @@
 local colors = require("colors")
 local settings = require("default")
-local app_icons = require("helpers.icon_map")
+local icon_map = require("helpers.icon_map")
 
-local front_app = sbar.add("item", "front_app", {
+local front_app_icon = sbar.add("item", "front_app_icon", {
 	display = "active",
 	icon = {
 		drawing = true,
@@ -18,13 +18,13 @@ local front_app = sbar.add("item", "front_app", {
 	position = "center",
 })
 
-front_app:subscribe("front_app_switched", function(env)
+front_app_icon:subscribe("front_app_switched", function(env)
 	-- env.INFO is assumed to be the app name (e.g., "Safari")
 	local app = env.INFO
 	-- Look up the icon for the app; fall back to "Default" if none is found.
-	local icon = app_icons[app] or app_icons["Default"]
+	local app_icon = icon_map[app] or icon_map["Default"]
 
-	front_app:set({
+	front_app_icon:set({
 		-- Enable icon drawing and set the proper icon font, string, and color
 		icon = {
 			background = {
@@ -34,7 +34,7 @@ front_app:subscribe("front_app_switched", function(env)
 			},
 			--		icon = {
 			--		drawing = true,
-			--		string = icon,
+			--		string = app_icon,
 			--		font = "sketchybar-app-font:Regular:15.0",
 			--	},
 			-- Set the app name as the label
@@ -122,21 +122,9 @@ local function update_window_title()
 	end)
 end
 
--- Subscribe correctly (don’t call the function)
 window_title:subscribe({
 	"window_focus",
-	"front_app_switched",
-	"space_change",
 	"title_change",
-	"display_change",
-}, update_window_title)
-
-window_title:subscribe({
-	"window_focus",
-	"front_app_switched",
-	"space_change",
-	"title_change",
-	"display_change",
 }, update_window_title())
 
 update_window_title()

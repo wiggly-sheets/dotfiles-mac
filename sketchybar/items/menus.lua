@@ -1,6 +1,7 @@
 local colors = require("colors")
 local settings = require("default")
 local icons = require("icons")
+local icon_map = require("helpers.icon_map")
 
 local apple = sbar.add("item", "apple", {
 	icon = {
@@ -38,6 +39,29 @@ for i = 1, max_items, 1 do
 	menu_items[i] = menu
 end
 
+local front_app = sbar.add("item", "front_app", {
+	position = "left",
+	updates = true,
+	label = {
+		drawing = true,
+		font = "sketchybar-app-font:Regular:11.0",
+		padding_right = 0,
+		padding_left = -2,
+		color = colors.white,
+	},
+})
+
+front_app:subscribe("front_app_switched", function(env)
+	local app = env.INFO
+	local app_icon = icon_map[app] or icon_map["Default"]
+
+	front_app:set({
+		label = {
+			string = app_icon,
+		},
+	})
+end)
+
 local menu_toggle = sbar.add("item", "menus.toggle", {
 	icon = {
 		string = icons.menus.expand,
@@ -52,7 +76,6 @@ local menu_toggle = sbar.add("item", "menus.toggle", {
 
 sbar.add("bracket", { "/menu\\..*/" }, {
 	background = {
-		color = colors.bg1,
 		border_color = colors.transparent,
 		height = 20,
 	},
@@ -81,20 +104,13 @@ local function update_menus(env)
 	end)
 end
 
-menu_watcher = sbar.add("item", {
+local menu_watcher = sbar.add("item", {
 	drawing = false,
 	updates = true,
 })
 
-menu_watcher:subscribe(
-	"front_app_switched",
-	"space_change",
-	"space_windows_change",
-	"display_change",
-	"forced",
-	"system_woke",
-	update_menus
-)
+menu_watcher:subscribe("front_app_switched", update_menus)
+menu_watcher:subscribe("window_focus", update_menus)
 
 local function toggle_menus()
 	menus_expanded = not menus_expanded
@@ -106,8 +122,11 @@ local function toggle_menus()
 		menu_items[i]:set({
 			drawing = menus_expanded,
 		})
+		front_app:set({ label = { drawing = false }, padding_left = -4 })
 		if menus_expanded then
 			update_menus()
+		else
+			front_app:set({ label = { drawing = true }, padding_left = 0 })
 		end
 	end
 end
@@ -360,27 +379,8 @@ local middle_apple_script = "sketchybar --bar hidden=toggle"
 
 apple:subscribe("mouse.clicked", function(env)
 	if env.BUTTON == "left" then
-		-- highlight this item
-		apple:set({
-			background = {
-				drawing = true,
-				color = colors.hover,
-				corner_radius = 20,
-				height = 20,
-				x_offset = 2,
-			},
-		})
 		sbar.exec(left_apple_script)
 	elseif env.BUTTON == "right" then
-		apple:set({
-			background = {
-				drawing = true,
-				color = 0x40FFFFFF,
-				corner_radius = 20,
-				height = 20,
-				x_offset = 2,
-			},
-		})
 		sbar.exec(right_apple_script)
 	elseif env.BUTTON == "other" then
 		apple:set({
@@ -441,8 +441,8 @@ menu_toggle:subscribe("mouse.scrolled.global", function()
 	toggle_menus()
 end)
 
--- apple:subscribe("mouse.scrolled", function()
---	sbar.exec("sketchybar --reload")
---end)
+apple:subscribe("mouse.scrolled", function()
+	sbar.exec("sketchybar --reload")
+end)
 
 return menu_watcher
