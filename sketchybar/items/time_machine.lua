@@ -5,7 +5,7 @@ local icons = require("helpers.icons")
 local time_machine = sbar.add("item", "time_machine", {
 	position = "right",
 	padding_left = 2,
-	padding_right = 0,
+	padding_right = -2,
 	icon = { color = colors.white, font = { size = 13 }, string = icons.time_machine.default },
 	click_script = 'osascript -e \'tell application "System Events" to tell process "SystemUIServer" to click (first menu bar item of menu bar 1 whose name is not "Siri")\'',
 	update_freq = 10,

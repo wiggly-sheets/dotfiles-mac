@@ -38,7 +38,7 @@ local function update_space_display(space, space_id, is_selected)
 		})
 	end)
 end
--- Build spaces
+
 for i = 1, 10 do
 	local space = sbar.add("space", "space." .. i, {
 		space = i,

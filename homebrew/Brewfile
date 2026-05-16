@@ -1,4 +1,6 @@
 tap "achannarasappa/tap"
+tap "alecharmon/tap"
+tap "bengerthelorf/tap"
 tap "browsh-org/browsh"
 tap "catskull/homebrew", "https://github.com/catskull/homebrew"
 tap "edde746/plezy", "https://github.com/edde746/plezy"
@@ -496,6 +498,8 @@ brew "zsh-completions"
 brew "zsh-syntax-highlighting"
 # Better and friendly vi(vim) mode plugin for ZSH
 brew "zsh-vi-mode"
+# 🔑 a CLI for Apple Passwords 🔒
+brew "alecharmon/tap/applepw"
 # A window border system for macOS
 brew "felixkratz/formulae/borders"
 # Custom macOS statusbar with shell plugin, interaction and graph support
@@ -531,7 +535,7 @@ brew "philocalyst/tap/ttyper"
 # Swiss Army Knife for macOS
 brew "rgcr/formulae/m-cli"
 # Flash Player emulator written in Rust
-brew "ruffle-rs/ruffle/ruffle", args: ["HEAD"]
+brew "ruffle-rs/ruffle/ruffle", args: ["HEAD"], link: false
 # Tetris in your terminal
 brew "samtay/tui/tetris"
 # Command-line tool for automating keystrokes and mouse events
@@ -560,6 +564,12 @@ cask "audacity"
 cask "audio-hijack"
 # A simple auto clicker for macOS in swift
 cask "m1ten/othyn/autoclicker"
+# Data backup and storage service
+cask "backblaze"
+# Download Backblaze restored files more reliably
+cask "backblaze-downloader"
+# Computer backup restore client
+cask "backblaze-restore"
 # Tool to flash OS images to SD cards & USB drives
 cask "balenaetcher"
 # Control the platform power state of your Apple Silicon device
@@ -632,6 +642,8 @@ cask "dockey"
 cask "dolphin"
 # Downloads videos from different websites
 cask "downie"
+# Client for the Dropbox cloud storage service
+cask "dropbox"
 # Electronic Arts game launcher
 cask "ea"
 # Matrix collaboration client
@@ -679,6 +691,8 @@ cask "github"
 cask "gitkraken"
 # Game client
 cask "gog-galaxy"
+# Client for the Google Drive storage service
+cask "google-drive"
 # Virtual globe
 cask "google-earth-pro"
 # Native desktop AI assistant from Google
@@ -695,6 +709,10 @@ cask "handbrake-app"
 cask "hazel"
 # Chromium-based web browser
 cask "helium-browser"
+# Backup data from a Synology NAS
+cask "hyperbackupexplorer"
+# Customize macOS app icons
+cask "bengerthelorf/tap/iconchanger"
 # Free and open-source media player
 cask "iina"
 # Tool to optimise images to a smaller size
@@ -755,6 +773,8 @@ cask "markedit"
 cask "mediainfo"
 # UI replacement for volume, brightness and now playing controls
 cask "mediamate"
+# Syncs files between computers and MEGA Cloud drives
+cask "megasync"
 # Track your USB devices in the macOS menu bar
 cask "rafaelswi/menubarusb/menubarusb"
 # Access the menu from anywhere
@@ -793,6 +813,8 @@ cask "obsidian"
 cask "ollama-app"
 # Finds large, unwanted files and deletes them
 cask "omnidisksweeper"
+# Cloud storage client
+cask "onedrive"
 # System and utility switches
 cask "only-switch"
 # Verify system files structure, run miscellaneous maintenance and more
@@ -849,8 +871,6 @@ cask "lihaoyun6/tap/quickrecorder"
 cask "ransomwhere"
 # Imaging utility to install operating systems to a microSD card
 cask "raspberry-pi-imager"
-# Control your tools with a few keystrokes
-cask "raycast"
 # WinAMP clone written in SwiftUI
 cask "reamp"
 # Dreamcast emulator
@@ -921,8 +941,14 @@ cask "suspicious-package"
 cask "swiftbar"
 # Replacement for RCDefaultApps, written in Swift
 cask "swiftdefaultappsprefpane"
+# Sync and backup service to Synology NAS drives
+cask "synology-drive"
+# Tool to manage Synology NAS's across a LAN
+cask "synologyassistant"
 # Quicklook extension for source files
 cask "syntax-highlight"
+# Mesh VPN based on WireGuard
+cask "tailscale-app"
 # Tool to explore all the running tasks (processes)
 cask "taskexplorer"
 # Messaging app with a focus on speed and security
@@ -990,7 +1016,6 @@ mas "Apple Configurator", id: 1037126344
 mas "Asphalt", id: 1491129197
 mas "Asphalt8", id: 610391947
 mas "Blackmagic Disk Speed Test", id: 425264550
-mas "Bonjourr Startpage", id: 1615431236
 mas "Broadcasts", id: 1469995354
 mas "Color Picker", id: 1545870783
 mas "Colorful Folder", id: 1576476152
@@ -1030,6 +1055,7 @@ mas "PDFgear", id: 6469021132
 mas "Pixelmator Pro", id: 1289583905
 mas "Plash", id: 1494023538
 mas "Poolsuite FM", id: 1514817810
+mas "Raycast Companion", id: 6738274497
 mas "Recipe Keeper", id: 1315583175
 mas "Refined GitHub", id: 1519867270
 mas "Sandkorn", id: 1377973524

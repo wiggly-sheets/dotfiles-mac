@@ -2,17 +2,14 @@ local icons = require("helpers.icons")
 local colors = require("colors")
 local settings = require("default")
 
--- ── Low Power Mode ────────────────────────────────────────────────
 local lowpowermode = sbar.add("item", "lowpowermode", {
 	update_freq = 10,
 	updates = "when_shown",
 	position = "right",
-	padding_right = -1,
-	padding_left = -4,
-	y_offset = 0,
+	padding_right = 2,
+	padding_left = -6,
 	label = { drawing = true, font = { size = 10 } },
 })
--- Function to update low power mode color
 local function update_lowpowermode()
 	sbar.exec("pmset -g | grep lowpowermode | grep -o '[01]'", function(result)
 		result = result:match("%d")
@@ -23,11 +20,21 @@ local function update_lowpowermode()
 		end
 	end)
 end
--- Left click toggles low power
+
 lowpowermode:subscribe("mouse.clicked", function(env)
 	if env.BUTTON == "left" then
-		sbar.exec('shortcuts run "Toggle Low Power"')
-		sbar.exec(update_lowpowermode())
+		sbar.exec("pmset -g | grep lowpowermode | grep -o '[01]'", function(result)
+			result = result:match("%d")
+			if result == "1" then
+				sbar.exec("sudo pmset -a lowpowermode 0", function()
+					update_lowpowermode()
+				end)
+			else
+				sbar.exec("sudo pmset -a lowpowermode 1", function()
+					update_lowpowermode()
+				end)
+			end
+		end)
 	end
 end)
 

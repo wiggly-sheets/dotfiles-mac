@@ -10,37 +10,39 @@ local dnd = sbar.add("item", "dnd", {
 	position = "right",
 	padding_right = 0,
 	padding_left = 0,
-	update_freq = 10,
+	update_freq = 5,
 })
+
+local function set_dnd_icon()
+	dnd:set({
+		label = {
+			string = dnd_active and icons.dnd.on or icons.dnd.off,
+			color = dnd_active and colors.dnd or colors.grey,
+		},
+	})
+end
 
 local function update_dnd()
 	sbar.exec(
 		[[defaults read com.apple.controlcenter 'NSStatusItem VisibleCC FocusModes' 2>/dev/null]],
 		function(result)
-			if result:match("1") then
-				dnd:set({ label = { string = icons.dnd.on, color = colors.dnd } })
-			else
-				dnd:set({ label = { string = icons.dnd.off, color = colors.grey } })
-			end
+			dnd_active = result:match("1") ~= nil
+			set_dnd_icon()
 		end
 	)
 end
 
-local left_click_script = 'osascript -e \'tell application "Shortcuts" to run shortcut "Toggle DND"\''
-
-local right_click_script =
-	'osascript -e \'tell application "System Events" to tell process "ControlCenter" to click menu bar item 5 of menu bar 1\''
-
 dnd:subscribe("mouse.clicked", function(env)
 	if env.BUTTON == "left" then
-		sbar.exec(left_click_script)
-	elseif env.BUTTON == "right" then
-		sbar.exec(right_click_script)
+		dnd_active = not dnd_active
+		set_dnd_icon()
+		sbar.exec('osascript -e \'tell application "Shortcuts" to run shortcut "Toggle DND"\'')
 	end
 end)
 
--- Subscribe your DND item to the events
-dnd:subscribe({ "routine", "system_woke" }, update_dnd)
+update_dnd()
+
+dnd:subscribe("routine", "system_woke", update_dnd())
 
 -- ======== Hover effects ========
 local function add_hover(item)
@@ -62,5 +64,3 @@ local function add_hover(item)
 end
 
 add_hover(dnd)
-
-update_dnd()

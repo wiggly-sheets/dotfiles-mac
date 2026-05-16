@@ -11,49 +11,39 @@ local caffeinate = sbar.add("item", "caffeinate", {
 	},
 })
 
--- Function to check if a caffeinate process is active
-local function is_caffeinated(callback)
-	sbar.exec("pmset -g assertions | grep caffeinate", function(result)
-		if result:match("caffeinate") then
-			callback(true)
-		else
-			callback(false)
-		end
-	end)
+local caffeinated = false
+
+local function set_icon(active)
+	caffeinate:set({
+		icon = { string = active and icons.caffeinate.on or icons.caffeinate.off, font = { size = 13 } },
+	})
 end
 
 local function update_caffeinate()
-	is_caffeinated(function(active)
-		if active then
-			caffeinate:set({
-				icon = { string = icons.caffeinate.on, font = { size = 13 } },
-			})
-		else
-			caffeinate:set({
-				icon = { string = icons.caffeinate.off, font = { size = 13 } },
-			})
-		end
+	sbar.exec("pmset -g assertions | grep -c caffeinate", function(result)
+		caffeinated = (tonumber(result) or 0) > 0
+		set_icon(caffeinated)
 	end)
 end
 
 local function toggle_caffeinate()
-	is_caffeinated(function(active)
-		if active then
-			-- Kill caffeinate process
-			sbar.exec("pkill caffeinate", function()
-				update_caffeinate()
-			end)
-		else
-			-- Start caffeinate
-			sbar.exec("caffeinate -dimsu &", function()
-				update_caffeinate()
-			end)
-		end
-	end)
+	caffeinated = not caffeinated
+	set_icon(caffeinated)
+	if caffeinated then
+		sbar.exec("caffeinate -dimsu &")
+	else
+		sbar.exec("pkill caffeinate")
+	end
 end
 
+caffeinate:subscribe("mouse.clicked", function()
+	toggle_caffeinate()
+end)
+
+update_caffeinate()
+
 caffeinate:subscribe("mouse.clicked", toggle_caffeinate)
-caffeinate:subscribe("routine", "forced", update_caffeinate)
+caffeinate:subscribe("routine", update_caffeinate)
 
 -- ======== Hover effects ========
 local function add_hover(item)
@@ -75,6 +65,3 @@ local function add_hover(item)
 end
 
 add_hover(caffeinate)
-
--- Initialize on startup
-update_caffeinate()
