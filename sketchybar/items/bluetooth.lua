@@ -35,6 +35,11 @@ end
 
 update_bluetooth()
 
+bluetooth:subscribe("routine", function()
+update_bluetooth()
+
+end)
+
 -- ======== Hover effects ========
 local function add_hover(item)
 	item:subscribe("mouse.entered", function()

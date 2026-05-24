@@ -979,6 +979,8 @@ cask "trex"
 cask "typewhisper/tap/typewhisper"
 # Run commands and display their output on the desktop
 cask "ubersicht"
+# AI image upscaler
+cask "upscayl"
 # Newsreader and Usenet client
 cask "usenapp"
 # Virtual machines UI using QEMU
@@ -1146,3 +1148,11 @@ vscode "venage5603.tokyo-night-dark-enhanced"
 vscode "vscode-icons-team.vscode-icons"
 vscode "waderyan.gitblame"
 vscode "yzhang.markdown-all-in-one"
+npm "fkill-cli"
+npm "fkill"
+npm "hget"
+npm "mapscii"
+npm "mdlt"
+npm "n"
+npm "neovim"
+npm "undollar"

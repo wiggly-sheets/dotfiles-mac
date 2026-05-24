@@ -427,7 +427,7 @@ end
 
 wifi:subscribe("mouse.clicked", toggle_details)
 
-wifi:subscribe("mouse.exited.global", function()
+wifi:subscribe("mouse.exited", function()
 	toggle_details()
 end)
 
