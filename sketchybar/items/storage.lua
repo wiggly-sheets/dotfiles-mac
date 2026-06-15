@@ -75,27 +75,22 @@ disk_label:subscribe("mouse.clicked", handle_disk_click)
 disk_icon:subscribe({ "routine", "forced", "system_woke" }, update_disk)
 disk_label:subscribe({ "routine", "forced", "system_woke" }, update_disk)
 
--- ======== Hover effects ========
-local function add_hover(item)
-	item:subscribe("mouse.entered", function()
-		item:set({
-			background = {
-				drawing = true,
-				color = colors.hover,
-				corner_radius = 20,
-				height = 25,
-				x_offset = 2,
-				y_offset = 5,
-			},
-		})
-	end)
+disk_label:subscribe("mouse.entered", function()
+	disk_label:set({
+		background = {
+			drawing = true,
+			color = colors.hover,
+			corner_radius = 20,
+			height = 25,
+			x_offset = 2,
+			y_offset = 5,
+		},
+	})
+end)
 
-	item:subscribe({ "mouse.exited", "mouse.entered.global", "mouse.exited.global" }, function()
-		item:set({ background = { drawing = false } })
-	end)
-end
+disk_label:subscribe({ "mouse.exited", "mouse.entered.global", "mouse.exited.global" }, function()
+	disk_label:set({ background = { drawing = true, height = 20, color = colors.transparent } })
+end)
 
-add_hover(disk_label)
-
--- Initialupdate
+-- Initial update
 update_disk()

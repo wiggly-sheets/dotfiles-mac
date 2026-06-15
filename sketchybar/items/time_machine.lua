@@ -23,17 +23,17 @@ local function update_tm()
 					if tonumber(percent) == 100 then
 						time_machine:set({
 							icon = { string = icons.time_machine.default },
-							label = { string = "" },
+							label = { string = "", padding_right = 0 },
 						})
 					elseif tonumber(percent) >= 1 then
 						time_machine:set({
 							icon = { string = icons.time_machine.running },
-							label = { string = percent .. "%", padding_right = 3 },
+							label = { string = percent .. "%", padding_right = 5 },
 						})
 					elseif tonumber(percent) <= 0 then
 						time_machine:set({
 							icon = { string = icons.time_machine.running },
-							label = { string = "" },
+							label = { string = "", padding_right = 0 },
 						})
 					else
 						time_machine:set({

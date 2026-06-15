@@ -72,26 +72,36 @@ time:subscribe("mouse.clicked", function(env)
 	end
 end)
 
--- ======== Hover effects ========
-local function add_hover(item)
-	item:subscribe("mouse.entered", function()
-		date:set({
-			background = {
-				drawing = true,
-				color = colors.hover,
-				corner_radius = 20,
-				height = 25,
-				x_offset = 0,
-				y_offset = 5,
-			},
-		})
-	end)
+date:subscribe("mouse.entered", function()
+	date:set({
+		background = {
+			drawing = true,
+			color = colors.hover,
+			corner_radius = 20,
+			height = 25,
+			y_offset = 0,
+		},
+	})
+end)
 
-	item:subscribe({ "mouse.exited", "mouse.entered.global", "mouse.exited.global" }, function()
-		date:set({ background = { drawing = false } })
-		time:set({ background = { drawing = false } })
-	end)
-end
+date:subscribe("mouse.entered", function()
+	date:set({
+		background = {
+			drawing = true,
+			color = colors.hover,
+			corner_radius = 20,
+			height = 25,
+			y_offset = 5,
+		},
+	})
+end)
 
-add_hover(date)
-add_hover(time)
+date:subscribe({ "mouse.exited", "mouse.entered.global", "mouse.exited.global" }, function()
+	time:set({ background = { drawing = true, height = 20, color = colors.transparent } })
+	date:set({ background = { drawing = true, height = 10, color = colors.transparent } })
+end)
+
+time:subscribe({ "mouse.exited", "mouse.entered.global", "mouse.exited.global" }, function()
+	date:set({ background = { drawing = true, height = 10, color = colors.transparent } })
+	time:set({ background = { drawing = true, height = 10, color = colors.transparent } })
+end)

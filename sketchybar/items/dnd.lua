@@ -2,22 +2,23 @@ local colors = require("colors")
 local icons = require("helpers.icons")
 
 local dnd = sbar.add("item", "dnd", {
-	label = {
-		drawing = true,
-		string = icons.dnd_off,
-		font = { size = 13 },
-	},
 	position = "right",
-	padding_right = 0,
-	padding_left = 0,
 	update_freq = 5,
+	padding_left = 0,
+	padding_right = 0,
+	label = {
+		color = colors.white,
+	},
 })
 
-local function set_dnd_icon()
+local dnd_active = false
+
+local function set_icon(active)
 	dnd:set({
 		label = {
-			string = dnd_active and icons.dnd.on or icons.dnd.off,
-			color = dnd_active and colors.dnd or colors.grey,
+			string = active and icons.dnd.on or icons.dnd.off,
+			font = { size = 13 },
+			color = active and colors.dnd or colors.grey,
 		},
 	})
 end
@@ -27,22 +28,26 @@ local function update_dnd()
 		[[defaults read com.apple.controlcenter 'NSStatusItem VisibleCC FocusModes' 2>/dev/null]],
 		function(result)
 			dnd_active = result:match("1") ~= nil
-			set_dnd_icon()
+			set_icon(dnd_active)
 		end
 	)
 end
 
-dnd:subscribe("mouse.clicked", function(env)
-	if env.BUTTON == "left" then
-		dnd_active = not dnd_active
-		set_dnd_icon()
-		sbar.exec('osascript -e \'tell application "Shortcuts" to run shortcut "Toggle DND"\'')
-	end
-end)
+local function toggle_dnd()
+	dnd_active = not dnd_active
+	set_icon(dnd_active)
+	sbar.exec('osascript -e \'tell application "Shortcuts" to run shortcut "Toggle DND"\'')
+end
 
 update_dnd()
 
-dnd:subscribe("routine", "system_woke", update_dnd())
+dnd:subscribe("mouse.clicked", function(env)
+	if env.BUTTON == "left" then
+		toggle_dnd()
+	end
+end)
+
+dnd:subscribe("routine", update_dnd)
 
 -- ======== Hover effects ========
 local function add_hover(item)

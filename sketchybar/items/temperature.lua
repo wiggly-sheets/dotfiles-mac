@@ -5,7 +5,7 @@ local icons = require("helpers.icons")
 local click_script =
 	'osascript -e \'tell application "System Events" to keystroke "]" using {command down, option down, control down}\''
 
-local cpu_temp_item = sbar.add("item", "cpu_temp", {
+local cpu_temp = sbar.add("item", "cpu_temp", {
 	update_freq = 10,
 	position = "right",
 	padding_left = -51,
@@ -15,7 +15,7 @@ local cpu_temp_item = sbar.add("item", "cpu_temp", {
 	click_script = click_script,
 })
 
-local gpu_temp_item = sbar.add("item", "gpu_temp", {
+local gpu_temp = sbar.add("item", "gpu_temp", {
 	update_freq = 10,
 	position = "right",
 	y_offset = -6,
@@ -28,22 +28,22 @@ local gpu_temp_item = sbar.add("item", "gpu_temp", {
 local function update_temperatures()
 	-- CPU temperature
 	sbar.exec("smctemp -c -i25 -n180 -f", function(cpu_out)
-		local cpu_temp = tonumber(cpu_out)
+		local cpu_temperature = tonumber(cpu_out)
 		local cpu_color = colors.green
-		if cpu_temp > 70 then
+		if cpu_temperature > 70 then
 			cpu_color = colors.red
-		elseif cpu_temp > 60 then
+		elseif cpu_temperature > 60 then
 			cpu_color = colors.orange
-		elseif cpu_temp > 50 then
+		elseif cpu_temperature > 50 then
 			cpu_color = colors.yellow
-		elseif cpu_temp > 40 then
+		elseif cpu_temperature > 40 then
 			cpu_color = colors.green
 		else
 			cpu_color = colors.blue
 		end
-		cpu_temp_item:set({
+		cpu_temp:set({
 			label = {
-				string = cpu_temp .. "°C",
+				string = cpu_temperature .. "°C",
 				color = cpu_color,
 				font = { family = settings.default, size = 8 },
 			},
@@ -52,22 +52,22 @@ local function update_temperatures()
 
 	-- GPU temperature
 	sbar.exec("smctemp -g -i25 -n180 -f", function(gpu_out)
-		local gpu_temp = tonumber(gpu_out)
+		local gpu_temperature = tonumber(gpu_out)
 		local gpu_color = colors.green
-		if gpu_temp > 70 then
+		if gpu_temperature > 70 then
 			gpu_color = colors.red
-		elseif gpu_temp > 60 then
+		elseif gpu_temperature > 60 then
 			gpu_color = colors.orange
-		elseif gpu_temp > 50 then
+		elseif gpu_temperature > 50 then
 			gpu_color = colors.yellow
-		elseif gpu_temp > 40 then
+		elseif gpu_temperature > 40 then
 			gpu_color = colors.green
 		else
 			gpu_color = colors.blue
 		end
-		gpu_temp_item:set({
+		gpu_temp:set({
 			label = {
-				string = gpu_temp .. "°C",
+				string = gpu_temperature .. "°C",
 				color = gpu_color,
 				font = { family = settings.default, size = 8 },
 			},
@@ -76,29 +76,39 @@ local function update_temperatures()
 end
 
 -- Subscribe to events
-cpu_temp_item:subscribe({ "routine", "forced", "system_woke" }, update_temperatures)
-gpu_temp_item:subscribe({ "routine", "forced", "system_woke" }, update_temperatures)
+cpu_temp:subscribe({ "routine", "forced", "system_woke" }, update_temperatures)
+gpu_temp:subscribe({ "routine", "forced", "system_woke" }, update_temperatures)
 
--- ======== Hover effects ========
-local function add_hover(item)
-	item:subscribe("mouse.entered", function()
-		gpu_temp_item:set({
-			background = {
-				drawing = true,
-				color = colors.hover,
-				corner_radius = 20,
-				height = 25,
-				x_offset = 0,
-				y_offset = 5,
-			},
-		})
-	end)
+cpu_temp:subscribe("mouse.entered", function()
+	gpu_temp:set({
+		background = {
+			drawing = true,
+			color = colors.hover,
+			corner_radius = 20,
+			height = 25,
+			y_offset = 5,
+		},
+	})
+end)
 
-	item:subscribe({ "mouse.exited", "mouse.entered.global", "mouse.exited.global" }, function()
-		cpu_temp_item:set({ background = { drawing = false } })
-		gpu_temp_item:set({ background = { drawing = false } })
-	end)
-end
+gpu_temp:subscribe("mouse.entered", function()
+	gpu_temp:set({
+		background = {
+			drawing = true,
+			color = colors.hover,
+			corner_radius = 20,
+			height = 25,
+			y_offset = 5,
+		},
+	})
+end)
 
-add_hover(cpu_temp_item)
-add_hover(gpu_temp_item)
+cpu_temp:subscribe({ "mouse.exited", "mouse.entered.global", "mouse.exited.global" }, function()
+	gpu_temp:set({ background = { drawing = true, height = 20, color = colors.transparent } })
+	cpu_temp:set({ background = { drawing = true, height = 10, color = colors.transparent } })
+end)
+
+gpu_temp:subscribe({ "mouse.exited", "mouse.entered.global", "mouse.exited.global" }, function()
+	gpu_temp:set({ background = { drawing = true, height = 10, color = colors.transparent } })
+	cpu_temp:set({ background = { drawing = true, height = 10, color = colors.transparent } })
+end)

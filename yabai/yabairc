@@ -66,9 +66,9 @@ CONFIGS=(
   # New window placement behavior
   "window_placement second_child"
 
-  # padding (0 = no borders)
+  # padding (0 = no jankyborders)
   "top_padding 0"
-  "bottom_padding 0"
+  "bottom_padding 25" # for use with taskbar app
   "left_padding 0"
   "right_padding 0"
 
@@ -161,7 +161,7 @@ FLOAT_APPS=(
   "^BetterCapture$"
   "^Thaw$"
   "^IINA$"
-  "^TheBoringNotch$"
+  "^Atoll$"
   "^Numi$"
   "^Mousecape$"
   "^Finder$"

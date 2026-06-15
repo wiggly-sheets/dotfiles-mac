@@ -1,55 +1,59 @@
-tap "achannarasappa/tap"
+tap "achannarasappa/tap", "https://github.com/achannarasappa/tap.git", trusted: true
 tap "alecharmon/tap"
-tap "bengerthelorf/tap"
-tap "browsh-org/browsh"
-tap "catskull/homebrew", "https://github.com/catskull/homebrew"
-tap "edde746/plezy", "https://github.com/edde746/plezy"
+tap "apple/apple", trusted: true
+tap "asmvik/formulae", trusted: true
+tap "bengerthelorf/tap", trusted: true
+tap "browsh-org/browsh", trusted: true
+tap "catskull/homebrew", "https://github.com/catskull/homebrew", trusted: true
+tap "edde746/plezy", "https://github.com/edde746/plezy", trusted: true
 tap "felixkratz/formulae"
-tap "filosottile/musl-cross"
-tap "gcenx/wine"
-tap "gechr/tap"
-tap "gromgit/brewtils"
-tap "gromgit/fuse"
+tap "filosottile/musl-cross", trusted: true
+tap "gcenx/wine", trusted: true
+tap "gechr/tap", trusted: true
+tap "gromgit/brewtils", trusted: true
+tap "gromgit/fuse", trusted: true
 tap "gschurck/fuzzybrew"
-tap "homielab/mountmate", "https://github.com/homielab/mountmate"
-tap "jackielii/tap"
-tap "jsattler/tap"
+tap "hewigovens/tap", "https://github.com/hewigovens/tap.git"
+tap "homielab/mountmate", "https://github.com/homielab/mountmate", trusted: true
+tap "jackielii/tap", trusted: true
+tap "jsattler/tap", trusted: true
 tap "jstkdng/programs"
-tap "kegworks-app/kegworks"
-tap "koekeishiya/formulae"
-tap "krishkrosh/apps"
-tap "lihaoyun6/tap"
-tap "lslqtz/formulae"
-tap "m1ten/othyn"
-tap "malpern/tap"
+tap "kegworks-app/kegworks", "https://github.com/Sikarugir-App/homebrew-sikarugir.git", trusted: true
+tap "krishkrosh/apps", trusted: true
+tap "libkrun/krun", trusted: true
+tap "lihaoyun6/tap", trusted: true
+tap "lslqtz/formulae", trusted: true
+tap "m1ten/othyn", trusted: true
+tap "malpern/tap", trusted: true
 tap "matars/gitfetch"
-tap "mateocerquetella/ricebarmac"
-tap "mhaeuser/mhaeuser"
+tap "mateocerquetella/ricebarmac", trusted: true
+tap "mhaeuser/mhaeuser", trusted: true
+tap "msitarzewski/brew-browser", trusted: true
 tap "narugit/tap"
 tap "neur0map/tap"
 tap "nohajc/anylinuxfs"
-tap "notwadegrimridge/brew"
-tap "philocalyst/tap"
-tap "playcover/playcover"
-tap "rafaelswi/menubarusb"
-tap "rgcr/formulae"
-tap "ruffle-rs/ruffle"
-tap "ruittenb/tap"
-tap "samtay/tui"
-tap "sikarugir-app/sikarugir"
-tap "slp/krun"
+tap "notwadegrimridge/brew", trusted: true
+tap "philocalyst/tap", trusted: true
+tap "playcover/playcover", trusted: true
+tap "rafaelswi/menubarusb", trusted: true
+tap "rgcr/formulae", trusted: true
+tap "ruffle-rs/ruffle", trusted: true
+tap "ruittenb/tap", trusted: true
+tap "samtay/tui", trusted: true
+tap "sikarugir-app/sikarugir", trusted: true
+tap "skyline69/tap"
 tap "socsieng/tap"
-tap "sw33tlie/macshot"
-tap "theboredteam/boring-notch"
+tap "sw33tlie/macshot", trusted: true
+tap "theboredteam/boring-notch", trusted: true
 tap "thezoraiz/ascii-image-converter"
-tap "typewhisper/tap"
-tap "valkyrie00/bbrew"
+tap "typewhisper/tap", trusted: true
+tap "valkyrie00/bbrew", trusted: true
 tap "waydabber/betterdisplay"
-tap "wickenico/wailbrew"
-tap "wiggly-sheets/sketchybar-studio"
-tap "xykong/tap"
-tap "zackelia/formulae"
-tap "zimengxiong/tools"
+tap "wickenico/wailbrew", trusted: true
+tap "wiggly-sheets/sketchybar-studio", trusted: true
+tap "xykong/tap", trusted: true
+tap "zackelia/formulae", trusted: true
+tap "zimengxiong/tools", trusted: true
 # General-purpose data compression with high compression ratio
 brew "xz"
 # Zstandard is a real-time compression algorithm
@@ -117,7 +121,7 @@ brew "cloc"
 # Console Matrix
 brew "cmatrix"
 # Create and run Linux containers using lightweight virtual machines
-brew "container", link: false
+brew "container"
 # Manage Apple Container with Docker Compose files
 brew "container-compose"
 # Interpreted, interactive, object-oriented programming language
@@ -160,6 +164,8 @@ brew "exiftool"
 brew "eza"
 # Command-line batch renaming tool
 brew "f2"
+# Powerful, lightweight programming language
+brew "lua"
 # Like neofetch, but much faster because written mostly in C
 brew "fastfetch"
 # Simple, fast and user-friendly alternative to find
@@ -185,7 +191,7 @@ brew "gawk"
 # GitHub command-line tool
 brew "gh"
 # Multi-platform software reverse engineering framework
-brew "ghidra", link: false
+brew "ghidra"
 # Distributed revision control system
 brew "git"
 # Syntax-highlighting pager for git and diff output
@@ -258,8 +264,6 @@ brew "less"
 brew "libcaca"
 # Rainbows and unicorns in your console!
 brew "lolcat"
-# Powerful, lightweight programming language
-brew "lua"
 # Package manager for the Lua programming language
 brew "luarocks"
 # Text-based web browser
@@ -280,8 +284,8 @@ brew "mas"
 brew "media-control"
 # Unified display of technical and tag data for audio/video
 brew "media-info"
-# Matroska media files manipulation tools
-brew "mkvtoolnix"
+# Wrapper around all package managers with a unifying CLI
+brew "meta-package-manager"
 # Deep clean and optimize your Mac
 brew "mole"
 # Drive some car across the moon
@@ -388,6 +392,8 @@ brew "rmpc"
 brew "rsync"
 # Status/progress bar for rsync
 brew "rsyncy"
+# Safe, concurrent, practical language
+brew "rust"
 # Web search from the terminal
 brew "s-search"
 # CLI search and replace | Space Age seD
@@ -478,6 +484,8 @@ brew "wget"
 brew "wget2"
 # Why is this running?
 brew "witr"
+# Follow the mouse X demo using the X SHAPE extension
+brew "xeyes"
 # Friendly and fast tool for sending HTTP requests
 brew "xh"
 # Bring your favorite shell wherever you go through the ssh
@@ -499,53 +507,49 @@ brew "zsh-syntax-highlighting"
 # Better and friendly vi(vim) mode plugin for ZSH
 brew "zsh-vi-mode"
 # 🔑 a CLI for Apple Passwords 🔒
-brew "alecharmon/tap/applepw"
-# A window border system for macOS
-brew "felixkratz/formulae/borders"
-# Custom macOS statusbar with shell plugin, interaction and graph support
-brew "felixkratz/formulae/sketchybar"
-# Turns macOS input fields into real vim buffers
-brew "felixkratz/formulae/svim"
-# Interactive TUI for Homebrew
-brew "gromgit/brewtils/taproom"
-# Read-write NTFS driver for FUSE
-brew "gromgit/fuse/ntfs-3g-mac"
-# Fuzzy search for Homebrew packages
-brew "gschurck/fuzzybrew/fuzzybrew"
-# Simple hotkey daemon for macOS, written in Zig
-brew "jackielii/tap/skhd-zig"
-# Drop in replacement for ueberzug written in C++
-brew "jstkdng/programs/ueberzugpp"
+brew "alecharmon/tap/applepw", trusted: true
 # A tiling window manager for macOS based on binary space partitioning.
-brew "koekeishiya/formulae/yabai", args: ["HEAD"]
+brew "asmvik/formulae/yabai", args: ["HEAD"]
+# A window border system for macOS
+brew "felixkratz/formulae/borders", trusted: true
+# Custom macOS statusbar with shell plugin, interaction and graph support
+brew "felixkratz/formulae/sketchybar", trusted: true
+# Turns macOS input fields into real vim buffers
+brew "felixkratz/formulae/svim", trusted: true
+# Interactive TUI for Homebrew
+brew "gromgit/brewtils/taproom", trusted: true
+# Read-write NTFS driver for FUSE
+brew "gromgit/fuse/ntfs-3g-mac", trusted: true
+# Fuzzy search for Homebrew packages
+brew "gschurck/fuzzybrew/fuzzybrew", trusted: true
+# Drop in replacement for ueberzug written in C++
+brew "jstkdng/programs/ueberzugpp", trusted: true
 # Coordinates SketchyBar and the native macOS menu bar
-brew "malpern/tap/sketchybar-toggle"
+brew "malpern/tap/sketchybar-toggle", trusted: true
 # A neofetch alternative for GitHub quick view
-brew "matars/gitfetch/gitfetch"
+brew "matars/gitfetch/gitfetch", trusted: true
 # Check Temperature by using Apple System Management Control (Smc) tool
-brew "narugit/tap/smctemp"
+brew "narugit/tap/smctemp", trusted: true
 # TUI dashboard that unifies 34 package managers into one searchable view
-brew "neur0map/tap/gpk"
+brew "neur0map/tap/gpk", trusted: true
 # Mount any linux-supported filesystem read/write using nfs and a microVM
-brew "nohajc/anylinuxfs/anylinuxfs"
+brew "nohajc/anylinuxfs/anylinuxfs", trusted: true
 # User-friendly, lightweight TUI for disk imaging
-brew "philocalyst/tap/caligula"
+brew "philocalyst/tap/caligula", trusted: true
 # Terminal-based typing test built with Rust and Ratatui
-brew "philocalyst/tap/ttyper"
+brew "philocalyst/tap/ttyper", trusted: true
 # Swiss Army Knife for macOS
-brew "rgcr/formulae/m-cli"
-# Flash Player emulator written in Rust
-brew "ruffle-rs/ruffle/ruffle", args: ["HEAD"], link: false
+brew "rgcr/formulae/m-cli", trusted: true
 # Tetris in your terminal
-brew "samtay/tui/tetris"
+brew "samtay/tui/tetris", trusted: true
 # Command-line tool for automating keystrokes and mouse events
-brew "socsieng/tap/sendkeys"
+brew "socsieng/tap/sendkeys", trusted: true
 # Convert images into ascii art
-brew "thezoraiz/ascii-image-converter/ascii-image-converter"
+brew "thezoraiz/ascii-image-converter/ascii-image-converter", trusted: true
 # Modern TUI for managing Homebrew packages and casks on macOS and Linux
-brew "valkyrie00/bbrew/bbrew"
+brew "valkyrie00/bbrew/bbrew", trusted: true
 # BetterDisplay CLI proxy
-brew "waydabber/betterdisplay/betterdisplaycli"
+brew "waydabber/betterdisplay/betterdisplaycli", trusted: true
 # Get the battery level of all your devices on your Mac.
 cask "lihaoyun6/tap/airbattery"
 # Enable Windows-like alt-tab
@@ -594,8 +598,8 @@ cask "blockblock"
 cask "bloom"
 # Mobile gaming platform
 cask "bluestacks"
-# Not so boring notch That Rocks 🎸🎶 
-cask "theboredteam/boring-notch/boring-notch"
+# Native GUI for Homebrew
+cask "msitarzewski/brew-browser/brew-browser"
 # CD burning application
 cask "burn"
 # E-books management software
@@ -652,6 +656,8 @@ cask "element"
 cask "epic-games"
 # Cross-platform Text Expander written in Rust
 cask "espanso"
+# View and change the default app that opens each file type, by category
+cask "skyline69/tap/ext-selector", trusted: true
 # Audio playback
 cask "farrago"
 # Tool for organising and renaming movies, TV shows, anime or music
@@ -677,8 +683,6 @@ cask "foobar2000"
 cask "freac"
 # 3D parametric modeller
 cask "freecad"
-# Use to eliminate months of up-front work and evaluate how well your game runs
-cask "gcenx/wine/game-porting-toolkit"
 # Disk space cleaner that finds and deletes duplicated and similar files
 cask "gemini"
 # Software reverse engineering (SRE) suite of tools
@@ -741,6 +745,8 @@ cask "keyclu"
 cask "knockknock"
 # Free and open-source painting and sketching program
 cask "krita"
+# Utility that shows the latest app updates
+cask "latest"
 # Launchpad alternative
 cask "launchos"
 # Application launcher
@@ -783,7 +789,7 @@ cask "menuwhere"
 cask "minecraft"
 # Manage your windows in Mission Control
 cask "mission-control-plus"
-# Set of tools to create, alter and inspect Matroska files (MKV)
+# GUI including a set of tools to create, alter and inspect Matroska files (MKV)
 cask "mkvtoolnix-app"
 # Mounts servers and cloud storages as a disk on the desktop
 cask "mountain-duck"
@@ -865,12 +871,12 @@ cask "processmonitor"
 cask "qbittorrent"
 # Quick Look generator for Markdown files
 cask "qlmarkdown"
-# A lightweight and high-performance screen recorder for macOS.
-cask "lihaoyun6/tap/quickrecorder"
 # Protect your personal files
 cask "ransomwhere"
 # Imaging utility to install operating systems to a microSD card
 cask "raspberry-pi-imager"
+# GUI for Rclone
+cask "rclone-ui"
 # WinAMP clone written in SwiftUI
 cask "reamp"
 # Dreamcast emulator
@@ -879,6 +885,8 @@ cask "redream"
 cask "reikey"
 # File sync and share software
 cask "resilio-sync"
+# Online multiplayer game platform
+cask "roblox"
 # Emoji picker optimised for blind people
 cask "rocket"
 # GUI for rsync
@@ -903,6 +911,8 @@ cask "silentknight"
 cask "sioyek"
 # Native macOS companion app for editing SketchyBar configs
 cask "wiggly-sheets/sketchybar-studio/sketchybar-studio"
+# Simple hotkey daemon written in Zig
+cask "jackielii/tap/skhd-zig", trusted: true
 # Bluesky Social client
 cask "sky"
 # Team communication and collaboration software
@@ -949,6 +959,8 @@ cask "synologyassistant"
 cask "syntax-highlight"
 # Mesh VPN based on WireGuard
 cask "tailscale-app"
+# Windows-style taskbar as a Dock replacement
+cask "taskbar"
 # Tool to explore all the running tasks (processes)
 cask "taskexplorer"
 # Messaging app with a focus on speed and security
@@ -1005,6 +1017,8 @@ cask "wireshark-app"
 cask "xemu"
 # Open-source version of the X.Org X Window System
 cask "xquartz"
+# Multiplayer code editor
+cask "zed"
 # Gecko based web browser
 cask "zen"
 # Video communication and virtual meeting platform
@@ -1016,6 +1030,7 @@ mas "Actions", id: 1586435171
 mas "Amphetamine", id: 937984704
 mas "Apple Configurator", id: 1037126344
 mas "Asphalt", id: 1491129197
+mas "Asphalt8", id: 610391947
 mas "Asphalt8", id: 610391947
 mas "Blackmagic Disk Speed Test", id: 425264550
 mas "Broadcasts", id: 1469995354
@@ -1032,6 +1047,7 @@ mas "Final Cut Pro", id: 424389933
 mas "Folder Peek", id: 1615988943
 mas "Gapplin", id: 768053424
 mas "Gifski", id: 1351639930
+mas "Googly Eyes", id: 6743048714
 mas "HEIC Converter", id: 1294126402
 mas "Ice Cubes", id: 6444915884
 mas "IconizeFolder", id: 6478772538
@@ -1046,7 +1062,7 @@ mas "Logic Pro", id: 634148309
 mas "Mactracker", id: 430255202
 mas "Magic Disk Benchmark", id: 1608793370
 mas "MainStage", id: 634159523
-mas "Meal Planner", id: 6460821436
+mas "Meal planner", id: 6460821436
 mas "Mela", id: 1568924476
 mas "Motion", id: 434290957
 mas "Night Sky X", id: 475772902

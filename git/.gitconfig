@@ -9,8 +9,6 @@
 [core]
 	excludesfile = /Users/Zeb/.gitignore_global
 	editor = nvim
-[url "git@github.com:"]
-  insteadOf = https://github.com/
 [include]
   path = ~/dotfiles/.config/delta/themes.gitconfig
 

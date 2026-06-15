@@ -30,9 +30,7 @@ gui:
     defaultFgColor:
       - "#c0caf5"
 
-
-
-# Config relating to the Lazygit UI
+  # Config relating to the Lazygit UI
   # See https://github.com/jesseduffield/lazygit/blob/master/docs/Config.md#custom-author-color
   authorColors: {}
 
@@ -147,62 +145,62 @@ gui:
 
   # Config relating to colors and styles.
   # See https://github.com/jesseduffield/lazygit/blob/master/docs/Config.md#color-attributes
-#  theme:
-    # Border color of focused window
-#    activeBorderColor:
-#      - green
- #     - bold
+  #  theme:
+  # Border color of focused window
+  #    activeBorderColor:
+  #      - green
+  #     - bold
 
-    # Border color of non-focused windows
- #   inactiveBorderColor:
- #     - default
+  # Border color of non-focused windows
+  #   inactiveBorderColor:
+  #     - default
 
-    # Border color of focused window when searching in that window
- #   searchingActiveBorderColor:
- #     - cyan
- #     - bold
+  # Border color of focused window when searching in that window
+  #   searchingActiveBorderColor:
+  #     - cyan
+  #     - bold
 
-    # Color of keybindings help text in the bottom line
-#    optionsTextColor:
- #     - blue
+  # Color of keybindings help text in the bottom line
+  #    optionsTextColor:
+  #     - blue
 
-    # Background color of selected line.
-    # See https://github.com/jesseduffield/lazygit/blob/master/docs/Config.md#highlighting-the-selected-line
-#    selectedLineBgColor:
-#      - blue
+  # Background color of selected line.
+  # See https://github.com/jesseduffield/lazygit/blob/master/docs/Config.md#highlighting-the-selected-line
+  #    selectedLineBgColor:
+  #      - blue
 
-    # Background color of selected line when view doesn't have focus.
-#    inactiveViewSelectedLineBgColor:
-#      - bold
+  # Background color of selected line when view doesn't have focus.
+  #    inactiveViewSelectedLineBgColor:
+  #      - bold
 
-    # Foreground color of copied commit
- #   cherryPickedCommitFgColor:
- #     - blue
+  # Foreground color of copied commit
+  #   cherryPickedCommitFgColor:
+  #     - blue
 
-    # Background color of copied commit
- #   cherryPickedCommitBgColor:
-#      - cyan
+  # Background color of copied commit
+  #   cherryPickedCommitBgColor:
+  #      - cyan
 
-    # Foreground color of marked base commit (for rebase)
-#    markedBaseCommitFgColor:
-#      - blue
+  # Foreground color of marked base commit (for rebase)
+  #    markedBaseCommitFgColor:
+  #      - blue
 
-    # Background color of marked base commit (for rebase)
-#    markedBaseCommitBgColor:
-#      - yellow
+  # Background color of marked base commit (for rebase)
+  #    markedBaseCommitBgColor:
+  #      - yellow
 
-    # Color for file with unstaged changes
-#    unstagedChangesColor:
-#      - red
+  # Color for file with unstaged changes
+  #    unstagedChangesColor:
+  #      - red
 
-    # Default text color
-#    defaultFgColor:
-#      - default
+  # Default text color
+  #    defaultFgColor:
+  #      - default
 
   # Config relating to the commit length indicator
   commitLength:
     # If true, show an indicator of commit message length
-   show: true
+    show: true
 
   # If true, show the '5 of 20' footer at the bottom of list views
   showListFooter: true
@@ -238,7 +236,7 @@ gui:
   # Nerd fonts version to use.
   # One of: '2' | '3' | empty string (default)
   # If empty, do not show icons.
-#  nerdFontsVersion: ""
+  #  nerdFontsVersion: ""
 
   # If true (default), file icons are shown in the file views. Only relevant if
   # NerdFontsVersion is not empty.
@@ -295,9 +293,9 @@ gui:
   spinner:
     # The frames of the spinner animation.
     frames:
-      - '|'
+      - "|"
       - /
-      - '-'
+      - "-"
       - \
 
     # The "speed" of the spinner in milliseconds.
@@ -582,12 +580,12 @@ keybinding:
     nextItem: <down>
     prevItem-alt: k
     nextItem-alt: j
-    prevPage: ','
+    prevPage: ","
     nextPage: .
     scrollLeft: H
     scrollRight: L
     gotoTop: <
-    gotoBottom: '>'
+    gotoBottom: ">"
     gotoTop-alt: <home>
     gotoBottom-alt: <end>
     toggleRangeSelect: v
@@ -610,7 +608,7 @@ keybinding:
     prevMatch: "N"
     startSearch: /
     optionMenu: <disabled>
-    optionMenu-alt1: '?'
+    optionMenu-alt1: "?"
     select: <space>
     goInto: <enter>
     confirm: <enter>
@@ -628,7 +626,7 @@ keybinding:
     scrollDownMain-alt1: J
     scrollUpMain-alt2: <c-u>
     scrollDownMain-alt2: <c-d>
-    executeShellCommand: ':'
+    executeShellCommand: ":"
     createRebaseOptionsMenu: m
 
     # 'Files' appended for legacy reasons
@@ -638,11 +636,11 @@ keybinding:
     pullFiles: p
     refresh: R
     createPatchOptionsMenu: <c-p>
-    nextTab: ']'
-    prevTab: '['
+    nextTab: "]"
+    prevTab: "["
     nextScreenMode: +
     prevScreenMode: _
-    cyclePagers: '|'
+    cyclePagers: "|"
     undo: z
     redo: Z
     filteringMenu: <c-s>
@@ -651,10 +649,10 @@ keybinding:
     copyToClipboard: <c-o>
     openRecentRepos: <c-r>
     submitEditorText: <enter>
-    extrasMenu: '@'
+    extrasMenu: "@"
     toggleWhitespaceInDiffView: <c-w>
-    increaseContextInDiffView: '}'
-    decreaseContextInDiffView: '{'
+    increaseContextInDiffView: "}"
+    decreaseContextInDiffView: "{"
     increaseRenameSimilarityThreshold: )
     decreaseRenameSimilarityThreshold: (
     openDiffTool: <c-t>
@@ -676,11 +674,11 @@ keybinding:
     toggleStagedAll: a
     viewResetOptions: D
     fetch: f
-    toggleTreeView: '`'
+    toggleTreeView: "`"
     openMergeOptions: M
     openStatusFilter: <c-b>
     copyFileInfoToClipboard: "y"
-    collapseAll: '-'
+    collapseAll: "-"
     expandAll: =
   branches:
     createPullRequest: o
@@ -688,7 +686,7 @@ keybinding:
     copyPullRequestURL: <c-y>
     checkoutBranchByName: c
     forceCheckoutBranch: F
-    checkoutPreviousBranch: '-'
+    checkoutPreviousBranch: "-"
     rebaseBranch: r
     renameBranch: R
     mergeIntoCurrentBranch: M
@@ -722,13 +720,13 @@ keybinding:
     markCommitAsBaseForRebase: B
     tagCommit: T
     checkoutCommit: <space>
-    resetCherryPick: <c-R>
+    resetCherryPick: r
     copyCommitAttributeToClipboard: "y"
     openLogMenu: <c-l>
     openInBrowser: o
     viewBisectOptions: b
     startInteractiveRebase: i
-    selectCommitsOfCurrentBranch: '*'
+    selectCommitsOfCurrentBranch: "*"
   amendAttribute:
     resetAuthor: a
     setAuthor: A
