@@ -24,7 +24,6 @@ local gpu_temp = sbar.add("item", "gpu_temp", {
 	click_script = click_script,
 })
 
--- Function to update temperatures
 local function update_temperatures()
 	-- CPU temperature
 	sbar.exec("smctemp -c -i25 -n180 -f", function(cpu_out)
@@ -75,7 +74,6 @@ local function update_temperatures()
 	end)
 end
 
--- Subscribe to events
 cpu_temp:subscribe({ "routine", "forced", "system_woke" }, update_temperatures)
 gpu_temp:subscribe({ "routine", "forced", "system_woke" }, update_temperatures)
 

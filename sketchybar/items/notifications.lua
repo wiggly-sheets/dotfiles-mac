@@ -5,7 +5,6 @@ local icons = require("helpers.icons")
 -- Path to macOS Notification Center database
 local notif_db = os.getenv("HOME") .. "/Library/Group Containers/group.com.apple.usernoted/db2/db"
 
--- Create the SketchyBar item
 local notifications = sbar.add("item", "notifications", {
 	position = "right",
 	width = 5,
@@ -27,12 +26,11 @@ local notifications = sbar.add("item", "notifications", {
 	update_freq = 30,
 })
 
--- Function to check the notification count
 local function check_notifications()
 	local sql = [[select count(*) as cnt from record where style=1 and presented=false OR style=2;]]
 	local cmd = string.format("sqlite3 -readonly '%s' \"%s\"", notif_db, sql)
 	sbar.exec(cmd, function(output)
-		local count = math.max((tonumber(output) or 0) - 1, 0)
+		local count = math.max((tonumber(output) or 0), 0)
 
 		if count > 9 then
 			notifications:set({
@@ -59,5 +57,4 @@ notifications:subscribe({ "forced", "routine", "system_woke" }, function()
 	check_notifications()
 end)
 
--- Initial run
 check_notifications()

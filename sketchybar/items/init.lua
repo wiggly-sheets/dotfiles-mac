@@ -1,9 +1,6 @@
 --left side items
 require("items.menus")
 require("items.spaces")
---require("items.svim")
---require("items.music")
---require("items.mpd")
 
 --center items
 require("items.window_title")
@@ -30,5 +27,5 @@ require("items.cpu_ram")
 -- startup animation
 require("items.startup_animation")
 
--- brackets
+-- item groups
 require("items.brackets")

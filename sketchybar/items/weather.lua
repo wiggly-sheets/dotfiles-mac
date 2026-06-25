@@ -3,7 +3,6 @@ local colors = require("colors")
 local settings = require("default")
 local icons = require("helpers.icons")
 
--- Condition codes grouped by icon type (shorter + easier to maintain)
 local condition_groups = {
 	clear = { 1000 },
 	partly = { 1003 },

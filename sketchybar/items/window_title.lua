@@ -1,52 +1,6 @@
 local colors = require("colors")
 local settings = require("default")
-local icon_map = require("helpers.icon_map")
 
-local front_app_icon = sbar.add("item", "front_app_icon", {
-	display = "active",
-	icon = {
-		drawing = true,
-		font = "sketchybar-app-font:Regular:15.0",
-		string = "",
-		color = colors.white,
-	},
-	label = {
-		drawing = false,
-		color = colors.white,
-	},
-	padding_right = 2,
-	position = "center",
-})
-
-front_app_icon:subscribe("front_app_switched", function(env)
-	-- env.INFO is assumed to be the app name (e.g., "Safari")
-	local app = env.INFO
-	-- Look up the icon for the app; fall back to "Default" if none is found.
-	local app_icon = icon_map[app] or icon_map["Default"]
-
-	front_app_icon:set({
-		-- Enable icon drawing and set the proper icon font, string, and color
-		icon = {
-			background = {
-				image = "app." .. env.INFO,
-				scale = 0.01,
-				drawing = true,
-			},
-			--		icon = {
-			--		drawing = true,
-			--		string = app_icon,
-			--		font = "sketchybar-app-font:Regular:15.0",
-			--	},
-			-- Set the app name as the label
-			label = {
-				string = app .. ": ",
-				font = settings.default,
-			},
-		},
-	})
-end)
-
--- Window title item
 local window_title = sbar.add("item", "window_title", {
 	position = "center",
 	scroll_texts = false,
@@ -117,7 +71,6 @@ local function update_window_title()
 			-- Hide if only Built-in is found
 			window_title:set({ label = { drawing = false, string = "" } })
 			last_title = ""
-			front_app:set({ label = { drawing = false, string = "" } })
 		end
 	end)
 end

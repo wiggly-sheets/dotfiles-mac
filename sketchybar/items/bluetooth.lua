@@ -16,7 +16,6 @@ local bluetooth = sbar.add("item", "bluetooth", {
 	click_script = 'osascript -e \'tell application "System Events" to tell process "ControlCenter" to click (first menu bar item of menu bar 1 whose name is not "Wi-Fi")\'',
 })
 
--- Function to update Bluetooth icon
 local function update_bluetooth()
 	sbar.exec("/opt/homebrew/bin/blueutil --power", function(output)
 		local state = tonumber(output)
@@ -33,12 +32,11 @@ local function update_bluetooth()
 	end)
 end
 
-update_bluetooth()
-
 bluetooth:subscribe("routine", function()
-update_bluetooth()
-
+	update_bluetooth()
 end)
+
+update_bluetooth()
 
 -- ======== Hover effects ========
 local function add_hover(item)

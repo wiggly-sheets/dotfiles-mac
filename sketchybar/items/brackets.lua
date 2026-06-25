@@ -4,12 +4,12 @@ local left_bracket = sbar.add("bracket", "left_bracket", { "apple", "add_space_b
 	background = {
 		drawing = true,
 		color = colors.bar.bg,
-		corner_radius = 20,
+		corner_radius = 12,
 		height = 30,
 		border_color = colors.bar.border,
 		border_width = 1,
 	},
-	blur_radius = 20,
+	blur_radius = 5,
 })
 
 local right_bracket = sbar.add("bracket", "right_bracket", {
@@ -20,10 +20,10 @@ local right_bracket = sbar.add("bracket", "right_bracket", {
 	background = {
 		drawing = true,
 		color = colors.bar.bg,
-		corner_radius = 20,
+		corner_radius = 12,
 		height = 30,
 		border_color = colors.bar.border,
 		border_width = 1,
 	},
-	blur_radius = 20,
+	blur_radius = 5,
 })

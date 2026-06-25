@@ -14,7 +14,7 @@ return {
 	low_power = 0xff9ece6a,
 	notifications = 0xffc82d3b,
 	bar = {
-		bg = 0xff24283b,
+		bg = 0x4024283b,
 		border = 0xff414868,
 	},
 	popup = {

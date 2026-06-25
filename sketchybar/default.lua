@@ -19,7 +19,6 @@ local default = {
 local function font(style)
 	return {
 		family = default.font.family,
-		style = default.font.style_map[style or "Regular"],
 		size = default.font.size,
 	}
 end
@@ -62,7 +61,7 @@ sbar.default({
 			border_width = 1,
 			corner_radius = 20,
 			border_color = colors.bar.border,
-			color = colors.bar.bg,
+			color = colors.popup.bg,
 			shadow = { drawing = false },
 			blur_radius = 20,
 		},

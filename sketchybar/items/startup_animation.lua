@@ -1,8 +1,6 @@
--- register events
 sbar.add("event", "lock", "com.apple.screenIsLocked")
 sbar.add("event", "unlock", "com.apple.screenIsUnlocked")
 
--- create animator item AND keep a reference
 local animator = sbar.add("item", "animator", {
 	position = "center",
 	drawing = false,

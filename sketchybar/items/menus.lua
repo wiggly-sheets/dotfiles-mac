@@ -1,7 +1,6 @@
 local colors = require("colors")
 local settings = require("default")
 local icons = require("helpers.icons")
-local icon_map = require("helpers.icon_map")
 
 local apple = sbar.add("item", "apple", {
 	icon = {
@@ -25,7 +24,6 @@ for i = 1, max_items, 1 do
 		padding_left = 0,
 		padding_right = 2,
 		drawing = i == 1,
-		icon = { drawing = true },
 		label = {
 			color = colors.white,
 			font = {
@@ -42,22 +40,22 @@ end
 local front_app = sbar.add("item", "front_app", {
 	position = "left",
 	updates = true,
-	label = {
-		drawing = true,
-		font = "sketchybar-app-font:Regular:11.0",
-		padding_right = 0,
-		padding_left = -3,
-		color = colors.white,
+	icon = {
+		background = {
+			drawing = true,
+			image = { scale = 0.6 },
+		},
 	},
 })
 
 front_app:subscribe("front_app_switched", function(env)
 	local app = env.INFO
-	local app_icon = icon_map[app] or icon_map["Default"]
 
 	front_app:set({
-		label = {
-			string = app_icon,
+		icon = {
+			background = {
+				image = "app." .. env.INFO,
+			},
 		},
 	})
 end)
@@ -72,13 +70,6 @@ local menu_toggle = sbar.add("item", "menus.toggle", {
 	padding_left = 2,
 	padding_right = 2,
 	position = "left",
-})
-
-sbar.add("bracket", { "/menu\\..*/" }, {
-	background = {
-		border_color = colors.transparent,
-		height = 20,
-	},
 })
 
 local function update_menus(env)
@@ -109,37 +100,36 @@ local menu_watcher = sbar.add("item", {
 	updates = true,
 })
 
-menu_watcher:subscribe("front_app_switched", update_menus)
-menu_watcher:subscribe("window_focus", update_menus)
-
 local function toggle_menus()
 	menus_expanded = not menus_expanded
 
 	menu_toggle:set({
 		icon = { string = menus_expanded and icons.menus.contract or icons.menus.expand },
 	})
+
 	for i = 2, #menu_items do
-		menu_items[i]:set({
-			drawing = menus_expanded,
-		})
-		front_app:set({ label = { drawing = false }, padding_left = -4 })
-		if menus_expanded then
-			update_menus()
-		else
-			front_app:set({ label = { drawing = true }, padding_left = 0 })
-		end
+		menu_items[i]:set({ drawing = menus_expanded })
 	end
-end
-if menus_expanded then
-	update_menus()
+
+	if menus_expanded then
+		front_app:set({ icon = { drawing = false }, padding_left = -4 })
+		update_menus()
+	else
+		front_app:set({
+			icon = { drawing = true },
+			padding_left = 2,
+		})
+	end
 end
 
 menu_toggle:subscribe("mouse.clicked", function()
 	toggle_menus()
 end)
 
+menu_watcher:subscribe("front_app_switched", "window_focus", update_menus)
+
 local theme_dir = os.getenv("HOME") .. "/.config/sketchybar/themes/"
-local theme_file = os.getenv("HOME") .. "/.config/sketchybar/current_theme"
+local theme_file = os.getenv("HOME") .. "/.config/sketchybar/themes/current_theme"
 
 local function get_current_theme()
 	local f = io.open(theme_file, "r")
@@ -310,7 +300,6 @@ for i, menu in ipairs(menu_items) do
 			-- run menu action
 			sbar.exec("$CONFIG_DIR/helpers/menus/bin/menus -s " .. i)
 
-			-- highlight this item
 			menu:set({
 				background = {
 					drawing = true,
@@ -386,10 +375,6 @@ apple:subscribe("mouse.clicked", function(env)
 		sbar.exec(middle_apple_script)
 	end
 end)
-
---apple:subscribe("mouse.scrolled", function()
---	sbar.exec("sketchybar --reload")
---end)
 
 apple:subscribe("mouse.entered", function()
 	apple:set({

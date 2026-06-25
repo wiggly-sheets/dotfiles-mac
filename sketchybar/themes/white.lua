@@ -13,14 +13,13 @@ return {
 	low_power = 0xff63981f,
 	notifications = 0xffc82d3b,
 	hover = 0x40eae3ea,
-	bar_bg = 0x0A0A0A0D,
 	bar = {
-		bg = 0x0A0A0A0D,
-		border = 0x599b9b9b,
+		bg = 0x0A0A0A40,
+		border = 0x459b9b9b,
 	},
 	popup = {
-		bg = 0xc02c2e34,
-		border = 0xff7f8490,
+		bg = 0x0A0A0A40,
+		border = 0x459b9b9b,
 	},
 
 	with_alpha = function(color, alpha)

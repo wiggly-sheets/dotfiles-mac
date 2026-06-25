@@ -70,24 +70,6 @@ local battery = sbar.add("item", "battery", {
 	updates = true,
 })
 
--- Time label (stacked under percentage)
---local battery_time = sbar.add("item", "battery_time", {
---	position = "right",
---	padding_left = 0,
---	padding_right = -90,
---	y_offset = -5,
---	icon = { drawing = false },
---	label = {
---		drawing = true,
---		string = "__:__",
---		font = { family = settings.default, size = 8 },
---		color = colors.green,
---		padding_left = 2,
---	},
---	update_freq = 30,
---})
-
--- Click behavior for battery item
 local function handle_battery_click(env)
 	if env.BUTTON == "left" then
 		sbar.exec(
@@ -105,9 +87,7 @@ local function handle_battery_click(env)
 end
 
 battery:subscribe("mouse.clicked", handle_battery_click)
--- battery_time:subscribe("mouse.clicked", handle_battery_click)
 
--- Update battery status
 local function update_battery()
 	sbar.exec("pmset -g batt", function(batt_info)
 		local icon = icons.battery._0
@@ -116,7 +96,6 @@ local function update_battery()
 		local charging = batt_info:find("AC Power") and true or false
 
 		local _, _, charge = batt_info:find("(%d+)%%")
-		local time_remaining = batt_info:match("(%d+:%d+)")
 
 		if charge then
 			charge = tonumber(charge)
@@ -134,9 +113,6 @@ local function update_battery()
 			icon = { string = charging and icons.battery.charging or icon, color = color },
 			label = { string = label, color = color },
 		})
-		--		battery_time:set({
-		--			label = { string = time_remaining or "__:__", color = color },
-		--	})
 	end)
 end
 
@@ -157,7 +133,6 @@ local function add_hover(item)
 end
 add_hover(lowpowermode)
 add_hover(battery)
---add_hover(battery_time)
 
 battery:subscribe(
 	"mouse.entered",
@@ -185,4 +160,3 @@ battery:subscribe(
 		})
 	end)
 )
---)

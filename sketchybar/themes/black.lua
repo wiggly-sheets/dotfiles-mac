@@ -14,7 +14,7 @@ return {
 	notifications = 0xffc82d3b,
 	hover = 0x40FFFFFF,
 	bar = {
-		bg = 0x0A0A0A0D,
+		bg = 0x0A0A0A40,
 		border = 0xff000000,
 	},
 	popup = {

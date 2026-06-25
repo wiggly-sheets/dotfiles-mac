@@ -2,7 +2,6 @@ local settings = require("default")
 local colors = require("colors")
 local icons = require("helpers.icons")
 
--- Disk icon item
 local disk_icon = sbar.add("item", "storage_icon", {
 	update_freq = 60,
 	position = "right",
@@ -12,7 +11,6 @@ local disk_icon = sbar.add("item", "storage_icon", {
 	icon = { font = { size = 14 } },
 })
 
--- Disk label item
 local disk_label = sbar.add("item", "storage_label", {
 	update_freq = 60,
 	position = "right",
@@ -22,7 +20,6 @@ local disk_label = sbar.add("item", "storage_label", {
 	label = { font = { family = settings.default, size = 8 } },
 })
 
--- Update disk icon/label (used/total) only
 local function update_disk()
 	sbar.exec("/usr/local/bin/diskspace 2>&1", function(output)
 		local available = tonumber(output:match("Available:%s*(%d+)")) or 0
@@ -57,11 +54,9 @@ local function update_disk()
 	end)
 end
 
--- Left-click script (keyboard shortcut)
 local left_click_script =
 	'osascript -e \'tell application "System Events" to keystroke "[" using {command down, option down, control down}\''
 
--- Handle clicks
 local function handle_disk_click(env)
 	if env.BUTTON == "left" then
 		sbar.exec(left_click_script)
@@ -69,7 +64,6 @@ local function handle_disk_click(env)
 	end
 end
 
--- Subscribe items
 disk_icon:subscribe("mouse.clicked", handle_disk_click)
 disk_label:subscribe("mouse.clicked", handle_disk_click)
 disk_icon:subscribe({ "routine", "forced", "system_woke" }, update_disk)
@@ -92,5 +86,4 @@ disk_label:subscribe({ "mouse.exited", "mouse.entered.global", "mouse.exited.glo
 	disk_label:set({ background = { drawing = true, height = 20, color = colors.transparent } })
 end)
 
--- Initial update
 update_disk()

@@ -102,7 +102,6 @@ local function update_display()
 	end)
 end
 
--- Subscribe to display/system events
 display:subscribe({ "display_change", "brightness_change", "system_woke" }, update_display)
 
 -- ======== Hover effects ========

@@ -1,12 +1,12 @@
 tap "achannarasappa/tap", "https://github.com/achannarasappa/tap.git", trusted: true
 tap "alecharmon/tap"
 tap "apple/apple", trusted: true
-tap "asmvik/formulae", trusted: true
-tap "bengerthelorf/tap", trusted: true
+tap "asmvik/formulae", "https://github.com/asmvik/homebrew-formulae.git", trusted: true
+tap "bengerthelorf/tap", "https://github.com/Bengerthelorf/homebrew-tap", trusted: true
 tap "browsh-org/browsh", trusted: true
 tap "catskull/homebrew", "https://github.com/catskull/homebrew", trusted: true
 tap "edde746/plezy", "https://github.com/edde746/plezy", trusted: true
-tap "felixkratz/formulae"
+tap "felixkratz/formulae", "https://github.com/FelixKratz/homebrew-formulae"
 tap "filosottile/musl-cross", trusted: true
 tap "gcenx/wine", trusted: true
 tap "gechr/tap", trusted: true
@@ -20,7 +20,7 @@ tap "jsattler/tap", trusted: true
 tap "jstkdng/programs"
 tap "kegworks-app/kegworks", "https://github.com/Sikarugir-App/homebrew-sikarugir.git", trusted: true
 tap "krishkrosh/apps", trusted: true
-tap "libkrun/krun", trusted: true
+tap "libkrun/krun", "https://github.com/libkrun/homebrew-krun.git", trusted: true
 tap "lihaoyun6/tap", trusted: true
 tap "lslqtz/formulae", trusted: true
 tap "m1ten/othyn", trusted: true
@@ -34,26 +34,26 @@ tap "neur0map/tap"
 tap "nohajc/anylinuxfs"
 tap "notwadegrimridge/brew", trusted: true
 tap "philocalyst/tap", trusted: true
-tap "playcover/playcover", trusted: true
+tap "playcover/playcover", "https://github.com/PlayCover/homebrew-playcover", trusted: true
 tap "rafaelswi/menubarusb", trusted: true
 tap "rgcr/formulae", trusted: true
 tap "ruffle-rs/ruffle", trusted: true
 tap "ruittenb/tap", trusted: true
 tap "samtay/tui", trusted: true
-tap "sikarugir-app/sikarugir", trusted: true
+tap "sikarugir-app/sikarugir", "https://github.com/Sikarugir-App/homebrew-sikarugir", trusted: true
 tap "skyline69/tap"
 tap "socsieng/tap"
 tap "sw33tlie/macshot", trusted: true
-tap "theboredteam/boring-notch", trusted: true
-tap "thezoraiz/ascii-image-converter"
+tap "theboredteam/boring-notch", "https://github.com/TheBoredTeam/homebrew-boring-notch", trusted: true
+tap "thezoraiz/ascii-image-converter", "https://github.com/TheZoraiz/homebrew-ascii-image-converter"
 tap "typewhisper/tap", trusted: true
-tap "valkyrie00/bbrew", trusted: true
+tap "valkyrie00/bbrew", "https://github.com/Valkyrie00/homebrew-bbrew", trusted: true
 tap "waydabber/betterdisplay"
 tap "wickenico/wailbrew", trusted: true
 tap "wiggly-sheets/sketchybar-studio", trusted: true
 tap "xykong/tap", trusted: true
 tap "zackelia/formulae", trusted: true
-tap "zimengxiong/tools", trusted: true
+tap "zimengxiong/tools", "https://github.com/ZimengXiong/homebrew-tools", trusted: true
 # General-purpose data compression with high compression ratio
 brew "xz"
 # Zstandard is a real-time compression algorithm
@@ -356,6 +356,8 @@ brew "pidof"
 brew "pipes-sh"
 # Execute binaries from Python packages in isolated environments
 brew "pipx"
+# Fast, disk space efficient package manager
+brew "pnpm"
 # Cowsay but with ponies
 brew "ponysay"
 # PDF rendering library (based on the xpdf-3.0 code base)
@@ -530,7 +532,7 @@ brew "malpern/tap/sketchybar-toggle", trusted: true
 brew "matars/gitfetch/gitfetch", trusted: true
 # Check Temperature by using Apple System Management Control (Smc) tool
 brew "narugit/tap/smctemp", trusted: true
-# TUI dashboard that unifies 34 package managers into one searchable view
+# TUI dashboard that unifies 42 package managers into one searchable view
 brew "neur0map/tap/gpk", trusted: true
 # Mount any linux-supported filesystem read/write using nfs and a microVM
 brew "nohajc/anylinuxfs/anylinuxfs", trusted: true
@@ -582,8 +584,8 @@ cask "mhaeuser/mhaeuser/battery-toolkit"
 cask "battle-net"
 # Text, code, and markup editor
 cask "bbedit"
-# The macOS screen recorder you deserve - always free and open source
-cask "jsattler/tap/bettercapture"
+# Screen recorder
+cask "bettercapture"
 # Display management tool
 cask "betterdisplay"
 # Utility improving 3rd party mouse performance and functionalities
@@ -622,6 +624,8 @@ cask "connectmenow"
 cask "container"
 # Plain-text editor for web pages, program source codes and more
 cask "coteditor"
+# System-wide AI autocomplete
+cask "cotypist"
 # Tool to run Windows software
 cask "crossover"
 # Download and manage your addons and mods
@@ -1031,7 +1035,6 @@ mas "Amphetamine", id: 937984704
 mas "Apple Configurator", id: 1037126344
 mas "Asphalt", id: 1491129197
 mas "Asphalt8", id: 610391947
-mas "Asphalt8", id: 610391947
 mas "Blackmagic Disk Speed Test", id: 425264550
 mas "Broadcasts", id: 1469995354
 mas "Color Picker", id: 1545870783
@@ -1171,4 +1174,5 @@ npm "mapscii"
 npm "mdlt"
 npm "n"
 npm "neovim"
+npm "pnpm"
 npm "undollar"
