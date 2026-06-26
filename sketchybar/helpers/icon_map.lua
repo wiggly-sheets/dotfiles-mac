@@ -253,6 +253,7 @@ return {
 	[ [[Системные настройки]] ] = ":gear:",
 	[ [[Gemini]] ] = ":gemini:",
 	[ [[Google Gemini]] ] = ":gemini:",
+	[ [[Ghidra]] ] = ":ghidra:",
 	[ [[Ghostty]] ] = ":ghostty:",
 	[ [[GIMP]] ] = ":gimp:",
 	[ [[GitHub Desktop]] ] = ":git_hub:",

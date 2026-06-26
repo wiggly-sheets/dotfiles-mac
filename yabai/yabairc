@@ -150,8 +150,8 @@ FLOAT_APPS=(
   "^balenaEtcher$"
   "^Raspberry Pi Imager$"
   "^Blackmagic Disk Speed Test$"
+  "^Magic Disk Benchmark$"
   "^coconutBattery$"
-  "^Raycast$"
   "^Raycast Beta$"
   "^iPhone Mirroring$"
   "^VMware Fusion$"
@@ -225,6 +225,8 @@ FLOAT_APPS=(
   "^Star Wars - The Old Republic Launcher$"
   "^Folder Preview Pro$"
   "^Klack$"
+  "^Pictogram$"
+
 )
 
 for app in "${FLOAT_APPS[@]}"; do
