@@ -60,7 +60,7 @@ local File_Type = {
 --- Get current working directory
 ---@return string
 local get_cwd_raw = ya.sync(function()
-	return tostring(cx.active.current.cwd)
+	return tostring(cx.active.current.cwd.path or cx.active.current.cwd)
 end)
 
 --- Quote path for shell command
@@ -277,7 +277,7 @@ function M:entry(job)
 	---@type Theme
 	local theme = get_state(STATE.THEME)
 	theme.title = theme.title and ui.Style():fg(theme.title):bold() or th.confirm.title
-	theme.header = theme.header and ui.Style():fg(theme.header) or th.confirm.content
+	theme.header = theme.header and ui.Style():fg(theme.header) or th.confirm.body or th.confirm.content
 	theme.header_warning = ui.Style():fg(theme.header_warning or "yellow")
 	if show_confirm then
 		local continue_restore = ya.confirm({

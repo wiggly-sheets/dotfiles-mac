@@ -1,15 +1,10 @@
---- @since 25.5.31
+--- @since 26.1.22
 
 local update = ya.sync(function(st, tags)
 	for path, tag in pairs(tags) do
 		st.tags[path] = #tag > 0 and tag or nil
 	end
-	-- TODO: remove this
-	if ui.render then
-		ui.render()
-	else
-		ya.render()
-	end
+	ui.render()
 end)
 
 local selected_or_hovered = ya.sync(function()
@@ -32,14 +27,15 @@ local function setup(st, opts)
 		local url = tostring(self._file.url)
 		local spans = {}
 		for _, tag in ipairs(st.tags[url] or {}) do
-			if self._file.is_hovered then
+			if not self._file.in_current then
+			elseif self._file.is_hovered then
 				spans[#spans + 1] = ui.Span(" ●"):bg(st.colors[tag] or "reset")
 			else
 				spans[#spans + 1] = ui.Span(" ●"):fg(st.colors[tag] or "reset")
 			end
 		end
 		return ui.Line(spans)
-	end, 500)
+	end, opts.order or 500)
 end
 
 local function fetch(_, job)
@@ -48,7 +44,7 @@ local function fetch(_, job)
 		paths[#paths + 1] = tostring(file.url)
 	end
 
-	local output, err = Command("tag"):arg(paths):stdout(Command.PIPED):output()
+	local output, err = Command("tag"):arg(paths):output()
 	if not output then
 		return true, Err("Cannot spawn `tag` command, error: %s", err)
 	end

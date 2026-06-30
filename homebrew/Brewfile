@@ -13,7 +13,7 @@ tap "gechr/tap", trusted: true
 tap "gromgit/brewtils", trusted: true
 tap "gromgit/fuse", trusted: true
 tap "gschurck/fuzzybrew"
-tap "hewigovens/tap", "https://github.com/hewigovens/tap.git"
+tap "hewigovens/tap", "https://github.com/hewigovens/tap.git", trusted: true
 tap "homielab/mountmate", "https://github.com/homielab/mountmate", trusted: true
 tap "jackielii/tap", trusted: true
 tap "jsattler/tap", trusted: true
@@ -564,6 +564,8 @@ cask "anki"
 cask "app-buddy"
 # Inspect application bundles
 cask "apparency"
+# Dynamic Island for the MacBook notch
+cask "atoll"
 # Multi-track audio editor and recorder
 cask "audacity"
 # Records audio from any application
@@ -719,8 +721,6 @@ cask "hazel"
 cask "helium-browser"
 # Backup data from a Synology NAS
 cask "hyperbackupexplorer"
-# Customize macOS app icons
-cask "bengerthelorf/tap/iconchanger"
 # Free and open-source media player
 cask "iina"
 # Tool to optimise images to a smaller size
@@ -849,6 +849,8 @@ cask "pcsx2"
 cask "pearcleaner"
 # Converts and edits video, audio or image files
 cask "permute"
+# Customise and maintain app icons
+cask "pictogram"
 # Control where notifications appear on your screen.
 cask "notwadegrimridge/brew/pingplace"
 # Simple Gtk# Paint Program

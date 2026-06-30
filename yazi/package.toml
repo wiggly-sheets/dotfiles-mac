@@ -1,42 +1,42 @@
 [[plugin.deps]]
 use = "gesellkammer/audio-preview"
-rev = "74dfea3"
-hash = "16b08cbb794b1b519bea4d18066c0d9f"
+rev = "c95e4f6"
+hash = "94334f36009e7e1635de43c98c6502c5"
 
 [[plugin.deps]]
 use = "ahkohd/eza-preview"
-rev = "7b00863"
-hash = "c538f3766b4b3bafbae3f0b7c3c3d763"
+rev = "e8fb6c8"
+hash = "c238595c801caa4f28553b9af8cf8804"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:jump-to-char"
-rev = "8f1d971"
-hash = "a01bab66d0293900c554a8bb92dc8de1"
+rev = "39aaf6d"
+hash = "7a4b4237223aaa94e589d1c01a23542a"
 
 [[plugin.deps]]
 use = "dedukun/relative-motions"
 rev = "a603d9e"
-hash = "c8247134797be9b8d5fd1721f68af0f3"
+hash = "e02a788e5b8ae0fb47fd0193dda589cc"
 
 [[plugin.deps]]
 use = "stelcodes/bunny"
-rev = "7137a44"
-hash = "58bfa473bcac8574400e573787954512"
+rev = "71b14a3"
+hash = "18a2829738214fe9bca99a2fef19113d"
 
 [[plugin.deps]]
 use = "WhoSowSee/whoosh"
-rev = "cba7239"
-hash = "c053ed009375d7e8f1557502f7a2d3a5"
+rev = "ec2e6f7"
+hash = "59e984146fa6b20c441817444d5fdd61"
 
 [[plugin.deps]]
 use = "KKV9/compress"
-rev = "c264639"
-hash = "e17c11b605d989568a1d1741ca17c584"
+rev = "e60e122"
+hash = "fbaf0adc8efc59555b748d36aab62d40"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:chmod"
-rev = "9a52857"
-hash = "8ad3e90b079190b4905f24a44f4ca06b"
+rev = "39aaf6d"
+hash = "f0c8c378184d5f8abd1b095a443d336d"
 
 [[plugin.deps]]
 use = "atareao/convert"
@@ -45,43 +45,43 @@ hash = "1c0465351f2a344e842f065ab316f265"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:diff"
-rev = "9a52857"
-hash = "82376c3381ae915fd799d40f4dd4c6cd"
+rev = "39aaf6d"
+hash = "8b1af6b5a69797ee951f2a80ce570818"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:mount"
-rev = "9a52857"
-hash = "4fccaaf10c36dc2466e2438a386ff017"
+rev = "39aaf6d"
+hash = "e3260d0b1feded8c8e3ae3afa1169e30"
 
 [[plugin.deps]]
 use = "uhs-robert/recycle-bin"
-rev = "03f6c4a"
-hash = "f14a951bf376d7fe73033c4a48aa5fa4"
+rev = "fa68711"
+hash = "8714306b5cac6359edbacbf545fbd691"
 
 [[plugin.deps]]
 use = "GianniBYoung/rsync"
-rev = "824d8a3"
-hash = "936d560532b0095d3f27e8fc0824d751"
+rev = "44f6979"
+hash = "9e85283824277bf66011a3977d266edb"
 
 [[plugin.deps]]
 use = "boydaihungst/restore"
-rev = "2161735"
-hash = "901741afba1979739b4650324265162e"
+rev = "0e08704"
+hash = "e4d7c06510b4fe5f64ae31fbb4e017d6"
 
 [[plugin.deps]]
 use = "uhs-robert/sshfs"
-rev = "0d6e699"
-hash = "458a404b1b9d6e72ee27812629782a0b"
+rev = "a8b8903"
+hash = "8c1b36103121a66b37308afaf7124575"
 
 [[plugin.deps]]
 use = "pirafrank/what-size"
-rev = "d896656"
-hash = "62251f94eb67648d42cdfcfb8be0fad2"
+rev = "179ebf6"
+hash = "57056b9728006881d580ccabe8154a9c"
 
 [[plugin.deps]]
 use = "boydaihungst/save-clipboard-to-file"
-rev = "40de82f"
-hash = "f79197930f23924827e81fa51a1413d0"
+rev = "4f034ac"
+hash = "4bdfecaa643db1cc28ccba799463d5b8"
 
 [[plugin.deps]]
 use = "AnirudhG07/plugins-yazi:copy-file-contents"
@@ -90,38 +90,38 @@ hash = "f8530ee84fee95dbcc26bb1d8d8019c7"
 
 [[plugin.deps]]
 use = "MasouShizuka/close-and-restore-tab"
-rev = "5047217"
-hash = "b52a6aa10d3ffde2525090a32dc878d8"
+rev = "b2153bc"
+hash = "1493e40f8f4f222c9ecb24cf85ccabd2"
 
 [[plugin.deps]]
 use = "boydaihungst/file-extra-metadata"
-rev = "116a460"
-hash = "c90b89405b306e9d3107ceb4ac4afa10"
+rev = "044274c"
+hash = "14006064a6a53a1770fbdcefb97a8347"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:mactag"
-rev = "9a52857"
-hash = "326eb39db39c855a1d564b777b810f05"
+rev = "39aaf6d"
+hash = "235256b396f4da77ff8f5b8eacd7c113"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:toggle-pane"
-rev = "9a52857"
-hash = "8a7c58225816a163a6e8730c0adafbc8"
+rev = "39aaf6d"
+hash = "15e5b67a241172cbb86b8fbf9e63692"
 
 [[plugin.deps]]
 use = "imsi32/yatline"
-rev = "88bd1c5"
-hash = "981acbe9b758b1af3a8154c932bb936d"
+rev = "c5d4b48"
+hash = "e6e98d12b1648d1894c2b560d85eeaa7"
 
 [[plugin.deps]]
 use = "llanosrocas/yaziline"
-rev = "e7042a8"
-hash = "9c2ab18ff5368056904e4ebb61b17571"
+rev = "25161c1"
+hash = "5c7802a9ac249be88729978e3b9525bc"
 
 [[plugin.deps]]
 use = "Lil-Dank/lazygit"
-rev = "8f37dc5"
-hash = "ee71543790f0ce3951161045a3787abd"
+rev = "e73fd74"
+hash = "6ea5f37c7f219671ec504cb8311f889d"
 
 [[plugin.deps]]
 use = "Sonico98/exifaudio"
@@ -130,8 +130,8 @@ hash = "4761fffb60a12d37096c34a356380cdf"
 
 [[plugin.deps]]
 use = "boydaihungst/mediainfo"
-rev = "2093ab7"
-hash = "16a10359fc2a3cd8cc8bcfbe00f744d3"
+rev = "a6d30a1"
+hash = "7d4dd1afcb7ecbd3609c29a82d6dbc5c"
 
 [[plugin.deps]]
 use = "macydnah/office"
@@ -140,25 +140,25 @@ hash = "5805affd3ae8adcb3c72b6997d21c0a6"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:piper"
-rev = "9a52857"
-hash = "a20327710c3a8d37ee0972128dcb6a31"
+rev = "39aaf6d"
+hash = "12126fca34f9f1802bb57b88292f57af"
 
 [[plugin.deps]]
 use = "AnirudhG07/rich-preview"
-rev = "1eae795"
-hash = "90b1e3a244c84ac3b8e06a3421b20128"
+rev = "7d616ad"
+hash = "d64feec9761392cbc250d199ab4b8a3a"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:zoom"
-rev = "9a52857"
-hash = "9dee2bf990ea941ccf67df74bca45468"
+rev = "39aaf6d"
+hash = "e8e279463ee99c940e6945a14cf4aa9e"
 
 [[flavor.deps]]
 use = "kalidyasin/yazi-flavors:tokyonight-storm"
-rev = "fa19b40"
-hash = "b9aa812b133d03b4445beac37c28caa8"
+rev = "70fe6b4"
+hash = "5e3e7bacbda43a1816d1e8be53a3599e"
 
 [[flavor.deps]]
 use = "kalidyasin/yazi-flavors:tokyonight-night"
-rev = "fa19b40"
-hash = "fd99189fe362330c683de88d7189b44"
+rev = "70fe6b4"
+hash = "88fdb4f82f911c0e89090d75ff4c248"

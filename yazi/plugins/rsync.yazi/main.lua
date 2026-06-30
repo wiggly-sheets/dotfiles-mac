@@ -49,13 +49,25 @@ return {
 	entry = function(_, job)
 		ya.mgr_emit("escape", { visual = true })
 		local remote_target = job.args and #job.args >= 1 and job.args[1] or nil
+		local remember = job.args and job.args.remember
+
+		local cache_file = os.getenv("HOME") .. "/.config/yazi/plugins/rsync.yazi/.last_target"
+
+		local cached_target = ""
+		if remember then
+			local f = io.open(cache_file, "r")
+			if f then
+				cached_target = f:read("*a"):match("^%s*(.-)%s*$")
+				f:close()
+			end
+		end
 
 		local files = selected_or_hovered()
 		if #files == 0 then
 			return ya.notify({ title = "Rsync", content = "No files selected", level = "warn", timeout = 3 })
 		end
 
-		local default_dest = ""
+		local default_dest = remote_target or cached_target
 		if #files == 1 and remote_target ~= nil then
 			local base_name = files[1]:match("([^/]+)$")
 			default_dest = remote_target .. ":" .. base_name
@@ -65,7 +77,7 @@ return {
 		local dest, ok = ya.input({
 			title = "Rsync - [user]@[remote]:<destination>",
 			value = default_dest or nil,
-			position = { "top-center", y = 3, w = 45 },
+			pos = { "top-center", y = 3, w = 45 },
 		})
 		if ok ~= 1 then
 			return
@@ -112,6 +124,14 @@ return {
 				content = "Rsync Completed!",
 				timeout = 3,
 			})
+
+			if remember and dest and dest ~= "" then
+				local f = io.open(cache_file, "w")
+				if f then
+					f:write(dest)
+					f:close()
+				end
+			end
 		end
 	end,
 }
