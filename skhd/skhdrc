@@ -14,7 +14,7 @@
 # Linux-style word navigation and deletion
 ctrl - backspace [
     @native_apps ~         # Terminal apps handle natively
-    *            | alt - backspace  # Other apps: delete 
+    *            | alt - backspace  # Other apps: delete
 ]
 
 ctrl - left [
@@ -76,9 +76,9 @@ cmd + shift - right : yabai -m window --toggle float; yabai -m window --grid 1:2
 cmd + shift - up : yabai -m window --toggle float; yabai -m window --grid 2:1:0:0:1:1
 cmd + shift - down : yabai -m window --toggle float; yabai -m window --grid 2:1:0:1:1:1
 alt + shift - up : yabai -m window --toggle float; yabai -m window --grid 1:1:0:0:1:1
-alt + shift - down : yabai -m window --toggle float; yabai -m window --grid 5:5:1:1:3:3 
+alt + shift - down : yabai -m window --toggle float; yabai -m window --grid 5:5:1:1:3:3
 alt + shift - left : yabai -m window --toggle float; yabai -m window --grid 1:3:0:0:1:1
-alt + shift - right : yabai -m window --toggle float; yabai -m window --grid 1:3:2:0:1:1 
+alt + shift - right : yabai -m window --toggle float; yabai -m window --grid 1:3:2:0:1:1
 
 # raise window to top of layer
 alt - up : yabai -m window --raise
@@ -379,7 +379,7 @@ shift + cmd - b : sketchybar --bar hidden=toggle
 shift + cmd - c : ~/dotfiles/yabai/scripts/borders.sh
 
 # toggle menu bar padding, window gaps, sketchybar height, and padding for internal or external display
-shift + cmd -m : ~/dotfiles/yabai/scripts/layout.sh
+shift + cmd - m : ~/dotfiles/yabai/scripts/layout.sh
 
 # toggle native menu bar & sketchybar visbility
 shift + cmd - v : ~/dotfiles/yabai/scripts/menubar.sh
@@ -389,3 +389,10 @@ shift + cmd - g : ~/dotfiles/yabai/scripts/opacity.sh
 
 # toggle between whether mouse dropping window on top of another swaps them or stacks them
 shift + cmd - d : ~/dotfiles/yabai/scripts/mouse_action.sh
+
+# toggle keyclu skhd shortcut sheet
+cmd + ctrl - c : /Applications/KeyClu.app/Contents/MacOS/KeyClu --toggle-panel --sheet skhd
+
+# toggle keyclu macos shortcut sheet
+cmd + ctrl - m : /Applications/KeyClu.app/Contents/MacOS/KeyClu --toggle-panel --sheet macos
+

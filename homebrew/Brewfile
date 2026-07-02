@@ -572,12 +572,6 @@ cask "audacity"
 cask "audio-hijack"
 # A simple auto clicker for macOS in swift
 cask "m1ten/othyn/autoclicker"
-# Data backup and storage service
-cask "backblaze"
-# Download Backblaze restored files more reliably
-cask "backblaze-downloader"
-# Computer backup restore client
-cask "backblaze-restore"
 # Tool to flash OS images to SD cards & USB drives
 cask "balenaetcher"
 # Control the platform power state of your Apple Silicon device
@@ -767,8 +761,6 @@ cask "lm-studio"
 cask "loopback"
 # Trims video and audio files losslessly
 cask "losslesscut"
-# Clipboard manager
-cask "maccy"
 # File system integration
 cask "macfuse"
 # Graphical user interface for the command terminal
@@ -833,6 +825,8 @@ cask "onyx"
 cask "catskull/homebrew/openemu-arm"
 # Real-time strategy game engine for Westwood games
 cask "openra"
+# Open-source transport simulation game
+cask "openttd"
 # Replacement for Docker Desktop
 cask "orbstack"
 # WebKit based web browser
@@ -859,8 +853,6 @@ cask "pinta"
 cask "pixieditor"
 # Sideload iOS apps and games
 cask "playcover/playcover/playcover-community"
-# Allows installation and use of software designed for Windows
-cask "playonmac"
 # Home media player
 cask "plex"
 # Music player focusing on visuals
@@ -869,8 +861,6 @@ cask "plexamp"
 cask "edde746/plezy/plezy"
 # Used to access context-specific actions when text is selected
 cask "popclip"
-# Install games and apps compiled for Microsoft Windows
-cask "porting-kit"
 # Monitor process activity
 cask "processmonitor"
 # Peer to peer Bitorrent client
@@ -957,10 +947,6 @@ cask "suspicious-package"
 cask "swiftbar"
 # Replacement for RCDefaultApps, written in Swift
 cask "swiftdefaultappsprefpane"
-# Sync and backup service to Synology NAS drives
-cask "synology-drive"
-# Tool to manage Synology NAS's across a LAN
-cask "synologyassistant"
 # Quicklook extension for source files
 cask "syntax-highlight"
 # Mesh VPN based on WireGuard
@@ -1015,8 +1001,6 @@ cask "wezterm@nightly"
 cask "whatsapp"
 # Menu bar utility for viewing and switching macOS Spaces
 cask "gechr/tap/whichspace"
-# Wine wrapper built with SwiftUI
-cask "whisky"
 # Network protocol analyzer
 cask "wireshark-app"
 # Original Xbox Emulator
@@ -1035,11 +1019,12 @@ mas "2048 Game", id: 871033113
 mas "Actions", id: 1586435171
 mas "Amphetamine", id: 937984704
 mas "Apple Configurator", id: 1037126344
+mas "Asphalt", id: 1491129197
 mas "Blackmagic Disk Speed Test", id: 425264550
 mas "Broadcasts", id: 1469995354
 mas "Color Picker", id: 1545870783
 mas "Colorful Folder", id: 1576476152
-mas "Comet", id: 1146204813
+mas "Comet Reddit", id: 1146204813
 mas "Compressor", id: 424390742
 mas "Dark Reader for Safari", id: 1438243180
 mas "Dato", id: 1470584107
@@ -1059,6 +1044,7 @@ mas "JuxtaText", id: 6504801865
 mas "Keynote", id: 361285480
 mas "Keyword Search", id: 1558453954
 mas "Klack", id: 6446206067
+mas "Knights of the Old Republic", id: 416608891
 mas "Lickable Menu Bar", id: 6444217677
 mas "Logic Pro", id: 634148309
 mas "Mactracker", id: 430255202
@@ -1086,6 +1072,7 @@ mas "SnippetsLab", id: 1006087419
 mas "Sparrow Weather", id: 6449440582
 mas "Speediness", id: 1596706466
 mas "Sprinkles", id: 1500209074
+mas "Star Wars®: Knights of the Old Republic™ II", id: 960778634
 mas "Startup Manager", id: 1296723195
 mas "Swift Playground", id: 1496833156
 mas "TestFlight", id: 899247664

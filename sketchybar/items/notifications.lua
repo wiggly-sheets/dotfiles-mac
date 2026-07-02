@@ -30,7 +30,7 @@ local function check_notifications()
 	local sql = [[select count(*) as cnt from record where style=1 and presented=false OR style=2;]]
 	local cmd = string.format("sqlite3 -readonly '%s' \"%s\"", notif_db, sql)
 	sbar.exec(cmd, function(output)
-		local count = math.max((tonumber(output) or 0), 0)
+		local count = math.max((tonumber(output) - 1 or 0), 0)
 
 		if count > 9 then
 			notifications:set({
