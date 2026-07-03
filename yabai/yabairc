@@ -14,7 +14,7 @@ sudo yabai --load-sa
 pkill "Stackline" && open -a "Stackline"
 
 # ================================
-# run the script to allow space renaming with spacesrenamer.app
+# run the script to allow desktop space renaming with spacesrenamer.app
 # ================================
 
 yabai -m signal --add event=dock_did_restart action="~/dotfiles/mac/tweaks/spacesrenamer/run.sh"
