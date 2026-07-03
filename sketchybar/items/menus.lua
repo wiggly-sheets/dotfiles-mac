@@ -128,172 +128,6 @@ end)
 
 menu_watcher:subscribe("front_app_switched", "window_focus", update_menus)
 
-local theme_dir = os.getenv("HOME") .. "/.config/sketchybar/themes/"
-local theme_file = os.getenv("HOME") .. "/.config/sketchybar/themes/current_theme"
-
-local function get_current_theme()
-	local f = io.open(theme_file, "r")
-	if not f then
-		return nil
-	end
-	local t = f:read("*l")
-	f:close()
-	return t
-end
-
-local function list_themes()
-	local themes = {}
-
-	-- List *.lua files only
-	local p = io.popen('ls -1 "' .. theme_dir .. '"')
-	if not p then
-		return themes
-	end
-	for file in p:lines() do
-		-- Skip hidden files (dotfiles)
-		if not file:match("^%.") then
-			-- strip .lua extension
-			local name = file:match("^(.*)%.lua$")
-			if name then
-				table.insert(themes, name)
-			end
-		end
-	end
-	p:close()
-
-	table.sort(themes) -- alphabetical order
-	return themes
-end
-
-local wallpaper_cache = {
-	list = nil,
-	last_scan = 0,
-	ttl = 10, -- seconds
-}
-
-local function list_wallpapers()
-	local now = os.time()
-
-	-- return cached results if still fresh
-	if wallpaper_cache.list and (now - wallpaper_cache.last_scan) < wallpaper_cache.ttl then
-		return wallpaper_cache.list
-	end
-
-	local wallpapers = {}
-	local p = io.popen('find "$HOME/Pictures/Wallpapers" -type f')
-	if not p then
-		return wallpapers
-	end
-
-	for file in p:lines() do
-		-- Skip hidden files (dotfiles)
-		local basename = file:match("([^/]+)$")
-		if basename and not basename:match("^%.") then
-			table.insert(wallpapers, file)
-		end
-	end
-	p:close()
-
-	table.sort(wallpapers)
-
-	wallpaper_cache.list = wallpapers
-	wallpaper_cache.last_scan = now
-
-	return wallpapers
-end
-
-local function clear_popup(prefix)
-	sbar.remove("/" .. prefix .. "\\..*/")
-	sbar.remove("/.*\\.header/")
-end
-
-local function open_theme_popup(anchor)
-	clear_popup("theme.item")
-	clear_popup("wallpaper.item")
-
-	-- Header
-	sbar.add("item", "theme.header", {
-		position = "popup." .. anchor.name,
-		label = {
-			string = "Themes",
-			font = { family = settings.default, size = 11, style = "Bold" },
-		},
-		padding_left = 10,
-		padding_right = 10,
-	})
-
-	local current = get_current_theme()
-	local themes = list_themes()
-
-	for i, theme in ipairs(themes) do
-		local is_active = theme == current
-		sbar.add("item", "theme.item." .. i, {
-			position = "popup." .. anchor.name,
-			label = theme,
-			background = {
-				drawing = is_active,
-				color = is_active and colors.hover or colors.transparent,
-				corner_radius = 20,
-			},
-			click_script = "echo '" .. theme .. "' > " .. theme_file .. " && sketchybar --reload",
-		})
-	end
-
-	anchor:subscribe("mouse.exited.global", function()
-		clear_popup("theme.item")
-		clear_popup("wallpaper.item")
-	end)
-end
-
-local function open_wallpaper_popup(anchor)
-	clear_popup("wallpaper.item")
-	clear_popup("theme.item")
-
-	-- Header
-	sbar.add("item", "wallpaper.header", {
-		position = "popup." .. anchor.name,
-		label = {
-			string = "Wallpapers",
-			font = { family = settings.default, size = 11, style = "Bold" },
-		},
-		padding_left = 10,
-		padding_right = 10,
-	})
-
-	local wallpapers = list_wallpapers()
-
-	local function get_current_wallpaper()
-		local f = io.popen("osascript -e 'tell application \"System Events\" to get picture of every desktop'")
-		if not f then
-			return nil
-		end
-		local result = f:read("*a")
-		f:close()
-		result = result:gsub("%s+$", "") -- trim trailing whitespace
-		return result
-	end
-
-	local current_wp = get_current_wallpaper()
-
-	for i, wp in ipairs(wallpapers) do
-		local is_active = current_wp and current_wp:match(wp:match("([^/]+)$")) -- simple match by filename
-		sbar.add("item", "wallpaper.item." .. i, {
-			position = "popup." .. anchor.name,
-			label = wp:match("([^/]+)$"),
-			background = {
-				drawing = is_active and true or false,
-				color = is_active and colors.hover or colors.transparent,
-				corner_radius = 20,
-			},
-			click_script = 'osascript -e \'tell application "System Events" to set picture of every desktop to "'
-				.. wp
-				.. "\"'",
-		})
-	end
-
-	anchor:set({ popup = { drawing = "toggle", height = 25, align = "center" } })
-end
-
 for i, menu in ipairs(menu_items) do
 	menu:subscribe("mouse.clicked", function(env)
 		if env.BUTTON == "left" then
@@ -376,6 +210,24 @@ apple:subscribe("mouse.clicked", function(env)
 	end
 end)
 
+local left_front_app_script = 'osascript -e \'tell application "System Events" to keystroke "w" using {command down}\''
+
+local right_front_app_script =
+	"osascript -e 'tell application \"System Events\" to set frontApp to name of first application process whose frontmost is true' -e 'tell application frontApp to quit'"
+
+local middle_front_app_script =
+	'osascript -e \'tell application "System Events" to keystroke "h" using {command down}\''
+
+front_app:subscribe("mouse.clicked", function(env)
+	if env.BUTTON == "left" then
+		sbar.exec(left_front_app_script)
+	elseif env.BUTTON == "right" then
+		sbar.exec(right_front_app_script)
+	else
+		sbar.exec(middle_front_app_script)
+	end
+end)
+
 apple:subscribe("mouse.entered", function()
 	apple:set({
 		background = {
@@ -405,6 +257,26 @@ menu_toggle:subscribe("mouse.entered", function()
 			corner_radius = 10,
 			height = 20,
 			x_offset = 1,
+		},
+	})
+end)
+
+front_app:subscribe("mouse.entered", function()
+	front_app:set({
+		background = {
+			drawing = true,
+			color = colors.hover,
+			corner_radius = 10,
+			height = 20,
+			x_offset = -1,
+		},
+	})
+end)
+
+front_app:subscribe("mouse.exited", function()
+	front_app:set({
+		background = {
+			drawing = false,
 		},
 	})
 end)
