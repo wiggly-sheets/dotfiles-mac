@@ -3,7 +3,7 @@ local icons = require("helpers.icons")
 
 local control_center = sbar.add("item", "control_center", {
 	position = "right",
-	padding_right = -5,
+	padding_right = -4,
 	padding_left = 0,
 	icon = {
 		drawing = true,
@@ -21,12 +21,16 @@ local left_click_script = "cliclick kd:fn t:c"
 local right_click_script =
 	'osascript -e \'tell application "System Events" to tell process "Only Switch" to click menu bar item 1 of menu bar 2\''
 
+local middle_click_script =
+	'osascript -e \'tell application "System Events" to keystroke "," using {control down, option down}\''
+
 control_center:subscribe("mouse.clicked", function(env)
 	if env.BUTTON == "left" then
 		sbar.exec(left_click_script)
 	elseif env.BUTTON == "right" then
 		sbar.exec(right_click_script)
 	else
+		sbar.exec(middle_click_script)
 	end
 end)
 

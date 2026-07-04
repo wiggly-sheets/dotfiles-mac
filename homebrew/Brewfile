@@ -10,6 +10,7 @@ tap "felixkratz/formulae", "https://github.com/FelixKratz/homebrew-formulae"
 tap "filosottile/musl-cross", trusted: true
 tap "gcenx/wine", trusted: true
 tap "gechr/tap", trusted: true
+tap "gitmichaelqiu/tap"
 tap "gromgit/brewtils", trusted: true
 tap "gromgit/fuse", trusted: true
 tap "gschurck/fuzzybrew"
@@ -17,10 +18,10 @@ tap "hewigovens/tap", "https://github.com/hewigovens/tap.git", trusted: true
 tap "homielab/mountmate", "https://github.com/homielab/mountmate", trusted: true
 tap "jackielii/tap", trusted: true
 tap "jsattler/tap", trusted: true
+tap "jsheffie/tap"
 tap "jstkdng/programs"
 tap "kegworks-app/kegworks", "https://github.com/Sikarugir-App/homebrew-sikarugir.git", trusted: true
 tap "krishkrosh/apps", trusted: true
-tap "libkrun/krun", "https://github.com/libkrun/homebrew-krun.git", trusted: true
 tap "lihaoyun6/tap", trusted: true
 tap "lslqtz/formulae", trusted: true
 tap "m1ten/othyn", trusted: true
@@ -50,8 +51,9 @@ tap "typewhisper/tap", trusted: true
 tap "valkyrie00/bbrew", "https://github.com/Valkyrie00/homebrew-bbrew", trusted: true
 tap "waydabber/betterdisplay"
 tap "wickenico/wailbrew", trusted: true
-tap "wiggly-sheets/sketchybar-studio", trusted: true
+tap "wiggly-sheets/sketchybar-studio", "https://github.com/wiggly-sheets/Homebrew-SketchyBar-Studio.git", trusted: true
 tap "xykong/tap", trusted: true
+tap "z20240/tap"
 tap "zackelia/formulae", trusted: true
 tap "zimengxiong/tools", "https://github.com/ZimengXiong/homebrew-tools", trusted: true
 # General-purpose data compression with high compression ratio
@@ -456,6 +458,8 @@ brew "toilet"
 brew "toipe"
 # Upgrade all the things
 brew "topgrade"
+# Drop-in replacement for tmux-plugin-manager (tpm) with a TUI
+brew "tpack"
 # CLI tool that moves files or folder to the trash
 brew "trash"
 # Display directories as trees (with optional color/HTML output)
@@ -554,6 +558,8 @@ brew "valkyrie00/bbrew/bbrew", trusted: true
 brew "waydabber/betterdisplay/betterdisplaycli", trusted: true
 # Get the battery level of all your devices on your Mac.
 cask "lihaoyun6/tap/airbattery"
+# GPU-accelerated terminal emulator
+cask "alacritty"
 # Enable Windows-like alt-tab
 cask "alt-tab"
 # iOS App Store alternative
@@ -634,6 +640,8 @@ cask "cyberduck"
 cask "deepl"
 # Utility to enhance the Open and Save dialogs in applications
 cask "default-folder-x"
+# Rename macOS Desktops/Spaces from the menubar
+cask "gitmichaelqiu/tap/desktoprenamer", trusted: true
 # Show available disk space on APFS volumes
 cask "diskspace"
 # Monitor DNS activity
@@ -687,6 +695,8 @@ cask "freecad"
 cask "gemini"
 # Software reverse engineering (SRE) suite of tools
 cask "ghidra"
+# Terminal emulator that uses platform-native UI and GPU acceleration
+cask "ghostty"
 # Free and open-source image editor
 cask "gimp"
 # Desktop client for GitHub repositories
@@ -739,6 +749,8 @@ cask "keyboard-maestro"
 cask "keycastr"
 # Find shortcuts for any installed application
 cask "keyclu"
+# GPU-based terminal emulator
+cask "kitty"
 # Tool to show what is persistently installed on the computer
 cask "knockknock"
 # Free and open-source painting and sketching program
@@ -927,6 +939,8 @@ cask "sourcetree"
 cask "zimengxiong/tools/spacecommand"
 # View and navigate Spaces (Virtual Desktops) from the menu bar
 cask "ruittenb/tap/spaceman"
+# Floating yabai workspace grid overlay for macOS
+cask "jsheffie/tap/spacemap", trusted: true
 # Run anything at startup by simply placing it in a special folder
 cask "startupfolder"
 # System monitor for the menu bar
@@ -949,6 +963,8 @@ cask "swiftbar"
 cask "swiftdefaultappsprefpane"
 # Quicklook extension for source files
 cask "syntax-highlight"
+# Terminal emulator, SSH and serial client
+cask "tabby"
 # Mesh VPN based on WireGuard
 cask "tailscale-app"
 # Windows-style taskbar as a Dock replacement
@@ -993,6 +1009,8 @@ cask "utm"
 cask "vscodium"
 # Manage Homebrew packages with a UI
 cask "wickenico/wailbrew/wailbrew"
+# Rust-based terminal
+cask "warp"
 # Torrent streaming application
 cask "webtorrent"
 # GPU-accelerated cross-platform terminal emulator and multiplexer
@@ -1007,6 +1025,8 @@ cask "wireshark-app"
 cask "xemu"
 # Open-source version of the X.Org X Window System
 cask "xquartz"
+# Visual enhancement suite for yabai: stack indicators, window menu, Dock previews
+cask "z20240/tap/yabai-dockstack", trusted: true
 # Multiplayer code editor
 cask "zed"
 # Gecko based web browser
@@ -1019,7 +1039,6 @@ mas "2048 Game", id: 871033113
 mas "Actions", id: 1586435171
 mas "Amphetamine", id: 937984704
 mas "Apple Configurator", id: 1037126344
-mas "Asphalt", id: 1491129197
 mas "Blackmagic Disk Speed Test", id: 425264550
 mas "Broadcasts", id: 1469995354
 mas "Color Picker", id: 1545870783
@@ -1040,11 +1059,11 @@ mas "HEIC Converter", id: 1294126402
 mas "Ice Cubes", id: 6444915884
 mas "IconizeFolder", id: 6478772538
 mas "InfoCard", id: 1110195348
+mas "Irvue", id: 1039633667
 mas "JuxtaText", id: 6504801865
 mas "Keynote", id: 361285480
 mas "Keyword Search", id: 1558453954
 mas "Klack", id: 6446206067
-mas "Knights of the Old Republic", id: 416608891
 mas "Lickable Menu Bar", id: 6444217677
 mas "Logic Pro", id: 634148309
 mas "Mactracker", id: 430255202
@@ -1072,7 +1091,6 @@ mas "SnippetsLab", id: 1006087419
 mas "Sparrow Weather", id: 6449440582
 mas "Speediness", id: 1596706466
 mas "Sprinkles", id: 1500209074
-mas "Star Wars®: Knights of the Old Republic™ II", id: 960778634
 mas "Startup Manager", id: 1296723195
 mas "Swift Playground", id: 1496833156
 mas "TestFlight", id: 899247664

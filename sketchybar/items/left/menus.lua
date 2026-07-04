@@ -4,7 +4,7 @@ local icons = require("helpers.icons")
 
 local apple = sbar.add("item", "apple", {
 	icon = {
-		font = { size = 14 },
+		font = { size = 16 },
 		string = icons.apple,
 		position = "left",
 		padding_left = 6,
@@ -155,10 +155,6 @@ for i, menu in ipairs(menu_items) do
 					})
 				end
 			end
-		elseif env.BUTTON == "right" then
-			open_wallpaper_popup(menu)
-		elseif env.BUTTON == "other" then
-			open_theme_popup(menu)
 		end
 	end)
 end
@@ -192,39 +188,124 @@ for i, menu in ipairs(menu_items) do
 	end)
 end
 
+--------------------------THEME PICKER ------------------------------
+
+local theme_dir = os.getenv("HOME") .. "/.config/sketchybar/themes/"
+local theme_file = os.getenv("HOME") .. "/.config/sketchybar/themes/current_theme"
+
+local function get_current_theme()
+	local f = io.open(theme_file, "r")
+	if not f then
+		return nil
+	end
+	local t = f:read("*l")
+	f:close()
+	return t
+end
+
+local function list_themes()
+	local themes = {}
+	local p = io.popen('ls -1 "' .. theme_dir .. '"')
+	if not p then
+		return themes
+	end
+	for file in p:lines() do
+		if not file:match("^%.") then
+			local name = file:match("^(.*)%.lua$")
+			if name then
+				table.insert(themes, name)
+			end
+		end
+	end
+	p:close()
+
+	table.sort(themes)
+	return themes
+end
+
+-- Cache populated once at startup
+local theme_cache = {
+	current = get_current_theme(),
+	themes = list_themes(),
+}
+
+local function clear_popup(prefix)
+	sbar.remove("/" .. prefix .. "\\..*/")
+	sbar.remove(prefix:match("^(.*)%.item$") .. ".header")
+end
+
+local theme_popup_subscribed = false
+
+local function open_theme_popup(anchor)
+	clear_popup("theme.item")
+
+	sbar.add("item", "theme.header", {
+		position = "popup." .. anchor.name,
+		label = {
+			string = "Themes",
+			font = { family = settings.default, size = 11, style = "Bold" },
+		},
+		padding_left = 10,
+		padding_right = 10,
+	})
+
+	-- Use cached data instead of hitting disk/shell here
+	local current = theme_cache.current
+	local themes = theme_cache.themes
+
+	for i, theme in ipairs(themes) do
+		local is_active = theme == current
+		sbar.add("item", "theme.item." .. i, {
+			position = "popup." .. anchor.name,
+			label = theme,
+			background = {
+				drawing = is_active,
+				color = is_active and colors.hover or colors.transparent,
+				corner_radius = 20,
+			},
+			click_script = "echo '"
+				.. theme
+				.. "' > "
+				.. theme_file
+				.. " && sketchybar --reload"
+				.. " && sketchybar --trigger theme_changed",
+		})
+	end
+
+	if not theme_popup_subscribed then
+		anchor:subscribe("mouse.exited.global", function()
+			anchor:set({ popup = { drawing = false } })
+			clear_popup("theme.item")
+		end)
+		theme_popup_subscribed = true
+	end
+end
+
+-- Keep the cache's "current" in sync after a theme switch
+sbar.add("event", "theme_changed")
+sbar.subscribe("theme_changed", function()
+	theme_cache.current = get_current_theme()
+end)
+
+-------------------Subscriptions--------------------------
+
 local left_apple_script =
 	"osascript -e 'tell application \"System Events\" to key code 46 using {command down, option down, control down}'"
 
 local right_apple_script =
 	"osascript -e 'tell application \"System Events\" to key code 0 using {command down, option down, control down}'"
 
-local middle_apple_script = "sketchybar --bar hidden=toggle"
-
+-- Where you define the click handler for your anchor item:
 apple:subscribe("mouse.clicked", function(env)
 	if env.BUTTON == "left" then
 		sbar.exec(left_apple_script)
 	elseif env.BUTTON == "right" then
 		sbar.exec(right_apple_script)
 	elseif env.BUTTON == "other" then
-		sbar.exec(middle_apple_script)
-	end
-end)
-
-local left_front_app_script = 'osascript -e \'tell application "System Events" to keystroke "w" using {command down}\''
-
-local right_front_app_script =
-	"osascript -e 'tell application \"System Events\" to set frontApp to name of first application process whose frontmost is true' -e 'tell application frontApp to quit'"
-
-local middle_front_app_script =
-	'osascript -e \'tell application "System Events" to keystroke "h" using {command down}\''
-
-front_app:subscribe("mouse.clicked", function(env)
-	if env.BUTTON == "left" then
-		sbar.exec(left_front_app_script)
-	elseif env.BUTTON == "right" then
-		sbar.exec(right_front_app_script)
-	else
-		sbar.exec(middle_front_app_script)
+		apple:set({ popup = { drawing = not drawing } })
+		if not drawing then
+			open_theme_popup(apple)
+		end
 	end
 end)
 
@@ -249,16 +330,22 @@ apple:subscribe("mouse.exited", function()
 	})
 end)
 
-menu_toggle:subscribe("mouse.entered", function()
-	menu_toggle:set({
-		background = {
-			drawing = true,
-			color = colors.hover,
-			corner_radius = 10,
-			height = 20,
-			x_offset = 1,
-		},
-	})
+local left_front_app_script = 'osascript -e \'tell application "System Events" to keystroke "w" using {command down}\''
+
+local right_front_app_script =
+	"osascript -e 'tell application \"System Events\" to set frontApp to name of first application process whose frontmost is true' -e 'tell application frontApp to quit'"
+
+local middle_front_app_script =
+	'osascript -e \'tell application "System Events" to keystroke "h" using {command down}\''
+
+front_app:subscribe("mouse.clicked", function(env)
+	if env.BUTTON == "left" then
+		sbar.exec(left_front_app_script)
+	elseif env.BUTTON == "right" then
+		sbar.exec(right_front_app_script)
+	else
+		sbar.exec(middle_front_app_script)
+	end
 end)
 
 front_app:subscribe("mouse.entered", function()
@@ -285,6 +372,18 @@ menu_toggle:subscribe("mouse.exited", function()
 	menu_toggle:set({
 		background = {
 			drawing = false,
+		},
+	})
+end)
+
+menu_toggle:subscribe("mouse.entered", function()
+	menu_toggle:set({
+		background = {
+			drawing = true,
+			color = colors.hover,
+			corner_radius = 10,
+			height = 20,
+			x_offset = 1,
 		},
 	})
 end)

@@ -41,7 +41,6 @@ yabai -m signal --add event=window_destroyed active=yes action="yabai -m query -
 # focus window after window minimization
 yabai -m signal --add event=window_minimized active=yes action="if \$(yabai -m query --windows --window \$YABAI_WINDOW_ID | jq -r '.\"is-floating\"'); then yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse &> /dev/null || yabai -m window --focus \$(yabai -m query --windows --space | jq .[0].id) &> /dev/null; fi"
 
-
 # ================================
 # MAIN CONFIG
 # ================================
@@ -68,12 +67,12 @@ CONFIGS=(
 
   # padding (0 = no window borders)
   "top_padding 0"
-  "bottom_padding 25" # for use with taskbar app
-  "left_padding 0"
-  "right_padding 0"
+  "bottom_padding 26" # for use with taskbar app
+  "left_padding 2"
+  "right_padding 2"
 
   # window gaps
-  "window_gap 5"
+  "window_gap 3"
 
   # opacity
   "window_shadow float"
@@ -108,27 +107,36 @@ yabai -m space 1 --label browser
 yabai -m space 2 --label mail
 yabai -m space 3 --label files
 yabai -m space 4 --label notes
-yabai -m sapce 5 --label terminal
+yabai -m space 5 --label terminal
+yabai -m space 6 --label code
 
+# ================================
+# APP GROUPS 
+# ================================
+BROWSERS="^(Orion|Safari|Helium|Zen|Tor Browser)$"
+MAIL="^(Mail)$"
+FILES="^(Bloom|Finder|FlowFinder)$"
+NOTES="^(Notes|Obsidian|Calendar)$"
+TERMINALS="^(iTerm2|Alacritty|Kitty|WezTerm|Terminal|Tabby|Ghostty)$"
+CODE="^(BBEdit|VSCodium|Zed|CotEditor|Neovide)$"
 
 # ================================
 # PIN APPS TO SPACES == SETUP WORKSPACES
 # ================================
 SPACE_RULES=(
-  "^Orion$:1"
-  "^Mail$:2"
-  "^Bloom$:3"
-  "^Notes$:4"
-  "^Calendar$:4"
-  "^iTerm$:5"
+  "${BROWSERS}:browser"
+  "${MAILS}:mail"
+  "${FILES}:files"
+  "${NOTES}:notes"
+  "${TERMINALS}:terminal"
+  "${CODE}:code"
 )
 
 for rule in "${SPACE_RULES[@]}"; do
   app="${rule%%:*}"
   space="${rule##*:}"
-  yabai_rule app="$app" space="$space"
+    yabai -m rule --add app="${app}" space="${space}"
 done
-
 
 # ================================
 # helper for float rules
@@ -237,15 +245,3 @@ for app in "${FLOAT_APPS[@]}"; do
     sub-layer=above \
 
 done
-
-# ================================
-# jankyborders
-# ================================
-# borders hidpi=on width=1.0 active_color="(0xFFFFFFFF)" inactive_color="0x0xff1e1e1e" style=round ax_focus=on order=above blacklist="Stats,Dropover,iPhone Mirroring,Passwords,SoundSource,Stickies" &
-
-# ================================
-# auto-update yabai (HEAD)
-# ================================
-# YABAI_CERT=yabai-cert sh -c "$(curl -fsSL "https://git.io/update-yabai")" &
-
-osascript -e 'display notification "yabai configuration loaded"'

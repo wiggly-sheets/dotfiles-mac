@@ -47,7 +47,7 @@ end
 
 return {
 	entry = function(_, job)
-		ya.mgr_emit("escape", { visual = true })
+		ya.emit("escape", { visual = true })
 		local remote_target = job.args and #job.args >= 1 and job.args[1] or nil
 		local remember = job.args and job.args.remember
 

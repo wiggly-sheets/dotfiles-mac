@@ -55,16 +55,16 @@ fi
 # Welcome banner
 # ------------------------------------------------
 if command -v figlet >/dev/null && command -v lolcat >/dev/null; then
-    figlet "Welcome, $USER" | lolcat
+  # figlet "Welcome, $USER" | lolcat
+   figurine Welcome, $USER
     echo
-    command -v pfetch >/dev/null && pfetch | lolcat
-    command -v stormy >/dev/null && stormy | lolcat
+    command -v pfetch >/dev/null && pfetch # | lolcat
+    command -v stormy >/dev/null && stormy # | lolcat
     if command -v fortune >/dev/null && command -v cowsay >/dev/null; then
         fortune | cowsay -r | lolcat
     fi
     echo
 fi
-
 # ------------------------------------------------
 # Oh My Zsh
 # ------------------------------------------------

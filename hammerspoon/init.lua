@@ -55,27 +55,28 @@ vim:enterWithSequence("jk")
 -- START YABAI GRID SPACES CONFIG
 --------------------------------
 
-hs.loadSpoon("YabaiGridSpaces")
-spoon.YabaiGridSpaces
-	:applyConfig({
-		yabaiPath = "/opt/homebrew/bin/yabai",
-		numberOfColumns = 3,
-		gridDisplayTimeout = 2,
-		gridScale = 0.2,
-	})
-	:bindHotKeys({
-		-- https://www.hammerspoon.org/docs/hs.hotkey.html
-		navigateNorth = { { "ctrl", "shift" }, "k" },
-		navigateEast = { { "ctrl", "shift" }, "l" },
-		navigateSouth = { { "ctrl", "shift" }, "j" },
-		navigateWest = { { "ctrl", "shift" }, "h" },
+-- hs.loadSpoon("YabaiGridSpaces")
+-- spoon.YabaiGridSpaces
+-- 	:applyConfig({
+-- 		yabaiPath = "/opt/homebrew/bin/yabai",
+-- 		numberOfColumns = 4,
+-- 		numberOfRows = 4,
+-- 		gridDisplayTimeout = 2,
+-- 		gridScale = 0.15,
+-- 	})
+-- 	:bindHotKeys({
+-- 		-- https://www.hammerspoon.org/docs/hs.hotkey.html
+-- 		navigateNorth = { { "ctrl", "shift" }, "k" },
+-- 		navigateEast = { { "ctrl", "shift" }, "l" },
+-- 		navigateSouth = { { "ctrl", "shift" }, "j" },
+-- 		navigateWest = { { "ctrl", "shift" }, "h" },
 
-		moveWindowNorth = { { "cmd", "ctrl", "shift" }, "k" },
-		moveWindowSouth = { { "cmd", "ctrl", "shift" }, "j" },
-		moveWindowEast = { { "cmd", "ctrl", "shift" }, "l" },
-		moveWindowWest = { { "cmd", "ctrl", "shift" }, "h" },
-	})
-	:start()
+-- 		moveWindowNorth = { { "cmd", "ctrl", "shift" }, "k" },
+-- 		moveWindowSouth = { { "cmd", "ctrl", "shift" }, "j" },
+-- 		moveWindowEast = { { "cmd", "ctrl", "shift" }, "l" },
+-- 		moveWindowWest = { { "cmd", "ctrl", "shift" }, "h" },
+-- 	})
+-- 	:start()
 
 --------------------------------
 -- END YABAI GRID SPACES CONFIG

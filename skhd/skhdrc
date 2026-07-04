@@ -72,7 +72,7 @@ cmd + ctrl - k : yabai -m window --insert north
 
 # resize & move floating windows
 cmd + shift - left : yabai -m window --toggle float; yabai -m window --grid 1:2:0:0:1:1
-cmd + shift - right : yabai -m window --toggle float; yabai -m window --grid 1:2:1:0:1:1
+cmd + shift - right : yabai -m window --toggle float yabai -m window --grid 1:2:1:0:1:1
 cmd + shift - up : yabai -m window --toggle float; yabai -m window --grid 2:1:0:0:1:1
 cmd + shift - down : yabai -m window --toggle float; yabai -m window --grid 2:1:0:1:1:1
 alt + shift - up : yabai -m window --toggle float; yabai -m window --grid 1:1:0:0:1:1
@@ -247,6 +247,19 @@ alt - f : yabai -m space --focus first
 alt - e : yabai -m space --focus last
 alt - r : yabai -m space --focus recent
 
+##### grid space movement using spacemap app #####
+# Move right: next space within row (stops at col 4)
+shift + ctrl - l : ~/.config/yabai/scripts/space_nav.sh right
+
+# Move left: previous space within row (stops at col 1)
+shift + ctrl - h : ~/.config/yabai/scripts/space_nav.sh left
+
+# Move down: jump forward 4
+shift + ctrl - j : ~/.config/yabai/scripts/space_nav.sh down
+
+# Move up: jump back 4
+shift + ctrl - k : ~/.config/yabai/scripts/space_nav.sh up
+
 # Focus next space of current display, else wrap to the first space of the current display if the current space is the last space of its display
 alt - g : ~/dotfiles/yabai/scripts/display_space_next.sh
 
@@ -352,7 +365,7 @@ ctrl + cmd - f : sh -c 'yabai -m space --display first --focus; sketchybar --tri
 ctrl + cmd - e : sh -c 'yabai -m space --display last --focus; sketchybar --trigger space_change; sketchybar --trigger space_windows_change'
 ctrl + cmd - 1 : sh -c 'yabai -m space --display 1 --focus; sketchybar --trigger space_change; sketchybar --trigger space_windows_change'
 ctrl + cmd - 2 : sh -c 'yabai -m space --display 2 --focus; sketchybar --trigger space_change; sketchybar --trigger space_windows_change'
-ctrl + cmd - 3 : sh -c 'yabai -m space --display 3 --focus; sketchybar --trigger space_change; sketchybar --trigger space_windows_change'
+ctrl + cmd - 3 : sh -c 'yabai -m space --dispÎÎÎÎlay 3 --focus; sketchybar --trigger space_change; sketchybar --trigger space_windows_change'
 
 # notes scratchpad
 meh - s : yabai -m window --toggle scratchpad || open -a Stickies
@@ -389,6 +402,9 @@ shift + cmd - g : ~/dotfiles/yabai/scripts/opacity.sh
 
 # toggle between whether mouse dropping window on top of another swaps them or stacks them
 shift + cmd - d : ~/dotfiles/yabai/scripts/mouse_action.sh
+
+# delete all empty spaces
+alt + shift - d : ~/dotfiles/yabai/scripts/delete_empty_spaces.sh
 
 # toggle keyclu skhd shortcut sheet
 cmd + ctrl - c : /Applications/KeyClu.app/Contents/MacOS/KeyClu --toggle-panel --sheet skhd
