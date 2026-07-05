@@ -7,12 +7,6 @@ yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 
 sudo yabai --load-sa
 
-
-# ================================
-#  set up stackline for stack indicators
-# ================================
-pkill "Stackline" && open -a "Stackline"
-
 # ================================
 # run the script to allow desktop space renaming with spacesrenamer.app
 # ================================
@@ -30,6 +24,7 @@ yabai -m rule --add app="^Stickies$" scratchpad=scratchpad grid=6:6:6:0:8:8
 # sketchybar window title events
 # ================================
 yabai -m signal --add event=window_focused action="sketchybar --trigger window_focus &> /dev/null"
+
 yabai -m signal --add event=window_title_changed action="sketchybar --trigger title_change &> /dev/null"
 
 # focus window after active space changes
@@ -65,7 +60,7 @@ CONFIGS=(
   # New window placement behavior
   "window_placement second_child"
 
-  # padding (0 = no window borders)
+  # padding
   "top_padding 0"
   "bottom_padding 26" # for use with taskbar app
   "left_padding 2"
@@ -85,7 +80,7 @@ CONFIGS=(
   # mouse behavior
   "mouse_follows_focus on"
   "focus_follows_mouse autoraise"
-  "mouse_modifier cmd"
+  "mouse_modifier alt"
   "mouse_action1 move"
   #"mouse_action2 resize"
   "mouse_drop_action swap"

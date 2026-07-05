@@ -36,24 +36,46 @@
       "actions" : [
         {
           "key" : "e",
+          "label" : "Emoji Picker",
           "type" : "url",
           "value" : "raycast-x://extensions/raycast/emoji-symbols/search-emoji-symbols"
         },
         {
           "key" : "p",
+          "label" : "Confetti",
           "type" : "url",
           "value" : "raycast-x://extensions/raycast/raycast/confetti"
         },
         {
-          "key" : "c",
+          "key" : "v",
+          "label" : "Open Camera",
           "type" : "url",
           "value" : "raycast-x://extensions/raycast/raycast/open-camera"
         },
         {
           "iconPath" : "link",
           "key" : "b",
+          "label" : "Bounce Animation",
           "type" : "url",
           "value" : "raycast-x://extensions/raycast/raycast/toggle-bounce-animation"
+        },
+        {
+          "key" : "c",
+          "label" : "Clipboard",
+          "type" : "url",
+          "value" : "raycast-x://extensions/raycast/clipboard-history/clipboard-history"
+        },
+        {
+          "key" : "k",
+          "label" : "Kill Process",
+          "type" : "url",
+          "value" : "raycast-x://extensions/rolandleth/kill-process/index"
+        },
+        {
+          "key" : "q",
+          "label" : "Quit Apps",
+          "type" : "url",
+          "value" : "raycast-x://extensions/mackopes/quit-applications/index"
         }
       ],
       "key" : "r",
@@ -76,6 +98,26 @@
           "key" : "t",
           "type" : "application",
           "value" : "/System/Applications/Utilities/Terminal.app"
+        },
+        {
+          "key" : "g",
+          "type" : "application",
+          "value" : "/Applications/Ghostty.app"
+        },
+        {
+          "key" : "b",
+          "type" : "application",
+          "value" : "/Applications/Tabby.app"
+        },
+        {
+          "key" : "a",
+          "type" : "application",
+          "value" : "/Applications/Alacritty.app"
+        },
+        {
+          "key" : "k",
+          "type" : "application",
+          "value" : "/Applications/kitty.app"
         }
       ],
       "key" : "t",
@@ -108,6 +150,16 @@
           "key" : "t",
           "type" : "application",
           "value" : "/Applications/Telegram.app"
+        },
+        {
+          "key" : "h",
+          "type" : "application",
+          "value" : "/Applications/Halloy.app"
+        },
+        {
+          "key" : "b",
+          "type" : "application",
+          "value" : "/Applications/Sky.app"
         }
       ],
       "key" : "m",
@@ -155,6 +207,16 @@
           "key" : "d",
           "type" : "application",
           "value" : "/System/Applications/Calendar.app"
+        },
+        {
+          "key" : "o",
+          "type" : "application",
+          "value" : "/Applications/Obsidian.app"
+        },
+        {
+          "key" : "m",
+          "type" : "application",
+          "value" : "/Applications/Clop.app"
         }
       ],
       "key" : "p",
@@ -182,10 +244,20 @@
           "key" : "i",
           "type" : "application",
           "value" : "/Applications/IINA.app"
+        },
+        {
+          "key" : "q",
+          "type" : "application",
+          "value" : "/System/Applications/QuickTime Player.app"
+        },
+        {
+          "key" : "l",
+          "type" : "application",
+          "value" : "/Applications/Logic Pro.app"
         }
       ],
       "key" : "a",
-      "label" : "Music",
+      "label" : "Audio",
       "type" : "group"
     },
     {
@@ -209,6 +281,21 @@
           "key" : "e",
           "type" : "application",
           "value" : "/Applications/CotEditor.app"
+        },
+        {
+          "key" : "z",
+          "type" : "application",
+          "value" : "/Applications/Zed.app"
+        },
+        {
+          "key" : "n",
+          "type" : "application",
+          "value" : "/Applications/Neovide.app"
+        },
+        {
+          "key" : "t",
+          "type" : "application",
+          "value" : "/System/Applications/TextEdit.app"
         }
       ],
       "key" : "c",
@@ -218,19 +305,34 @@
     {
       "actions" : [
         {
-          "key" : "o",
+          "key" : "g",
           "type" : "application",
           "value" : "/Applications/ChatGPT.app"
         },
         {
-          "key" : "a",
+          "key" : "c",
           "type" : "application",
           "value" : "/Applications/Claude.app"
         },
         {
-          "key" : "c",
+          "key" : "x",
           "type" : "application",
           "value" : "/Applications/Codex.app"
+        },
+        {
+          "key" : "o",
+          "type" : "application",
+          "value" : "/Applications/OpenCode.app"
+        },
+        {
+          "key" : "l",
+          "type" : "application",
+          "value" : "/Applications/LM Studio.app"
+        },
+        {
+          "key" : "a",
+          "type" : "application",
+          "value" : "/Applications/Ollama.app"
         }
       ],
       "key" : "i",
@@ -240,7 +342,7 @@
     {
       "actions" : [
         {
-          "key" : "a",
+          "key" : "s",
           "type" : "application",
           "value" : "/Applications/FlowFinder.app"
         },
@@ -250,12 +352,182 @@
           "value" : "/Applications/Bloom.app"
         },
         {
+          "iconPath" : "folder.fill",
           "key" : "f",
+          "label" : "Finder",
           "type" : "command",
           "value" : "open -a Finder"
+        },
+        {
+          "key" : "a",
+          "type" : "application",
+          "value" : "/Applications/Find Any File.app"
+        },
+        {
+          "key" : "c",
+          "type" : "application",
+          "value" : "/Applications/Cling.app"
         }
       ],
       "key" : "f",
+      "label" : "File Managers",
+      "type" : "group"
+    },
+    {
+      "actions" : [
+        {
+          "key" : "b",
+          "type" : "application",
+          "value" : "/System/Applications/Books.app"
+        },
+        {
+          "key" : "p",
+          "type" : "application",
+          "value" : "/System/Applications/Preview.app"
+        },
+        {
+          "key" : "s",
+          "type" : "application",
+          "value" : "/Applications/sioyek.app"
+        },
+        {
+          "key" : "c",
+          "type" : "application",
+          "value" : "/Applications/Simple Comic.app"
+        }
+      ],
+      "key" : "l",
+      "label" : "Literature",
+      "type" : "group"
+    },
+    {
+      "actions" : [
+        {
+          "key" : "f",
+          "type" : "application",
+          "value" : "/Applications/Final Cut Pro.app"
+        },
+        {
+          "key" : "q",
+          "type" : "application",
+          "value" : "/Applications/QuickRecorder.app"
+        },
+        {
+          "key" : "b",
+          "type" : "application",
+          "value" : "/Applications/BetterCapture.app"
+        },
+        {
+          "key" : "s",
+          "type" : "application",
+          "value" : "/Applications/Shottr.app"
+        },
+        {
+          "key" : "l",
+          "type" : "application",
+          "value" : "/Applications/LosslessCut.app"
+        }
+      ],
+      "key" : "v",
+      "label" : "Video",
+      "type" : "group"
+    },
+    {
+      "actions" : [
+        {
+          "key" : "s",
+          "type" : "application",
+          "value" : "/Applications/Steam.app"
+        },
+        {
+          "key" : "g",
+          "type" : "application",
+          "value" : "/Applications/GameHub.app"
+        },
+        {
+          "key" : "2",
+          "type" : "application",
+          "value" : "/Applications/2048 Game.app"
+        },
+        {
+          "key" : "e",
+          "type" : "application",
+          "value" : "/Applications/Epic Games Launcher.app"
+        },
+        {
+          "key" : "a",
+          "type" : "application",
+          "value" : "/Applications/EA app.app"
+        },
+        {
+          "key" : "b",
+          "type" : "application",
+          "value" : "/Applications/Battle.net.app"
+        },
+        {
+          "key" : "d",
+          "type" : "application",
+          "value" : "/Applications/dreamm.app"
+        },
+        {
+          "key" : "o",
+          "type" : "application",
+          "value" : "/Applications/OpenEmu.app"
+        },
+        {
+          "key" : "p",
+          "type" : "application",
+          "value" : "/Applications/PCSX2.app"
+        },
+        {
+          "key" : "x",
+          "type" : "application",
+          "value" : "/Applications/Xemu.app"
+        },
+        {
+          "actions" : [
+            {
+              "key" : "1",
+              "label" : "KOTOR",
+              "type" : "application",
+              "value" : ""
+            },
+            {
+              "key" : "2",
+              "label" : "KOTOR2",
+              "type" : "application",
+              "value" : ""
+            }
+          ],
+          "key" : "w",
+          "label" : "Star Wars",
+          "type" : "group"
+        }
+      ],
+      "key" : "g",
+      "label" : "Gaming",
+      "type" : "group"
+    },
+    {
+      "actions" : [
+        {
+          "key" : "s",
+          "type" : "url",
+          "value" : "raycast-x://extensions/pernielsentikaer/any-website-search/search-any-site"
+        },
+        {
+          "key" : "o",
+          "type" : "application",
+          "value" : "/Applications/OnyX.app"
+        },
+        {
+          "key" : "t",
+          "type" : "application",
+          "value" : "/Applications/TinkerTool.app"
+        }
+      ],
+      "key" : "u",
+      "label" : "Utilities",
       "type" : "group"
     }
   ],
