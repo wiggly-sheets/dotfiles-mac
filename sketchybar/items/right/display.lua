@@ -112,7 +112,7 @@ local function add_hover(item)
 				drawing = true,
 				color = colors.hover,
 				corner_radius = 20,
-				height = 20,
+				height = 25,
 				x_offset = 0,
 			},
 		})

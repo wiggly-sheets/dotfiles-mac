@@ -317,6 +317,7 @@ apple:subscribe("mouse.entered", function()
 			corner_radius = 10,
 			height = 20,
 			x_offset = 3,
+			y_offset = -1,
 			width = 0,
 		},
 	})

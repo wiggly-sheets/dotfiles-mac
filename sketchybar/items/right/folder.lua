@@ -39,7 +39,8 @@ local function add_hover(item)
 				color = colors.hover,
 				corner_radius = 20,
 				height = 20,
-				x_offset = -1,
+				x_offset = -0.5,
+				y_offset = -1,
 			},
 		})
 	end)
