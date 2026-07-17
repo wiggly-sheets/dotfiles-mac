@@ -1,98 +1,55 @@
-# ================================
 # scripting addition
-# ================================
 echo "$(whoami) ALL=(root) NOPASSWD: sha256:$(shasum -a 256 $(which yabai) | cut -d " " -f 1) $(which yabai) --load-sa" | sudo tee /private/etc/sudoers.d/yabai
-
 yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
-
 sudo yabai --load-sa
 
-# ================================
-# run the script to allow desktop space renaming with spacesrenamer.app
-# ================================
-
-yabai -m signal --add event=dock_did_restart action="~/dotfiles/mac/tweaks/spacesrenamer/run.sh"
-
-~/dotfiles/mac/tweaks/spacesrenamer/run.sh
-
-# ================================
 # scratchpad setup
-# ================================
 yabai -m rule --add app="^Stickies$" scratchpad=scratchpad grid=6:6:6:0:8:8
 
-# ================================
 # sketchybar window title events
-# ================================
 yabai -m signal --add event=window_focused action="sketchybar --trigger window_focus &> /dev/null"
-
 yabai -m signal --add event=window_title_changed action="sketchybar --trigger title_change &> /dev/null"
-
-# focus window after active space changes
 yabai -m signal --add event=space_changed action="yabai -m window --focus mouse"
+yabai -m signal --add event=window_destroyed active=yes action="yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse &> /dev/null || yabai -m window --focus $(yabai -m query --windows --space | jq .[0].id) &> /dev/null"
+yabai -m signal --add event=window_minimized active=yes action="if $(yabai -m query --windows --window $YABAI_WINDOW_ID | jq -r '.\"is-floating\"'); then yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse &> /dev/null || yabai -m window --focus $(yabai -m query --windows --space | jq .[0].id) &> /dev/null; fi"
 
-# focus window after window destruction
-yabai -m signal --add event=window_destroyed active=yes action="yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse &> /dev/null || yabai -m window --focus \$(yabai -m query --windows --space | jq .[0].id) &> /dev/null"
+# spacesrenamer setup
+yabai -m signal --add event=dock_did_restart action="~/dotfiles/mac/tweaks/spacesrenamer/run.sh"
+~/dotfiles/mac/tweaks/spacesrenamer/run.sh
 
-# focus window after window minimization
-yabai -m signal --add event=window_minimized active=yes action="if \$(yabai -m query --windows --window \$YABAI_WINDOW_ID | jq -r '.\"is-floating\"'); then yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse &> /dev/null || yabai -m window --focus \$(yabai -m query --windows --space | jq .[0].id) &> /dev/null; fi"
-
-# ================================
 # MAIN CONFIG
-# ================================
 CONFIGS=(
   "layout bsp"
   "window_origin_display focused"
   "window_insertion_point focused"
   "window_zoom_persist false"
-
-  # Disabled because browser popups will disappear if enabled
   "window_topmost off"
-  
-  # bsp settings
   "split_type auto"
   "auto_balance off"
   "split_ratio 0.50"
-
-  # window animations
   "window_animation_duration 0.05"
   "window_animation_easing ease_in_out_expo"
-
-  # New window placement behavior
   "window_placement second_child"
-
-  # padding
   "top_padding 0"
-  "bottom_padding 26" # for use with taskbar app
+  "bottom_padding 26"
   "left_padding 2"
   "right_padding 2"
-
-  # window gaps
   "window_gap 3"
-
-  # opacity
   "window_shadow float"
   "window_opacity on"
   "window_opacity_duration 0.10"
   "active_window_opacity 1.0"
   "normal_window_opacity 0.80"
   "menubar_opacity 0.0"
-
-  # mouse behavior
   "mouse_follows_focus on"
   "focus_follows_mouse autoraise"
   "mouse_modifier alt"
   "mouse_action1 move"
-  #"mouse_action2 resize"
   "mouse_drop_action swap"
-
-  # feedback
   "event_feedback on"
   "insert_feedback_color 0xFFFFFFFF"
-
-  # debug
   "debug_output off"
 )
-
 for cfg in "${CONFIGS[@]}"; do
   yabai -m config $cfg
 done
@@ -105,9 +62,7 @@ yabai -m space 4 --label notes
 yabai -m space 5 --label terminal
 yabai -m space 6 --label code
 
-# ================================
-# APP GROUPS 
-# ================================
+# APP GROUPS
 BROWSERS="^(Orion|Safari|Helium|Zen|Tor Browser)$"
 MAIL="^(Mail)$"
 FILES="^(Bloom|Finder|FlowFinder)$"
@@ -115,38 +70,29 @@ NOTES="^(Notes|Obsidian|Calendar)$"
 TERMINALS="^(iTerm2|Alacritty|Kitty|WezTerm|Terminal|Tabby|Ghostty)$"
 CODE="^(BBEdit|VSCodium|Zed|CotEditor|Neovide)$"
 
-# ================================
-# PIN APPS TO SPACES == SETUP WORKSPACES
-# ================================
+# PIN APPS TO SPACES
 SPACE_RULES=(
   "${BROWSERS}:browser"
-  "${MAILS}:mail"
+  "${MAIL}:mail"
   "${FILES}:files"
   "${NOTES}:notes"
   "${TERMINALS}:terminal"
   "${CODE}:code"
 )
-
 for rule in "${SPACE_RULES[@]}"; do
   app="${rule%%:*}"
   space="${rule##*:}"
-    yabai -m rule --add app="${app}" space="${space}"
+  yabai -m rule --add app="${app}" space="${space}"
 done
 
-# ================================
 # helper for float rules
-# ================================
 yabai_rule() {
   yabai -m rule --add "$@"
   yabai -m rule --apply "$@"
 }
 
-# ================================
 # FLOAT/UNMANAGED APPS
-# ================================
-
 GRID_CENTER="6:6:1:1:4:4"
-
 FLOAT_APPS=(
   "^System Settings$"
   "^Calculator$"
@@ -229,14 +175,11 @@ FLOAT_APPS=(
   "^Folder Preview Pro$"
   "^Klack$"
   "^Pictogram$"
-
 )
-
 for app in "${FLOAT_APPS[@]}"; do
   yabai_rule \
     app="$app" \
     manage=off \
     grid="$GRID_CENTER" \
-    sub-layer=above \
-
+    sub-layer=above
 done

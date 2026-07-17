@@ -118,6 +118,11 @@
           "key" : "k",
           "type" : "application",
           "value" : "/Applications/kitty.app"
+        },
+        {
+          "key" : "h",
+          "type" : "application",
+          "value" : "/Applications/Hyper.app"
         }
       ],
       "key" : "t",
@@ -160,6 +165,26 @@
           "key" : "b",
           "type" : "application",
           "value" : "/Applications/Sky.app"
+        },
+        {
+          "key" : "c",
+          "type" : "application",
+          "value" : "/Applications/Ice Cubes.app"
+        },
+        {
+          "key" : "e",
+          "type" : "application",
+          "value" : "/Applications/Element.app"
+        },
+        {
+          "key" : "f",
+          "type" : "application",
+          "value" : "/System/Applications/FaceTime.app"
+        },
+        {
+          "key" : "d",
+          "type" : "application",
+          "value" : "/Applications/legcord.app"
         }
       ],
       "key" : "m",
@@ -528,6 +553,18 @@
       ],
       "key" : "u",
       "label" : "Utilities",
+      "type" : "group"
+    },
+    {
+      "actions" : [
+        {
+          "key" : "a",
+          "type" : "application",
+          "value" : "/System/Applications/Utilities/Activity Monitor.app"
+        }
+      ],
+      "key" : "s",
+      "label" : "System",
       "type" : "group"
     }
   ],

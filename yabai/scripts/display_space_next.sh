@@ -1,8 +1,4 @@
-info=$(yabai -m query --spaces --display)
-last=$(echo $info | jq '.[-1]."has-focus"')
-
-if [[ $last == "false" ]]; then
-    yabai -m space --focus next
-else
-    yabai -m space --focus $(echo $info | jq '.[0].index')
-fi
+#!/bin/bash
+yabai -m query --spaces --display | jq '
+  if .[-1]."has-focus" then .[0].index else "next" end
+' | xargs yabai -m space --focus

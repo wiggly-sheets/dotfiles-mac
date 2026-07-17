@@ -1,58 +1,53 @@
 #!/bin/bash
-# Usage: space_nav.sh [left|right|up|down]
+idx=$(yabai -m query --spaces --space | jq '.index')
+total=$(yabai -m query --spaces | jq '.length')
+zero=$((idx - 1))
+row=$((zero / 4))
+col=$((zero % 4))
+row_start=$((row * 4 + 1))
 
-YABAI=/opt/homebrew/bin/yabai
-JQ=/opt/homebrew/bin/jq
-
-row_width=4
-direction="$1"
-
-idx=$($YABAI -m query --spaces --space | $JQ '.index')
-total=$($YABAI -m query --spaces | $JQ 'length')
-
-col=$(( (idx - 1) % row_width ))
-row_start=$((idx - col))
-
-case "$direction" in
-  right)
-    if [ "$col" -eq $((row_width - 1)) ]; then
-      target=$row_start
-    else
-      target=$((idx + 1))
-      if [ "$target" -gt "$total" ]; then
-        target=$row_start
-      fi
-    fi
-    ;;
-
+case "$1" in
   left)
-    if [ "$col" -eq 0 ]; then
-      target=$((row_start + row_width - 1))
-      if [ "$target" -gt "$total" ]; then
-        target=$total
-      fi
+    if [ $col -eq 0 ]; then
+      row_end=$((row_start + 3))
+      [ $row_end -gt $total ] && row_end=$total
+      yabai -m space --focus "$row_end"
     else
-      target=$((idx - 1))
+      yabai -m space --focus $((idx - 1))
     fi
     ;;
-
-  down)
-    target=$((idx + row_width))
-    if [ "$target" -gt "$total" ]; then
-      target=$((col + 1))
+  right)
+    if [ $col -eq 3 ]; then
+      yabai -m space --focus "$row_start"
+    else
+      next=$((idx + 1))
+      [ $next -gt $total ] && next=$row_start
+      yabai -m space --focus "$next"
     fi
     ;;
-
   up)
-    target=$((idx - row_width))
-    if [ "$target" -lt 1 ]; then
-      last_row=$(( (total - 1) / row_width ))
-      target=$((last_row * row_width + col + 1))
-      if [ "$target" -gt "$total" ]; then
-        target=$((target - row_width))
-      fi
+    if [ $row -eq 0 ]; then
+      last_row=$(( (total - 1) / 4 ))
+      last_row_start=$(( last_row * 4 + 1 ))
+      last_row_end=$(( last_row_start + 3 ))
+      [ $last_row_end -gt $total ] && last_row_end=$total
+      target=$(( last_row_start + col ))
+      [ $target -gt $last_row_end ] && target=$last_row_end
+      yabai -m space --focus "$target"
+    else
+      yabai -m space --focus $((idx - 4))
+    fi
+    ;;
+  down)
+    next=$((idx + 4))
+    if [ $next -gt $total ]; then
+      first_row_end=4
+      [ $first_row_end -gt $total ] && first_row_end=$total
+      target=$(( 1 + col ))
+      [ $target -gt $first_row_end ] && target=$first_row_end
+      yabai -m space --focus "$target"
+    else
+      yabai -m space --focus "$next"
     fi
     ;;
 esac
-
-$YABAI -m space --focus "$target"

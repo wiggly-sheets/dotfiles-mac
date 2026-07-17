@@ -82,6 +82,8 @@ brew "asitop"
 brew "astroterm"
 # Improved shell history for zsh, bash, fish and nushell
 brew "atuin"
+# Automatic configure script builder
+brew "autoconf"
 # Terminal bandwidth utilization tool
 brew "bandwhich"
 # Bourne-Again SHell, a UNIX command interpreter
@@ -123,7 +125,7 @@ brew "cloc"
 # Console Matrix
 brew "cmatrix"
 # Create and run Linux containers using lightweight virtual machines
-brew "container"
+brew "container", link: false
 # Manage Apple Container with Docker Compose files
 brew "container-compose"
 # Interpreted, interactive, object-oriented programming language
@@ -166,8 +168,6 @@ brew "exiftool"
 brew "eza"
 # Command-line batch renaming tool
 brew "f2"
-# Powerful, lightweight programming language
-brew "lua"
 # Like neofetch, but much faster because written mostly in C
 brew "fastfetch"
 # Simple, fast and user-friendly alternative to find
@@ -186,6 +186,8 @@ brew "fzf"
 brew "forgit"
 # Infamous electronic fortune-cookie generator
 brew "fortune"
+# Generic library support script
+brew "libtool"
 # Terminal JSON viewer
 brew "fx"
 # GNU awk utility
@@ -226,6 +228,8 @@ brew "gum"
 brew "libdvdcss"
 # Open-source video transcoder available for Linux, Mac, and Windows
 brew "handbrake"
+# Grammar Checker for Developers
+brew "harper"
 # Improved top (interactive process viewer)
 brew "htop"
 # User-friendly cURL replacement (command-line HTTP client)
@@ -266,6 +270,8 @@ brew "less"
 brew "libcaca"
 # Rainbows and unicorns in your console!
 brew "lolcat"
+# Powerful, lightweight programming language
+brew "lua"
 # Package manager for the Lua programming language
 brew "luarocks"
 # Text-based web browser
@@ -396,8 +402,6 @@ brew "rmpc"
 brew "rsync"
 # Status/progress bar for rsync
 brew "rsyncy"
-# Safe, concurrent, practical language
-brew "rust"
 # Web search from the terminal
 brew "s-search"
 # CLI search and replace | Space Age seD
@@ -536,7 +540,7 @@ brew "malpern/tap/sketchybar-toggle", trusted: true
 brew "matars/gitfetch/gitfetch", trusted: true
 # Check Temperature by using Apple System Management Control (Smc) tool
 brew "narugit/tap/smctemp", trusted: true
-# TUI dashboard that unifies 42 package managers into one searchable view
+# TUI dashboard that unifies 43 package managers into one searchable view
 brew "neur0map/tap/gpk", trusted: true
 # Mount any linux-supported filesystem read/write using nfs and a microVM
 brew "nohajc/anylinuxfs/anylinuxfs", trusted: true
@@ -614,15 +618,18 @@ cask "chatgpt"
 cask "claude"
 # Image, video and clipboard optimiser
 cask "clop"
+# Ghostty-based terminal with vertical tabs and notifications for AI coding agents
+cask "cmux"
 # Tool to show live information about the batteries in various devices
 cask "coconutbattery"
+# Code editor
+cask "codeedit"
 # OpenAI's coding agent that runs in your terminal
 cask "codex"
 # OpenAI's Codex desktop app for managing coding agents
 cask "codex-app"
 # Mount network shares quick and easy
 cask "connectmenow"
-# Create and run Linux containers using lightweight virtual machines
 cask "container"
 # Plain-text editor for web pages, program source codes and more
 cask "coteditor"
@@ -632,6 +639,8 @@ cask "cotypist"
 cask "crossover"
 # Download and manage your addons and mods
 cask "curseforge"
+# Write, edit, and chat about your code with AI
+cask "cursor"
 # Customise menu item keyboard shortcuts
 cask "customshortcuts"
 # Server and cloud storage browser
@@ -693,7 +702,6 @@ cask "freac"
 cask "freecad"
 # Disk space cleaner that finds and deletes duplicated and similar files
 cask "gemini"
-# Software reverse engineering (SRE) suite of tools
 cask "ghidra"
 # Terminal emulator that uses platform-native UI and GPU acceleration
 cask "ghostty"
@@ -719,10 +727,14 @@ cask "halloy"
 cask "hammerspoon"
 # Open-source video transcoder
 cask "handbrake-app"
+# Grammar checker for developers
+cask "harper-desktop"
 # Automated organisation
 cask "hazel"
 # Chromium-based web browser
 cask "helium-browser"
+# Terminal built on web technologies
+cask "hyper"
 # Backup data from a Synology NAS
 cask "hyperbackupexplorer"
 # Free and open-source media player
@@ -889,6 +901,8 @@ cask "ransomwhere"
 cask "raspberry-pi-imager"
 # GUI for Rclone
 cask "rclone-ui"
+# Ebook reader
+cask "readest"
 # WinAMP clone written in SwiftUI
 cask "reamp"
 # Dreamcast emulator
@@ -1021,7 +1035,7 @@ cask "webtorrent"
 cask "wezterm@nightly"
 # Native desktop client for WhatsApp
 cask "whatsapp"
-# Active space menu bar icon
+# Menu bar utility for viewing and switching Spaces
 cask "whichspace"
 # Network protocol analyzer
 cask "wireshark-app"
@@ -1043,6 +1057,7 @@ mas "2048 Game", id: 871033113
 mas "Actions", id: 1586435171
 mas "Amphetamine", id: 937984704
 mas "Apple Configurator", id: 1037126344
+mas "Asphalt", id: 1491129197
 mas "Blackmagic Disk Speed Test", id: 425264550
 mas "Broadcasts", id: 1469995354
 mas "Color Picker", id: 1545870783
@@ -1068,6 +1083,7 @@ mas "JuxtaText", id: 6504801865
 mas "Keynote", id: 361285480
 mas "Keyword Search", id: 1558453954
 mas "Klack", id: 6446206067
+mas "Knights of the Old Republic", id: 416608891
 mas "Lickable Menu Bar", id: 6444217677
 mas "Logic Pro", id: 634148309
 mas "Mactracker", id: 430255202
@@ -1095,6 +1111,7 @@ mas "SnippetsLab", id: 1006087419
 mas "Sparrow Weather", id: 6449440582
 mas "Speediness", id: 1596706466
 mas "Sprinkles", id: 1500209074
+mas "Star Wars®: Knights of the Old Republic™ II", id: 960778634
 mas "Startup Manager", id: 1296723195
 mas "Swift Playground", id: 1496833156
 mas "TestFlight", id: 899247664

@@ -2,8 +2,10 @@
   "$schema": "https://opencode.ai/config.json",
   "plugin": [
     "./plugins/caveman/plugin.js",
-    "@tarquinen/opencode-dcp@latest"
+    "@tarquinen/opencode-dcp@latest",
+    "@dietrichgebert/ponytail"
   ],
+
   "shell": "zsh",
   "disabled_providers": [],
   "provider": {
@@ -17,6 +19,19 @@
         "auto": {
           "name": "Auto"
         }
+      }
+    }
+  },
+
+  "lsp": true,
+
+  "mcp": {
+    "xcode": {
+      "type": "local",
+      "command": ["node", "/Users/zeb/dev/mcp-servers/xcode-mcp-server/dist/index.js"],
+      "enabled": true,
+      "environment": {
+        "PROJECTS_BASE_DIR": "/Users/zeb/dev"
       }
     }
   }
