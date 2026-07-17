@@ -1,9 +1,7 @@
 --left side items
 require("items.left.menus")
 require("items.left.spaces")
-
---center items
-require("items.center.window_title")
+require("items.left.window_title")
 
 --right side items
 require("items.right.notifications")

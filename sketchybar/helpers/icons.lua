@@ -1,7 +1,7 @@
 local icons = {
 	loading = "􀖇",
---    apple = "􀣺",
-	apple = "􀆔",
+    apple = "􀣺",
+	command = "􀆔",
 	gear = "􀍟",
 	cpu = "􀫥",
 	gpu = "􀧓",

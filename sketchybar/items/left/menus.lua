@@ -4,8 +4,9 @@ local icons = require("helpers.icons")
 
 local apple = sbar.add("item", "apple", {
 	icon = {
-		font = { size = 16 },
-		string = icons.apple,
+        --font = { size = 16 },
+		font = {size = 13},
+		string = icons.command,
 		position = "left",
 		padding_left = 6,
 		padding_right = 2,

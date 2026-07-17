@@ -85,7 +85,31 @@ date:subscribe("mouse.entered", function()
 end)
 
 date:subscribe("mouse.entered", function()
+	time:set({
+		background = {
+			drawing = true,
+			color = colors.hover,
+			corner_radius = 20,
+			height = 25,
+			y_offset = 5,
+		},
+	})
+end)
+
+time:subscribe("mouse.entered", function()
 	date:set({
+		background = {
+			drawing = true,
+			color = colors.hover,
+			corner_radius = 20,
+			height = 25,
+			y_offset = 0,
+		},
+	})
+end)
+
+time:subscribe("mouse.entered", function()
+	time:set({
 		background = {
 			drawing = true,
 			color = colors.hover,
@@ -97,11 +121,11 @@ date:subscribe("mouse.entered", function()
 end)
 
 date:subscribe({ "mouse.exited", "mouse.entered.global", "mouse.exited.global" }, function()
-	time:set({ background = { drawing = true, height = 20, color = colors.transparent } })
-	date:set({ background = { drawing = true, height = 10, color = colors.transparent } })
+	time:set({ background = { drawing = false } })
+	date:set({ background = { drawing = false } })
 end)
 
 time:subscribe({ "mouse.exited", "mouse.entered.global", "mouse.exited.global" }, function()
-	date:set({ background = { drawing = true, height = 10, color = colors.transparent } })
-	time:set({ background = { drawing = true, height = 10, color = colors.transparent } })
+	date:set({ background = { drawing = false } })
+	time:set({ background = { drawing = false } })
 end)
