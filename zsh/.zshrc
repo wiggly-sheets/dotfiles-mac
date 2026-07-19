@@ -21,13 +21,14 @@ setopt hist_verify
 export EDITOR="nvim"
 ZSH="$HOME/.oh-my-zsh"
 ZSH_TMUX_AUTOSTART=true
-export PNPM_HOME="$HOME/Library/pnpm"
 export NVIM_APPNAME=nvim
 export GEM_HOME="$(ruby -e 'puts Gem.user_dir')"
-export PATH="$PNPM_HOME:$GEM_HOME/bin:$PATH:/opt/homebrew/opt/openjdk/bin:$PATH"
 export NEOVIDE_CONFIG="/Users/Zeb/dotfiles/.config/neovide/config.toml"
 export EZA_CONFIG_DIR="/Users/Zeb/dotfiles/.config/eza/"
-export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense' # optional
+export CARAPACE_BRIDGES='zsh,bash'
+
+export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
+
 
 # ------------------------------------------------
 # Homebrew / Linuxbrew paths
@@ -55,7 +56,6 @@ fi
 # Welcome banner
 # ------------------------------------------------
 if command -v figlet >/dev/null && command -v lolcat >/dev/null; then
-  # figlet "Welcome, $USER" | lolcat
    figurine Welcome, $USER
     echo
     command -v pfetch >/dev/null && pfetch # | lolcat
@@ -130,7 +130,6 @@ eval "$(zoxide init zsh)"
 # ------------------------------------------------
 command -v batman >/dev/null && eval "$(batman --export-env)"
 command -v thefuck >/dev/null && eval "$(thefuck --alias fk)"
-#command -v pipx >/dev/null && eval "$(register-python-argcomplete pipx)"
 command -v carapace >/dev/null && source <(carapace _carapace)
 
 # ------------------------------------------------
@@ -200,10 +199,3 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 export PATH="$PATH:/Users/Zeb/.lmstudio/bin"
 # End of LM Studio CLI section
 
-# pnpm
-export PNPM_HOME="/Users/Zeb/Library/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME/bin:"*) ;;
-  *) export PATH="$PNPM_HOME/bin:$PATH" ;;
-esac
-# pnpm end

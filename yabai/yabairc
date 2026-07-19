@@ -132,6 +132,7 @@ FLOAT_APPS=(
   "^OnyX$"
   "^Shortcat$"
   "^PopClip$"
+  "^DockFix$"
   "^PoolsuiteFM$"
   "^MountMate$"
   "^App Buddy$"

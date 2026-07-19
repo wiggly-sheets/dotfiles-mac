@@ -474,6 +474,8 @@ brew "tt"
 brew "tty-clock"
 # Command-line tool for sharing terminal over the web
 brew "ttyd"
+# macOS command-line tool to work with default apps
+brew "utiluti"
 # Simple terminal image viewer written in Rust
 brew "viu"
 # Language servers for HTML, CSS, JavaScript, and JSON extracted from vscode
@@ -626,8 +628,6 @@ cask "coconutbattery"
 cask "codeedit"
 # OpenAI's coding agent that runs in your terminal
 cask "codex"
-# OpenAI's Codex desktop app for managing coding agents
-cask "codex-app"
 # Mount network shares quick and easy
 cask "connectmenow"
 cask "container"
@@ -659,6 +659,8 @@ cask "dnsmonitor"
 cask "dockdoor"
 # Advanced Dock preferences
 cask "dockey"
+# Dock replacement
+cask "dockfix"
 # Emulator to play GameCube and Wii games
 cask "dolphin"
 # Downloads videos from different websites
@@ -793,6 +795,8 @@ cask "macpilot"
 cask "macwhisper"
 # Video format converter (transcoder)
 cask "makemkv"
+# Markdown previewer with bundled Quick Look extension
+cask "markdown-preview"
 # Markdown editor
 cask "markedit"
 # Display technical and tag data for video and audio files
@@ -899,6 +903,8 @@ cask "qlmarkdown"
 cask "ransomwhere"
 # Imaging utility to install operating systems to a microSD card
 cask "raspberry-pi-imager"
+# Create desktop apps by chatting with AI
+cask "raycast-glaze"
 # GUI for Rclone
 cask "rclone-ui"
 # Ebook reader
@@ -1033,6 +1039,8 @@ cask "warp"
 cask "webtorrent"
 # GPU-accelerated cross-platform terminal emulator and multiplexer
 cask "wezterm@nightly"
+# Menu bar app for USB-C cable diagnostics
+cask "whatcable"
 # Native desktop client for WhatsApp
 cask "whatsapp"
 # Menu bar utility for viewing and switching Spaces
@@ -1057,7 +1065,6 @@ mas "2048 Game", id: 871033113
 mas "Actions", id: 1586435171
 mas "Amphetamine", id: 937984704
 mas "Apple Configurator", id: 1037126344
-mas "Asphalt", id: 1491129197
 mas "Blackmagic Disk Speed Test", id: 425264550
 mas "Broadcasts", id: 1469995354
 mas "Color Picker", id: 1545870783
@@ -1083,7 +1090,6 @@ mas "JuxtaText", id: 6504801865
 mas "Keynote", id: 361285480
 mas "Keyword Search", id: 1558453954
 mas "Klack", id: 6446206067
-mas "Knights of the Old Republic", id: 416608891
 mas "Lickable Menu Bar", id: 6444217677
 mas "Logic Pro", id: 634148309
 mas "Mactracker", id: 430255202
@@ -1111,7 +1117,6 @@ mas "SnippetsLab", id: 1006087419
 mas "Sparrow Weather", id: 6449440582
 mas "Speediness", id: 1596706466
 mas "Sprinkles", id: 1500209074
-mas "Star Wars®: Knights of the Old Republic™ II", id: 960778634
 mas "Startup Manager", id: 1296723195
 mas "Swift Playground", id: 1496833156
 mas "TestFlight", id: 899247664
@@ -1128,7 +1133,6 @@ vscode "adamraichu.zip-viewer"
 vscode "alefragnani.bookmarks"
 vscode "christian-kohler.path-intellisense"
 vscode "codezombiech.gitignore"
-vscode "continue.continue"
 vscode "cweijan.vscode-office"
 vscode "davidanson.vscode-markdownlint"
 vscode "donjayamanne.githistory"
@@ -1142,9 +1146,7 @@ vscode "github.vscode-pull-request-github"
 vscode "gruntfuggly.todo-tree"
 vscode "gydunhn.vsc-essentials"
 vscode "gydunhn.vsc-essentials-core"
-vscode "ibm.output-colorizer"
 vscode "illixion.vscode-vibrancy-continued"
-vscode "johnpapa.vscode-peacock"
 vscode "kevinrose.vsc-python-indent"
 vscode "kisstkondoros.vscode-gutter-preview"
 vscode "learn-pack.learnpack-vscode"
@@ -1160,8 +1162,8 @@ vscode "naumovs.color-highlight"
 vscode "oderwat.indent-rainbow"
 vscode "pkief.material-icon-theme"
 vscode "pkief.material-product-icons"
-vscode "python-beautifier.python-beautifier"
 vscode "redhat.vscode-yaml"
+vscode "sst-dev.opencode"
 vscode "sumneko.lua"
 vscode "tombonnike.vscode-status-bar-format-toggle"
 vscode "urin.vscode-web-visual-editor"
@@ -1176,6 +1178,5 @@ npm "mapscii"
 npm "mdlt"
 npm "n"
 npm "neovim"
-npm "pnpm"
 npm "prebuildify"
 npm "undollar"

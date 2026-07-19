@@ -67,12 +67,12 @@ local weather = sbar.add("item", "weather", {
 	icon = {
 		font = { family = settings.default, style = "Regular", size = 15 },
 		padding_right = 8,
-		padding_left = 5,
-		y_offset = 6,
+		padding_left = 2,
+		y_offset = 8,
 	},
 	label = {
 		padding_right = 2,
-		padding_left = -22,
+		padding_left = -28,
 		y_offset = -6,
 		font = {
 			family = settings.default,

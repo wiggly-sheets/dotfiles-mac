@@ -55,8 +55,8 @@ hash = "e3260d0b1feded8c8e3ae3afa1169e30"
 
 [[plugin.deps]]
 use = "uhs-robert/recycle-bin"
-rev = "fa68711"
-hash = "8714306b5cac6359edbacbf545fbd691"
+rev = "82da16a"
+hash = "7383d80862d3cdcc85f8658dac7b90c2"
 
 [[plugin.deps]]
 use = "GianniBYoung/rsync"
@@ -115,8 +115,8 @@ hash = "e6e98d12b1648d1894c2b560d85eeaa7"
 
 [[plugin.deps]]
 use = "llanosrocas/yaziline"
-rev = "25161c1"
-hash = "5c7802a9ac249be88729978e3b9525bc"
+rev = "c975c26"
+hash = "f5e051378c7ee472234ed2abdf0252e7"
 
 [[plugin.deps]]
 use = "Lil-Dank/lazygit"

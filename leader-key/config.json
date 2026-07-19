@@ -10,7 +10,7 @@
         {
           "key" : "s",
           "type" : "application",
-          "value" : "/Applications/Safari.app"
+          "value" : "/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app"
         },
         {
           "key" : "z",
@@ -395,7 +395,7 @@
         }
       ],
       "key" : "f",
-      "label" : "File Managers",
+      "label" : "Files",
       "type" : "group"
     },
     {
