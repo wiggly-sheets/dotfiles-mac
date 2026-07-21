@@ -176,6 +176,7 @@ FLOAT_APPS=(
   "^Folder Preview Pro$"
   "^Klack$"
   "^Pictogram$"
+  "^spacemap$"
 )
 for app in "${FLOAT_APPS[@]}"; do
   yabai_rule \

@@ -35,7 +35,7 @@ vim:shouldShowAlertInNormalMode(true)
 vim:setAlertFont("Liga SFMono Nerd Font")
 
 -- Enter normal mode by typing a key sequence
-vim:enterWithSequence("jk")
+vim:enterWithSequence(";jk")
 
 -- if you want to bind a single key to entering vim, remove the
 -- :enterWithSequence('jk') line above and uncomment the bindHotKeys line

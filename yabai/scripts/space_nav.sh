@@ -1,6 +1,6 @@
 #!/bin/bash
 idx=$(yabai -m query --spaces --space | jq '.index')
-total=$(yabai -m query --spaces | jq '.length')
+total=$(yabai -m query --spaces | jq 'length')
 zero=$((idx - 1))
 row=$((zero / 4))
 col=$((zero % 4))
@@ -25,29 +25,32 @@ case "$1" in
       yabai -m space --focus "$next"
     fi
     ;;
-  up)
-    if [ $row -eq 0 ]; then
-      last_row=$(( (total - 1) / 4 ))
-      last_row_start=$(( last_row * 4 + 1 ))
-      last_row_end=$(( last_row_start + 3 ))
-      [ $last_row_end -gt $total ] && last_row_end=$total
-      target=$(( last_row_start + col ))
-      [ $target -gt $last_row_end ] && target=$last_row_end
-      yabai -m space --focus "$target"
+  up|down)
+    # Build the list of space indices that share this column,
+    # in row order (skips rows where this column doesn't exist,
+    # e.g. an incomplete last row).
+    list=()
+    i=$((col + 1))
+    while [ $i -le $total ]; do
+      list+=("$i")
+      i=$((i + 4))
+    done
+
+    n=${#list[@]}
+    pos=0
+    for j in "${!list[@]}"; do
+      if [ "${list[$j]}" -eq "$idx" ]; then
+        pos=$j
+        break
+      fi
+    done
+
+    if [ "$1" = "up" ]; then
+      new_pos=$(( (pos - 1 + n) % n ))
     else
-      yabai -m space --focus $((idx - 4))
+      new_pos=$(( (pos + 1) % n ))
     fi
-    ;;
-  down)
-    next=$((idx + 4))
-    if [ $next -gt $total ]; then
-      first_row_end=4
-      [ $first_row_end -gt $total ] && first_row_end=$total
-      target=$(( 1 + col ))
-      [ $target -gt $first_row_end ] && target=$first_row_end
-      yabai -m space --focus "$target"
-    else
-      yabai -m space --focus "$next"
-    fi
+
+    yabai -m space --focus "${list[$new_pos]}"
     ;;
 esac
