@@ -18,7 +18,7 @@ tap "hewigovens/tap", "https://github.com/hewigovens/tap.git", trusted: true
 tap "homielab/mountmate", "https://github.com/homielab/mountmate", trusted: true
 tap "jackielii/tap", trusted: true
 tap "jsattler/tap", trusted: true
-tap "jsheffie/tap"
+tap "jsheffie/tap", trusted: { casks: ["spacemap"] }
 tap "jstkdng/programs"
 tap "kegworks-app/kegworks", "https://github.com/Sikarugir-App/homebrew-sikarugir.git", trusted: true
 tap "krishkrosh/apps", trusted: true
@@ -52,6 +52,7 @@ tap "valkyrie00/bbrew", "https://github.com/Valkyrie00/homebrew-bbrew", trusted:
 tap "waydabber/betterdisplay"
 tap "wickenico/wailbrew", trusted: true
 tap "wiggly-sheets/sketchybar-studio", "https://github.com/wiggly-sheets/Homebrew-SketchyBar-Studio.git", trusted: true
+tap "wiggly-sheets/spacemap", "https://github.com/wiggly-sheets/homebrew-spacemap.git"
 tap "xykong/tap", trusted: true
 tap "z20240/tap"
 tap "zackelia/formulae", trusted: true
@@ -138,6 +139,8 @@ brew "coreutils"
 brew "cowsay"
 # CPU architecture fetching tool
 brew "cpufetch"
+# Shell script to build fancy DMGs
+brew "create-dmg"
 # POSIX-compliant descendant of NetBSD's ash (the Almquist SHell)
 brew "dash-shell"
 # Command-line DNS client
@@ -628,8 +631,6 @@ cask "cmux"
 cask "coconutbattery"
 # Code editor
 cask "codeedit"
-# OpenAI's coding agent that runs in your terminal
-cask "codex"
 # Mount network shares quick and easy
 cask "connectmenow"
 cask "container"
@@ -739,8 +740,6 @@ cask "hazel"
 cask "helium-browser"
 # Terminal built on web technologies
 cask "hyper"
-# Backup data from a Synology NAS
-cask "hyperbackupexplorer"
 # Free and open-source media player
 cask "iina"
 # Tool to optimise images to a smaller size
@@ -765,6 +764,8 @@ cask "keyboard-maestro"
 cask "keycastr"
 # Find shortcuts for any installed application
 cask "keyclu"
+# Use Vim in input fields and non input fields
+cask "kindavim"
 # GPU-based terminal emulator
 cask "kitty"
 # Tool to show what is persistently installed on the computer
@@ -865,6 +866,8 @@ cask "openttd"
 cask "orbstack"
 # WebKit based web browser
 cask "orion"
+# LLM server built on MLX
+cask "osaurus"
 # Monitors computer mic and webcam
 cask "oversight"
 # Share audio between two Bluetooth devices
@@ -877,6 +880,8 @@ cask "pcsx2"
 cask "pearcleaner"
 # Converts and edits video, audio or image files
 cask "permute"
+# AI-powered answer engine with Personal Computer agent
+cask "perplexity"
 # Customise and maintain app icons
 cask "pictogram"
 # Control where notifications appear on your screen.
@@ -965,8 +970,8 @@ cask "sourcetree"
 cask "zimengxiong/tools/spacecommand"
 # View and navigate Spaces (Virtual Desktops) from the menu bar
 cask "ruittenb/tap/spaceman"
-# Floating yabai workspace grid overlay for macOS
-cask "jsheffie/tap/spacemap", trusted: true
+# Yabai workspace visualizer
+cask "wiggly-sheets/spacemap/spacemap", trusted: true
 # Run anything at startup by simply placing it in a special folder
 cask "startupfolder"
 # System monitor for the menu bar

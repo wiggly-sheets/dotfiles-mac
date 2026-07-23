@@ -31,7 +31,7 @@ start_network_load()
 
 -- re-run when system wakes or network changes
 
-local wifi_up = sbar.add("item", "wifi1", {
+local network_up = sbar.add("item", "network1", {
 	position = "right",
 	icon = {
 		font = {
@@ -48,11 +48,12 @@ local wifi_up = sbar.add("item", "wifi1", {
 		color = colors.blue,
 		string = "??? Bps",
 	},
-	y_offset = 4,
+	y_offset = 7,
 })
 
-local wifi_down = sbar.add("item", "wifi2", {
+local network_down = sbar.add("item", "network2", {
 	position = "right",
+	padding_right = -52,
 	icon = {
 		font = {
 			family = settings.default,
@@ -68,7 +69,7 @@ local wifi_down = sbar.add("item", "wifi2", {
 		color = colors.green,
 		string = "??? Bps",
 	},
-	y_offset = -4,
+	y_offset = -5,
 })
 
 -- Upload network graph
@@ -166,7 +167,7 @@ local net_graph_down = sbar.add("graph", "net_graph_down", 42, {
 	y_offset = -5,
 })
 
-local wifi = sbar.add("item", "wifi.status", {
+local network = sbar.add("item", "network.status", {
 	position = "right",
 	padding_right = -2,
 	padding_left = -6,
@@ -223,19 +224,19 @@ local function updateNetworkStatus()
 				-- Visual feedback logic
 				if tonumber(vpnStatus) == 1 then
 					-- VPN ACTIVE (highest priority)
-					wifi:set({
+					network:set({
 						icon = { string = icons.wifi.vpn, color = colors.white },
 						label = { string = "", color = colors.white },
 					})
 				elseif tonumber(hasInternet) == 0 then
 					-- DISCONNECTED
-					wifi:set({
+					network:set({
 						icon = { string = icons.wifi.disconnected, color = colors.red },
 						label = { drawing = false },
 					})
 				elseif activeInterface and tonumber(activeInterface:match("^en(%d+)")) >= 1 then
 					-- ETHERNET
-					wifi:set({
+					network:set({
 						icon = { string = icons.wifi.ethernet, color = colors.white },
 						label = { string = "", color = colors.green },
 					})
@@ -247,13 +248,13 @@ local function updateNetworkStatus()
 							local ssid_str = ssid_result or ""
 							if ssid_str:match("iPhone") then
 								-- Detected hotspot
-								wifi:set({
+								network:set({
 									icon = { string = icons.wifi.hotspot, color = colors.white },
 									label = { string = "", color = colors.blue },
 								})
 							else
 								-- Normal Wi-Fi
-								wifi:set({
+								network:set({
 									icon = { string = icons.wifi.connected, color = colors.white },
 									label = { drawing = false },
 								})
@@ -270,23 +271,23 @@ end
 sbar.delay(1, updateNetworkStatus)
 
 -- Event subscriptions
-wifi:subscribe({ "wifi_change", "system_woke", "network_update", "vpn_state_change" }, function()
+network:subscribe({ "wifi_change", "system_woke", "network_update", "vpn_state_change" }, function()
 	sbar.delay(0.5, updateNetworkStatus)
 end)
 
 local popup_width = 250
 
-local wifi_bracket = sbar.add("bracket", "wifi.bracket", {
-	wifi.name,
-	wifi_up.name,
-	wifi_down.name,
+local network_bracket = sbar.add("bracket", "network.bracket", {
+	network.name,
+	network_up.name,
+	network_down.name,
 }, {
 	background = { color = colors.bg1 },
 	popup = { align = "center", height = 30 },
 })
 
 local ssid = sbar.add("item", {
-	position = "popup." .. wifi_bracket.name,
+	position = "popup." .. network_bracket.name,
 	icon = {
 		padding_right = 5,
 		font = {
@@ -312,7 +313,7 @@ local ssid = sbar.add("item", {
 })
 
 local hostname = sbar.add("item", {
-	position = "popup." .. wifi_bracket.name,
+	position = "popup." .. network_bracket.name,
 	icon = {
 		align = "left",
 		string = "Hostname:",
@@ -329,7 +330,7 @@ local hostname = sbar.add("item", {
 })
 
 local ip = sbar.add("item", {
-	position = "popup." .. wifi_bracket.name,
+	position = "popup." .. network_bracket.name,
 	icon = {
 		align = "left",
 		string = "IP:",
@@ -345,7 +346,7 @@ local ip = sbar.add("item", {
 })
 
 local mask = sbar.add("item", {
-	position = "popup." .. wifi_bracket.name,
+	position = "popup." .. network_bracket.name,
 	icon = {
 		align = "left",
 		string = "Subnet mask:",
@@ -361,7 +362,7 @@ local mask = sbar.add("item", {
 })
 
 local router = sbar.add("item", {
-	position = "popup." .. wifi_bracket.name,
+	position = "popup." .. network_bracket.name,
 	icon = {
 		align = "left",
 		string = "Router:",
@@ -377,7 +378,7 @@ local router = sbar.add("item", {
 })
 
 local network_interface = sbar.add("item", {
-	position = "popup." .. wifi_bracket.name,
+	position = "popup." .. network_bracket.name,
 	icon = {
 		align = "left",
 		string = "Network Interface:",
@@ -393,9 +394,9 @@ local network_interface = sbar.add("item", {
 })
 
 local function toggle_details()
-	local should_draw = wifi_bracket:query().popup.drawing == "off"
+	local should_draw = network_bracket:query().popup.drawing == "off"
 	if should_draw then
-		wifi_bracket:set({ popup = { drawing = true } })
+		network_bracket:set({ popup = { drawing = true } })
 		sbar.exec("networksetup -getcomputername", function(result)
 			hostname:set({ label = result })
 		end)
@@ -421,24 +422,24 @@ local function toggle_details()
 			end)
 		)
 	else
-		wifi_bracket:set({ popup = { drawing = false } })
+		network_bracket:set({ popup = { drawing = false } })
 	end
 end
 
-wifi:subscribe("mouse.clicked", toggle_details)
+network:subscribe("mouse.clicked", toggle_details)
 
-wifi:subscribe("mouse.exited", function()
+network:subscribe("mouse.exited", function()
 	toggle_details()
 end)
 
-wifi_up:subscribe("network_update", function(env)
+network_up:subscribe("network_update", function(env)
 	local upload_str = env.upload:gsub("Bps", "B/s")
 	local download_str = env.download:gsub("Bps", "B/s")
 
 	local up_color = (upload_str == "000 B/s") and colors.grey or colors.blue
 	local down_color = (download_str == "000 B/s") and colors.grey or colors.green
 
-	wifi_up:set({
+	network_up:set({
 		icon = { color = up_color },
 		label = {
 			string = upload_str,
@@ -446,7 +447,7 @@ wifi_up:subscribe("network_update", function(env)
 		},
 	})
 
-	wifi_down:set({
+	network_down:set({
 		icon = { color = down_color },
 		label = {
 			string = download_str,
@@ -455,176 +456,97 @@ wifi_up:subscribe("network_update", function(env)
 	})
 end)
 
--- Initial update with 1s delay to allow network stabilization
-sbar.delay(1, updateNetworkStatus)
+-- ======== Click handlers ========
+local network_click_script =
+	'osascript -e \'tell application "System Events" to tell process "ControlCenter" to click menu bar item 3 of menu bar 1 \''
+local shortcut_script =
+	'osascript -e \'tell application "System Events" to keystroke "u" using {command down, option down, control down}\''
+local vpn_click_script =
+	'osascript -e \'tell application "System Events" to tell process "Passepartout" to click menu bar item 1 of menu bar 2\''
+local little_snitch_click_script = "open -a 'Little Snitch Network Monitor'"
+local tailscale_click_script =
+	'osascript -e \'tell application "System Events" to tell process "Tailscale" to click menu bar item 1 of menu bar 2\''
 
--- Event subscriptions
-wifi:subscribe({ "wifi_change", "system_woke", "network_update", "vpn_state_change" }, function()
-	sbar.delay(1, updateNetworkStatus)
+network:subscribe("mouse.clicked", function(env)
+	if env.BUTTON == "left" then
+		toggle_details()
+	elseif env.BUTTON == "right" then
+		sbar.exec(network_click_script)
+	else
+		sbar.exec(vpn_click_script)
+	end
 end)
 
-local wifi_up = sbar.add("item", "wifi1", {
-	position = "right",
-	width = 0,
-	icon = {
-		font = {
-			style = settings.default,
-			size = 11,
-		},
-		string = icons.wifi.upload,
-	},
-	label = {
-		padding_left = 3,
-		padding_right = 0,
-		font = {
-			family = settings.default,
-			size = 8,
-		},
-		color = colors.blue,
-		string = "??? Bps",
-	},
-	y_offset = 8,
-})
-
-local wifi_down = sbar.add("item", "wifi2", {
-	position = "right",
-	icon = {
-		font = {
-			style = settings.default,
-			size = 9,
-		},
-		string = icons.wifi.download,
-	},
-	label = {
-		padding_left = 3,
-		padding_right = 0,
-		font = {
-			family = settings.default,
-			size = 8,
-		},
-		color = colors.green,
-		string = "??? Bps",
-	},
-	y_offset = -4,
-})
-
-wifi_up:subscribe("network_update", function(env)
-	local upload_str = env.upload:gsub("Bps", "B/s")
-	local download_str = env.download:gsub("Bps", "B/s")
-
-	local up_color = (upload_str == "000 B/s") and colors.grey or colors.blue
-	local down_color = (download_str == "000 B/s") and colors.grey or colors.green
-
-	wifi_up:set({
-		icon = { color = up_color },
-		label = {
-			string = upload_str,
-			color = up_color,
-		},
-	})
-
-	wifi_down:set({
-		icon = { color = down_color },
-		label = {
-			string = download_str,
-			color = down_color,
-		},
-	})
-
-	local wifi_click_script =
-		'osascript -e \'tell application "System Events" to tell process "ControlCenter" to click menu bar item 3 of menu bar 1 \''
-	local shortcut_script =
-		'osascript -e \'tell application "System Events" to keystroke "u" using {command down, option down, control down}\''
-	local vpn_click_script =
-		'osascript -e \'tell application "System Events" to tell process "Passepartout" to click menu bar item 1 of menu bar 2\''
-	local little_snitch_click_script = "open -a 'Little Snitch Network Monitor'"
-
-	local tailscale_click_script =
-		'osascript -e \'tell application "System Events" to tell process "Tailscale" to click menu bar item 1 of menu bar 2\''
-
-	-- Wi-Fi item
-	wifi:subscribe("mouse.clicked", function(env)
-		if env.BUTTON == "left" then
-			toggle_details()
-		elseif env.BUTTON == "right" then
-			sbar.exec(wifi_click_script)
-		else
-			sbar.exec(vpn_click_script)
-		end
-	end)
-
-	-- Wi-Fi up
-	wifi_up:subscribe("mouse.clicked", function(env)
-		if env.BUTTON == "left" then
-			sbar.exec(shortcut_script)
-		elseif env.BUTTON == "right" then
-			sbar.exec(tailscale_click_script)
-		else
-			sbar.exec(little_snitch_click_script)
-		end
-	end)
-
-	-- Wi-Fi down
-	wifi_down:subscribe("mouse.clicked", function(env)
-		if env.BUTTON == "left" then
-			sbar.exec(shortcut_script)
-		elseif env.BUTTON == "right" then
-			sbar.exec(tailscale_click_script)
-		else
-			sbar.exec(little_snitch_click_script)
-		end
-	end)
-
-	-- Net graph up
-	net_graph_up:subscribe("mouse.clicked", function(env)
-		if env.BUTTON == "left" then
-			sbar.exec(shortcut_script)
-		elseif env.BUTTON == "right" then
-			sbar.exec(tailscale_click_script)
-		else
-			sbar.exec(little_snitch_click_script)
-		end
-	end)
-
-	-- Net graph down
-	net_graph_down:subscribe("mouse.clicked", function(env)
-		if env.BUTTON == "left" then
-			sbar.exec(shortcut_script)
-		elseif env.BUTTON == "right" then
-			sbar.exec(tailscale_click_script)
-		else
-			sbar.exec(little_snitch_click_script)
-		end
-	end)
-end)
-
--- ======== Hover effects ========
-local function add_hover(item)
-	item:subscribe("mouse.entered", function()
-		item:set({
-			background = {
-				drawing = true,
-				color = colors.hover,
-				corner_radius = 10,
-				height = 30,
-				x_offset = 0,
-				y_offset = 5,
-			},
-		})
-	end)
-
-	item:subscribe({ "mouse.exited", "mouse.entered.global", "mouse.exited.global" }, function()
-		item:set({ background = { drawing = false } })
-	end)
+local function handle_arrow_click(env)
+	if env.BUTTON == "left" then
+		sbar.exec(shortcut_script)
+	elseif env.BUTTON == "right" then
+		sbar.exec(tailscale_click_script)
+	else
+		sbar.exec(little_snitch_click_script)
+	end
 end
 
-add_hover(wifi_up)
-add_hover(wifi_down)
+network_up:subscribe("mouse.clicked", handle_arrow_click)
+network_down:subscribe("mouse.clicked", handle_arrow_click)
+net_graph_up:subscribe("mouse.clicked", handle_arrow_click)
+net_graph_down:subscribe("mouse.clicked", handle_arrow_click)
 
 -- ======== Hover effects ========
+network_up:subscribe("mouse.entered", function()
+	network_down:set({
+		background = {
+			drawing = true,
+			color = colors.hover,
+			corner_radius = 20,
+			height = 10,
+			y_offset = 0,
+		},
+	})
+	network_up:set({
+		background = {
+			drawing = true,
+			color = colors.hover,
+			corner_radius = 20,
+			height = 10,
+			x_offset = 0,
+		},
+	})
+end)
 
-wifi:subscribe("mouse.entered", function()
-	wifi:set({
+network_down:subscribe("mouse.entered", function()
+	network_up:set({
+		background = {
+			drawing = true,
+			color = colors.hover,
+			corner_radius = 20,
+			height = 10,
+			y_offset = 0,
+		},
+	})
+	network_down:set({
+		background = {
+			drawing = true,
+			color = colors.hover,
+			corner_radius = 20,
+			height = 10,
+			x_offset = 0,
+		},
+	})
+end)
+
+network_up:subscribe({ "mouse.exited", "mouse.entered.global", "mouse.exited.global" }, function()
+	network_down:set({ background = { drawing = true, height = 10, color = colors.transparent } })
+	network_up:set({ background = { drawing = true, height = 10, color = colors.transparent } })
+end)
+
+network_down:subscribe({ "mouse.exited", "mouse.entered.global", "mouse.exited.global" }, function()
+	network_up:set({ background = { drawing = true, height = 10, color = colors.transparent } })
+	network_down:set({ background = { drawing = true, height = 10, color = colors.transparent } })
+end)
+
+network:subscribe("mouse.entered", function()
+	network:set({
 		background = {
 			drawing = true,
 			color = colors.hover,
@@ -636,8 +558,8 @@ wifi:subscribe("mouse.entered", function()
 	})
 end)
 
-wifi:subscribe("mouse.exited", function()
-	wifi:set({ background = { drawing = false } })
+network:subscribe("mouse.exited", function()
+	network:set({ background = { drawing = false } })
 end)
 
 net_graph_down:subscribe("mouse.entered", function()

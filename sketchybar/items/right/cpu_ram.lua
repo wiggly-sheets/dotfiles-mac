@@ -152,7 +152,7 @@ local gpu_click =
 local ram_click =
 	'osascript -e \'tell application "System Events" to keystroke "z" using {command down, option down, control down}\''
 
-cpu:subscribe("mouse.clicked", function(env)
+local function handle_cpu_ram_click(env)
 	if env.BUTTON == "left" then
 		sbar.exec(cpu_click)
 	elseif env.BUTTON == "right" then
@@ -160,17 +160,10 @@ cpu:subscribe("mouse.clicked", function(env)
 	elseif env.BUTTON == "other" then
 		sbar.exec(gpu_click)
 	end
-end)
+end
 
-ram:subscribe("mouse.clicked", function(env)
-	if env.BUTTON == "left" then
-		sbar.exec(cpu_click)
-	elseif env.BUTTON == "right" then
-		sbar.exec(ram_click)
-	elseif env.BUTTON == "other" then
-		sbar.exec(gpu_click)
-	end
-end)
+cpu:subscribe("mouse.clicked", handle_cpu_ram_click)
+ram:subscribe("mouse.clicked", handle_cpu_ram_click)
 
 cpu:subscribe("mouse.entered", function()
 	ram:set({

@@ -6,9 +6,8 @@ sbar.add("item", { position = "right", width = settings.group_paddings })
 
 local time = sbar.add("item", "time", {
 	position = "right",
-	padding_right = 18,
+	padding_right = 0,
 	update_freq = 1,
-	width = 0,
 	label = {
 		color = colors.white,
 		font = {
@@ -23,7 +22,7 @@ local time = sbar.add("item", "time", {
 local date = sbar.add("item", "date", {
 	position = "right",
 	y_offset = -5,
-	padding_right = 14,
+	padding_right = -78,
 	update_freq = 60,
 	label = {
 		color = colors.white,
@@ -53,7 +52,7 @@ local right_click_script =
 local middle_click_script = [[osascript -e 'tell application "System Events" to tell process "FreeLLMAPI" to click menu bar item 1 of menu bar 2']]
 
 
-date:subscribe("mouse.clicked", function(env)
+local function handle_click(env)
 	if env.BUTTON == "left" then
 		sbar.exec(left_click_script)
 	elseif env.BUTTON == "right" then
@@ -61,17 +60,10 @@ date:subscribe("mouse.clicked", function(env)
 	else
 		sbar.exec(middle_click_script)
 	end
-end)
+end
 
-time:subscribe("mouse.clicked", function(env)
-	if env.BUTTON == "left" then
-		sbar.exec(left_click_script)
-	elseif env.BUTTON == "right" then
-		sbar.exec(right_click_script)
-	else
-		sbar.exec(middle_click_script)
-	end
-end)
+date:subscribe("mouse.clicked", handle_click)
+time:subscribe("mouse.clicked", handle_click)
 
 time:subscribe("mouse.entered", function()
 	date:set({
@@ -95,7 +87,7 @@ time:subscribe("mouse.entered", function()
 end)
 
 date:subscribe("mouse.entered", function()
-	date:set({
+	time:set({
 		background = {
 			drawing = true,
 			color = colors.hover,
@@ -104,7 +96,7 @@ date:subscribe("mouse.entered", function()
 			y_offset = 0,
 		},
 	})
-	time:set({
+	date:set({
 		background = {
 			drawing = true,
 			color = colors.hover,
@@ -116,7 +108,7 @@ date:subscribe("mouse.entered", function()
 end)
 
 time:subscribe({ "mouse.exited", "mouse.entered.global", "mouse.exited.global" }, function()
-	date:set({ background = { drawing = true, height = 10, color = colors.transparent } })
+	date:set({ background = { drawing = true, height = 20, color = colors.transparent } })
 	time:set({ background = { drawing = true, height = 10, color = colors.transparent } })
 end)
 

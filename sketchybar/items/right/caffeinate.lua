@@ -36,14 +36,10 @@ local function toggle_caffeinate()
 	end
 end
 
-caffeinate:subscribe("mouse.clicked", function()
-	toggle_caffeinate()
-end)
-
-update_caffeinate()
-
 caffeinate:subscribe("mouse.clicked", toggle_caffeinate)
 caffeinate:subscribe("routine", update_caffeinate)
+
+update_caffeinate()
 
 -- ======== Hover effects ========
 local function add_hover(item)

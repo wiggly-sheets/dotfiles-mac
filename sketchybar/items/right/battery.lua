@@ -134,29 +134,26 @@ end
 add_hover(lowpowermode)
 add_hover(battery)
 
-battery:subscribe(
-	"mouse.entered",
-	function()
-		battery:set({
-			background = {
-				drawing = true,
-				color = colors.hover,
-				corner_radius = 20,
-				height = 30,
-				y_offset = -5,
-			},
-		})
-	end,
+battery:subscribe("mouse.entered", function()
+	battery:set({
+		background = {
+			drawing = true,
+			color = colors.hover,
+			corner_radius = 20,
+			height = 30,
+			y_offset = -5,
+		},
+	})
+end)
 
-	lowpowermode:subscribe("mouse.entered", function()
-		lowpowermode:set({
-			background = {
-				drawing = true,
-				color = colors.hover,
-				corner_radius = 20,
-				height = 20,
-				x_offset = 2,
-			},
-		})
-	end)
-)
+lowpowermode:subscribe("mouse.entered", function()
+	lowpowermode:set({
+		background = {
+			drawing = true,
+			color = colors.hover,
+			corner_radius = 20,
+			height = 20,
+			x_offset = 2,
+		},
+	})
+end)
