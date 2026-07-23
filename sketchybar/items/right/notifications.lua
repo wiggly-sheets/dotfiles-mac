@@ -9,7 +9,7 @@ local notifications = sbar.add("item", "notifications", {
 	position = "right",
 	width = 5,
 	y_offset = 8,
-	padding_right = 18,
+	padding_right = 0,
 
 	icon = {
 		padding_right = 0,
