@@ -42,7 +42,6 @@ lowpowermode:subscribe({ "power_source_change", "system_woke", "routine", "force
 
 update_lowpowermode()
 
--- ── Combined Battery Item ─────────────────────────────────────────
 local battery = sbar.add("item", "battery", {
 	position = "right",
 	padding_left = 2,

@@ -1045,7 +1045,7 @@ cask "warp"
 # Torrent streaming application
 cask "webtorrent"
 # GPU-accelerated cross-platform terminal emulator and multiplexer
-cask "wezterm@nightly"
+cask "wezterm"
 # Menu bar app for USB-C cable diagnostics
 cask "whatcable"
 # Native desktop client for WhatsApp

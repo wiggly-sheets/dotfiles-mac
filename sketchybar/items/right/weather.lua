@@ -66,8 +66,8 @@ local weather = sbar.add("item", "weather", {
 	updates = true,
 	icon = {
 		font = { family = settings.default, style = "Regular", size = 15 },
-		padding_right = 8,
-		padding_left = 2,
+		padding_right = 2,
+		padding_left = 4,
 		y_offset = 8,
 	},
 	label = {
@@ -80,7 +80,7 @@ local weather = sbar.add("item", "weather", {
 			size = 10,
 		},
 	},
-	padding_right = -6,
+    padding_right = -6,
 })
 
 local function get_icon(code, is_day)
