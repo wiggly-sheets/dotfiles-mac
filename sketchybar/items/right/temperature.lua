@@ -83,8 +83,17 @@ cpu_temp:subscribe("mouse.entered", function()
 			drawing = true,
 			color = colors.hover,
 			corner_radius = 20,
-			height = 25,
-			y_offset = 5,
+			height = 10,
+			y_offset = 0,
+		},
+	})
+	cpu_temp:set({
+		background = {
+			drawing = true,
+			color = colors.hover,
+			corner_radius = 20,
+			height = 10,
+			x_offset = 0,
 		},
 	})
 end)
@@ -95,14 +104,23 @@ gpu_temp:subscribe("mouse.entered", function()
 			drawing = true,
 			color = colors.hover,
 			corner_radius = 20,
-			height = 25,
-			y_offset = 5,
+			height = 10,
+			y_offset = 0,
+		},
+	})
+	cpu_temp:set({
+		background = {
+			drawing = true,
+			color = colors.hover,
+			corner_radius = 20,
+			height = 10,
+			x_offset = 0,
 		},
 	})
 end)
 
 cpu_temp:subscribe({ "mouse.exited", "mouse.entered.global", "mouse.exited.global" }, function()
-	gpu_temp:set({ background = { drawing = true, height = 20, color = colors.transparent } })
+	gpu_temp:set({ background = { drawing = true, height = 10, color = colors.transparent } })
 	cpu_temp:set({ background = { drawing = true, height = 10, color = colors.transparent } })
 end)
 

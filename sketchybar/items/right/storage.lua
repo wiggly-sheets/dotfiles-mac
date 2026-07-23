@@ -69,21 +69,56 @@ disk_label:subscribe("mouse.clicked", handle_disk_click)
 disk_icon:subscribe({ "routine", "forced", "system_woke" }, update_disk)
 disk_label:subscribe({ "routine", "forced", "system_woke" }, update_disk)
 
+disk_icon:subscribe("mouse.entered", function()
+	disk_label:set({
+		background = {
+			drawing = true,
+			color = colors.hover,
+			corner_radius = 20,
+			height = 10,
+			y_offset = 0,
+		},
+	})
+	disk_icon:set({
+		background = {
+			drawing = true,
+			color = colors.hover,
+			corner_radius = 20,
+			height = 10,
+			x_offset = 0,
+		},
+	})
+end)
+
 disk_label:subscribe("mouse.entered", function()
 	disk_label:set({
 		background = {
 			drawing = true,
 			color = colors.hover,
 			corner_radius = 20,
-			height = 25,
-			x_offset = 2,
-			y_offset = 5,
+			height = 10,
+			y_offset = 0,
+		},
+	})
+	disk_icon:set({
+		background = {
+			drawing = true,
+			color = colors.hover,
+			corner_radius = 20,
+			height = 10,
+			x_offset = 0,
 		},
 	})
 end)
 
+disk_icon:subscribe({ "mouse.exited", "mouse.entered.global", "mouse.exited.global" }, function()
+	disk_label:set({ background = { drawing = true, height = 10, color = colors.transparent } })
+	disk_icon:set({ background = { drawing = true, height = 10, color = colors.transparent } })
+end)
+
 disk_label:subscribe({ "mouse.exited", "mouse.entered.global", "mouse.exited.global" }, function()
-	disk_label:set({ background = { drawing = true, height = 20, color = colors.transparent } })
+	disk_label:set({ background = { drawing = true, height = 10, color = colors.transparent } })
+	disk_icon:set({ background = { drawing = true, height = 10, color = colors.transparent } })
 end)
 
 update_disk()

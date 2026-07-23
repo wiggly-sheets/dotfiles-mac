@@ -73,60 +73,54 @@ time:subscribe("mouse.clicked", function(env)
 	end
 end)
 
-date:subscribe("mouse.entered", function()
-	date:set({
-		background = {
-			drawing = true,
-			color = colors.hover,
-			corner_radius = 20,
-			height = 25,
-			y_offset = 0,
-		},
-	})
-end)
-
-date:subscribe("mouse.entered", function()
-	time:set({
-		background = {
-			drawing = true,
-			color = colors.hover,
-			corner_radius = 20,
-			height = 25,
-			y_offset = 5,
-		},
-	})
-end)
-
 time:subscribe("mouse.entered", function()
 	date:set({
 		background = {
 			drawing = true,
 			color = colors.hover,
 			corner_radius = 20,
-			height = 25,
+			height = 10,
 			y_offset = 0,
 		},
 	})
-end)
-
-time:subscribe("mouse.entered", function()
 	time:set({
 		background = {
 			drawing = true,
 			color = colors.hover,
 			corner_radius = 20,
-			height = 25,
-			y_offset = 5,
+			height = 10,
+			x_offset = 0,
 		},
 	})
 end)
 
-date:subscribe({ "mouse.exited", "mouse.entered.global", "mouse.exited.global" }, function()
-	time:set({ background = { drawing = false } })
-	date:set({ background = { drawing = false } })
+date:subscribe("mouse.entered", function()
+	date:set({
+		background = {
+			drawing = true,
+			color = colors.hover,
+			corner_radius = 20,
+			height = 10,
+			y_offset = 0,
+		},
+	})
+	time:set({
+		background = {
+			drawing = true,
+			color = colors.hover,
+			corner_radius = 20,
+			height = 10,
+			x_offset = 0,
+		},
+	})
 end)
 
 time:subscribe({ "mouse.exited", "mouse.entered.global", "mouse.exited.global" }, function()
-	date:set({ background = { drawing = false } })
-	time:set({ background = { drawing = false } })
+	date:set({ background = { drawing = true, height = 10, color = colors.transparent } })
+	time:set({ background = { drawing = true, height = 10, color = colors.transparent } })
+end)
+
+date:subscribe({ "mouse.exited", "mouse.entered.global", "mouse.exited.global" }, function()
+	date:set({ background = { drawing = true, height = 10, color = colors.transparent } })
+	time:set({ background = { drawing = true, height = 10, color = colors.transparent } })
 end)
