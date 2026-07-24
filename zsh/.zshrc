@@ -28,6 +28,7 @@ export EZA_CONFIG_DIR="/Users/Zeb/dotfiles/.config/eza/"
 export CARAPACE_BRIDGES='zsh,bash'
 
 export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
+bindkey -v
 
 
 # ------------------------------------------------
