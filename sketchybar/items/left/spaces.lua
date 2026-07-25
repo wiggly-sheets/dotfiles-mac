@@ -4,6 +4,7 @@ local app_icons = require("helpers.icon_map")
 local settings = require("default")
 
 local spaces = {}
+local space_separators = {}
 local space_app_icons = {} -- sid -> concatenated icon glyphs (string)
 local space_selected = {} -- sid -> bool
 
@@ -39,9 +40,32 @@ local function update_space_display(space, space_id, is_selected)
 	end)
 end
 
+-- Show a visual break after the final space owned by each display. The spaces
+-- themselves retain yabai's global indexes, so this stays correct as displays
+-- are rearranged or spaces are moved between them.
+local function refresh_space_separators()
+	sbar.exec("yabai -m query --spaces | jq -r '.[] | \"\\(.index) \\(.display)\"'", function(output)
+		local display_by_space = {}
+		for space_id, display_id in output:gmatch("(%d+)%s+(%d+)") do
+			display_by_space[tonumber(space_id)] = tonumber(display_id)
+		end
+
+		for space_id, separator in ipairs(space_separators) do
+			local display_id = display_by_space[space_id]
+			local next_display_id = display_by_space[space_id + 1]
+			spaces[space_id]:set({ drawing = display_id ~= nil })
+			separator:set({ drawing = display_id ~= nil and next_display_id ~= nil and display_id ~= next_display_id })
+		end
+	end)
+end
+
 for i = 1, 10 do
 	local space = sbar.add("space", "space." .. i, {
 		space = i,
+		-- Keep every global space visible on the main bar; display grouping is
+		-- represented by the separators below rather than SketchyBar hiding
+		-- spaces that belong to a secondary display.
+		ignore_association = true,
 		icon = {
 			font = { family = settings.default, size = 11, style = "Bold" },
 			string = tostring(i),
@@ -61,6 +85,20 @@ for i = 1, 10 do
 		padding_left = 1,
 	})
 	spaces[i] = space
+
+	local space_separator = sbar.add("item", "space_separator." .. i, {
+		position = "left",
+		drawing = false,
+		width = 8,
+		padding_left = 0,
+		padding_right = 5,
+		icon = {
+			string = "│",
+			font = { family = settings.default, size = 12, style = "Regular" },
+			color = colors.grey,
+		},
+	})
+	space_separators[i] = space_separator
 
 	local space_bracket = sbar.add("bracket", { space.name }, {
 		background = {
@@ -85,13 +123,6 @@ for i = 1, 10 do
 			},
 		},
 	})
-
-	space:subscribe("space_change", function(env)
-		local sid = tonumber(env.SID) or i
-		local is_selected = env.SELECTED == "true"
-
-		update_space_display(space, sid, is_selected)
-	end)
 
 	space:subscribe("mouse.clicked", function(env)
 		if env.BUTTON then
@@ -121,6 +152,40 @@ for i = 1, 10 do
 		space:set({ popup = { drawing = "toggle" } })
 	end)
 end
+
+-- Space items associated with another display do not always receive the
+-- selection event on a main-display bar. Ask yabai for its single focused
+-- space, then update every visible item directly so the highlight follows
+-- focus across displays.
+local function refresh_space_selection()
+	sbar.exec("yabai -m query --spaces | jq -r '.[] | select(.[\"has-focus\"] == true) | .index'", function(output)
+		local focused_space = tonumber(output:match("(%d+)"))
+		for space_id, space in ipairs(spaces) do
+			local is_selected = space_id == focused_space
+			space_selected[space_id] = is_selected
+			space:set({
+				icon = { highlight = is_selected },
+				label = { highlight = is_selected },
+			})
+		end
+	end)
+end
+
+local space_display_observer = sbar.add("item", {
+	drawing = false,
+	updates = true,
+})
+space_display_observer:subscribe("space_change", refresh_space_separators)
+space_display_observer:subscribe("display_change", refresh_space_separators)
+refresh_space_separators()
+
+local space_focus_observer = sbar.add("item", {
+	drawing = false,
+	updates = true,
+})
+space_focus_observer:subscribe("space_change", refresh_space_selection)
+space_focus_observer:subscribe("display_change", refresh_space_selection)
+refresh_space_selection()
 
 local space_window_observer = sbar.add("item", {
 	drawing = false,
