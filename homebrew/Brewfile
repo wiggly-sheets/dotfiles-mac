@@ -864,6 +864,8 @@ cask "openra"
 cask "openttd"
 # Replacement for Docker Desktop
 cask "orbstack"
+# Native GUI for Apple Containers
+cask "orchard"
 # WebKit based web browser
 cask "orion"
 # LLM server built on MLX
@@ -972,6 +974,8 @@ cask "zimengxiong/tools/spacecommand"
 cask "ruittenb/tap/spaceman"
 # Yabai workspace visualizer
 cask "wiggly-sheets/spacemap/spacemap", trusted: true
+# Software update framework for Cocoa developers
+cask "sparkle"
 # Run anything at startup by simply placing it in a special folder
 cask "startupfolder"
 # System monitor for the menu bar
@@ -1044,8 +1048,6 @@ cask "wickenico/wailbrew/wailbrew"
 cask "warp"
 # Torrent streaming application
 cask "webtorrent"
-# GPU-accelerated cross-platform terminal emulator and multiplexer
-cask "wezterm"
 # Menu bar app for USB-C cable diagnostics
 cask "whatcable"
 # Native desktop client for WhatsApp

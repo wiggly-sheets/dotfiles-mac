@@ -105,7 +105,7 @@
           "value" : "/Applications/Ghostty.app"
         },
         {
-          "key" : "b",
+          "key" : "y",
           "type" : "application",
           "value" : "/Applications/Tabby.app"
         },
@@ -123,6 +123,11 @@
           "key" : "h",
           "type" : "application",
           "value" : "/Applications/Hyper.app"
+        },
+        {
+          "key" : "c",
+          "type" : "application",
+          "value" : "/Applications/cmux.app"
         }
       ],
       "key" : "t",
