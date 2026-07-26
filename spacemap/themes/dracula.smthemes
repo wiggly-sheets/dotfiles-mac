@@ -1,0 +1,10 @@
+# Dracula
+background=282a36
+focused=bd93f9
+text=f8f8f2
+dropTarget=ff79c6
+cellBg=44475a
+cellBgFocused=565a79
+rect1=bd93f9
+rect2=ff79c6
+rect3=50fa7b

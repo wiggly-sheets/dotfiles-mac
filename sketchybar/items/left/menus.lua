@@ -113,7 +113,13 @@ local function update_window_title()
 			window_title:set({
 				label = {
 					string = title,
-					drawing = title ~= "",
+					drawing = (not menus_expanded) and title ~= "",
+				},
+			})
+		else
+			window_title:set({
+				label = {
+					drawing = not menus_expanded and title ~= "",
 				},
 			})
 		end
@@ -185,7 +191,7 @@ local function toggle_menus()
 
 	if menus_expanded then
         front_app:set({ icon = { drawing = false }, padding_left = -4 })
-		window_title:set({label = {drawing = false}})
+		window_title:set({ label = { drawing = false } })
         update_menus()
 		
 	else
@@ -193,7 +199,6 @@ local function toggle_menus()
 			icon = { drawing = true },
             padding_left = 2,
         })
-		window_title:set({label = {drawing = true}})
 		update_window_title()
 	end
 end
