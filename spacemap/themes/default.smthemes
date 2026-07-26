@@ -1,0 +1,10 @@
+# Default
+background=f2f2f7
+focused=007aff
+text=333333
+dropTarget=007aff
+cellBg=e5e5ea
+cellBgFocused=d1d1d6
+rect1=007aff
+rect2=5ac8fa
+rect3=34c759
