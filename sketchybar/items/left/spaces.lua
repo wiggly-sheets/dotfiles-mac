@@ -12,6 +12,12 @@ for i = 1, 10 do
 	space_app_icons[i] = "—"
 end
 
+local function get_focused_space_index(callback)
+	sbar.exec("yabai -m query --spaces --space | jq -r '.index'", function(output)
+		callback(tonumber(output:match("(%d+)")))
+	end)
+end
+
 local function update_space_display(space, space_id, is_selected)
 	sbar.exec("yabai -m query --spaces --space " .. space_id .. " | jq -r '.type'", function(output)
 		local layout = output:gsub("%s+", "") -- bsp, float, stack
@@ -158,8 +164,7 @@ end
 -- space, then update every visible item directly so the highlight follows
 -- focus across displays.
 local function refresh_space_selection()
-	sbar.exec("yabai -m query --spaces | jq -r '.[] | select(.[\"has-focus\"] == true) | .index'", function(output)
-		local focused_space = tonumber(output:match("(%d+)"))
+	get_focused_space_index(function(focused_space)
 		for space_id, space in ipairs(spaces) do
 			local is_selected = space_id == focused_space
 			space_selected[space_id] = is_selected
@@ -168,6 +173,11 @@ local function refresh_space_selection()
 				label = { highlight = is_selected },
 			})
 		end
+
+		-- Keep per-space content synchronized after the focused index shifts.
+		for space_id, space in ipairs(spaces) do
+			update_space_display(space, space_id, space_selected[space_id])
+		end
 	end)
 end
 
@@ -175,8 +185,14 @@ local space_display_observer = sbar.add("item", {
 	drawing = false,
 	updates = true,
 })
-space_display_observer:subscribe("space_change", refresh_space_separators)
-space_display_observer:subscribe("display_change", refresh_space_separators)
+space_display_observer:subscribe("space_change", function()
+	refresh_space_separators()
+	refresh_space_selection()
+end)
+space_display_observer:subscribe("display_change", function()
+	refresh_space_separators()
+	refresh_space_selection()
+end)
 refresh_space_separators()
 
 local space_focus_observer = sbar.add("item", {

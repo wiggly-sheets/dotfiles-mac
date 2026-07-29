@@ -566,6 +566,11 @@
           "key" : "a",
           "type" : "application",
           "value" : "/System/Applications/Utilities/Activity Monitor.app"
+        },
+        {
+          "key" : "m",
+          "type" : "url",
+          "value" : "spacemap://themes"
         }
       ],
       "key" : "s",

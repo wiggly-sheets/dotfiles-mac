@@ -37,7 +37,7 @@
   "showIconStrip" : true,
   "showMode" : "all",
   "showMultiAppIcons" : true,
-  "showSpaceNames" : true,
+  "showSpaceNames" : false,
   "showSpaceNumbers" : true,
   "socketHealthInterval" : 60,
   "spaceNames" : {
