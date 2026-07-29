@@ -1048,6 +1048,8 @@ cask "wickenico/wailbrew/wailbrew"
 cask "warp"
 # Torrent streaming application
 cask "webtorrent"
+# GPU-accelerated cross-platform terminal emulator and multiplexer
+cask "wezterm@nightly"
 # Menu bar app for USB-C cable diagnostics
 cask "whatcable"
 # Native desktop client for WhatsApp
@@ -1132,7 +1134,6 @@ mas "TestFlight", id: 899247664
 mas "Tinted Folders Pro", id: 1529959811
 mas "uBlock Origin Lite", id: 6745342698
 mas "Unsplash Wallpapers", id: 1284863847
-mas "Velja", id: 1607635845
 mas "Vimari", id: 1480933944
 mas "Xcode", id: 497799835
 mas "Xmind", id: 1327661892
@@ -1142,6 +1143,7 @@ vscode "adamraichu.zip-viewer"
 vscode "alefragnani.bookmarks"
 vscode "christian-kohler.path-intellisense"
 vscode "codezombiech.gitignore"
+vscode "continue.continue"
 vscode "cweijan.vscode-office"
 vscode "davidanson.vscode-markdownlint"
 vscode "donjayamanne.githistory"
@@ -1166,7 +1168,10 @@ vscode "mhutchie.git-graph"
 vscode "ms-python.debugpy"
 vscode "ms-python.python"
 vscode "ms-toolsai.jupyter"
+vscode "ms-toolsai.jupyter-keymap"
 vscode "ms-toolsai.jupyter-renderers"
+vscode "ms-toolsai.vscode-jupyter-cell-tags"
+vscode "ms-toolsai.vscode-jupyter-slideshow"
 vscode "naumovs.color-highlight"
 vscode "oderwat.indent-rainbow"
 vscode "pkief.material-icon-theme"
