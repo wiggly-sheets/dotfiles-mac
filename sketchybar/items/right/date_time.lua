@@ -1,12 +1,9 @@
 local settings = require("default")
 local colors = require("colors")
 
--- Padding item required because of bracket
-sbar.add("item", { position = "right", width = settings.group_paddings })
-
 local time = sbar.add("item", "time", {
 	position = "right",
-	padding_right = 0,
+	padding_right = 10,
 	update_freq = 1,
 	label = {
 		color = colors.white,
@@ -35,13 +32,13 @@ local date = sbar.add("item", "date", {
 })
 
 time:subscribe({ "forced", "routine", "system_woke" }, function()
-	local up_value = os.date("%H:%M:%S %Z")
-	time:set({ label = { string = up_value } })
+	local time_value = os.date("%H:%M:%S %Z")
+	time:set({ label = { string = time_value } })
 end)
 
 date:subscribe({ "forced", "routine", "system_woke" }, function()
-	local down_value = os.date("%a %b %d %Y")
-	date:set({ label = { string = down_value } })
+	local date_value = os.date("%a %b %d %Y")
+	date:set({ label = { string = date_value } })
 end)
 
 local left_click_script =

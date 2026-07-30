@@ -1,0 +1,238 @@
+{
+  "search" : {
+    "ignoreGlobPatterns" : [
+
+    ]
+  },
+  "accounts" : {
+    "sourceControlAccounts" : {
+      "sshKey" : "",
+      "gitAccounts" : [
+        {
+          "sshKey" : "",
+          "provider" : {
+            "github" : {
+
+            }
+          },
+          "id" : "https:\/\/www.github.com\/_wiggly-sheets",
+          "isTokenValid" : true,
+          "description" : "GitHub",
+          "urlProtocol" : "HTTPS",
+          "name" : "wiggly-sheets",
+          "serverURL" : "https:\/\/www.github.com\/"
+        }
+      ]
+    }
+  },
+  "general" : {
+    "inspectorTabBarPosition" : "top",
+    "issueNavigatorDetail" : 3,
+    "reopenWindowAfterClose" : "doNothing",
+    "fileIconStyle" : "color",
+    "showLiveIssues" : true,
+    "showIssues" : "inline",
+    "isAutoSaveOn" : true,
+    "navigatorTabBarPosition" : "top",
+    "reopenBehavior" : "openPanel",
+    "findNavigatorDetail" : 3,
+    "shownFileExtensions" : {
+      "extensions" : [
+        "c",
+        "cc",
+        "cpp",
+        "h",
+        "hpp",
+        "m",
+        "mm",
+        "gif",
+        "icns",
+        "jpeg",
+        "jpg",
+        "png",
+        "tiff",
+        "swift"
+      ]
+    },
+    "hiddenFileExtensions" : {
+      "extensions" : [
+        "c",
+        "cc",
+        "cpp",
+        "h",
+        "hpp",
+        "m",
+        "mm",
+        "gif",
+        "icns",
+        "jpeg",
+        "jpg",
+        "png",
+        "tiff",
+        "swift"
+      ]
+    },
+    "projectNavigatorSize" : "medium",
+    "revealFileOnFocusChange" : false,
+    "showEditorJumpBar" : true,
+    "appAppearance" : "system",
+    "dimEditorsWithoutFocus" : true,
+    "fileExtensionsVisibility" : {
+      "showAll" : {
+
+      }
+    }
+  },
+  "textEditing" : {
+    "autocompleteBraces" : true,
+    "showMinimap" : true,
+    "enableTypeOverCompletion" : true,
+    "reformatAtColumn" : 80,
+    "showReformattingGuide" : false,
+    "wrapLinesToEditorWidth" : true,
+    "useSystemCursor" : true,
+    "font" : {
+      "name" : "Liga SFMono Nerd Font",
+      "size" : 12,
+      "weight" : 0.23000000417232513
+    },
+    "showFoldingRibbon" : true,
+    "warningCharacters" : {
+      "enabled" : true,
+      "characters" : [
+        8220,
+        "Left double quote",
+        8203,
+        "Zero-width space",
+        160,
+        "Non-breaking space",
+        8217,
+        "Right single quote",
+        8239,
+        "Narrow non-breaking space",
+        173,
+        "Soft hyphen",
+        8216,
+        "Left single quote",
+        8211,
+        "Em-dash",
+        3,
+        "End of text",
+        8204,
+        "Zero-width non-joiner",
+        894,
+        "Greek Question Mark",
+        8233,
+        "Paragraph separator",
+        8221,
+        "Right double quote"
+      ]
+    },
+    "bracketEmphasis" : {
+      "highlightType" : "flash",
+      "useCustomColor" : false,
+      "color" : {
+        "color" : "FFFFFF"
+      }
+    },
+    "showGutter" : true,
+    "letterSpacing" : 1,
+    "invisibleCharacters" : {
+      "spaceReplacement" : "·",
+      "showSpaces" : true,
+      "enabled" : true,
+      "paragraphSeparatorReplacement" : "¶",
+      "showLineEndings" : true,
+      "lineSeparatorReplacement" : "⏎",
+      "lineFeedReplacement" : "¬",
+      "showTabs" : true,
+      "carriageReturnReplacement" : "↵",
+      "tabReplacement" : "→"
+    },
+    "indentOption" : {
+      "spaceCount" : 4,
+      "indentType" : "spaces"
+    },
+    "overscroll" : "medium",
+    "lineHeightMultiple" : 1.2,
+    "defaultTabWidth" : 4
+  },
+  "navigation" : {
+    "navigationStyle" : "openInTabs"
+  },
+  "terminal" : {
+    "font" : {
+      "name" : "SF Mono",
+      "size" : 12,
+      "weight" : 0.23000000417232513
+    },
+    "useThemeBackground" : true,
+    "useLoginShell" : true,
+    "shell" : "zsh",
+    "darkAppearance" : false,
+    "useTextEditorFont" : true,
+    "cursorBlink" : true,
+    "cursorStyle" : "underline",
+    "optionAsMeta" : false,
+    "useShellIntegration" : true,
+    "useEditorTheme" : true
+  },
+  "theme" : {
+    "selectedLightTheme" : "tokyo-night-codeedit",
+    "selectedDarkTheme" : "high.contrast.dark",
+    "useThemeBackground" : true,
+    "matchAppearance" : true,
+    "selectedTheme" : "tokyo-night-codeedit",
+    "overrides" : {
+
+    }
+  },
+  "sourceControl" : {
+    "git" : {
+      "showMergeCommitsPerFileLog" : false
+    },
+    "general" : {
+      "addRemoveAutomatically" : true,
+      "selectFilesToCommit" : true,
+      "showSourceControlChanges" : true,
+      "fetchRefreshServerStatus" : true,
+      "sourceControlIsEnabled" : true,
+      "refreshStatusLocally" : true,
+      "includeUpstreamChanges" : true,
+      "controlNavigatorOrder" : "sortByName",
+      "revisionComparisonLayout" : "localLeft",
+      "openFeedbackInBrowser" : true
+    }
+  },
+  "keybindings" : {
+    "keybindings" : {
+      "copy" : {
+        "name" : "copy",
+        "id" : "copy",
+        "description" : "Copy command",
+        "keybinding" : "c",
+        "context" : "Global",
+        "modifier" : "command"
+      },
+      "paste" : {
+        "name" : "paste",
+        "id" : "paste",
+        "description" : "Copy command",
+        "keybinding" : "c",
+        "context" : "Global",
+        "modifier" : "command"
+      }
+    }
+  },
+  "languageServers" : {
+    "installedLanguageServers" : {
+
+    }
+  },
+  "developerSettings" : {
+    "showInternalDevelopmentInspector" : false,
+    "lspBinaries" : {
+
+    }
+  }
+}

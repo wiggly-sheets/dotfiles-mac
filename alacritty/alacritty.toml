@@ -1,0 +1,11 @@
+[general]
+import = [
+ "~/.config/alacritty/keybindings.toml",
+"~/.config/alacritty/themes/tokyo-night.toml"
+]
+[window]
+decorations = "Buttonless"
+
+[font]
+    normal = { family = "Liga SFMono Nerd Font", style = "Regular" }
+    size = 13

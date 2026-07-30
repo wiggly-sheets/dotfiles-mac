@@ -1,0 +1,127 @@
+{
+  "name": "tokyo-night-storm-codeedit",
+  "displayName": "Tokyo Night Storm",
+  "description": "The softly elevated Storm variant of Tokyo Night for CodeEdit.",
+  "author": "Tokyo Night Theme / CodeEdit port",
+  "version": "1.0.0",
+  "license": "MIT",
+  "distributionURL": "https://github.com/enkia/tokyo-night-vscode-theme",
+  "type": "dark",
+  "editor": {
+    "background": {
+      "color": "#24283B"
+    },
+    "selection": {
+      "color": "#364A82"
+    },
+    "insertionPoint": {
+      "color": "#C0CAF5"
+    },
+    "lineHighlight": {
+      "color": "#292E42"
+    },
+    "invisibles": {
+      "color": "#3B4261"
+    },
+    "text": {
+      "color": "#A9B1D6"
+    },
+    "comments": {
+      "color": "#565F89",
+      "italic": true
+    },
+    "strings": {
+      "color": "#9ECE6A"
+    },
+    "characters": {
+      "color": "#B4F9F8"
+    },
+    "numbers": {
+      "color": "#FF9E64"
+    },
+    "keywords": {
+      "color": "#BB9AF7",
+      "bold": true
+    },
+    "attributes": {
+      "color": "#7DCFFF"
+    },
+    "types": {
+      "color": "#2AC3DE"
+    },
+    "variables": {
+      "color": "#C0CAF5"
+    },
+    "commands": {
+      "color": "#7AA2F7"
+    },
+    "values": {
+      "color": "#73DACA"
+    }
+  },
+  "terminal": {
+    "background": {
+      "color": "#24283B"
+    },
+    "selection": {
+      "color": "#364A82"
+    },
+    "cursor": {
+      "color": "#C0CAF5"
+    },
+    "text": {
+      "color": "#A9B1D6"
+    },
+    "boldText": {
+      "color": "#C0CAF5"
+    },
+    "black": {
+      "color": "#414868"
+    },
+    "red": {
+      "color": "#F7768E"
+    },
+    "green": {
+      "color": "#9ECE6A"
+    },
+    "yellow": {
+      "color": "#E0AF68"
+    },
+    "blue": {
+      "color": "#7AA2F7"
+    },
+    "magenta": {
+      "color": "#BB9AF7"
+    },
+    "cyan": {
+      "color": "#7DCFFF"
+    },
+    "white": {
+      "color": "#A9B1D6"
+    },
+    "brightBlack": {
+      "color": "#565F89"
+    },
+    "brightRed": {
+      "color": "#F7768E"
+    },
+    "brightGreen": {
+      "color": "#9ECE6A"
+    },
+    "brightYellow": {
+      "color": "#E0AF68"
+    },
+    "brightBlue": {
+      "color": "#7AA2F7"
+    },
+    "brightMagenta": {
+      "color": "#BB9AF7"
+    },
+    "brightCyan": {
+      "color": "#7DCFFF"
+    },
+    "brightWhite": {
+      "color": "#C0CAF5"
+    }
+  }
+}

@@ -1,0 +1,21 @@
+# Spaces Renamer Configuration
+# Managed by the application. Manual edits are merged on save.
+
+[settings]
+# naming_mode = "manual"
+# show_menu_bar = true
+# menu_bar_display = "icon"
+# show_duplicate_apps = false
+# hotkey_key = 15
+# hotkey_ctrl = true
+# hotkey_opt = true
+# hotkey_cmd = false
+# hotkey_shift = false
+# login_item = false
+# active_profile_id = ""
+
+# Profiles are matched by the `uuid` field if present, falling back to
+# section name matching.
+[profiles.Work]
+# uuid = "00000000-0000-0000-0000-000000000000"
+# "space-uuid" = "Display Name"

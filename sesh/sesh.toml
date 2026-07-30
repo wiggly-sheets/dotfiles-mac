@@ -1,0 +1,336 @@
+#:https://github.com/joshmedeski/sesh/raw/main/sesh.schema.json
+strict_mode = false
+cache = true
+separator_aware = true
+dir_length = 2
+# git_namer_use_worktree_root = true
+# git_dir_length = 2
+
+import = [
+  # "~/.config/sesh/configs/nu-sesh.toml",
+  # "~/.config/sesh/configs/raycast-extensions.toml",
+  "~/.config/sesh/configs/windows.toml",
+  "~/.config/sesh/configs/configs.toml",
+]
+
+# TODO: test dashboard
+[dashboard]
+title = "My Dashboard"
+
+[[dashboard.sections]]
+type = "sessions"
+title = "Sessions"
+width = 0.4
+row = 0
+groups = [{ name = "Nutiliti", patterns = ["~/c/nu/w*"] }]
+
+# TODO: test dashboard
+
+# Use memy as the frecency backend instead of zoxide (tracks files + dirs).
+# {} is replaced with the query/path. Omit a field to fall back to zoxide.
+# [frecency]
+# list_command = "memy list -d"
+# query_command = "memy list -d --head 1 {}"
+# add_command = "memy note {}"
+# TODO:: add reverse support if memy doesn't support it
+# https://github.com/andrewferrier/memy/issues/172
+# reverse = true
+
+[tui]
+show_icons = true
+show_windows = true
+prompt = "⚡"
+placeholder = "Choose a session"
+preview = true
+preview_border = 'none'
+
+# Read the active browser tab URL (macOS) for `sesh worktree create --browser`.
+[browser]
+application = "Helium"
+# url_command = "URL of active tab of front window"  # optional; Safari uses "URL of current tab of front window"
+
+# Map github.com/joshmedeski/sesh to the local repo so `sesh worktree create -b`
+# can turn an open issue/PR tab into a worktree under ~/c/sesh/w/<number>.
+[[worktree]]
+name = "joshmedeski/sesh"
+path = "~/c/sesh"
+worktree_dir = "w"
+branch_template = "{number}"
+base_branch = "origin/main"
+
+[[worktree]]
+name = "Nutiliti/nutiliti"
+path = "~/c/nu"
+worktree_dir = "w"
+branch_template = "jam/{number}-1"
+base_branch = "origin/main"
+startup_command = "nu_setup"
+
+# sort_order = ["tmux", "config", "tmuxinator", "zoxide"]
+# sort_order = ["tmux", "config", "tmuxinator", "zoxide"]
+# blacklist_sources = ["tmux", "zoxide"]
+
+
+# projects
+# project_roots = ["~/c"]
+# max_depth = 2
+# sort_order = ["tmux", "projects"]
+
+# [marker]
+# inactivity_threshold = 10    # Seconds before alerts start
+# alert_level_1_time = 60      # Light alert duration
+# alert_level_2_time = 300     # Medium alert duration
+# alert_level_3_time = 600     # Urgent alert duration
+
+blacklist = ["^scratch$", "^_", '^~/\.config(?:/.*)?$']
+
+
+# wezterm_wallpapers_dir = "/Users/joshmedeski/.config/wezterm/wallpapers"
+
+# nutilti
+
+[[session]]
+name = "nutiliti"
+icon = "🏠"
+path = "~/c/nu"
+alias = "nu"
+
+[[session]]
+name = "nu cleanup worktrees"
+icon = "🧹"
+path = "~/c/nu"
+startup_command = "nu_cleanup_worktrees"
+alias = "ncw"
+alias_auto_connect = true
+
+
+# default
+
+[default_session]
+startup_command = "nvim"
+# preview_command = "eza --all --git --icons --color=always {}"
+preview_command = "eza --all --icons --color=always {} && echo '---' && git -C {} status --short"
+# startup_command_ignore_dirs = ["~/repos", "~/.config"]
+
+
+[[session]]
+name = "second brain"
+icon = "🧠"
+path = "/Users/joshmedeski/c/second-brain"
+alias = "sb"
+alias_auto_connect = true
+
+[[session]]
+name = "sesh"
+icon = "⚡"
+path = "~/c/sesh"
+alias = "sesh"
+
+# common
+
+[[session]]
+name = "pick code"
+icon = "🎯"
+path = "~/c"
+startup_command = "pick-code.sh"
+alias = "pc"
+alias_auto_connect = true
+
+[[session]]
+name = "discordo"
+icon = "💬"
+path = "~/.config/discordo"
+startup_command = "discordo"
+alias = "dc"
+alias_auto_connect = true
+
+[[session]]
+name = "update"
+icon = "🆕"
+path = "/tmp"
+startup_command = "update"
+preview_command = "bat --language=fish --style=snip --color=always ~/c/dotfiles/.config/bin/update"
+alias = "up"
+alias_auto_connect = true
+
+[[session]]
+name = "pick wallpaper"
+icon = "🎨"
+path = "~/.config/wezterm/wallpapers"
+startup_command = "tmux set-option status off && wezterm_wallpaper_picker.sh && exit"
+alias = "pw"
+alias_auto_connect = true
+
+# [[session]]
+# name = "stormy"
+# path = "~/.config/stormy"
+# preview_command = "stormy"
+# startup_command = "stormy"
+
+[[session]]
+name = "plugins"
+icon = "🔌"
+path = "~"
+startup_command = "~/.config/bin/plugin_picker.sh && exit"
+alias = "pl"
+alias_auto_connect = true
+
+[[session]]
+name = "godot projects"
+icon = "🎮"
+path = "~/c/godot/"
+startup_command = "sesh connect \"$(ls | fzf)\" && exit"
+preview_command = "lsd  --group-dirs first -A"
+alias = "gp"
+alias_auto_connect = true
+
+[[session]]
+name = "fastfetch"
+icon = "💨"
+path = "~/.config/fastfetch"
+startup_command = "fastfetch"
+preview_command = "fastfetch"
+alias = "ff"
+alias_auto_connect = true
+
+# [[session]]
+# name = "OpenSuperWhisper"
+# path = "~/c/OpenSuperWhisper"
+# startup_command = "./run.sh"
+
+# [[session]]
+# name = "rift"
+# path = "~/c/rift"
+# startup_command = "cargo run --bin rift --release"
+# preview_command = "bat --language=toml --style=snip --color=always ~/.rift.toml"
+
+
+# [[session]]
+# name = "color scheme"
+# path = "~/c/iTerm2-Color-Schemes/wezterm"
+# startup_command = "wezterm_color_scheme_picker.sh && exit"
+
+
+[[session]]
+name = "Downloads"
+icon = "📥"
+path = "~/Downloads"
+startup_command = "yazi"
+alias = "dl"
+alias_auto_connect = true
+
+[[session]]
+name = "code"
+icon = "📚"
+path = "~/c"
+startup_command = "l"
+alias = "c"
+
+[[wildcard]]
+pattern = "~/c/re/**"
+icon = "🚀"
+startup_command = "echo 'Raycast is cool'"
+
+[[wildcard]]
+pattern = "~/c/nu/w/*"
+icon = "🏠"
+
+[[wildcard]]
+pattern = "~/c/sesh/w/*"
+icon = "⚡"
+
+# configs
+
+[[session]]
+name = "dotfiles"
+icon = "🏠"
+path = "~/c/dotfiles"
+alias = "df"
+alias_auto_connect = true
+
+[[session]]
+name = "my custom binaries"
+icon = "🔧"
+path = "~/c/dotfiles/.config/bin"
+alias = "bin"
+alias_auto_connect = true
+
+[[session]]
+name = "etc/hosts"
+icon = "🌐"
+path = "/etc"
+startup_command = "sudo nvim hosts"
+alias = "eh"
+alias_auto_connect = true
+
+# tools
+
+# [[session]]
+# name = "mactop"
+# path = "/"
+# startup_command = "sudo mactop"
+
+# [[session]]
+# name = "ollama"
+# path = "~/.ollama"
+# startup_command = 'grc tail -f ~/.ollama/logs/server.log'
+
+# [[session]]
+# name = "blender mcp logs"
+# path = "~/Library/Logs/Claude/"
+# startup_command = "grc tail -f ~/Library/Logs/Claude/mcp-server-blender.log"
+
+# [[session]]
+# name = "macmon"
+# path = "~/"
+# startup_command = "macmon"
+
+# [[session]]
+# name = "cava (audio visualizer)"
+# path = "~/.config/cava"
+# startup_command = "tmux set-option -t cava status off && cava"
+
+# other
+
+# [[session]]
+# name = "perplexica"
+# path = "~/c/perplexica"
+# startup_command = "docker compose up -d"
+# windows = ["git"]
+
+# [[session]]
+# name = "steam deck"
+# path = "~/.ssh"
+# startup_command = "ssh deck@steamdeck"
+
+# ideas / tasks
+
+# TODO: experiment with long-living sesh picker (as session)
+# [[session]]
+# name = "sesh"
+# path = "~/c/dotfiles/.config/sesh"
+# startup_command = "sesh connect \"$(sesh list --icons | fzf)\""
+
+# TODO: implement?
+# [[session_preview]]
+# pattern_folder_has = "README.md"
+# preview_command = "glow -s light {}"
+
+# TODO: potential feature ideas
+# [[session]]
+# name = "session"
+# path = "~/path/to/session"
+# startup_script = "~/git_repos/dotfiles/sesh/bin/spotify.sh"
+# detached = true # never attach to this session, just create it in the background
+# tmuxp = "~/.config/tmux/tmuxp/joshmedeski.com.yml"
+# tmuxinator = "~/.config/tmux/tmuxinator/joshmedeski.com.yml"
+
+# TODO: support wildcard paths
+# [[session_wildcard]]
+# session_path = "~/c/nu/main/packages/*"
+# script_path = "~/.config/sesh/scripts/node_dev"
+
+# notes
+
+# NOTE: bat styles (--style)
+# full, auto, plain, changes, header, header-filename,

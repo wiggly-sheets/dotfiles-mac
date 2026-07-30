@@ -109,3 +109,5 @@ lazy-lock.json
 
 #sketchybar theming file
 current_theme
+
+*.mbd
