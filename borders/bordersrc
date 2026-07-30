@@ -3,7 +3,7 @@
 options=(
 hidpi=on
 width=1.0
-active_color=0xFFFFFFFF
+active_color=0xffc0caf5
 inactive_color=0xff787878
 style=round
 ax_focus=on

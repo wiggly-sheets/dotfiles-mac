@@ -15,13 +15,15 @@ local VimMode = hs.loadSpoon("VimMode")
 local vim = VimMode:new()
 
 -- Configure apps you do *not* want Vim mode enabled in
--- For example, you don't want this plugin overriding your control of Terminal
--- vim
-vim:disableForApp("zoom.us")
+-- For example, you don't want this plugin overriding your control of Terminal  vim
+vim:disableForApp("kitty")
 	:disableForApp("iTerm")
-	:disableForApp("iTerm2")
+    :disableForApp("iTerm2")
+	:disableForApp("Ghostyy")
 	:disableForApp("Terminal")
-	:disableForApp("Wezterm")
+    :disableForApp("Wezterm")
+    :disableForApp("Neovide")
+	:disableForApp("MarkEdit")
 
 -- If you want the screen to dim (a la Flux) when you enter normal mode
 -- flip this to true.
@@ -35,7 +37,7 @@ vim:shouldShowAlertInNormalMode(true)
 vim:setAlertFont("Liga SFMono Nerd Font")
 
 -- Enter normal mode by typing a key sequence
-vim:enterWithSequence(";jk")
+vim:enterWithSequence("vm")
 
 -- if you want to bind a single key to entering vim, remove the
 -- :enterWithSequence('jk') line above and uncomment the bindHotKeys line

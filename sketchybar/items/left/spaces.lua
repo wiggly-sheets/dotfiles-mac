@@ -7,6 +7,7 @@ local spaces = {}
 local space_separators = {}
 local space_app_icons = {} -- sid -> concatenated icon glyphs (string)
 local space_selected = {} -- sid -> bool
+local space_selection_generation = 0
 
 for i = 1, 10 do
 	space_app_icons[i] = "—"
@@ -18,7 +19,7 @@ local function get_focused_space_index(callback)
 	end)
 end
 
-local function update_space_display(space, space_id, is_selected)
+local function update_space_display(space, space_id)
 	sbar.exec("yabai -m query --spaces --space " .. space_id .. " | jq -r '.type'", function(output)
 		local layout = output:gsub("%s+", "") -- bsp, float, stack
 		local layout_letter = ""
@@ -36,11 +37,9 @@ local function update_space_display(space, space_id, is_selected)
 		space:set({
 			icon = {
 				string = space_text,
-				highlight = is_selected,
 			},
 			label = {
 				string = icon_text,
-				highlight = is_selected,
 			},
 		})
 	end)
@@ -164,7 +163,19 @@ end
 -- space, then update every visible item directly so the highlight follows
 -- focus across displays.
 local function refresh_space_selection()
+	space_selection_generation = space_selection_generation + 1
+	local generation = space_selection_generation
+
 	get_focused_space_index(function(focused_space)
+		-- A newer refresh was requested while yabai was responding. Ignore this
+		-- stale result so it cannot restore the previous space's highlight.
+		if generation ~= space_selection_generation then
+			return
+		end
+
+		-- Apply the complete selection state as one SketchyBar transaction so
+		-- there is never a frame where two spaces are highlighted.
+		sbar.begin_config()
 		for space_id, space in ipairs(spaces) do
 			local is_selected = space_id == focused_space
 			space_selected[space_id] = is_selected
@@ -173,10 +184,11 @@ local function refresh_space_selection()
 				label = { highlight = is_selected },
 			})
 		end
+		sbar.end_config()
 
 		-- Keep per-space content synchronized after the focused index shifts.
 		for space_id, space in ipairs(spaces) do
-			update_space_display(space, space_id, space_selected[space_id])
+			update_space_display(space, space_id)
 		end
 	end)
 end
@@ -194,13 +206,6 @@ space_display_observer:subscribe("display_change", function()
 	refresh_space_selection()
 end)
 refresh_space_separators()
-
-local space_focus_observer = sbar.add("item", {
-	drawing = false,
-	updates = true,
-})
-space_focus_observer:subscribe("space_change", refresh_space_selection)
-space_focus_observer:subscribe("display_change", refresh_space_selection)
 refresh_space_selection()
 
 local space_window_observer = sbar.add("item", {
@@ -231,7 +236,7 @@ space_window_observer:subscribe("space_windows_change", function(env)
 
 	-- Update displays for all spaces (use stored selected state)
 	for space_id, space in ipairs(spaces) do
-		update_space_display(space, space_id, space_selected[space_id])
+		update_space_display(space, space_id)
 	end
 end)
 

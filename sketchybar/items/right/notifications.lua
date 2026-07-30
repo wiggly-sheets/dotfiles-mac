@@ -8,9 +8,8 @@ local notif_db = os.getenv("HOME") .. "/Library/Group Containers/group.com.apple
 local notifications = sbar.add("item", "notifications", {
 	position = "right",
 	width = 5,
-	y_offset = 8,
-	padding_right = 0,
-
+	y_offset = -8,
+    padding_right = -9,
 	icon = {
 		padding_right = 0,
 		padding_left = 0,

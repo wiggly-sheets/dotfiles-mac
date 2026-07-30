@@ -549,9 +549,6 @@ function __icon_map() {
    "Freeform")
         icon_result=":freeform:"
         ;;
-   "Freenet")
-        icon_result=":freenet:"
-        ;;
    "FreeTube")
         icon_result=":freetube:"
         ;;
@@ -1070,6 +1067,9 @@ function __icon_map() {
         ;;
    "OpenAI Translator")
         icon_result=":openai_translator:"
+        ;;
+   "OpenChamber")
+        icon_result=":openchamber:"
         ;;
    "opencode" | "OpenCode")
         icon_result=":opencode:"

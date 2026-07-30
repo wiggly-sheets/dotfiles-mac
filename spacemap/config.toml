@@ -1,0 +1,57 @@
+# Spacemap config
+
+[grid]
+cols = 4
+rows = 2
+cellStyle = "simple"
+showMode = "all"
+multiMonitorHUDMode = "unified"
+unifiedHUDVisibility = "active"
+separateHUDVisibility = "all"
+maxSpaces = 8
+showSpaceNumbers = true
+showIconStrip = true
+showMultiAppIcons = true
+
+[spaceNames]
+showSpaceNames = false
+
+[spaceNames.names]
+
+[appearance]
+theme = "tokyo night"
+mode = "auto"
+backgroundAlpha = 0.0
+iconScale = 0.5
+uiScale = 0.4
+
+[behavior]
+autoHideTimeout = 2
+displayNavigationWrap = "within"
+useVimKeys = true
+useArrowKeys = true
+customHUDX = 0.2754385964912281
+customHUDY = 0.2720323741007194
+focusSpaceOnWindowDrop = "always"
+focusSpaceOnWindowDropModifier = "option"
+showHUDOnSpaceChange = false
+hideMenuBarIcon = false
+menuBarDisplayMode = "dots"
+menuBarNearbyCount = 3
+updateMode = "notify"
+
+[behavior.hotkey]
+keyKind = "keyCode"
+keyCode = 49
+modifiers = ["ctrl"]
+
+[behavior.pinnedHotkey]
+keyKind = "none"
+modifiers = []
+
+[behavior.hudPosition]
+kind = "center"
+
+[advanced]
+socketHealthInterval = 60
+showExtraWindows = false

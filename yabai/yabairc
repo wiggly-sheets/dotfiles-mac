@@ -17,7 +17,6 @@ yabai -m signal --add event=window_minimized active=yes action="if $(yabai -m qu
 yabai -m signal --add event=dock_did_restart action="~/dotfiles/mac/tweaks/spacesrenamer/run.sh"
 ~/dotfiles/mac/tweaks/spacesrenamer/run.sh
 
-
 # stackline setup
 
 pkill "Stackline" && open -a "Stackline"
@@ -35,11 +34,11 @@ CONFIGS=(
   "window_animation_duration 0.05"
   "window_animation_easing ease_in_out_expo"
   "window_placement second_child"
+  "left_padding 1"
+  "right_padding 1"
   "top_padding 0"
-  "bottom_padding 26"
-  "left_padding 2"
-  "right_padding 2"
-  "window_gap 3"
+  "bottom_padding 25"
+  "window_gap 2"
   "window_shadow float"
   "window_opacity on"
   "window_opacity_duration 0.10"
