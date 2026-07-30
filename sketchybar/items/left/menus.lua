@@ -4,9 +4,8 @@ local icons = require("helpers.icons")
 
 local apple = sbar.add("item", "apple", {
 	icon = {
-        --font = { size = 16 },
-		font = {size = 13},
-		string = icons.command,
+		font = {size = 16}, -- 13 for command
+		string = icons.apple,
 		position = "left",
 		padding_left = 6,
 		padding_right = 2,
@@ -89,7 +88,7 @@ local last_title = ""
 local function update_window_title()
 	get_front_window(function(title)
 		-- Simple end truncation (ACTIVE)
-		local max_len = 60
+		local max_len = 40
 		if #title > max_len then
 			title = title:sub(1, max_len - 3) .. "..."
 		end
