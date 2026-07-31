@@ -17,10 +17,6 @@ yabai -m signal --add event=window_minimized active=yes action="if $(yabai -m qu
 yabai -m signal --add event=dock_did_restart action="~/dotfiles/mac/tweaks/spacesrenamer/run.sh"
 ~/dotfiles/mac/tweaks/spacesrenamer/run.sh
 
-# stackline setup
-
-pkill "Stackline" && open -a "Stackline"
-
 # MAIN CONFIG
 CONFIGS=(
   "layout bsp"
@@ -34,11 +30,11 @@ CONFIGS=(
   "window_animation_duration 0.05"
   "window_animation_easing ease_in_out_expo"
   "window_placement second_child"
-  "left_padding 1"
-  "right_padding 1"
-  "top_padding 0"
-  "bottom_padding 25"
-  "window_gap 2"
+  "left_padding 2"
+  "right_padding 2"
+  "top_padding 1"
+  "bottom_padding 27"
+  "window_gap 3"
   "window_shadow float"
   "window_opacity on"
   "window_opacity_duration 0.10"
@@ -59,12 +55,12 @@ for cfg in "${CONFIGS[@]}"; do
 done
 
 # mission-control desktop labels
-yabai -m space 1 --label browser
-yabai -m space 2 --label mail
-yabai -m space 3 --label files
-yabai -m space 4 --label notes
-yabai -m space 5 --label terminal
-yabai -m space 6 --label code
+yabai -m space 1 --label Browser
+yabai -m space 2 --label Mail
+yabai -m space 3 --label Files
+yabai -m space 4 --label Notes
+yabai -m space 5 --label Terminal
+yabai -m space 6 --label Code
 
 # APP GROUPS
 BROWSERS="^(Orion|Safari|Helium|Zen|Tor Browser)$"
@@ -76,12 +72,12 @@ CODE="^(BBEdit|VSCodium|Zed|CotEditor|Neovide)$"
 
 # PIN APPS TO SPACES
 SPACE_RULES=(
-  "${BROWSERS}:browser"
-  "${MAIL}:mail"
-  "${FILES}:files"
-  "${NOTES}:notes"
-  "${TERMINALS}:terminal"
-  "${CODE}:code"
+  "${BROWSERS}:Browser"
+  "${MAIL}:Mail"
+  "${FILES}:Files"
+  "${NOTES}:Notes"
+  "${TERMINALS}:Terminal"
+  "${CODE}:Code"
 )
 for rule in "${SPACE_RULES[@]}"; do
   app="${rule%%:*}"
@@ -129,6 +125,8 @@ FLOAT_APPS=(
   "^ConnectMeNow4$"
   "^Cyberduck$"
   "^Mountain Duck$"
+  "^Syntax Highlight$"
+  "^WhatCable$"
   "^KeyClu$"
   "^KeyCastr$"
   "^reAMP$"
@@ -189,3 +187,6 @@ for app in "${FLOAT_APPS[@]}"; do
     grid="$GRID_CENTER" \
     sub-layer=above
 done
+
+# stackline setup
+pkill "Stackline" && open -a "Stackline"
