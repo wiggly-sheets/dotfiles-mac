@@ -3,7 +3,7 @@ local colors = require("colors")
 
 local time = sbar.add("item", "time", {
 	position = "right",
-	padding_right = 10,
+	padding_right = 0,
 	update_freq = 1,
 	label = {
 		color = colors.white,
@@ -19,7 +19,7 @@ local time = sbar.add("item", "time", {
 local date = sbar.add("item", "date", {
 	position = "right",
 	y_offset = -5,
-	padding_right = -78,
+	padding_right = -77,
 	update_freq = 60,
 	label = {
 		color = colors.white,
