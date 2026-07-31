@@ -210,3 +210,5 @@ esac
 
 # Created by `pipx` on 2026-07-21 05:43:17
 export PATH="$PATH:/Users/Zeb/.local/bin"
+
+source /Users/Zeb/.config/broot/launcher/bash/br
