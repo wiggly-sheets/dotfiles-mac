@@ -3,13 +3,11 @@
 options=(
 hidpi=on
 width=1.0
-active_color=0xffc0caf5
+active_color=(glow)0xffc0caf5
 inactive_color=0xff787878
-style=round
+style=square
 ax_focus=on
-order=above
 blacklist="Stats,Dropover,iPhone Mirroring,Passwords,SoundSource,Stickies"
 )
-
 borders "${options[@]}"
 

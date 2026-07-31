@@ -27,33 +27,11 @@
   },
   "general" : {
     "inspectorTabBarPosition" : "top",
-    "issueNavigatorDetail" : 3,
-    "reopenWindowAfterClose" : "doNothing",
-    "fileIconStyle" : "color",
-    "showLiveIssues" : true,
-    "showIssues" : "inline",
-    "isAutoSaveOn" : true,
     "navigatorTabBarPosition" : "top",
     "reopenBehavior" : "openPanel",
-    "findNavigatorDetail" : 3,
-    "shownFileExtensions" : {
-      "extensions" : [
-        "c",
-        "cc",
-        "cpp",
-        "h",
-        "hpp",
-        "m",
-        "mm",
-        "gif",
-        "icns",
-        "jpeg",
-        "jpg",
-        "png",
-        "tiff",
-        "swift"
-      ]
-    },
+    "showLiveIssues" : true,
+    "revealFileOnFocusChange" : false,
+    "showIssues" : "inline",
     "hiddenFileExtensions" : {
       "extensions" : [
         "c",
@@ -72,11 +50,33 @@
         "swift"
       ]
     },
-    "projectNavigatorSize" : "medium",
-    "revealFileOnFocusChange" : false,
-    "showEditorJumpBar" : true,
+    "reopenWindowAfterClose" : "doNothing",
+    "fileIconStyle" : "color",
+    "isAutoSaveOn" : true,
+    "shownFileExtensions" : {
+      "extensions" : [
+        "c",
+        "cc",
+        "cpp",
+        "h",
+        "hpp",
+        "m",
+        "mm",
+        "gif",
+        "icns",
+        "jpeg",
+        "jpg",
+        "png",
+        "tiff",
+        "swift"
+      ]
+    },
     "appAppearance" : "system",
+    "issueNavigatorDetail" : 3,
+    "findNavigatorDetail" : 3,
+    "showEditorJumpBar" : true,
     "dimEditorsWithoutFocus" : true,
+    "projectNavigatorSize" : "medium",
     "fileExtensionsVisibility" : {
       "showAll" : {
 
@@ -85,61 +85,65 @@
   },
   "textEditing" : {
     "autocompleteBraces" : true,
-    "showMinimap" : true,
-    "enableTypeOverCompletion" : true,
-    "reformatAtColumn" : 80,
-    "showReformattingGuide" : false,
     "wrapLinesToEditorWidth" : true,
     "useSystemCursor" : true,
+    "showMinimap" : true,
+    "showReformattingGuide" : false,
     "font" : {
       "name" : "Liga SFMono Nerd Font",
       "size" : 12,
       "weight" : 0.23000000417232513
     },
+    "reformatAtColumn" : 80,
+    "enableTypeOverCompletion" : true,
     "showFoldingRibbon" : true,
     "warningCharacters" : {
       "enabled" : true,
       "characters" : [
-        8220,
-        "Left double quote",
-        8203,
-        "Zero-width space",
-        160,
-        "Non-breaking space",
-        8217,
-        "Right single quote",
-        8239,
-        "Narrow non-breaking space",
-        173,
-        "Soft hyphen",
+        8221,
+        "Right double quote",
         8216,
         "Left single quote",
-        8211,
-        "Em-dash",
-        3,
-        "End of text",
-        8204,
-        "Zero-width non-joiner",
-        894,
-        "Greek Question Mark",
         8233,
         "Paragraph separator",
-        8221,
-        "Right double quote"
+        173,
+        "Soft hyphen",
+        8204,
+        "Zero-width non-joiner",
+        3,
+        "End of text",
+        894,
+        "Greek Question Mark",
+        8239,
+        "Narrow non-breaking space",
+        8220,
+        "Left double quote",
+        8217,
+        "Right single quote",
+        8203,
+        "Zero-width space",
+        8211,
+        "Em-dash",
+        160,
+        "Non-breaking space"
       ]
     },
     "bracketEmphasis" : {
-      "highlightType" : "flash",
-      "useCustomColor" : false,
       "color" : {
         "color" : "FFFFFF"
-      }
+      },
+      "useCustomColor" : false,
+      "highlightType" : "flash"
     },
     "showGutter" : true,
     "letterSpacing" : 1,
+    "indentOption" : {
+      "spaceCount" : 4,
+      "indentType" : "spaces"
+    },
     "invisibleCharacters" : {
-      "spaceReplacement" : "·",
       "showSpaces" : true,
+      "spaceReplacement" : "·",
       "enabled" : true,
       "paragraphSeparatorReplacement" : "¶",
       "showLineEndings" : true,
@@ -149,36 +153,32 @@
       "carriageReturnReplacement" : "↵",
       "tabReplacement" : "→"
     },
-    "indentOption" : {
-      "spaceCount" : 4,
-      "indentType" : "spaces"
-    },
-    "overscroll" : "medium",
     "lineHeightMultiple" : 1.2,
+    "overscroll" : "medium",
     "defaultTabWidth" : 4
   },
   "navigation" : {
     "navigationStyle" : "openInTabs"
   },
   "terminal" : {
+    "cursorBlink" : true,
+    "useThemeBackground" : true,
+    "useLoginShell" : true,
+    "shell" : "zsh",
+    "useTextEditorFont" : true,
+    "optionAsMeta" : false,
+    "darkAppearance" : false,
+    "cursorStyle" : "underline",
     "font" : {
       "name" : "SF Mono",
       "size" : 12,
       "weight" : 0.23000000417232513
     },
-    "useThemeBackground" : true,
-    "useLoginShell" : true,
-    "shell" : "zsh",
-    "darkAppearance" : false,
-    "useTextEditorFont" : true,
-    "cursorBlink" : true,
-    "cursorStyle" : "underline",
-    "optionAsMeta" : false,
     "useShellIntegration" : true,
     "useEditorTheme" : true
   },
   "theme" : {
-    "selectedLightTheme" : "tokyo-night-codeedit",
+    "selectedLightTheme" : "basic",
     "selectedDarkTheme" : "high.contrast.dark",
     "useThemeBackground" : true,
     "matchAppearance" : true,
@@ -188,20 +188,20 @@
     }
   },
   "sourceControl" : {
-    "git" : {
-      "showMergeCommitsPerFileLog" : false
-    },
     "general" : {
-      "addRemoveAutomatically" : true,
       "selectFilesToCommit" : true,
       "showSourceControlChanges" : true,
+      "addRemoveAutomatically" : true,
       "fetchRefreshServerStatus" : true,
       "sourceControlIsEnabled" : true,
       "refreshStatusLocally" : true,
-      "includeUpstreamChanges" : true,
+      "openFeedbackInBrowser" : true,
       "controlNavigatorOrder" : "sortByName",
       "revisionComparisonLayout" : "localLeft",
-      "openFeedbackInBrowser" : true
+      "includeUpstreamChanges" : true
+    },
+    "git" : {
+      "showMergeCommitsPerFileLog" : false
     }
   },
   "keybindings" : {

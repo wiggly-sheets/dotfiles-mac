@@ -68,7 +68,7 @@ local window_title = sbar.add("item", "window_title", {
 	label = {
 		drawing = false,
 		string = "",
-		font = { family = settings.default, size = 11, style = "regular" },
+		font = { family = settings.default, size = 10, style = "Medium" },
 		color = colors.white,
 	},
 })
