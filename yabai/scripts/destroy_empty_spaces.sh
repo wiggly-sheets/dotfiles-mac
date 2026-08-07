@@ -6,7 +6,7 @@ is_effectively_empty() {
     local window_count
 
     window_count=$(
-        yabai -m query --windows --space "$space_id" | jq -r '
+        /opt/homebrew/bin/yabai -m query --windows --space "$space_id" | /opt/homebrew/bin/jq -r '
             [ .[]
               | select(
                     ((.app // "") != "Atoll")
@@ -28,12 +28,12 @@ while true; do
             empty_space="$space_id"
             break
         fi
-    done < <(yabai -m query --spaces | jq -r '.[].index')
+    done < <(/opt/homebrew/bin/yabai -m query --spaces | /opt/homebrew/bin/jq -r '.[].index')
 
     if [ -z "$empty_space" ]; then
         break
     fi
 
     echo "Deleting empty space $empty_space"
-    yabai -m space "$empty_space" --destroy || true
+    /opt/homebrew/bin/yabai -m space "$empty_space" --destroy || true
 done

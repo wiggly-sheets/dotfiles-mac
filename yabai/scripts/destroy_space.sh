@@ -1,12 +1,13 @@
 #!/usr/bin/env bash
+# Destroy the current space, moving its windows to the nearest
+# neighboring space (previous, else next) before removing it.
 
-# current space + display
-cur=$(yabai -m query --spaces --space | jq -r ".index")
-disp=$(yabai -m query --spaces --space | jq -r ".display")
+cur=$(/opt/homebrew/bin/yabai -m query --spaces --space | /opt/homebrew/bin/jq -r ".index")
+disp=$(/opt/homebrew/bin/yabai -m query --spaces --space | /opt/homebrew/bin/jq -r ".display")
 
 # collect all spaces on this display
-spaces=$(yabai -m query --spaces \
-    | jq -r ".[] | select(.display == $disp) | .index" \
+spaces=$(/opt/homebrew/bin/yabai -m query --spaces \
+    | /opt/homebrew/bin/jq -r ".[] | select(.display == $disp) | .index" \
     | sort -n)
 
 prev=""
@@ -29,13 +30,19 @@ target=$prev
 [ -z "$target" ] && exit 0
 
 # move ALL windows on current space to target BEFORE destroying
-wins=$(yabai -m query --windows --space "$cur" | jq -r ".[].id")
+wins=$(/opt/homebrew/bin/yabai -m query --windows --space "$cur" | /opt/homebrew/bin/jq -r ".[].id")
 for w in $wins; do
-    yabai -m window "$w" --space "$target"
+    /opt/homebrew/bin/yabai -m window "$w" --space "$target"
 done
 
 # destroy space
-yabai -m space --destroy
+/opt/homebrew/bin/yabai -m space "$cur" --destroy
+
+# destroying a space shifts every space above it down by one index,
+# so if our target was ahead of the destroyed space, correct for it
+if [ "$target" -gt "$cur" ]; then
+    target=$((target - 1))
+fi
 
 # focus target (windows are already there)
-yabai -m space --focus "$target"
+/opt/homebrew/bin/yabai -m space --focus "$target"

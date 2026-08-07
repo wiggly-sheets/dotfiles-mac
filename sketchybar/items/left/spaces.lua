@@ -208,6 +208,11 @@ end)
 refresh_space_separators()
 refresh_space_selection()
 
+-- Tracks the latest in-flight query per space so a slower/older yabai
+-- response can never overwrite icons from a newer one (same pattern as
+-- refresh_space_selection's generation guard above).
+local space_icon_generation = {}
+
 local space_window_observer = sbar.add("item", {
 	drawing = false,
 	updates = true,
@@ -218,26 +223,58 @@ space_window_observer:subscribe("space_windows_change", function(env)
 		return
 	end
 
-	local icon_line = ""
-	local no_app = true
+	space_icon_generation[sid] = (space_icon_generation[sid] or 0) + 1
+	local generation = space_icon_generation[sid]
 
-	for app, count in pairs(env.INFO.apps or {}) do
-		no_app = false
-		local lookup = app_icons[app] or icons[app]
-		local icon = lookup or app_icons["Default"]
-		icon_line = icon_line .. string.rep(icon, count)
-	end
+	-- Sort by on-screen position (left-to-right, then top-to-bottom) so the
+	-- icon order reflects actual window arrangement rather than app-name
+	-- grouping. jq's sort_by is stable, so windows tied on position (e.g.
+	-- stacked windows sharing a frame) fall back to yabai's own internal
+	-- ordering, which tracks stack order.
+	-- Exclude windows that shouldn't count toward a space's icon strip:
+	--   - zero-size phantom windows (e.g. Gemini's off-screen helper)
+	--   - non-standard roles/subroles (tooltips, hosting views, system
+	--     dialogs, etc.) — real windows are AXWindow/AXStandardWindow
+	--   - fully transparent windows (opacity == 0); note partially dimmed
+	--     inactive windows (opacity ~0.8) are legitimate and kept
+	--   - minimized windows
+	--   - hidden windows (app hidden via Cmd+H)
+	--   - sticky windows (already visible on every space, so redundant here)
+	sbar.exec(
+		"yabai -m query --windows --space "
+			.. sid
+			.. " | jq -r 'map(select("
+			.. "(.frame.w > 0 and .frame.h > 0) "
+			.. "and .role == \"AXWindow\" and .subrole == \"AXStandardWindow\" "
+			.. "and .opacity > 0 "
+			.. "and (.[\"is-minimized\"] == false) "
+			.. "and (.[\"is-hidden\"] == false) "
+			.. "and (.[\"is-sticky\"] == false)"
+			.. ")) | sort_by(.frame.x, .frame.y) | .[].app'",
+		function(output)
+			if generation ~= space_icon_generation[sid] then
+				return
+			end
 
-	if no_app then
-		icon_line = "—"
-	end
+			local icon_line = ""
+			for app in output:gmatch("[^\n]+") do
+				local lookup = app_icons[app] or icons[app]
+				local icon = lookup or app_icons["Default"]
+				icon_line = icon_line .. icon
+			end
 
-	space_app_icons[sid] = icon_line
+			if icon_line == "" then
+				icon_line = "—"
+			end
 
-	-- Update displays for all spaces (use stored selected state)
-	for space_id, space in ipairs(spaces) do
-		update_space_display(space, space_id)
-	end
+			space_app_icons[sid] = icon_line
+
+			-- Update displays for all spaces (use stored selected state)
+			for space_id, space in ipairs(spaces) do
+				update_space_display(space, space_id)
+			end
+		end
+	)
 end)
 
 local add_space_button = sbar.add("item", "add_space_button", {
@@ -252,7 +289,7 @@ add_space_button:subscribe("mouse.clicked", function(env)
 	elseif env.BUTTON == "right" then
 		sbar.exec("~/dotfiles/yabai/scripts/new_space_focus.sh")
 	elseif env.BUTTON == "other" then
-		sbar.exec("~/dotfiles/yabai/scripts/new_space_close.sh")
+		sbar.exec("~/dotfiles/yabai/scripts/new_space_after.sh")
 	end
 end)
 

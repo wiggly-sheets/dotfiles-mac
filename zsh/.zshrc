@@ -30,6 +30,14 @@ export CARAPACE_BRIDGES='zsh,bash'
 export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
 bindkey -v
 
+[ -f $HOMEBREW_PREFIX/share/forgit/forgit.plugin.zsh ] && source $HOMEBREW_PREFIX/share/forgit/forgit.plugin.zsh
+
+
+if [ -f /Users/Zeb/dotfiles/opencode/opencode.env ]; then
+  set -a
+  source /Users/Zeb/dotfiles/opencode/opencode.env
+  set +a
+fi
 
 # ------------------------------------------------
 # Homebrew / Linuxbrew paths
@@ -71,7 +79,7 @@ fi
 # ------------------------------------------------
 ZSH="$HOME/.oh-my-zsh"
 plugins=(
-    git tmux zoxide zsh-navigation-tools zsh-interactive-cd
+    tmux zoxide zsh-navigation-tools zsh-interactive-cd
     sudo vi-mode
 )
 source "$ZSH/oh-my-zsh.sh" > /dev/null 2>&1
@@ -118,7 +126,11 @@ bindkey '^[OA' atuin-up-search
 # ------------------------------------------------
 # fzf
 # ------------------------------------------------
-export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
+# # File list used when running plain `fzf`
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --exclude .git'
+
+# Preview used by fzf
+export FZF_DEFAULT_OPTS="--preview='bat --color=always --style=numbers --line-range=:500 -- {}' --preview-window='right:60%:wrap'"
 eval "$(fzf --zsh)"
 
 # ------------------------------------------------
@@ -149,7 +161,6 @@ alias lst='eza --long --color=always --icons=always --all --git --git-repos --tr
 alias fvim='~/.config/scripts/fzf_listoldfiles.sh'
 alias ovim="~/.config/scripts/zoxide_openfiles_nvim.sh"
 alias fman="compgen -c | fzf | xargs man"
-alias fzf='nvim $(fzf --preview="bat --color=always {}")'
 alias cp='cp -i'
 alias mv='mv -i'
 alias rm='rm -i'
@@ -161,6 +172,8 @@ alias src='source ~/.zshrc'
 alias freenet='open http://127.0.0.1:7509 && ssh -NL 7509:localhost:7509 zeb@192.168.1.191'
 alias ac='cd && clear'
 alias af='anifetch -ff example.mp4'
+alias gc='git commit'
+alias gp='git push'
 
 # ------------------------------------------------
 # Functions
@@ -212,3 +225,9 @@ esac
 export PATH="$PATH:/Users/Zeb/.local/bin"
 
 source /Users/Zeb/.config/broot/launcher/bash/br
+
+eval "$(mise activate zsh)"
+
+export PATH="$HOME/.hermes/bin:$PATH"
+
+export PATH="${PATH}:/Users/Zeb/.local/lib/python3.14/site-packages"

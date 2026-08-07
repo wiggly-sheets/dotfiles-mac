@@ -307,6 +307,21 @@ require("whoosh"):setup {
 }
 ```
 
+### Alt+Shift keybindings in yazi.nvim
+
+In affected Neovim versions, `Alt+Shift` combinations forwarded to an
+application inside Neovim's built-in terminal may lose the Shift modifier.
+For example, Yazi may receive `<A-d>` instead of `<A-D>` and execute
+`jump_key_d` instead of `jump_key_D`.
+
+This was reproduced with Neovim `0.12.4` and Kitty `0.43.1` and is tracked
+in [neovim/neovim#36213](https://github.com/neovim/neovim/pull/36213).
+Whoosh cannot restore a modifier that was lost before the plugin was invoked.
+
+Until this is fixed in Neovim, avoid keybindings inside `yazi.nvim` that
+differ only by Shift, such as `<A-d>` and `<A-D>`. Assign one of the
+bookmarks a different key combination.
+
 ### Bookmark Types
 
 The plugin supports three types of bookmarks:

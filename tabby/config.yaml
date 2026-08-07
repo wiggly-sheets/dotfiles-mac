@@ -193,7 +193,7 @@ hotkeys:
 terminal:
   searchOptions: {}
   colorScheme:
-    name: Tabby Default
+    name: Tokyo Night
     foreground: '#cacaca'
     background: '#171717'
     cursor: '#bbbbbb'

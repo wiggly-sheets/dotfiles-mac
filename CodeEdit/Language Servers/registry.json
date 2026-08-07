@@ -561,7 +561,7 @@
       "LSP"
     ],
     "source": {
-      "id": "pkg:github/forcedotcom/salesforcedx-vscode@v67.6.0",
+      "id": "pkg:github/forcedotcom/salesforcedx-vscode@v67.7.1",
       "asset": {
         "file": "salesforcedx-vscode-apex-{{ version | strip_prefix \"v\" }}.vsix"
       }
@@ -1257,7 +1257,7 @@
       "Formatter"
     ],
     "source": {
-      "id": "pkg:npm/bibtex-tidy@1.14.0"
+      "id": "pkg:npm/bibtex-tidy@1.15.0"
     },
     "bin": {
       "bibtex-tidy": "npm:bibtex-tidy"
@@ -1277,7 +1277,7 @@
       "LSP"
     ],
     "source": {
-      "id": "pkg:github/Azure/bicep@v0.45.15",
+      "id": "pkg:github/Azure/bicep@v0.46.1",
       "asset": {
         "file": "vscode-bicep.vsix"
       }
@@ -1307,7 +1307,7 @@
       "Formatter"
     ],
     "source": {
-      "id": "pkg:npm/@biomejs/biome@2.5.5"
+      "id": "pkg:npm/@biomejs/biome@2.5.6"
     },
     "schemas": {
       "lsp": "vscode:https://raw.githubusercontent.com/biomejs/biome-vscode/main/package.json"
@@ -1893,7 +1893,7 @@
       "Linter"
     ],
     "source": {
-      "id": "pkg:pypi/cfn-lint@1.53.2"
+      "id": "pkg:pypi/cfn-lint@1.53.3"
     },
     "bin": {
       "cfn-lint": "pypi:cfn-lint"
@@ -2183,7 +2183,7 @@
     "languages": [],
     "categories": [],
     "source": {
-      "id": "pkg:npm/@agentclientprotocol/claude-agent-acp@0.62.0"
+      "id": "pkg:npm/@agentclientprotocol/claude-agent-acp@0.63.0"
     },
     "bin": {
       "claude-agent-acp": "npm:claude-agent-acp"
@@ -2641,7 +2641,7 @@
       "LSP"
     ],
     "source": {
-      "id": "pkg:github/github/codeql-cli-binaries@v2.26.1",
+      "id": "pkg:github/github/codeql-cli-binaries@v2.26.2",
       "asset": [
         {
           "target": [
@@ -4024,7 +4024,7 @@
       "Linter"
     ],
     "source": {
-      "id": "pkg:pypi/djlint@1.43.0"
+      "id": "pkg:pypi/djlint@1.43.1"
     },
     "bin": {
       "djlint": "pypi:djlint"
@@ -6933,7 +6933,7 @@
       "Formatter"
     ],
     "source": {
-      "id": "pkg:github/google/google-java-format@v1.35.0",
+      "id": "pkg:github/google/google-java-format@v1.36.1",
       "asset": [
         {
           "target": "darwin_arm64",
@@ -7177,7 +7177,7 @@
       "Linter"
     ],
     "source": {
-      "id": "pkg:github/hadolint/hadolint@v2.14.0",
+      "id": "pkg:github/hadolint/hadolint@v2.15.0",
       "asset": [
         {
           "target": "darwin_x64",
@@ -7276,7 +7276,7 @@
       "LSP"
     ],
     "source": {
-      "id": "pkg:github/elijah-potter/harper@v2.6.0",
+      "id": "pkg:github/elijah-potter/harper@v2.7.0",
       "asset": [
         {
           "target": "linux_x64_gnu",
@@ -8830,7 +8830,7 @@
       "LSP"
     ],
     "source": {
-      "id": "pkg:github/atusy/kakehashi@v0.8.0",
+      "id": "pkg:github/atusy/kakehashi@v0.9.0",
       "asset": [
         {
           "target": "darwin_x64",
@@ -8995,7 +8995,7 @@
       "LSP"
     ],
     "source": {
-      "id": "pkg:github/Hessesian/kmp-lsp@v0.24.0",
+      "id": "pkg:github/Hessesian/kmp-lsp@v0.25.0",
       "asset": [
         {
           "target": "darwin_x64",
@@ -10277,7 +10277,7 @@
       "Formatter"
     ],
     "source": {
-      "id": "pkg:npm/markdownlint-cli2@0.23.1"
+      "id": "pkg:npm/markdownlint-cli2@0.23.2"
     },
     "bin": {
       "markdownlint-cli2": "npm:markdownlint-cli2"
@@ -11226,7 +11226,7 @@
       "Linter"
     ],
     "source": {
-      "id": "pkg:golang/go.uber.org/nilaway@v0.0.0-20260724203407-f4f8ac24c032#cmd/nilaway"
+      "id": "pkg:golang/go.uber.org/nilaway@v0.0.0-20260730225925-3e5f45c73e85#cmd/nilaway"
     },
     "bin": {
       "nilaway": "golang:nilaway"
@@ -11855,7 +11855,7 @@
       "Runtime"
     ],
     "source": {
-      "id": "pkg:github/open-policy-agent/opa@v1.18.2",
+      "id": "pkg:github/open-policy-agent/opa@v1.19.0",
       "asset": [
         {
           "target": "darwin_arm64",
@@ -12073,7 +12073,7 @@
       "Formatter"
     ],
     "source": {
-      "id": "pkg:npm/oxfmt@0.60.0"
+      "id": "pkg:npm/oxfmt@0.61.0"
     },
     "bin": {
       "oxfmt": "npm:oxfmt"
@@ -12098,7 +12098,7 @@
       "Linter"
     ],
     "source": {
-      "id": "pkg:npm/oxlint@1.75.0"
+      "id": "pkg:npm/oxlint@1.76.0"
     },
     "bin": {
       "oxlint": "npm:oxlint"
@@ -12168,7 +12168,7 @@
       "Linter"
     ],
     "source": {
-      "id": "pkg:github/jolars/panache@v3.0.1",
+      "id": "pkg:github/jolars/panache@v3.0.2",
       "asset": [
         {
           "target": "darwin_arm64",
@@ -12355,7 +12355,7 @@
       "Formatter"
     ],
     "source": {
-      "id": "pkg:github/PHP-CS-Fixer/PHP-CS-Fixer@v3.95.17",
+      "id": "pkg:github/PHP-CS-Fixer/PHP-CS-Fixer@v3.95.18",
       "asset": {
         "file": "php-cs-fixer.phar"
       }
@@ -12546,7 +12546,7 @@
       "Linter"
     ],
     "source": {
-      "id": "pkg:github/phpstan/phpstan@2.2.6",
+      "id": "pkg:github/phpstan/phpstan@2.2.7",
       "asset": {
         "file": "phpstan.phar"
       }
@@ -12596,7 +12596,7 @@
     ],
     "categories": [],
     "source": {
-      "id": "pkg:github/suzuki-shunsuke/pinact@v4.1.0",
+      "id": "pkg:github/suzuki-shunsuke/pinact@v4.1.1",
       "asset": [
         {
           "target": "darwin_x64",
@@ -12648,7 +12648,7 @@
       "Formatter"
     ],
     "source": {
-      "id": "pkg:composer/laravel/pint@v1.29.3"
+      "id": "pkg:composer/laravel/pint@v1.30.0"
     },
     "bin": {
       "pint": "composer:pint"
@@ -13597,7 +13597,7 @@
       "Runtime"
     ],
     "source": {
-      "id": "pkg:pypi/pymobiledevice3@10.1.0"
+      "id": "pkg:pypi/pymobiledevice3@10.3.0"
     },
     "bin": {
       "pymobiledevice3": "pypi:pymobiledevice3"
@@ -14557,7 +14557,7 @@
       "Linter"
     ],
     "source": {
-      "id": "pkg:pypi/rstcheck@6.2.5"
+      "id": "pkg:pypi/rstcheck@6.3.0"
     },
     "bin": {
       "rstcheck": "pypi:rstcheck"
@@ -14694,7 +14694,7 @@
       "LSP"
     ],
     "source": {
-      "id": "pkg:pypi/ruff@0.16.0"
+      "id": "pkg:pypi/ruff@0.16.1"
     },
     "bin": {
       "ruff": "pypi:ruff"
@@ -14739,7 +14739,7 @@
       "LSP"
     ],
     "source": {
-      "id": "pkg:github/rvben/rumdl@v0.2.44",
+      "id": "pkg:github/rvben/rumdl@v0.2.47",
       "asset": [
         {
           "target": "darwin_arm64",
@@ -15027,7 +15027,7 @@
       "Linter"
     ],
     "source": {
-      "id": "pkg:pypi/semgrep@1.171.0",
+      "id": "pkg:pypi/semgrep@1.172.0",
       "supported_platforms": [
         "unix"
       ]
@@ -15444,7 +15444,7 @@
       "Compiler"
     ],
     "source": {
-      "id": "pkg:github/shader-slang/slang@v2026.14",
+      "id": "pkg:github/shader-slang/slang@v2026.14.1",
       "asset": [
         {
           "target": "linux_x64_gnu",
@@ -16172,7 +16172,7 @@
       "LSP"
     ],
     "source": {
-      "id": "pkg:gem/sorbet@0.6.13365",
+      "id": "pkg:gem/sorbet@0.6.13385",
       "supported_platforms": [
         "unix"
       ]
@@ -18087,7 +18087,7 @@
       "LSP"
     ],
     "source": {
-      "id": "pkg:github/tilt-dev/tilt@v0.37.5",
+      "id": "pkg:github/tilt-dev/tilt@v0.37.6",
       "asset": [
         {
           "target": "darwin_arm64",
@@ -18738,7 +18738,7 @@
       "LSP"
     ],
     "source": {
-      "id": "pkg:pypi/ty@0.0.64"
+      "id": "pkg:pypi/ty@0.0.65"
     },
     "bin": {
       "ty": "pypi:ty"
@@ -18987,7 +18987,7 @@
     ],
     "categories": [],
     "source": {
-      "id": "pkg:github/astral-sh/uv@0.11.32",
+      "id": "pkg:github/astral-sh/uv@0.12.0",
       "asset": [
         {
           "target": "darwin_x64",
@@ -19270,7 +19270,7 @@
       "Linter"
     ],
     "source": {
-      "id": "pkg:github/errata-ai/vale@v3.15.2",
+      "id": "pkg:github/errata-ai/vale@v3.16.0",
       "asset": [
         {
           "target": "darwin_x64",
@@ -19608,7 +19608,7 @@
       "LSP"
     ],
     "source": {
-      "id": "pkg:github/forcedotcom/salesforcedx-vscode@v67.6.0",
+      "id": "pkg:github/forcedotcom/salesforcedx-vscode@v67.7.1",
       "asset": {
         "file": "salesforcedx-vscode-visualforce-{{ version | strip_prefix \"v\" }}.vsix"
       }

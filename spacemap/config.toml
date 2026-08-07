@@ -35,8 +35,8 @@ customHUDY = 0.2720323741007194
 focusSpaceOnWindowDrop = "always"
 focusSpaceOnWindowDropModifier = "option"
 showHUDOnSpaceChange = false
-hideMenuBarIcon = false
-menuBarDisplayMode = "dots"
+hideMenuBarIcon = true
+menuBarDisplayMode = "icon"
 menuBarNearbyCount = 3
 updateMode = "notify"
 

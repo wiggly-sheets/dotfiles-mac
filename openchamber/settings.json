@@ -1,0 +1,185 @@
+{
+  "lightThemeId": "flexoki-light",
+  "darkThemeId": "tokyonight-dark",
+  "securityScopedBookmarks": [],
+  "notifyOnSubtasks": true,
+  "notifyOnCompletion": true,
+  "notifyOnError": true,
+  "notifyOnQuestion": true,
+  "notificationTemplates": {
+    "completion": {
+      "title": "{agent_name} is ready",
+      "message": "{model_name} completed the task"
+    },
+    "error": {
+      "title": "Tool error",
+      "message": "{last_message}"
+    },
+    "question": {
+      "title": "Input needed",
+      "message": "{last_message}"
+    },
+    "subtask": {
+      "title": "{agent_name} is ready",
+      "message": "{model_name} completed the task"
+    }
+  },
+  "desktopWindowState": {
+    "x": 2,
+    "y": 41,
+    "width": 1706,
+    "height": 1044,
+    "maximized": false,
+    "fullscreen": false
+  },
+  "desktopLocalPort": 57123,
+  "relaySigningKey": {
+    "privateJwk": {
+      "kty": "EC",
+      "x": "xw92OCC5ksSAZ9p4d1-Pok8wIKM7BFys5ItF9UwTcJQ",
+      "y": "3O9ZwF7oF7M1KhR_6FjFNo-Qz9A6DwsE9OuBLNdRTDY",
+      "crv": "P-256",
+      "d": "WGu14i5St2fTc3_puRaVvIQGWGBb6iIZJPOzDO7lFPU"
+    },
+    "publicJwk": {
+      "kty": "EC",
+      "x": "xw92OCC5ksSAZ9p4d1-Pok8wIKM7BFys5ItF9UwTcJQ",
+      "y": "3O9ZwF7oF7M1KhR_6FjFNo-Qz9A6DwsE9OuBLNdRTDY",
+      "crv": "P-256"
+    }
+  },
+  "relayEncryptionKey": {
+    "privateJwk": {
+      "key_ops": [
+        "deriveBits"
+      ],
+      "ext": true,
+      "kty": "EC",
+      "x": "HO78cmRZZrfCH3Dg_psj0_OS5JNNAws0zfKBMoBF9n4",
+      "y": "MKgV04voHuclR9tOKZu06wNEqd3emY00I9eUEh-a26s",
+      "crv": "P-256",
+      "d": "OLHVWOoSCh8fHzMWZNyKPkt5pLQh6GeCY9uF9ssFwAs"
+    },
+    "publicJwk": {
+      "kty": "EC",
+      "crv": "P-256",
+      "x": "HO78cmRZZrfCH3Dg_psj0_OS5JNNAws0zfKBMoBF9n4",
+      "y": "MKgV04voHuclR9tOKZu06wNEqd3emY00I9eUEh-a26s"
+    }
+  },
+  "themeId": "tokyonight-dark",
+  "themeVariant": "dark",
+  "useSystemTheme": true,
+  "splashBgLight": "#fffdf4",
+  "splashFgLight": "#100F0F",
+  "splashBgDark": "#0F111A",
+  "splashFgDark": "#C0CAF5",
+  "lastDirectory": "/Users/Zeb/Developer/spaces-renamer",
+  "homeDirectory": "/Users/Zeb",
+  "draftStartersCraftGoalAdded": true,
+  "draftStartersScheduleTaskAdded": true,
+  "showReasoningTraces": true,
+  "mobileKeyboardMode": "native",
+  "projects": [
+    {
+      "id": "path_L1VzZXJzL1plYi9EZXZlbG9wZXIvc3BhY2VzLXJlbmFtZXI",
+      "path": "/Users/Zeb/Developer/spaces-renamer",
+      "label": "Spaces Renamer",
+      "icon": "code",
+      "color": "error",
+      "addedAt": 1785408686379,
+      "lastOpenedAt": 1785469607506,
+      "iconBackground": null,
+      "sidebarCollapsed": false
+    },
+    {
+      "id": "path_L1VzZXJzL1plYi9EZXZlbG9wZXIvc3BhY2VtYXA",
+      "path": "/Users/Zeb/Developer/spacemap",
+      "label": "Spacemap",
+      "icon": "heart",
+      "color": "keyword",
+      "addedAt": 1785469587570,
+      "lastOpenedAt": 1785469587571,
+      "iconBackground": null
+    }
+  ],
+  "activeProjectId": "path_L1VzZXJzL1plYi9EZXZlbG9wZXIvc3BhY2VzLXJlbmFtZXI",
+  "desktopHosts": [],
+  "desktopDefaultHostId": "local",
+  "desktopInitialHostChoiceCompleted": true,
+  "favoriteModels": [
+    {
+      "providerID": "opencode",
+      "modelID": "big-pickle"
+    },
+    {
+      "providerID": "freellmapi",
+      "modelID": "auto"
+    }
+  ],
+  "recentModels": [
+    {
+      "providerID": "freellmapi",
+      "modelID": "auto"
+    },
+    {
+      "providerID": "opencode",
+      "modelID": "big-pickle"
+    },
+    {
+      "providerID": "lmstudio",
+      "modelID": "qwen/qwen3-coder-30b"
+    }
+  ],
+  "hiddenModels": [],
+  "collapsedModelProviders": [],
+  "recentAgents": [
+    "build",
+    "analyze"
+  ],
+  "desktopLanAccessEnabled": true,
+  "desktopMacMenuBarEnabled": false,
+  "desktopUiPassword": "2969",
+  "terminalLoginShells": [],
+  "usageDisplayMode": "usage",
+  "desktopKeepAwakeEnabled": true,
+  "terminalShell": "zsh",
+  "optimizeSystemPrompt": true,
+  "desktopLocalClientToken": "oc_client_2kQPVvm--fKp7pEh_Kb9MXtXGpN_IHWmU8INNu-1FdM",
+  "nativeNotificationsEnabled": true,
+  "diffLayoutPreference": "side-by-side",
+  "followUpBehavior": "steer",
+  "showExpandedBashTools": true,
+  "showExpandedEditTools": true,
+  "showSplitAssistantMessageActions": true,
+  "wideChatLayoutEnabled": true,
+  "stickyUserHeader": false,
+  "showTurnChangedFiles": true,
+  "defaultFileViewerPreview": true,
+  "gitChangesViewMode": "tree",
+  "gitmojiEnabled": true,
+  "filesViewShowGitignored": true,
+  "responseStyleEnabled": false,
+  "responseStylePreset": "concise",
+  "responseStyleCustomInstructions": "",
+  "permissionAutoAccept": {
+    "sessions": {
+      "ses_04cbdc5c5ffekvHa8CwKgfDVGM": true,
+      "ses_049fca406ffegSjXcTi3ZpNOcl": true,
+      "ses_049d05df9ffeNEO3npxkncuB6n": true,
+      "ses_04958c5f5ffeRpDa7NC7eZAzoc": true,
+      "ses_0494bde22ffe1DpSI0wjQ0Qh24": true
+    },
+    "revision": 7
+  },
+  "expandedEditorToolbar": true,
+  "sttProvider": "local",
+  "sttLocalModel": "parakeet-tdt-0.6b-v2-int8",
+  "globalBehaviorPrompt": "Respond terse like smart caveman. All technical substance stay. Only fluff die.\n\nRules:\n- Drop: articles (a/an/the), filler (just/really/basically), pleasantries, hedging\n- Fragments OK. Short synonyms. Technical terms exact. Code unchanged.\n- Pattern: [thing] [action] [reason]. [next step].\n- Not: \"Sure! I'd be happy to help you with that.\"\n- Yes: \"Bug in auth middleware. Fix:\"\n\nSwitch level: /caveman lite|full|ultra|wenyan\nStop: \"stop caveman\" or \"normal mode\"\n\nAuto-Clarity: drop caveman for security warnings, irreversible actions, user confused. Resume after.\n\nBoundaries: code/commits/PRs written normal.\n",
+  "sessionGoalDefaultBudgetEnabled": true,
+  "chatRenderMode": "sorted",
+  "activityRenderMode": "collapsed",
+  "inputSpellcheckEnabled": true,
+  "defaultModel": "freellmapi/auto",
+  "autoDeleteEnabled": true
+}

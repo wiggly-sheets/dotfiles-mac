@@ -1,21 +1,17 @@
 # scripting addition
-echo "$(whoami) ALL=(root) NOPASSWD: sha256:$(shasum -a 256 $(which yabai) | cut -d " " -f 1) $(which yabai) --load-sa" | sudo tee /private/etc/sudoers.d/yabai
-yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
-sudo yabai --load-sa
+echo "$(whoami) ALL=(root) NOPASSWD: sha256:$(shasum -a 256 $(/opt/homebrew/bin/yabai) | cut -d " " -f 1) $(/opt/homebrew/bin/yabai) --load-sa" | sudo tee /private/etc/sudoers.d/yabai
+/opt/homebrew/bin/yabai -m signal --add event=dock_did_restart action="sudo /opt/homebrew/bin/yabai --load-sa"
+sudo /opt/homebrew/bin/yabai --load-sa
 
 # scratchpad setup
-yabai -m rule --add app="^Stickies$" scratchpad=scratchpad grid=6:6:6:0:8:8
+/opt/homebrew/bin/yabai -m rule --add app="^Stickies$" scratchpad=scratchpad grid=6:6:6:0:8:8
 
 # sketchybar window title events
-yabai -m signal --add event=window_focused action="sketchybar --trigger window_focus &> /dev/null"
-yabai -m signal --add event=window_title_changed action="sketchybar --trigger title_change &> /dev/null"
-yabai -m signal --add event=space_changed action="yabai -m window --focus mouse"
-yabai -m signal --add event=window_destroyed active=yes action="yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse &> /dev/null || yabai -m window --focus $(yabai -m query --windows --space | jq .[0].id) &> /dev/null"
-yabai -m signal --add event=window_minimized active=yes action="if $(yabai -m query --windows --window $YABAI_WINDOW_ID | jq -r '.\"is-floating\"'); then yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse &> /dev/null || yabai -m window --focus $(yabai -m query --windows --space | jq .[0].id) &> /dev/null; fi"
-
-# spacesrenamer setup
-yabai -m signal --add event=dock_did_restart action="~/dotfiles/mac/tweaks/spacesrenamer/run.sh"
-~/dotfiles/mac/tweaks/spacesrenamer/run.sh
+/opt/homebrew/bin/yabai -m signal --add event=window_focused action="/opt/homebrew/bin/sketchybar --trigger window_focus &> /dev/null"
+/opt/homebrew/bin/yabai -m signal --add event=window_title_changed action="/opt/homebrew/bin/sketchybar --trigger title_change &> /dev/null"
+/opt/homebrew/bin/yabai -m signal --add event=space_changed action="/opt/homebrew/bin/yabai -m window --focus mouse"
+/opt/homebrew/bin/yabai -m signal --add event=window_destroyed active=yes action="/opt/homebrew/bin/yabai -m query --windows --window &> /dev/null || /opt/homebrew/bin/yabai -m window --focus mouse &> /dev/null || /opt/homebrew/bin/yabai -m window --focus $(/opt/homebrew/bin/yabai -m query --windows --space | /opt/homebrew/bin/jq .[0].id) &> /dev/null"
+/opt/homebrew/bin/yabai -m signal --add event=window_minimized active=yes action="if $(/opt/homebrew/bin/yabai -m query --windows --window $YABAI_WINDOW_ID | /opt/homebrew/bin/jq -r '.\"is-floating\"'); then /opt/homebrew/bin/yabai -m query --windows --window &> /dev/null || /opt/homebrew/bin/yabai -m window --focus mouse &> /dev/null || /opt/homebrew/bin/yabai -m window --focus $(/opt/homebrew/bin/yabai -m query --windows --space | /opt/homebrew/bin/jq .[0].id) &> /dev/null; fi"
 
 # MAIN CONFIG
 CONFIGS=(
@@ -30,12 +26,12 @@ CONFIGS=(
   "window_animation_duration 0.05"
   "window_animation_easing ease_in_out_expo"
   "window_placement second_child"
-  "left_padding 2"
-  "right_padding 2"
-  "top_padding 1"
-  "bottom_padding 27"
-  "window_gap 3"
-  "window_shadow float"
+  "left_padding 10"
+  "right_padding 10"
+  "top_padding 10"
+  "bottom_padding 40"
+  "window_gap 10"
+  "window_shadow off"
   "window_opacity on"
   "window_opacity_duration 0.10"
   "active_window_opacity 1.0"
@@ -45,22 +41,22 @@ CONFIGS=(
   "focus_follows_mouse autoraise"
   "mouse_modifier alt"
   "mouse_action1 move"
-  "mouse_drop_action swap"
+  "mouse_drop_action stack"
   "event_feedback on"
-  "insert_feedback_color 0xFFFFFFFF"
+  "insert_feedback_color 0xffc0caf5"
   "debug_output off"
 )
 for cfg in "${CONFIGS[@]}"; do
-  yabai -m config $cfg
+  /opt/homebrew/bin/yabai -m config $cfg
 done
 
 # mission-control desktop labels
-yabai -m space 1 --label Browser
-yabai -m space 2 --label Mail
-yabai -m space 3 --label Files
-yabai -m space 4 --label Notes
-yabai -m space 5 --label Terminal
-yabai -m space 6 --label Code
+/opt/homebrew/bin/yabai -m space 1 --label Browser
+/opt/homebrew/bin/yabai -m space 2 --label Mail
+/opt/homebrew/bin/yabai -m space 3 --label Files
+/opt/homebrew/bin/yabai -m space 4 --label Notes
+/opt/homebrew/bin/yabai -m space 5 --label Terminal
+/opt/homebrew/bin/yabai -m space 6 --label Code
 
 # APP GROUPS
 BROWSERS="^(Orion|Safari|Helium|Zen|Tor Browser)$"
@@ -82,13 +78,13 @@ SPACE_RULES=(
 for rule in "${SPACE_RULES[@]}"; do
   app="${rule%%:*}"
   space="${rule##*:}"
-  yabai -m rule --add app="${app}" space="${space}"
+  /opt/homebrew/bin/yabai -m rule --add app="${app}" space="${space}"
 done
 
 # helper for float rules
 yabai_rule() {
-  yabai -m rule --add "$@"
-  yabai -m rule --apply "$@"
+  /opt/homebrew/bin/yabai -m rule --add "$@"
+  /opt/homebrew/bin/yabai -m rule --apply "$@"
 }
 
 # FLOAT/UNMANAGED APPS
@@ -117,6 +113,7 @@ FLOAT_APPS=(
   "^MediaMate$"
   "^2048 Game$"
   "^BlueStacks$"
+  "^Only Switch$"
   "^BresinkSoftwareUpdater$"
   "^Clop$"
   "^Speediness$"
@@ -178,6 +175,7 @@ FLOAT_APPS=(
   "^Folder Preview Pro$"
   "^Klack$"
   "^Pictogram$"
+  "^Mole$"
   "^Spacemap$"
 )
 for app in "${FLOAT_APPS[@]}"; do
@@ -189,4 +187,4 @@ for app in "${FLOAT_APPS[@]}"; do
 done
 
 # stackline setup
-pkill "Stackline" && open -a "Stackline"
+pkill "Stackline" && sleep 5.00 && open -a "Stackline"

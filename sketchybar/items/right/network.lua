@@ -29,8 +29,6 @@ sbar.subscribe("wifi_change", "system_woke", start_network_load)
 -- run immediately at startup
 start_network_load()
 
--- re-run when system wakes or network changes
-
 local network_up = sbar.add("item", "network1", {
 	position = "right",
 	icon = {
@@ -88,12 +86,41 @@ local net_graph_up = sbar.add("graph", "net_graph_up", 42, {
 	padding_right = -2,
 })
 
--- History buffers for smoothing and dynamic scaling
-local up_history = {}
-local down_history = {}
+-- Adaptive graph normalizer: EMA-smooths the raw rate, tracks a
+-- rolling-window peak as the scale ceiling (so a burst dominates the
+-- graph briefly, then ages out after GRAPH_WINDOW samples rather than
+-- fading out slowly), and applies a power curve (not log) so mid/low
+-- activity stays visibly distinct instead of being squashed near the
+-- bottom or over-inflated by log's generosity near the top.
+local GRAPH_ALPHA = 0.4 -- EMA smoothing factor (higher = more responsive, jumpier)
+local GRAPH_WINDOW = 8 -- samples of "peak memory" (10 * 2s update = ~20s)
+local GRAPH_POWER = 0.45 -- <1 lifts low values; 1 = linear; higher = more log-like compression
 
--- how many samples to keep for smoothing
-local history_size = 6
+local function make_graph_normalizer(min_ceiling)
+	local ema = 0
+	local window = {}
+	return function(raw)
+		ema = ema + GRAPH_ALPHA * (raw - ema)
+
+		table.insert(window, ema)
+		if #window > GRAPH_WINDOW then
+			table.remove(window, 1)
+		end
+
+		local ceiling = min_ceiling
+		for _, v in ipairs(window) do
+			if v > ceiling then
+				ceiling = v
+			end
+		end
+
+		local ratio = math.min(ema / ceiling, 1)
+		return math.max(ratio ^ GRAPH_POWER, 0.02)
+	end
+end
+
+local normalize_up = make_graph_normalizer(512 * 1024) -- 512KB/s floor ceiling
+local normalize_down = make_graph_normalizer(512 * 1024)
 
 -- Convert rate strings like "123 Bps", "12 KBps", "1.2 MBps" into bytes/sec
 local function parse_rate(rate_str)
@@ -123,32 +150,7 @@ end
 
 net_graph_up:subscribe("network_update", function(env)
 	local up = parse_rate(env.upload)
-
-	-- store history
-	table.insert(up_history, up)
-	if #up_history > history_size then
-		table.remove(up_history, 1)
-	end
-
-	-- moving average smoothing
-	local sum = 0
-	for _, v in ipairs(up_history) do
-		sum = sum + v
-	end
-	local avg_up = sum / #up_history
-
-	-- Convert bytes/sec to a log scale based on real network units
-	-- 0 = bytes, 1 = KB, 2 = MB, 3 = GB
-	local unit_scale = math.log(avg_up + 1) / math.log(1024)
-
-	-- Normalize to graph height where:
-	-- ~KB sits low, ~MB sits high
-	local normalized = math.min(unit_scale / 3, 1)
-
-	-- small floor so idle traffic still shows movement
-	normalized = math.max(normalized, 0.02)
-
-	net_graph_up:push({ normalized })
+	net_graph_up:push({ normalize_up(up) })
 end)
 
 -- Download network graph
@@ -184,32 +186,7 @@ local network = sbar.add("item", "network.status", {
 
 net_graph_down:subscribe("network_update", function(env)
 	local down = parse_rate(env.download)
-
-	-- store history
-	table.insert(down_history, down)
-	if #down_history > history_size then
-		table.remove(down_history, 1)
-	end
-
-	-- moving average smoothing
-	local sum = 0
-	for _, v in ipairs(down_history) do
-		sum = sum + v
-	end
-	local avg_down = sum / #down_history
-
-	-- Convert bytes/sec to a log scale based on real network units
-	-- 0 = bytes, 1 = KB, 2 = MB, 3 = GB
-	local unit_scale = math.log(avg_down + 1) / math.log(1024)
-
-	-- Normalize to graph height where:
-	-- ~KB sits low, ~MB sits high
-	local normalized = math.min(unit_scale / 3, 1)
-
-	-- prevent flat idle line
-	normalized = math.max(normalized, 0.02)
-
-	net_graph_down:push({ normalized })
+	net_graph_down:push({ normalize_down(down) })
 end)
 
 -- updates wifi logo based on conditions (connected, disconnected, vpn, ethernet)

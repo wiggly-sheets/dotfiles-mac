@@ -170,7 +170,12 @@
   },
 
   "plugin": [
-    "@tarquinen/opencode-dcp@latest"
+    "@tarquinen/opencode-dcp",
+    "@franlol/opencode-md-table-formatter",
+    "@zenobius/opencode-skillful",
+    "@aeondave/opencode-dotenv@latest",
+    "@mumme-it/opencode-caveman",
+    "@dietrichgebert/ponytail"
   ]
 }
 

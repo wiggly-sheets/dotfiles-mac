@@ -6,7 +6,7 @@ sbar.bar({
 	height = 30,
 	color = colors.transparent,
 	y_offset = 4,
-	padding_right = 25,
+	padding_right = 27,
 	padding_left = 2,
 	sticky = true,
 	topmost = "window",

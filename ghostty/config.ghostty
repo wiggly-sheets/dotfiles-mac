@@ -11,7 +11,6 @@ theme = light:Xcode Light hc,dark:tokyonight
 quick-terminal-animation-duration = 0
 keybind = global:super+grave_accent=toggle_quick_terminal
 cursor-style = underline
-shell-integration-features = no-cursor
 cursor-style-blink = true
 link-url = true
 window-inherit-working-directory = true
@@ -25,3 +24,6 @@ macos-icon-frame = plastic
 macos-icon-ghost-color = FFFFFF
 macos-icon-screen-color = 000000
 confirm-close-surface=false
+shell-integration-features = no-title
+shell-integration-features = no-cursor
+title = "👻"
