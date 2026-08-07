@@ -4,7 +4,7 @@ local settings = require("default")
 
 local volume = sbar.add("item", "volume", {
 	position = "right",
-	y_offset = 6,
+	y_offset = 7,
 	icon = {
 		padding_left = 2,
 		padding_right = 2,
@@ -49,7 +49,7 @@ local mic = sbar.add("item", "mic", {
 	update_freq = 10,
 	padding_right = -50,
 	padding_left = 4,
-	y_offset = -6,
+	y_offset = -5,
 })
 
 local function update_mic()

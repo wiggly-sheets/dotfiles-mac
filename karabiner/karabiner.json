@@ -4,7 +4,10 @@
         "check_for_updates": false,
         "show_in_menu_bar": false
     },
-    "machine_specific": { "krbn-empty-machine-identifier": { "enable_multitouch_extension": true } },
+    "machine_specific": {
+        "krbn-abab6129-2c12-4576-a86d-4a9d3fb7241c": { "enable_multitouch_extension": true },
+        "krbn-empty-machine-identifier": { "enable_multitouch_extension": true }
+    },
     "profiles": [
         {
             "complex_modifications": {
@@ -166,25 +169,6 @@
                     }
                 ]
             },
-            "devices": [
-                {
-                    "identifiers": {
-                        "is_keyboard": true,
-                        "product_id": 591,
-                        "vendor_id": 1452
-                    },
-                    "simple_modifications": [
-                        {
-                            "from": { "apple_vendor_top_case_key_code": "keyboard_fn" },
-                            "to": [{ "key_code": "right_option" }]
-                        },
-                        {
-                            "from": { "key_code": "right_control" },
-                            "to": [{ "apple_vendor_top_case_key_code": "keyboard_fn" }]
-                        }
-                    ]
-                }
-            ],
             "fn_function_keys": [
                 {
                     "from": { "key_code": "f4" },

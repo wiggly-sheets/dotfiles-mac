@@ -4,7 +4,10 @@ tap "apple/apple", trusted: true
 tap "asmvik/formulae", "https://github.com/asmvik/homebrew-formulae.git", trusted: true
 tap "bengerthelorf/tap", "https://github.com/Bengerthelorf/homebrew-tap", trusted: true
 tap "browsh-org/browsh", trusted: true
+tap "can1357/tap"
 tap "catskull/homebrew", "https://github.com/catskull/homebrew", trusted: true
+tap "charmbracelet/tap"
+tap "codeeditapp/formulae"
 tap "edde746/plezy", "https://github.com/edde746/plezy", trusted: true
 tap "felixkratz/formulae", "https://github.com/FelixKratz/homebrew-formulae"
 tap "filosottile/musl-cross", trusted: true
@@ -20,6 +23,7 @@ tap "jackielii/tap", trusted: true
 tap "jsattler/tap", trusted: true
 tap "jsheffie/tap", trusted: { casks: ["spacemap"] }
 tap "jstkdng/programs"
+tap "jundot/omlx", "https://github.com/jundot/omlx", trusted: true
 tap "kegworks-app/kegworks", "https://github.com/Sikarugir-App/homebrew-sikarugir.git", trusted: true
 tap "krishkrosh/apps", trusted: true
 tap "lihaoyun6/tap", trusted: true
@@ -47,20 +51,30 @@ tap "socsieng/tap"
 tap "sw33tlie/macshot", trusted: true
 tap "theboredteam/boring-notch", "https://github.com/TheBoredTeam/homebrew-boring-notch", trusted: true
 tap "thezoraiz/ascii-image-converter", "https://github.com/TheZoraiz/homebrew-ascii-image-converter"
+tap "tw93/tap"
 tap "typewhisper/tap", trusted: true
 tap "valkyrie00/bbrew", "https://github.com/Valkyrie00/homebrew-bbrew", trusted: true
 tap "waydabber/betterdisplay"
 tap "wickenico/wailbrew", trusted: true
 tap "wiggly-sheets/sketchybar-studio", "https://github.com/wiggly-sheets/Homebrew-SketchyBar-Studio.git", trusted: true
 tap "wiggly-sheets/spacemap", "https://github.com/wiggly-sheets/homebrew-spacemap.git"
+tap "wiggly-sheets/spacesrenamer"
 tap "xykong/tap", trusted: true
 tap "z20240/tap"
 tap "zackelia/formulae", trusted: true
 tap "zimengxiong/tools", "https://github.com/ZimengXiong/homebrew-tools", trusted: true
+# Library for manipulating PNG images
+brew "libpng"
+# Software library to render fonts
+brew "freetype"
+# GNU internationalization (i18n) and localization (l10n) library
+brew "gettext"
 # General-purpose data compression with high compression ratio
 brew "xz"
 # Zstandard is a real-time compression algorithm
 brew "zstd"
+# C/C++ and Java libraries for Unicode and globalization
+brew "icu4c@78"
 # Apple Intelligence from the command-line, with OpenAi-compatible API server
 brew "apfel"
 # Cryptography and SSL/TLS Toolkit
@@ -85,6 +99,8 @@ brew "astroterm"
 brew "atuin"
 # Automatic configure script builder
 brew "autoconf"
+# Tool for generating GNU Standards-compliant Makefiles
+brew "automake"
 # Terminal bandwidth utilization tool
 brew "bandwhich"
 # Bourne-Again SHell, a UNIX command interpreter
@@ -101,6 +117,8 @@ brew "bfs"
 brew "blueutil"
 # Yet another cross-platform graphical process/system monitor
 brew "bottom"
+# New way to see and navigate directory trees
+brew "broot"
 # Resource monitor. C++ version and continuation of bashtop and bpytop
 brew "btop"
 # Console version of 2048
@@ -163,6 +181,8 @@ brew "dungeon"
 brew "dust"
 # Select default apps for documents and URL schemes on macOS
 brew "duti"
+# Friendly and expressive shell
+brew "elvish"
 # Run arbitrary commands when files change
 brew "entr"
 # Perl lib for reading and writing EXIF metadata
@@ -183,6 +203,8 @@ brew "ffmpegthumbnailer"
 brew "figlet"
 # Collection of GNU find, xargs, and locate
 brew "findutils"
+# User-friendly command-line shell for UNIX-like operating systems
+brew "fish"
 # Command-line fuzzy finder written in Go
 brew "fzf"
 # Interactive git commands in the terminal
@@ -195,6 +217,8 @@ brew "libtool"
 brew "fx"
 # GNU awk utility
 brew "gawk"
+# Graphics library to dynamically manipulate images
+brew "gd"
 # GitHub command-line tool
 brew "gh"
 # Multi-platform software reverse engineering framework
@@ -257,12 +281,18 @@ brew "ifstat"
 brew "iftop"
 # Tools and libraries to manipulate images in select formats
 brew "imagemagick"
+# Ranger-like terminal file manager written in Rust
+brew "joshuto"
+# Image manipulation library
+brew "jpeg"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
 # Command-line note taker
 brew "jrnl"
 # Command-line music player
 brew "kew"
+# Network authentication protocol
+brew "krb5"
 # Terminal UI for Apple Containers
 brew "lazycontainer"
 # Lazier way to manage everything docker
@@ -273,8 +303,18 @@ brew "lazygit"
 brew "lazyssh"
 # Pager program similar to more
 brew "less"
+# Terminal file manager
+brew "lf"
 # Convert pixel information into colored ASCII art
 brew "libcaca"
+# BSD-style licensed readline alternative
+brew "libedit"
+# Conversion library
+brew "libiconv"
+# GNOME XML library
+brew "libxml2"
+# C library for reading, creating, and modifying zip archives
+brew "libzip"
 # Rainbows and unicorns in your console!
 brew "lolcat"
 # Powerful, lightweight programming language
@@ -301,6 +341,10 @@ brew "media-control"
 brew "media-info"
 # Wrapper around all package managers with a unifying CLI
 brew "meta-package-manager"
+# Terminal-based visual file manager
+brew "midnight-commander"
+# Polyglot runtime manager (asdf rust clone)
+brew "mise"
 # Deep clean and optimize your Mac
 brew "mole"
 # Drive some car across the moon
@@ -343,14 +387,22 @@ brew "nicotine-plus"
 brew "ninvaders"
 # Port scanning utility for large networks
 brew "nmap"
+# Tiny, lightning fast, feature-packed file manager
+brew "nnn"
+# Modern shell for the GitHub era
+brew "nushell"
 # Interactive GPU process monitor
 brew "nvtop"
 # Renders an animated, color, ANSI-text loop of the Poptart Cat
 brew "nyancat"
+# Bash-compatible Unix shell with more consistent syntax and semantics
+brew "oils-for-unix"
 # Command-line Git information tool
 brew "onefetch"
 # Colossal Cave Adventure, the 1995 430-point version
 brew "open-adventure"
+# Your own personal AI assistant
+brew "openclaw-cli"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 # AI coding agent, built for the terminal
@@ -365,6 +417,8 @@ brew "pastel"
 brew "pfetch"
 # General-purpose scripting language
 brew "php"
+# AI agent toolkit
+brew "pi-coding-agent"
 # Display the PID number for a given process name
 brew "pidof"
 # Animated pipes terminal screensaver
@@ -389,8 +443,12 @@ brew "pv"
 brew "pygments"
 # Python interface to Tcl/Tk
 brew "python-tk@3.13"
+# File browser
+brew "ranger"
 # Rsync for cloud storage
 brew "rclone"
+# Generate C-based recognizers from regular expressions
+brew "re2c"
 # Reattach process (e.g., tmux) to background
 brew "reattach-to-user-namespace"
 # Reddit, refined for the terminal
@@ -413,6 +471,8 @@ brew "rsyncy"
 brew "s-search"
 # CLI search and replace | Space Age seD
 brew "sad"
+# Small man page generator
+brew "scdoc"
 # Interactive find and replace in the terminal
 brew "scooter"
 # Generate ASCII art with terminal, shell, and OS info
@@ -485,6 +545,10 @@ brew "ttyd"
 brew "tuicr"
 # macOS command-line tool to work with default apps
 brew "utiluti"
+# Extremely fast Python package installer and resolver, written in Rust
+brew "uv"
+# Ncurses-based file manager with vi-like keybindings
+brew "vifm"
 # Simple terminal image viewer written in Rust
 brew "viu"
 # Language servers for HTML, CSS, JavaScript, and JSON extracted from vscode
@@ -515,6 +579,8 @@ brew "xxh"
 brew "yazi"
 # Process YAML, JSON, XML, CSV and properties documents from the CLI
 brew "yq"
+# General-purpose lossless data-compression library
+brew "zlib"
 # Shell extension to navigate your filesystem faster
 brew "zoxide"
 # UNIX shell (command interpreter)
@@ -531,6 +597,12 @@ brew "zsh-vi-mode"
 brew "alecharmon/tap/applepw", trusted: true
 # A tiling window manager for macOS based on binary space partitioning.
 brew "asmvik/formulae/yabai", args: ["HEAD"]
+# Coding agent with the IDE wired in
+brew "can1357/tap/omp", trusted: true
+# A powerful terminal-based AI assistant for developers, providing intelligent coding assistance directly in your terminal.
+brew "charmbracelet/tap/crush", trusted: true
+# A command-line-interface to open files/folders in CodeEdit.app
+brew "codeeditapp/formulae/codeedit-cli", trusted: true
 # A window border system for macOS
 brew "felixkratz/formulae/borders", trusted: true
 # Custom macOS statusbar with shell plugin, interaction and graph support
@@ -545,6 +617,8 @@ brew "gromgit/fuse/ntfs-3g-mac", trusted: true
 brew "gschurck/fuzzybrew/fuzzybrew", trusted: true
 # Drop in replacement for ueberzug written in C++
 brew "jstkdng/programs/ueberzugpp", trusted: true
+# LLM inference server optimized for Apple Silicon
+brew "jundot/omlx/omlx"
 # Coordinates SketchyBar and the native macOS menu bar
 brew "malpern/tap/sketchybar-toggle", trusted: true
 # A neofetch alternative for GitHub quick view
@@ -571,6 +645,8 @@ brew "thezoraiz/ascii-image-converter/ascii-image-converter", trusted: true
 brew "valkyrie00/bbrew/bbrew", trusted: true
 # BetterDisplay CLI proxy
 brew "waydabber/betterdisplay/betterdisplaycli", trusted: true
+# Note editor and whiteboard
+cask "affine"
 # Get the battery level of all your devices on your Mac.
 cask "lihaoyun6/tap/airbattery"
 # GPU-accelerated terminal emulator
@@ -597,8 +673,6 @@ cask "m1ten/othyn/autoclicker"
 cask "balenaetcher"
 # Control the platform power state of your Apple Silicon device
 cask "mhaeuser/mhaeuser/battery-toolkit"
-# Online gaming platform
-cask "battle-net"
 # Text, code, and markup editor
 cask "bbedit"
 # Screen recorder
@@ -611,6 +685,8 @@ cask "bettermouse"
 cask "bettertouchtool@alpha"
 # 3D creation suite
 cask "blender"
+# Workspace for humans and AI agents
+cask "block-buzz"
 # Monitors common persistence locations
 cask "blockblock"
 # File manager
@@ -627,6 +703,8 @@ cask "calibre"
 cask "chatgpt"
 # Anthropic's official Claude AI desktop app
 cask "claude"
+# Terminal-based AI coding assistant
+cask "claude-code"
 # Image, video and clipboard optimiser
 cask "clop"
 # Ghostty-based terminal with vertical tabs and notifications for AI coding agents
@@ -635,6 +713,8 @@ cask "cmux"
 cask "coconutbattery"
 # Code editor
 cask "codeedit"
+# OpenAI's coding agent that runs in your terminal
+cask "codex"
 # Mount network shares quick and easy
 cask "connectmenow"
 cask "container"
@@ -656,8 +736,12 @@ cask "cyberduck"
 cask "deepl"
 # Utility to enhance the Open and Save dialogs in applications
 cask "default-folder-x"
+# Command-line tool to set the desktop picture
+cask "desktoppr"
 # Rename macOS Desktops/Spaces from the menubar
 cask "gitmichaelqiu/tap/desktoprenamer", trusted: true
+# Agentic IDE with AI agent command center
+cask "devin-desktop"
 # Show available disk space on APFS volumes
 cask "diskspace"
 # Monitor DNS activity
@@ -686,6 +770,8 @@ cask "espanso"
 cask "skyline69/tap/ext-selector", trusted: true
 # Audio playback
 cask "farrago"
+# Collaborative team software
+cask "figma"
 # Tool for organising and renaming movies, TV shows, anime or music
 cask "filebot"
 # Monitor filesystem activity
@@ -718,6 +804,8 @@ cask "ghostty"
 cask "gimp"
 # Desktop client for GitHub repositories
 cask "github"
+# Native client for GitHub Copilot
+cask "github-copilot-app"
 # Git client focusing on productivity
 cask "gitkraken"
 # Game client
@@ -754,8 +842,12 @@ cask "inkscape"
 cask "istherenet"
 # Terminal emulator as alternative to Apple's Terminal app
 cask "iterm2"
+# Offline AI chat tool
+cask "jan"
 # Download manager
 cask "jdownloader"
+# A fast, out-of-the-box terminal built for AI coding
+cask "tw93/tap/kakuku", trusted: true
 # Pie menu
 cask "kando"
 # Keyboard customiser
@@ -786,6 +878,8 @@ cask "leader-key"
 cask "legcord"
 # Free cross-platform office suite, fresh version
 cask "libreoffice"
+# App to manage software development and track bugs
+cask "linear"
 # Host-based application firewall
 cask "little-snitch"
 # Discover, download, and run local LLMs
@@ -822,6 +916,8 @@ cask "minecraft"
 cask "mission-control-plus"
 # GUI including a set of tools to create, alter and inspect Matroska files (MKV)
 cask "mkvtoolnix-app"
+# Deep clean, analyze, and optimize app
+cask "mole-app"
 # Mounts servers and cloud storages as a disk on the desktop
 cask "mountain-duck"
 # Menubar app to easily manage external drives
@@ -836,10 +932,16 @@ cask "musescore"
 cask "music-decoy"
 # Network information and diagnostics utility
 cask "neo-network-utility"
+# Read-only disk space visualiser
+cask "neodisk"
 # Neovim Client
 cask "neovide-app"
 # Free and open-source RSS reader
 cask "netnewswire"
+# Dual-pane file manager
+cask "nimble-commander"
+# App to write, plan, collaborate, and get organised
+cask "notion"
 # Calculator and converter application
 cask "numi"
 # Open-source software for live streaming and screen recording
@@ -854,10 +956,14 @@ cask "omnidisksweeper"
 cask "onedrive"
 # System and utility switches
 cask "only-switch"
+# Document editor
+cask "onlyoffice"
 # Verify system files structure, run miscellaneous maintenance and more
 cask "onyx"
 # Desktop and web interface for OpenCode AI agent
 cask "openchamber"
+# Personal AI assistant
+cask "openclaw"
 # AI coding agent desktop client
 cask "opencode-desktop"
 # Retro video game emulation for macOS (ARM build)
@@ -912,6 +1018,8 @@ cask "processmonitor"
 cask "qbittorrent"
 # Quick Look generator for Markdown files
 cask "qlmarkdown"
+# Disk space analyzer
+cask "radix"
 # Protect your personal files
 cask "ransomwhere"
 # Imaging utility to install operating systems to a microSD card
@@ -978,6 +1086,8 @@ cask "zimengxiong/tools/spacecommand"
 cask "ruittenb/tap/spaceman"
 # Yabai workspace visualizer
 cask "wiggly-sheets/spacemap/spacemap", trusted: true
+# Give macOS Spaces persistent names in Mission Control
+cask "wiggly-sheets/spacesrenamer/spacesrenamer", trusted: true
 # Software update framework for Cocoa developers
 cask "sparkle"
 # Run anything at startup by simply placing it in a special folder
@@ -1002,6 +1112,8 @@ cask "swiftbar"
 cask "swiftdefaultappsprefpane"
 # Quicklook extension for source files
 cask "syntax-highlight"
+# Minimal GUI for AI code agents
+cask "t3-code"
 # Terminal emulator, SSH and serial client
 cask "tabby"
 # Mesh VPN based on WireGuard
@@ -1012,8 +1124,6 @@ cask "taskbar"
 cask "taskexplorer"
 # Messaging app with a focus on speed and security
 cask "telegram"
-# Menu bar manager
-cask "thaw"
 # Instant fuzzy finder for files including system and hidden files
 cask "thelowtechguys-cling"
 # Time Machine log viewer & status inspector
@@ -1026,6 +1136,8 @@ cask "tigervnc"
 cask "timemachineeditor"
 # Alter the character of your TonePrint pedal
 cask "toneprint"
+# Utility to hide the notch
+cask "topnotch"
 # Web browser focusing on security
 cask "tor-browser"
 # Turn your MacBook's trackpad into a precise digital weighing scale
@@ -1044,6 +1156,8 @@ cask "upscayl"
 cask "usenapp"
 # Virtual machines UI using QEMU
 cask "utm"
+# Menu bar toolkit with keep-awake, system monitor and volume mixer
+cask "vorssaint"
 # Binary releases of VS Code without MS branding/telemetry/licensing
 cask "vscodium"
 # Manage Homebrew packages with a UI
@@ -1081,6 +1195,7 @@ mas "Actions", id: 1586435171
 mas "Amphetamine", id: 937984704
 mas "Apple Configurator", id: 1037126344
 mas "Asphalt", id: 1491129197
+mas "Asphalt8", id: 610391947
 mas "Blackmagic Disk Speed Test", id: 425264550
 mas "Broadcasts", id: 1469995354
 mas "Color Picker", id: 1545870783
@@ -1141,7 +1256,9 @@ mas "TestFlight", id: 899247664
 mas "Tinted Folders Pro", id: 1529959811
 mas "uBlock Origin Lite", id: 6745342698
 mas "Unsplash Wallpapers", id: 1284863847
+mas "Velja", id: 1607635845
 mas "Vimari", id: 1480933944
+mas "WeTransfer", id: 1114922065
 mas "Xcode", id: 497799835
 mas "Xmind", id: 1327661892
 mas "YABA", id: 6747272081
@@ -1192,12 +1309,5 @@ vscode "usernamehw.errorlens"
 vscode "vscode-icons-team.vscode-icons"
 vscode "waderyan.gitblame"
 vscode "yzhang.markdown-all-in-one"
-npm "fkill-cli"
-npm "fkill"
-npm "hget"
-npm "mapscii"
-npm "mdlt"
-npm "n"
-npm "neovim"
-npm "prebuildify"
-npm "undollar"
+go "cmd/go"
+go "cmd/gofmt"

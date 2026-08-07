@@ -46,9 +46,9 @@ local battery = sbar.add("item", "battery", {
 	position = "right",
 	padding_left = 2,
 	padding_right = 0,
-	y_offset = 6,
 	color = colors.green,
-	icon = {
+    icon = {
+		y_offset = 7,
 		drawing = true,
 		string = icons.battery._100,
 		font = { family = settings.default, size = 12 },
@@ -59,7 +59,7 @@ local battery = sbar.add("item", "battery", {
 	label = {
 		drawing = true,
 		string = "__%",
-		y_offset = -12,
+		y_offset = -5,
 		padding_left = -16,
 		padding_right = 2,
 		font = { family = settings.default, size = 9 },

@@ -1,13 +1,18 @@
 #!/bin/bash
-
 options=(
 hidpi=on
-width=1.0
-active_color=(glow)0xffc0caf5
-inactive_color=0xff787878
-style=square
+width=4.0
+active_color=0xffc0caf5
+inactive_color=0xff383838
+inactive_background_color=0x02808080
+inactive_blur_radius=10
+style=round
 ax_focus=on
+order=below
+background_host=border
+animation=none
+animation_duration=0.10
+animation_easing=ease_in_expo # effects slide only
 blacklist="Stats,Dropover,iPhone Mirroring,Passwords,SoundSource,Stickies"
 )
 borders "${options[@]}"
-

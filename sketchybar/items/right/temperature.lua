@@ -18,7 +18,7 @@ local cpu_temp = sbar.add("item", "cpu_temp", {
 local gpu_temp = sbar.add("item", "gpu_temp", {
 	update_freq = 10,
 	position = "right",
-	y_offset = -6,
+	y_offset = -5,
 	icon = { string = icons.gpu, padding_left = 0, color = colors.white },
 	label = { padding_left = 2, font = { family = settings.default, size = 12 } },
 	click_script = click_script,

@@ -4,12 +4,6 @@ local settings = require("default")
 local icons = require("helpers.icons")
 
 local condition_groups = {
-	clear = { 1000 },
-	partly = { 1003 },
-	cloud = { 1006, 1009 },
-
-	fog = { 1030, 1135, 1147 },
-
 	rain = {
 		1063,
 		1072,
@@ -26,9 +20,6 @@ local condition_groups = {
 		1198,
 		1201,
 	},
-
-	shower = { 1240, 1243, 1246 },
-
 	snow = {
 		1066,
 		1114,
@@ -41,14 +32,15 @@ local condition_groups = {
 		1225,
 		1255,
 		1258,
-	},
-
+    },
+	shower = { 1240, 1243, 1246 },
+	clear = { 1000 },
+	partly = { 1003 },
+	cloud = { 1006, 1009 },
+	fog = { 1030, 1135, 1147 },
 	sleet = { 1069, 1204, 1207, 1249, 1252 },
-
 	ice = { 1237, 1261, 1264 },
-
 	thunder = { 1087, 1273, 1276 },
-
 	snow_thunder = { 1279, 1282 },
 }
 
@@ -67,13 +59,13 @@ local weather = sbar.add("item", "weather", {
 	icon = {
 		font = { family = settings.default, style = "Regular", size = 15 },
 		padding_right = 2,
-		padding_left = 4,
-		y_offset = 8,
+		padding_left = 8,
+		y_offset = 7,
 	},
 	label = {
-		padding_right = 2,
+		padding_right = 4,
 		padding_left = -20,
-		y_offset = -6,
+		y_offset = -5,
 		font = {
 			family = settings.default,
 			style = settings.default,

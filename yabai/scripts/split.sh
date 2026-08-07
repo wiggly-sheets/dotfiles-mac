@@ -1,9 +1,9 @@
 #!/bin/bash
 
-split=$(yabai -m config split_type)
+split=$(/opt/homebrew/bin/yabai -m config split_type)
 
 if [ "$split" = "horizontal" ]; then
-yabai -m config split_type vertical
+/opt/homebrew/bin/yabai -m config split_type vertical
 else
-yabai -m config split_type horizontal
+/opt/homebrew/bin/yabai -m config split_type horizontal
 fi

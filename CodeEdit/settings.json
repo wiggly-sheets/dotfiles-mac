@@ -27,11 +27,9 @@
   },
   "general" : {
     "inspectorTabBarPosition" : "top",
-    "navigatorTabBarPosition" : "top",
-    "reopenBehavior" : "openPanel",
+    "issueNavigatorDetail" : 3,
     "showLiveIssues" : true,
-    "revealFileOnFocusChange" : false,
-    "showIssues" : "inline",
+    "isAutoSaveOn" : true,
     "hiddenFileExtensions" : {
       "extensions" : [
         "c",
@@ -51,8 +49,16 @@
       ]
     },
     "reopenWindowAfterClose" : "doNothing",
+    "showIssues" : "inline",
+    "showEditorJumpBar" : true,
+    "findNavigatorDetail" : 3,
+    "reopenBehavior" : "openPanel",
+    "appAppearance" : "system",
+    "navigatorTabBarPosition" : "top",
+    "revealFileOnFocusChange" : false,
+    "projectNavigatorSize" : "medium",
     "fileIconStyle" : "color",
-    "isAutoSaveOn" : true,
+    "dimEditorsWithoutFocus" : true,
     "shownFileExtensions" : {
       "extensions" : [
         "c",
@@ -71,12 +77,6 @@
         "swift"
       ]
     },
-    "appAppearance" : "system",
-    "issueNavigatorDetail" : 3,
-    "findNavigatorDetail" : 3,
-    "showEditorJumpBar" : true,
-    "dimEditorsWithoutFocus" : true,
-    "projectNavigatorSize" : "medium",
     "fileExtensionsVisibility" : {
       "showAll" : {
 
@@ -85,97 +85,97 @@
   },
   "textEditing" : {
     "autocompleteBraces" : true,
-    "wrapLinesToEditorWidth" : true,
-    "useSystemCursor" : true,
     "showMinimap" : true,
-    "showReformattingGuide" : false,
+    "wrapLinesToEditorWidth" : true,
+    "reformatAtColumn" : 80,
+    "useSystemCursor" : true,
     "font" : {
       "name" : "Liga SFMono Nerd Font",
       "size" : 12,
       "weight" : 0.23000000417232513
     },
-    "reformatAtColumn" : 80,
     "enableTypeOverCompletion" : true,
+    "showReformattingGuide" : false,
     "showFoldingRibbon" : true,
     "warningCharacters" : {
       "enabled" : true,
       "characters" : [
-        8221,
-        "Right double quote",
-        8216,
-        "Left single quote",
-        8233,
-        "Paragraph separator",
-        173,
-        "Soft hyphen",
-        8204,
-        "Zero-width non-joiner",
-        3,
-        "End of text",
-        894,
-        "Greek Question Mark",
         8239,
         "Narrow non-breaking space",
-        8220,
-        "Left double quote",
-        8217,
-        "Right single quote",
         8203,
         "Zero-width space",
+        160,
+        "Non-breaking space",
+        8217,
+        "Right single quote",
+        173,
+        "Soft hyphen",
+        3,
+        "End of text",
+        8204,
+        "Zero-width non-joiner",
         8211,
         "Em-dash",
-        160,
-        "Non-breaking space"
+        8216,
+        "Left single quote",
+        8221,
+        "Right double quote",
+        8220,
+        "Left double quote",
+        8233,
+        "Paragraph separator",
+        894,
+        "Greek Question Mark"
       ]
     },
     "bracketEmphasis" : {
+      "highlightType" : "flash",
       "color" : {
         "color" : "FFFFFF"
       },
-      "useCustomColor" : false,
-      "highlightType" : "flash"
+      "useCustomColor" : false
     },
     "showGutter" : true,
+    "invisibleCharacters" : {
+      "showSpaces" : true,
+      "spaceReplacement" : "·",
+      "enabled" : true,
+      "tabReplacement" : "→",
+      "showLineEndings" : true,
+      "lineSeparatorReplacement" : "⏎",
+      "lineFeedReplacement" : "¬",
+      "paragraphSeparatorReplacement" : "¶",
+      "carriageReturnReplacement" : "↵",
+      "showTabs" : true
+    },
     "letterSpacing" : 1,
     "indentOption" : {
       "spaceCount" : 4,
       "indentType" : "spaces"
     },
-    "invisibleCharacters" : {
-      "showSpaces" : true,
-      "spaceReplacement" : "·",
-      "enabled" : true,
-      "paragraphSeparatorReplacement" : "¶",
-      "showLineEndings" : true,
-      "lineSeparatorReplacement" : "⏎",
-      "lineFeedReplacement" : "¬",
-      "showTabs" : true,
-      "carriageReturnReplacement" : "↵",
-      "tabReplacement" : "→"
-    },
-    "lineHeightMultiple" : 1.2,
     "overscroll" : "medium",
+    "lineHeightMultiple" : 1.2,
     "defaultTabWidth" : 4
   },
-  "navigation" : {
-    "navigationStyle" : "openInTabs"
-  },
   "terminal" : {
-    "cursorBlink" : true,
-    "useThemeBackground" : true,
-    "useLoginShell" : true,
-    "shell" : "zsh",
-    "useTextEditorFont" : true,
-    "optionAsMeta" : false,
-    "darkAppearance" : false,
-    "cursorStyle" : "underline",
     "font" : {
       "name" : "SF Mono",
       "size" : 12,
       "weight" : 0.23000000417232513
     },
+    "useThemeBackground" : true,
+    "useLoginShell" : true,
+    "shell" : "zsh",
+    "useTextEditorFont" : true,
+    "optionAsMeta" : false,
+    "cursorBlink" : true,
+    "cursorStyle" : "underline",
+    "darkAppearance" : false,
     "useShellIntegration" : true,
     "useEditorTheme" : true
+  },
+  "navigation" : {
+    "navigationStyle" : "openInTabs"
   },
   "theme" : {
     "selectedLightTheme" : "basic",
@@ -189,16 +189,16 @@
   },
   "sourceControl" : {
     "general" : {
+      "addRemoveAutomatically" : true,
       "selectFilesToCommit" : true,
       "showSourceControlChanges" : true,
-      "addRemoveAutomatically" : true,
       "fetchRefreshServerStatus" : true,
       "sourceControlIsEnabled" : true,
-      "refreshStatusLocally" : true,
+      "includeUpstreamChanges" : true,
       "openFeedbackInBrowser" : true,
-      "controlNavigatorOrder" : "sortByName",
       "revisionComparisonLayout" : "localLeft",
-      "includeUpstreamChanges" : true
+      "controlNavigatorOrder" : "sortByName",
+      "refreshStatusLocally" : true
     },
     "git" : {
       "showMergeCommitsPerFileLog" : false
@@ -211,16 +211,16 @@
         "id" : "copy",
         "description" : "Copy command",
         "keybinding" : "c",
-        "context" : "Global",
-        "modifier" : "command"
+        "modifier" : "command",
+        "context" : "Global"
       },
       "paste" : {
         "name" : "paste",
         "id" : "paste",
         "description" : "Copy command",
         "keybinding" : "c",
-        "context" : "Global",
-        "modifier" : "command"
+        "modifier" : "command",
+        "context" : "Global"
       }
     }
   },

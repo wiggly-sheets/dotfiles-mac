@@ -1,0 +1,23 @@
+[tools]
+bun = "latest"
+crystal = "latest"
+dart = { version = "latest", checksum_url = "https://storage.googleapis.com/dart-archive/channels/stable/release/{{ version }}/sdk/dartsdk-{{ os() }}-{{ arch() }}-release.zip.sha256sum", url = "https://storage.googleapis.com/dart-archive/channels/stable/release/{{ version }}/sdk/dartsdk-{{ os() }}-{{ arch() }}-release.zip", version_expr = 'fromJSON(body).prefixes | filter({ # matches "^channels/stable/release/(\\d+\\.\\d+\\.\\d+)/$" }) | map({split(#, "/")[3]}) | sortVersions()', version_list_url = "https://storage.googleapis.com/storage/v1/b/dart-archive/o?prefix=channels/stable/release/&delimiter=/" }
+deno = "latest"
+dotnet = "latest"
+erlang = "latest"
+go = "latest"
+groovy = "latest"
+java = "latest"
+julia = { version = "latest", checksum_expr = '"sha256:" + filter(fromJSON(body)[version + ""].files, { #.url == url })[0].sha256', checksum_url = "https://julialang-s3.julialang.org/bin/versions.json", platforms = { linux-arm64 = { url = """{% if version == "nightly" %}https://julialangnightlies-s3.julialang.org/bin/linux/aarch64/julia-latest-linuxaarch64.tar.gz{% else %}https://julialang-s3.julialang.org/bin/linux/aarch64/{{ (version | split(pat='.'))[0:2] | join(sep='.') }}/julia-{{ version }}-linux-aarch64.tar.gz{% endif %}""" }, linux-x64 = { url = """{% if version == "nightly" %}https://julialangnightlies-s3.julialang.org/bin/linux/x64/julia-latest-linux64.tar.gz{% else %}https://julialang-s3.julialang.org/bin/linux/x64/{{ (version | split(pat='.'))[0:2] | join(sep='.') }}/julia-{{ version }}-linux-x86_64.tar.gz{% endif %}""" }, macos-arm64 = { url = """{% if version == "nightly" %}https://julialangnightlies-s3.julialang.org/bin/mac/aarch64/julia-latest-macaarch64.tar.gz{% else %}https://julialang-s3.julialang.org/bin/mac/aarch64/{{ (version | split(pat='.'))[0:2] | join(sep='.') }}/julia-{{ version }}-macaarch64.tar.gz{% endif %}""" }, macos-x64 = { url = """{% if version == "nightly" %}https://julialangnightlies-s3.julialang.org/bin/mac/x64/julia-latest-mac64.tar.gz{% else %}https://julialang-s3.julialang.org/bin/mac/x64/{{ (version | split(pat='.'))[0:2] | join(sep='.') }}/julia-{{ version }}-mac64.tar.gz{% endif %}""" }, windows-x64 = { format = "zip", url = """{% if version == "nightly" %}https://julialangnightlies-s3.julialang.org/bin/winnt/x64/julia-latest-win64.zip{% else %}https://julialang-s3.julialang.org/bin/winnt/x64/{{ (version | split(pat='.'))[0:2] | join(sep='.') }}/julia-{{ version }}-win64.zip{% endif %}""" } }, version_expr = 'sortVersions(filter(keys(fromJSON(body)), { # matches "^\\d+\\.\\d+\\.\\d+(-[0-9A-Za-z\\.-]+)?$" }))', version_list_url = "https://julialang-s3.julialang.org/bin/versions.json" }
+kotlin = { version = "latest", asset_pattern = "kotlin-compiler-*.zip", bin_path = "kotlinc/bin" }
+lua = "latest"
+node = "latest"
+perl = "latest"
+php = "latest"
+python = "latest"
+ruby = "latest"
+rust = "latest"
+scala = "latest"
+swift = "latest"
+vlang = "latest"
+zig = "latest"

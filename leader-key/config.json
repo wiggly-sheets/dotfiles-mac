@@ -247,6 +247,11 @@
           "key" : "m",
           "type" : "application",
           "value" : "/Applications/Clop.app"
+        },
+        {
+          "key" : "t",
+          "type" : "url",
+          "value" : "raycast-x://extensions/SeoFood/typewhisper/start-dictation"
         }
       ],
       "key" : "p",
@@ -575,6 +580,439 @@
       ],
       "key" : "s",
       "label" : "System",
+      "type" : "group"
+    },
+    {
+      "actions" : [
+        {
+          "actions" : [
+            {
+              "key" : "e",
+              "label" : "End",
+              "type" : "command",
+              "value" : "/opt/homebrew/bin/yabai -m space --create"
+            },
+            {
+              "key" : "E",
+              "label" : "End + Focus",
+              "type" : "command",
+              "value" : "~/dotfiles/yabai/scripts/new_space_focus.sh"
+            },
+            {
+              "key" : "w",
+              "label" : "End + Window",
+              "type" : "command",
+              "value" : "~/dotfiles/yabai/scripts/new_space_window.sh"
+            },
+            {
+              "key" : "W",
+              "label" : "End + Win + Focus",
+              "type" : "command",
+              "value" : "~/dotfiles/yabai/scripts/new_space_follow_focus.sh"
+            },
+            {
+              "key" : "b",
+              "label" : "Before",
+              "type" : "command",
+              "value" : "~/dotfiles/yabai/scripts/new_space_before.sh"
+            },
+            {
+              "key" : "B",
+              "label" : "Before + Focus",
+              "type" : "command",
+              "value" : "~/dotfiles/yabai/scripts/new_space_before_focus.sh"
+            },
+            {
+              "key" : "v",
+              "label" : "Before + Window",
+              "type" : "command",
+              "value" : "~/dotfiles/yabai/scripts/new_space_before_window.sh"
+            },
+            {
+              "key" : "V",
+              "label" : "Before + Win + Focus",
+              "type" : "command",
+              "value" : "~/dotfiles/yabai/scripts/new_space_before_window_focus.sh"
+            },
+            {
+              "key" : "a",
+              "label" : "After",
+              "type" : "command",
+              "value" : "~/dotfiles/yabai/scripts/new_space_after.sh"
+            },
+            {
+              "key" : "A",
+              "label" : "After + Focus",
+              "type" : "command",
+              "value" : "~/dotfiles/yabai/scripts/new_space_after_follow.sh"
+            },
+            {
+              "key" : "s",
+              "label" : "After + Window",
+              "type" : "command",
+              "value" : "~/dotfiles/yabai/scripts/new_space_after_move.sh"
+            },
+            {
+              "key" : "S",
+              "label" : "After + Win + Focus",
+              "type" : "command",
+              "value" : "~/dotfiles/yabai/scripts/new_space_after_move_focus.sh"
+            }
+          ],
+          "key" : "n",
+          "label" : "New Space...",
+          "type" : "group"
+        },
+        {
+          "actions" : [
+            {
+              "key" : "d",
+              "label" : "Destroy Space",
+              "type" : "command",
+              "value" : "~/dotfiles/yabai/scripts/destroy_space.sh"
+            },
+            {
+              "key" : "e",
+              "label" : "Destroy Empty Spaces",
+              "type" : "command",
+              "value" : "~/dotfiles/yabai/scripts/destroy_empty_spaces.sh"
+            },
+            {
+              "actions" : [
+                {
+                  "key" : "1",
+                  "label" : "Destroy 1",
+                  "type" : "command",
+                  "value" : "~/dotfiles/yabai/scripts/destroy_space_by.sh 1"
+                },
+                {
+                  "key" : "2",
+                  "label" : "Destroy 2",
+                  "type" : "command",
+                  "value" : "~/dotfiles/yabai/scripts/destroy_space_by.sh 2"
+                },
+                {
+                  "key" : "3",
+                  "label" : "Destroy 3",
+                  "type" : "command",
+                  "value" : "~/dotfiles/yabai/scripts/destroy_space_by.sh 3"
+                },
+                {
+                  "key" : "4",
+                  "label" : "Destroy 4",
+                  "type" : "command",
+                  "value" : "~/dotfiles/yabai/scripts/destroy_space_by.sh 4"
+                },
+                {
+                  "key" : "5",
+                  "label" : "Destroy 5",
+                  "type" : "command",
+                  "value" : "~/dotfiles/yabai/scripts/destroy_space_by.sh 5"
+                },
+                {
+                  "key" : "6",
+                  "label" : "Destroy 6",
+                  "type" : "command",
+                  "value" : "~/dotfiles/yabai/scripts/destroy_space_by.sh 6"
+                },
+                {
+                  "key" : "7",
+                  "label" : "Destroy 7",
+                  "type" : "command",
+                  "value" : "~/dotfiles/yabai/scripts/destroy_space_by.sh 7"
+                },
+                {
+                  "key" : "8",
+                  "label" : "Destroy 8",
+                  "type" : "command",
+                  "value" : "~/dotfiles/yabai/scripts/destroy_space_by.sh 8"
+                },
+                {
+                  "key" : "9",
+                  "label" : "Destroy 9",
+                  "type" : "command",
+                  "value" : "~/dotfiles/yabai/scripts/destroy_space_by.sh 9"
+                },
+                {
+                  "key" : "0",
+                  "label" : "Destroy 10",
+                  "type" : "command",
+                  "value" : "~/dotfiles/yabai/scripts/destroy_space_by.sh 10"
+                },
+                {
+                  "key" : "r",
+                  "label" : "Destroy Recent",
+                  "type" : "command",
+                  "value" : "~/dotfiles/yabai/scripts/destroy_space_by.sh recent"
+                },
+                {
+                  "key" : "p",
+                  "label" : "Destroy Prev",
+                  "type" : "command",
+                  "value" : "~/dotfiles/yabai/scripts/destroy_space_by.sh prev"
+                },
+                {
+                  "key" : "n",
+                  "label" : "Destroy Next",
+                  "type" : "command",
+                  "value" : "~/dotfiles/yabai/scripts/destroy_space_by.sh next"
+                },
+                {
+                  "key" : "f",
+                  "label" : "Destroy First",
+                  "type" : "command",
+                  "value" : "~/dotfiles/yabai/scripts/destroy_space_by.sh first"
+                },
+                {
+                  "key" : "l",
+                  "label" : "Destroy Last",
+                  "type" : "command",
+                  "value" : "~/dotfiles/yabai/scripts/destroy_space_by.sh last"
+                }
+              ],
+              "key" : "b",
+              "label" : "Destroy By...",
+              "type" : "group"
+            },
+            {
+              "actions" : [
+                {
+                  "key" : "1",
+                  "label" : "Follow Destroy 1",
+                  "type" : "command",
+                  "value" : "~/dotfiles/yabai/scripts/destroy_space_by_follow.sh 1"
+                },
+                {
+                  "key" : "2",
+                  "label" : "Follow Destroy 2",
+                  "type" : "command",
+                  "value" : "~/dotfiles/yabai/scripts/destroy_space_by_follow.sh 2"
+                },
+                {
+                  "key" : "3",
+                  "label" : "Follow Destroy 3",
+                  "type" : "command",
+                  "value" : "~/dotfiles/yabai/scripts/destroy_space_by_follow.sh 3"
+                },
+                {
+                  "key" : "4",
+                  "label" : "Follow Destroy 4",
+                  "type" : "command",
+                  "value" : "~/dotfiles/yabai/scripts/destroy_space_by_follow.sh 4"
+                },
+                {
+                  "key" : "5",
+                  "label" : "Follow Destroy 5",
+                  "type" : "command",
+                  "value" : "~/dotfiles/yabai/scripts/destroy_space_by_follow.sh 5"
+                },
+                {
+                  "key" : "6",
+                  "label" : "Follow Destroy 6",
+                  "type" : "command",
+                  "value" : "~/dotfiles/yabai/scripts/destroy_space_by_follow.sh 6"
+                },
+                {
+                  "key" : "7",
+                  "label" : "Follow Destroy 7",
+                  "type" : "command",
+                  "value" : "~/dotfiles/yabai/scripts/destroy_space_by_follow.sh 7"
+                },
+                {
+                  "key" : "8",
+                  "label" : "Follow Destroy 8",
+                  "type" : "command",
+                  "value" : "~/dotfiles/yabai/scripts/destroy_space_by_follow.sh 8"
+                },
+                {
+                  "key" : "9",
+                  "label" : "Follow Destroy 9",
+                  "type" : "command",
+                  "value" : "~/dotfiles/yabai/scripts/destroy_space_by_follow.sh 9"
+                },
+                {
+                  "key" : "0",
+                  "label" : "Follow Destroy 10",
+                  "type" : "command",
+                  "value" : "~/dotfiles/yabai/scripts/destroy_space_by_follow.sh 10"
+                },
+                {
+                  "key" : "r",
+                  "label" : "Follow Destroy Recent",
+                  "type" : "command",
+                  "value" : "~/dotfiles/yabai/scripts/destroy_space_by_follow.sh recent"
+                },
+                {
+                  "key" : "p",
+                  "label" : "Follow Destroy Prev",
+                  "type" : "command",
+                  "value" : "~/dotfiles/yabai/scripts/destroy_space_by_follow.sh prev"
+                },
+                {
+                  "key" : "n",
+                  "label" : "Follow Destroy Next",
+                  "type" : "command",
+                  "value" : "~/dotfiles/yabai/scripts/destroy_space_by_follow.sh next"
+                },
+                {
+                  "key" : "f",
+                  "label" : "Follow Destroy First",
+                  "type" : "command",
+                  "value" : "~/dotfiles/yabai/scripts/destroy_space_by_follow.sh first"
+                },
+                {
+                  "key" : "l",
+                  "label" : "Follow Destroy Last",
+                  "type" : "command",
+                  "value" : "~/dotfiles/yabai/scripts/destroy_space_by_follow.sh last"
+                }
+              ],
+              "key" : "F",
+              "label" : "Destroy By Follow...",
+              "type" : "group"
+            }
+          ],
+          "key" : "d",
+          "label" : "Destroy Space...",
+          "type" : "group"
+        },
+        {
+          "actions" : [
+            {
+              "key" : "w",
+              "label" : "Move Space Windows",
+              "type" : "command",
+              "value" : "~/dotfiles/yabai/scripts/move_space_windows.sh"
+            },
+            {
+              "key" : "f",
+              "label" : "Move Windows Follow",
+              "type" : "command",
+              "value" : "~/dotfiles/yabai/scripts/move_space_windows_follow.sh"
+            }
+          ],
+          "key" : "m",
+          "label" : "Move Windows...",
+          "type" : "group"
+        },
+        {
+          "actions" : [
+            {
+              "key" : "s",
+              "label" : "Split Script",
+              "type" : "command",
+              "value" : "/Users/Zeb/dotfiles/yabai/scripts/split.sh"
+            },
+            {
+              "key" : "t",
+              "label" : "Toggle Split",
+              "type" : "command",
+              "value" : "/opt/homebrew/bin/yabai -m window --toggle split"
+            },
+            {
+              "key" : "v",
+              "label" : "Set Vertical Split",
+              "type" : "command",
+              "value" : "/opt/homebrew/bin/yabai -m query --windows --window | /opt/homebrew/bin/jq -re '.[\"split-type\"] == \"horizontal\"' > /dev/null && /opt/homebrew/bin/yabai -m window --toggle split || true"
+            },
+            {
+              "key" : "h",
+              "label" : "Set Horizontal Split",
+              "type" : "command",
+              "value" : "/opt/homebrew/bin/yabai -m query --windows --window | /opt/homebrew/bin/jq -re '.[\"split-type\"] == \"vertical\"' > /dev/null && /opt/homebrew/bin/yabai -m window --toggle split || true"
+            }
+          ],
+          "key" : "p",
+          "label" : "Splits...",
+          "type" : "group"
+        },
+        {
+          "actions" : [
+            {
+              "key" : "m",
+              "label" : "Mission Control",
+              "type" : "command",
+              "value" : "/Applications/missionControlFullDesktopBar.app/Contents/MacOS/missionControlFullDesktopBar -m drag -i && sleep .25 && pkill 'missionControlFullDesktopBar'"
+            },
+            {
+              "key" : "y",
+              "label" : "Restart Yabai",
+              "type" : "command",
+              "value" : "/opt/homebrew/bin/yabai --restart-service"
+            },
+            {
+              "key" : "s",
+              "label" : "Restart Sketchybar",
+              "type" : "command",
+              "value" : "/opt/homebrew/bin/sketchybar --reload"
+            },
+            {
+              "key" : "v",
+              "label" : "Toggle Sketchybar Visibility",
+              "type" : "command",
+              "value" : "/opt/homebrew/bin/sketchybar --bar hidden=toggle"
+            },
+            {
+              "key" : "b",
+              "label" : "Toggle Borders",
+              "type" : "command",
+              "value" : "~/dotfiles/yabai/scripts/borders.sh"
+            },
+            {
+              "key" : "l",
+              "label" : "Toggle Layout",
+              "type" : "command",
+              "value" : "~/dotfiles/yabai/scripts/layout.sh"
+            },
+            {
+              "key" : "t",
+              "label" : "Toggle Menubar",
+              "type" : "command",
+              "value" : "~/dotfiles/yabai/scripts/menubar.sh"
+            },
+            {
+              "key" : "o",
+              "label" : "Toggle Opacity",
+              "type" : "command",
+              "value" : "~/dotfiles/yabai/scripts/opacity.sh"
+            },
+            {
+              "key" : "a",
+              "label" : "Toggle Mouse Action",
+              "type" : "command",
+              "value" : "~/dotfiles/yabai/scripts/mouse_action.sh"
+            },
+            {
+              "key" : "c",
+              "label" : "KeyClu SKHD",
+              "type" : "command",
+              "value" : "/Applications/KeyClu.app/Contents/MacOS/KeyClu --toggle-panel --sheet skhd"
+            },
+            {
+              "key" : "k",
+              "label" : "KeyClu macOS",
+              "type" : "command",
+              "value" : "/Applications/KeyClu.app/Contents/MacOS/KeyClu --toggle-panel --sheet macos"
+            },
+            {
+              "iconPath" : "apple.terminal",
+              "key" : "d",
+              "type" : "command",
+              "value" : "/opt/homebrew/bin/yabai -m space --toggle show-desktop"
+            },
+            {
+              "key" : "j",
+              "type" : "command",
+              "value" : "/opt/homebrew/bin/brew services restart borders"
+            }
+          ],
+          "key" : "s",
+          "label" : "System / Utils...",
+          "type" : "group"
+        }
+      ],
+      "key" : "y",
+      "label" : "Yabai Management",
       "type" : "group"
     }
   ],

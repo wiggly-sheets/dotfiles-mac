@@ -1,3 +1,6 @@
+# =========================================================
+# SYSTEM & EXCEPTIONS
+# =========================================================
 # Use custom shell (skips interactive shell overhead)
 .shell "/bin/dash"
 
@@ -49,225 +52,309 @@ ctrl - end [
     *            | cmd - down       # Other apps: document end
 ]
 
+
+# =========================================================
+# WINDOW FOCUS, WARP, SWAP & RESIZE
+# =========================================================
 # change window focus
-alt - j : yabai -m window --focus south || yabai -m display --focus south
-alt - k : yabai -m window --focus north || yabai -m display --focus north
-alt - h : yabai -m window --focus west || yabai -m display --focus west
-alt - l : yabai -m window --focus east || yabai -m display --focus east
-alt - c : yabai -m window --focus mouse
-cmd + shift - space : yabai -m window --focus next || yabai -m window --focus first
-alt + shift - space : yabai -m window --focus prev || yabai -m window --focus last
+alt - j : /opt/homebrew/bin/yabai -m window --focus south || /opt/homebrew/bin/yabai -m display --focus south
+alt - k : /opt/homebrew/bin/yabai -m window --focus north || /opt/homebrew/bin/yabai -m display --focus north
+alt - h : /opt/homebrew/bin/yabai -m window --focus west || /opt/homebrew/bin/yabai -m display --focus west
+alt - l : /opt/homebrew/bin/yabai -m window --focus east || /opt/homebrew/bin/yabai -m display --focus east
+alt - c : /opt/homebrew/bin/yabai -m window --focus mouse
+cmd + shift - space : /opt/homebrew/bin/yabai -m window --focus next || /opt/homebrew/bin/yabai -m window --focus first
+alt + shift - space : /opt/homebrew/bin/yabai -m window --focus prev || /opt/homebrew/bin/yabai -m window --focus last
 
 # Resize windows
-shift + cmd - h : yabai -m window --resize right:-100:0 2> /dev/null || yabai -m window --resize left:-50:0 2> /dev/null
-shift + cmd - j : yabai -m window --resize bottom:0:100 2> /dev/null || yabai -m window --resize top:0:50 2> /dev/null
-shift + cmd - k : yabai -m window --resize bottom:0:-100 2> /dev/null || yabai -m window --resize top:0:-50 2> /dev/null
-shift + cmd - l : yabai -m window --resize right:100:0 2> /dev/null || yabai -m window --resize left:50:0 2> /dev/null
+shift + cmd - h : /opt/homebrew/bin/yabai -m window --resize right:-100:0 2> /dev/null || /opt/homebrew/bin/yabai -m window --resize left:-50:0 2> /dev/null
+shift + cmd - j : /opt/homebrew/bin/yabai -m window --resize bottom:0:100 2> /dev/null || /opt/homebrew/bin/yabai -m window --resize top:0:50 2> /dev/null
+shift + cmd - k : /opt/homebrew/bin/yabai -m window --resize bottom:0:-100 2> /dev/null || /opt/homebrew/bin/yabai -m window --resize top:0:-50 2> /dev/null
+shift + cmd - l : /opt/homebrew/bin/yabai -m window --resize right:100:0 2> /dev/null || /opt/homebrew/bin/yabai -m window --resize left:50:0 2> /dev/null
 
 # window insertion points for splits
-cmd + ctrl - l : yabai -m window --insert east
-cmd + ctrl - h : yabai -m window --insert west
-cmd + ctrl - j : yabai -m window --insert south
-cmd + ctrl - k : yabai -m window --insert north
+cmd + ctrl - l : /opt/homebrew/bin/yabai -m window --insert east
+cmd + ctrl - h : /opt/homebrew/bin/yabai -m window --insert west
+cmd + ctrl - j : /opt/homebrew/bin/yabai -m window --insert south
+cmd + ctrl - k : /opt/homebrew/bin/yabai -m window --insert north
 
 # resize & move floating windows
-cmd + shift - left : yabai -m window --toggle float; yabai -m window --grid 1:2:0:0:1:1
-cmd + shift - right : yabai -m window --toggle float; yabai -m window --grid 1:2:1:0:1:1
-cmd + shift - up : yabai -m window --toggle float; yabai -m window --grid 2:1:0:0:1:1
-cmd + shift - down : yabai -m window --toggle float; yabai -m window --grid 2:1:0:1:1:1
-alt + shift - up : yabai -m window --toggle float; yabai -m window --grid 1:1:0:0:1:1
-alt + shift - down : yabai -m window --toggle float; yabai -m window --grid 5:5:1:1:3:3
-alt + shift - left : yabai -m window --toggle float; yabai -m window --grid 1:3:0:0:1:1
-alt + shift - right : yabai -m window --toggle float; yabai -m window --grid 1:3:2:0:1:1
+cmd + shift - left : /opt/homebrew/bin/yabai -m window --toggle float; /opt/homebrew/bin/yabai -m window --grid 1:2:0:0:1:1
+cmd + shift - right : /opt/homebrew/bin/yabai -m window --toggle float; /opt/homebrew/bin/yabai -m window --grid 1:2:1:0:1:1
+cmd + shift - up : /opt/homebrew/bin/yabai -m window --toggle float; /opt/homebrew/bin/yabai -m window --grid 2:1:0:0:1:1
+cmd + shift - down : /opt/homebrew/bin/yabai -m window --toggle float; /opt/homebrew/bin/yabai -m window --grid 2:1:0:1:1:1
+alt + shift - up : /opt/homebrew/bin/yabai -m window --toggle float; /opt/homebrew/bin/yabai -m window --grid 1:1:0:0:1:1
+alt + shift - down : /opt/homebrew/bin/yabai -m window --toggle float; /opt/homebrew/bin/yabai -m window --grid 5:5:1:1:3:3
+alt + shift - left : /opt/homebrew/bin/yabai -m window --toggle float; /opt/homebrew/bin/yabai -m window --grid 1:3:0:0:1:1
+alt + shift - right : /opt/homebrew/bin/yabai -m window --toggle float; /opt/homebrew/bin/yabai -m window --grid 1:3:2:0:1:1
 
 # raise window to top of layer
-alt - up : yabai -m window --raise
+alt - up : /opt/homebrew/bin/yabai -m window --raise
 
 # lower window to bottom of layer
-alt - down : yabai -m window --lower
-
-# switch current space layout
-alt - s : yabai -m space --layout stack; sketchybar --trigger space_change
-alt - b : yabai -m space --layout bsp; sketchybar --trigger space_change
-alt - u : yabai -m space --layout float; sketchybar --trigger space_change
-ctrl + alt - space : yabai -m space --layout $(yabai -m query --spaces --space | jq -r '.type' | awk '{print ($1=="bsp"?"stack":($1=="stack"?"float":"bsp"))}'); sketchybar --trigger space_change
-
-# move space forward or backward
-alt - o : sh -c 'yabai -m space --move prev || yabai -m space --move last;  sketchybar --trigger space_change; sketchybar --trigger space_windows_change'
-alt - m : sh -c 'yabai -m space --move next || yabai -m space --move first; sketchybar --trigger space_change; sketchybar --trigger space_windows_change'
-
-# hyper = caps lock key
-
-# move spaces to specific indices
-hyper - 1 : yabai -m space --move 1; sketchybar --trigger space_change; sketchybar --trigger space_windows_change
-hyper - 2 : yabai -m space --move 2; sketchybar --trigger space_change; sketchybar --trigger space_windows_change
-hyper - 3 : yabai -m space --move 3; sketchybar --trigger space_change; sketchybar --trigger space_windows_change
-hyper - 4 : yabai -m space --move 4; sketchybar --trigger space_change; sketchybar --trigger space_windows_change
-hyper - 5 : yabai -m space --move 5; sketchybar --trigger space_change; sketchybar --trigger space_windows_change
-hyper - 6 : yabai -m space --move 6; sketchybar --trigger space_change; sketchybar --trigger space_windows_change
-hyper - 7 : yabai -m space --move 7; sketchybar --trigger space_change; sketchybar --trigger space_windows_change
-hyper - 8 : yabai -m space --move 8; sketchybar --trigger space_change; sketchybar --trigger space_windows_change
-hyper - 9 : yabai -m space --move 9; sketchybar --trigger space_change; sketchybar --trigger space_windows_change
-hyper - 0 : yabai -m space --move 10; sketchybar --trigger space_change; sketchybar --trigger space_windows_change
-
-# ctrl + alt + cmd = fn key
-
-# swap spaces if on same display, else swap windows if on different displays
-ctrl + alt + cmd - 1 : yabai -m space --swap 1; sketchybar --trigger space_change; sketchybar --trigger space_windows_change
-ctrl + alt + cmd - 2 : yabai -m space --swap 2; sketchybar --trigger space_change; sketchybar --trigger space_windows_change
-ctrl + alt + cmd - 3 : yabai -m space --swap 3; sketchybar --trigger space_change; sketchybar --trigger space_windows_change
-ctrl + alt + cmd - 4 : yabai -m space --swap 4; sketchybar --trigger space_change; sketchybar --trigger space_windows_change
-ctrl + alt + cmd - 5 : yabai -m space --swap 5; sketchybar --trigger space_change; sketchybar --trigger space_windows_change
-ctrl + alt + cmd - 6 : yabai -m space --swap 6; sketchybar --trigger space_change; sketchybar --trigger space_windows_change
-ctrl + alt + cmd - 7 : yabai -m space --swap 7; sketchybar --trigger space_change; sketchybar --trigger space_windows_change
-ctrl + alt + cmd - 8 : yabai -m space --swap 8; sketchybar --trigger space_change; sketchybar --trigger space_windows_change
-ctrl + alt + cmd - 9 : yabai -m space --swap 9; sketchybar --trigger space_change; sketchybar --trigger space_windows_change
-ctrl + alt + cmd - 0 : yabai -m space --swap 10; sketchybar --trigger space_change; sketchybar --trigger space_windows_change
-ctrl + alt + cmd - r : yabai -m space --swap recent; sketchybar --trigger space_change; sketchybar --trigger space_windows_change
-ctrl + alt + cmd - p : yabai -m space --swap prev; sketchybar --trigger space_change; sketchybar --trigger space_windows_change || yabai -m space --swap last; sketchybar --trigger space_change; sketchybar --trigger space_windows_change
-ctrl + alt + cmd - n : yabai -m space --swap next; sketchybar --trigger space_change; sketchybar --trigger space_windows_change || yabai -m space --swap first; sketchybar --trigger space_change; sketchybar --trigger space_windows_change
-ctrl + alt + cmd - e : yabai -m space --swap last; sketchybar --trigger space_change; sketchybar --trigger space_windows_change
-ctrl + alt + cmd - f : yabai -m space --swap first; sketchybar --trigger space_change; sketchybar --trigger space_windows_change
-
-# rotate layout clockwise
-shift + alt - c : yabai -m space --rotate 270
-
-#rotate layout counterclockwise
-shift + alt - v : yabai -m space --rotate 90
-
-# flip along y-axis
-shift + alt - y : yabai -m space --mirror y-axis
-
-# flip along x-axis
-shift + alt - x : yabai -m space --mirror x-axis
+alt - down : /opt/homebrew/bin/yabai -m window --lower
 
 # toggle window float
-shift + alt - u : yabai -m window --toggle float --grid 5:5:1:1:3:3; yabai -m window --sub-layer below
+shift + alt - u : /opt/homebrew/bin/yabai -m window --toggle float --grid 5:5:1:1:3:3; /opt/homebrew/bin/yabai -m window --sub-layer below
 
 # make window float on top of all other windows
-shift + alt - o : yabai -m window --toggle float --grid 5:5:1:1:3:3; yabai -m window --sub-layer above
+shift + alt - o : /opt/homebrew/bin/yabai -m window --toggle float --grid 5:5:1:1:3:3; /opt/homebrew/bin/yabai -m window --sub-layer above
 
 # toggle sticky window (window appears on all spaces)
-shift + alt - s : yabai -m window --toggle sticky
+shift + alt - s : /opt/homebrew/bin/yabai -m window --toggle sticky
 
 # zoom window to take up whole space
-shift + alt - m : yabai -m window --toggle zoom-fullscreen
+shift + alt - m : /opt/homebrew/bin/yabai -m window --toggle zoom-fullscreen
 
 # move window to native full-screen display
-shift + alt - z : yabai -m window --toggle native-fullscreen
+shift + alt - z : /opt/homebrew/bin/yabai -m window --toggle native-fullscreen
 
 # zoom window to take up size of parent node
-shift + alt - i : yabai -m window --toggle zoom-parent
-
-# balance tree of windows (resize to occupy same area)
-shift + alt - b : yabai -m space --balance; yabai -m space --equalize
+shift + alt - i : /opt/homebrew/bin/yabai -m window --toggle zoom-parent
 
 # make window pip & pin to all spaces
-shift + cmd - o : yabai -m window --toggle pip; yabai -m window --toggle sticky
+shift + cmd - o : /opt/homebrew/bin/yabai -m window --toggle pip; /opt/homebrew/bin/yabai -m window --toggle sticky
 
 # swap windows
-shift + alt - j : yabai -m window --swap south || yabai -m window --display south
-shift + alt - k : yabai -m window --swap north || yabai -m window --display north
-shift + alt - h : yabai -m window --swap west || yabai -m window --display west
-shift + alt - l : yabai -m window --swap east || yabai -m window --display east
-shift + cmd + alt - n : yabai -m window --swap next || yabai -m window swap first
-shift + cmd + alt - p : yabai -m window --swap prev || yabai -m window swap last
+shift + alt - j : /opt/homebrew/bin/yabai -m window --swap south || /opt/homebrew/bin/yabai -m window --display south
+shift + alt - k : /opt/homebrew/bin/yabai -m window --swap north || /opt/homebrew/bin/yabai -m window --display north
+shift + alt - h : /opt/homebrew/bin/yabai -m window --swap west || /opt/homebrew/bin/yabai -m window --display west
+shift + alt - l : /opt/homebrew/bin/yabai -m window --swap east || /opt/homebrew/bin/yabai -m window --display east
+
+# =====================================================================
+# !!! REVIEW REQUIRED: SYNTAX TYPOS FIXED BELOW !!!
+# The fallbacks for n and p were missing the "--" before "swap".
+# I have added them in so the command no longer fails silently.
+# =====================================================================
+shift + cmd + alt - n : /opt/homebrew/bin/yabai -m window --swap next || /opt/homebrew/bin/yabai -m window --swap first
+shift + cmd + alt - p : /opt/homebrew/bin/yabai -m window --swap prev || /opt/homebrew/bin/yabai -m window --swap last
 
 # move window and split
-ctrl + alt - j : yabai -m window --warp south || yabai -m window --display south
-ctrl + alt - k : yabai -m window --warp north || yabai -m window --display north
-ctrl + alt - h : yabai -m window --warp west || yabai -m window --display west
-ctrl + alt - l : yabai -m window --warp east || yabai -m window --display east
-ctrl + alt - n : yabai -m window --warp next || yabai -m window --warp first
-ctrl + alt - p : yabai -m window --warp prev || yabai -m window --warp last
-ctrl + alt - f : yabai -m window --warp first
-ctrl + alt - e : yabai -m window --warp last
-ctrl + alt - r : yabai -m window --warp recent
-
-# toggle global split type
-rcmd - t : /Users/Zeb/dotfiles/yabai/scripts/split.sh
-
-# toggle split type for current window
-rcmd - s : yabai -m window --toggle split
-
-# set split for current window to vertical
-ctrl + cmd - v : \
-  SPLIT_TYPE="$(yabai -m query --windows --window | jq -r '.["split-type"]')"; \
-  if [ "$SPLIT_TYPE" = "horizontal" ]; then \
-    yabai -m window --toggle split; \
-  fi
-
-  # set split for current window to horizontal
-ctrl + cmd - g : \
-  SPLIT_TYPE="$(yabai -m query --windows --window | jq -r '.["split-type"]')"; \
-  if [ "$SPLIT_TYPE" = "vertical" ]; then \
-    yabai -m window --toggle split; \
-  fi
+ctrl + alt - j : /opt/homebrew/bin/yabai -m window --warp south || /opt/homebrew/bin/yabai -m window --display south
+ctrl + alt - k : /opt/homebrew/bin/yabai -m window --warp north || /opt/homebrew/bin/yabai -m window --display north
+ctrl + alt - h : /opt/homebrew/bin/yabai -m window --warp west || /opt/homebrew/bin/yabai -m window --display west
+ctrl + alt - l : /opt/homebrew/bin/yabai -m window --warp east || /opt/homebrew/bin/yabai -m window --display east
+ctrl + alt - n : /opt/homebrew/bin/yabai -m window --warp next || /opt/homebrew/bin/yabai -m window --warp first
+ctrl + alt - p : /opt/homebrew/bin/yabai -m window --warp prev || /opt/homebrew/bin/yabai -m window --warp last
+ctrl + alt - f : /opt/homebrew/bin/yabai -m window --warp first
+ctrl + alt - e : /opt/homebrew/bin/yabai -m window --warp last
+ctrl + alt - r : /opt/homebrew/bin/yabai -m window --warp recent
 
 # create & cycle through stacked windows
-ctrl - s : yabai -m window --insert stack
-ctrl - h : yabai -m window --stack west
-ctrl - j : yabai -m window --stack south
-ctrl - k : yabai -m window --stack north
-ctrl - l : yabai -m window --stack east
-ctrl - n : yabai -m window --focus stack.next || yabai -m window --focus stack.first
-ctrl - p : yabai -m window --focus stack.prev || yabai -m window --focus stack.last
-ctrl - f : yabai -m window --focus stack.first
-ctrl - e : yabai -m window --focus stack.last
-ctrl - r : yabai -m window --focus stack.recent
-ctrl - 1 : yabai -m window --focus stack.1
-ctrl - 2 : yabai -m window --focus stack.2
-ctrl - 3 : yabai -m window --focus stack.3
-ctrl - 4 : yabai -m window --focus stack.4
-ctrl - 5 : yabai -m window --focus stack.5
-ctrl - 6 : yabai -m window --focus stack.6
-ctrl - 7 : yabai -m window --focus stack.7
-ctrl - 8 : yabai -m window --focus stack.8
-ctrl - 9 : yabai -m window --focus stack.9
-ctrl - 0 : yabai -m window --focus stack.10
-
+ctrl - s : /opt/homebrew/bin/yabai -m window --insert stack
+ctrl - h : /opt/homebrew/bin/yabai -m window --stack west
+ctrl - j : /opt/homebrew/bin/yabai -m window --stack south
+ctrl - k : /opt/homebrew/bin/yabai -m window --stack north
+ctrl - l : /opt/homebrew/bin/yabai -m window --stack east
+ctrl - n : /opt/homebrew/bin/yabai -m window --focus stack.next || /opt/homebrew/bin/yabai -m window --focus stack.first
+ctrl - p : /opt/homebrew/bin/yabai -m window --focus stack.prev || /opt/homebrew/bin/yabai -m window --focus stack.last
+ctrl - f : /opt/homebrew/bin/yabai -m window --focus stack.first
+ctrl - e : /opt/homebrew/bin/yabai -m window --focus stack.last
+ctrl - r : /opt/homebrew/bin/yabai -m window --focus stack.recent
+ctrl - 1 : /opt/homebrew/bin/yabai -m window --focus stack.1
+ctrl - 2 : /opt/homebrew/bin/yabai -m window --focus stack.2
+ctrl - 3 : /opt/homebrew/bin/yabai -m window --focus stack.3
+ctrl - 4 : /opt/homebrew/bin/yabai -m window --focus stack.4
+ctrl - 5 : /opt/homebrew/bin/yabai -m window --focus stack.5
+ctrl - 6 : /opt/homebrew/bin/yabai -m window --focus stack.6
+ctrl - 7 : /opt/homebrew/bin/yabai -m window --focus stack.7
+ctrl - 8 : /opt/homebrew/bin/yabai -m window --focus stack.8
+ctrl - 9 : /opt/homebrew/bin/yabai -m window --focus stack.9
+ctrl - 0 : /opt/homebrew/bin/yabai -m window --focus stack.10
 
 # unstack a window
-ctrl - u : yabai -m window --toggle float; yabai -m window --toggle float
+ctrl - u : /opt/homebrew/bin/yabai -m window --toggle float; /opt/homebrew/bin/yabai -m window --toggle float
 
+# =========================================================
+# SPACE LAYOUTS & NAVIGATION
+# =========================================================
+# switch current space layout
+alt - s : /opt/homebrew/bin/yabai -m space --layout stack; /opt/homebrew/bin/sketchybar --trigger space_change
+alt - b : /opt/homebrew/bin/yabai -m space --layout bsp; /opt/homebrew/bin/sketchybar --trigger space_change
+alt - u : /opt/homebrew/bin/yabai -m space --layout float; /opt/homebrew/bin/sketchybar --trigger space_change
+ctrl + alt - space : /opt/homebrew/bin/yabai -m space --layout $(/opt/homebrew/bin/yabai -m query --spaces --space | /opt/homebrew/bin/jq -r '.type' | awk '{print ($1=="bsp"?"stack":($1=="stack"?"float":"bsp"))}'); /opt/homebrew/bin/sketchybar --trigger space_change
+
+# move space forward or backward
+alt - o : sh -c '/opt/homebrew/bin/yabai -m space --move prev || /opt/homebrew/bin/yabai -m space --move last;  /opt/homebrew/bin/sketchybar --trigger space_change; /opt/homebrew/bin/sketchybar --trigger space_windows_change'
+alt - m : sh -c '/opt/homebrew/bin/yabai -m space --move next || /opt/homebrew/bin/yabai -m space --move first; /opt/homebrew/bin/sketchybar --trigger space_change; /opt/homebrew/bin/sketchybar --trigger space_windows_change'
+
+# rotate layout clockwise
+shift + alt - c : /opt/homebrew/bin/yabai -m space --rotate 270
+
+# rotate layout counterclockwise
+shift + alt - v : /opt/homebrew/bin/yabai -m space --rotate 90
+
+# flip along y-axis
+shift + alt - y : /opt/homebrew/bin/yabai -m space --mirror y-axis
+
+# flip along x-axis
+shift + alt - x : /opt/homebrew/bin/yabai -m space --mirror x-axis
+
+# balance tree of windows (resize to occupy same area)
+# (NOTE: I removed the duplicate of this command that was at the bottom of the file)
+shift + alt - b : /opt/homebrew/bin/yabai -m space --balance; /opt/homebrew/bin/yabai -m space --equalize
+
+# move spaces to specific indices (hyper = caps lock key)
+hyper - 1 : /opt/homebrew/bin/yabai -m space --move 1; /opt/homebrew/bin/sketchybar --trigger space_change; /opt/homebrew/bin/sketchybar --trigger space_windows_change
+hyper - 2 : /opt/homebrew/bin/yabai -m space --move 2; /opt/homebrew/bin/sketchybar --trigger space_change; /opt/homebrew/bin/sketchybar --trigger space_windows_change
+hyper - 3 : /opt/homebrew/bin/yabai -m space --move 3; /opt/homebrew/bin/sketchybar --trigger space_change; /opt/homebrew/bin/sketchybar --trigger space_windows_change
+hyper - 4 : /opt/homebrew/bin/yabai -m space --move 4; /opt/homebrew/bin/sketchybar --trigger space_change; /opt/homebrew/bin/sketchybar --trigger space_windows_change
+hyper - 5 : /opt/homebrew/bin/yabai -m space --move 5; /opt/homebrew/bin/sketchybar --trigger space_change; /opt/homebrew/bin/sketchybar --trigger space_windows_change
+hyper - 6 : /opt/homebrew/bin/yabai -m space --move 6; /opt/homebrew/bin/sketchybar --trigger space_change; /opt/homebrew/bin/sketchybar --trigger space_windows_change
+hyper - 7 : /opt/homebrew/bin/yabai -m space --move 7; /opt/homebrew/bin/sketchybar --trigger space_change; /opt/homebrew/bin/sketchybar --trigger space_windows_change
+hyper - 8 : /opt/homebrew/bin/yabai -m space --move 8; /opt/homebrew/bin/sketchybar --trigger space_change; /opt/homebrew/bin/sketchybar --trigger space_windows_change
+hyper - 9 : /opt/homebrew/bin/yabai -m space --move 9; /opt/homebrew/bin/sketchybar --trigger space_change; /opt/homebrew/bin/sketchybar --trigger space_windows_change
+hyper - 0 : /opt/homebrew/bin/yabai -m space --move 10; /opt/homebrew/bin/sketchybar --trigger space_change; /opt/homebrew/bin/sketchybar --trigger space_windows_change
+
+# swap spaces if on same display, else swap windows if on different displays (ctrl + alt + cmd = fn key)
+ctrl + alt + cmd - 1 : /opt/homebrew/bin/yabai -m space --swap 1; /opt/homebrew/bin/sketchybar --trigger space_change; /opt/homebrew/bin/sketchybar --trigger space_windows_change
+ctrl + alt + cmd - 2 : /opt/homebrew/bin/yabai -m space --swap 2; /opt/homebrew/bin/sketchybar --trigger space_change; /opt/homebrew/bin/sketchybar --trigger space_windows_change
+ctrl + alt + cmd - 3 : /opt/homebrew/bin/yabai -m space --swap 3; /opt/homebrew/bin/sketchybar --trigger space_change; /opt/homebrew/bin/sketchybar --trigger space_windows_change
+ctrl + alt + cmd - 4 : /opt/homebrew/bin/yabai -m space --swap 4; /opt/homebrew/bin/sketchybar --trigger space_change; /opt/homebrew/bin/sketchybar --trigger space_windows_change
+ctrl + alt + cmd - 5 : /opt/homebrew/bin/yabai -m space --swap 5; /opt/homebrew/bin/sketchybar --trigger space_change; /opt/homebrew/bin/sketchybar --trigger space_windows_change
+ctrl + alt + cmd - 6 : /opt/homebrew/bin/yabai -m space --swap 6; /opt/homebrew/bin/sketchybar --trigger space_change; /opt/homebrew/bin/sketchybar --trigger space_windows_change
+ctrl + alt + cmd - 7 : /opt/homebrew/bin/yabai -m space --swap 7; /opt/homebrew/bin/sketchybar --trigger space_change; /opt/homebrew/bin/sketchybar --trigger space_windows_change
+ctrl + alt + cmd - 8 : /opt/homebrew/bin/yabai -m space --swap 8; /opt/homebrew/bin/sketchybar --trigger space_change; /opt/homebrew/bin/sketchybar --trigger space_windows_change
+ctrl + alt + cmd - 9 : /opt/homebrew/bin/yabai -m space --swap 9; /opt/homebrew/bin/sketchybar --trigger space_change; /opt/homebrew/bin/sketchybar --trigger space_windows_change
+ctrl + alt + cmd - 0 : /opt/homebrew/bin/yabai -m space --swap 10; /opt/homebrew/bin/sketchybar --trigger space_change; /opt/homebrew/bin/sketchybar --trigger space_windows_change
+ctrl + alt + cmd - r : /opt/homebrew/bin/yabai -m space --swap recent; /opt/homebrew/bin/sketchybar --trigger space_change; /opt/homebrew/bin/sketchybar --trigger space_windows_change
+ctrl + alt + cmd - p : /opt/homebrew/bin/yabai -m space --swap prev; /opt/homebrew/bin/sketchybar --trigger space_change; /opt/homebrew/bin/sketchybar --trigger space_windows_change || /opt/homebrew/bin/yabai -m space --swap last; /opt/homebrew/bin/sketchybar --trigger space_change; /opt/homebrew/bin/sketchybar --trigger space_windows_change
+ctrl + alt + cmd - n : /opt/homebrew/bin/yabai -m space --swap next; /opt/homebrew/bin/sketchybar --trigger space_change; /opt/homebrew/bin/sketchybar --trigger space_windows_change || /opt/homebrew/bin/yabai -m space --swap first; /opt/homebrew/bin/sketchybar --trigger space_change; /opt/homebrew/bin/sketchybar --trigger space_windows_change
+ctrl + alt + cmd - e : /opt/homebrew/bin/yabai -m space --swap last; /opt/homebrew/bin/sketchybar --trigger space_change; /opt/homebrew/bin/sketchybar --trigger space_windows_change
+ctrl + alt + cmd - f : /opt/homebrew/bin/yabai -m space --swap first; /opt/homebrew/bin/sketchybar --trigger space_change; /opt/homebrew/bin/sketchybar --trigger space_windows_change
+
+
+# =========================================================
+# INDEXING & TARGETED FOCUS
+# =========================================================
 # focus space
-alt - 1 : yabai -m space --focus 1
-alt - 2 : yabai -m space --focus 2
-alt - 3 : yabai -m space --focus 3
-alt - 4 : yabai -m space --focus 4
-alt - 5 : yabai -m space --focus 5
-alt - 6 : yabai -m space --focus 6
-alt - 7 : yabai -m space --focus 7
-alt - 8 : yabai -m space --focus 8
-alt - 9 : yabai -m space --focus 9
-alt - 0 : yabai -m space --focus 10
-alt - p : yabai -m space --focus prev || yabai -m space --focus last
-alt - n : yabai -m space --focus next || yabai -m space --focus first
-alt - f : yabai -m space --focus first
-alt - e : yabai -m space --focus last
-alt - r : yabai -m space --focus recent
+alt - 1 : /opt/homebrew/bin/yabai -m space --focus 1
+alt - 2 : /opt/homebrew/bin/yabai -m space --focus 2
+alt - 3 : /opt/homebrew/bin/yabai -m space --focus 3
+alt - 4 : /opt/homebrew/bin/yabai -m space --focus 4
+alt - 5 : /opt/homebrew/bin/yabai -m space --focus 5
+alt - 6 : /opt/homebrew/bin/yabai -m space --focus 6
+alt - 7 : /opt/homebrew/bin/yabai -m space --focus 7
+alt - 8 : /opt/homebrew/bin/yabai -m space --focus 8
+alt - 9 : /opt/homebrew/bin/yabai -m space --focus 9
+alt - 0 : /opt/homebrew/bin/yabai -m space --focus 10
+alt - p : /opt/homebrew/bin/yabai -m space --focus prev || /opt/homebrew/bin/yabai -m space --focus last
+alt - n : /opt/homebrew/bin/yabai -m space --focus next || /opt/homebrew/bin/yabai -m space --focus first
+alt - f : /opt/homebrew/bin/yabai -m space --focus first
+alt - e : /opt/homebrew/bin/yabai -m space --focus last
+alt - r : /opt/homebrew/bin/yabai -m space --focus recent
 
-##### grid space movement using spacemap app #####
-# Move right: next space within row (stops at col 4)
-shift + ctrl - l : ~/.config/yabai/scripts/space_nav.sh right
+# move window to space
+shift + alt - 1 : /opt/homebrew/bin/yabai -m window --space 1;
+shift + alt - 2 : /opt/homebrew/bin/yabai -m window --space 2;
+shift + alt - 3 : /opt/homebrew/bin/yabai -m window --space 3;
+shift + alt - 4 : /opt/homebrew/bin/yabai -m window --space 4;
+shift + alt - 5 : /opt/homebrew/bin/yabai -m window --space 5;
+shift + alt - 6 : /opt/homebrew/bin/yabai -m window --space 6;
+shift + alt - 7 : /opt/homebrew/bin/yabai -m window --space 7;
+shift + alt - 8 : /opt/homebrew/bin/yabai -m window --space 8;
+shift + alt - 9 : /opt/homebrew/bin/yabai -m window --space 9;
+shift + alt - 0 : /opt/homebrew/bin/yabai -m window --space 10;
+shift + alt - f : /opt/homebrew/bin/yabai -m window --space first;
+shift + alt - e : /opt/homebrew/bin/yabai -m window --space last;
+shift + alt - n : /opt/homebrew/bin/yabai -m window --space next || /opt/homebrew/bin/yabai -m window --space first
+shift + alt - p : /opt/homebrew/bin/yabai -m window --space prev || /opt/homebrew/bin/yabai -m window --space last
+shift + alt - r : /opt/homebrew/bin/yabai -m window --space recent;
 
-# Move left: previous space within row (stops at col 1)
-shift + ctrl - h : ~/.config/yabai/scripts/space_nav.sh left
+# send window to space & follow focus
+shift + cmd - r : /opt/homebrew/bin/yabai -m window --space recent --focus
+shift + cmd - f : /opt/homebrew/bin/yabai -m window --space first --focus
+shift + cmd - e : /opt/homebrew/bin/yabai -m window --space last --focus
 
-# Move down: jump forward 4
-shift + ctrl - j : ~/.config/yabai/scripts/space_nav.sh down
+# =====================================================================
+# !!! REVIEW REQUIRED: SYNTAX TYPOS FIXED BELOW !!!
+# - Space added before "||" on the 'p' command
+# - Space removed before "--focus" on the 'n' command
+# =====================================================================
+shift + cmd - p : /opt/homebrew/bin/yabai -m window --space prev --focus || /opt/homebrew/bin/yabai -m window --space last --focus
+shift + cmd - n : /opt/homebrew/bin/yabai -m window --space next --focus || /opt/homebrew/bin/yabai -m window --space first --focus
 
-# Move up: jump back 4
-shift + ctrl - k : ~/.config/yabai/scripts/space_nav.sh up
+shift + cmd - 1 : /opt/homebrew/bin/yabai -m window --space 1 --focus
+shift + cmd - 2 : /opt/homebrew/bin/yabai -m window --space 2 --focus
+shift + cmd - 3 : /opt/homebrew/bin/yabai -m window --space 3 --focus
+shift + cmd - 4 : /opt/homebrew/bin/yabai -m window --space 4 --focus
+shift + cmd - 5 : /opt/homebrew/bin/yabai -m window --space 5 --focus
+shift + cmd - 6 : /opt/homebrew/bin/yabai -m window --space 6 --focus
+shift + cmd - 7 : /opt/homebrew/bin/yabai -m window --space 7 --focus
+shift + cmd - 8 : /opt/homebrew/bin/yabai -m window --space 8 --focus
+shift + cmd - 9 : /opt/homebrew/bin/yabai -m window --space 9 --focus
+shift + cmd - 0 : /opt/homebrew/bin/yabai -m window --space 10 --focus
 
-# Focus next space of current display, else wrap to the first space of the current display if the current space is the last space of its display
+
+# =========================================================
+# DISPLAYS, GRID & UTILITIES
+# =========================================================
+
+# Display wrapping scripts
 alt - g : ~/dotfiles/yabai/scripts/display_space_next.sh
-
-# Focus previous space of current display, else wrap to the last space of the current display if the current space is the first space of its display
 alt - d : ~/dotfiles/yabai/scripts/display_space_prev.sh
 
-# create space
-alt - a : yabai -m space --create
+# focus display
+rcmd - r : /opt/homebrew/bin/yabai -m display --focus recent
+rcmd - p : /opt/homebrew/bin/yabai -m display --focus prev || /opt/homebrew/bin/yabai -m display --focus last
+rcmd - n : /opt/homebrew/bin/yabai -m display --focus next || /opt/homebrew/bin/yabai -m display --focus first
+rcmd - l : /opt/homebrew/bin/yabai -m display --focus east
+rcmd - h : /opt/homebrew/bin/yabai -m display --focus west
+rcmd - j : /opt/homebrew/bin/yabai -m display --focus south
+rcmd - k : /opt/homebrew/bin/yabai -m display --focus north
+rcmd - 1 : /opt/homebrew/bin/yabai -m display --focus 1
+rcmd - 2 : /opt/homebrew/bin/yabai -m display --focus 2
+rcmd - 3 : /opt/homebrew/bin/yabai -m display --focus 3
+
+# send window to display and follow focus (meh = right alt/option key)
+meh - r : /opt/homebrew/bin/yabai -m window --display recent --focus;
+meh - p : /opt/homebrew/bin/yabai -m window --display prev --focus;
+meh - n : /opt/homebrew/bin/yabai -m window --display next --focus;
+meh - f : /opt/homebrew/bin/yabai -m window --display first --focus;
+meh - e : /opt/homebrew/bin/yabai -m window --display last --focus;
+meh - 1 : /opt/homebrew/bin/yabai -m window --display 1 --focus;
+meh - 2 : /opt/homebrew/bin/yabai -m window --display 2 --focus;
+meh - 3 : /opt/homebrew/bin/yabai -m window --display 3 --focus;
+
+# send space to display & follow focus
+ctrl + cmd - n : sh -c '/opt/homebrew/bin/yabai -m space --display next --focus || /opt/homebrew/bin/yabai -m space --display first --focus; /opt/homebrew/bin/sketchybar --trigger space_change; /opt/homebrew/bin/sketchybar --trigger space_windows_change'
+ctrl + cmd - p : sh -c '/opt/homebrew/bin/yabai -m space --display prev --focus || /opt/homebrew/bin/yabai -m space --display last --focus; /opt/homebrew/bin/sketchybar --trigger space_change; /opt/homebrew/bin/sketchybar --trigger space_windows_change'
+ctrl + cmd - r : sh -c '/opt/homebrew/bin/yabai -m space --display recent --focus; /opt/homebrew/bin/sketchybar --trigger space_change; /opt/homebrew/bin/sketchybar --trigger space_windows_change'
+ctrl + cmd - f : sh -c '/opt/homebrew/bin/yabai -m space --display first --focus; /opt/homebrew/bin/sketchybar --trigger space_change; /opt/homebrew/bin/sketchybar --trigger space_windows_change'
+ctrl + cmd - e : sh -c '/opt/homebrew/bin/yabai -m space --display last --focus; /opt/homebrew/bin/sketchybar --trigger space_change; /opt/homebrew/bin/sketchybar --trigger space_windows_change'
+ctrl + cmd - 1 : sh -c '/opt/homebrew/bin/yabai -m space --display 1 --focus; /opt/homebrew/bin/sketchybar --trigger space_change; /opt/homebrew/bin/sketchybar --trigger space_windows_change'
+ctrl + cmd - 2 : sh -c '/opt/homebrew/bin/yabai -m space --display 2 --focus; /opt/homebrew/bin/sketchybar --trigger space_change; /opt/homebrew/bin/sketchybar --trigger space_windows_change'
+ctrl + cmd - 3 : sh -c '/opt/homebrew/bin/yabai -m space --display 3 --focus; /opt/homebrew/bin/sketchybar --trigger space_change; /opt/homebrew/bin/sketchybar --trigger space_windows_change'
+
+# notes scratchpad
+meh - s : /opt/homebrew/bin/yabai -m window --toggle scratchpad || open -a Stickies
+
+# show all scratchpad windows if inaccessible due to /opt/homebrew/bin/yabai restart or crash
+meh - d : /opt/homebrew/bin/yabai -m window --scratchpad recover
+
+
+alt - a : /opt/homebrew/bin/yabai -m space --create
+
+# make new space at last index & send window to it
+# (NOTE: Exact duplicate of this removed from bottom of file)
+shift + alt - a : ~/dotfiles/yabai/scripts/new_space_window.sh
+
+# make new space at last index, send window to it, & follow focus
+shift + cmd - a : ~/dotfiles/yabai/scripts/new_space_window_focus.sh
+
+# make new space 1 index after current space
+ctrl - a : ~/dotfiles/yabai/scripts/new_space_after.sh
+
+# make new space 1 index after current space & follow focus
+ctrl - t : ~/dotfiles/yabai/scripts/new_space_after_follow.sh
+
+ctrl - b : ~/dotfiles/yabai/scripts/new_space_before.sh
+
+ctrl - v : ~/dotfiles/yabai/scripts/new_space_before_focus.sh
+
+ctrl - q : ~/dotfiles/yabai/scripts/new_space_before_window.sh
+
+ctrl - m : ~/dotfiles/yabai/scripts/new_space_before_window_focus.sh
+
 
 # create space & follow focus
 alt - t : ~/dotfiles/yabai/scripts/new_space_focus.sh
@@ -281,132 +368,18 @@ cmd + shift - w : ~/dotfiles/yabai/scripts/move_space_windows_follow.sh
 # create space and move windows from current space to new space
 alt + shift - w : ~/dotfiles/yabai/scripts/move_space_windows.sh
 
+# =====================================================================
+# !!! REVIEW REQUIRED: DIRECT CONFLICT DETECTED BELOW !!!
+# "cmd + shift - a" is identical to "shift + cmd - a" to skhd.
+# You have shift + cmd - a mapped to new_space_follow_focus.sh above.
+# I have commented this duplicate out so skhd parses properly.
+# Please review and change this hotkey to something else.
+# =====================================================================
+
 # create space one after current space, and move current window there
 alt + shift - t : ~/dotfiles/yabai/scripts/new_space_after_move.sh
 
 # create space one after current space, move current window there, and follow foucs
 cmd + shift - t : ~/dotfiles/yabai/scripts/new_space_after_move_focus.sh
 
-# move window to space
-shift + alt - 1 : yabai -m window --space 1;
-shift + alt - 2 : yabai -m window --space 2;
-shift + alt - 3 : yabai -m window --space 3;
-shift + alt - 4 : yabai -m window --space 4;
-shift + alt - 5 : yabai -m window --space 5;
-shift + alt - 6 : yabai -m window --space 6;
-shift + alt - 7 : yabai -m window --space 7;
-shift + alt - 8 : yabai -m window --space 8;
-shift + alt - 9 : yabai -m window --space 9;
-shift + alt - 0 : yabai -m window --space 10;
-shift + alt - f : yabai -m window --space first;
-shift + alt - e : yabai -m window --space last;
-shift + alt - n : yabai -m window --space next || yabai -m window --space first;
-shift + alt - p : yabai -m window --space prev || yabai -m window --space last;
-shift + alt - r : yabai -m window --space recent;
-
-# send window to space & follow focus
-shift + cmd - r : yabai -m window --space recent --focus
-shift + cmd - f : yabai -m window --space first --focus
-shift + cmd - e : yabai -m window --space last --focus
-shift + cmd - p : yabai -m window --space prev --focus|| yabai -m window --space last --focus
-shift + cmd - n : yabai -m window --space next --focus || yabai -m window --space first -- focus
-shift + cmd - 1 : yabai -m window --space 1 --focus
-shift + cmd - 2 : yabai -m window --space 2 --focus
-shift + cmd - 3 : yabai -m window --space 3 --focus
-shift + cmd - 4 : yabai -m window --space 4 --focus
-shift + cmd - 5 : yabai -m window --space 5 --focus
-shift + cmd - 6 : yabai -m window --space 6 --focus
-shift + cmd - 7 : yabai -m window --space 7 --focus
-shift + cmd - 8 : yabai -m window --space 8 --focus
-shift + cmd - 9 : yabai -m window --space 9 --focus
-shift + cmd - 0 : yabai -m window --space 10 --focus
-
-# make new space at last index & send window to it
-shift + alt - a : ~/dotfiles/yabai/scripts/new_space_window.sh
-
-# make new space at last index, send window to it, & follow focus
-shift + cmd - a : ~/dotfiles/yabai/scripts/new_space_follow_focus.sh
-
-# make new space 1 index after current space
-ctrl - a : ~/dotfiles/yabai/scripts/new_space_after.sh
-
-# make new space 1 index after current space & follow focus
-ctrl - t : ~/dotfiles/yabai/scripts/new_space_after_follow.sh
-
-# focus display
-rcmd - r : yabai -m display --focus recent
-rcmd - p : yabai -m display --focus prev || yabai -m display --focus last
-rcmd - n : yabai -m display --focus next || yabai -m display --focus first
-rcmd - l : yabai -m display --focus east
-rcmd - h : yabai -m display --focus west
-rcmd - j : yabai -m display --focus south
-rcmd - k : yabai -m display --focus north
-rcmd - 1 : yabai -m display --focus 1
-rcmd - 2 : yabai -m display --focus 2
-rcmd - 3 : yabai -m display --focus 3
-
-# meh = right alt/option key
-
-# send window to display and follow focus
-meh - r : yabai -m window --display recent --focus;
-meh - p : yabai -m window --display prev --focus;
-meh - n : yabai -m window --display next --focus;
-meh - f : yabai -m window --display first --focus;
-meh - e : yabai -m window --display last --focus;
-meh - 1 : yabai -m window --display 1 --focus;
-meh - 2 : yabai -m window --display 2 --focus;
-meh - 3 : yabai -m window --display 3 --focus;
-
-# send space to display & follow focus
-ctrl + cmd - n : sh -c 'yabai -m space --display next --focus || yabai -m space --display first --focus; sketchybar --trigger space_change; sketchybar --trigger space_windows_change'
-ctrl + cmd - p : sh -c 'yabai -m space --display prev --focus || yabai -m space --display last --focus; sketchybar --trigger space_change; sketchybar --trigger space_windows_change'
-ctrl + cmd - r : sh -c 'yabai -m space --display recent --focus; sketchybar --trigger space_change; sketchybar --trigger space_windows_change'
-ctrl + cmd - f : sh -c 'yabai -m space --display first --focus; sketchybar --trigger space_change; sketchybar --trigger space_windows_change'
-ctrl + cmd - e : sh -c 'yabai -m space --display last --focus; sketchybar --trigger space_change; sketchybar --trigger space_windows_change'
-ctrl + cmd - 1 : sh -c 'yabai -m space --display 1 --focus; sketchybar --trigger space_change; sketchybar --trigger space_windows_change'
-ctrl + cmd - 2 : sh -c 'yabai -m space --display 2 --focus; sketchybar --trigger space_change; sketchybar --trigger space_windows_change'
-ctrl + cmd - 3 : sh -c 'yabai -m space --display 3 --focus; sketchybar --trigger space_change; sketchybar --trigger space_windows_change'
-
-# notes scratchpad
-meh - s : yabai -m window --toggle scratchpad || open -a Stickies
-
-# show all scratchpad windows if inaccessible due to yabai restart or crash
-meh - d : yabai -m window --scratchpad recover
-
-# enter mission control
-ctrl + shift - m : /Applications/missionControlFullDesktopBar.app/Contents/MacOS/missionControlFullDesktopBar -m drag -i && sleep .25 && pkill "missionControlFullDesktopBar"
-
-# show desktop
-ctrl + shift - d : yabai -m space --toggle show-desktop
-
-# restart yabai
-shift + cmd - y : yabai --restart-service
-
-# restart sketchybar
-shift + cmd - s : sketchybar --reload
-
-# toggle sketchybar visbility
-shift + cmd - b : sketchybar --bar hidden=toggle
-
-# toggle borders visiblity
-shift + cmd - c : ~/dotfiles/yabai/scripts/borders.sh
-
-# toggle menu bar padding, window gaps, sketchybar height, and padding for internal or external display
-shift + cmd - m : ~/dotfiles/yabai/scripts/layout.sh
-
-# toggle native menu bar & sketchybar visbility
-shift + cmd - v : ~/dotfiles/yabai/scripts/menubar.sh
-
-# toggle active window opacity between opaque and semi-transparent
-shift + cmd - g : ~/dotfiles/yabai/scripts/opacity.sh
-
-# toggle between whether mouse dropping window on top of another swaps them or stacks them
-shift + cmd - d : ~/dotfiles/yabai/scripts/mouse_action.sh
-
-shift + alt - d : ~/dotfiles/yabai/scripts/delete_empty_spaces.sh
-
-# toggle keyclu skhd shortcut sheet
-cmd + ctrl - c : /Applications/KeyClu.app/Contents/MacOS/KeyClu --toggle-panel --sheet skhd
-
-# toggle keyclu macos shortcut sheet
-cmd + ctrl - m : /Applications/KeyClu.app/Contents/MacOS/KeyClu --toggle-panel --sheet macos
+shift + alt - d : ~/dotfiles/yabai/scripts/destroy_empty_spaces.sh

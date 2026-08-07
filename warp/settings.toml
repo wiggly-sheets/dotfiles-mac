@@ -2,10 +2,13 @@
 
 [appearance.themes]
 system_theme = false
-theme = "adeberry"
+theme = { custom = { name = "Tokyo Night", path = "tokyo_night.yaml" } }
 
 [appearance.vertical_tabs]
 enabled = true
+display_granularity = "panes"
+view_mode = "expanded"
+primary_info = "command"
 
 [appearance.icon]
 app_icon = "holographic"
@@ -44,3 +47,21 @@ enabled = true
 
 [notifications]
 toast_duration_secs = 8
+
+[notifications.preferences]
+is_agent_task_completed_enabled = true
+is_long_running_enabled = true
+is_needs_attention_enabled = true
+is_password_prompt_enabled = true
+long_running_threshold = 30
+mode = "dismissed"
+play_notification_sound = true
+
+[text_editing]
+vim_mode_enabled = true
+
+[terminal]
+
+[terminal.input]
+honor_ps1 = false
+input_box_type_setting = "universal"
