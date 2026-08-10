@@ -1,5 +1,6 @@
 tap "achannarasappa/tap", "https://github.com/achannarasappa/tap.git", trusted: true
 tap "alecharmon/tap"
+tap "alielsokary/tap"
 tap "apple/apple", trusted: true
 tap "asmvik/formulae", "https://github.com/asmvik/homebrew-formulae.git", trusted: true
 tap "bengerthelorf/tap", "https://github.com/Bengerthelorf/homebrew-tap", trusted: true
@@ -699,6 +700,8 @@ cask "msitarzewski/brew-browser/brew-browser"
 cask "burn"
 # E-books management software
 cask "calibre"
+# Native GUI for Homebrew casks
+cask "alielsokary/tap/caskhub", trusted: true
 # OpenAI's official ChatGPT desktop app
 cask "chatgpt"
 # Anthropic's official Claude AI desktop app
@@ -892,6 +895,8 @@ cask "losslesscut"
 cask "macfuse"
 # Graphical user interface for the command terminal
 cask "macpilot"
+# Tool to create bootable USB installers
+cask "macusb"
 # Speech recognition tool
 cask "macwhisper"
 # Video format converter (transcoder)
@@ -934,6 +939,8 @@ cask "music-decoy"
 cask "neo-network-utility"
 # Read-only disk space visualiser
 cask "neodisk"
+# Htop on steroids
+cask "neohtop"
 # Neovim Client
 cask "neovide-app"
 # Free and open-source RSS reader

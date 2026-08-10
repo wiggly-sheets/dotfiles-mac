@@ -13,6 +13,16 @@ sudo /opt/homebrew/bin/yabai --load-sa
 /opt/homebrew/bin/yabai -m signal --add event=window_destroyed active=yes action="/opt/homebrew/bin/yabai -m query --windows --window &> /dev/null || /opt/homebrew/bin/yabai -m window --focus mouse &> /dev/null || /opt/homebrew/bin/yabai -m window --focus $(/opt/homebrew/bin/yabai -m query --windows --space | /opt/homebrew/bin/jq .[0].id) &> /dev/null"
 /opt/homebrew/bin/yabai -m signal --add event=window_minimized active=yes action="if $(/opt/homebrew/bin/yabai -m query --windows --window $YABAI_WINDOW_ID | /opt/homebrew/bin/jq -r '.\"is-floating\"'); then /opt/homebrew/bin/yabai -m query --windows --window &> /dev/null || /opt/homebrew/bin/yabai -m window --focus mouse &> /dev/null || /opt/homebrew/bin/yabai -m window --focus $(/opt/homebrew/bin/yabai -m query --windows --space | /opt/homebrew/bin/jq .[0].id) &> /dev/null; fi"
 
+# borders events
+yabai -m signal --add label=borders_state_created \
+  event=window_created action="$HOME/.config/yabai/borders-state.sh \$YABAI_WINDOW_ID"
+
+yabai -m signal --add label=borders_state_focused \
+  event=window_focused action="$HOME/.config/yabai/borders-state.sh \$YABAI_WINDOW_ID"
+
+yabai -m signal --add label=borders_state_moved \
+  event=window_moved action="$HOME/.config/yabai/borders-state.sh \$YABAI_WINDOW_ID"
+
 # MAIN CONFIG
 CONFIGS=(
   "layout bsp"

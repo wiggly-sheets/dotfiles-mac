@@ -1,28 +1,28 @@
 {
   "recentFiles": [
     {
-      "basename": "spacemap ideas",
-      "path": "spacemap ideas.md"
-    },
-    {
       "basename": "jankyborders",
       "path": "jankyborders.md"
-    },
-    {
-      "basename": "wallapper app",
-      "path": "wallapper app.md"
     },
     {
       "basename": "repo workflow",
       "path": "repo workflow.md"
     },
     {
+      "basename": "setup",
+      "path": "setup.md"
+    },
+    {
       "basename": "sample readme",
       "path": "sample readme.md"
     },
     {
-      "basename": "setup",
-      "path": "setup.md"
+      "basename": "next",
+      "path": "next.md"
+    },
+    {
+      "basename": "wallapper app",
+      "path": "wallapper app.md"
     }
   ],
   "omittedPaths": [],
