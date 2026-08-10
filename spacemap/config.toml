@@ -22,6 +22,7 @@ showSpaceNames = false
 theme = "tokyo night"
 mode = "auto"
 backgroundAlpha = 0.0
+hudShadow = true
 iconScale = 0.5
 uiScale = 0.4
 
@@ -30,13 +31,14 @@ autoHideTimeout = 2
 displayNavigationWrap = "within"
 useVimKeys = true
 useArrowKeys = true
+jumpToSpaceEnabled = true
 customHUDX = 0.2754385964912281
 customHUDY = 0.2720323741007194
 focusSpaceOnWindowDrop = "always"
 focusSpaceOnWindowDropModifier = "option"
 showHUDOnSpaceChange = false
 hideMenuBarIcon = true
-menuBarDisplayMode = "icon"
+menuBarDisplayMode = "dots"
 menuBarNearbyCount = 3
 updateMode = "notify"
 
