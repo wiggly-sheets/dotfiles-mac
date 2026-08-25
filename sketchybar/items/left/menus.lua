@@ -2,17 +2,7 @@ local colors = require("colors")
 local settings = require("default")
 local icons = require("helpers.icons")
 
-local apple = sbar.add("item", "apple", {
-	icon = {
-		font = {size = 16}, -- 13 for command
-		string = icons.apple,
-		position = "left",
-		padding_left = 6,
-		padding_right = 2,
-		color = colors.white,
-	},
-	label = { drawing = false, width = 0 },
-})
+
 
 local menus_expanded = false
 
@@ -82,46 +72,40 @@ local function get_front_window(callback)
 	end)
 end
 
+local function get_visible_space_count(callback)
+	sbar.exec("yabai -m query --spaces | jq 'length'", function(output)
+		callback(tonumber(output:match("(%d+)")) or 10)
+	end)
+end
+
 -- Cache previous title to avoid unnecessary updates
 local last_title = ""
 
 local function update_window_title()
 	get_front_window(function(title)
-		-- Simple end truncation (ACTIVE)
-		local max_len = 40
-		if #title > max_len then
-			title = title:sub(1, max_len - 3) .. "..."
-		end
-
-		--[[
-		-- Middle truncation (OPTIONAL – uncomment to use instead)
-		local max_len = 120
-		if #title > max_len then
-			local ellipsis = "..."
-			local keep = max_len - #ellipsis
-			local front_len = math.floor(keep / 2)
-			local back_len = keep - front_len
-			local front = title:sub(1, front_len)
-			local back = title:sub(-back_len)
-			title = front .. ellipsis .. back
-		end
-		]]
-
-		if title ~= last_title then
-			last_title = title
-			window_title:set({
-				label = {
-					string = title,
-					drawing = (not menus_expanded) and title ~= "",
-				},
-			})
-		else
-			window_title:set({
-				label = {
-					drawing = not menus_expanded and title ~= "",
-				},
-			})
-		end
+		get_visible_space_count(function(space_count)
+			-- Ten spaces retains the old 40-character cap. Each absent space
+			-- frees three characters, up to 67 for a single-space layout.
+			local max_len = math.max(20, 70 - (space_count * 3))
+			if #title > max_len then
+				title = title:sub(1, max_len - 3) .. "..."
+			end
+			if title ~= last_title then
+				last_title = title
+				window_title:set({
+					label = {
+						string = title,
+						drawing = (not menus_expanded) and title ~= "",
+					},
+				})
+			else
+				window_title:set({
+					label = {
+						drawing = not menus_expanded and title ~= "",
+					},
+				})
+			end
+		end)
 	end)
 end
 
@@ -132,12 +116,14 @@ last_title = ""
 window_title:subscribe({
 	"window_focus",
     "title_change",
-	"front_app_switched"
+	"front_app_switched",
+	"space_change"
 }, update_window_title)
 
 update_window_title()
 
 local menu_toggle = sbar.add("item", "menus.toggle", {
+	drawing = false,
 	icon = {
 		string = icons.menus.expand,
 		font = { family = settings.default, size = 12 },
@@ -172,15 +158,27 @@ local function update_menus(env)
 	end)
 end
 
+-- The menu row takes the same left-hand space as the Space indicators while
+-- it is expanded. Keep this here so the two presentation modes stay coupled.
+local function set_spaces_visible(visible)
+	if not visible then
+		for space_id = 1, 10 do
+			sbar.set("space." .. space_id, { drawing = false })
+			sbar.set("space_separator." .. space_id, { drawing = false })
+		end
+	end
+	sbar.set("add_space_button", { drawing = visible })
+	sbar.exec("sketchybar --trigger space_visibility_changed INFO=" .. (visible and "shown" or "hidden"))
+end
+
 local menu_watcher = sbar.add("item", {
 	drawing = false,
 	updates = true,
 })
 
-local function toggle_menus()
-	menus_expanded = not menus_expanded
-
+local function apply_menu_presentation()
 	menu_toggle:set({
+		drawing = menus_expanded,
 		icon = { string = menus_expanded and icons.menus.contract or icons.menus.expand },
 	})
 
@@ -189,18 +187,33 @@ local function toggle_menus()
 	end
 
 	if menus_expanded then
-        front_app:set({ icon = { drawing = false }, padding_left = -4 })
+		-- Keep the app icon as an anchor for the aliased native menus.
+		sbar.exec("sketchybar --move front_app after menu.1")
+		front_app:set({ icon = { drawing = true }, padding_left = 2 })
 		window_title:set({ label = { drawing = false } })
-        update_menus()
-		
+		set_spaces_visible(false)
+		update_menus()
 	else
+		sbar.exec("sketchybar --move front_app after menu.1")
 		front_app:set({
 			icon = { drawing = true },
             padding_left = 2,
         })
+		set_spaces_visible(true)
 		update_window_title()
 	end
 end
+
+local function toggle_menus()
+	menus_expanded = not menus_expanded
+	apply_menu_presentation()
+end
+
+-- The title is the primary control in the normal layout. The compact toggle
+-- remains visible with the native menus as the obvious way back.
+window_title:subscribe("mouse.clicked", function()
+	toggle_menus()
+end)
 
 menu_toggle:subscribe("mouse.clicked", function()
 	toggle_menus()
@@ -268,148 +281,7 @@ for i, menu in ipairs(menu_items) do
 	end)
 end
 
---------------------------THEME PICKER ------------------------------
 
-local theme_dir = os.getenv("HOME") .. "/.config/sketchybar/themes/"
-local theme_file = os.getenv("HOME") .. "/.config/sketchybar/themes/current_theme"
-
-local function get_current_theme()
-	local f = io.open(theme_file, "r")
-	if not f then
-		return nil
-	end
-	local t = f:read("*l")
-	f:close()
-	return t
-end
-
-local function list_themes()
-	local themes = {}
-	local p = io.popen('ls -1 "' .. theme_dir .. '"')
-	if not p then
-		return themes
-	end
-	for file in p:lines() do
-		if not file:match("^%.") then
-			local name = file:match("^(.*)%.lua$")
-			if name then
-				table.insert(themes, name)
-			end
-		end
-	end
-	p:close()
-
-	table.sort(themes)
-	return themes
-end
-
--- Cache populated once at startup
-local theme_cache = {
-	current = get_current_theme(),
-	themes = list_themes(),
-}
-
-local function clear_popup(prefix)
-	sbar.remove("/" .. prefix .. "\\..*/")
-	sbar.remove(prefix:match("^(.*)%.item$") .. ".header")
-end
-
-local theme_popup_subscribed = false
-
-local function open_theme_popup(anchor)
-	clear_popup("theme.item")
-
-	sbar.add("item", "theme.header", {
-		position = "popup." .. anchor.name,
-		label = {
-			string = "Themes",
-			font = { family = settings.default, size = 11, style = "Bold" },
-		},
-		padding_left = 10,
-		padding_right = 10,
-	})
-
-	-- Use cached data instead of hitting disk/shell here
-	local current = theme_cache.current
-	local themes = theme_cache.themes
-
-	for i, theme in ipairs(themes) do
-		local is_active = theme == current
-		sbar.add("item", "theme.item." .. i, {
-			position = "popup." .. anchor.name,
-			label = theme,
-			background = {
-				drawing = is_active,
-				color = is_active and colors.hover or colors.transparent,
-				corner_radius = 20,
-			},
-			click_script = "echo '"
-				.. theme
-				.. "' > "
-				.. theme_file
-				.. " && sketchybar --reload"
-				.. " && sketchybar --trigger theme_changed",
-		})
-	end
-
-	if not theme_popup_subscribed then
-		anchor:subscribe("mouse.exited.global", function()
-			anchor:set({ popup = { drawing = false } })
-			clear_popup("theme.item")
-		end)
-		theme_popup_subscribed = true
-	end
-end
-
--- Keep the cache's "current" in sync after a theme switch
-sbar.add("event", "theme_changed")
-sbar.subscribe("theme_changed", function()
-	theme_cache.current = get_current_theme()
-end)
-
--------------------Subscriptions--------------------------
-
-local left_apple_script =
-	"osascript -e 'tell application \"System Events\" to key code 46 using {command down, option down, control down}'"
-
-local right_apple_script =
-	"osascript -e 'tell application \"System Events\" to key code 0 using {command down, option down, control down}'"
-
--- Where you define the click handler for your anchor item:
-apple:subscribe("mouse.clicked", function(env)
-	if env.BUTTON == "left" then
-		sbar.exec(left_apple_script)
-	elseif env.BUTTON == "right" then
-		sbar.exec(right_apple_script)
-	elseif env.BUTTON == "other" then
-		apple:set({ popup = { drawing = not drawing } })
-		if not drawing then
-			open_theme_popup(apple)
-		end
-	end
-end)
-
-apple:subscribe("mouse.entered", function()
-	apple:set({
-		background = {
-			drawing = true,
-			color = colors.hover,
-			corner_radius = 10,
-			height = 20,
-			x_offset = 3,
-			y_offset = -1,
-			width = 0,
-		},
-	})
-end)
-
-apple:subscribe("mouse.exited", function()
-	apple:set({
-		background = {
-			drawing = false,
-		},
-	})
-end)
 
 local left_front_app_script = 'osascript -e \'tell application "System Events" to keystroke "w" using {command down}\''
 
@@ -465,6 +337,21 @@ menu_toggle:subscribe("mouse.entered", function()
 			corner_radius = 10,
 			height = 20,
 			x_offset = 1,
+		},
+	})
+end)
+
+window_title:subscribe("mouse.exited", function()
+	window_title:set({ background = { drawing = false } })
+end)
+
+window_title:subscribe("mouse.entered", function()
+	window_title:set({
+		background = {
+			drawing = true,
+			color = colors.hover,
+			corner_radius = 10,
+			height = 20,
 		},
 	})
 end)

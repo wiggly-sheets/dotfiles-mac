@@ -8,6 +8,19 @@ local space_separators = {}
 local space_app_icons = {} -- sid -> concatenated icon glyphs (string)
 local space_selected = {} -- sid -> bool
 local space_selection_generation = 0
+local spaces_are_visible = true
+
+local apple = sbar.add("item", "apple", {
+	icon = {
+		font = {size = 16}, -- 13 for command
+		string = icons.apple,
+		position = "left",
+		padding_left = 6,
+		padding_right = 6,
+		color = colors.white,
+	},
+	label = { drawing = false, width = 0 },
+})
 
 for i = 1, 10 do
 	space_app_icons[i] = "—"
@@ -197,13 +210,27 @@ local space_display_observer = sbar.add("item", {
 	drawing = false,
 	updates = true,
 })
+sbar.add("event", "space_visibility_changed")
 space_display_observer:subscribe("space_change", function()
+	if not spaces_are_visible then
+		return
+	end
 	refresh_space_separators()
 	refresh_space_selection()
 end)
 space_display_observer:subscribe("display_change", function()
+	if not spaces_are_visible then
+		return
+	end
 	refresh_space_separators()
 	refresh_space_selection()
+end)
+space_display_observer:subscribe("space_visibility_changed", function(env)
+	spaces_are_visible = env.INFO == "shown"
+	if spaces_are_visible then
+		refresh_space_separators()
+		refresh_space_selection()
+	end
 end)
 refresh_space_separators()
 refresh_space_selection()
@@ -277,9 +304,156 @@ space_window_observer:subscribe("space_windows_change", function(env)
 	)
 end)
 
+
+--------------------------THEME PICKER ------------------------------
+
+local theme_dir = os.getenv("HOME") .. "/.config/sketchybar/themes/"
+local theme_file = os.getenv("HOME") .. "/.config/sketchybar/themes/current_theme"
+
+local function get_current_theme()
+	local f = io.open(theme_file, "r")
+	if not f then
+		return nil
+	end
+	local t = f:read("*l")
+	f:close()
+	return t
+end
+
+local function list_themes()
+	local themes = {}
+	local p = io.popen('ls -1 "' .. theme_dir .. '"')
+	if not p then
+		return themes
+	end
+	for file in p:lines() do
+		if not file:match("^%.") then
+			local name = file:match("^(.*)%.lua$")
+			if name then
+				table.insert(themes, name)
+			end
+		end
+	end
+	p:close()
+
+	table.sort(themes)
+	return themes
+end
+
+-- Cache populated once at startup
+local theme_cache = {
+	current = get_current_theme(),
+	themes = list_themes(),
+}
+
+local function clear_popup(prefix)
+	sbar.remove("/" .. prefix .. "\\..*/")
+	sbar.remove(prefix:match("^(.*)%.item$") .. ".header")
+end
+
+local theme_popup_subscribed = false
+
+local function open_theme_popup(anchor)
+	clear_popup("theme.item")
+
+	sbar.add("item", "theme.header", {
+		position = "popup." .. anchor.name,
+		label = {
+			string = "Themes",
+			font = { family = settings.default, size = 11, style = "Bold" },
+		},
+		padding_left = 10,
+		padding_right = 10,
+	})
+
+	-- Use cached data instead of hitting disk/shell here
+	local current = theme_cache.current
+	local themes = theme_cache.themes
+
+	for i, theme in ipairs(themes) do
+		local is_active = theme == current
+		sbar.add("item", "theme.item." .. i, {
+			position = "popup." .. anchor.name,
+			label = theme,
+			background = {
+				drawing = is_active,
+				color = is_active and colors.hover or colors.transparent,
+				corner_radius = 20,
+			},
+			click_script = "echo '"
+				.. theme
+				.. "' > "
+				.. theme_file
+				.. " && sketchybar --reload"
+				.. " && sketchybar --trigger theme_changed",
+		})
+	end
+
+	if not theme_popup_subscribed then
+		anchor:subscribe("mouse.exited.global", function()
+			anchor:set({ popup = { drawing = false } })
+			clear_popup("theme.item")
+		end)
+		theme_popup_subscribed = true
+	end
+end
+
+-- Keep the cache's "current" in sync after a theme switch
+sbar.add("event", "theme_changed")
+sbar.subscribe("theme_changed", function()
+	theme_cache.current = get_current_theme()
+end)
+
+
+
+
+local left_apple_script =
+	"osascript -e 'tell application \"System Events\" to key code 46 using {command down, option down, control down}'"
+
+local right_apple_script =
+	"osascript -e 'tell application \"System Events\" to key code 0 using {command down, option down, control down}'"
+
+apple:subscribe("mouse.clicked", function(env)
+	if env.BUTTON == "left" then
+		sbar.exec(left_apple_script)
+	elseif env.BUTTON == "right" then
+		sbar.exec(right_apple_script)
+	elseif env.BUTTON == "other" then
+		apple:set({ popup = { drawing = not drawing } })
+		if not drawing then
+			open_theme_popup(apple)
+		end
+	end
+end)
+
+
+
+apple:subscribe("mouse.entered", function()
+	apple:set({
+		background = {
+			drawing = true,
+			color = colors.hover,
+			corner_radius = 10,
+			height = 20,
+			x_offset = 3,
+			y_offset = -1,
+			width = 0,
+		},
+	})
+end)
+
+apple:subscribe("mouse.exited", function()
+	apple:set({
+		background = {
+			drawing = false,
+		},
+	})
+end)
+
+
 local add_space_button = sbar.add("item", "add_space_button", {
 	position = "left",
-	padding_right = 5,
+	padding_right = 1,
 	icon = { string = "+", font = { size = 15 }, color = colors.grey },
 })
 
