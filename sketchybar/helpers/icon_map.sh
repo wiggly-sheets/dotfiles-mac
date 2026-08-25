@@ -288,7 +288,7 @@ function __icon_map() {
    "Clock")
         icon_result=":clock:"
         ;;
-   "cmux")
+   "cmux" | "cmux NIGHTLY")
         icon_result=":cmux:"
         ;;
    "coconutBattery")
@@ -1149,6 +1149,9 @@ function __icon_map() {
    "Parsec")
         icon_result=":parsec:"
         ;;
+   "Paseo")
+        icon_result=":paseo:"
+        ;;
    "Passepartout")
         icon_result=":passepartout:"
         ;;
@@ -1452,6 +1455,9 @@ function __icon_map() {
    "Sonarr")
         icon_result=":sonarr:"
         ;;
+   "SourceGit")
+        icon_result=":sourcegit:"
+        ;;
    "Sourcetree")
         icon_result=":sourcetree:"
         ;;
@@ -1508,6 +1514,9 @@ function __icon_map() {
         ;;
    "System Information" | "System Profiler")
         icon_result=":system_information:"
+        ;;
+   "T3 Code" | "T3 Code (Alpha)")
+        icon_result=":t3_code:"
         ;;
    "T3 Chat")
         icon_result=":t3chat:"
@@ -1767,7 +1776,7 @@ function __icon_map() {
    "Zeplin")
         icon_result=":zeplin:"
         ;;
-   "zoom.us")
+   "zoom.us" | "Zoom")
         icon_result=":zoom:"
         ;;
    "Zotero")

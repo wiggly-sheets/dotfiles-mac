@@ -1,9 +1,10 @@
 tap "achannarasappa/tap", "https://github.com/achannarasappa/tap.git", trusted: true
 tap "alecharmon/tap"
-tap "alielsokary/tap"
+tap "alielsokary/tap", trusted: { casks: ["caskhub"] }
 tap "apple/apple", trusted: true
 tap "asmvik/formulae", "https://github.com/asmvik/homebrew-formulae.git", trusted: true
 tap "bengerthelorf/tap", "https://github.com/Bengerthelorf/homebrew-tap", trusted: true
+tap "bjarneo/cliamp"
 tap "browsh-org/browsh", trusted: true
 tap "can1357/tap"
 tap "catskull/homebrew", "https://github.com/catskull/homebrew", trusted: true
@@ -60,6 +61,7 @@ tap "wickenico/wailbrew", trusted: true
 tap "wiggly-sheets/sketchybar-studio", "https://github.com/wiggly-sheets/Homebrew-SketchyBar-Studio.git", trusted: true
 tap "wiggly-sheets/spacemap", "https://github.com/wiggly-sheets/homebrew-spacemap.git"
 tap "wiggly-sheets/spacesrenamer"
+tap "wiggly-sheets/tap", trusted: { casks: ["wallpaper-selector"] }
 tap "xykong/tap", trusted: true
 tap "z20240/tap"
 tap "zackelia/formulae", trusted: true
@@ -216,6 +218,8 @@ brew "fortune"
 brew "libtool"
 # Terminal JSON viewer
 brew "fx"
+# Replace zsh completion selection menu with fzf
+brew "fzf-tab"
 # GNU awk utility
 brew "gawk"
 # Graphics library to dynamically manipulate images
@@ -223,7 +227,7 @@ brew "gd"
 # GitHub command-line tool
 brew "gh"
 # Multi-platform software reverse engineering framework
-brew "ghidra"
+brew "ghidra", link: false
 # Distributed revision control system
 brew "git"
 # Syntax-highlighting pager for git and diff output
@@ -260,6 +264,8 @@ brew "handbrake"
 brew "harper"
 # Agent multiplexer that lives in your terminal
 brew "herdr"
+# Client library for huggingface.co hub
+brew "hf"
 # Improved top (interactive process viewer)
 brew "htop"
 # User-friendly cURL replacement (command-line HTTP client)
@@ -368,6 +374,10 @@ brew "mpv"
 brew "mtr"
 # Interactive cheatsheet tool for the command-line
 brew "navi"
+# NCurses Disk Usage
+brew "ncdu"
+# Ncurses-based client for the Music Player Daemon
+brew "ncmpcpp"
 # Fast, highly customisable system info script
 brew "neofetch"
 # Ambitious Vim-fork focused on extensibility and agility
@@ -504,6 +514,8 @@ brew "superfile"
 brew "svgo"
 # Change macOS audio source from the command-line
 brew "switchaudio-osx"
+# Open source continuous file synchronization application
+brew "syncthing"
 # Manipulate and query tags on macOS files
 brew "tag"
 # Utility to modify the macOS Accessibility Database (TCC.db)
@@ -552,6 +564,8 @@ brew "uv"
 brew "vifm"
 # Simple terminal image viewer written in Rust
 brew "viu"
+# Generator for LS_COLORS with support for multiple color themes
+brew "vivid"
 # Language servers for HTML, CSS, JavaScript, and JSON extracted from vscode
 brew "vscode-langservers-extracted"
 # Sends magic packets to wake up network-devices
@@ -598,6 +612,8 @@ brew "zsh-vi-mode"
 brew "alecharmon/tap/applepw", trusted: true
 # A tiling window manager for macOS based on binary space partitioning.
 brew "asmvik/formulae/yabai", args: ["HEAD"]
+# A retro terminal music player inspired by Winamp 2.x
+brew "bjarneo/cliamp/cliamp", trusted: true
 # Coding agent with the IDE wired in
 brew "can1357/tap/omp", trusted: true
 # A powerful terminal-based AI assistant for developers, providing intelligent coding assistance directly in your terminal.
@@ -701,7 +717,7 @@ cask "burn"
 # E-books management software
 cask "calibre"
 # Native GUI for Homebrew casks
-cask "alielsokary/tap/caskhub", trusted: true
+cask "caskhub"
 # OpenAI's official ChatGPT desktop app
 cask "chatgpt"
 # Anthropic's official Claude AI desktop app
@@ -895,6 +911,8 @@ cask "losslesscut"
 cask "macfuse"
 # Graphical user interface for the command terminal
 cask "macpilot"
+# Menu bar toolbox
+cask "mactools"
 # Tool to create bootable USB installers
 cask "macusb"
 # Speech recognition tool
@@ -975,6 +993,8 @@ cask "openclaw"
 cask "opencode-desktop"
 # Retro video game emulation for macOS (ARM build)
 cask "catskull/homebrew/openemu-arm"
+# Local-first alternative to Logitech Options+ for HID++ devices
+cask "openlogi"
 # Real-time strategy game engine for Westwood games
 cask "openra"
 # Open-source transport simulation game
@@ -1031,6 +1051,8 @@ cask "radix"
 cask "ransomwhere"
 # Imaging utility to install operating systems to a microSD card
 cask "raspberry-pi-imager"
+# Control your tools with a few keystrokes
+cask "raycast"
 # Create desktop apps by chatting with AI
 cask "raycast-glaze"
 # GUI for Rclone
@@ -1085,6 +1107,8 @@ cask "sloth"
 cask "sony-ps-remote-play"
 # Sound and audio controller
 cask "soundsource"
+# Git GUI client
+cask "sourcegit"
 # Graphical client for Git version control
 cask "sourcetree"
 # Space navigation and management utility with Yabai support
@@ -1117,6 +1141,8 @@ cask "suspicious-package"
 cask "swiftbar"
 # Replacement for RCDefaultApps, written in Swift
 cask "swiftdefaultappsprefpane"
+# Real time file synchronisation software
+cask "syncthing-app"
 # Quicklook extension for source files
 cask "syntax-highlight"
 # Minimal GUI for AI code agents
@@ -1201,8 +1227,6 @@ mas "2048 Game", id: 871033113
 mas "Actions", id: 1586435171
 mas "Amphetamine", id: 937984704
 mas "Apple Configurator", id: 1037126344
-mas "Asphalt", id: 1491129197
-mas "Asphalt8", id: 610391947
 mas "Blackmagic Disk Speed Test", id: 425264550
 mas "Broadcasts", id: 1469995354
 mas "Color Picker", id: 1545870783
@@ -1228,7 +1252,6 @@ mas "JuxtaText", id: 6504801865
 mas "Keynote", id: 361285480
 mas "Keyword Search", id: 1558453954
 mas "Klack", id: 6446206067
-mas "Knights of the Old Republic", id: 416608891
 mas "Lickable Menu Bar", id: 6444217677
 mas "Logic Pro", id: 634148309
 mas "Mactracker", id: 430255202
@@ -1240,6 +1263,7 @@ mas "Motion", id: 434290957
 mas "Night Sky X", id: 475772902
 mas "Numbers", id: 361304891
 mas "Pages", id: 361309726
+mas "Panels", id: 1236567663
 mas "Parcel", id: 375589283
 mas "PDFgear", id: 6469021132
 mas "Pixelmator Pro", id: 1289583905
@@ -1256,7 +1280,6 @@ mas "SnippetsLab", id: 1006087419
 mas "Sparrow Weather", id: 6449440582
 mas "Speediness", id: 1596706466
 mas "Sprinkles", id: 1500209074
-mas "Star Wars®: Knights of the Old Republic™ II", id: 960778634
 mas "Startup Manager", id: 1296723195
 mas "Swift Playground", id: 1496833156
 mas "TestFlight", id: 899247664

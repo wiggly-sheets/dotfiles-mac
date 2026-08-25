@@ -30,7 +30,7 @@
     "LogLevelTrace": "#d8dee9",
     "LogLevelWarning": "#d8dee9",
     "Usage": "#d8dee9",
-    "Value": "#d8dee9"
+    "Value": "fg-#7aa2f7 carapace.Description=fg-#565f89 carapace.Error=bold fg-#f7768e carapace.Usage=fg-#565f89 carapace.Flag=fg-#bb9af7"
   },
   "carapace-bin": {
     "HttpMethodCONNECT": "#d8dee9",
@@ -62,14 +62,6 @@
     "Service": "#d8dee9",
     "Volume": "#d8dee9"
   },
-  "git": {
-    "Branch": "#d8dee9",
-    "Commit": "#d8dee9",
-    "HeadCommit": "#d8dee9",
-    "Note": "#d8dee9",
-    "Stash": "#d8dee9",
-    "Tag": "#d8dee9"
-  },
   "gh": {
     "Draft": "#d8dee9",
     "JobFailed": "#d8dee9",
@@ -87,5 +79,13 @@
     "StateClosed": "#d8dee9",
     "StateMerged": "#d8dee9",
     "StateOpen": "#d8dee9"
+  },
+  "git": {
+    "Branch": "#d8dee9",
+    "Commit": "#d8dee9",
+    "HeadCommit": "#d8dee9",
+    "Note": "#d8dee9",
+    "Stash": "#d8dee9",
+    "Tag": "#d8dee9"
   }
 }

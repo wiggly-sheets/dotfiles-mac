@@ -1,14 +1,3 @@
-# Linuxbrew default path
-if [[ -d /home/linuxbrew/.linuxbrew/bin ]]; then
-    export PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:$PATH"
-fi
-
-# ------------------------------------------------
-# OS detection
-# ------------------------------------------------
-OS="$(uname -s)"
-
-# ------------------------------------------------
 # Environment variables
 # ------------------------------------------------
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -25,7 +14,6 @@ export NVIM_APPNAME=nvim
 export GEM_HOME="$(ruby -e 'puts Gem.user_dir')"
 export NEOVIDE_CONFIG="/Users/Zeb/dotfiles/.config/neovide/config.toml"
 export EZA_CONFIG_DIR="/Users/Zeb/dotfiles/.config/eza/"
-export CARAPACE_BRIDGES='zsh,bash'
 
 export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
 bindkey -v
@@ -38,6 +26,9 @@ if [ -f /Users/Zeb/dotfiles/opencode/opencode.env ]; then
   source /Users/Zeb/dotfiles/opencode/opencode.env
   set +a
 fi
+
+
+export LS_COLORS="$(vivid generate ansi)"
 
 # ------------------------------------------------
 # Homebrew / Linuxbrew paths
@@ -97,12 +88,51 @@ fi
 # ------------------------------------------------
 # Completion
 # ------------------------------------------------
-autoload -Uz compinit
-compinit
 
 if command -v brew >/dev/null 2>&1; then
     FPATH="$HOMEBREW_PREFIX/share/zsh-completions:$FPATH"
 fi
+
+autoload -U compinit
+compinit
+
+export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense'
+source <(carapace _carapace)
+
+# Tokyo Night-style completion colors
+zstyle ':completion:*' list-colors \
+    'ma=48;5;24;38;5;255' \
+    'di=38;5;117' \
+    'ln=38;5;213' \
+    'ex=38;5;159' \
+    'fi=38;5;189'
+
+zstyle ':completion:*' menu select
+zstyle ':completion:*' list-prompt '%S%M matches%s'
+zstyle ':completion:*' select-prompt '%S%p%s'
+
+
+source "/opt/homebrew/opt/fzf-tab/share/fzf-tab/fzf-tab.zsh"
+
+
+# Let fzf-tab handle the selection menu
+zstyle ':completion:*' menu no
+
+# Show completion groups
+zstyle ':completion:*:descriptions' format '[%d]'
+
+# Apply LS_COLORS to file completions
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+
+# Tokyo Night-like fzf colors
+zstyle ':fzf-tab:*' fzf-flags \
+    --color=fg:#a9b1d6,bg:#1a1b26,hl:#7aa2f7 \
+    --color=fg+:#c0caf5,bg+:#24283b,hl+:#7dcfff \
+    --color=info:#e0af68,prompt:#bb9af7,pointer:#f7768e \
+    --color=marker:#9ece6a,spinner:#7dcfff,header:#565f89
+
+zstyle ':fzf-tab:complete:cd:*' fzf-preview \
+    'eza -1 --color=always $realpath'
 
 # ------------------------------------------------
 # Syntax highlighting & autosuggestions
@@ -117,11 +147,7 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=blue,bold,underline"
 # ------------------------------------------------
 # Atuin history
 # ------------------------------------------------
-export ATUIN_NOBIND="true"
 eval "$(atuin init zsh)"
-bindkey '^x' atuin-search
-bindkey '^[[A' atuin-up-search
-bindkey '^[OA' atuin-up-search
 
 # ------------------------------------------------
 # fzf
@@ -143,7 +169,6 @@ eval "$(zoxide init zsh)"
 # ------------------------------------------------
 command -v batman >/dev/null && eval "$(batman --export-env)"
 command -v thefuck >/dev/null && eval "$(thefuck --alias fk)"
-command -v carapace >/dev/null && source <(carapace _carapace)
 
 # ------------------------------------------------
 # Aliases
@@ -212,7 +237,6 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 export PATH="$PATH:/Users/Zeb/.lmstudio/bin"
 # End of LM Studio CLI section
 
-
 # pnpm
 export PNPM_HOME="/Users/Zeb/Library/pnpm"
 case ":$PATH:" in
@@ -231,3 +255,6 @@ eval "$(mise activate zsh)"
 export PATH="$HOME/.hermes/bin:$PATH"
 
 export PATH="${PATH}:/Users/Zeb/.local/lib/python3.14/site-packages"
+
+# Added by Devin
+export PATH="/Users/Zeb/.codeium/windsurf/bin:$PATH"
