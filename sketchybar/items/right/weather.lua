@@ -58,9 +58,9 @@ local weather = sbar.add("item", "weather", {
 	updates = true,
 	icon = {
 		font = { family = settings.default, style = "Regular", size = 15 },
-		padding_right = 2,
-		padding_left = 8,
-		y_offset = 7,
+		padding_right = 0,
+		padding_left = 12,
+		y_offset = 8,
 	},
 	label = {
 		padding_right = 4,
@@ -169,8 +169,7 @@ local function add_hover(item)
 				drawing = true,
 				color = colors.hover,
 				corner_radius = 20,
-				height = 20,
-				x_offset = 2,
+				height = 30,
 			},
 		})
 	end)

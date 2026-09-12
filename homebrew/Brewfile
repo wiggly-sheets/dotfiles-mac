@@ -12,6 +12,7 @@ tap "charmbracelet/tap"
 tap "codeeditapp/formulae"
 tap "edde746/plezy", "https://github.com/edde746/plezy", trusted: true
 tap "felixkratz/formulae", "https://github.com/FelixKratz/homebrew-formulae"
+tap "fenio/tap"
 tap "filosottile/musl-cross", trusted: true
 tap "gcenx/wine", trusted: true
 tap "gechr/tap", trusted: true
@@ -365,7 +366,7 @@ brew "most"
 # Command-line music player client for mpd
 brew "mpc"
 # Music Player Daemon
-brew "mpd"
+brew "mpd", restart_service: :changed
 # Feature-rich command-line audio/video downloader
 brew "yt-dlp"
 # Media player based on MPlayer and mplayer2
@@ -674,6 +675,8 @@ cask "alt-tab"
 cask "altserver"
 # Memory training application
 cask "anki"
+# GUI for mounting Linux filesystems
+cask "fenio/tap/anylinuxfs-gui", trusted: true
 # Helper for Sindre Sorhus's apps
 cask "app-buddy"
 # Inspect application bundles
@@ -745,8 +748,6 @@ cask "cotypist"
 cask "crossover"
 # Download and manage your addons and mods
 cask "curseforge"
-# Write, edit, and chat about your code with AI
-cask "cursor"
 # Customise menu item keyboard shortcuts
 cask "customshortcuts"
 # Server and cloud storage browser
@@ -759,8 +760,6 @@ cask "default-folder-x"
 cask "desktoppr"
 # Rename macOS Desktops/Spaces from the menubar
 cask "gitmichaelqiu/tap/desktoprenamer", trusted: true
-# Agentic IDE with AI agent command center
-cask "devin-desktop"
 # Show available disk space on APFS volumes
 cask "diskspace"
 # Monitor DNS activity
@@ -907,10 +906,14 @@ cask "lm-studio"
 cask "loopback"
 # Trims video and audio files losslessly
 cask "losslesscut"
+# Mouse utility to add gesture functions and smooth scrolling to 3rd party mice
+cask "mac-mouse-fix"
 # File system integration
 cask "macfuse"
 # Graphical user interface for the command terminal
 cask "macpilot"
+# Screenshot and screen recording tool
+cask "macshot"
 # Menu bar toolbox
 cask "mactools"
 # Tool to create bootable USB installers
@@ -923,6 +926,8 @@ cask "makemkv"
 cask "markdown-preview"
 # Markdown editor
 cask "markedit"
+# Extensible two-pane file manager
+cask "marta"
 # Display technical and tag data for video and audio files
 cask "mediainfo"
 # UI replacement for volume, brightness and now playing controls
@@ -941,6 +946,8 @@ cask "mission-control-plus"
 cask "mkvtoolnix-app"
 # Deep clean, analyze, and optimize app
 cask "mole-app"
+# Smooths scrolling and set mouse scroll directions independently
+cask "mos"
 # Mounts servers and cloud storages as a disk on the desktop
 cask "mountain-duck"
 # Menubar app to easily manage external drives
@@ -1083,6 +1090,8 @@ cask "sf-symbols"
 cask "shortcat"
 # Screenshot measurement and annotation tool
 cask "shottr"
+# Sideload apps to non-jailbroken iOS devices and Apple Silicon Macs
+cask "playcover/playcover/sideloadly"
 # Instant messaging application focusing on security
 cask "signal"
 # Porting tool, to make Windows programs/games into native apps
@@ -1119,8 +1128,6 @@ cask "ruittenb/tap/spaceman"
 cask "wiggly-sheets/spacemap/spacemap", trusted: true
 # Give macOS Spaces persistent names in Mission Control
 cask "wiggly-sheets/spacesrenamer/spacesrenamer", trusted: true
-# Software update framework for Cocoa developers
-cask "sparkle"
 # Run anything at startup by simply placing it in a special folder
 cask "startupfolder"
 # System monitor for the menu bar
@@ -1145,8 +1152,6 @@ cask "swiftdefaultappsprefpane"
 cask "syncthing-app"
 # Quicklook extension for source files
 cask "syntax-highlight"
-# Minimal GUI for AI code agents
-cask "t3-code"
 # Terminal emulator, SSH and serial client
 cask "tabby"
 # Mesh VPN based on WireGuard
@@ -1175,6 +1180,8 @@ cask "topnotch"
 cask "tor-browser"
 # Turn your MacBook's trackpad into a precise digital weighing scale
 cask "krishkrosh/apps/trackweight"
+# Open-source BitTorrent client
+cask "transmission"
 # Batch rename utility
 cask "transnomino"
 # Easy to use text extraction tool
@@ -1227,6 +1234,8 @@ mas "2048 Game", id: 871033113
 mas "Actions", id: 1586435171
 mas "Amphetamine", id: 937984704
 mas "Apple Configurator", id: 1037126344
+mas "Asphalt", id: 1491129197
+mas "Asphalt8", id: 610391947
 mas "Blackmagic Disk Speed Test", id: 425264550
 mas "Broadcasts", id: 1469995354
 mas "Color Picker", id: 1545870783
@@ -1252,6 +1261,7 @@ mas "JuxtaText", id: 6504801865
 mas "Keynote", id: 361285480
 mas "Keyword Search", id: 1558453954
 mas "Klack", id: 6446206067
+mas "Knights of the Old Republic", id: 416608891
 mas "Lickable Menu Bar", id: 6444217677
 mas "Logic Pro", id: 634148309
 mas "Mactracker", id: 430255202
@@ -1280,6 +1290,7 @@ mas "SnippetsLab", id: 1006087419
 mas "Sparrow Weather", id: 6449440582
 mas "Speediness", id: 1596706466
 mas "Sprinkles", id: 1500209074
+mas "Star Wars®: Knights of the Old Republic™ II", id: 960778634
 mas "Startup Manager", id: 1296723195
 mas "Swift Playground", id: 1496833156
 mas "TestFlight", id: 899247664
