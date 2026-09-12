@@ -6,7 +6,7 @@ local disk_icon = sbar.add("item", "storage_icon", {
 	update_freq = 60,
 	position = "right",
 	padding_left = -32,
-	padding_right = 20,
+	padding_right = 10,
 	y_offset = 7,
 	icon = { font = { size = 14 } },
 })
@@ -124,19 +124,6 @@ end)
 
 update_disk()
 
--- ============================================================
--- Disk I/O (read on top, write on bottom) — formatted like the
--- network up/down layout in network.lua: a small icon+label item
--- carrying the live speed reading, and a separate bare graph item
--- sitting right alongside it (linked via the overlapping padding
--- trick network.lua uses for net_graph_up/net_graph_down).
---
--- There's no built-in macOS tool that reports read/write throughput
--- split apart the way the network_load event provider does for
--- interfaces, so we poll IOBlockStorageDriver's cumulative byte
--- counters via `ioreg` and diff them each interval to get bytes/sec.
--- ============================================================
-
 local IO_UPDATE_FREQ = 2 -- seconds between polls
 local MAX_MBPS = 300 -- color thresholds scale against this ceiling; tune to taste
 
@@ -179,12 +166,12 @@ local normalize_write = make_graph_normalizer(5 * 1024 * 1024)
 local disk_read = sbar.add("item", "disk_read", {
 	position = "right",
 	icon = {
-		font = { family = settings.default, size = 9 },
+		font = { family = settings.default, size = 8 },
         string = "R",
 		padding_left = 2
 	},
 	label = {
-		font = { family = settings.default, size = 9 },
+		font = { family = settings.default, size = 8 },
 		color = colors.green,
 		string = "??? B/s",
 	},
@@ -193,15 +180,15 @@ local disk_read = sbar.add("item", "disk_read", {
 
 local disk_write = sbar.add("item", "disk_write", {
 	position = "right",
-	padding_right = -52,
+	padding_right = -48,
 	icon = {
-		font = { family = settings.default, size = 9 },
+		font = { family = settings.default, size = 8 },
         string = "W",
         padding_left = 5
 
 	},
 	label = {
-		font = { family = settings.default, size = 9 },
+		font = { family = settings.default, size = 8},
 		color = colors.orange,
 		string = "??? B/s",
 	},

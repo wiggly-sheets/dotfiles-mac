@@ -2,11 +2,15 @@ local colors = require("colors")
 local settings = require("default")
 local icons = require("helpers.icons")
 
-
-
 local menus_expanded = false
 
 local max_items = 15
+
+local left_app_script =
+	"osascript -e 'tell application \"System Events\" to key code 46 using {command down, option down, control down}'"
+
+local right_app_script =
+	"osascript -e 'tell application \"System Events\" to key code 0 using {command down, option down, control down}'"
 
 local menu_items = {}
 for i = 1, max_items, 1 do
@@ -223,6 +227,16 @@ menu_watcher:subscribe("front_app_switched", "window_focus", update_menus)
 
 for i, menu in ipairs(menu_items) do
 	menu:subscribe("mouse.clicked", function(env)
+		if i == 1 and not menus_expanded then
+			-- collapsed: item 1 stands in for the app-switch control
+			if env.BUTTON == "left" then
+				sbar.exec(left_app_script)
+			elseif env.BUTTON == "right" then
+				sbar.exec(right_app_script)
+			end
+			return
+		end
+
 		if env.BUTTON == "left" then
 			-- run menu action
 			sbar.exec("$CONFIG_DIR/helpers/menus/bin/menus -s " .. i)
@@ -282,22 +296,21 @@ for i, menu in ipairs(menu_items) do
 end
 
 
+local left_front_app_icon = 'osascript -e \'tell application "System Events" to keystroke "w" using {command down}\''
 
-local left_front_app_script = 'osascript -e \'tell application "System Events" to keystroke "w" using {command down}\''
-
-local right_front_app_script =
+local right_front_app_icon =
 	"osascript -e 'tell application \"System Events\" to set frontApp to name of first application process whose frontmost is true' -e 'tell application frontApp to quit'"
 
-local middle_front_app_script =
+local middle_front_app_icon =
 	'osascript -e \'tell application "System Events" to keystroke "h" using {command down}\''
 
 front_app:subscribe("mouse.clicked", function(env)
 	if env.BUTTON == "left" then
-		sbar.exec(left_front_app_script)
+		sbar.exec(left_front_app_icon)
 	elseif env.BUTTON == "right" then
-		sbar.exec(right_front_app_script)
+		sbar.exec(right_front_app_icon)
 	else
-		sbar.exec(middle_front_app_script)
+		sbar.exec(middle_front_app_icon)
 	end
 end)
 

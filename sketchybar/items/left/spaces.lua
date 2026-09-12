@@ -37,7 +37,7 @@ local function update_space_display(space, space_id)
 		local layout = output:gsub("%s+", "") -- bsp, float, stack
 		local layout_letter = ""
 		if layout == "bsp" then
-			layout_letter = "b"
+			layout_letter = ""
 		elseif layout == "float" then
 			layout_letter = "f"
 		elseif layout == "stack" then
@@ -404,28 +404,14 @@ sbar.subscribe("theme_changed", function()
 	theme_cache.current = get_current_theme()
 end)
 
-
-
-
-local left_apple_script =
-	"osascript -e 'tell application \"System Events\" to key code 46 using {command down, option down, control down}'"
-
-local right_apple_script =
-	"osascript -e 'tell application \"System Events\" to key code 0 using {command down, option down, control down}'"
-
 apple:subscribe("mouse.clicked", function(env)
 	if env.BUTTON == "left" then
-		sbar.exec(left_apple_script)
-	elseif env.BUTTON == "right" then
-		sbar.exec(right_apple_script)
-	elseif env.BUTTON == "other" then
 		apple:set({ popup = { drawing = not drawing } })
 		if not drawing then
 			open_theme_popup(apple)
 		end
 	end
 end)
-
 
 
 apple:subscribe("mouse.entered", function()
@@ -435,7 +421,7 @@ apple:subscribe("mouse.entered", function()
 			color = colors.hover,
 			corner_radius = 10,
 			height = 20,
-			x_offset = 3,
+			x_offset = 1,
 			y_offset = -1,
 			width = 0,
 		},

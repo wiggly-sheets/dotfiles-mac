@@ -5,10 +5,6 @@ local settings = require("default")
 local hidden = true
 
 local items_to_toggle = {
-	"weather",
-	"battery",
-	"display",
-	"lowpowermode",
 	"network",
 	"storage",
 	"temperature",
@@ -16,14 +12,10 @@ local items_to_toggle = {
 	"ram",
 	"cpu_temp",
 	"gpu_temp",
-	"network.status",
 	"network1",
 	"network2",
 	"net_graph_up",
 	"net_graph_down",
-	"volume",
-	"mic",
-	"bluetooth",
     "disk_read",
 	"disk_read_graph",
     "disk_write",
@@ -35,8 +27,8 @@ local items_to_toggle = {
 
 local toggle_items = sbar.add("item", "toggle_items", {
 	position = "right",
-	padding_left = 5,
-	padding_right = 0,
+	padding_left = 4,
+    padding_right = -4,
 	icon = {
 		string = icons.menus.contract,
 		color = colors.white,
