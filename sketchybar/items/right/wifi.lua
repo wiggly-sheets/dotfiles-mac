@@ -10,7 +10,7 @@ local network = sbar.add("item", "network.status", {
 		string = icons.wifi.disconnected,
 		font = {
 			family = settings.default,
-			size = 13.0,
+			size = 12,
 		},
 		color = colors.red,
 	},
@@ -237,9 +237,16 @@ end)
 
 
 
-local network_click_script =
-	'osascript -e \'tell application "System Events" to tell process "ControlCenter" to click menu bar item 3 of menu bar 1 \''
-
+local network_click_script = [[
+  osascript -e '
+    tell application "System Events"
+      tell process "MenuBarAgent"
+        set mb to first UI element whose role is "AXMenuBar"
+        perform action "AXPress" of first UI element of item 2 of (every UI element of mb)
+      end tell
+    end tell
+  '
+]]
 local vpn_click_script =
 	'osascript -e \'tell application "System Events" to tell process "Passepartout" to click menu bar item 1 of menu bar 2\''
 

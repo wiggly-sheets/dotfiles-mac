@@ -31,17 +31,10 @@ start_network_load()
 
 local network_up = sbar.add("item", "network1", {
 	position = "right",
-	icon = {
-		font = {
-			family = settings.default,
-			size = 9,
-		},
-		string = icons.wifi.upload,
-	},
 	label = {
 		font = {
 			family = settings.default,
-			size = 9,
+			size = 8,
 		},
 		color = colors.blue,
 		string = "??? Bps",
@@ -51,18 +44,11 @@ local network_up = sbar.add("item", "network1", {
 
 local network_down = sbar.add("item", "network2", {
 	position = "right",
-	padding_right = -52,
-	icon = {
-		font = {
-			family = settings.default,
-			size = 9,
-		},
-		string = icons.wifi.download,
-	},
+	padding_right = -41,
 	label = {
 		font = {
 			family = settings.default,
-			size = 9,
+			size = 8,
 		},
 		color = colors.green,
 		string = "??? Bps",
@@ -70,9 +56,16 @@ local network_down = sbar.add("item", "network2", {
 	y_offset = -5,
 })
 
--- Upload network graph
 local net_graph_up = sbar.add("graph", "net_graph_up", 42, {
 	position = "right",
+	icon = {
+		font = {
+			family = settings.default,
+			size = 9,
+		},
+		string = icons.wifi.upload,
+		color = colors.blue,
+	},
 	graph = {
 		color = colors.blue,
 	},
@@ -83,7 +76,30 @@ local net_graph_up = sbar.add("graph", "net_graph_up", 42, {
 		drawing = true,
 	},
 	y_offset = 7,
-	padding_right = -2,
+    padding_right = -3,
+})
+
+local net_graph_down = sbar.add("graph", "net_graph_down", 42, {
+	position = "right",
+	padding_right = -55,
+	icon = {
+		font = {
+			family = settings.default,
+			size = 9,
+		},
+		string = icons.wifi.download,
+		color = colors.green,
+	},
+	graph = {
+		color = colors.green,
+	},
+	background = {
+		height = 10,
+		color = { alpha = 0 },
+		border_color = { alpha = 0 },
+		drawing = true,
+	},
+	y_offset = -5,
 })
 
 -- Adaptive graph normalizer: EMA-smooths the raw rate, tracks a
@@ -153,21 +169,6 @@ net_graph_up:subscribe("network_update", function(env)
 	net_graph_up:push({ normalize_up(up) })
 end)
 
--- Download network graph
-local net_graph_down = sbar.add("graph", "net_graph_down", 42, {
-	position = "right",
-	padding_right = -49,
-	graph = {
-		color = colors.green,
-	},
-	background = {
-		height = 10,
-		color = { alpha = 0 },
-		border_color = { alpha = 0 },
-		drawing = true,
-	},
-	y_offset = -5,
-})
 
 net_graph_down:subscribe("network_update", function(env)
 	local down = parse_rate(env.download)
@@ -182,7 +183,6 @@ network_up:subscribe("network_update", function(env)
 	local down_color = (download_str == "000 B/s") and colors.grey or colors.green
 
 	network_up:set({
-		icon = { color = up_color },
 		label = {
 			string = upload_str,
 			color = up_color,
@@ -190,11 +190,18 @@ network_up:subscribe("network_update", function(env)
 	})
 
 	network_down:set({
-		icon = { color = down_color },
 		label = {
 			string = download_str,
 			color = down_color,
 		},
+	})
+
+	net_graph_up:set({
+		icon = { color = up_color },
+	})
+
+	net_graph_down:set({
+		icon = { color = down_color },
 	})
 end)
 
@@ -221,108 +228,42 @@ network_down:subscribe("mouse.clicked", handle_arrow_click)
 net_graph_up:subscribe("mouse.clicked", handle_arrow_click)
 net_graph_down:subscribe("mouse.clicked", handle_arrow_click)
 
--- ======== Hover effects ========
-network_up:subscribe("mouse.entered", function()
-	network_down:set({
-		background = {
-			drawing = true,
-			color = colors.hover,
-			corner_radius = 20,
-			height = 10,
-			y_offset = 0,
-		},
-	})
-	network_up:set({
-		background = {
-			drawing = true,
-			color = colors.hover,
-			corner_radius = 20,
-			height = 10,
-			x_offset = 0,
-		},
-	})
-end)
+-- ======== Shared network hover ========
 
-network_down:subscribe("mouse.entered", function()
-	network_up:set({
-		background = {
-			drawing = true,
-			color = colors.hover,
-			corner_radius = 20,
-			height = 10,
-			y_offset = 0,
-		},
-	})
-	network_down:set({
-		background = {
-			drawing = true,
-			color = colors.hover,
-			corner_radius = 20,
-			height = 10,
-			x_offset = 0,
-		},
-	})
-end)
+local network_items = {
+    network_up,
+    network_down,
+    net_graph_up,
+    net_graph_down,
+}
 
-network_up:subscribe({ "mouse.exited", "mouse.entered.global", "mouse.exited.global" }, function()
-	network_down:set({ background = { drawing = true, height = 10, color = colors.transparent } })
-	network_up:set({ background = { drawing = true, height = 10, color = colors.transparent } })
-end)
+local function set_network_hover(color)
+    for _, item in ipairs(network_items) do
+        item:set({
+            background = {
+                drawing = true,
+                color = color,
+                corner_radius = 20,
+                height = 10,
+            },
+        })
+    end
+end
 
-network_down:subscribe({ "mouse.exited", "mouse.entered.global", "mouse.exited.global" }, function()
-	network_up:set({ background = { drawing = true, height = 10, color = colors.transparent } })
-	network_down:set({ background = { drawing = true, height = 10, color = colors.transparent } })
-end)
+local function show_network_hover()
+    set_network_hover(colors.hover)
+end
 
+local function clear_network_hover()
+    set_network_hover(colors.transparent)
+end
 
-net_graph_down:subscribe("mouse.entered", function()
-	net_graph_up:set({
-		background = {
-			drawing = true,
-			color = colors.hover,
-			corner_radius = 20,
-			height = 10,
-			y_offset = 0,
-		},
-	})
-	net_graph_down:set({
-		background = {
-			drawing = true,
-			color = colors.hover,
-			corner_radius = 20,
-			height = 10,
-			x_offset = 0,
-		},
-	})
-end)
+for _, item in ipairs(network_items) do
+    item:subscribe("mouse.entered", show_network_hover)
 
-net_graph_up:subscribe("mouse.entered", function()
-	net_graph_up:set({
-		background = {
-			drawing = true,
-			color = colors.hover,
-			corner_radius = 20,
-			height = 10,
-			y_offset = 0,
-		},
-	})
-	net_graph_down:set({
-		background = {
-			drawing = true,
-			color = colors.hover,
-			corner_radius = 20,
-			height = 10,
-			x_offset = 0,
-		},
-	})
-end)
-
-net_graph_down:subscribe({ "mouse.exited", "mouse.entered.global", "mouse.exited.global" }, function()
-	net_graph_up:set({ background = { drawing = true, height = 10, color = colors.transparent } })
-	net_graph_down:set({ background = { drawing = true, height = 10, color = colors.transparent } })
-end)
-
-net_graph_up:subscribe({ "mouse.exited", "mouse.entered.global", "mouse.exited.global" }, function()
-	net_graph_down:set({ background = { drawing = true, height = 20, color = colors.transparent } })
-	net_graph_up:set({ background = { drawing = true, height = 10, color = colors.transparent } })
-end)
+    item:subscribe({
+        "mouse.exited",
+        "mouse.entered.global",
+        "mouse.exited.global",
+    }, clear_network_hover)
+end

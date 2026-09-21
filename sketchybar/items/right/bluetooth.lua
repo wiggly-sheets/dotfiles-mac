@@ -12,9 +12,19 @@ local bluetooth = sbar.add("item", "bluetooth", {
 		color = colors.white,
 		font = { family = settings.default, size = 15 },
 	},
-	updates = "when_shown",
-	click_script = 'osascript -e \'tell application "System Events" to tell process "ControlCenter" to click (first menu bar item of menu bar 1 whose name is not "Wi-Fi")\'',
-})
+    updates = "when_shown",
+	
+	
+click_script =  [[
+  osascript -e '
+    tell application "System Events"
+      tell process "MenuBarAgent"
+        set mb to first UI element whose role is "AXMenuBar"
+        perform action "AXPress" of first UI element of item 1 of (every UI element of mb)
+      end tell
+    end tell
+  '
+]]})
 
 local function update_bluetooth()
 	sbar.exec("/opt/homebrew/bin/blueutil --power", function(output)

@@ -4,9 +4,8 @@ local icons = require("helpers.icons")
 local dnd = sbar.add("item", "dnd", {
 	position = "right",
 	update_freq = 5,
-	padding_left = 0,
-	padding_right = 0,
-	label = {
+    label = {
+		font = { size = 13 },
 		color = colors.white,
 	},
 })
@@ -17,7 +16,6 @@ local function set_icon(active)
 	dnd:set({
 		label = {
 			string = active and icons.dnd.on or icons.dnd.off,
-			font = { size = 13 },
 			color = active and colors.dnd or colors.grey,
 		},
 	})
@@ -41,9 +39,22 @@ end
 
 update_dnd()
 
+local dnd_click_script =  [[
+  osascript -e '
+    tell application "System Events"
+      tell process "MenuBarAgent"
+        set mb to first UI element whose role is "AXMenuBar"
+        perform action "AXPress" of first UI element of item 3 of (every UI element of mb)
+      end tell
+    end tell
+  '
+]]
+
 dnd:subscribe("mouse.clicked", function(env)
 	if env.BUTTON == "left" then
-		toggle_dnd()
+        toggle_dnd()
+    elseif env.BUTTON == "right" then
+		sbar.exec(dnd_click_script)
 	end
 end)
 

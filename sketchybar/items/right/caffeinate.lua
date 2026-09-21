@@ -4,10 +4,11 @@ local icons = require("helpers.icons")
 local caffeinate = sbar.add("item", "caffeinate", {
 	position = "right",
 	update_freq = 10,
-	padding_left = 0,
-	padding_right = -2,
-	icon = {
-		color = colors.white,
+	padding_left = -1,
+    padding_right = -1,
+    icon = {
+		font = {size = 12},
+        color = colors.white,
 	},
 })
 
@@ -15,7 +16,7 @@ local caffeinated = false
 
 local function set_icon(active)
 	caffeinate:set({
-		icon = { string = active and icons.caffeinate.on or icons.caffeinate.off, font = { size = 13 } },
+		icon = { string = active and icons.caffeinate.on or icons.caffeinate.off },
 	})
 end
 

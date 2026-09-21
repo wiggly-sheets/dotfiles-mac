@@ -4,11 +4,10 @@ local icons = require("helpers.icons")
 local control_center = sbar.add("item", "control_center", {
 	position = "right",
 	padding_right = -4,
-	padding_left = 0,
 	icon = {
 		drawing = true,
 		string = icons.control_center,
-		font = { size = 13 },
+		font = { size = 12 },
 
 		color = colors.white,
 	},
