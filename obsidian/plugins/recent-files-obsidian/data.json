@@ -1,8 +1,32 @@
 {
   "recentFiles": [
     {
+      "basename": "sketchybar",
+      "path": "sketchybar.md"
+    },
+    {
+      "basename": "jankyborders",
+      "path": "jankyborders.md"
+    },
+    {
+      "basename": "repo workflow",
+      "path": "repo workflow.md"
+    },
+    {
+      "basename": "sample readme",
+      "path": "sample readme.md"
+    },
+    {
+      "basename": "wallpaper-selector",
+      "path": "wallpaper-selector.md"
+    },
+    {
+      "basename": "wallpaper selector audit",
+      "path": "audits/resolved audits/wallpaper selector audit.md"
+    },
+    {
       "basename": "spaces renamer audit",
-      "path": "audits/spaces renamer audit.md"
+      "path": "audits/resolved audits/spaces renamer audit.md"
     },
     {
       "basename": "fluor audit",
@@ -19,30 +43,6 @@
     {
       "basename": "spacemap audit",
       "path": "audits/resolved audits/spacemap audit.md"
-    },
-    {
-      "basename": "sample readme",
-      "path": "sample readme.md"
-    },
-    {
-      "basename": "repo workflow",
-      "path": "repo workflow.md"
-    },
-    {
-      "basename": "wallapper app",
-      "path": "wallapper app.md"
-    },
-    {
-      "basename": "jankyborders",
-      "path": "jankyborders.md"
-    },
-    {
-      "basename": "setup",
-      "path": "setup.md"
-    },
-    {
-      "basename": "wallpaper selector audit",
-      "path": "audits/wallpaper selector audit.md"
     }
   ],
   "omittedPaths": [],

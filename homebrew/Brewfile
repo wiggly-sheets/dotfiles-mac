@@ -1,3 +1,4 @@
+tap "abue-ammar/tinycast", trusted: true
 tap "achannarasappa/tap", "https://github.com/achannarasappa/tap.git", trusted: true
 tap "alecharmon/tap"
 tap "alielsokary/tap", trusted: { casks: ["caskhub"] }
@@ -32,6 +33,7 @@ tap "krishkrosh/apps", trusted: true
 tap "lihaoyun6/tap", trusted: true
 tap "lslqtz/formulae", trusted: true
 tap "m1ten/othyn", trusted: true
+tap "m99coder/tap", trusted: { casks: ["alacritty"] }
 tap "malpern/tap", trusted: true
 tap "matars/gitfetch"
 tap "mateocerquetella/ricebarmac", trusted: true
@@ -54,7 +56,7 @@ tap "socsieng/tap"
 tap "sw33tlie/macshot", trusted: true
 tap "theboredteam/boring-notch", "https://github.com/TheBoredTeam/homebrew-boring-notch", trusted: true
 tap "thezoraiz/ascii-image-converter", "https://github.com/TheZoraiz/homebrew-ascii-image-converter"
-tap "tw93/tap"
+tap "tw93/tap", trusted: { casks: ["kakuku"] }
 tap "typewhisper/tap", trusted: true
 tap "valkyrie00/bbrew", "https://github.com/Valkyrie00/homebrew-bbrew", trusted: true
 tap "waydabber/betterdisplay"
@@ -91,6 +93,8 @@ brew "sqlite"
 brew "python@3.13"
 # Simple system information tool written in Python
 brew "archey4"
+# Download with resuming and segmented downloading
+brew "aria2"
 # Record and share terminal sessions
 brew "asciinema"
 # Aquarium animation in ASCII art
@@ -297,6 +301,8 @@ brew "jpeg"
 brew "jq"
 # Command-line note taker
 brew "jrnl"
+# Handy way to save and run project-specific commands
+brew "just"
 # Command-line music player
 brew "kew"
 # Network authentication protocol
@@ -624,7 +630,7 @@ brew "codeeditapp/formulae/codeedit-cli", trusted: true
 # A window border system for macOS
 brew "felixkratz/formulae/borders", trusted: true
 # Custom macOS statusbar with shell plugin, interaction and graph support
-brew "felixkratz/formulae/sketchybar", trusted: true
+brew "felixkratz/formulae/sketchybar", link: false, trusted: true
 # Turns macOS input fields into real vim buffers
 brew "felixkratz/formulae/svim", trusted: true
 # Interactive TUI for Homebrew
@@ -667,8 +673,6 @@ brew "waydabber/betterdisplay/betterdisplaycli", trusted: true
 cask "affine"
 # Get the battery level of all your devices on your Mac.
 cask "lihaoyun6/tap/airbattery"
-# GPU-accelerated terminal emulator
-cask "alacritty"
 # Enable Windows-like alt-tab
 cask "alt-tab"
 # iOS App Store alternative
@@ -697,8 +701,6 @@ cask "mhaeuser/mhaeuser/battery-toolkit"
 cask "bbedit"
 # Screen recorder
 cask "bettercapture"
-# Display management tool
-cask "betterdisplay"
 # Utility improving 3rd party mouse performance and functionalities
 cask "bettermouse"
 # Tool to customise input devices and automate computer systems
@@ -778,6 +780,8 @@ cask "downie"
 cask "dropbox"
 # Electronic Arts game launcher
 cask "ea"
+# One click DMG installs
+cask "easydmg"
 # Matrix collaboration client
 cask "element"
 # Launcher for *Epic Games* games
@@ -848,8 +852,10 @@ cask "harper-desktop"
 cask "hazel"
 # Chromium-based web browser
 cask "helium-browser"
-# Terminal built on web technologies
-cask "hyper"
+# Game launcher
+cask "heroic"
+# Homebrew's official GUI
+cask "homebrew-app"
 # Free and open-source media player
 cask "iina"
 # Tool to optimise images to a smaller size
@@ -864,8 +870,6 @@ cask "iterm2"
 cask "jan"
 # Download manager
 cask "jdownloader"
-# A fast, out-of-the-box terminal built for AI coding
-cask "tw93/tap/kakuku", trusted: true
 # Pie menu
 cask "kando"
 # Keyboard customiser
@@ -880,8 +884,6 @@ cask "keycastr"
 cask "keyclu"
 # Use Vim in input fields and non input fields
 cask "kindavim"
-# GPU-based terminal emulator
-cask "kitty"
 # Tool to show what is persistently installed on the computer
 cask "knockknock"
 # Free and open-source painting and sketching program
@@ -918,10 +920,6 @@ cask "macshot"
 cask "mactools"
 # Tool to create bootable USB installers
 cask "macusb"
-# Speech recognition tool
-cask "macwhisper"
-# Video format converter (transcoder)
-cask "makemkv"
 # Markdown previewer with bundled Quick Look extension
 cask "markdown-preview"
 # Markdown editor
@@ -1048,8 +1046,6 @@ cask "edde746/plezy/plezy"
 cask "popclip"
 # Monitor process activity
 cask "processmonitor"
-# Peer to peer Bitorrent client
-cask "qbittorrent"
 # Quick Look generator for Markdown files
 cask "qlmarkdown"
 # Disk space analyzer
@@ -1068,8 +1064,6 @@ cask "rclone-ui"
 cask "readest"
 # WinAMP clone written in SwiftUI
 cask "reamp"
-# Dreamcast emulator
-cask "redream"
 # Scans, detects, and monitors keyboard taps
 cask "reikey"
 # File sync and share software
@@ -1098,8 +1092,6 @@ cask "signal"
 cask "kegworks-app/kegworks/sikarugir"
 # Automatically checks computer's security
 cask "silentknight"
-# PDF viewer designed for reading research papers and technical books
-cask "sioyek"
 # Native macOS companion app for editing SketchyBar configs
 cask "wiggly-sheets/sketchybar-studio/sketchybar-studio"
 # Simple hotkey daemon written in Zig
@@ -1152,8 +1144,6 @@ cask "swiftdefaultappsprefpane"
 cask "syncthing-app"
 # Quicklook extension for source files
 cask "syntax-highlight"
-# Terminal emulator, SSH and serial client
-cask "tabby"
 # Mesh VPN based on WireGuard
 cask "tailscale-app"
 # Windows-style taskbar as a Dock replacement
@@ -1172,6 +1162,8 @@ cask "ti-connect-ce"
 cask "tigervnc"
 # Utility to change the default backup interval of Time Machine
 cask "timemachineeditor"
+# Tiny, fully native launcher, hotkeys, and clipboard history
+cask "abue-ammar/tinycast/tinycast"
 # Alter the character of your TonePrint pedal
 cask "toneprint"
 # Utility to hide the notch
@@ -1270,7 +1262,7 @@ mas "MainStage", id: 634159523
 mas "Meal planner", id: 6460821436
 mas "Mela", id: 1568924476
 mas "Motion", id: 434290957
-mas "Night Sky X", id: 475772902
+mas "Night Sky", id: 475772902
 mas "Numbers", id: 361304891
 mas "Pages", id: 361309726
 mas "Panels", id: 1236567663

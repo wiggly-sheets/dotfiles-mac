@@ -47,7 +47,7 @@ local cpu_temp = sbar.add("graph", "cpu_temp", 42, {
 		padding_right = 0,
 	},
 	icon = { string = icons.cpu, padding_left = 5, color = colors.white },
-	label = { padding_left = 2, font = { family = settings.default, size = 10 } },
+	label = { padding_left = 2, padding_right = 3, font = { family = settings.default, size = 8 } },
 	click_script = click_script,
 })
 
@@ -63,7 +63,7 @@ local gpu_temp = sbar.add("graph", "gpu_temp", 42, {
 		padding_right = 0,
 	},
 	icon = { string = icons.gpu, padding_left = 0, color = colors.white },
-	label = { padding_left = 2, font = { family = settings.default, size = 12 } },
+	label = { padding_left = 2, font = { family = settings.default, size = 8 } },
 	click_script = click_script,
 })
 
@@ -78,7 +78,7 @@ local function update_temperatures()
 			label = {
 				string = cpu_temperature .. "°C",
 				color = cpu_color,
-				font = { family = settings.default, size = 8 },
+			
 			},
 		})
 	end)
@@ -93,7 +93,6 @@ local function update_temperatures()
 			label = {
 				string = gpu_temperature .. "°C",
 				color = gpu_color,
-				font = { family = settings.default, size = 8 },
 			},
 		})
 	end)

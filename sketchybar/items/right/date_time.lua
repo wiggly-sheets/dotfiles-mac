@@ -13,7 +13,7 @@ local time = sbar.add("item", "time", {
 			size = 9,
 		},
 	},
-	y_offset = 7,
+	y_offset = 6,
 })
 
 local date = sbar.add("item", "date", {
@@ -42,9 +42,10 @@ date:subscribe({ "forced", "routine", "system_woke" }, function()
 end)
 
 local left_click_script =
-	[[osascript -e 'tell application "System Events" to tell process "Dato" to click menu bar item 1 of menu bar 2']]
+[[osascript -e 'tell application "System Events" to tell process "Dato" to click menu bar item 1 of menu bar 2']]
+	
 local right_click_script =
-	'osascript -e \'tell application "System Events" to tell process "ControlCenter" to click menu bar item 2 of menu bar 1\''
+"cliclick kd:fn t:n"
 
 local middle_click_script = [[osascript -e 'tell application "System Events" to tell process "FreeLLMAPI" to click menu bar item 1 of menu bar 2']]
 

@@ -27,8 +27,8 @@ local items_to_toggle = {
 
 local toggle_items = sbar.add("item", "toggle_items", {
 	position = "right",
-	padding_left = 4,
-    padding_right = -4,
+	padding_left = 2,
+    padding_right = -6,
 	icon = {
 		string = icons.menus.contract,
 		color = colors.white,

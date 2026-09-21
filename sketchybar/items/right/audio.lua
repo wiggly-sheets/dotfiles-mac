@@ -4,15 +4,15 @@ local settings = require("default")
 
 local volume = sbar.add("item", "volume", {
 	position = "right",
-	y_offset = 7,
+	y_offset = 6,
 	icon = {
-		padding_left = 2,
+		padding_left = 4,
 		padding_right = 2,
 		drawing = true,
 		string = icons.volume._0,
 		width = "dynamic",
 		color = colors.white,
-		font = { family = settings.default, size = 11.0 },
+		font = { family = settings.default, size = 10 },
 	},
 	label = {
 		drawing = true,
@@ -21,7 +21,7 @@ local volume = sbar.add("item", "volume", {
 		padding_left = 2,
 		padding_right = 2,
 		color = colors.yellow,
-		font = { family = settings.default, size = 10.0 },
+		font = { family = settings.default, size = 9 },
 	},
 	updates = "true",
 	padding_left = 0,
@@ -31,24 +31,24 @@ local mic = sbar.add("item", "mic", {
 	icon = {
 		drawing = true,
 		string = icons.mic.on,
-		font = { size = 11 },
+		font = { size = 10 },
 		color = colors.white,
 		padding_right = 2,
 		padding_left = 2,
 	},
 	label = {
-		padding_right = 10,
+		padding_right = 4,
 		padding_left = 2,
 		drawing = true,
 		width = "dynamic",
 		string = "??",
-		font = { family = settings.default, size = 10 },
+		font = { family = settings.default, size = 9 },
 		color = colors.yellow,
 	},
 	position = "right",
 	update_freq = 10,
 	padding_right = -50,
-	padding_left = 4,
+	padding_left = 6,
 	y_offset = -5,
 })
 
@@ -87,7 +87,7 @@ volume:subscribe("volume_change", "forced", "system_woke", function(env)
 		else
 			if level == nil then
 				level = 0
-				mic:set({ label = { padding_right = 20 } })
+				mic:set({ label = { padding_right = 10 } })
 			end
 			if level >= 70 then
 				icon = icons.volume._100

@@ -5,24 +5,23 @@ local icons = require("helpers.icons")
 local display = sbar.add("item", "display", {
 	icon = {
 		drawing = true,
-		font = { size = 11 },
+		font = { size = 10 },
 		color = colors.white,
-		padding_right = 5,
-		padding_left = 4,
+		padding_right = 2,
+		padding_left = 6,
 		y_offset = 6,
 	},
 	label = {
 		drawing = true,
-		font = { family = settings.default, size = 10 },
+		font = { family = settings.default, size = 9 },
 		color = colors.yellow,
 		padding_right = 0,
-		padding_left = -20,
-		y_offset = -6,
+		padding_left = -16,
+		y_offset = -5,
 	},
 	position = "right",
 	updates = true,
-	padding_left = 2,
-	padding_right = 2,
+	padding_right = 5,
 })
 
 local display_left_click =
@@ -31,8 +30,8 @@ local display_left_click =
 local display_flux_click =
 	'osascript -e \'tell application "System Events" to tell process "Flux" to click menu bar item 1 of menu bar 2\''
 
-local display_wallper_click =
-	'osascript -e \'tell application "System Events" to tell process "Wallper" to click menu bar item 1 of menu bar 2\''
+local display_wallpaper_click =
+	'osascript -e \'tell application "System Events" to tell process "Wallpaper Selector" to click menu bar item 1 of menu bar 2\''
 
 local display_switch_click = "~/dotfiles/yabai/scripts/layout.sh"
 
@@ -44,7 +43,7 @@ local function handle_display_click(env)
 	elseif env.BUTTON == "other" then
 		sbar.exec(display_switch_click)
 	elseif env.MODIFIER == "cmd" then
-		sbar.exec(display_wallper_click)
+		sbar.exec(display_wallpaper_click)
 	end
 end
 

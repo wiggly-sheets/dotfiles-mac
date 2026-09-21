@@ -18,9 +18,9 @@ require("items.right.audio")
 require("items.right.weather")
 require("items.right.toggle_items")
 require("items.right.network")
-require("items.right.storage")
 require("items.right.temperature")
 require("items.right.cpu_ram")
+require("items.right.storage")
 
 -- startup animation
 require("items.startup_animation")

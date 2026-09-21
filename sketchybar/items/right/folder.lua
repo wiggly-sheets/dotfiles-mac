@@ -3,12 +3,11 @@ local icons = require("helpers.icons")
 
 local folder = sbar.add("item", "folder", {
 	icon = {
-		font = { size = 13 },
+		font = { size = 12 },
 		string = icons.folder,
 		color = colors.white,
 	},
 	position = "right",
-	padding_right = -2,
 })
 
 local left_click_script =

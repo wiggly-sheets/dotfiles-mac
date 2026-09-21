@@ -9,7 +9,7 @@ sbar.exec("killall cpu_load >/dev/null; $CONFIG_DIR/helpers/event_providers/cpu_
 local cpu = sbar.add("graph", "cpu", 42, {
 	position = "right",
 	y_offset = 7,
-	padding_left = 10,
+	padding_left = -8,
 	background = {
 		height = 10,
 		color = { alpha = 0 },
@@ -68,9 +68,9 @@ sbar.add("item", "cpu.padding", {
 
 local ram = sbar.add("graph", "ram", 42, {
 	position = "right",
-	padding_right = -78,
+	padding_right = -60,
 	y_offset = -5,
-	padding_left = 3,
+	padding_left = 0,
 	background = {
 		height = 10,
 		color = { alpha = 0 },
