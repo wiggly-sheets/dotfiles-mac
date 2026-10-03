@@ -46,7 +46,6 @@ local battery = sbar.add("item", "battery", {
 	position = "right",
 	padding_left = 2,
 	padding_right = 0,
-	color = colors.green,
     icon = {
 		y_offset = 6,
 		drawing = true,
@@ -77,10 +76,6 @@ local function handle_battery_click(env)
 	elseif env.BUTTON == "right" then
 		sbar.exec(
 			'osascript -e \'tell application "System Events" to tell process "AirBattery" to click menu bar item 1 of menu bar 2\''
-		)
-	else
-		sbar.exec(
-			'osascript -e \'tell application "System Events" to tell process "Battery Toolkit" to click menu bar item 1 of menu bar 2\''
 		)
 	end
 end

@@ -1,5 +1,5 @@
 # scripting addition
-echo "$(whoami) ALL=(root) NOPASSWD: sha256:$(shasum -a 256 $(/opt/homebrew/bin/yabai) | cut -d " " -f 1) $(/opt/homebrew/bin/yabai) --load-sa" | sudo tee /private/etc/sudoers.d/yabai
+echo "$(whoami) ALL=(root) NOPASSWD: sha256:$(shasum -a 256 /opt/homebrew/bin/yabai | cut -d " " -f 1) /opt/homebrew/bin/yabai --load-sa" | sudo -n tee /private/etc/sudoers.d/yabai
 /opt/homebrew/bin/yabai -m signal --add event=dock_did_restart action="sudo /opt/homebrew/bin/yabai --load-sa"
 sudo /opt/homebrew/bin/yabai --load-sa
 
@@ -33,13 +33,13 @@ CONFIGS=(
   "split_type auto"
   "auto_balance off"
   "split_ratio 0.50"
-  "window_animation_duration 0.05"
-  "window_animation_easing ease_in_out_expo"
+#  "window_animation_duration 0.05"
+# "window_animation_easing ease_in_out_expo"
   "window_placement second_child"
   "left_padding 10"
   "right_padding 10"
   "top_padding 10"
-  "bottom_padding 40"
+  "bottom_padding 10"
   "window_gap 10"
   "window_shadow off"
   "window_opacity on"
@@ -77,19 +77,19 @@ TERMINALS="^(iTerm2|Alacritty|Kitty|WezTerm|Terminal|Tabby|Ghostty)$"
 CODE="^(BBEdit|VSCodium|Zed|CotEditor|Neovide)$"
 
 # PIN APPS TO SPACES
-SPACE_RULES=(
-  "${BROWSERS}:Browser"
-  "${MAIL}:Mail"
-  "${FILES}:Files"
-  "${NOTES}:Notes"
-  "${TERMINALS}:Terminal"
-  "${CODE}:Code"
-)
-for rule in "${SPACE_RULES[@]}"; do
-  app="${rule%%:*}"
-  space="${rule##*:}"
-  /opt/homebrew/bin/yabai -m rule --add app="${app}" space="${space}"
-done
+#SPACE_RULES=(
+#  "${BROWSERS}:Browser"
+#  "${MAIL}:Mail"
+#  "${FILES}:Files"
+#  "${NOTES}:Notes"
+#  "${TERMINALS}:Terminal"
+#  "${CODE}:Code"
+#)
+#for rule in "${SPACE_RULES[@]}"; do
+#  app="${rule%%:*}"
+#  space="${rule##*:}"
+#  /opt/homebrew/bin/yabai -m rule --add app="${app}" space="${space}"
+#done
 
 # helper for float rules
 yabai_rule() {

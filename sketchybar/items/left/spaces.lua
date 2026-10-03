@@ -1,26 +1,13 @@
 local colors = require("colors")
 local icons = require("helpers.icons")
-local app_icons = require("helpers.icon_map")
+local app_icons = require("helpers.app_icons")
 local settings = require("default")
 
 local spaces = {}
 local space_separators = {}
 local space_app_icons = {} -- sid -> concatenated icon glyphs (string)
-local space_selected = {} -- sid -> bool
 local space_selection_generation = 0
 local spaces_are_visible = true
-
-local apple = sbar.add("item", "apple", {
-	icon = {
-		font = {size = 16}, -- 13 for command
-		string = icons.apple,
-		position = "left",
-		padding_left = 6,
-		padding_right = 6,
-		color = colors.white,
-	},
-	label = { drawing = false, width = 0 },
-})
 
 for i = 1, 10 do
 	space_app_icons[i] = "—"
@@ -97,7 +84,7 @@ for i = 1, 10 do
 			padding_left = 2,
 			color = colors.grey,
 			highlight_color = colors.white,
-			font = "sketchybar-app-font:Regular:11.0",
+			font = { family = "sketchybar-app-font", size = 11, style = "Regular" },
 		},
 		padding_right = 1,
 		padding_left = 1,
@@ -118,7 +105,7 @@ for i = 1, 10 do
 	})
 	space_separators[i] = space_separator
 
-	local space_bracket = sbar.add("bracket", { space.name }, {
+	local space_bracket = sbar.add("bracket", "space_bracket." .. i, { space.name }, {
 		background = {
 			height = 20,
 			border_width = 1,
@@ -191,7 +178,6 @@ local function refresh_space_selection()
 		sbar.begin_config()
 		for space_id, space in ipairs(spaces) do
 			local is_selected = space_id == focused_space
-			space_selected[space_id] = is_selected
 			space:set({
 				icon = { highlight = is_selected },
 				label = { highlight = is_selected },
@@ -285,9 +271,8 @@ space_window_observer:subscribe("space_windows_change", function(env)
 
 			local icon_line = ""
 			for app in output:gmatch("[^\n]+") do
-				local lookup = app_icons[app] or icons[app]
-				local icon = lookup or app_icons["Default"]
-				icon_line = icon_line .. icon
+			local icon = app_icons.get(app) or icons[app] or app_icons.default
+			icon_line = icon_line .. icon
 			end
 
 			if icon_line == "" then
@@ -296,146 +281,13 @@ space_window_observer:subscribe("space_windows_change", function(env)
 
 			space_app_icons[sid] = icon_line
 
-			-- Update displays for all spaces (use stored selected state)
+			-- Update displays for all spaces
 			for space_id, space in ipairs(spaces) do
 				update_space_display(space, space_id)
 			end
 		end
 	)
 end)
-
-
---------------------------THEME PICKER ------------------------------
-
-local theme_dir = os.getenv("HOME") .. "/.config/sketchybar/themes/"
-local theme_file = os.getenv("HOME") .. "/.config/sketchybar/themes/current_theme"
-
-local function get_current_theme()
-	local f = io.open(theme_file, "r")
-	if not f then
-		return nil
-	end
-	local t = f:read("*l")
-	f:close()
-	return t
-end
-
-local function list_themes()
-	local themes = {}
-	local p = io.popen('ls -1 "' .. theme_dir .. '"')
-	if not p then
-		return themes
-	end
-	for file in p:lines() do
-		if not file:match("^%.") then
-			local name = file:match("^(.*)%.lua$")
-			if name then
-				table.insert(themes, name)
-			end
-		end
-	end
-	p:close()
-
-	table.sort(themes)
-	return themes
-end
-
--- Cache populated once at startup
-local theme_cache = {
-	current = get_current_theme(),
-	themes = list_themes(),
-}
-
-local function clear_popup(prefix)
-	sbar.remove("/" .. prefix .. "\\..*/")
-	sbar.remove(prefix:match("^(.*)%.item$") .. ".header")
-end
-
-local theme_popup_subscribed = false
-
-local function open_theme_popup(anchor)
-	clear_popup("theme.item")
-
-	sbar.add("item", "theme.header", {
-		position = "popup." .. anchor.name,
-		label = {
-			string = "Themes",
-			font = { family = settings.default, size = 11, style = "Bold" },
-		},
-		padding_left = 10,
-		padding_right = 10,
-	})
-
-	-- Use cached data instead of hitting disk/shell here
-	local current = theme_cache.current
-	local themes = theme_cache.themes
-
-	for i, theme in ipairs(themes) do
-		local is_active = theme == current
-		sbar.add("item", "theme.item." .. i, {
-			position = "popup." .. anchor.name,
-			label = theme,
-			background = {
-				drawing = is_active,
-				color = is_active and colors.hover or colors.transparent,
-				corner_radius = 20,
-			},
-			click_script = "echo '"
-				.. theme
-				.. "' > "
-				.. theme_file
-				.. " && sketchybar --reload"
-				.. " && sketchybar --trigger theme_changed",
-		})
-	end
-
-	if not theme_popup_subscribed then
-		anchor:subscribe("mouse.exited.global", function()
-			anchor:set({ popup = { drawing = false } })
-			clear_popup("theme.item")
-		end)
-		theme_popup_subscribed = true
-	end
-end
-
--- Keep the cache's "current" in sync after a theme switch
-sbar.add("event", "theme_changed")
-sbar.subscribe("theme_changed", function()
-	theme_cache.current = get_current_theme()
-end)
-
-apple:subscribe("mouse.clicked", function(env)
-	if env.BUTTON == "left" then
-		apple:set({ popup = { drawing = not drawing } })
-		if not drawing then
-			open_theme_popup(apple)
-		end
-	end
-end)
-
-
-apple:subscribe("mouse.entered", function()
-	apple:set({
-		background = {
-			drawing = true,
-			color = colors.hover,
-			corner_radius = 10,
-			height = 20,
-			x_offset = 1,
-			y_offset = -1,
-			width = 0,
-		},
-	})
-end)
-
-apple:subscribe("mouse.exited", function()
-	apple:set({
-		background = {
-			drawing = false,
-		},
-	})
-end)
-
 
 local add_space_button = sbar.add("item", "add_space_button", {
 	position = "left",
@@ -466,7 +318,7 @@ add_space_button:subscribe("mouse.entered", function()
 	})
 end)
 
-add_space_button:subscribe("mouse.exited", "mouse.entered.global", "mouse.exited.global", function()
+add_space_button:subscribe({ "mouse.exited", "mouse.entered.global", "mouse.exited.global" }, function()
 	add_space_button:set({
 		background = {
 			drawing = false,

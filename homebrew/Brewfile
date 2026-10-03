@@ -152,7 +152,7 @@ brew "cloc"
 # Console Matrix
 brew "cmatrix"
 # Create and run Linux containers using lightweight virtual machines
-brew "container", link: false
+brew "container"
 # Manage Apple Container with Docker Compose files
 brew "container-compose"
 # Interpreted, interactive, object-oriented programming language
@@ -232,7 +232,7 @@ brew "gd"
 # GitHub command-line tool
 brew "gh"
 # Multi-platform software reverse engineering framework
-brew "ghidra", link: false
+brew "ghidra"
 # Distributed revision control system
 brew "git"
 # Syntax-highlighting pager for git and diff output
@@ -679,7 +679,7 @@ cask "alt-tab"
 cask "altserver"
 # Memory training application
 cask "anki"
-# GUI for mounting Linux filesystems
+# macOS GUI for anylinuxfs - mount Linux filesystems on macOS
 cask "fenio/tap/anylinuxfs-gui", trusted: true
 # Helper for Sindre Sorhus's apps
 cask "app-buddy"
@@ -695,8 +695,6 @@ cask "audio-hijack"
 cask "m1ten/othyn/autoclicker"
 # Tool to flash OS images to SD cards & USB drives
 cask "balenaetcher"
-# Control the platform power state of your Apple Silicon device
-cask "mhaeuser/mhaeuser/battery-toolkit"
 # Text, code, and markup editor
 cask "bbedit"
 # Screen recorder
@@ -904,6 +902,8 @@ cask "linear"
 cask "little-snitch"
 # Discover, download, and run local LLMs
 cask "lm-studio"
+# AI agent for working with open models
+cask "lm-studio-bionic"
 # Cable-free audio router
 cask "loopback"
 # Trims video and audio files losslessly

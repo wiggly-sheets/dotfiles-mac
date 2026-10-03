@@ -70,7 +70,7 @@ mic:subscribe({ "routine", "volume_change", "forced", "system_woke" }, update_mi
 
 update_mic()
 
-volume:subscribe("volume_change", "forced", "system_woke", function(env)
+volume:subscribe({ "volume_change", "forced", "system_woke" }, function(env)
 	local level = tonumber(env.INFO) or 0
 	volume:set({ label = level .. "%" })
 	sbar.exec("/opt/homebrew/bin/SwitchAudioSource -c", function(device)

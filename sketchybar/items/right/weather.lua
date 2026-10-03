@@ -68,7 +68,7 @@ local weather = sbar.add("item", "weather", {
 		y_offset = -5,
 		font = {
 			family = settings.default,
-			style = settings.default,
+			style = "Regular",
 			size = 9,
 		},
 	},

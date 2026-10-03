@@ -5,9 +5,6 @@ local settings = require("default")
 local hidden = true
 
 local items_to_toggle = {
-	"network",
-	"storage",
-	"temperature",
 	"cpu",
 	"ram",
 	"cpu_temp",

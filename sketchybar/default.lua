@@ -8,6 +8,7 @@ local default = {
 		size = 11,
 		style_map = {
 			Regular = "Regular",
+			Medium = "Medium",
 			Semibold = "Semibold",
 			Bold = "Bold",
 			Heavy = "Heavy",
@@ -20,6 +21,7 @@ local function font(style)
 	return {
 		family = default.font.family,
 		size = default.font.size,
+		style = default.font.style_map[style],
 	}
 end
 
@@ -43,17 +45,14 @@ sbar.default({
 
 	background = {
 		height = 10,
-		width = 10,
 		corner_radius = 0,
 		border_width = 0,
-		color = colors.bar_bg,
+		color = colors.bar.bg,
 		border_color = colors.bar.border,
 		image = {
 			corner_radius = 0,
 			border_color = colors.transparent,
 			border_width = 0,
-			height = 10,
-			width = 10,
 		},
 	},
 	popup = {
@@ -63,7 +62,6 @@ sbar.default({
 			border_color = colors.bar.border,
 			color = colors.popup.bg,
 			shadow = { drawing = false },
-			blur_radius = 20,
 		},
 		blur_radius = 50,
 	},
@@ -75,7 +73,8 @@ sbar.default({
 
 -- Return defaults in case other modules need them
 return {
-	default = default,
-	font = font,
-	colors = colors,
+	-- font family string: item files pass it as `family = settings.default`
+	default = default.font.family,
+	-- gap between grouped items (cpu/ram); item files read it as `settings.group_paddings`
+	group_paddings = 5,
 }

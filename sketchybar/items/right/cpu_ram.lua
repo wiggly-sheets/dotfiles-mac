@@ -57,7 +57,7 @@ local padding = sbar.add("item", "padding_left", {
 
 -- Background around the cpu item
 sbar.add("bracket", "cpu.bracket", { cpu.name }, {
-	background = { color = colors.bg1 },
+	background = { color = colors.transparent },
 })
 
 -- Background around the cpu item
@@ -92,7 +92,7 @@ local ram = sbar.add("graph", "ram", 42, {
 })
 
 sbar.add("bracket", "ram.bracket", { ram.name }, {
-	background = { color = colors.bg1 },
+	background = { color = colors.transparent },
 })
 
 sbar.add("item", "ram.padding", {
