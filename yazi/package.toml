@@ -10,7 +10,7 @@ hash = "c238595c801caa4f28553b9af8cf8804"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:jump-to-char"
-rev = "f703392"
+rev = "6229767"
 hash = "7a4b4237223aaa94e589d1c01a23542a"
 
 [[plugin.deps]]

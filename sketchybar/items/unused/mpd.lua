@@ -2,8 +2,6 @@ local icons = require("helpers.icons")
 local settings = require("default")
 local colors = require("colors")
 
-local settings = require("settings")
-
 local divider3 = sbar.add("item", "divider3", {
 	icon = {
 		font = { family = settings.default, size = 12 },
@@ -20,12 +18,12 @@ local divider3 = sbar.add("item", "divider3", {
 local mpd = sbar.add("item", "mpd", {
 	icon = {
 		string = "",
-		font = settings.default,
+		font = { family = settings.default },
 		padding_right = 5,
 	},
 	label = {
 		string = "",
-		font = settings.default,
+		font = { family = settings.default },
 		max_chars = 20,
 		scroll_texts = true,
 		scroll_duration = 200,
@@ -64,7 +62,7 @@ local mpd_info = sbar.add("item", "mpd_info", {
 	icon = { drawing = false },
 	label = {
 		string = "",
-		font = settings.default,
+		font = { family = settings.default },
 		width = "dynamic",
 		align = "center",
 		padding_right = 5,

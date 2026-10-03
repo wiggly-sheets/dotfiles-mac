@@ -44,11 +44,14 @@ local front_app = sbar.add("item", "front_app", {
 
 front_app:subscribe("front_app_switched", function(env)
 	local app = env.INFO
+	if not app then
+		return
+	end
 
 	front_app:set({
 		icon = {
 			background = {
-				image = "app." .. env.INFO,
+				image = "app." .. app,
 			},
 		},
 	})
@@ -90,7 +93,7 @@ local function update_window_title()
 		get_visible_space_count(function(space_count)
 			-- Ten spaces retains the old 40-character cap. Each absent space
 			-- frees three characters, up to 67 for a single-space layout.
-			local max_len = math.max(20, 70 - (space_count * 3))
+			local max_len = math.max(30, 90 - (space_count * 3))
 			if #title > max_len then
 				title = title:sub(1, max_len - 3) .. "..."
 			end
@@ -142,7 +145,7 @@ local menu_toggle = sbar.add("item", "menus.toggle", {
 local function update_menus(env)
 	sbar.exec("$CONFIG_DIR/helpers/menus/bin/menus -l", function(menus)
 		sbar.set("/menu\\..*/", { drawing = false })
-		id = 1
+		local id = 1
 		for menu in string.gmatch(menus, "[^\r\n]+") do
 			if id < max_items then
 				menu_items[id]:set({
@@ -223,7 +226,7 @@ menu_toggle:subscribe("mouse.clicked", function()
 	toggle_menus()
 end)
 
-menu_watcher:subscribe("front_app_switched", "window_focus", update_menus)
+menu_watcher:subscribe({ "front_app_switched", "window_focus" }, update_menus)
 
 for i, menu in ipairs(menu_items) do
 	menu:subscribe("mouse.clicked", function(env)

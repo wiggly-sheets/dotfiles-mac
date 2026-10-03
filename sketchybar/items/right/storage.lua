@@ -1,6 +1,7 @@
 local settings = require("default")
 local colors = require("colors")
 local icons = require("helpers.icons")
+local graphs = require("helpers.graphs")
 
 local left_click_script =
 	'osascript -e \'tell application "System Events" to keystroke "[" using {command down, option down, control down}\''
@@ -15,35 +16,9 @@ end
 
 local IO_UPDATE_FREQ = 2
 local MAX_MBPS = 300
-local GRAPH_ALPHA = 0.4
-local GRAPH_WINDOW = 15
-local GRAPH_POWER = 0.45
-
-local function make_graph_normalizer(min_ceiling)
-	local ema = 0
-	local window = {}
-	return function(raw)
-		ema = ema + GRAPH_ALPHA * (raw - ema)
-
-		table.insert(window, ema)
-		if #window > GRAPH_WINDOW then
-			table.remove(window, 1)
-		end
-
-		local ceiling = min_ceiling
-		for _, v in ipairs(window) do
-			if v > ceiling then
-				ceiling = v
-			end
-		end
-
-		local ratio = math.min(ema / ceiling, 1)
-		return math.max(ratio ^ GRAPH_POWER, 0.02)
-	end
-end
-
-local normalize_read = make_graph_normalizer(5 * 1024 * 1024)
-local normalize_write = make_graph_normalizer(5 * 1024 * 1024)
+-- 15 samples of "peak memory" (~30s at the 2s IO update rate)
+local normalize_read = graphs.make_graph_normalizer(5 * 1024 * 1024, 15)
+local normalize_write = graphs.make_graph_normalizer(5 * 1024 * 1024, 15)
 
 local disk_write = sbar.add("item", "disk_write", {
     position = "right",

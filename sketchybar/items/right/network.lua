@@ -1,6 +1,7 @@
 local icons = require("helpers.icons")
 local colors = require("colors")
 local settings = require("default")
+local graphs = require("helpers.graphs")
 
 -- Execute the event provider binary which provides the event "network_update"
 -- for the current network interface, which is fired every 2.0 seconds.
@@ -22,9 +23,6 @@ local function start_network_load()
 		)
 	end)
 end
-
--- Re-run when network state changes
-sbar.subscribe("wifi_change", "system_woke", start_network_load)
 
 -- run immediately at startup
 start_network_load()
@@ -102,41 +100,8 @@ local net_graph_down = sbar.add("graph", "net_graph_down", 42, {
 	y_offset = -5,
 })
 
--- Adaptive graph normalizer: EMA-smooths the raw rate, tracks a
--- rolling-window peak as the scale ceiling (so a burst dominates the
--- graph briefly, then ages out after GRAPH_WINDOW samples rather than
--- fading out slowly), and applies a power curve (not log) so mid/low
--- activity stays visibly distinct instead of being squashed near the
--- bottom or over-inflated by log's generosity near the top.
-local GRAPH_ALPHA = 0.4 -- EMA smoothing factor (higher = more responsive, jumpier)
-local GRAPH_WINDOW = 8 -- samples of "peak memory" (10 * 2s update = ~20s)
-local GRAPH_POWER = 0.45 -- <1 lifts low values; 1 = linear; higher = more log-like compression
-
-local function make_graph_normalizer(min_ceiling)
-	local ema = 0
-	local window = {}
-	return function(raw)
-		ema = ema + GRAPH_ALPHA * (raw - ema)
-
-		table.insert(window, ema)
-		if #window > GRAPH_WINDOW then
-			table.remove(window, 1)
-		end
-
-		local ceiling = min_ceiling
-		for _, v in ipairs(window) do
-			if v > ceiling then
-				ceiling = v
-			end
-		end
-
-		local ratio = math.min(ema / ceiling, 1)
-		return math.max(ratio ^ GRAPH_POWER, 0.02)
-	end
-end
-
-local normalize_up = make_graph_normalizer(512 * 1024) -- 512KB/s floor ceiling
-local normalize_down = make_graph_normalizer(512 * 1024)
+local normalize_up = graphs.make_graph_normalizer(512 * 1024) -- 512KB/s floor ceiling
+local normalize_down = graphs.make_graph_normalizer(512 * 1024)
 
 -- Convert rate strings like "123 Bps", "12 KBps", "1.2 MBps" into bytes/sec
 local function parse_rate(rate_str)
@@ -204,6 +169,9 @@ network_up:subscribe("network_update", function(env)
 		icon = { color = down_color },
 	})
 end)
+
+-- Re-run when network state changes
+net_graph_up:subscribe({ "wifi_change", "system_woke" }, start_network_load)
 
 -- ======== Click handlers ========
 

@@ -32,6 +32,6 @@ animator:subscribe("lock", function()
 	lock()
 end)
 
-animator:subscribe("unlock", "forced", "system_will_sleep", function()
+animator:subscribe({ "unlock", "forced", "system_will_sleep" }, function()
 	unlock()
 end)

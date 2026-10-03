@@ -85,7 +85,7 @@ local network_bracket = sbar.add("bracket", "network.bracket", {
 	network.name,
 	
 }, {
-	background = { color = colors.bg1 },
+	background = { color = colors.transparent },
 	popup = { align = "center", height = 30 },
 })
 

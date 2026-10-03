@@ -71,7 +71,7 @@ local media_info = sbar.add("item", "media_info", {
 	icon = { drawing = false },
 	label = {
 		string = "",
-		font = settings.default,
+		font = { family = settings.default },
 		width = "dynamic",
 		align = "center",
 		padding_right = 5,
@@ -119,7 +119,7 @@ local function update_media()
 								media:set({
 									icon = {
 										string = icons.music,
-										font = settings.default,
+										font = { family = settings.default },
 										drawing = true,
 										color = colors.grey,
 									},
@@ -132,7 +132,7 @@ local function update_media()
 								media:set({
 									icon = {
 										string = icons.music,
-										font = settings.default,
+										font = { family = settings.default },
 										drawing = true,
 										color = colors.white,
 									},

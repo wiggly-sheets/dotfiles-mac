@@ -1,29 +1,14 @@
---left side items
-require("items.left.spaces")
-require("items.left.menus")
-
---right side items
-require("items.right.notifications")
-require("items.right.date_time")
-require("items.right.control_center")
-require("items.right.time_machine")
-require("items.right.caffeinate")
-require("items.right.folder")
-require("items.right.dnd")
-require("items.right.bluetooth")
-require("items.right.wifi")
-require("items.right.battery")
-require("items.right.display")
-require("items.right.audio")
-require("items.right.weather")
-require("items.right.toggle_items")
-require("items.right.network")
-require("items.right.temperature")
-require("items.right.cpu_ram")
-require("items.right.storage")
-
--- startup animation
+-- Loaded by every setup: the apple menu (left = themes, right = setups) and the
+-- lock/unlock bar animation.
+require("items.left.apple")
 require("items.startup_animation")
 
--- item groups
-require("items.brackets")
+local setup = require("setups")
+
+for _, module in ipairs(setup.items) do
+	require(module)
+end
+
+if setup.brackets then
+	require("items.brackets").add(setup.brackets)
+end
