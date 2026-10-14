@@ -142,7 +142,8 @@
     "@zenobius/opencode-skillful",
     "@aeondave/opencode-dotenv@latest",
     "@mumme-it/opencode-caveman",
-    "@dietrichgebert/ponytail"
+    "@dietrichgebert/ponytail",
+    "./herdr-opencode"
   ],
   "leader": {
     "timeout": 2000

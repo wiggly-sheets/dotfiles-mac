@@ -103,31 +103,6 @@
           "key" : "g",
           "type" : "application",
           "value" : "/Applications/Ghostty.app"
-        },
-        {
-          "key" : "y",
-          "type" : "application",
-          "value" : "/Applications/Tabby.app"
-        },
-        {
-          "key" : "a",
-          "type" : "application",
-          "value" : "/Applications/Alacritty.app"
-        },
-        {
-          "key" : "k",
-          "type" : "application",
-          "value" : "/Applications/kitty.app"
-        },
-        {
-          "key" : "h",
-          "type" : "application",
-          "value" : "/Applications/Hyper.app"
-        },
-        {
-          "key" : "c",
-          "type" : "application",
-          "value" : "/Applications/cmux.app"
         }
       ],
       "key" : "t",
@@ -559,6 +534,11 @@
           "key" : "t",
           "type" : "application",
           "value" : "/Applications/TinkerTool.app"
+        },
+        {
+          "key" : "l",
+          "type" : "application",
+          "value" : "/Applications/LaunchOS.app"
         }
       ],
       "key" : "u",

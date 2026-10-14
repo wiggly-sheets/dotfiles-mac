@@ -1,15 +1,11 @@
-custom-shader = ~/config/ghostty/shaders/glitchy.glsl
-custom-shader-animation = true
 font-size = 13
-background-blur-radius = 20
 mouse-hide-while-typing = true
 window-decoration = true
 macos-option-as-alt = true
 font-family = "Liga SFMono Nerd Font"
-font-thicken = true
-theme = light:Xcode Light hc,dark:tokyonight
-quick-terminal-animation-duration = 0
-keybind = global:super+grave_accent=toggle_quick_terminal
+font-thicken = false
+theme = tokyonight
+keybind = global:ctrl+grave_accent=toggle_quick_terminal
 cursor-style = underline
 cursor-style-blink = true
 link-url = true
@@ -18,12 +14,12 @@ window-inherit-font-size = true
 window-theme = system
 clipboard-trim-trailing-spaces = true
 mouse-hide-while-typing = true
-macos-titlebar-proxy-icon = visible
-macos-icon = custom-style
-macos-icon-frame = plastic
+macos-titlebar-proxy-icon = hidden
+macos-icon = glass
+macos-icon-frame = chrome
 macos-icon-ghost-color = FFFFFF
 macos-icon-screen-color = 000000
 confirm-close-surface=false
 shell-integration-features = no-title
 shell-integration-features = no-cursor
-title = "👻"
+title = " "

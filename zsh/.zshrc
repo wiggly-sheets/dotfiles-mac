@@ -1,105 +1,139 @@
-# Environment variables
-# ------------------------------------------------
-export XDG_CONFIG_HOME="$HOME/.config"
-export HISTFILE="$HOME/.zhistory"
-export SAVEHIST=1000
-export HISTSIZE=999
-setopt share_history
-setopt hist_expire_dups_first
-setopt hist_verify
-export EDITOR="nvim"
-ZSH="$HOME/.oh-my-zsh"
-ZSH_TMUX_AUTOSTART=true
-export NVIM_APPNAME=nvim
-export GEM_HOME="$(ruby -e 'puts Gem.user_dir')"
-export NEOVIDE_CONFIG="/Users/Zeb/dotfiles/.config/neovide/config.toml"
-export EZA_CONFIG_DIR="/Users/Zeb/dotfiles/.config/eza/"
+# ================================================================
+# ZSH CONFIGURATION
+# macOS Apple Silicon | Ghostty | Oh My Zsh | Powerlevel10k
+# ================================================================
 
-export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
+# ------------------------------------------------
+# Powerlevel10k Instant Prompt
+# Must be near the beginning of .zshrc.
+# Keep initialization below free of console output when possible.
+# ------------------------------------------------
+
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+    source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+
+# ------------------------------------------------
+# Environment
+# ------------------------------------------------
+
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_STATE_HOME="${XDG_STATE_HOME:-$HOME/.local/state}"
+
+export EDITOR="nvim"
+export VISUAL="nvim"
+export NVIM_APPNAME="nvim"
+
+export NEOVIDE_CONFIG="$HOME/dotfiles/.config/neovide/config.toml"
+export EZA_CONFIG_DIR="$HOME/dotfiles/.config/eza/"
+
+export PF_INFO="ascii title os host kernel uptime pkgs memory"
+
+# Apple Silicon Homebrew
+export HOMEBREW_PREFIX="/opt/homebrew"
+
+# Ruby gems: retain the existing behavior without running Ruby
+# on every shell startup. This is the conventional user gem path.
+export GEM_HOME="$HOME/.local/share/gem/ruby/$(ruby -e 'print RUBY_VERSION' 2>/dev/null | cut -d. -f1-2)"
+
+# If the computed Ruby directory does not exist, RubyGems can still
+# use its default configuration. Review GEM_HOME if using mise Ruby.
+
+
+# ------------------------------------------------
+# PATH
+# ------------------------------------------------
+
+# Keep PATH unique while preserving ordering.
+typeset -U path PATH
+
+path=(
+    "$HOMEBREW_PREFIX/bin"
+    "$HOMEBREW_PREFIX/sbin"
+    "$HOMEBREW_PREFIX/opt/curl/bin"
+    "$HOMEBREW_PREFIX/opt/openjdk/bin"
+    "$HOME/Library/pnpm"
+    "$HOME/.lmstudio/bin"
+    "$HOME/.local/bin"
+    "$HOME/.hermes/bin"
+    "$HOME/.local/lib/python3.14/site-packages"
+    $path
+)
+
+export PATH
+
+
+# ------------------------------------------------
+# History
+# ------------------------------------------------
+
+HISTFILE="$HOME/.zhistory"
+HISTSIZE=10000
+SAVEHIST=10000
+
+setopt SHARE_HISTORY
+setopt HIST_EXPIRE_DUPS_FIRST
+setopt HIST_VERIFY
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_REDUCE_BLANKS
+
+# ------------------------------------------------
+# Editing and completion behavior
+# ------------------------------------------------
+
 bindkey -v
 
-[ -f $HOMEBREW_PREFIX/share/forgit/forgit.plugin.zsh ] && source $HOMEBREW_PREFIX/share/forgit/forgit.plugin.zsh
+# Oh My Zsh configuration
+export ZSH="$HOME/.oh-my-zsh"
 
+ZSH_TMUX_AUTOSTART=false
+ENABLE_CORRECTION="true"
+COMPLETION_WAITING_DOTS="true"
+HIST_STAMPS="mm/dd/yyyy"
 
-if [ -f /Users/Zeb/dotfiles/opencode/opencode.env ]; then
-  set -a
-  source /Users/Zeb/dotfiles/opencode/opencode.env
-  set +a
-fi
-
-
-export LS_COLORS="$(vivid generate ansi)"
 
 # ------------------------------------------------
-# Homebrew / Linuxbrew paths
+# Oh My Zsh plugins
 # ------------------------------------------------
-if command -v brew >/dev/null 2>&1; then
-    # Determine prefix
-    HOMEBREW_PREFIX=$(brew --prefix)
 
-    # Add brew paths first so brew-installed tools take priority
-    path=(
-        "$HOMEBREW_PREFIX/bin"
-        "$HOMEBREW_PREFIX/sbin"
-        "$HOMEBREW_PREFIX/opt/curl/bin"
-        "$HOMEBREW_PREFIX/opt/openjdk/bin"
-        "$HOMEBREW_PREFIX/share/zsh-autosuggestions"
-        "$HOMEBREW_PREFIX/share/zsh-syntax-highlighting"
-        "$HOMEBREW_PREFIX/share/powerlevel10k"
-        $path…  # keep existing path after
-    )
-
-    # Export for all shells
-    export PATH="$HOMEBREW_PREFIX/bin:$HOMEBREW_PREFIX/sbin:$HOMEBREW_PREFIX/opt/curl/bin:$HOMEBREW_PREFIX/opt/openjdk/bin:$PATH"
-fi
-# ------------------------------------------------
-# Welcome banner
-# ------------------------------------------------
-if command -v figlet >/dev/null && command -v lolcat >/dev/null; then
-   figurine Welcome, $USER
-    echo
-    command -v pfetch >/dev/null && pfetch # | lolcat
-    command -v stormy >/dev/null && stormy # | lolcat
-    if command -v fortune >/dev/null && command -v cowsay >/dev/null; then
-        fortune | cowsay -r | lolcat
-    fi
-    echo
-fi
-# ------------------------------------------------
-# Oh My Zsh
-# ------------------------------------------------
-ZSH="$HOME/.oh-my-zsh"
 plugins=(
-    tmux zoxide zsh-navigation-tools zsh-interactive-cd
-    sudo vi-mode
+    tmux
+    zoxide
+    zsh-navigation-tools
+    zsh-interactive-cd
+    sudo
+    vi-mode
 )
-source "$ZSH/oh-my-zsh.sh" > /dev/null 2>&1
+
+source "$ZSH/oh-my-zsh.sh"
+
 
 # ------------------------------------------------
 # Powerlevel10k
 # ------------------------------------------------
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-    source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-[[ -f "$HOMEBREW_PREFIX/share/powerlevel10k/powerlevel10k.zsh-theme" ]] && \
+
+if [[ -r "$HOMEBREW_PREFIX/share/powerlevel10k/powerlevel10k.zsh-theme" ]]; then
     source "$HOMEBREW_PREFIX/share/powerlevel10k/powerlevel10k.zsh-theme"
-[[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
+fi
+
+[[ -r "$HOME/.p10k.zsh" ]] && source "$HOME/.p10k.zsh"
+
 
 # ------------------------------------------------
 # Completion
 # ------------------------------------------------
 
-if command -v brew >/dev/null 2>&1; then
-    FPATH="$HOMEBREW_PREFIX/share/zsh-completions:$FPATH"
-fi
+# Add Homebrew completions before initializing completion.
+fpath=(
+    "$HOMEBREW_PREFIX/share/zsh-completions"
+    $fpath
+)
 
-autoload -U compinit
-compinit
+# Oh My Zsh initializes completion. Do not run compinit twice.
 
-export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense'
-source <(carapace _carapace)
-
-# Tokyo Night-style completion colors
+# Completion colors
 zstyle ':completion:*' list-colors \
     'ma=48;5;24;38;5;255' \
     'di=38;5;117' \
@@ -110,21 +144,33 @@ zstyle ':completion:*' list-colors \
 zstyle ':completion:*' menu select
 zstyle ':completion:*' list-prompt '%S%M matches%s'
 zstyle ':completion:*' select-prompt '%S%p%s'
+zstyle ':completion:*:descriptions' format '[%d]'
+zstyle ':completion:*:git:*' group-order \
+    'main commands' \
+    'alias commands' \
+    'external commands'
 
-
-source "/opt/homebrew/opt/fzf-tab/share/fzf-tab/fzf-tab.zsh"
-
-
-# Let fzf-tab handle the selection menu
+# Let fzf-tab control the completion menu.
 zstyle ':completion:*' menu no
 
-# Show completion groups
-zstyle ':completion:*:descriptions' format '[%d]'
+# Apply LS_COLORS when available.
+if [[ -n "$LS_COLORS" ]]; then
+    zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+fi
 
-# Apply LS_COLORS to file completions
-zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+# Carapace completions.
+export CARAPACE_BRIDGES='zsh,fish,bash,inshells'
 
-# Tokyo Night-like fzf colors
+if (( $+commands[carapace] )); then
+    source <(carapace _carapace)
+fi
+
+# fzf-tab must load after completion initialization and before
+# syntax highlighting.
+if [[ -r "$HOMEBREW_PREFIX/opt/fzf-tab/share/fzf-tab/fzf-tab.zsh" ]]; then
+    source "$HOMEBREW_PREFIX/opt/fzf-tab/share/fzf-tab/fzf-tab.zsh"
+fi
+
 zstyle ':fzf-tab:*' fzf-flags \
     --color=fg:#a9b1d6,bg:#1a1b26,hl:#7aa2f7 \
     --color=fg+:#c0caf5,bg+:#24283b,hl+:#7dcfff \
@@ -134,78 +180,155 @@ zstyle ':fzf-tab:*' fzf-flags \
 zstyle ':fzf-tab:complete:cd:*' fzf-preview \
     'eza -1 --color=always $realpath'
 
+
 # ------------------------------------------------
-# Syntax highlighting & autosuggestions
+# Syntax highlighting and autosuggestions
 # ------------------------------------------------
-[[ -f "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh" ]] && \
-    source "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
-[[ -f "$HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]] && \
-    source "$HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=blue,bold,underline"
+
+# Autosuggestions
+if [[ -r "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh" ]]; then
+    source "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
+fi
+
+# Fast syntax highlighting
+# Check the installed formula for the correct filename.
+if [[ -r "$HOMEBREW_PREFIX/opt/zsh-fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh" ]]; then
+    source "$HOMEBREW_PREFIX/opt/zsh-fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh"
+elif [[ -r "$HOMEBREW_PREFIX/share/zsh-fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh" ]]; then
+    source "$HOMEBREW_PREFIX/share/zsh-fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh"
+fi
+
 
 # ------------------------------------------------
 # Atuin history
 # ------------------------------------------------
-eval "$(atuin init zsh)"
+
+if (( $+commands[atuin] )); then
+    eval "$(atuin init zsh)"
+fi
+
 
 # ------------------------------------------------
 # fzf
 # ------------------------------------------------
-# # File list used when running plain `fzf`
+
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --exclude .git'
 
-# Preview used by fzf
 export FZF_DEFAULT_OPTS="--preview='bat --color=always --style=numbers --line-range=:500 -- {}' --preview-window='right:60%:wrap'"
-eval "$(fzf --zsh)"
+
+if (( $+commands[fzf] )); then
+    eval "$(fzf --zsh)"
+fi
+
 
 # ------------------------------------------------
-# zoxide
+# Zoxide
 # ------------------------------------------------
-eval "$(zoxide init zsh)"
+
+# The Oh My Zsh zoxide plugin may already initialize zoxide.
+# Do not initialize it again here unless you remove that plugin.
+# eval "$(zoxide init zsh)"
+
 
 # ------------------------------------------------
 # Misc tool integrations
 # ------------------------------------------------
-command -v batman >/dev/null && eval "$(batman --export-env)"
-command -v thefuck >/dev/null && eval "$(thefuck --alias fk)"
+
+# The Fuck
+if (( $+commands[thefuck] )); then
+    eval "$(thefuck --alias fk)"
+fi
+
+# Batman man-page integration
+if (( $+commands[batman] )); then
+    eval "$(batman --export-env)"
+fi
+
+# Forgit
+if [[ -r "$HOMEBREW_PREFIX/share/forgit/forgit.plugin.zsh" ]]; then
+    source "$HOMEBREW_PREFIX/share/forgit/forgit.plugin.zsh"
+fi
+
+
+# ------------------------------------------------
+# OpenCode environment
+# ------------------------------------------------
+
+if [[ -r "$HOME/dotfiles/opencode/opencode.env" ]]; then
+    set -a
+    source "$HOME/dotfiles/opencode/opencode.env"
+    set +a
+fi
+
+
+# ------------------------------------------------
+# Mise
+# ------------------------------------------------
+
+if (( $+commands[mise] )); then
+    eval "$(mise activate zsh)"
+fi
+
+
+# ------------------------------------------------
+# Broot
+# ------------------------------------------------
+
+# This is the Bash launcher from your original configuration.
+# Retained for compatibility with your existing setup.
+if [[ -r "$HOME/.config/broot/launcher/bash/br" ]]; then
+    source "$HOME/.config/broot/launcher/bash/br"
+fi
+
 
 # ------------------------------------------------
 # Aliases
 # ------------------------------------------------
+
 alias c='clear'
 alias ac='cd && clear'
+
 alias nv='nvim'
 alias vim='nvim'
+
 alias ff='fastfetch -c all'
 alias top='btop'
+
 alias cd='z'
 alias cat='bat'
+
 alias ls='eza --long --color=always --icons=always --all --git --git-repos'
 alias lst='eza --long --color=always --icons=always --all --git --git-repos --tree'
+
 alias fvim='~/.config/scripts/fzf_listoldfiles.sh'
-alias ovim="~/.config/scripts/zoxide_openfiles_nvim.sh"
-alias fman="compgen -c | fzf | xargs man"
+alias ovim='~/.config/scripts/zoxide_openfiles_nvim.sh'
+
 alias cp='cp -i'
 alias mv='mv -i'
 alias rm='rm -i'
+
 alias lg='lazygit'
 alias ld='lazydocker'
 alias lsh='lazyssh'
 alias tg='topgrade'
+
 alias src='source ~/.zshrc'
-alias freenet='open http://127.0.0.1:7509 && ssh -NL 7509:localhost:7509 zeb@192.168.1.191'
-alias ac='cd && clear'
-alias af='anifetch -ff example.mp4'
+
 alias gc='git commit'
 alias gp='git push'
+
 
 # ------------------------------------------------
 # Functions
 # ------------------------------------------------
+
+# Superfile with last-directory restoration.
 spf() {
     local lastdir
-    if [[ "$OS" == "Linux" ]]; then
+
+    if [[ "$OSTYPE" == linux* ]]; then
         lastdir="${XDG_STATE_HOME:-$HOME/.local/state}/superfile/lastdir"
     else
         lastdir="$HOME/Library/Application Support/superfile/lastdir"
@@ -213,48 +336,10 @@ spf() {
 
     command spf "$@"
 
-    [[ -f "$lastdir" ]] && { . "$lastdir"; rm -f "$lastdir"; }
+    if [[ -f "$lastdir" ]]; then
+        source "$lastdir"
+        command rm -f "$lastdir"
+    fi
 }
 
-# ------------------------------------------------
-# Completion styling
-# ------------------------------------------------
-zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
-zstyle ':completion:*:git:*' group-order 'main commands' 'alias commands' 'external commands'
-
-# ------------------------------------------------
-# Misc settings
-# ------------------------------------------------
-ENABLE_CORRECTION="true"
-COMPLETION_WAITING_DOTS="true"
-HIST_STAMPS="mm/dd/yyyy"
-export PF_INFO="ascii title os host kernel uptime pkgs memory"
-
-
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
-# Added by LM Studio CLI (lms)
-export PATH="$PATH:/Users/Zeb/.lmstudio/bin"
-# End of LM Studio CLI section
-
-# pnpm
-export PNPM_HOME="/Users/Zeb/Library/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME/bin:"*) ;;
-  *) export PATH="$PNPM_HOME/bin:$PATH" ;;
-esac
-# pnpm end
-
-# Created by `pipx` on 2026-07-21 05:43:17
-export PATH="$PATH:/Users/Zeb/.local/bin"
-
 source /Users/Zeb/.config/broot/launcher/bash/br
-
-eval "$(mise activate zsh)"
-
-export PATH="$HOME/.hermes/bin:$PATH"
-
-export PATH="${PATH}:/Users/Zeb/.local/lib/python3.14/site-packages"
-
-# Added by Devin
-export PATH="/Users/Zeb/.codeium/windsurf/bin:$PATH"
