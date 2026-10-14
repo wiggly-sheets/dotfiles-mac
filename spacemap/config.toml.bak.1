@@ -1,0 +1,104 @@
+# Spacemap config
+
+[grid]
+cols = 4
+rows = 2
+cellStyle = "simple"
+showMode = "all"
+multiMonitorHUDMode = "unified"
+unifiedHUDVisibility = "active"
+separateHUDVisibility = "all"
+maxSpaces = 8
+showSpaceNumbers = true
+showSpaceLayout = true
+showIconStrip = true
+showMultiAppIcons = true
+
+[spaceNames]
+showSpaceNames = false
+
+[spaceNames.names]
+
+[appearance]
+theme = "tokyo night"
+mode = "auto"
+backgroundAlpha = 0.0
+hudShadow = true
+iconScale = 0.5
+uiScale = 0.4
+
+[behavior]
+autoHideTimeout = 2
+displayNavigationWrap = "within"
+useVimKeys = true
+useArrowKeys = true
+useExtendedKeys = true
+jumpToSpaceEnabled = true
+customHUDX = 0.5
+customHUDY = 0.5
+focusSpaceOnWindowDrop = "never"
+focusSpaceOnWindowDropModifier = "command"
+showHUDOnSpaceChange = false
+hideMenuBarIcon = true
+menuBarDisplayMode = "icon"
+menuBarNearbyCount = 3
+updateMode = "notify"
+
+[behavior.hotkey]
+keyKind = "keyCode"
+keyCode = 49
+modifiers = ["ctrl"]
+
+[behavior.pinnedHotkey]
+keyKind = "none"
+modifiers = []
+
+[behavior.glyphStripHotkey]
+keyKind = "none"
+modifiers = []
+
+[behavior.hudPosition]
+kind = "center"
+
+[glyphStrip]
+enabled = false
+theme = "tokyo night"
+showSpaceNumbers = true
+showLayoutSuffix = true
+showAppIcons = true
+iconSource = "sbarFont"
+dedupeAppsPerSpace = false
+maxIconsPerSpace = 8
+iconSize = 10.0
+indexSize = 11.0
+highlightCurrentSpace = true
+backgroundMaterial = "none"
+glassAmount = 0.62
+useThemeTint = false
+shape = "pill"
+backgroundOpacity = 1.0
+cornerRadius = 13.0
+margin = 6.0
+iconSpacing = 0.0
+indexPadding = 2.5
+yOffset = 0.0
+hoverPadding = 1.0
+hoverCornerRadius = 9.0
+showDisplaySeparators = true
+showAddSpaceButton = false
+showPlaceholders = true
+leftClickAction = "focusSpace"
+rightClickAction = "destroySpace"
+middleClickAction = "none"
+position = "leftOfNotch"
+xOffset = 0
+borderEnabled = false
+
+[appFont]
+updateMode = "auto"
+installedVersion = "v3.0.6"
+lastCheck = 1791734532
+
+[advanced]
+socketHealthInterval = 60
+showExtraWindows = false

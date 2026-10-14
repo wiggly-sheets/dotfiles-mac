@@ -11,6 +11,7 @@ tap "can1357/tap"
 tap "catskull/homebrew", "https://github.com/catskull/homebrew", trusted: true
 tap "charmbracelet/tap"
 tap "codeeditapp/formulae"
+tap "daniyalmaster693/casks"
 tap "edde746/plezy", "https://github.com/edde746/plezy", trusted: true
 tap "felixkratz/formulae", "https://github.com/FelixKratz/homebrew-formulae"
 tap "fenio/tap"
@@ -24,12 +25,14 @@ tap "gschurck/fuzzybrew"
 tap "hewigovens/tap", "https://github.com/hewigovens/tap.git", trusted: true
 tap "homielab/mountmate", "https://github.com/homielab/mountmate", trusted: true
 tap "jackielii/tap", trusted: true
+tap "jnsahaj/lumen"
 tap "jsattler/tap", trusted: true
 tap "jsheffie/tap", trusted: { casks: ["spacemap"] }
 tap "jstkdng/programs"
 tap "jundot/omlx", "https://github.com/jundot/omlx", trusted: true
 tap "kegworks-app/kegworks", "https://github.com/Sikarugir-App/homebrew-sikarugir.git", trusted: true
 tap "krishkrosh/apps", trusted: true
+tap "lab421/tap"
 tap "lihaoyun6/tap", trusted: true
 tap "lslqtz/formulae", trusted: true
 tap "m1ten/othyn", trusted: true
@@ -41,6 +44,7 @@ tap "mhaeuser/mhaeuser", trusted: true
 tap "msitarzewski/brew-browser", trusted: true
 tap "narugit/tap"
 tap "neur0map/tap"
+tap "nikgrbn/tap"
 tap "nohajc/anylinuxfs"
 tap "notwadegrimridge/brew", trusted: true
 tap "philocalyst/tap", trusted: true
@@ -50,6 +54,7 @@ tap "rgcr/formulae", trusted: true
 tap "ruffle-rs/ruffle", trusted: true
 tap "ruittenb/tap", trusted: true
 tap "samtay/tui", trusted: true
+tap "sentient-os-labs/tap"
 tap "sikarugir-app/sikarugir", "https://github.com/Sikarugir-App/homebrew-sikarugir", trusted: true
 tap "skyline69/tap"
 tap "socsieng/tap"
@@ -167,6 +172,8 @@ brew "cowsay"
 brew "cpufetch"
 # Shell script to build fancy DMGs
 brew "create-dmg"
+# Securely send things from one computer to another
+brew "croc"
 # POSIX-compliant descendant of NetBSD's ash (the Almquist SHell)
 brew "dash-shell"
 # Command-line DNS client
@@ -435,8 +442,6 @@ brew "pastel"
 brew "pfetch"
 # General-purpose scripting language
 brew "php"
-# AI agent toolkit
-brew "pi-coding-agent"
 # Display the PID number for a given process name
 brew "pidof"
 # Animated pipes terminal screensaver
@@ -525,10 +530,14 @@ brew "switchaudio-osx"
 brew "syncthing"
 # Manipulate and query tags on macOS files
 brew "tag"
+# Netcat-like tool over Tailscale's data plane, without its control plane
+brew "tailcat"
 # Utility to modify the macOS Accessibility Database (TCC.db)
 brew "tccutil"
 # Very fast implementation of tldr in Rust
 brew "tealdeer"
+# General purpose fuzzy finder TUI
+brew "television"
 # User interface to the TELNET protocol
 brew "telnet"
 # Send macOS User Notifications from the command-line
@@ -563,6 +572,8 @@ brew "tty-clock"
 brew "ttyd"
 # Code review TUI with vim keybindings
 brew "tuicr"
+# Terminal UI OS (Terminal Multiplexer)
+brew "tuios"
 # macOS command-line tool to work with default apps
 brew "utiluti"
 # Extremely fast Python package installer and resolver, written in Rust
@@ -601,6 +612,8 @@ brew "xxh"
 brew "yazi"
 # Process YAML, JSON, XML, CSV and properties documents from the CLI
 brew "yq"
+# Pluggable terminal workspace, with terminal multiplexer as the base feature
+brew "zellij"
 # General-purpose lossless data-compression library
 brew "zlib"
 # Shell extension to navigate your filesystem faster
@@ -611,6 +624,8 @@ brew "zsh"
 brew "zsh-autosuggestions"
 # Additional completion definitions for zsh
 brew "zsh-completions"
+# Feature-rich syntax highlighting for Zsh
+brew "zsh-fast-syntax-highlighting"
 # Fish shell like syntax highlighting for zsh
 brew "zsh-syntax-highlighting"
 # Better and friendly vi(vim) mode plugin for ZSH
@@ -639,6 +654,8 @@ brew "gromgit/brewtils/taproom", trusted: true
 brew "gromgit/fuse/ntfs-3g-mac", trusted: true
 # Fuzzy search for Homebrew packages
 brew "gschurck/fuzzybrew/fuzzybrew", trusted: true
+# lumen is a command-line tool that can show pretty diff, generate commit messages with AI, summarise diffs / commits, and more without requiring an API key.
+brew "jnsahaj/lumen/lumen", trusted: true
 # Drop in replacement for ueberzug written in C++
 brew "jstkdng/programs/ueberzugpp", trusted: true
 # LLM inference server optimized for Apple Silicon
@@ -651,6 +668,8 @@ brew "matars/gitfetch/gitfetch", trusted: true
 brew "narugit/tap/smctemp", trusted: true
 # TUI dashboard that unifies 43 package managers into one searchable view
 brew "neur0map/tap/gpk", trusted: true
+# Adds New File, Open Terminal Here and more to Finder's right-click menu
+brew "nikgrbn/tap/finder-menu", trusted: true
 # Mount any linux-supported filesystem read/write using nfs and a microVM
 brew "nohajc/anylinuxfs/anylinuxfs", trusted: true
 # User-friendly, lightweight TUI for disk imaging
@@ -679,12 +698,14 @@ cask "alt-tab"
 cask "altserver"
 # Memory training application
 cask "anki"
-# macOS GUI for anylinuxfs - mount Linux filesystems on macOS
+# GUI for mounting Linux filesystems
 cask "fenio/tap/anylinuxfs-gui", trusted: true
 # Helper for Sindre Sorhus's apps
 cask "app-buddy"
 # Inspect application bundles
 cask "apparency"
+# Chromium based browser
+cask "arc"
 # Dynamic Island for the MacBook notch
 cask "atoll"
 # Multi-track audio editor and recorder
@@ -699,6 +720,8 @@ cask "balenaetcher"
 cask "bbedit"
 # Screen recorder
 cask "bettercapture"
+# Display management tool
+cask "betterdisplay"
 # Utility improving 3rd party mouse performance and functionalities
 cask "bettermouse"
 # Tool to customise input devices and automate computer systems
@@ -713,6 +736,8 @@ cask "blockblock"
 cask "bloom"
 # Mobile gaming platform
 cask "bluestacks"
+# Web browser focusing on privacy
+cask "brave-browser"
 # Native GUI for Homebrew
 cask "msitarzewski/brew-browser/brew-browser"
 # CD burning application
@@ -725,18 +750,12 @@ cask "caskhub"
 cask "chatgpt"
 # Anthropic's official Claude AI desktop app
 cask "claude"
-# Terminal-based AI coding assistant
-cask "claude-code"
 # Image, video and clipboard optimiser
 cask "clop"
-# Ghostty-based terminal with vertical tabs and notifications for AI coding agents
-cask "cmux"
 # Tool to show live information about the batteries in various devices
 cask "coconutbattery"
 # Code editor
 cask "codeedit"
-# OpenAI's coding agent that runs in your terminal
-cask "codex"
 # Mount network shares quick and easy
 cask "connectmenow"
 cask "container"
@@ -786,6 +805,8 @@ cask "element"
 cask "epic-games"
 # Cross-platform Text Expander written in Rust
 cask "espanso"
+# Utility to find and fix problems on computer systems
+cask "etrecheckpro"
 # View and change the default app that opens each file type, by category
 cask "skyline69/tap/ext-selector", trusted: true
 # Audio playback
@@ -798,6 +819,12 @@ cask "filebot"
 cask "filemonitor"
 # File finder
 cask "find-any-file"
+# Per-application volume mixer, equalizer, and audio router
+cask "finetune"
+# Web browser
+cask "firefox"
+# Privacy-focused Firefox-based browser
+cask "floorp"
 # Change the behavior of the fn keys depending on the active application
 cask "fluor"
 # Screen colour temperature controller
@@ -811,10 +838,14 @@ cask "folder-preview-pro"
 cask "font-sketchybar-app-font"
 # Audio player
 cask "foobar2000"
+# File-automation app that watches folders and runs rules
+cask "lab421/tap/forel", trusted: true
 # Audio converter and CD ripper
 cask "freac"
 # 3D parametric modeller
 cask "freecad"
+# Tool to measure the computer system's performance
+cask "geekbench"
 # Disk space cleaner that finds and deletes duplicated and similar files
 cask "gemini"
 cask "ghidra"
@@ -838,16 +869,18 @@ cask "google-earth-pro"
 cask "google-gemini"
 # Graphically shows disk usage within a file system
 cask "grandperspective"
+# AI teammates that work across your apps and tools
+cask "grok-bot"
 # IRC client
 cask "halloy"
 # Desktop automation application
 cask "hammerspoon"
 # Open-source video transcoder
 cask "handbrake-app"
+# Speech to text application
+cask "handy"
 # Grammar checker for developers
 cask "harper-desktop"
-# Automated organisation
-cask "hazel"
 # Chromium-based web browser
 cask "helium-browser"
 # Game launcher
@@ -912,6 +945,8 @@ cask "losslesscut"
 cask "mac-mouse-fix"
 # File system integration
 cask "macfuse"
+# Archive manager
+cask "macpacker"
 # Graphical user interface for the command terminal
 cask "macpilot"
 # Screenshot and screen recording tool
@@ -970,6 +1005,8 @@ cask "neovide-app"
 cask "netnewswire"
 # Dual-pane file manager
 cask "nimble-commander"
+# Electronic thesaurus for the 'Service' menu
+cask "nisus-thesaurus"
 # App to write, plan, collaborate, and get organised
 cask "notion"
 # Calculator and converter application
@@ -1074,10 +1111,14 @@ cask "roblox"
 cask "rocket"
 # GUI for rsync
 cask "rsyncui"
+# Flash Player emulator
+cask "ruffle"
 # Free and open-source page layout program
 cask "scribus"
 # Integrated development environment focused entirely on AppleScript
 cask "script-debugger"
+# On-device AI that reads your life and proactively acts on it
+cask "sentient-os-labs/tap/sentient-os", trusted: true
 # Tool that provides consistent, highly configurable symbols for apps
 cask "sf-symbols"
 # App that enables mouse-free UI interaction
@@ -1132,12 +1173,16 @@ cask "stremio"
 cask "subler"
 # To-do list and time tracker
 cask "super-productivity"
+# Supercharge your Mac's Corners
+cask "daniyalmaster693/casks/supercorners", trusted: true
 # Kart racing game
 cask "supertuxkart"
 # Application for inspecting installer packages
 cask "suspicious-package"
 # Menu bar customization tool
 cask "swiftbar"
+# Native Discord client
+cask "swiftcord"
 # Replacement for RCDefaultApps, written in Swift
 cask "swiftdefaultappsprefpane"
 # Real time file synchronisation software
@@ -1152,6 +1197,10 @@ cask "taskbar"
 cask "taskexplorer"
 # Messaging app with a focus on speed and security
 cask "telegram"
+# Teleprompter that highlights scripts in real time as you speak
+cask "textream"
+# Menu bar manager
+cask "thaw@beta"
 # Instant fuzzy finder for files including system and hidden files
 cask "thelowtechguys-cling"
 # Time Machine log viewer & status inspector
@@ -1162,8 +1211,6 @@ cask "ti-connect-ce"
 cask "tigervnc"
 # Utility to change the default backup interval of Time Machine
 cask "timemachineeditor"
-# Tiny, fully native launcher, hotkeys, and clipboard history
-cask "abue-ammar/tinycast/tinycast"
 # Alter the character of your TonePrint pedal
 cask "toneprint"
 # Utility to hide the notch
@@ -1188,6 +1235,8 @@ cask "upscayl"
 cask "usenapp"
 # Virtual machines UI using QEMU
 cask "utm"
+# Web browser with built-in email client focusing on customization and control
+cask "vivaldi"
 # Menu bar toolkit with keep-awake, system monitor and volume mixer
 cask "vorssaint"
 # Binary releases of VS Code without MS branding/telemetry/licensing
@@ -1224,7 +1273,7 @@ cask "zoom"
 cask "zotero"
 mas "2048 Game", id: 871033113
 mas "Actions", id: 1586435171
-mas "Amphetamine", id: 937984704
+mas "Anybox", id: 1593408455
 mas "Apple Configurator", id: 1037126344
 mas "Asphalt", id: 1491129197
 mas "Asphalt8", id: 610391947
@@ -1248,6 +1297,7 @@ mas "HEIC Converter", id: 1294126402
 mas "Ice Cubes", id: 6444915884
 mas "IconizeFolder", id: 6478772538
 mas "InfoCard", id: 1110195348
+mas "InputConfig", id: 6777759147
 mas "Irvue", id: 1039633667
 mas "JuxtaText", id: 6504801865
 mas "Keynote", id: 361285480
@@ -1271,7 +1321,7 @@ mas "PDFgear", id: 6469021132
 mas "Pixelmator Pro", id: 1289583905
 mas "Plash", id: 1494023538
 mas "Poolsuite FM", id: 1514817810
-mas "Raycast Companion", id: 6738274497
+mas "Prefab", id: 6758208322
 mas "Recipe Keeper", id: 1315583175
 mas "Refined GitHub", id: 1519867270
 mas "Sandkorn", id: 1377973524
@@ -1289,6 +1339,7 @@ mas "TestFlight", id: 899247664
 mas "Tinted Folders Pro", id: 1529959811
 mas "uBlock Origin Lite", id: 6745342698
 mas "Unsplash Wallpapers", id: 1284863847
+mas "URL Manager Pro", id: 449825241
 mas "Velja", id: 1607635845
 mas "Vimari", id: 1480933944
 mas "WeTransfer", id: 1114922065
