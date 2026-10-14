@@ -5,15 +5,15 @@ idle = true
 maximized = false
 mouse-cursor-icon = "arrow"
 no-multigrid = false
-srgb = false # platform-specific: false (Linux/macOS) or true (Windows)
-tabs = false
+srgb = false                                          # platform-specific: false (Linux/macOS) or true (Windows)
+tabs = true
 title-hidden = true
 vsync = true
 wsl = false
 neovim_bin = "/opt/homebrew/bin/nvim"
 
 [font]
-normal = [ "Liga SFMono Nerd Font"] 
+normal = ["Liga SFMono Nerd Font"]
 size = 13.0
 
 [box-drawing]
@@ -21,4 +21,4 @@ size = 13.0
 mode = "native"
 
 [box-drawing.sizes]
-default = [2, 4]  # Thin and thick values respectively, for all sizes
+default = [2, 4] # Thin and thick values respectively, for all sizes
