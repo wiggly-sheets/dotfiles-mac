@@ -1,3 +1,5 @@
+tap "a-shygun/dripfetch", "https://github.com/a-shygun/dripfetch.git"
+tap "a-shygun/terrascope", "https://github.com/a-shygun/Terrascope.git"
 tap "abue-ammar/tinycast", trusted: true
 tap "achannarasappa/tap", "https://github.com/achannarasappa/tap.git", trusted: true
 tap "alecharmon/tap"
@@ -27,7 +29,6 @@ tap "homielab/mountmate", "https://github.com/homielab/mountmate", trusted: true
 tap "jackielii/tap", trusted: true
 tap "jnsahaj/lumen"
 tap "jsattler/tap", trusted: true
-tap "jsheffie/tap", trusted: { casks: ["spacemap"] }
 tap "jstkdng/programs"
 tap "jundot/omlx", "https://github.com/jundot/omlx", trusted: true
 tap "kegworks-app/kegworks", "https://github.com/Sikarugir-App/homebrew-sikarugir.git", trusted: true
@@ -51,6 +52,7 @@ tap "philocalyst/tap", trusted: true
 tap "playcover/playcover", "https://github.com/PlayCover/homebrew-playcover", trusted: true
 tap "rafaelswi/menubarusb", trusted: true
 tap "rgcr/formulae", trusted: true
+tap "roversx/tap", "https://github.com/RoversX/homebrew-tap"
 tap "ruffle-rs/ruffle", trusted: true
 tap "ruittenb/tap", trusted: true
 tap "samtay/tui", trusted: true
@@ -61,6 +63,7 @@ tap "socsieng/tap"
 tap "sw33tlie/macshot", trusted: true
 tap "theboredteam/boring-notch", "https://github.com/TheBoredTeam/homebrew-boring-notch", trusted: true
 tap "thezoraiz/ascii-image-converter", "https://github.com/TheZoraiz/homebrew-ascii-image-converter"
+tap "tonisives/tap"
 tap "tw93/tap", trusted: { casks: ["kakuku"] }
 tap "typewhisper/tap", trusted: true
 tap "valkyrie00/bbrew", "https://github.com/Valkyrie00/homebrew-bbrew", trusted: true
@@ -74,6 +77,8 @@ tap "xykong/tap", trusted: true
 tap "z20240/tap"
 tap "zackelia/formulae", trusted: true
 tap "zimengxiong/tools", "https://github.com/ZimengXiong/homebrew-tools", trusted: true
+# C/C++ and Java libraries for Unicode and globalization
+brew "icu4c@78"
 # Library for manipulating PNG images
 brew "libpng"
 # Software library to render fonts
@@ -84,8 +89,6 @@ brew "gettext"
 brew "xz"
 # Zstandard is a real-time compression algorithm
 brew "zstd"
-# C/C++ and Java libraries for Unicode and globalization
-brew "icu4c@78"
 # Apple Intelligence from the command-line, with OpenAi-compatible API server
 brew "apfel"
 # Cryptography and SSL/TLS Toolkit
@@ -248,6 +251,8 @@ brew "git-delta"
 brew "tcl-tk"
 # Tcl/Tk UI for the git revision control system
 brew "git-gui"
+# Update multiple git repositories at once
+brew "gitup"
 # Data validation using Python type hints
 brew "pydantic"
 # Alternative to top/htop
@@ -258,8 +263,6 @@ brew "glow"
 brew "gnu-sed"
 # Package compiler and linker metadata toolkit
 brew "pkgconf"
-# Ping, but with a graph
-brew "gping"
 # GNU grep, egrep and fgrep
 brew "grep"
 # Command-line tool for generating regular expressions
@@ -300,6 +303,8 @@ brew "ifstat"
 brew "iftop"
 # Tools and libraries to manipulate images in select formats
 brew "imagemagick"
+# GNU utilities for networking
+brew "inetutils"
 # Ranger-like terminal file manager written in Rust
 brew "joshuto"
 # Image manipulation library
@@ -320,6 +325,8 @@ brew "lazycontainer"
 brew "lazydocker"
 # Simple terminal UI for git commands
 brew "lazygit"
+# Modern TUI for Makefiles
+brew "lazymake"
 # Terminal-based SSH manager
 brew "lazyssh"
 # Pager program similar to more
@@ -538,8 +545,6 @@ brew "tccutil"
 brew "tealdeer"
 # General purpose fuzzy finder TUI
 brew "television"
-# User interface to the TELNET protocol
-brew "telnet"
 # Send macOS User Notifications from the command-line
 brew "terminal-notifier"
 # Powerful free data recovery utility
@@ -574,12 +579,16 @@ brew "ttyd"
 brew "tuicr"
 # Terminal UI OS (Terminal Multiplexer)
 brew "tuios"
+# Fast, keyboard-driven terminal UI for todo.txt
+brew "tuxedo"
 # macOS command-line tool to work with default apps
 brew "utiluti"
 # Extremely fast Python package installer and resolver, written in Rust
 brew "uv"
 # Ncurses-based file manager with vi-like keybindings
 brew "vifm"
+# Vi 'workalike' with many additional features
+brew "vim"
 # Simple terminal image viewer written in Rust
 brew "viu"
 # Generator for LS_COLORS with support for multiple color themes
@@ -608,6 +617,8 @@ brew "xeyes"
 brew "xh"
 # Bring your favorite shell wherever you go through the ssh
 brew "xxh"
+# Yet Another Dotfiles Manager
+brew "yadm"
 # Blazing fast terminal file manager written in Rust, based on async I/O
 brew "yazi"
 # Process YAML, JSON, XML, CSV and properties documents from the CLI
@@ -630,6 +641,10 @@ brew "zsh-fast-syntax-highlighting"
 brew "zsh-syntax-highlighting"
 # Better and friendly vi(vim) mode plugin for ZSH
 brew "zsh-vi-mode"
+# Customizable terminal system information dashboard with animated rain
+brew "a-shygun/dripfetch/dripfetch"
+# Braille-rendered terminal world map with live weather and aircraft
+brew "a-shygun/terrascope/terrascope"
 # 🔑 a CLI for Apple Passwords 🔒
 brew "alecharmon/tap/applepw", trusted: true
 # A tiling window manager for macOS based on binary space partitioning.
@@ -724,6 +739,8 @@ cask "bettercapture"
 cask "betterdisplay"
 # Utility improving 3rd party mouse performance and functionalities
 cask "bettermouse"
+# Screen capturing and editing tool
+cask "bettershot"
 # Tool to customise input devices and automate computer systems
 cask "bettertouchtool@alpha"
 # 3D creation suite
@@ -842,6 +859,8 @@ cask "foobar2000"
 cask "lab421/tap/forel", trusted: true
 # Audio converter and CD ripper
 cask "freac"
+# Horizontal and vertical rulers
+cask "free-ruler"
 # 3D parametric modeller
 cask "freecad"
 # Tool to measure the computer system's performance
@@ -859,6 +878,8 @@ cask "github"
 cask "github-copilot-app"
 # Git client focusing on productivity
 cask "gitkraken"
+# Git interface focused on visual interaction
+cask "gitup-app"
 # Game client
 cask "gog-galaxy"
 # Client for the Google Drive storage service
@@ -921,14 +942,16 @@ cask "knockknock"
 cask "krita"
 # Utility that shows the latest app updates
 cask "latest"
+# macOS Launchpad replacement for macOS Tahoe and later
+cask "roversx/tap/launchnext", trusted: true
 # Launchpad alternative
 cask "launchos"
 # Application launcher
 cask "leader-key"
-# Custom Discord client
-cask "legcord"
 # Free cross-platform office suite, fresh version
 cask "libreoffice"
+# Web browser
+cask "librewolf"
 # App to manage software development and track bugs
 cask "linear"
 # Host-based application firewall
@@ -955,6 +978,8 @@ cask "macshot"
 cask "mactools"
 # Tool to create bootable USB installers
 cask "macusb"
+# Text editor
+cask "macvim-app"
 # Markdown previewer with bundled Quick Look extension
 cask "markdown-preview"
 # Markdown editor
@@ -1051,8 +1076,12 @@ cask "orion"
 cask "osaurus"
 # Monitors computer mic and webcam
 cask "oversight"
+# System-wide Vim mode
+cask "tonisives/tap/ovim", trusted: true
 # Share audio between two Bluetooth devices
 cask "pairpods"
+# Web browser
+cask "pale-moon"
 # OpenVPN and WireGuard client
 cask "passepartout"
 # Playstation 2 Emulator
@@ -1237,6 +1266,8 @@ cask "usenapp"
 cask "utm"
 # Web browser with built-in email client focusing on customization and control
 cask "vivaldi"
+# Multimedia player
+cask "vlc"
 # Menu bar toolkit with keep-awake, system monitor and volume mixer
 cask "vorssaint"
 # Binary releases of VS Code without MS branding/telemetry/licensing
@@ -1245,16 +1276,18 @@ cask "vscodium"
 cask "wickenico/wailbrew/wailbrew"
 # Rust-based terminal
 cask "warp"
+# Web browser
+cask "waterfox"
 # Torrent streaming application
 cask "webtorrent"
-# GPU-accelerated cross-platform terminal emulator and multiplexer
-cask "wezterm@nightly"
 # Menu bar app for USB-C cable diagnostics
 cask "whatcable"
 # Native desktop client for WhatsApp
 cask "whatsapp"
 # Menu bar utility for viewing and switching Spaces
 cask "whichspace"
+# Wine wrapper built with SwiftUI
+cask "whisky"
 # Network protocol analyzer
 cask "wireshark-app"
 # Original Xbox Emulator
@@ -1304,6 +1337,7 @@ mas "Keynote", id: 361285480
 mas "Keyword Search", id: 1558453954
 mas "Klack", id: 6446206067
 mas "Knights of the Old Republic", id: 416608891
+mas "Kulve", id: 6476389316
 mas "Lickable Menu Bar", id: 6444217677
 mas "Logic Pro", id: 634148309
 mas "Mactracker", id: 430255202
@@ -1312,6 +1346,7 @@ mas "MainStage", id: 634159523
 mas "Meal planner", id: 6460821436
 mas "Mela", id: 1568924476
 mas "Motion", id: 434290957
+mas "Netutilus", id: 6758589382
 mas "Night Sky", id: 475772902
 mas "Numbers", id: 361304891
 mas "Pages", id: 361309726
