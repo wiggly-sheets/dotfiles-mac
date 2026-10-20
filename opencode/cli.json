@@ -137,24 +137,65 @@
     "terminal.title.toggle": "none"
   },
   "plugins": [
-    "@tarquinen/opencode-dcp",
-    "@franlol/opencode-md-table-formatter",
-    "@zenobius/opencode-skillful",
-    "@aeondave/opencode-dotenv@latest",
-    "@mumme-it/opencode-caveman",
-    "@dietrichgebert/ponytail",
-    "./herdr-opencode"
+    {
+      "package": "@tarquinen/opencode-dcp"
+    },
+    {
+      "package": "@franlol/opencode-md-table-formatter"
+    },
+    {
+      "package": "@zenobius/opencode-skillful"
+    },
+    {
+      "package": "@aeondave/opencode-dotenv@latest"
+    },
+    {
+      "package": "@mumme-it/opencode-caveman"
+    },
+    {
+      "package": "@dietrichgebert/ponytail"
+    },
+    {
+      "package": "./herdr-opencode"
+    }
   ],
   "leader": {
     "timeout": 2000
   },
   "diffs": {
-    "wrap": "word"
+    "wrap": "word",
+    "view": "auto",
+    "single": true
   },
   "session": {
     "sidebar": "hide",
-    "scrollbar": false,
-    "thinking": "show"
+    "scrollbar": true,
+    "thinking": "hide",
+    "markdown": "rendered",
+    "grouping": "auto",
+    "verbosity": "low",
+    "tps": true,
+    "permissions": "prompt"
   },
-  "animations": true
+  "animations": true,
+  "tabs": {
+    "mode": "auto",
+    "layout": "horizontal",
+    "indicators": "status"
+  },
+  "scroll": {
+    "acceleration": true
+  },
+  "attention": {
+    "notifications": true,
+    "sound": true
+  },
+  "terminal": {
+    "copy": "select",
+    "title": true
+  },
+  "prompt": {
+    "image_preview": true,
+    "paste": "full"
+  }
 }

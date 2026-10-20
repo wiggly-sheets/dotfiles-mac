@@ -38,7 +38,7 @@ CONFIGS=(
   "window_placement second_child"
   "left_padding 10"
   "right_padding 60"
-  "top_padding 10"
+  "top_padding 5"
   "bottom_padding 10"
   "window_gap 10"
   "window_shadow off"

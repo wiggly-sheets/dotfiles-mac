@@ -63,20 +63,23 @@ tap "socsieng/tap"
 tap "sw33tlie/macshot", trusted: true
 tap "theboredteam/boring-notch", "https://github.com/TheBoredTeam/homebrew-boring-notch", trusted: true
 tap "thezoraiz/ascii-image-converter", "https://github.com/TheZoraiz/homebrew-ascii-image-converter"
+tap "tmp/tap-audit", "/tmp/tap-audit", trusted: true
 tap "tonisives/tap"
 tap "tw93/tap", trusted: { casks: ["kakuku"] }
 tap "typewhisper/tap", trusted: true
 tap "valkyrie00/bbrew", "https://github.com/Valkyrie00/homebrew-bbrew", trusted: true
 tap "waydabber/betterdisplay"
 tap "wickenico/wailbrew", trusted: true
-tap "wiggly-sheets/sketchybar-studio", "https://github.com/wiggly-sheets/Homebrew-SketchyBar-Studio.git", trusted: true
-tap "wiggly-sheets/spacemap", "https://github.com/wiggly-sheets/homebrew-spacemap.git"
-tap "wiggly-sheets/spacesrenamer"
-tap "wiggly-sheets/tap", trusted: { casks: ["wallpaper-selector"] }
+tap "wiggly-sheets/tap", trusted: true
+tap "writronic/tap", trusted: { casks: ["macursor"] }
 tap "xykong/tap", trusted: true
 tap "z20240/tap"
 tap "zackelia/formulae", trusted: true
 tap "zimengxiong/tools", "https://github.com/ZimengXiong/homebrew-tools", trusted: true
+# Static analysis and lint tool, for (ba)sh scripts
+brew "shellcheck"
+# Static checker for GitHub Actions workflow files
+brew "actionlint"
 # C/C++ and Java libraries for Unicode and globalization
 brew "icu4c@78"
 # Library for manipulating PNG images
@@ -89,6 +92,8 @@ brew "gettext"
 brew "xz"
 # Zstandard is a real-time compression algorithm
 brew "zstd"
+# Graphics library to dynamically manipulate images
+brew "gd"
 # Apple Intelligence from the command-line, with OpenAi-compatible API server
 brew "apfel"
 # Cryptography and SSL/TLS Toolkit
@@ -129,6 +134,12 @@ brew "bat"
 brew "bat-extras"
 # Breadth-first version of find
 brew "bfs"
+# GNU binary tools for native development
+brew "binutils"
+# Open-source, cross-platform JavaScript runtime environment
+brew "node"
+# Secure and free password manager for all of your devices
+brew "bitwarden-cli"
 # Get/set bluetooth power and discoverable state
 brew "blueutil"
 # Yet another cross-platform graphical process/system monitor
@@ -163,8 +174,6 @@ brew "cmatrix"
 brew "container"
 # Manage Apple Container with Docker Compose files
 brew "container-compose"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.14"
 # Portable file server
 brew "copyparty"
 # GNU File, Shell, and Text utilities
@@ -183,6 +192,8 @@ brew "dash-shell"
 brew "doge"
 # YAML Parser
 brew "libyaml"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.14"
 # TUI todo manager
 brew "dooit"
 # Terminal dashboard for Docker monitoring across multiple hosts
@@ -195,12 +206,16 @@ brew "duck"
 brew "duf"
 # Classic text adventure game
 brew "dungeon"
+# Versatile ASCII and ANSI Art text editor for drawing in the terminal
+brew "durdraw"
 # More intuitive version of du in rust
 brew "dust"
 # Select default apps for documents and URL schemes on macOS
 brew "duti"
 # Friendly and expressive shell
 brew "elvish"
+# GNU Emacs text editor
+brew "emacs"
 # Run arbitrary commands when files change
 brew "entr"
 # Perl lib for reading and writing EXIF metadata
@@ -237,8 +252,6 @@ brew "fx"
 brew "fzf-tab"
 # GNU awk utility
 brew "gawk"
-# Graphics library to dynamically manipulate images
-brew "gd"
 # GitHub command-line tool
 brew "gh"
 # Multi-platform software reverse engineering framework
@@ -277,8 +290,14 @@ brew "libdvdcss"
 brew "handbrake"
 # Grammar Checker for Developers
 brew "harper"
+# Post-modern modal text editor
+brew "helix"
 # Agent multiplexer that lives in your terminal
 brew "herdr"
+# Search tool like grep and The Silver Searcher
+brew "ripgrep"
+# Self-improving AI agent that creates skills from experience
+brew "hermes-agent"
 # Client library for huggingface.co hub
 brew "hf"
 # Improved top (interactive process viewer)
@@ -355,10 +374,10 @@ brew "lynx"
 brew "macchina"
 # Keep your Mac's application settings in sync
 brew "mackup"
+# Sudoless performance monitoring for Apple Silicon processors
+brew "macmon"
 # Apple Silicon Monitor Top written in Go Lang
 brew "mactop"
-# Open-source, cross-platform JavaScript runtime environment
-brew "node"
 # Quickly generate a temporary email address
 brew "mailsy"
 # Mac App Store command-line interface
@@ -435,8 +454,6 @@ brew "onefetch"
 brew "open-adventure"
 # Your own personal AI assistant
 brew "openclaw-cli"
-# Search tool like grep and The Silver Searcher
-brew "ripgrep"
 # AI coding agent, built for the terminal
 brew "opencode"
 # Minecraft package manager and launcher
@@ -449,6 +466,8 @@ brew "pastel"
 brew "pfetch"
 # General-purpose scripting language
 brew "php"
+# AI agent toolkit
+brew "pi-coding-agent"
 # Display the PID number for a given process name
 brew "pidof"
 # Animated pipes terminal screensaver
@@ -513,6 +532,8 @@ brew "sd"
 brew "sesh"
 # 7-Zip is a file archiver with a high compression ratio
 brew "sevenzip"
+# Autoformat shell script source code
+brew "shfmt"
 # Prints a steam locomotive if you type sl instead of ls
 brew "sl"
 # SMART hard drive monitoring
@@ -743,6 +764,8 @@ cask "bettermouse"
 cask "bettershot"
 # Tool to customise input devices and automate computer systems
 cask "bettertouchtool@alpha"
+# Desktop password and login vault
+cask "bitwarden"
 # 3D creation suite
 cask "blender"
 # Workspace for humans and AI agents
@@ -761,6 +784,8 @@ cask "msitarzewski/brew-browser/brew-browser"
 cask "burn"
 # E-books management software
 cask "calibre"
+# Design tool
+cask "canva"
 # Native GUI for Homebrew casks
 cask "caskhub"
 # OpenAI's official ChatGPT desktop app
@@ -784,6 +809,8 @@ cask "cotypist"
 cask "crossover"
 # Download and manage your addons and mods
 cask "curseforge"
+# Write, edit, and chat about your code with AI
+cask "cursor"
 # Customise menu item keyboard shortcuts
 cask "customshortcuts"
 # Server and cloud storage browser
@@ -818,12 +845,16 @@ cask "ea"
 cask "easydmg"
 # Matrix collaboration client
 cask "element"
+# GNU Emacs text editor
+cask "emacs-app"
 # Launcher for *Epic Games* games
 cask "epic-games"
 # Cross-platform Text Expander written in Rust
 cask "espanso"
 # Utility to find and fix problems on computer systems
 cask "etrecheckpro"
+# Excalidraw client
+cask "excalidrawz"
 # View and change the default app that opens each file type, by category
 cask "skyline69/tap/ext-selector", trusted: true
 # Audio playback
@@ -904,6 +935,8 @@ cask "handy"
 cask "harper-desktop"
 # Chromium-based web browser
 cask "helium-browser"
+# Open-source desktop AI agent
+cask "hermes-desktop"
 # Game launcher
 cask "heroic"
 # Homebrew's official GUI
@@ -1112,6 +1145,8 @@ cask "edde746/plezy/plezy"
 cask "popclip"
 # Monitor process activity
 cask "processmonitor"
+# Text editor
+cask "pulsar"
 # Quick Look generator for Markdown files
 cask "qlmarkdown"
 # Disk space analyzer
@@ -1134,6 +1169,8 @@ cask "reamp"
 cask "reikey"
 # File sync and share software
 cask "resilio-sync"
+# Frontend for emulators, game engines and media players (Metal graphics API)
+cask "retroarch-metal"
 # Online multiplayer game platform
 cask "roblox"
 # Emoji picker optimised for blind people
@@ -1162,8 +1199,8 @@ cask "signal"
 cask "kegworks-app/kegworks/sikarugir"
 # Automatically checks computer's security
 cask "silentknight"
-# Native macOS companion app for editing SketchyBar configs
-cask "wiggly-sheets/sketchybar-studio/sketchybar-studio"
+# Native companion app for editing SketchyBar configs
+cask "tmp/tap-audit/sketchybar-studio"
 # Simple hotkey daemon written in Zig
 cask "jackielii/tap/skhd-zig", trusted: true
 # Bluesky Social client
@@ -1187,9 +1224,9 @@ cask "zimengxiong/tools/spacecommand"
 # View and navigate Spaces (Virtual Desktops) from the menu bar
 cask "ruittenb/tap/spaceman"
 # Yabai workspace visualizer
-cask "wiggly-sheets/spacemap/spacemap", trusted: true
-# Give macOS Spaces persistent names in Mission Control
-cask "wiggly-sheets/spacesrenamer/spacesrenamer", trusted: true
+cask "tmp/tap-audit/spacemap"
+# Give Spaces persistent names in Mission Control
+cask "tmp/tap-audit/spacesrenamer"
 # Run anything at startup by simply placing it in a special folder
 cask "startupfolder"
 # System monitor for the menu bar
@@ -1200,6 +1237,8 @@ cask "steam"
 cask "stremio"
 # Mux and tag mp4 files
 cask "subler"
+# Text editor for code, markup and prose
+cask "sublime-text"
 # To-do list and time tracker
 cask "super-productivity"
 # Supercharge your Mac's Corners
@@ -1218,6 +1257,8 @@ cask "swiftdefaultappsprefpane"
 cask "syncthing-app"
 # Quicklook extension for source files
 cask "syntax-highlight"
+# Minimal GUI for AI code agents
+cask "t3-code"
 # Mesh VPN based on WireGuard
 cask "tailscale-app"
 # Windows-style taskbar as a Dock replacement
@@ -1230,6 +1271,8 @@ cask "telegram"
 cask "textream"
 # Menu bar manager
 cask "thaw@beta"
+# Web browser
+cask "thebrowsercompany-dia"
 # Instant fuzzy finder for files including system and hidden files
 cask "thelowtechguys-cling"
 # Time Machine log viewer & status inspector
@@ -1371,6 +1414,7 @@ mas "Star Wars®: Knights of the Old Republic™ II", id: 960778634
 mas "Startup Manager", id: 1296723195
 mas "Swift Playground", id: 1496833156
 mas "TestFlight", id: 899247664
+mas "Tilt", id: 6819511315
 mas "Tinted Folders Pro", id: 1529959811
 mas "uBlock Origin Lite", id: 6745342698
 mas "Unsplash Wallpapers", id: 1284863847
@@ -1430,3 +1474,4 @@ vscode "waderyan.gitblame"
 vscode "yzhang.markdown-all-in-one"
 go "cmd/go"
 go "cmd/gofmt"
+npm "@caveman-ai/cli"
