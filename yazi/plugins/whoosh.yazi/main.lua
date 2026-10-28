@@ -114,8 +114,27 @@ local function ensure_directory(path)
   return true
 end
 
+local function is_virtual_path(path)
+  local path_string = tostring(path)
+  return not path_string:match("^[A-Za-z]:[\\/]")
+      and path_string:match("^[%a][%w+.-]*://") ~= nil
+end
+
+local function to_cd_target(path)
+  if is_virtual_path(path) then
+    local ok, url = pcall(Url, path)
+    if ok then return url end
+  end
+  return path
+end
+
 local function normalize_path(path)
-  local normalized_path = tostring(path):gsub("[\\/]+", path_sep)
+  local path_string = tostring(path)
+  if is_virtual_path(path_string) then
+    return path_string
+  end
+
+  local normalized_path = path_string:gsub("[\\/]+", path_sep)
 
   if ya.target_family() == "windows" then
     if normalized_path:match("^[A-Za-z]:[\\/]*$") then
@@ -198,6 +217,10 @@ local function parent_path(path)
 end
 
 local function find_project_root(path)
+  if is_virtual_path(path) then
+    return nil
+  end
+
   local current = normalize_path(path)
   while current and current ~= "" do
     if path_exists(join_path(current, ".git")) then
@@ -210,6 +233,10 @@ end
 
 local function apply_home_alias(path)
   if not path or path == "" then
+    return path
+  end
+
+  if is_virtual_path(path) then
     return path
   end
 
@@ -293,7 +320,7 @@ local function normalize_special_key(value, fallback)
 end
 
 local function truncate_long_folder_names(path, max_folder_length)
-  if not max_folder_length or max_folder_length <= 0 then
+  if not max_folder_length or max_folder_length <= 0 or is_virtual_path(path) then
     return path
   end
 
@@ -320,6 +347,10 @@ local function truncate_long_folder_names(path, max_folder_length)
 end
 
 local function truncate_path(path, max_parts)
+  if is_virtual_path(path) then
+    return tostring(path)
+  end
+
   max_parts = max_parts or 3
   local normalized_path = normalize_path(path)
   normalized_path = apply_home_alias(normalized_path)
@@ -941,7 +972,7 @@ action_jump = function(path)
 
   local bookmark = temp_bookmarks[path] or all_bookmarks[path]
   if not bookmark then
-    ya.emit("cd", { path })
+    ya.emit("cd", { to_cd_target(path) })
     if jump_notify then notify('Jump to "' .. path_to_desc(path) .. '"') end
     return
   end
@@ -949,7 +980,7 @@ action_jump = function(path)
   local tag = bookmark.tag
   local is_temp = temp_bookmarks[path] ~= nil
 
-  ya.emit("cd", { path })
+  ya.emit("cd", { to_cd_target(path) })
 
   if jump_notify then
     local prefix = is_temp and "[TEMP] " or ""
@@ -1394,19 +1425,22 @@ return {
       local home_path = ya.target_family() == "windows" and os.getenv("USERPROFILE") or os.getenv("HOME")
 
       for _, bookmark in ipairs(simple_bookmarks or {}) do
-        local path = bookmark.path
-        if path:sub(1, 1) == "~" then
-          path = home_path .. path:sub(2)
-        end
+        local raw_path = tostring(bookmark.path or "")
+        local path = raw_path
+        if not is_virtual_path(raw_path) then
+          if path:sub(1, 1) == "~" then
+            path = home_path .. path:sub(2)
+          end
 
-        if ya.target_family() == "windows" then
-          path = path:gsub("/", "\\")
-        else
-          path = path:gsub("\\", "/")
-        end
+          if ya.target_family() == "windows" then
+            path = path:gsub("/", "\\")
+          else
+            path = path:gsub("\\", "/")
+          end
 
-        if path:sub(-1) ~= path_sep then
-          path = path .. path_sep
+          if path:sub(-1) ~= path_sep then
+            path = path .. path_sep
+          end
         end
 
         converted[path] = {

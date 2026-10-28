@@ -1,5 +1,5 @@
 tap "a-shygun/dripfetch", "https://github.com/a-shygun/dripfetch.git"
-tap "a-shygun/terrascope", "https://github.com/a-shygun/Terrascope.git"
+tap "a-shygun/terrascope", "https://github.com/a-shygun/Terrascope.git", trusted: { formulae: ["terrascope"] }
 tap "abue-ammar/tinycast", trusted: true
 tap "achannarasappa/tap", "https://github.com/achannarasappa/tap.git", trusted: true
 tap "alecharmon/tap"
@@ -12,6 +12,7 @@ tap "browsh-org/browsh", trusted: true
 tap "can1357/tap"
 tap "catskull/homebrew", "https://github.com/catskull/homebrew", trusted: true
 tap "charmbracelet/tap"
+tap "clainstone/tap"
 tap "codeeditapp/formulae"
 tap "daniyalmaster693/casks"
 tap "edde746/plezy", "https://github.com/edde746/plezy", trusted: true
@@ -44,10 +45,12 @@ tap "mateocerquetella/ricebarmac", trusted: true
 tap "mhaeuser/mhaeuser", trusted: true
 tap "msitarzewski/brew-browser", trusted: true
 tap "narugit/tap"
+tap "nayji7/tap"
 tap "neur0map/tap"
 tap "nikgrbn/tap"
 tap "nohajc/anylinuxfs"
 tap "notwadegrimridge/brew", trusted: true
+tap "penso/tap"
 tap "philocalyst/tap", trusted: true
 tap "playcover/playcover", "https://github.com/PlayCover/homebrew-playcover", trusted: true
 tap "rafaelswi/menubarusb", trusted: true
@@ -55,6 +58,7 @@ tap "rgcr/formulae", trusted: true
 tap "roversx/tap", "https://github.com/RoversX/homebrew-tap"
 tap "ruffle-rs/ruffle", trusted: true
 tap "ruittenb/tap", trusted: true
+tap "saffsanity/sill"
 tap "samtay/tui", trusted: true
 tap "sentient-os-labs/tap"
 tap "sikarugir-app/sikarugir", "https://github.com/Sikarugir-App/homebrew-sikarugir", trusted: true
@@ -63,15 +67,17 @@ tap "socsieng/tap"
 tap "sw33tlie/macshot", trusted: true
 tap "theboredteam/boring-notch", "https://github.com/TheBoredTeam/homebrew-boring-notch", trusted: true
 tap "thezoraiz/ascii-image-converter", "https://github.com/TheZoraiz/homebrew-ascii-image-converter"
-tap "tmp/tap-audit", "/tmp/tap-audit", trusted: true
 tap "tonisives/tap"
 tap "tw93/tap", trusted: { casks: ["kakuku"] }
 tap "typewhisper/tap", trusted: true
+tap "urtti/szt"
 tap "valkyrie00/bbrew", "https://github.com/Valkyrie00/homebrew-bbrew", trusted: true
+tap "vukkt/tap"
+tap "wakmail/tap"
 tap "waydabber/betterdisplay"
 tap "wickenico/wailbrew", trusted: true
 tap "wiggly-sheets/tap", trusted: true
-tap "writronic/tap", trusted: { casks: ["macursor"] }
+tap "writronic/tap"
 tap "xykong/tap", trusted: true
 tap "z20240/tap"
 tap "zackelia/formulae", trusted: true
@@ -632,10 +638,14 @@ brew "wget"
 brew "wget2"
 # Why is this running?
 brew "witr"
+# Generate your Xcode project from a spec file and your folder structure
+brew "xcodegen"
 # Follow the mouse X demo using the X SHAPE extension
 brew "xeyes"
 # Friendly and fast tool for sending HTTP requests
 brew "xh"
+# Python-powered, cross-platform, Unix-gazing shell language and command prompt
+brew "xonsh"
 # Bring your favorite shell wherever you go through the ssh
 brew "xxh"
 # Yet Another Dotfiles Manager
@@ -664,8 +674,6 @@ brew "zsh-syntax-highlighting"
 brew "zsh-vi-mode"
 # Customizable terminal system information dashboard with animated rain
 brew "a-shygun/dripfetch/dripfetch"
-# Braille-rendered terminal world map with live weather and aircraft
-brew "a-shygun/terrascope/terrascope"
 # 🔑 a CLI for Apple Passwords 🔒
 brew "alecharmon/tap/applepw", trusted: true
 # A tiling window manager for macOS based on binary space partitioning.
@@ -676,6 +684,8 @@ brew "bjarneo/cliamp/cliamp", trusted: true
 brew "can1357/tap/omp", trusted: true
 # A powerful terminal-based AI assistant for developers, providing intelligent coding assistance directly in your terminal.
 brew "charmbracelet/tap/crush", trusted: true
+# Flock of birds in your terminal
+brew "clainstone/tap/cbirds", trusted: true
 # A command-line-interface to open files/folders in CodeEdit.app
 brew "codeeditapp/formulae/codeedit-cli", trusted: true
 # A window border system for macOS
@@ -694,14 +704,14 @@ brew "gschurck/fuzzybrew/fuzzybrew", trusted: true
 brew "jnsahaj/lumen/lumen", trusted: true
 # Drop in replacement for ueberzug written in C++
 brew "jstkdng/programs/ueberzugpp", trusted: true
-# LLM inference server optimized for Apple Silicon
-brew "jundot/omlx/omlx"
 # Coordinates SketchyBar and the native macOS menu bar
 brew "malpern/tap/sketchybar-toggle", trusted: true
 # A neofetch alternative for GitHub quick view
 brew "matars/gitfetch/gitfetch", trusted: true
 # Check Temperature by using Apple System Management Control (Smc) tool
 brew "narugit/tap/smctemp", trusted: true
+# Terminal Git client with an image-rendered commit graph and GitHub PRs
+brew "nayji7/tap/gitoui", trusted: true
 # TUI dashboard that unifies 43 package managers into one searchable view
 brew "neur0map/tap/gpk", trusted: true
 # Adds New File, Open Terminal Here and more to Finder's right-click menu
@@ -720,8 +730,12 @@ brew "samtay/tui/tetris", trusted: true
 brew "socsieng/tap/sendkeys", trusted: true
 # Convert images into ascii art
 brew "thezoraiz/ascii-image-converter/ascii-image-converter", trusted: true
+# Disk usage tree (sizetree) that shows what's taking up space
+brew "urtti/szt/szt", trusted: true
 # Modern TUI for managing Homebrew packages and casks on macOS and Linux
 brew "valkyrie00/bbrew/bbrew", trusted: true
+# Liquid Glass theme for iTerm2, Ghostty, kitty and Warp
+brew "vukkt/tap/iglass", trusted: true
 # BetterDisplay CLI proxy
 brew "waydabber/betterdisplay/betterdisplaycli", trusted: true
 # Note editor and whiteboard
@@ -740,8 +754,6 @@ cask "fenio/tap/anylinuxfs-gui", trusted: true
 cask "app-buddy"
 # Inspect application bundles
 cask "apparency"
-# Chromium based browser
-cask "arc"
 # Dynamic Island for the MacBook notch
 cask "atoll"
 # Multi-track audio editor and recorder
@@ -817,6 +829,8 @@ cask "customshortcuts"
 cask "cyberduck"
 # AI-powered translator
 cask "deepl"
+# Plugin-based AI agent desktop application
+cask "deepseek-harness"
 # Utility to enhance the Open and Save dialogs in applications
 cask "default-folder-x"
 # Command-line tool to set the desktop picture
@@ -935,6 +949,8 @@ cask "handy"
 cask "harper-desktop"
 # Chromium-based web browser
 cask "helium-browser"
+# Native GUI client for an existing local Herdr daemon
+cask "penso/tap/herdr-gpui", trusted: true
 # Open-source desktop AI agent
 cask "hermes-desktop"
 # Game launcher
@@ -969,6 +985,8 @@ cask "keycastr"
 cask "keyclu"
 # Use Vim in input fields and non input fields
 cask "kindavim"
+# GPU-based terminal emulator
+cask "kitty"
 # Tool to show what is persistently installed on the computer
 cask "knockknock"
 # Free and open-source painting and sketching program
@@ -1009,6 +1027,8 @@ cask "macpilot"
 cask "macshot"
 # Menu bar toolbox
 cask "mactools"
+# Custom cursor themes
+cask "writronic/tap/macursor", trusted: true
 # Tool to create bootable USB installers
 cask "macusb"
 # Text editor
@@ -1017,6 +1037,8 @@ cask "macvim-app"
 cask "markdown-preview"
 # Markdown editor
 cask "markedit"
+# Native Markdown editor with live formatting
+cask "wakmail/tap/marklet", trusted: true
 # Extensible two-pane file manager
 cask "marta"
 # Display technical and tag data for video and audio files
@@ -1047,6 +1069,8 @@ cask "mountmate"
 cask "mouseless"
 # Tool for editing metadata of audio files including MP3, FLAC, OGG, and more
 cask "mp3tag"
+# Interactive terminal coding agent
+cask "muse-code"
 # Open-source music notation software
 cask "musescore"
 # Music app blocker utility
@@ -1145,6 +1169,8 @@ cask "edde746/plezy/plezy"
 cask "popclip"
 # Monitor process activity
 cask "processmonitor"
+# HTTP debugging proxy
+cask "proxyman"
 # Text editor
 cask "pulsar"
 # Quick Look generator for Markdown files
@@ -1199,8 +1225,10 @@ cask "signal"
 cask "kegworks-app/kegworks/sikarugir"
 # Automatically checks computer's security
 cask "silentknight"
-# Native companion app for editing SketchyBar configs
-cask "tmp/tap-audit/sketchybar-studio"
+# Streams windows to an iPhone or iPad with touch, Pencil and keyboard control
+cask "saffsanity/sill/sill", trusted: true
+# Preview and edit SketchyBar configs in real time
+cask "wiggly-sheets/tap/sketchybar-studio", trusted: true
 # Simple hotkey daemon written in Zig
 cask "jackielii/tap/skhd-zig", trusted: true
 # Bluesky Social client
@@ -1223,10 +1251,10 @@ cask "sourcetree"
 cask "zimengxiong/tools/spacecommand"
 # View and navigate Spaces (Virtual Desktops) from the menu bar
 cask "ruittenb/tap/spaceman"
-# Yabai workspace visualizer
-cask "tmp/tap-audit/spacemap"
+# Visualize spaces as an interactive map
+cask "wiggly-sheets/tap/spacemap", trusted: true
 # Give Spaces persistent names in Mission Control
-cask "tmp/tap-audit/spacesrenamer"
+cask "wiggly-sheets/tap/spacesrenamer", trusted: true
 # Run anything at startup by simply placing it in a special folder
 cask "startupfolder"
 # System monitor for the menu bar
@@ -1323,6 +1351,8 @@ cask "warp"
 cask "waterfox"
 # Torrent streaming application
 cask "webtorrent"
+# GPU-accelerated cross-platform terminal emulator and multiplexer
+cask "wezterm@nightly"
 # Menu bar app for USB-C cable diagnostics
 cask "whatcable"
 # Native desktop client for WhatsApp
@@ -1349,6 +1379,7 @@ cask "zoom"
 cask "zotero"
 mas "2048 Game", id: 871033113
 mas "Actions", id: 1586435171
+mas "Amazing AI", id: 1660147028
 mas "Anybox", id: 1593408455
 mas "Apple Configurator", id: 1037126344
 mas "Asphalt", id: 1491129197
@@ -1362,6 +1393,7 @@ mas "Compressor", id: 424390742
 mas "Dark Reader for Safari", id: 1438243180
 mas "Dato", id: 1470584107
 mas "Developer", id: 640199958
+mas "DevHub", id: 6476452351
 mas "Dropover", id: 1355679052
 mas "Enhancements For YouTube", id: 1643308157
 mas "Final Cut Pro", id: 424389933
@@ -1369,8 +1401,10 @@ mas "Folder Peek", id: 1615988943
 mas "Gapplin", id: 768053424
 mas "Gifski", id: 1351639930
 mas "Googly Eyes", id: 6743048714
+mas "HDHomeRun", id: 949582631
 mas "HEIC Converter", id: 1294126402
 mas "Ice Cubes", id: 6444915884
+mas "Icon Preview", id: 6480373509
 mas "IconizeFolder", id: 6478772538
 mas "InfoCard", id: 1110195348
 mas "InputConfig", id: 6777759147
@@ -1395,6 +1429,7 @@ mas "Numbers", id: 361304891
 mas "Pages", id: 361309726
 mas "Panels", id: 1236567663
 mas "Parcel", id: 375589283
+mas "Pasteboard Viewer", id: 1499215709
 mas "PDFgear", id: 6469021132
 mas "Pixelmator Pro", id: 1289583905
 mas "Plash", id: 1494023538
@@ -1404,6 +1439,7 @@ mas "Recipe Keeper", id: 1315583175
 mas "Refined GitHub", id: 1519867270
 mas "Sandkorn", id: 1377973524
 mas "Shareful", id: 1522267256
+mas "Simple Color Palette", id: 6744484427
 mas "Simple Comic", id: 1497435571
 mas "Sink It for Reddit", id: 6449873635
 mas "SnippetsLab", id: 1006087419
@@ -1474,4 +1510,3 @@ vscode "waderyan.gitblame"
 vscode "yzhang.markdown-all-in-one"
 go "cmd/go"
 go "cmd/gofmt"
-npm "@caveman-ai/cli"

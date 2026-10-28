@@ -181,7 +181,8 @@
   "tabs": {
     "mode": "auto",
     "layout": "horizontal",
-    "indicators": "status"
+    "indicators": "status",
+    "scope": "cwd"
   },
   "scroll": {
     "acceleration": true
