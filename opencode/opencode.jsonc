@@ -1,9 +1,11 @@
 {
   "$schema": "https://opencode.ai/config.json",
+  "snapshots": false,
   "plugins": [
     "@tarquinen/opencode-dcp",
     "@mumme-it/opencode-caveman",
-    "@dietrichgebert/ponytail"
+    "@dietrichgebert/ponytail",
+    "@rizal72/oc-models-pro"
   ],
   "agents": {
     "plan": {

@@ -15,13 +15,13 @@ sudo /opt/homebrew/bin/yabai --load-sa
 
 # borders events
 yabai -m signal --add label=borders_state_created \
-  event=window_created action="$HOME/.config/yabai/borders-state.sh \$YABAI_WINDOW_ID"
+  event=window_created action="$HOME/.config/yabai/# borders-state.sh \$YABAI_WINDOW_ID"
 
 yabai -m signal --add label=borders_state_focused \
-  event=window_focused action="$HOME/.config/yabai/borders-state.sh \$YABAI_WINDOW_ID"
+  event=window_focused action="$HOME/.config/yabai/# borders-state.sh \$YABAI_WINDOW_ID"
 
 yabai -m signal --add label=borders_state_moved \
-  event=window_moved action="$HOME/.config/yabai/borders-state.sh \$YABAI_WINDOW_ID"
+  event=window_moved action="$HOME/.config/yabai/# borders-state.sh \$YABAI_WINDOW_ID"
 
 # MAIN CONFIG
 CONFIGS=(
@@ -41,8 +41,8 @@ CONFIGS=(
   "top_padding 5"
   "bottom_padding 10"
   "window_gap 10"
-  "window_shadow off"
-  "window_opacity on"
+  "window_shadow float"
+  "window_opacity off"
   "window_opacity_duration 0.00"
   "active_window_opacity 1.0"
   "normal_window_opacity 0.80"

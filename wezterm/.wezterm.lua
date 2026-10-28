@@ -15,9 +15,9 @@ config.font_size = 12
 
 TERM = "wezterm"
 
-require("wezterm").on("format-window-title", function()
-	return "WezTerm"
-end)
+--require("wezterm").on("format-window-title", function()
+--return "WezTerm"
+--end)
 
 config.color_scheme = "Tokyo Night"
 
@@ -29,18 +29,18 @@ config.window_decorations = "RESIZE"
 
 config.warn_about_missing_glyphs = false
 
-config.window_background_opacity = 0.1
-config.macos_window_background_blur = 50
+config.window_background_opacity = 0.8
+config.macos_window_background_blur = 20
 
 config.window_padding = {
-	left = 8,
-	right = 0,
-	top = 0,
-	bottom = 0,
+	left = 10,
+	right = 10,
+	top = 10,
+	bottom = 10,
 }
 
 config.cursor_blink_rate = 600
-config.max_fps = 120
+config.max_fps = 60
 config.animation_fps = 60
 config.cursor_blink_ease_in = "Linear"
 config.cursor_blink_ease_out = "Linear"
