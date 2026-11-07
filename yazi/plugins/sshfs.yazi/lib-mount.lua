@@ -2,6 +2,16 @@
 
 local MOUNT = {}
 
+local RESPONSIVE_TIMEOUT_MS = 3000
+local READ_EVENT_TIMEOUT = 3 -- event code from Child:read_line_with
+-- strerror texts (C locale) that mean the mount lost its connection to the server
+local DISCONNECTED_ERRORS = {
+  "Transport endpoint is not connected",
+  "Input/output error",
+  "Software caused connection abort",
+  "Device not configured", -- macFUSE reports a dead mount as ENXIO
+}
+
 --- Parse `mount` output for sshfs entries under a given root directory.
 ---@param mount_output string
 ---@param root string
@@ -74,6 +84,34 @@ function MOUNT.is_active(path, url, mount_dir)
   return not Fs.is_dir_empty(url)
 end
 
+--- Return false only when an active mount is known to have lost its server.
+--- After a network drop the mount table still lists the mount, but its requests
+--- fail or hang. The probe looks up a random name, which sshfs cannot answer from
+--- its listing cache, so only the server can answer. A missing file or a denied
+--- permission is still an answer. Only a disconnect error or a timeout counts as
+--- dead, so an unclear result never leads to an unmount.
+--- A hung FUSE request through `fs.*` blocks the plugin with no way out, so the
+--- lookup runs in a child process with a timeout.
+---@param path string
+---@return boolean
+function MOUNT.is_responsive(path)
+  local probe_path = ("%s/.sshfs-probe-%d-%d"):format(path, os.time(), math.random(1, 1e9))
+  local child = Command("stat"):arg({ "--", probe_path }):env("LC_ALL", "C"):stderr(Command.PIPED):spawn()
+  if not child then return true end
+  local stderr_line, event = child:read_line_with({ timeout = RESPONSIVE_TIMEOUT_MS })
+  local Notify = require(".lib-notify")
+  if event == READ_EVENT_TIMEOUT then
+    child:start_kill()
+    Notify.debug("Probe of %s timed out", path)
+    return false
+  end
+  Notify.debug("Probe of %s: %s", path, stderr_line or "no error")
+  for _, error_text in ipairs(DISCONNECTED_ERRORS) do
+    if stderr_line and stderr_line:find(error_text, 1, true) then return false end
+  end
+  return true
+end
+
 --- List all active sshfs mounts under mount_dir.
 ---@param mount_dir string
 ---@return { alias: string, path: string, remote: string|nil }[]
@@ -136,6 +174,7 @@ function MOUNT.remove(path, clean_dir)
   for _, cmd in ipairs(attempts) do
     local status, err = Command(cmd[1]):arg(cmd[2]):status()
     if err == nil and status and status.success then
+      require(".lib-notify").debug("Unmounted %s with %s %s", path, cmd[1], table.concat(cmd[2], " "))
       if clean_dir then fs.remove("dir_clean", Url(path)) end
       return true
     end

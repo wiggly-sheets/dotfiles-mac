@@ -1,6 +1,7 @@
 {
     "global": {
         "check_for_updates": false,
+        "enable_cgeventtap_fallback": true,
         "show_in_menu_bar": false
     },
     "machine_specific": {

@@ -6,23 +6,6 @@ sudo /opt/homebrew/bin/yabai --load-sa
 # scratchpad setup
 /opt/homebrew/bin/yabai -m rule --add app="^Stickies$" scratchpad=scratchpad grid=6:6:6:0:8:8
 
-# sketchybar window title events
-/opt/homebrew/bin/yabai -m signal --add event=window_focused action="/opt/homebrew/bin/sketchybar --trigger window_focus &> /dev/null"
-/opt/homebrew/bin/yabai -m signal --add event=window_title_changed action="/opt/homebrew/bin/sketchybar --trigger title_change &> /dev/null"
-/opt/homebrew/bin/yabai -m signal --add event=space_changed action="/opt/homebrew/bin/yabai -m window --focus mouse"
-/opt/homebrew/bin/yabai -m signal --add event=window_destroyed active=yes action="/opt/homebrew/bin/yabai -m query --windows --window &> /dev/null || /opt/homebrew/bin/yabai -m window --focus mouse &> /dev/null || /opt/homebrew/bin/yabai -m window --focus $(/opt/homebrew/bin/yabai -m query --windows --space | /opt/homebrew/bin/jq .[0].id) &> /dev/null"
-/opt/homebrew/bin/yabai -m signal --add event=window_minimized active=yes action="if $(/opt/homebrew/bin/yabai -m query --windows --window $YABAI_WINDOW_ID | /opt/homebrew/bin/jq -r '.\"is-floating\"'); then /opt/homebrew/bin/yabai -m query --windows --window &> /dev/null || /opt/homebrew/bin/yabai -m window --focus mouse &> /dev/null || /opt/homebrew/bin/yabai -m window --focus $(/opt/homebrew/bin/yabai -m query --windows --space | /opt/homebrew/bin/jq .[0].id) &> /dev/null; fi"
-
-# borders events
-yabai -m signal --add label=borders_state_created \
-  event=window_created action="$HOME/.config/yabai/# borders-state.sh \$YABAI_WINDOW_ID"
-
-yabai -m signal --add label=borders_state_focused \
-  event=window_focused action="$HOME/.config/yabai/# borders-state.sh \$YABAI_WINDOW_ID"
-
-yabai -m signal --add label=borders_state_moved \
-  event=window_moved action="$HOME/.config/yabai/# borders-state.sh \$YABAI_WINDOW_ID"
-
 # MAIN CONFIG
 CONFIGS=(
   "layout bsp"
@@ -33,8 +16,6 @@ CONFIGS=(
   "split_type auto"
   "auto_balance on"
   "split_ratio 0.50"
-# "window_animation_duration 0.05"
-# "window_animation_easing ease_in_out_expo"
   "window_placement second_child"
   "left_padding 10"
   "right_padding 60"
@@ -58,37 +39,6 @@ CONFIGS=(
 for cfg in "${CONFIGS[@]}"; do
   /opt/homebrew/bin/yabai -m config $cfg
 done
-
-# mission-control desktop labels
-/opt/homebrew/bin/yabai -m space 1 --label Browser
-/opt/homebrew/bin/yabai -m space 2 --label Mail
-/opt/homebrew/bin/yabai -m space 3 --label Files
-/opt/homebrew/bin/yabai -m space 4 --label Notes
-/opt/homebrew/bin/yabai -m space 5 --label Terminal
-/opt/homebrew/bin/yabai -m space 6 --label Code
-
-# APP GROUPS
-BROWSERS="^(Orion|Safari|Helium|Zen|Tor Browser)$"
-MAIL="^(Mail)$"
-FILES="^(Bloom|Finder|FlowFinder)$"
-NOTES="^(Notes|Obsidian|Calendar)$"
-TERMINALS="^(iTerm2|Alacritty|Kitty|WezTerm|Terminal|Tabby|Ghostty)$"
-CODE="^(BBEdit|VSCodium|Zed|CotEditor|Neovide)$"
-
-# PIN APPS TO SPACES
-#SPACE_RULES=(
-#  "${BROWSERS}:Browser"
-#  "${MAIL}:Mail"
-#  "${FILES}:Files"
-#  "${NOTES}:Notes"
-#  "${TERMINALS}:Terminal"
-#  "${CODE}:Code"
-#)
-#for rule in "${SPACE_RULES[@]}"; do
-#  app="${rule%%:*}"
-#  space="${rule##*:}"
-#  /opt/homebrew/bin/yabai -m rule --add app="${app}" space="${space}"
-#done
 
 # helper for float rules
 yabai_rule() {
@@ -151,7 +101,7 @@ FLOAT_APPS=(
   "^ImageOptim$"
   "^GrandPerspective$"
   "^Keka$"
-  "^Creator$"
+  "^Sikragur Creator$"
   "^Whisky$"
   "^Battery Toolkit$"
   "^BetterDiscord$"
@@ -195,6 +145,3 @@ for app in "${FLOAT_APPS[@]}"; do
     grid="$GRID_CENTER" \
     sub-layer=above
 done
-
-# stackline setup
-pkill "Stackline" && sleep 5.00 && open -a "Stackline"

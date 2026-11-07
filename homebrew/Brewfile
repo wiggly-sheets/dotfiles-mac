@@ -50,7 +50,7 @@ tap "neur0map/tap"
 tap "nikgrbn/tap"
 tap "nohajc/anylinuxfs"
 tap "notwadegrimridge/brew", trusted: true
-tap "penso/tap"
+tap "penso/tap", trusted: { casks: ["herdr-gpui"] }
 tap "philocalyst/tap", trusted: true
 tap "playcover/playcover", "https://github.com/PlayCover/homebrew-playcover", trusted: true
 tap "rafaelswi/menubarusb", trusted: true
@@ -114,6 +114,10 @@ brew "python@3.13"
 brew "archey4"
 # Download with resuming and segmented downloading
 brew "aria2"
+# YAML Parser
+brew "libyaml"
+# Text processor and publishing toolchain for AsciiDoc
+brew "asciidoctor"
 # Record and share terminal sessions
 brew "asciinema"
 # Aquarium animation in ASCII art
@@ -196,8 +200,6 @@ brew "croc"
 brew "dash-shell"
 # Command-line DNS client
 brew "doge"
-# YAML Parser
-brew "libyaml"
 # Interpreted, interactive, object-oriented programming language
 brew "python@3.14"
 # TUI todo manager
@@ -544,6 +546,8 @@ brew "shfmt"
 brew "sl"
 # SMART hard drive monitoring
 brew "smartmontools"
+# Cross-platform application to monitor your network traffic
+brew "sniffnet"
 # SOcket CAT: netcat on steroids
 brew "socat"
 # SOund eXchange: universal sound sample translator
@@ -682,8 +686,6 @@ brew "asmvik/formulae/yabai", args: ["HEAD"]
 brew "bjarneo/cliamp/cliamp", trusted: true
 # Coding agent with the IDE wired in
 brew "can1357/tap/omp", trusted: true
-# A powerful terminal-based AI assistant for developers, providing intelligent coding assistance directly in your terminal.
-brew "charmbracelet/tap/crush", trusted: true
 # Flock of birds in your terminal
 brew "clainstone/tap/cbirds", trusted: true
 # A command-line-interface to open files/folders in CodeEdit.app
@@ -935,8 +937,6 @@ cask "google-earth-pro"
 cask "google-gemini"
 # Graphically shows disk usage within a file system
 cask "grandperspective"
-# AI teammates that work across your apps and tools
-cask "grok-bot"
 # IRC client
 cask "halloy"
 # Desktop automation application
@@ -949,8 +949,8 @@ cask "handy"
 cask "harper-desktop"
 # Chromium-based web browser
 cask "helium-browser"
-# Native GUI client for an existing local Herdr daemon
-cask "penso/tap/herdr-gpui", trusted: true
+# Desktop app for terminals and coding agents
+cask "herdr-app"
 # Open-source desktop AI agent
 cask "hermes-desktop"
 # Game launcher
@@ -1085,6 +1085,8 @@ cask "neohtop"
 cask "neovide-app"
 # Free and open-source RSS reader
 cask "netnewswire"
+# Network diagnostics tool
+cask "network-weather"
 # Dual-pane file manager
 cask "nimble-commander"
 # Electronic thesaurus for the 'Service' menu
@@ -1250,7 +1252,7 @@ cask "sourcetree"
 # Space navigation and management utility with Yabai support
 cask "zimengxiong/tools/spacecommand"
 # View and navigate Spaces (Virtual Desktops) from the menu bar
-cask "ruittenb/tap/spaceman"
+cask "ruittenb/tap/spaceman", trusted: true
 # Visualize spaces as an interactive map
 cask "wiggly-sheets/tap/spacemap", trusted: true
 # Give Spaces persistent names in Mission Control
@@ -1305,6 +1307,8 @@ cask "thebrowsercompany-dia"
 cask "thelowtechguys-cling"
 # Time Machine log viewer & status inspector
 cask "thetimemachinemechanic"
+# Customizable email client
+cask "thunderbird"
 # Connectivity software for the TI-84 Plus family of graphing calculators
 cask "ti-connect-ce"
 # Multi-platform VNC client and server
@@ -1329,12 +1333,16 @@ cask "trex"
 cask "typewhisper/tap/typewhisper"
 # Run commands and display their output on the desktop
 cask "ubersicht"
+# Desktop application for Unsloth Studio
+cask "unsloth"
 # AI image upscaler
 cask "upscayl"
 # Newsreader and Usenet client
 cask "usenapp"
 # Virtual machines UI using QEMU
 cask "utm"
+# Custom Discord App
+cask "vesktop"
 # Web browser with built-in email client focusing on customization and control
 cask "vivaldi"
 # Multimedia player
@@ -1443,6 +1451,7 @@ mas "Simple Color Palette", id: 6744484427
 mas "Simple Comic", id: 1497435571
 mas "Sink It for Reddit", id: 6449873635
 mas "SnippetsLab", id: 1006087419
+mas "Spark", id: 1176895641
 mas "Sparrow Weather", id: 6449440582
 mas "Speediness", id: 1596706466
 mas "Sprinkles", id: 1500209074
