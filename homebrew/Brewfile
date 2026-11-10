@@ -584,6 +584,8 @@ brew "testdisk"
 brew "thefuck"
 # Text interface for Git repositories
 brew "tig"
+# High-performance, platform-neutral implementation of VNC
+brew "tiger-vnc"
 # Terminal multiplexer
 brew "tmux"
 # Tool for opening git repositories as tmux sessions
@@ -910,6 +912,8 @@ cask "freac"
 cask "free-ruler"
 # 3D parametric modeller
 cask "freecad"
+# System monitor tool
+cask "ftop"
 # Tool to measure the computer system's performance
 cask "geekbench"
 # Disk space cleaner that finds and deletes duplicated and similar files
@@ -1229,8 +1233,7 @@ cask "kegworks-app/kegworks/sikarugir"
 cask "silentknight"
 # Streams windows to an iPhone or iPad with touch, Pencil and keyboard control
 cask "saffsanity/sill/sill", trusted: true
-# Preview and edit SketchyBar configs in real time
-cask "wiggly-sheets/tap/sketchybar-studio", trusted: true
+cask "wiggly-sheets/sketchybar-studio/sketchybar-studio"
 # Simple hotkey daemon written in Zig
 cask "jackielii/tap/skhd-zig", trusted: true
 # Bluesky Social client
@@ -1253,8 +1256,7 @@ cask "sourcetree"
 cask "zimengxiong/tools/spacecommand"
 # View and navigate Spaces (Virtual Desktops) from the menu bar
 cask "ruittenb/tap/spaceman", trusted: true
-# Visualize spaces as an interactive map
-cask "wiggly-sheets/tap/spacemap", trusted: true
+cask "wiggly-sheets/spacemap/spacemap", trusted: true
 # Give Spaces persistent names in Mission Control
 cask "wiggly-sheets/tap/spacesrenamer", trusted: true
 # Run anything at startup by simply placing it in a special folder
@@ -1387,11 +1389,8 @@ cask "zoom"
 cask "zotero"
 mas "2048 Game", id: 871033113
 mas "Actions", id: 1586435171
-mas "Amazing AI", id: 1660147028
 mas "Anybox", id: 1593408455
 mas "Apple Configurator", id: 1037126344
-mas "Asphalt", id: 1491129197
-mas "Asphalt8", id: 610391947
 mas "Blackmagic Disk Speed Test", id: 425264550
 mas "Broadcasts", id: 1469995354
 mas "Color Picker", id: 1545870783
@@ -1421,7 +1420,6 @@ mas "JuxtaText", id: 6504801865
 mas "Keynote", id: 361285480
 mas "Keyword Search", id: 1558453954
 mas "Klack", id: 6446206067
-mas "Knights of the Old Republic", id: 416608891
 mas "Kulve", id: 6476389316
 mas "Lickable Menu Bar", id: 6444217677
 mas "Logic Pro", id: 634148309
@@ -1455,7 +1453,6 @@ mas "Spark", id: 1176895641
 mas "Sparrow Weather", id: 6449440582
 mas "Speediness", id: 1596706466
 mas "Sprinkles", id: 1500209074
-mas "Star Wars®: Knights of the Old Republic™ II", id: 960778634
 mas "Startup Manager", id: 1296723195
 mas "Swift Playground", id: 1496833156
 mas "TestFlight", id: 899247664
