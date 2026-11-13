@@ -157,7 +157,8 @@
     },
     {
       "package": "./herdr-opencode"
-    }
+    },
+    "github:ptthien97/opencode-opendeck"
   ],
   "leader": {
     "timeout": 2000
@@ -168,7 +169,7 @@
     "single": true
   },
   "session": {
-    "sidebar": "hide",
+    "sidebar": "auto",
     "scrollbar": true,
     "thinking": "hide",
     "markdown": "rendered",

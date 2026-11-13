@@ -27,9 +27,9 @@
   },
   "general" : {
     "inspectorTabBarPosition" : "top",
+    "isAutoSaveOn" : true,
+    "issueNavigatorDetail" : 3,
     "reopenBehavior" : "openPanel",
-    "fileIconStyle" : "color",
-    "reopenWindowAfterClose" : "doNothing",
     "hiddenFileExtensions" : {
       "extensions" : [
         "c",
@@ -48,11 +48,11 @@
         "swift"
       ]
     },
-    "showIssues" : "inline",
-    "issueNavigatorDetail" : 3,
-    "findNavigatorDetail" : 3,
+    "revealFileOnFocusChange" : false,
     "showEditorJumpBar" : true,
-    "navigatorTabBarPosition" : "top",
+    "showIssues" : "inline",
+    "fileIconStyle" : "color",
+    "reopenWindowAfterClose" : "doNothing",
     "appAppearance" : "system",
     "shownFileExtensions" : {
       "extensions" : [
@@ -72,11 +72,11 @@
         "swift"
       ]
     },
-    "projectNavigatorSize" : "medium",
-    "isAutoSaveOn" : true,
-    "revealFileOnFocusChange" : false,
-    "dimEditorsWithoutFocus" : true,
+    "navigatorTabBarPosition" : "top",
     "showLiveIssues" : true,
+    "projectNavigatorSize" : "medium",
+    "findNavigatorDetail" : 3,
+    "dimEditorsWithoutFocus" : true,
     "fileExtensionsVisibility" : {
       "showAll" : {
 
@@ -86,88 +86,85 @@
   "textEditing" : {
     "autocompleteBraces" : true,
     "showMinimap" : true,
-    "useSystemCursor" : true,
-    "enableTypeOverCompletion" : true,
+    "wrapLinesToEditorWidth" : true,
+    "reformatAtColumn" : 80,
     "showReformattingGuide" : false,
     "font" : {
       "name" : "Liga SFMono Nerd Font",
       "size" : 12,
       "weight" : 0.23000000417232513
     },
-    "reformatAtColumn" : 80,
-    "wrapLinesToEditorWidth" : true,
+    "enableTypeOverCompletion" : true,
+    "useSystemCursor" : true,
     "showFoldingRibbon" : true,
     "warningCharacters" : {
       "enabled" : true,
       "characters" : [
-        8239,
-        "Narrow non-breaking space",
-        8233,
-        "Paragraph separator",
-        894,
-        "Greek Question Mark",
-        8211,
-        "Em-dash",
         8220,
         "Left double quote",
-        8203,
-        "Zero-width space",
+        8204,
+        "Zero-width non-joiner",
+        8239,
+        "Narrow non-breaking space",
+        8216,
+        "Left single quote",
         160,
         "Non-breaking space",
         8217,
         "Right single quote",
-        3,
-        "End of text",
         173,
         "Soft hyphen",
-        8216,
-        "Left single quote",
-        8204,
-        "Zero-width non-joiner",
+        8203,
+        "Zero-width space",
+        8233,
+        "Paragraph separator",
+        8211,
+        "Em-dash",
+        894,
+        "Greek Question Mark",
+        3,
+        "End of text",
         8221,
         "Right double quote"
       ]
     },
     "bracketEmphasis" : {
       "highlightType" : "flash",
+      "useCustomColor" : false,
       "color" : {
         "color" : "FFFFFF"
-      },
-      "useCustomColor" : false
-    },
-    "showGutter" : true,
-    "letterSpacing" : 1,
-    "invisibleCharacters" : {
-      "showSpaces" : true,
-      "spaceReplacement" : "·",
-      "enabled" : true,
-      "carriageReturnReplacement" : "↵",
-      "showLineEndings" : true,
-      "lineSeparatorReplacement" : "⏎",
-      "lineFeedReplacement" : "¬",
-      "paragraphSeparatorReplacement" : "¶",
-      "showTabs" : true,
-      "tabReplacement" : "→"
+      }
     },
     "indentOption" : {
       "spaceCount" : 4,
       "indentType" : "spaces"
     },
-    "lineHeightMultiple" : 1.2,
+    "invisibleCharacters" : {
+      "spaceReplacement" : "·",
+      "showSpaces" : true,
+      "showTabs" : true,
+      "enabled" : true,
+      "showLineEndings" : true,
+      "lineSeparatorReplacement" : "⏎",
+      "lineFeedReplacement" : "¬",
+      "paragraphSeparatorReplacement" : "¶",
+      "carriageReturnReplacement" : "↵",
+      "tabReplacement" : "→"
+    },
+    "showGutter" : true,
+    "letterSpacing" : 1,
     "overscroll" : "medium",
+    "lineHeightMultiple" : 1.2,
     "defaultTabWidth" : 4
   },
-  "navigation" : {
-    "navigationStyle" : "openInTabs"
-  },
   "terminal" : {
-    "cursorBlink" : true,
+    "useTextEditorFont" : true,
     "useThemeBackground" : true,
     "useLoginShell" : true,
     "shell" : "zsh",
-    "useTextEditorFont" : true,
-    "darkAppearance" : false,
     "optionAsMeta" : false,
+    "darkAppearance" : false,
+    "cursorBlink" : true,
     "cursorStyle" : "underline",
     "font" : {
       "name" : "SF Mono",
@@ -177,10 +174,13 @@
     "useShellIntegration" : true,
     "useEditorTheme" : true
   },
+  "navigation" : {
+    "navigationStyle" : "openInTabs"
+  },
   "theme" : {
     "selectedLightTheme" : "basic",
-    "useThemeBackground" : true,
     "selectedDarkTheme" : "high.contrast.dark",
+    "useThemeBackground" : true,
     "matchAppearance" : true,
     "selectedTheme" : "tokyo-night-codeedit",
     "overrides" : {
@@ -190,15 +190,15 @@
   "sourceControl" : {
     "general" : {
       "selectFilesToCommit" : true,
-      "addRemoveAutomatically" : true,
       "showSourceControlChanges" : true,
+      "addRemoveAutomatically" : true,
       "fetchRefreshServerStatus" : true,
       "sourceControlIsEnabled" : true,
-      "refreshStatusLocally" : true,
+      "includeUpstreamChanges" : true,
       "openFeedbackInBrowser" : true,
       "revisionComparisonLayout" : "localLeft",
       "controlNavigatorOrder" : "sortByName",
-      "includeUpstreamChanges" : true
+      "refreshStatusLocally" : true
     },
     "git" : {
       "showMergeCommitsPerFileLog" : false
@@ -207,26 +207,30 @@
   "keybindings" : {
     "keybindings" : {
       "copy" : {
-        "keybinding" : "c",
+        "description" : "Copy command",
         "id" : "copy",
         "context" : "Global",
-        "description" : "Copy command",
+        "name" : "copy",
         "modifier" : "command",
-        "name" : "copy"
+        "keybinding" : "c"
       },
       "paste" : {
-        "keybinding" : "c",
+        "description" : "Copy command",
         "id" : "paste",
         "context" : "Global",
-        "description" : "Copy command",
+        "name" : "paste",
         "modifier" : "command",
-        "name" : "paste"
+        "keybinding" : "c"
       }
     }
   },
   "languageServers" : {
     "installedLanguageServers" : {
-
+      "stylua" : {
+        "version" : "v2.6.0",
+        "packageName" : "stylua",
+        "isEnabled" : true
+      }
     }
   },
   "developerSettings" : {

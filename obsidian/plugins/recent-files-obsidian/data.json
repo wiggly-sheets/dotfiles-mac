@@ -1,40 +1,12 @@
 {
   "recentFiles": [
     {
-      "basename": "sample readme",
-      "path": "sample readme.md"
-    },
-    {
-      "basename": "sketchybar",
-      "path": "sketchybar.md"
-    },
-    {
       "basename": "repo workflow",
       "path": "repo workflow.md"
     },
     {
-      "basename": "wallpaper selector audit",
-      "path": "audits/resolved audits/wallpaper selector audit.md"
-    },
-    {
-      "basename": "spaces renamer audit",
-      "path": "audits/resolved audits/spaces renamer audit.md"
-    },
-    {
-      "basename": "fluor audit",
-      "path": "audits/resolved audits/fluor audit.md"
-    },
-    {
-      "basename": "jankyborders audit",
-      "path": "audits/resolved audits/jankyborders audit.md"
-    },
-    {
-      "basename": "sketchybar-studio audit",
-      "path": "audits/resolved audits/sketchybar-studio audit.md"
-    },
-    {
-      "basename": "spacemap audit",
-      "path": "audits/resolved audits/spacemap audit.md"
+      "basename": "sketchybar",
+      "path": "sketchybar.md"
     }
   ],
   "omittedPaths": [],

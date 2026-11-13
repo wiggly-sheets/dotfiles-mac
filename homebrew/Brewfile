@@ -64,6 +64,7 @@ tap "sentient-os-labs/tap"
 tap "sikarugir-app/sikarugir", "https://github.com/Sikarugir-App/homebrew-sikarugir", trusted: true
 tap "skyline69/tap"
 tap "socsieng/tap"
+tap "stablyai/orca"
 tap "sw33tlie/macshot", trusted: true
 tap "theboredteam/boring-notch", "https://github.com/TheBoredTeam/homebrew-boring-notch", trusted: true
 tap "thezoraiz/ascii-image-converter", "https://github.com/TheZoraiz/homebrew-ascii-image-converter"
@@ -124,6 +125,8 @@ brew "asciinema"
 brew "asciiquarium"
 # Perf monitoring CLI tool for Apple Silicon
 brew "asitop"
+# Code searching, linting, rewriting
+brew "ast-grep"
 # Planetarium for your terminal
 brew "astroterm"
 # Improved shell history for zsh, bash, fish and nushell
@@ -582,6 +585,8 @@ brew "terminal-notifier"
 brew "testdisk"
 # Programmatically correct mistyped console commands
 brew "thefuck"
+# TUI email client, supports IMAP, Gmail & Outlook OAuth
+brew "tidemail"
 # Text interface for Git repositories
 brew "tig"
 # High-performance, platform-neutral implementation of VNC
@@ -683,7 +688,7 @@ brew "a-shygun/dripfetch/dripfetch"
 # 🔑 a CLI for Apple Passwords 🔒
 brew "alecharmon/tap/applepw", trusted: true
 # A tiling window manager for macOS based on binary space partitioning.
-brew "asmvik/formulae/yabai", args: ["HEAD"]
+brew "asmvik/formulae/yabai", args: ["HEAD"], link: false
 # A retro terminal music player inspired by Winamp 2.x
 brew "bjarneo/cliamp/cliamp", trusted: true
 # Coding agent with the IDE wired in
@@ -1131,6 +1136,8 @@ cask "openra"
 cask "openttd"
 # Replacement for Docker Desktop
 cask "orbstack"
+# IDE for orchestrating AI coding agents across terminals and worktrees
+cask "stablyai/orca/orca", trusted: true
 # Native GUI for Apple Containers
 cask "orchard"
 # WebKit based web browser

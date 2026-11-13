@@ -9,13 +9,13 @@
 # Run `sudo -v` to cache credentials at the start of the run
 # This avoids a blocking password prompt in the middle of an unattended run
 # (default: false)
-pre_sudo = false
+pre_sudo = true
 
 # Sudo command to be used
 # sudo_command = "sudo"
 
 # Disable specific steps - same options as the command line flag
- disable = ["node", "yarn", "macports", "containers", "git_repos", "gem", "ruby_gems" ]
+disable = []
 # Ignore failures for these steps
 # ignore_failures = ["powershell"]
 
@@ -38,7 +38,7 @@ pre_sudo = false
 # display_time = true
 
 # Don't ask for confirmations (no default value)
-# assume_yes = true
+assume_yes = true
 
 # Do not ask to retry failed steps (default: false)
 no_retry = false
@@ -59,7 +59,7 @@ cleanup = true
 # notify_each_step = false
 
 # Skip sending a notification at the end of a run (default: false)
-# skip_notify = true
+skip_notify = true
 
 # The Bash-it branch to update (default: "stable")
 # bashit_branch = "stable"
@@ -90,7 +90,6 @@ no_self_update = false
 # "Emacs Snapshot" = "rm -rf ~/.emacs.d/elpa.bak && cp -rl ~/.emacs.d/elpa ~/.emacs.d/elpa.bak"
 "Brew Cleanup" = "brew cleanup --prune=all"
 "Brew Bundle" = "brew bundle dump --force --file=~/dotfiles/homebrew/brewfile"
-
 
 
 # Custom commands
@@ -137,7 +136,6 @@ autoremove = true
 fetch_head = true
 
 
-
 [git]
 # How many repos to pull at max in parallel
 # max_concurrency = 5
@@ -152,7 +150,6 @@ fetch_head = true
 # pull_predefined = false
 # Arguments to pass Git when pulling Repositories
 # arguments = "--rebase --autostash"
-
 
 
 [npm]
@@ -186,7 +183,6 @@ upgrade = true
 # always_suspend = true
 
 
-
 # containers = ["archlinux-latest"]
 [containers]
 # Specify the containers to ignore while updating (Wildcard supported)
@@ -200,4 +196,3 @@ upgrade = true
 # and the update will be installed system-wide, i.e., available to all users.
 # (default: false)
 # use_sudo = false
-

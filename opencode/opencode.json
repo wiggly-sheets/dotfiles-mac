@@ -1,0 +1,2086 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "model": "opencode-go/deepseek-v4.1-flash",
+  "skills": ["~/dotfiles/skills"],
+  "plugins": [
+    "@tarquinen/opencode-dcp",
+    "@mumme-it/opencode-caveman",
+    "@dietrichgebert/ponytail",
+    "@rizal72/oc-models-pro"
+  ],
+  "agents": {
+    "build": { "model": "opencode-go/deepseek-v4.1-flash" },
+    "plan": { "model": "opencode-go/deepseek-v4.1-flash" },
+    "general": { "model": "opencode-go/deepseek-v4.1-flash" },
+    "explore": { "model": "opencode-go/deepseek-v4.1-flash" },
+    "title": { "model": "opencode-go/deepseek-v4.1-flash" },
+    "summary": { "model": "opencode-go/deepseek-v4.1-flash" },
+    "compaction": { "model": "opencode-go/deepseek-v4.1-flash" }
+  },
+  "mcp": {
+    "servers": {
+      "xcode": {
+        "type": "local",
+        "command": ["xcrun", "mcpbridge"]
+      },
+      "exa": {
+        "type": "remote",
+        "url": "https://mcp.exa.ai/mcp"
+      },
+      "context7": {
+        "type": "remote",
+        "url": "https://mcp.context7.com/mcp"
+      },
+      "gh_grep": {
+        "type": "remote",
+        "url": "https://mcp.grep.app"
+      },
+      "deepwiki": {
+        "type": "remote",
+        "url": "https://mcp.deepwiki.com/mcp"
+      }
+    }
+  },
+  "provider": {
+    "freellmapi": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "FreeLLMAPI",
+      "options": {
+        "baseURL": "http://127.0.0.1:31415/v1",
+        "apiKey": "{env:FREELLMAPI_API_KEY}"
+      },
+      "models": {
+        "auto": {
+          "name": "Auto (router picks the best available model)",
+          "limit": {
+            "context": 131072,
+            "output": 8192
+          }
+        },
+        "fusion": {
+          "name": "Fusion (panel of models answer in parallel, a judge synthesizes one answer)",
+          "limit": {
+            "context": 131072,
+            "output": 8192
+          }
+        },
+        "claude-opus-4-5": {
+          "name": "Opus slot (auto-routed to a free model)",
+          "limit": {
+            "context": 131072,
+            "output": 8192
+          }
+        },
+        "claude-sonnet-4-5": {
+          "name": "Sonnet slot (auto-routed to a free model)",
+          "limit": {
+            "context": 131072,
+            "output": 8192
+          }
+        },
+        "claude-haiku-4-5": {
+          "name": "Haiku slot (auto-routed to a free model)",
+          "limit": {
+            "context": 131072,
+            "output": 8192
+          }
+        },
+        "glm-5.3": {
+          "name": "GLM 5.3",
+          "limit": {
+            "context": 1000000,
+            "output": 8192
+          }
+        },
+        "qwen3.8-max": {
+          "name": "Qwen3.8 Max",
+          "limit": {
+            "context": 1000000,
+            "output": 8192
+          }
+        },
+        "glm-5.3-flash": {
+          "name": "GLM 5.3 Flash",
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "gemini-3.8-flash": {
+          "name": "Gemini 3.8 Flash",
+          "limit": {
+            "context": 1048576,
+            "output": 8192
+          }
+        },
+        "gemini-flash": {
+          "name": "Gemini Flash",
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "qwen3.8-flash": {
+          "name": "Qwen3.8 Flash",
+          "limit": {
+            "context": 8192,
+            "output": 8192
+          }
+        },
+        "qwen3.8-flash-next": {
+          "name": "Qwen3.8 Flash Next",
+          "limit": {
+            "context": 262000,
+            "output": 8192
+          }
+        },
+        "deepseek-v4.1-flash": {
+          "name": "DeepSeek V4.1 Flash",
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "gemini-3.7-flash": {
+          "name": "Gemini 3.7 Flash",
+          "limit": {
+            "context": 1048576,
+            "output": 8192
+          }
+        },
+        "qwen3.8-omni-flash": {
+          "name": "Qwen3.8 Omni Flash",
+          "limit": {
+            "context": 1000000,
+            "output": 8192
+          }
+        },
+        "gpt-5.6-luna": {
+          "name": "GPT-5.6 Luna",
+          "limit": {
+            "context": 1000000,
+            "output": 8192
+          }
+        },
+        "agnes-3.0-flash": {
+          "name": "Agnes 3.0 Flash",
+          "limit": {
+            "context": 524288,
+            "output": 8192
+          }
+        },
+        "dots3-note-preview": {
+          "name": "Dots3 Note Preview",
+          "limit": {
+            "context": 512000,
+            "output": 8192
+          }
+        },
+        "agnes-2.5-pro": {
+          "name": "Agnes 2.5 Pro",
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "deepseek-v4-flash": {
+          "name": "DeepSeek V4 Flash",
+          "limit": {
+            "context": 1000000,
+            "output": 8192
+          }
+        },
+        "deepseek-v4-flash-0731": {
+          "name": "DeepSeek V4 Flash 0731",
+          "limit": {
+            "context": 524000,
+            "output": 8192
+          }
+        },
+        "gemini-3.6-flash": {
+          "name": "Gemini 3.6 Flash",
+          "limit": {
+            "context": 1048576,
+            "output": 8192
+          }
+        },
+        "glm-5.2": {
+          "name": "GLM-5.2",
+          "limit": {
+            "context": 200000,
+            "output": 8192
+          }
+        },
+        "qwen-3.8-27b": {
+          "name": "Qwen 3.8 27B",
+          "limit": {
+            "context": 262144,
+            "output": 8192
+          }
+        },
+        "qwen3.8-27b": {
+          "name": "Qwen3.8 27B",
+          "limit": {
+            "context": 262000,
+            "output": 8192
+          }
+        },
+        "gemini-3.5-flash": {
+          "name": "Gemini 3.5 Flash",
+          "limit": {
+            "context": 1048576,
+            "output": 8192
+          }
+        },
+        "deepseek-v4-pro": {
+          "name": "DeepSeek V4 Pro",
+          "limit": {
+            "context": 131072,
+            "output": 8192
+          }
+        },
+        "minimax-m3": {
+          "name": "MiniMax M3",
+          "limit": {
+            "context": 196608,
+            "output": 8192
+          }
+        },
+        "qwen3.7-max": {
+          "name": "Qwen3.7 Max",
+          "limit": {
+            "context": 1000000,
+            "output": 8192
+          }
+        },
+        "gemma-4-31b-it": {
+          "name": "Gemma 4 31B IT",
+          "limit": {
+            "context": 32768,
+            "output": 8192
+          }
+        },
+        "gemma-e4b": {
+          "name": "Gemma E4B",
+          "limit": {
+            "context": 131072,
+            "output": 8192
+          }
+        },
+        "gemma-4-31b-aura-large-v1.1": {
+          "name": "Gemma-4-31B-Aura-Large-v1.1",
+          "limit": {
+            "context": 262000,
+            "output": 8192
+          }
+        },
+        "gpt-oss-120b": {
+          "name": "GPT Oss 120B",
+          "limit": {
+            "context": 131072,
+            "output": 8192
+          }
+        },
+        "gpt-oss-20b": {
+          "name": "GPT Oss 20B",
+          "limit": {
+            "context": 131072,
+            "output": 8192
+          }
+        },
+        "gpt-oss-safeguard-20b": {
+          "name": "GPT OSS Safeguard 20B",
+          "limit": {
+            "context": 131072,
+            "output": 8192
+          }
+        },
+        "llama-3.1-8b": {
+          "name": "Llama 3.1 8B",
+          "limit": {
+            "context": 131072,
+            "output": 8192
+          }
+        },
+        "llama-4-maverick-17b-128e-instruct": {
+          "name": "Llama 4 Maverick 17B 128E Instruct",
+          "limit": {
+            "context": 8192,
+            "output": 8192
+          }
+        },
+        "mimo-v2.6-flash-mopd": {
+          "name": "MiMo-V2.6-Flash-MOPD",
+          "limit": {
+            "context": 524000,
+            "output": 8192
+          }
+        },
+        "mistral-small-3.2-24b-instruct-2506": {
+          "name": "Mistral Small 3.2 24B Instruct 2506",
+          "limit": {
+            "context": 8192,
+            "output": 8192
+          }
+        },
+        "mistral-devstral-2512": {
+          "name": "Mistral: Devstral 2512",
+          "limit": {
+            "context": 262000,
+            "output": 8192
+          }
+        },
+        "mistral-mistral-large-3": {
+          "name": "Mistral: Mistral Large 3",
+          "limit": {
+            "context": 262000,
+            "output": 8192
+          }
+        },
+        "mistral-mistral-medium-3.5": {
+          "name": "Mistral: Mistral Medium 3.5",
+          "limit": {
+            "context": 262000,
+            "output": 8192
+          }
+        },
+        "mistral-mistral-small-4": {
+          "name": "Mistral: Mistral Small 4",
+          "limit": {
+            "context": 262000,
+            "output": 8192
+          }
+        },
+        "moondream-3-preview": {
+          "name": "Moondream 3 Preview",
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "moondream-3.1-9b-a2b": {
+          "name": "Moondream 3.1 9B A2B",
+          "limit": {
+            "context": 32768,
+            "output": 8192
+          }
+        },
+        "openai-gpt-oss-20b": {
+          "name": "OpenAI: GPT OSS 20B",
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "openai-gpt-6-luna": {
+          "name": "OpenAI: GPT-6 Luna",
+          "limit": {
+            "context": 1050000,
+            "output": 8192
+          }
+        },
+        "plugsky-lite": {
+          "name": "Plugsky Lite",
+          "limit": {
+            "context": 131072,
+            "output": 8192
+          }
+        },
+        "plugsky-micro": {
+          "name": "Plugsky Micro",
+          "limit": {
+            "context": 262144,
+            "output": 8192
+          }
+        },
+        "qwen3-coder-480b-a35b-instruct": {
+          "name": "Qwen3 Coder 480B A35B Instruct",
+          "limit": {
+            "context": 8192,
+            "output": 8192
+          }
+        },
+        "qwen3.6-max-preview": {
+          "name": "Qwen3.6 Max Preview",
+          "limit": {
+            "context": 262144,
+            "output": 8192
+          }
+        },
+        "qwen3.8-27b-omnimerge-v6": {
+          "name": "Qwen3.8-27B-Omnimerge-v6",
+          "limit": {
+            "context": 262000,
+            "output": 8192
+          }
+        },
+        "qwen3.8-27b-swift": {
+          "name": "Qwen3.8-27B-Swift",
+          "limit": {
+            "context": 262000,
+            "output": 8192
+          }
+        },
+        "tencent-hy4-preview": {
+          "name": "Tencent: Hy4 Preview",
+          "limit": {
+            "context": 1000000,
+            "output": 8192
+          }
+        },
+        "typhoon-2.5-30b-a3b-instruct": {
+          "name": "Typhoon 2.5 30B A3B Instruct",
+          "limit": {
+            "context": 131072,
+            "output": 8192
+          }
+        },
+        "xiaomi-mimo-v2.6-flash": {
+          "name": "Xiaomi: MiMo V2.6 Flash",
+          "limit": {
+            "context": 1000000,
+            "output": 8192
+          }
+        },
+        "agnes-2.5-pro-alpha": {
+          "name": "Agnes 2.5 Pro Alpha",
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "qwen3.6-plus": {
+          "name": "Qwen3.6 Plus",
+          "limit": {
+            "context": 1000000,
+            "output": 8192
+          }
+        },
+        "gemini-robotics-er-2-preview": {
+          "name": "Gemini Robotics-ER 2 Preview",
+          "limit": {
+            "context": 131072,
+            "output": 8192
+          }
+        },
+        "laguna-s-2.1": {
+          "name": "Laguna S 2.1",
+          "limit": {
+            "context": 262144,
+            "output": 8192
+          }
+        },
+        "poolside-laguna-s-2.1": {
+          "name": "Poolside Laguna S 2.1",
+          "limit": {
+            "context": 262144,
+            "output": 8192
+          }
+        },
+        "qwen3.7-plus": {
+          "name": "Qwen3.7 Plus",
+          "limit": {
+            "context": 1000000,
+            "output": 8192
+          }
+        },
+        "deepseek-v4-flash-thinking": {
+          "name": "DeepSeek V4 Flash Thinking",
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "gpt-5.4-mini": {
+          "name": "GPT 5.4 Mini",
+          "limit": {
+            "context": 400000,
+            "output": 8192
+          }
+        },
+        "minimax-m2.5": {
+          "name": "MiniMax M2.5",
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "minimax-m2.7": {
+          "name": "MiniMax M2.7",
+          "limit": {
+            "context": 200000,
+            "output": 8192
+          }
+        },
+        "nemotron-3-ultra": {
+          "name": "Nemotron 3 Ultra",
+          "limit": {
+            "context": 1000000,
+            "output": 8192
+          }
+        },
+        "nemotron-3-ultra-550b": {
+          "name": "Nemotron 3 Ultra 550B",
+          "limit": {
+            "context": 1000000,
+            "output": 8192
+          }
+        },
+        "agnes-2.5-flash": {
+          "name": "Agnes 2.5 Flash",
+          "limit": {
+            "context": 262144,
+            "output": 8192
+          }
+        },
+        "gemini-3.5-flash-lite": {
+          "name": "Gemini 3.5 Flash Lite",
+          "limit": {
+            "context": 1000000,
+            "output": 8192
+          }
+        },
+        "gemini-flash-lite": {
+          "name": "Gemini Flash Lite",
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "gpt-5.4-nano": {
+          "name": "GPT 5.4 Nano",
+          "limit": {
+            "context": 400000,
+            "output": 8192
+          }
+        },
+        "qwen3.6-27b": {
+          "name": "Qwen3.6 27B",
+          "limit": {
+            "context": 131072,
+            "output": 8192
+          }
+        },
+        "sensenova-6.8-flash-lite": {
+          "name": "SenseNova 6.8 Flash-Lite",
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aion-3.0": {
+          "name": "Aion 3.0",
+          "limit": {
+            "context": 131072,
+            "output": 8192
+          }
+        },
+        "muse-glimmer-30b": {
+          "name": "Muse Glimmer 30B",
+          "limit": {
+            "context": 131072,
+            "output": 8192
+          }
+        },
+        "qwen3.5-omni-plus": {
+          "name": "Qwen3.5 Omni Plus",
+          "limit": {
+            "context": 262144,
+            "output": 8192
+          }
+        },
+        "step-3.7-flash": {
+          "name": "Step 3.7 Flash",
+          "limit": {
+            "context": 256000,
+            "output": 8192
+          }
+        },
+        "gemma-4-31b": {
+          "name": "Gemma 4 31B",
+          "limit": {
+            "context": 262144,
+            "output": 8192
+          }
+        },
+        "qwen-sea-lion-v4.5-27b": {
+          "name": "Qwen SEA-LION v4.5 27B",
+          "limit": {
+            "context": 32768,
+            "output": 8192
+          }
+        },
+        "qwen3.5-plus": {
+          "name": "Qwen3.5 Plus",
+          "limit": {
+            "context": 1000000,
+            "output": 8192
+          }
+        },
+        "qwen3.7-flash": {
+          "name": "Qwen3.7 Flash",
+          "limit": {
+            "context": 1000000,
+            "output": 8192
+          }
+        },
+        "gemini-3-flash-preview": {
+          "name": "Gemini 3 Flash Preview",
+          "limit": {
+            "context": 1048576,
+            "output": 8192
+          }
+        },
+        "qwen3.5-397b": {
+          "name": "Qwen3.5 397B",
+          "limit": {
+            "context": 262144,
+            "output": 8192
+          }
+        },
+        "qwen3.5-397b-a17b": {
+          "name": "Qwen3.5 397B A17B",
+          "limit": {
+            "context": 262144,
+            "output": 8192
+          }
+        },
+        "qwen3.6-35b-a3b": {
+          "name": "Qwen3.6 35B A3B",
+          "limit": {
+            "context": 262144,
+            "output": 8192
+          }
+        },
+        "gemma-4-26b": {
+          "name": "Gemma 4 26B",
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "gemma-4-26b-it": {
+          "name": "Gemma 4 26B IT",
+          "limit": {
+            "context": 32768,
+            "output": 8192
+          }
+        },
+        "gemma-4-26b-a4b": {
+          "name": "Gemma 4 26B-A4B",
+          "limit": {
+            "context": 262000,
+            "output": 8192
+          }
+        },
+        "gemma-4-26b-a4b-it": {
+          "name": "Gemma 4 26B-A4B it",
+          "limit": {
+            "context": 262144,
+            "output": 8192
+          }
+        },
+        "gemma-4-31b-heretic": {
+          "name": "Gemma 4 31B Heretic",
+          "limit": {
+            "context": 4096,
+            "output": 4096
+          }
+        },
+        "gpt-5-mini": {
+          "name": "GPT 5 Mini",
+          "limit": {
+            "context": 400000,
+            "output": 8192
+          }
+        },
+        "step-3.5-flash": {
+          "name": "Step 3.5 Flash",
+          "limit": {
+            "context": 256000,
+            "output": 8192
+          }
+        },
+        "aion-3.0-mini": {
+          "name": "Aion 3.0 Mini",
+          "limit": {
+            "context": 131072,
+            "output": 8192
+          }
+        },
+        "gemini-3.1-flash-lite-preview": {
+          "name": "Gemini 3.1 Flash Lite Preview",
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "gemini-3.1-flash-lite": {
+          "name": "Gemini 3.1 Flash-Lite",
+          "limit": {
+            "context": 1048576,
+            "output": 8192
+          }
+        },
+        "qwen3-max": {
+          "name": "Qwen3 Max",
+          "limit": {
+            "context": 262144,
+            "output": 8192
+          }
+        },
+        "glm-4.7-flash": {
+          "name": "GLM-4.7 Flash",
+          "limit": {
+            "context": 131072,
+            "output": 8192
+          }
+        },
+        "laguna-xs-2.1": {
+          "name": "Laguna XS 2.1",
+          "limit": {
+            "context": 262000,
+            "output": 8192
+          }
+        },
+        "poolside-laguna-xs-2.1": {
+          "name": "Poolside Laguna XS 2.1",
+          "limit": {
+            "context": 131072,
+            "output": 8192
+          }
+        },
+        "qwen3.5-flash": {
+          "name": "Qwen3.5 Flash",
+          "limit": {
+            "context": 1000000,
+            "output": 8192
+          }
+        },
+        "agnes-2.0-flash": {
+          "name": "Agnes 2.0 Flash",
+          "limit": {
+            "context": 262144,
+            "output": 8192
+          }
+        },
+        "kilo-auto": {
+          "name": "Kilo Auto",
+          "limit": {
+            "context": 256000,
+            "output": 8192
+          }
+        },
+        "mistral-medium-3.5": {
+          "name": "Mistral Medium 3.5",
+          "limit": {
+            "context": 262144,
+            "output": 8192
+          }
+        },
+        "qwen-3.5-9b": {
+          "name": "Qwen 3.5 9B",
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "qwen3.5-9b": {
+          "name": "Qwen3.5 9B",
+          "limit": {
+            "context": 262144,
+            "output": 8192
+          }
+        },
+        "command-a-2": {
+          "name": "Command A+",
+          "limit": {
+            "context": 131072,
+            "output": 8192
+          }
+        },
+        "free-router": {
+          "name": "Free Router",
+          "limit": {
+            "context": 200000,
+            "output": 8192
+          }
+        },
+        "gemini-2.5-flash": {
+          "name": "Gemini 2.5 Flash",
+          "limit": {
+            "context": 1048576,
+            "output": 8192
+          }
+        },
+        "gpt-4.1": {
+          "name": "GPT 4.1",
+          "limit": {
+            "context": 1000000,
+            "output": 8192
+          }
+        },
+        "gpt-5-nano": {
+          "name": "GPT 5 Nano",
+          "limit": {
+            "context": 400000,
+            "output": 8192
+          }
+        },
+        "nemotron-3-120b": {
+          "name": "Nemotron 3 120B",
+          "limit": {
+            "context": 262144,
+            "output": 8192
+          }
+        },
+        "nemotron-3-super-120b": {
+          "name": "Nemotron 3 Super 120B",
+          "limit": {
+            "context": 262144,
+            "output": 8192
+          }
+        },
+        "nemotron-3.5-lightning": {
+          "name": "Nemotron 3.5 Lightning",
+          "limit": {
+            "context": 1048576,
+            "output": 8192
+          }
+        },
+        "nemotron-3.5-lightning-30b": {
+          "name": "Nemotron 3.5 Lightning 30B",
+          "limit": {
+            "context": 1048576,
+            "output": 8192
+          }
+        },
+        "nemotron-3.5-lightning-30b-a3b": {
+          "name": "Nemotron 3.5 Lightning 30B A3B",
+          "limit": {
+            "context": 1000000,
+            "output": 8192
+          }
+        },
+        "qwen3-235b-a22b-thinking-2507": {
+          "name": "Qwen3 235B A22B Thinking 2507",
+          "limit": {
+            "context": 262144,
+            "output": 8192
+          }
+        },
+        "aion-2.0": {
+          "name": "Aion 2.0",
+          "limit": {
+            "context": 131072,
+            "output": 8192
+          }
+        },
+        "auto-route": {
+          "name": "Auto route",
+          "limit": {
+            "context": 131072,
+            "output": 8192
+          }
+        },
+        "bazaarlink-auto": {
+          "name": "BazaarLink Auto",
+          "limit": {
+            "context": 131072,
+            "output": 8192
+          }
+        },
+        "logfare-auto": {
+          "name": "Logfare Auto",
+          "limit": {
+            "context": 131072,
+            "output": 8192
+          }
+        },
+        "qwen3-235b-a22b-instruct-2507": {
+          "name": "Qwen3 235B A22B Instruct 2507",
+          "limit": {
+            "context": 262144,
+            "output": 8192
+          }
+        },
+        "qwen3-coder": {
+          "name": "Qwen3 Coder",
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "qwen3.5-omni-flash": {
+          "name": "Qwen3.5 Omni Flash",
+          "limit": {
+            "context": 262144,
+            "output": 8192
+          }
+        },
+        "longcat-flash-chat": {
+          "name": "LongCat Flash Chat",
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "mistral-small-4": {
+          "name": "Mistral Small 4",
+          "limit": {
+            "context": 262144,
+            "output": 8192
+          }
+        },
+        "qwen3-coder-plus": {
+          "name": "Qwen3 Coder Plus",
+          "limit": {
+            "context": 1048576,
+            "output": 8192
+          }
+        },
+        "qwen3-next-80b-a3b-thinking": {
+          "name": "Qwen3 Next 80B A3B Thinking",
+          "limit": {
+            "context": 262144,
+            "output": 8192
+          }
+        },
+        "default": {
+          "name": "Default",
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "gpt-4.1-mini": {
+          "name": "GPT 4.1 Mini",
+          "limit": {
+            "context": 1000000,
+            "output": 8192
+          }
+        },
+        "north-mini-code": {
+          "name": "North Mini Code",
+          "limit": {
+            "context": 256000,
+            "output": 8192
+          }
+        },
+        "qwen-plus-2025-07-28": {
+          "name": "Qwen Plus 2025-07-28",
+          "limit": {
+            "context": 131072,
+            "output": 8192
+          }
+        },
+        "qwen3-vl-235b-a22b-instruct": {
+          "name": "Qwen3 VL 235B A22B Instruct",
+          "limit": {
+            "context": 131072,
+            "output": 8192
+          }
+        },
+        "qwen3-vl-plus": {
+          "name": "Qwen3 VL Plus",
+          "limit": {
+            "context": 262144,
+            "output": 8192
+          }
+        },
+        "diffusiongemma-26b-a4b-it": {
+          "name": "DiffusionGemma 26B A4B IT",
+          "limit": {
+            "context": 262144,
+            "output": 8192
+          }
+        },
+        "qwen3-coder-30b-a3b-instruct": {
+          "name": "Qwen3 Coder 30B A3B Instruct",
+          "limit": {
+            "context": 262000,
+            "output": 8192
+          }
+        },
+        "qwen3-next-80b-a3b-instruct": {
+          "name": "Qwen3 Next 80B A3B Instruct",
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "qwq-32b": {
+          "name": "QwQ 32B",
+          "limit": {
+            "context": 131072,
+            "output": 8192
+          }
+        },
+        "command-a-reasoning": {
+          "name": "Command A Reasoning",
+          "limit": {
+            "context": 256000,
+            "output": 8192
+          }
+        },
+        "devstral-2": {
+          "name": "Devstral 2",
+          "limit": {
+            "context": 262144,
+            "output": 8192
+          }
+        },
+        "gemini-2.5-flash-lite": {
+          "name": "Gemini 2.5 Flash-Lite",
+          "limit": {
+            "context": 1000000,
+            "output": 8192
+          }
+        },
+        "mistral-code": {
+          "name": "Mistral Code",
+          "limit": {
+            "context": 256000,
+            "output": 8192
+          }
+        },
+        "mistral-large-3": {
+          "name": "Mistral Large 3",
+          "limit": {
+            "context": 262144,
+            "output": 8192
+          }
+        },
+        "mistral-code-latest": {
+          "name": "mistral-code-latest",
+          "limit": {
+            "context": 256000,
+            "output": 8192
+          }
+        },
+        "nemotron-3-nano-30b-reasoning": {
+          "name": "Nemotron 3 Nano 30B Reasoning",
+          "limit": {
+            "context": 262144,
+            "output": 8192
+          }
+        },
+        "nemotron-3-nano-omni": {
+          "name": "Nemotron 3 Nano Omni",
+          "limit": {
+            "context": 256000,
+            "output": 8192
+          }
+        },
+        "nemotron-3-nano-omni-30b-a3b-reasoning": {
+          "name": "Nemotron 3 Nano Omni 30B A3B Reasoning",
+          "limit": {
+            "context": 262144,
+            "output": 8192
+          }
+        },
+        "nemotron-3-nano-omni-reasoning": {
+          "name": "Nemotron 3 Nano Omni Reasoning",
+          "limit": {
+            "context": 256000,
+            "output": 8192
+          }
+        },
+        "deepseek-r1-distill-qwen-32b": {
+          "name": "DeepSeek R1 Distill Qwen 32B",
+          "limit": {
+            "context": 131072,
+            "output": 8192
+          }
+        },
+        "lfm2.5-2.6b": {
+          "name": "LFM2.5 2.6B",
+          "limit": {
+            "context": 32768,
+            "output": 8192
+          }
+        },
+        "r1-distill-qwen-32b": {
+          "name": "R1 Distill Qwen 32B",
+          "limit": {
+            "context": 131000,
+            "output": 8192
+          }
+        },
+        "ch.at": {
+          "name": "ch.at",
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "glm-4.5-flash": {
+          "name": "GLM-4.5 Flash",
+          "limit": {
+            "context": 131072,
+            "output": 8192
+          }
+        },
+        "gpt-4o": {
+          "name": "GPT 4o",
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "ising-calibration-1.5-31b": {
+          "name": "Ising Calibration 1.5 31B",
+          "limit": {
+            "context": 131072,
+            "output": 8192
+          }
+        },
+        "llama-3.3-70b": {
+          "name": "Llama 3.3 70B",
+          "limit": {
+            "context": 131072,
+            "output": 8192
+          }
+        },
+        "llama-3.3-70b-fp8-fast": {
+          "name": "Llama 3.3 70B fp8-fast",
+          "limit": {
+            "context": 24000,
+            "output": 8192
+          }
+        },
+        "llama-4-scout": {
+          "name": "Llama 4 Scout",
+          "limit": {
+            "context": 131072,
+            "output": 8192
+          }
+        },
+        "mistral-small-3.2-24b": {
+          "name": "Mistral Small 3.2 24B",
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "qwen3-omni-flash": {
+          "name": "Qwen3 Omni Flash",
+          "limit": {
+            "context": 262144,
+            "output": 8192
+          }
+        },
+        "rnj-1": {
+          "name": "rnj-1",
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "unmoderated-gpt": {
+          "name": "unmoderated-gpt",
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "qwen-sea-lion-v4-32b": {
+          "name": "Qwen SEA-LION v4 32B",
+          "limit": {
+            "context": 32768,
+            "output": 8192
+          }
+        },
+        "qwen2.5-72b-instruct": {
+          "name": "Qwen2.5 72B Instruct",
+          "limit": {
+            "context": 32000,
+            "output": 8192
+          }
+        },
+        "qwen2.5-vl-72b": {
+          "name": "Qwen2.5 VL 72B",
+          "limit": {
+            "context": 32768,
+            "output": 8192
+          }
+        },
+        "qwen3-30b-a3b-instruct-2507": {
+          "name": "Qwen3 30B A3B Instruct 2507",
+          "limit": {
+            "context": 131000,
+            "output": 8192
+          }
+        },
+        "qwen3-30b-a3b-fp8": {
+          "name": "Qwen3 30B-A3B fp8",
+          "limit": {
+            "context": 131072,
+            "output": 8192
+          }
+        },
+        "command-a-vision": {
+          "name": "Command A Vision",
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "command-a": {
+          "name": "Command-A",
+          "limit": {
+            "context": 131072,
+            "output": 8192
+          }
+        },
+        "gemma-4-e4b-ultra-uncensored": {
+          "name": "Gemma 4 E4B Ultra Uncensored",
+          "limit": {
+            "context": 4096,
+            "output": 4096
+          }
+        },
+        "gemma-4-e4b-uncensored-aggressive": {
+          "name": "Gemma 4 E4B Uncensored Aggressive",
+          "limit": {
+            "context": 4096,
+            "output": 4096
+          }
+        },
+        "gemma-4-e4b-uncensored-hauhaucs-aggressive-q4-k-m": {
+          "name": "Gemma-4-E4B-Uncensored-HauhauCS-Aggressive-Q4 K M",
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "gpt-4o-mini": {
+          "name": "GPT 4o Mini",
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "groq-compound-mini": {
+          "name": "Groq Compound Mini",
+          "limit": {
+            "context": 131072,
+            "output": 8192
+          }
+        },
+        "hermes-3-llama-3.1-405b": {
+          "name": "Hermes 3 Llama 3.1 405B",
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "mistral-small-3.1-24b": {
+          "name": "Mistral Small 3.1 24B",
+          "limit": {
+            "context": 131072,
+            "output": 8192
+          }
+        },
+        "qwen2.5-32b-instruct": {
+          "name": "Qwen2.5 32B Instruct",
+          "limit": {
+            "context": 131000,
+            "output": 8192
+          }
+        },
+        "qwen2.5-coder-32b": {
+          "name": "Qwen2.5 Coder 32B",
+          "limit": {
+            "context": 32768,
+            "output": 8192
+          }
+        },
+        "qwen2.5-coder-32b-instruct": {
+          "name": "Qwen2.5 Coder 32B Instruct",
+          "limit": {
+            "context": 33000,
+            "output": 8192
+          }
+        },
+        "llama-3.2-3b": {
+          "name": "Llama 3.2 3B",
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "llama-3.2-90b-vision": {
+          "name": "Llama 3.2 90B Vision",
+          "limit": {
+            "context": 131072,
+            "output": 8192
+          }
+        },
+        "llama-sea-lion-v3-70b": {
+          "name": "Llama SEA-LION v3 70B",
+          "limit": {
+            "context": 131072,
+            "output": 8192
+          }
+        },
+        "llama-3-2-3b-instruct": {
+          "name": "Llama-3 2-3B-Instruct",
+          "limit": {
+            "context": 131072,
+            "output": 8192
+          }
+        },
+        "llama-3-2-3b-instruct-q4-k-m": {
+          "name": "Llama-3 2-3B-Instruct-Q4 K M",
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "llama-instant": {
+          "name": "llama-instant",
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "ministral-14b": {
+          "name": "Ministral 14B",
+          "limit": {
+            "context": 262144,
+            "output": 8192
+          }
+        },
+        "ministral-3-14b": {
+          "name": "Ministral 3 14B",
+          "limit": {
+            "context": 262144,
+            "output": 8192
+          }
+        },
+        "ministral-14b-2512": {
+          "name": "ministral-14b-2512",
+          "limit": {
+            "context": 262144,
+            "output": 8192
+          }
+        },
+        "ministral-14b-latest": {
+          "name": "ministral-14b-latest",
+          "limit": {
+            "context": 262144,
+            "output": 8192
+          }
+        },
+        "qwen2.5-7b-instruct": {
+          "name": "Qwen2.5 7B Instruct",
+          "limit": {
+            "context": 131000,
+            "output": 8192
+          }
+        },
+        "qwen2.5-coder-7b-instruct": {
+          "name": "Qwen2.5 Coder 7B Instruct",
+          "limit": {
+            "context": 32000,
+            "output": 8192
+          }
+        },
+        "qwen3-4b-nymphaea-rp-i1-q4-k-s": {
+          "name": "Qwen3-4B-Nymphaea-RP i1-Q4 K S",
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "qwen3.5-0.8b": {
+          "name": "Qwen3.5 0.8B",
+          "limit": {
+            "context": 4096,
+            "output": 4096
+          }
+        },
+        "qwen3guard-gen-8b": {
+          "name": "Qwen3Guard Gen 8B",
+          "limit": {
+            "context": 32768,
+            "output": 8192
+          }
+        },
+        "aion-rp-llama-3.1-8b": {
+          "name": "Aion-RP Llama 3.1 8B",
+          "limit": {
+            "context": 32768,
+            "output": 8192
+          }
+        },
+        "command-a-translate": {
+          "name": "Command A Translate",
+          "limit": {
+            "context": 256000,
+            "output": 8192
+          }
+        },
+        "gemma-3-1b": {
+          "name": "Gemma 3 1B",
+          "limit": {
+            "context": 32000,
+            "output": 8192
+          }
+        },
+        "gemma-3-4b-it": {
+          "name": "gemma 3 4b it",
+          "limit": {
+            "context": 32000,
+            "output": 8192
+          }
+        },
+        "gemma-sea-lion-v4-27b": {
+          "name": "Gemma SEA-LION v4 27B",
+          "limit": {
+            "context": 131072,
+            "output": 8192
+          }
+        },
+        "glm-4.6v-flash": {
+          "name": "GLM-4.6V Flash",
+          "limit": {
+            "context": 131072,
+            "output": 8192
+          }
+        },
+        "hunyuan-a13b-instruct": {
+          "name": "Hunyuan A13B Instruct",
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "leanstral-1.5": {
+          "name": "Leanstral 1.5",
+          "limit": {
+            "context": 262144,
+            "output": 8192
+          }
+        },
+        "llama-3.2-11b-vision": {
+          "name": "Llama 3.2 11B Vision",
+          "limit": {
+            "context": 131072,
+            "output": 8192
+          }
+        },
+        "llama-3.2-1b": {
+          "name": "Llama 3.2 1B",
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "llama-3.2-1b-instruct": {
+          "name": "Llama 3.2 1B Instruct",
+          "limit": {
+            "context": 131072,
+            "output": 8192
+          }
+        },
+        "llama-3.2-1b-unsloth": {
+          "name": "Llama 3.2 1B Unsloth",
+          "limit": {
+            "context": 4096,
+            "output": 4096
+          }
+        },
+        "llama-3-2-1b-instruct": {
+          "name": "Llama-3 2-1B-Instruct",
+          "limit": {
+            "context": 131072,
+            "output": 8192
+          }
+        },
+        "ministral-3-3b": {
+          "name": "Ministral 3 3B",
+          "limit": {
+            "context": 131072,
+            "output": 8192
+          }
+        },
+        "ministral-3-8b": {
+          "name": "Ministral 3 8B",
+          "limit": {
+            "context": 262144,
+            "output": 8192
+          }
+        },
+        "ministral-3b": {
+          "name": "Ministral 3B",
+          "limit": {
+            "context": 262144,
+            "output": 8192
+          }
+        },
+        "ministral-8b": {
+          "name": "Ministral 8B",
+          "limit": {
+            "context": 262000,
+            "output": 8192
+          }
+        },
+        "ministral-3b-2512": {
+          "name": "ministral-3b-2512",
+          "limit": {
+            "context": 262144,
+            "output": 8192
+          }
+        },
+        "ministral-3b-latest": {
+          "name": "ministral-3b-latest",
+          "limit": {
+            "context": 262144,
+            "output": 8192
+          }
+        },
+        "ministral-8b-2512": {
+          "name": "ministral-8b-2512",
+          "limit": {
+            "context": 262144,
+            "output": 8192
+          }
+        },
+        "ministral-8b-latest": {
+          "name": "ministral-8b-latest",
+          "limit": {
+            "context": 262144,
+            "output": 8192
+          }
+        },
+        "north-small-translate": {
+          "name": "North Small Translate",
+          "limit": {
+            "context": 32768,
+            "output": 8192
+          }
+        },
+        "phi-4": {
+          "name": "phi 4",
+          "limit": {
+            "context": 16000,
+            "output": 8192
+          }
+        },
+        "qwen3-0.6b-iq4": {
+          "name": "Qwen3 0.6B IQ4",
+          "limit": {
+            "context": 4096,
+            "output": 4096
+          }
+        },
+        "qwen3guard-gen-0.6b": {
+          "name": "Qwen3Guard Gen 0.6B",
+          "limit": {
+            "context": 32768,
+            "output": 8192
+          }
+        },
+        "tiny-aya-global": {
+          "name": "Tiny Aya Global",
+          "limit": {
+            "context": 8192,
+            "output": 8192
+          }
+        },
+        "codestral": {
+          "name": "Codestral",
+          "limit": {
+            "context": 32000,
+            "output": 8192
+          }
+        },
+        "codestral-2508": {
+          "name": "Codestral 2508",
+          "limit": {
+            "context": 256000,
+            "output": 8192
+          }
+        },
+        "codestral-latest": {
+          "name": "codestral-latest",
+          "limit": {
+            "context": 32000,
+            "output": 8192
+          }
+        },
+        "gemma-3-12b-it": {
+          "name": "gemma 3 12b it",
+          "limit": {
+            "context": 32000,
+            "output": 8192
+          }
+        },
+        "hermes-4-14b": {
+          "name": "Hermes 4 14B",
+          "limit": {
+            "context": 40000,
+            "output": 8192
+          }
+        },
+        "impish-llama-4b": {
+          "name": "Impish LLAMA 4B",
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "llama-3-stheno-8b-v3.2": {
+          "name": "Llama 3 Stheno 8B v3.2",
+          "limit": {
+            "context": 4096,
+            "output": 4096
+          }
+        },
+        "llama-3-super-nova-rp-8b": {
+          "name": "Llama 3 Super Nova RP 8B",
+          "limit": {
+            "context": 4096,
+            "output": 4096
+          }
+        },
+        "mistral-code-fim": {
+          "name": "Mistral Code FIM",
+          "limit": {
+            "context": 256000,
+            "output": 8192
+          }
+        },
+        "mistral-nemo-instruct-2407": {
+          "name": "Mistral Nemo Instruct 2407",
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "mistral-code-fim-latest": {
+          "name": "mistral-code-fim-latest",
+          "limit": {
+            "context": 256000,
+            "output": 8192
+          }
+        },
+        "mistral-tiny-2407": {
+          "name": "mistral-tiny-2407",
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "mistral-tiny-latest": {
+          "name": "mistral-tiny-latest",
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "open-mistral-nemo-2407": {
+          "name": "Open Mistral Nemo 2407",
+          "limit": {
+            "context": 131000,
+            "output": 8192
+          }
+        },
+        "open-mistral-nemo": {
+          "name": "open-mistral-nemo",
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "tiny-aya-earth": {
+          "name": "Tiny Aya Earth",
+          "limit": {
+            "context": 8192,
+            "output": 8192
+          }
+        },
+        "tiny-aya-fire": {
+          "name": "Tiny Aya Fire",
+          "limit": {
+            "context": 8192,
+            "output": 8192
+          }
+        },
+        "tiny-aya-water": {
+          "name": "Tiny Aya Water",
+          "limit": {
+            "context": 8192,
+            "output": 8192
+          }
+        },
+        "devstral-small-2": {
+          "name": "Devstral Small 2",
+          "limit": {
+            "context": 262000,
+            "output": 8192
+          }
+        },
+        "gemma-4-26b-a4b-it-chimerax": {
+          "name": "Gemma 4 26B A4B IT chimerax",
+          "limit": {
+            "context": 62000,
+            "output": 8192
+          }
+        },
+        "gemma-4-26b-a4b-it-darksoul": {
+          "name": "Gemma 4 26B A4B IT darksoul",
+          "limit": {
+            "context": 62000,
+            "output": 8192
+          }
+        },
+        "gemma-4-26b-a4b-it-luminous": {
+          "name": "Gemma 4 26B A4B IT luminous",
+          "limit": {
+            "context": 62000,
+            "output": 8192
+          }
+        },
+        "gemma-4-26b-a4b-it-meromero": {
+          "name": "Gemma 4 26B A4B IT meromero",
+          "limit": {
+            "context": 62000,
+            "output": 8192
+          }
+        },
+        "gemma-4-26b-a4b-it-moonlight": {
+          "name": "Gemma 4 26B A4B IT moonlight",
+          "limit": {
+            "context": 62000,
+            "output": 8192
+          }
+        },
+        "gemma-4-26b-a4b-it-musica": {
+          "name": "Gemma 4 26B A4B IT musica",
+          "limit": {
+            "context": 62000,
+            "output": 8192
+          }
+        },
+        "mimo-v2.6-flash": {
+          "name": "MiMo V2.6 Flash",
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "mythomax-l2-13b": {
+          "name": "MythoMax L2 13B",
+          "limit": {
+            "context": 4000,
+            "output": 4000
+          }
+        },
+        "ctx65536-magidonia-24b-heretic": {
+          "name": "[ctx:65536] Magidonia-24B-heretic-",
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "allam-2-7b": {
+          "name": "ALLaM 2 7B",
+          "limit": {
+            "context": 4096,
+            "output": 4096
+          }
+        },
+        "behemoth-x-123b-v2-1": {
+          "name": "Behemoth-X-123B-v2 1",
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "command-r-2": {
+          "name": "Command R+",
+          "limit": {
+            "context": 131072,
+            "output": 8192
+          }
+        },
+        "gemma-2-9b": {
+          "name": "Gemma 2 9B",
+          "limit": {
+            "context": 8000,
+            "output": 8000
+          }
+        },
+        "granite-4.0-h-micro": {
+          "name": "Granite 4.0 H Micro",
+          "limit": {
+            "context": 131072,
+            "output": 8192
+          }
+        },
+        "llama-2-7b-chat-lora": {
+          "name": "Llama 2 7B Chat LoRA",
+          "limit": {
+            "context": 8192,
+            "output": 8192
+          }
+        },
+        "mistral-7b-instruct-v0.2-lora": {
+          "name": "Mistral 7B Instruct v0.2 LoRA",
+          "limit": {
+            "context": 32768,
+            "output": 8192
+          }
+        },
+        "riva-translate-4b-instruct-v2": {
+          "name": "Riva Translate 4B Instruct v2",
+          "limit": {
+            "context": 32768,
+            "output": 8192
+          }
+        },
+        "thedrummer-behemoth-128b-v3-q4-k-m": {
+          "name": "TheDrummer Behemoth-128B-v3-Q4 K M",
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "voxtral-small": {
+          "name": "Voxtral Small",
+          "limit": {
+            "context": 32768,
+            "output": 8192
+          }
+        },
+        "voxtral-small-2507": {
+          "name": "Voxtral Small 2507",
+          "limit": {
+            "context": 32768,
+            "output": 8192
+          }
+        },
+        "voxtral-small-latest": {
+          "name": "voxtral-small-latest",
+          "limit": {
+            "context": 32768,
+            "output": 8192
+          }
+        },
+        "aya-expanse-32b": {
+          "name": "Aya Expanse 32B",
+          "limit": {
+            "context": 131072,
+            "output": 8192
+          }
+        },
+        "aya-vision-32b": {
+          "name": "Aya Vision 32B",
+          "limit": {
+            "context": 16384,
+            "output": 8192
+          }
+        },
+        "command-r": {
+          "name": "Command R",
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "command-r7b": {
+          "name": "Command R7B",
+          "limit": {
+            "context": 131072,
+            "output": 8192
+          }
+        },
+        "command-r7b-arabic": {
+          "name": "Command R7B Arabic",
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "cydonia-24b-v4.3": {
+          "name": "Cydonia 24B v4.3",
+          "limit": {
+            "context": 8192,
+            "output": 8192
+          }
+        },
+        "llama-3.1-nemoguard-8b-content-safety": {
+          "name": "Llama 3.1 NemoGuard 8B Content Safety",
+          "limit": {
+            "context": 131072,
+            "output": 8192
+          }
+        },
+        "llama-3.1-nemoguard-8b-topic-control": {
+          "name": "Llama 3.1 NemoGuard 8B Topic Control",
+          "limit": {
+            "context": 131072,
+            "output": 8192
+          }
+        },
+        "llama-3.1-nemotron-safety-guard-8b-v3": {
+          "name": "Llama 3.1 Nemotron Safety Guard 8B v3",
+          "limit": {
+            "context": 131072,
+            "output": 8192
+          }
+        },
+        "llama-guard-3-8b": {
+          "name": "Llama Guard 3 8B",
+          "limit": {
+            "context": 131072,
+            "output": 8192
+          }
+        },
+        "nemotron-3.5-content-safety": {
+          "name": "Nemotron 3.5 Content Safety",
+          "limit": {
+            "context": 131072,
+            "output": 8192
+          }
+        },
+        "nemotron-parse-2.0": {
+          "name": "Nemotron Parse 2.0",
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "skyfall-31b-v4.2": {
+          "name": "Skyfall 31B v4.2",
+          "limit": {
+            "context": 4096,
+            "output": 4096
+          }
+        },
+        "angelic-eclipse-12b": {
+          "name": "Angelic Eclipse 12B",
+          "limit": {
+            "context": 4096,
+            "output": 4096
+          }
+        },
+        "forgotten-safeword-22b": {
+          "name": "Forgotten-Safeword-22B",
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "gemma-2b-it-lora": {
+          "name": "Gemma 2B IT LoRA",
+          "limit": {
+            "context": 8192,
+            "output": 8192
+          }
+        },
+        "gemma-7b-it-lora": {
+          "name": "Gemma 7B IT LoRA",
+          "limit": {
+            "context": 8192,
+            "output": 8192
+          }
+        },
+        "impish-bloodmoon-12b": {
+          "name": "Impish Bloodmoon 12B",
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "l3-8b-lunaris-v1": {
+          "name": "L3 8B Lunaris v1",
+          "limit": {
+            "context": 8000,
+            "output": 8000
+          }
+        },
+        "l3-8b-stheno-v3-2-q5-k-m": {
+          "name": "L3-8B-Stheno-v3 2-Q5 K M",
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "llama-prompt-guard-2-22m": {
+          "name": "Llama Prompt Guard 2 22M",
+          "limit": {
+            "context": 512,
+            "output": 512
+          }
+        },
+        "llama-prompt-guard-2-86m": {
+          "name": "Llama Prompt Guard 2 86M",
+          "limit": {
+            "context": 512,
+            "output": 512
+          }
+        },
+        "llava-1.5-7b": {
+          "name": "LLaVA 1.5 7B",
+          "limit": {
+            "context": 4096,
+            "output": 4096
+          }
+        },
+        "mini-magnum-12b-v1.1": {
+          "name": "Mini Magnum 12B v1.1",
+          "limit": {
+            "context": 4096,
+            "output": 4096
+          }
+        },
+        "mn-violet-lotus-12b-q8-0": {
+          "name": "MN-Violet-Lotus-12B Q8 0",
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "rocinante-x-12b": {
+          "name": "Rocinante-X-12B",
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "thea-rp-3b-25r": {
+          "name": "thea-rp-3b-25r",
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "sea-guard": {
+          "name": "SEA-Guard",
+          "limit": {
+            "context": 8192,
+            "output": 8192
+          }
+        },
+        "cerebras-gpt-111m-instruct": {
+          "name": "Cerebras GPT 111M Instruct",
+          "limit": {
+            "context": 4096,
+            "output": 4096
+          }
+        },
+        "pythia-70m-deduped": {
+          "name": "Pythia 70M Deduped",
+          "limit": {
+            "context": 4096,
+            "output": 4096
+          }
+        }
+      }
+    }
+  }
+}

@@ -4,17 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "8260c21119c5d8e8",
+        "id": "28251bd1f93fe27c",
         "type": "tabs",
         "children": [
           {
-            "id": "ce15faf91494b6d7",
+            "id": "eb4d91f9a43c4563",
             "type": "leaf",
             "state": {
-              "type": "graph",
+              "type": "empty",
               "state": {},
-              "icon": "lucide-git-fork",
-              "title": "Graph view"
+              "icon": "lucide-file",
+              "title": "New tab"
             }
           }
         ]
@@ -82,7 +82,8 @@
               "title": "Recent files"
             }
           }
-        ]
+        ],
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
@@ -199,24 +200,25 @@
       "templates:Insert template": false,
       "command-palette:Open command palette": false,
       "bases:Create new base": false,
-      "obsidian-importer:Open Importer": false
+      "obsidian-importer:Import notes": false
     }
   },
-  "active": "ce15faf91494b6d7",
+  "active": "eb4d91f9a43c4563",
   "lastOpenFiles": [
-    "sample readme.md",
-    "sketchybar.md",
     "repo workflow.md",
+    "audits/resolved audits/sketchybar-studio audit.md",
+    "audits/resolved audits/fluor audit.md",
+    "audits/resolved audits/spaces renamer audit.md",
+    "sketchybar.md",
+    "spacemap.md",
+    "sample readme.md",
     "wallpaper-selector.md",
     "jankyborders.md",
     "spacemap bar.md",
     "jankyborders next feature.md",
     "audits/resolved audits/wallpaper selector audit.md",
     "setup.md",
-    "audits/resolved audits/spaces renamer audit.md",
-    "audits/resolved audits/fluor audit.md",
     "audits/resolved audits/jankyborders audit.md",
-    "audits/resolved audits/sketchybar-studio audit.md",
     "audits/resolved audits/spacemap audit.md",
     "audits/resolved audits",
     "audits",

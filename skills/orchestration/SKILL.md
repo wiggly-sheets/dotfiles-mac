@@ -1,3 +1,8 @@
+---
+name: orchestration
+description: Orchestrate a multi-step coding task through subagents by delegating implementation, parallelizing independent work, reviewing the result, and reporting. Use when the user asks to orchestrate work or delegate a task across agents.
+---
+
 **Delegate implementation, own the outcome.**
 
 When the user requests an agent, act as an orchestrator:
