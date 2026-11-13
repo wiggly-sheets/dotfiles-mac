@@ -545,270 +545,229 @@ rex.bind("alt+ctrl+j", "pane.resize", { direction = "down" })
 rex.bind("alt+ctrl+k", "pane.resize", { direction = "up" })
 rex.bind("alt+ctrl+l", "pane.resize", { direction = "right" })
 
--- Tab switcher: ctrl+tab cycles tabs in tab order, ctrl+shift+tab in
--- most-recent-first order. Each enters a mode, so Tab/Tab keeps cycling
--- until Enter commits or Escape cancels. Rex has no key-release event, so
--- releasing Ctrl cannot commit; the mode needs a final key.
---
--- The preview swaps the target tab's focused pane into the current tab and
--- zooms it, then swaps it back. Moving or floating that pane instead would
--- close a one-pane tab and lose its place in the tab order. Swapping keeps
--- every split and ratio exact. The cost is a short focus flip between calls.
---
--- Set style to "list" for the floating name list instead of the pane preview.
-local TAB_SWITCHER_STYLE = "preview" -- "preview" or "list"
+-- Tab toast: ctrl+tab switches to the next tab across the sessions on this
+-- machine, in session order then tab order, wrapping at the end, and shows
+-- the tab name, its pane titles in layout order, and the session and machine,
+-- in a floating pane for two seconds. ctrl+shift+tab goes the other way. The
+-- pane runs one command and exits, so Rex closes it. focus=false keeps typing
+-- in the terminal, and the focused pane is restored because creating the pane
+-- moves focus.
+local TAB_TOAST_SECONDS = 2.0
+local TAB_TOAST_BOUNDS = { 0.20, 0.36, 0.60, 0.18 }
 
--- shortcut: MRU order sees only commits made by this switcher. Clicking a tab
--- in the tab bar does not update it, so history can lag after mouse switches.
-local tab_switcher_mru = {}
-local tab_switcher = nil
-
-local function view_window(view, id)
-  for _, win in ipairs(view.windows or {}) do
-    if win.window_id == id then return win end
-  end
-  return nil
+local function pane_title(sid, block_id)
+  local r = rex.call("block.method", {
+    session_id = sid, block_id = block_id, method = "title",
+  })
+  local t = r and r.title or ""
+  t = t:gsub("%s+", " ")
+  if t == "" then t = block_id:sub(-6) end
+  if #t > 40 then t = t:sub(1, 37) .. "..." end
+  return t
 end
 
--- The pane a preview uses: the window's focused pane when it is in the tiled
--- layer, otherwise the first tiled pane. Floating panes are skipped because
--- swapping them into another window's tiled slot changes layer kinds.
-local function tiled_pane(win)
-  if not win then return nil end
-  local tiled
-  for _, layer in ipairs(win.layers or {}) do
-    if layer.kind == "tiled" then tiled = layer end
-  end
-  if not (tiled and tiled.blocks and tiled.blocks[1]) then return nil end
-  for _, blk in ipairs(tiled.blocks) do
-    if blk.block_id == win.focused_block_id then return blk.block_id end
-  end
-  return tiled.blocks[1].block_id
+local function layout_text(sid, node)
+  if not node then return "" end
+  if node.block_id then return pane_title(sid, node.block_id) end
+  local split = node.split
+  if not split then return "?" end
+  local sep = split.direction == "horizontal" and " | " or " / "
+  return layout_text(sid, split.before) .. sep .. layout_text(sid, split.after)
 end
 
--- Home first, then the rest in tab order, or after the MRU history. Only
--- windows with a tiled pane can be previewed.
-local function switcher_order(view, home_id, style)
-  local ids, start = {}, 1
-  for _, win in ipairs(view.windows or {}) do
-    ids[#ids + 1] = win.window_id
-    if win.window_id == home_id then start = #ids end
+local function window_panes(sid, win)
+  local layer = (win.layers or {})[1]
+  if layer and layer.layout then return layout_text(sid, layer.layout) end
+  local parts = {}
+  for _, blk in ipairs(layer and layer.blocks or {}) do
+    parts[#parts + 1] = pane_title(sid, blk.block_id)
   end
-  local out, seen = { home_id }, { [home_id] = true }
-  local function add(id)
-    local win = view_window(view, id)
-    if not seen[id] and tiled_pane(win) then
-      seen[id] = true
-      out[#out + 1] = id
+  return table.concat(parts, " | ")
+end
+
+-- All tabs on this server, in session order then tab order. Wrapping stays
+-- on this host.
+local function local_tabs(sid, view)
+  local tabs = {}
+  pcall(rex.call, "session.attach_all", { event_scope = "session" })
+  local ok, r = pcall(rex.call, "session.list")
+  for _, s in ipairs(ok and r and r.sessions or {}) do
+    local v = s.session_id == sid and view or rex.session.view{ session_id = s.session_id }
+    for _, w in ipairs(v and v.windows or {}) do
+      tabs[#tabs + 1] = {
+        session_id = s.session_id,
+        session = s.label or s.session_id,
+        win = w,
+      }
     end
   end
-  if style == "mru" then
-    for _, id in ipairs(tab_switcher_mru) do
-      if view_window(view, id) then add(id) end
+  return tabs
+end
+
+local function close_toast(sid)
+  local listing = rex.session.list_blocks{ session_id = sid }
+  for _, blk in ipairs(listing and listing.blocks or {}) do
+    if blk.label == "tab-toast" then
+      pcall(rex.call, "block.close", { session_id = sid, block_id = blk.block_id })
+      return
     end
   end
-  for k = 1, #ids - 1 do
-    add(ids[(start - 1 + k) % #ids + 1])
-  end
-  return out
 end
 
-local function mru_touch(id)
-  local out = { id }
-  for _, other in ipairs(tab_switcher_mru) do
-    if other ~= id then out[#out + 1] = other end
-  end
-  tab_switcher_mru = out
-end
+rex.action{
+  name = "tab_toast",
+  title = "Switch Tab With Name Toast",
+  repeats = false,
+  args = { direction = "string?" },
+  run = function(ctx, args)
+    local sid = ctx.session_id
+    local view = rex.session.view{ session_id = sid }
+    if not view then return "no session" end
 
--- Put the previewed pane back in its own window. zoom=false uses the window,
--- not the block, so focus does not move before the swap.
-local function restore_preview(t)
-  if not t.shown_block then return end
-  rex.call("session.zoom_block", {
-    session_id = t.sid, window_id = t.home_window, zoom = false,
-  })
-  rex.call("session.swap_blocks", {
-    session_id = t.sid,
-    block_id = t.shown_block,
-    other_block_id = t.home_block,
-  })
-  t.shown_block, t.shown_window = nil, nil
-end
+    local tabs = local_tabs(sid, view)
+    if #tabs < 2 then return "one tab" end
 
-local function show_target(t)
-  restore_preview(t)
-  local target = t.order[t.idx]
-  if target == t.home_window then
-    rex.call("session.focus_window", {
-      session_id = t.sid, window_id = t.home_window,
-    })
-    return
-  end
-  local block = t.panes[target]
-  rex.call("session.swap_blocks", {
-    session_id = t.sid, block_id = t.home_block, other_block_id = block,
-  })
-  rex.call("session.zoom_block", {
-    session_id = t.sid, block_id = block, zoom = true,
-  })
-  t.shown_window, t.shown_block = target, block
-end
+    local idx
+    for i, t in ipairs(tabs) do
+      if t.session_id == sid and t.win.window_id == view.active_window_id then idx = i end
+    end
+    if not idx then return "no active tab" end
 
-local function list_path(t)
-  local dir = (os.getenv("TMPDIR") or "/tmp"):gsub("/$", "")
-  return dir .. "/rex-tab-switcher-" .. (t.sid:gsub("[^%w]", "")) .. ".txt"
-end
+    local step = args.direction == "previous" and -1 or 1
+    local target = (idx - 1 + step) % #tabs + 1
+    local next_tab = tabs[target]
+    local win = next_tab.win
+    local target_sid = next_tab.session_id
 
-local function write_list(t)
-  local lines = {}
-  for i, id in ipairs(t.order) do
-    local label = t.labels[id] or { "", "" }
-    lines[#lines + 1] = string.format("%s %2d  %s  %s",
-      i == t.idx and ">" or " ", i, label[1], label[2])
-  end
-  local f = io.open(t.list_path, "w")
-  if f then
-    f:write(table.concat(lines, "\n"), "\n")
-    f:close()
-  end
-end
+    close_toast(sid)
+    if target_sid ~= sid then close_toast(target_sid) end
 
-local function close_list(t)
-  if t.list_block then
-    pcall(rex.call, "block.close", {
-      session_id = t.sid, block_id = t.list_block,
-    })
-  end
-  if t.list_path then pcall(os.remove, t.list_path) end
-end
-
-local function open_list(t)
-  t.list_path = list_path(t)
-  write_list(t)
-  local existing = find_popup(t.sid, "tab-switcher-list")
-  if existing then
-    pcall(rex.call, "block.close", {
-      session_id = t.sid, block_id = existing.block_id,
-    })
-  end
-  local created = rex.session.new_layer{
-    session_id = t.sid,
-    window_id = t.home_window,
-    bounds = { 0.02, 0.02, 0.36, 0.30 },
-    focus = true,
-    layout = rex.layout.block{
-      flavor = "com.superlogical.terminal.shell",
-      label = "tab-switcher-list",
-      options = {
-        command = { "sh", "-c",
-          'while :; do clear; cat "$1"; sleep 0.15; done', "sh", t.list_path },
-      },
-    },
-  }
-  t.list_block = created and created.block_ids and created.block_ids[1]
-end
-
-local cycle
-
-local function open_switcher(ctx, args, style)
-  if tab_switcher then return cycle(1) end
-  local sid = ctx.session_id
-  local view = rex.session.view{ session_id = sid }
-  local home = view and view.active_window_id
-  local home_win = view and view_window(view, home)
-  local home_block = tiled_pane(home_win)
-  if not home_block then return "tab switcher: no tiled pane" end
-  local order = switcher_order(view, home, style)
-  if #order < 2 then return "tab switcher: one tab" end
-  local panes, labels = {}, {}
-  for _, id in ipairs(order) do
-    local win = view_window(view, id)
-    local pane = id == home and home_block or tiled_pane(win)
-    panes[id] = pane
-    for _, layer in ipairs(win.layers or {}) do
-      for _, blk in ipairs(layer.blocks or {}) do
-        if blk.block_id == pane then
-          labels[id] = { win.label or "", blk.label or "" }
+    local keep = win.focused_block_id
+    if not keep then
+      for _, layer in ipairs(win.layers or {}) do
+        for _, blk in ipairs(layer.blocks or {}) do
+          keep = blk.block_id
+          break
         end
+        if keep then break end
       end
     end
-  end
-  -- Queue the mode before touching any tab, so a failure leaves the layout
-  -- alone. The mode makes unbound keys inert and keeps typing out of the
-  -- previewed terminal.
-  local ok, err = pcall(rex.client.queue, "client.mode.enter", {
-    name = "tab_switcher",
-  })
-  if not ok then return "tab switcher: " .. tostring(err) end
-  tab_switcher = {
-    sid = sid, home_window = home, home_block = home_block,
-    home_zoom = home_win.zoomed_block_id,
-    order = order, idx = 2, panes = panes, labels = labels, style = style,
-  }
-  if tab_switcher.home_zoom then
-    rex.call("session.zoom_block", {
-      session_id = sid, window_id = home, zoom = false,
+
+    local panes = window_panes(target_sid, win)
+
+    local created, cerr = rex.session.new_layer{
+      session_id = target_sid,
+      window_id = win.window_id,
+      bounds = TAB_TOAST_BOUNDS,
+      focus = false,
+      layout = rex.layout.block{
+        flavor = "com.superlogical.terminal.shell",
+        label = "tab-toast",
+        options = {
+          shell = "none",
+          -- The pane is smaller than the default 24-row terminal, and the
+          -- client shows the bottom rows, so size it to the visible area.
+          size = { columns = 100, rows = 6 },
+          command = {
+            "/bin/sh", "-c",
+            [=[
+clear
+printf '\n  \033[1m%s\033[0m\n' "$1"
+printf '  %s\n' "$2"
+info="$3 · $(hostname -s)"
+cols=$(tput cols 2>/dev/null || echo 80)
+rows=$(tput lines 2>/dev/null || echo 8)
+col=$((cols - ${#info}))
+[ "$col" -lt 0 ] && col=0
+if tput cup $((rows - 1)) "$col" 2>/dev/null; then
+  printf '\033[2m%s\033[0m' "$info"
+else
+  printf '\n%s\n' "$info"
+fi
+sleep "$4"
+]=],
+            "sh", win.label or "tab", panes, next_tab.session, tostring(TAB_TOAST_SECONDS),
+          },
+        },
+      },
+    }
+    if not created then return "toast failed: " .. tostring(cerr) end
+
+    -- Creating the floating pane moves the window's focus to its first
+    -- pane, so put it back before the client switches to that window.
+    if keep then
+      rex.session.focus_block{ session_id = target_sid, block_id = keep }
+    end
+    rex.client.queue("session.select", {
+      session_id = target_sid,
+      window_id = win.window_id,
     })
-  end
-  if style == "list" then open_list(tab_switcher) else show_target(tab_switcher) end
-  return "tab switcher: " .. style
-end
+  end,
+}
 
-cycle = function(delta)
-  local t = tab_switcher
-  if not t then return "tab switcher inactive" end
-  t.idx = (t.idx - 1 + delta) % #t.order + 1
-  if t.style == "list" then write_list(t) else show_target(t) end
-  return "tab " .. t.idx
-end
+rex.bind("ctrl+tab", "tab_toast")
+rex.bind("ctrl+shift+tab", "tab_toast", { direction = "previous" })
+rex.bind("vim/ctrl+tab", "tab_toast")
+rex.bind("vim/ctrl+shift+tab", "tab_toast", { direction = "previous" })
 
-local function finish(commit)
-  local t = tab_switcher
-  if not t then return "tab switcher inactive" end
-  local target = commit and t.order[t.idx] or t.home_window
-  if t.style == "list" then close_list(t) else restore_preview(t) end
-  if commit and target ~= t.home_window then
-    rex.call("session.focus_window", { session_id = t.sid, window_id = target })
-    mru_touch(target)
-  elseif t.home_zoom then
-    -- focus_window would give focus to the wrong pane after the swaps.
-    rex.call("session.zoom_block", {
-      session_id = t.sid, block_id = t.home_zoom, zoom = true,
-    })
-  else
-    rex.call("session.focus_window", {
-      session_id = t.sid, window_id = t.home_window,
-    })
-  end
-  tab_switcher = nil
-  pcall(rex.client.queue, "client.mode.exit")
-  return commit and ("tab " .. target) or "tab switcher cancelled"
-end
+-- Vim-style leader mode: ctrl+b, then motions (tmux-style leader). Mirrors the
+-- direct alt+ pane bindings above and adds tab and session travel, so one
+-- leader covers every motion like a tiling window manager. Escape or ctrl+b
+-- again leaves the mode; it is exclusive, so unbound keys do not reach the
+-- terminal.
+--
+-- ctrl+b no longer reaches the terminal: it is the leader, not readline's
+-- backward-char.
+--
+--   h j k l     focus pane left/down/up/right
+--   shift+hjkl  swap pane with its neighbor
+--   shift+arrows  resize pane
+--   [ ]         previous/next tab
+--   n p         next/previous session
+--   z           zoom pane        b  balance splits
+--   f           float pane       s  split right    shift+s  split down
+--   arrows      split in that direction
+--   r           rotate cw        shift+r  rotate ccw
+rex.mode("vim", { exclusive = true })
+rex.bind("ctrl+b", "client.mode.enter", { name = "vim" })
 
-rex.mode("tab_switcher", { exclusive = true })
+rex.bind("vim/h", "pane.focus.left")
+rex.bind("vim/j", "pane.focus.down")
+rex.bind("vim/k", "pane.focus.up")
+rex.bind("vim/l", "pane.focus.right")
 
-rex.action{ name = "tab_switcher_open", title = "Open Tab Switcher",
-  args = { order = "string?" }, run = function(ctx, args)
-  return open_switcher(ctx, args, (args and args.order) or "positional")
-end }
-rex.action{ name = "tab_switcher_next", title = "Tab Switcher Next",
-  run = function() return cycle(1) end }
-rex.action{ name = "tab_switcher_prev", title = "Tab Switcher Previous",
-  run = function() return cycle(-1) end }
-rex.action{ name = "tab_switcher_commit", title = "Tab Switcher Commit",
-  run = function() return finish(true) end }
-rex.action{ name = "tab_switcher_cancel", title = "Tab Switcher Cancel",
-  run = function() return finish(false) end }
+rex.bind("vim/shift+h", "vim_swap", { direction = "left" })
+rex.bind("vim/shift+j", "vim_swap", { direction = "down" })
+rex.bind("vim/shift+k", "vim_swap", { direction = "up" })
+rex.bind("vim/shift+l", "vim_swap", { direction = "right" })
 
-rex.bind("ctrl+tab", "tab_switcher_open", { order = "positional" })
-rex.bind("ctrl+shift+tab", "tab_switcher_open", { order = "mru" })
+-- Resize uses shift+arrows: ctrl+h/j/k/l collide with the control characters
+-- for backspace and newline, so those bindings never fire.
+rex.bind("vim/shift+left", "pane.resize", { direction = "left" })
+rex.bind("vim/shift+down", "pane.resize", { direction = "down" })
+rex.bind("vim/shift+up", "pane.resize", { direction = "up" })
+rex.bind("vim/shift+right", "pane.resize", { direction = "right" })
 
--- Inside the mode, both the bare key and the still-held ctrl form cycle.
-rex.bind("tab_switcher/tab", "tab_switcher_next")
-rex.bind("tab_switcher/ctrl+tab", "tab_switcher_next")
-rex.bind("tab_switcher/shift+tab", "tab_switcher_prev")
-rex.bind("tab_switcher/ctrl+shift+tab", "tab_switcher_prev")
-rex.bind("tab_switcher/enter", "tab_switcher_commit")
-rex.bind("tab_switcher/escape", "tab_switcher_cancel")
-rex.bind("tab_switcher/ctrl+c", "tab_switcher_cancel")
+rex.bind("vim/[", "client.tab.previous")
+rex.bind("vim/]", "client.tab.next")
+rex.bind("vim/n", "session.next")
+rex.bind("vim/p", "session.previous")
+
+rex.bind("vim/z", "pane.zoom")
+rex.bind("vim/ctrl+b", "client.mode.exit")
+rex.bind("vim/b", "pane.balance")
+
+-- f float/unfloat the pane, s split side by side, shift+s split stacked.
+rex.bind("vim/f", "pane.float")
+rex.bind("vim/s", "pane.split", { direction = "right" })
+rex.bind("vim/shift+s", "pane.split", { direction = "down" })
+
+-- Arrows split in the arrow's direction; r/shift+r rotate the layout.
+rex.bind("vim/left", "pane.split", { direction = "left" })
+rex.bind("vim/right", "pane.split", { direction = "right" })
+rex.bind("vim/up", "pane.split", { direction = "up" })
+rex.bind("vim/down", "pane.split", { direction = "down" })
+
+rex.bind("vim/r", "vim_layout", { kind = "rotate_cw" })
+rex.bind("vim/shift+r", "vim_layout", { kind = "rotate_ccw" })
+

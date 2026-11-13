@@ -1,21 +1,53 @@
 {
   "$schema": "https://opencode.ai/config.json",
   "model": "opencode-go/deepseek-v4.1-flash",
+  "default_agent": "build",
   "skills": ["~/dotfiles/skills"],
   "plugins": [
     "@tarquinen/opencode-dcp",
     "@mumme-it/opencode-caveman",
     "@dietrichgebert/ponytail",
-    "@rizal72/oc-models-pro"
+    "@rizal72/oc-models-pro",
+    "/Users/Zeb/Developer/opencode-v2-lsp-support"
   ],
+  "lsp": {
+    "sourcekit-lsp": {
+      "command": ["/usr/bin/sourcekit-lsp"],
+      "extensions": [".swift", ".objc", ".objcpp"]
+    },
+    "rust": {
+      "command": ["/Users/Zeb/.cargo/bin/rust-analyzer"],
+      "extensions": [".rs"]
+    },
+    "json": {
+      "command": ["/opt/homebrew/bin/vscode-json-language-server", "--stdio"],
+      "extensions": [".json", ".jsonc"]
+    },
+    "css": {
+      "command": ["/opt/homebrew/bin/vscode-css-language-server", "--stdio"],
+      "extensions": [".css", ".scss", ".less"]
+    },
+    "html": {
+      "command": ["/opt/homebrew/bin/vscode-html-language-server", "--stdio"],
+      "extensions": [".html", ".htm"]
+    }
+  },
   "agents": {
-    "build": { "model": "opencode-go/deepseek-v4.1-flash" },
-    "plan": { "model": "opencode-go/deepseek-v4.1-flash" },
-    "general": { "model": "opencode-go/deepseek-v4.1-flash" },
-    "explore": { "model": "opencode-go/deepseek-v4.1-flash" },
-    "title": { "model": "opencode-go/deepseek-v4.1-flash" },
-    "summary": { "model": "opencode-go/deepseek-v4.1-flash" },
-    "compaction": { "model": "opencode-go/deepseek-v4.1-flash" }
+    "build": { "model": "opencode-go/deepseek-v4.1-flash#high" },
+    "plan": { "model": "opencode-go/deepseek-v4.1-flash#max" },
+    "general": { "model": "opencode-go/deepseek-v4.1-flash#high" },
+    "explore": {
+      "model": "opencode-go/deepseek-v4.1-flash#high",
+      "permissions": [
+        { "action": "shell", "resource": "*", "effect": "deny" },
+        { "action": "edit", "resource": "*", "effect": "deny" },
+        { "action": "subagent", "resource": "*", "effect": "deny" },
+        { "action": "lsp", "resource": "*", "effect": "allow" }
+      ]
+    },
+    "title": { "model": "opencode-go/deepseek-v4.1-flash#low" },
+    "summary": { "model": "opencode-go/deepseek-v4.1-flash#low" },
+    "compaction": { "model": "opencode-go/deepseek-v4.1-flash#high" }
   },
   "mcp": {
     "servers": {

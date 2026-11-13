@@ -22,9 +22,9 @@ showSpaceNames = false
 [appearance]
 theme = "tokyo night"
 mode = "auto"
-backgroundAlpha = 0.5
+backgroundAlpha = 0.0
 backgroundStyle = "glass"
-glassStyle = "frosted"
+glassStyle = "clear"
 hudShadow = true
 iconScale = 0.5
 uiScale = 0.4

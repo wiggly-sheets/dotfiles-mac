@@ -1,0 +1,107 @@
+[ui]
+width = "auto"
+min_width = 30
+max_width = 100
+height = 8
+min_height = 0
+descriptions = true
+description_position = "right"
+description_lines = 3
+icons = "auto"
+border = "rounded"
+density = "normal"
+theme = "tokyonight"
+
+[colors]
+
+[keys]
+accept = ["enter"]
+next = ["tab", "down", "ctrl-n"]
+prev = ["shift-tab", "up", "ctrl-p"]
+dismiss = ["esc"]
+toggle = ["ctrl-space"]
+
+[behavior]
+fuzzy = true
+enter_accepts = "auto"
+insert_space = false
+files_first = false
+files_first_commands = [
+  "code",
+  "code-insiders",
+  "codium",
+  "cursor",
+  "zed",
+  "subl",
+  "atom",
+  "gedit",
+  "gnome-text-editor",
+  "kate",
+  "kwrite",
+  "mousepad",
+  "xed",
+  "pluma",
+  "vim",
+  "vi",
+  "nvim",
+  "gvim",
+  "view",
+  "vimdiff",
+  "nano",
+  "pico",
+  "micro",
+  "emacs",
+  "emacsclient",
+  "hx",
+  "helix",
+  "kak",
+  "joe",
+  "ne",
+  "mcedit",
+  "cat",
+  "bat",
+  "batcat",
+  "less",
+  "more",
+  "most",
+  "head",
+  "tail",
+  "glow",
+  "xxd",
+  "hexdump",
+  "open",
+  "xdg-open",
+  "gio",
+  "nautilus",
+  "dolphin",
+  "thunar",
+  "nemo",
+  "pcmanfm",
+  "eog",
+  "feh",
+  "viu",
+  "sxiv",
+  "nsxiv",
+  "imv",
+  "gimp",
+  "inkscape",
+  "evince",
+  "okular",
+  "zathura",
+  "xreader",
+  "libreoffice",
+  "soffice",
+  "mpv",
+  "vlc",
+  "totem",
+  "celluloid",
+]
+show_on_empty_token = true
+complete_commands = false
+online = true
+generator_timeout_ms = 5000
+generator_cache_ms = 5000
+disabled_commands = []
+help_parsing = true
+help_timeout_ms = 2000
+help_skip = []
