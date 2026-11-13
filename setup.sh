@@ -103,6 +103,50 @@ setup_symlinks() {
 }
 
 # ============================================================================
+# SKILLS
+# ============================================================================
+setup_skills() {
+  print_status "Linking skills into agent harnesses..."
+
+  mkdir -p "$HOME/.agents" "$HOME/.claude/skills"
+
+  # Universal agent directory points at the dotfiles copy.
+  if [[ -e "$HOME/.agents/skills" && ! -L "$HOME/.agents/skills" ]]; then
+    print_warning "~/.agents/skills is a real directory; leaving it alone"
+  else
+    ln -sfn "$DOTFILES_DIR/skills" "$HOME/.agents/skills"
+  fi
+
+  # Claude Code gets one symlink per skill.
+  local skill dest
+  for skill in "$DOTFILES_DIR"/skills/*/; do
+    [[ -f "$skill/SKILL.md" ]] || continue
+    dest="$HOME/.claude/skills/$(basename "$skill")"
+    if [[ -e "$dest" && ! -L "$dest" ]]; then
+      print_warning "$dest is not a symlink; leaving it alone"
+      continue
+    fi
+    ln -sfn "../../.agents/skills/$(basename "$skill")" "$dest"
+  done
+
+  # Keep the npx skills lock file inside dotfiles so update state syncs too.
+  local lock_dir
+  if [[ -n "${XDG_STATE_HOME:-}" ]]; then
+    lock_dir="$XDG_STATE_HOME/skills"
+  else
+    lock_dir="$HOME/.agents"
+  fi
+  mkdir -p "$lock_dir"
+  if [[ -f "$lock_dir/.skill-lock.json" && ! -L "$lock_dir/.skill-lock.json" ]]; then
+    mv "$lock_dir/.skill-lock.json" "$lock_dir/.skill-lock.json.bak"
+    print_warning "Backed up existing skill lock to $lock_dir/.skill-lock.json.bak"
+  fi
+  ln -sfn "$DOTFILES_DIR/skills/.skill-lock.json" "$lock_dir/.skill-lock.json"
+
+  print_success "Skills linked"
+}
+
+# ============================================================================
 # PACKAGES
 # ============================================================================
 install_packages() {
@@ -167,6 +211,7 @@ main() {
   setup_homebrew
   setup_stow
   setup_symlinks
+  setup_skills
   install_packages
   setup_touchid
 
