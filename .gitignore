@@ -104,8 +104,12 @@ lazy-lock.json
 # FZF / fzf-git temporary
 *.fzf
 
-#api keys
-.config/sketchybar/helpers/weather_vars.lua
+# API keys and local credentials
+sketchybar/helpers/weather_vars.lua
+connectmenow/ConnectMeNow_ConfigBackup_*.ini
+.env.*
+*.env
+!.env.example
 
 #sketchybar theming file
 current_theme
