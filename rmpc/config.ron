@@ -4,11 +4,12 @@
 (
     address: "127.0.0.1:6600",
     password: None,
-    theme: None,
+    theme: "auto-theme",
     cache_dir: None,
-    on_song_change: None,
+    on_song_change: ["/Users/Zeb/.local/libexec/rmpc-auto-theme/on_song_change.sh"],
+    exec_on_song_change_at_start: true,
     volume_step: 5,
-    max_fps: 30,
+    max_fps: 60,
     scrolloff: 0,
     wrap_navigation: false,
     enable_mouse: true,
@@ -21,7 +22,7 @@
     directories_sort: SortFormat(group_by_type: true, reverse: false),
     album_art: (
         method: Auto,
-        max_size_px: (width: 1200, height: 1200),
+        max_size_px: (width: 1000, height: 1000),
         disabled_protocols: ["http://", "https://"],
         vertical_align: Center,
         horizontal_align: Center,
@@ -139,8 +140,8 @@
                     (size: "60%", pane: Split(
                         direction: Vertical,
                         panes: [
-                            (size: "50%", pane: Pane(Queue)),
-                            (size: "50%", pane: Pane(Cava)),
+                            (size: "60%", pane: Pane(Queue)),
+                            (size: "40%", pane: Pane(Cava)),
                         ],
                     )),
                 ],

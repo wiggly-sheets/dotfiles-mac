@@ -33,6 +33,7 @@ tap "jsattler/tap", trusted: true
 tap "jstkdng/programs"
 tap "jundot/omlx", "https://github.com/jundot/omlx", trusted: true
 tap "kegworks-app/kegworks", "https://github.com/Sikarugir-App/homebrew-sikarugir.git", trusted: true
+tap "kevengoncalves/tap"
 tap "krishkrosh/apps", trusted: true
 tap "lab421/tap"
 tap "lihaoyun6/tap", trusted: true
@@ -50,8 +51,10 @@ tap "neur0map/tap"
 tap "nikgrbn/tap"
 tap "nohajc/anylinuxfs"
 tap "notwadegrimridge/brew", trusted: true
+tap "openclaw/tap"
 tap "penso/tap", trusted: { casks: ["herdr-gpui"] }
 tap "philocalyst/tap", trusted: true
+tap "pixdeo/tap"
 tap "playcover/playcover", "https://github.com/PlayCover/homebrew-playcover", trusted: true
 tap "rafaelswi/menubarusb", trusted: true
 tap "rgcr/formulae", trusted: true
@@ -83,6 +86,7 @@ tap "xykong/tap", trusted: true
 tap "z20240/tap"
 tap "zackelia/formulae", trusted: true
 tap "zimengxiong/tools", "https://github.com/ZimengXiong/homebrew-tools", trusted: true
+tap "zzscratch/tap", trusted: true
 # Static analysis and lint tool, for (ba)sh scripts
 brew "shellcheck"
 # Static checker for GitHub Actions workflow files
@@ -271,6 +275,8 @@ brew "ghidra"
 brew "git"
 # Syntax-highlighting pager for git and diff output
 brew "git-delta"
+# Quickly rewrite git repository history
+brew "git-filter-repo"
 # Tool Command Language
 brew "tcl-tk"
 # Tcl/Tk UI for the git revision control system
@@ -713,6 +719,8 @@ brew "gschurck/fuzzybrew/fuzzybrew", trusted: true
 brew "jnsahaj/lumen/lumen", trusted: true
 # Drop in replacement for ueberzug written in C++
 brew "jstkdng/programs/ueberzugpp", trusted: true
+# Fig-style IDE autocomplete for your terminal (zsh, bash and fish)
+brew "kevengoncalves/tap/lig", trusted: true
 # Coordinates SketchyBar and the native macOS menu bar
 brew "malpern/tap/sketchybar-toggle", trusted: true
 # A neofetch alternative for GitHub quick view
@@ -727,10 +735,14 @@ brew "neur0map/tap/gpk", trusted: true
 brew "nikgrbn/tap/finder-menu", trusted: true
 # Mount any linux-supported filesystem read/write using nfs and a microVM
 brew "nohajc/anylinuxfs/anylinuxfs", trusted: true
+# Lightning-fast macOS screenshots & AI vision analysis
+brew "openclaw/tap/peekaboo", trusted: true
 # User-friendly, lightweight TUI for disk imaging
 brew "philocalyst/tap/caligula", trusted: true
 # Terminal-based typing test built with Rust and Ratatui
 brew "philocalyst/tap/ttyper", trusted: true
+# Minimalist Markdown editor for the terminal
+brew "pixdeo/tap/editxr", trusted: true
 # Swiss Army Knife for macOS
 brew "rgcr/formulae/m-cli", trusted: true
 # Tetris in your terminal
@@ -813,12 +825,18 @@ cask "caskhub"
 cask "chatgpt"
 # Anthropic's official Claude AI desktop app
 cask "claude"
+# Terminal-based AI coding assistant
+cask "claude-code"
 # Image, video and clipboard optimiser
 cask "clop"
 # Tool to show live information about the batteries in various devices
 cask "coconutbattery"
 # Code editor
 cask "codeedit"
+# OpenAI's coding agent that runs in your terminal
+cask "codex"
+# Menu bar app for tracking agentic coding limits and usage
+cask "codexbar"
 # Mount network shares quick and easy
 cask "connectmenow"
 cask "container"
@@ -1206,6 +1224,8 @@ cask "readest"
 cask "reamp"
 # Scans, detects, and monitors keyboard taps
 cask "reikey"
+# Menu bar dashboard for GitHub repository health
+cask "repobar"
 # File sync and share software
 cask "resilio-sync"
 # Frontend for emulators, game engines and media players (Metal graphics API)
