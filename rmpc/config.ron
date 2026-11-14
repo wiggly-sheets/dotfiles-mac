@@ -24,7 +24,7 @@
         method: Auto,
         max_size_px: (width: 1000, height: 1000),
         disabled_protocols: ["http://", "https://"],
-        vertical_align: Center,
+        vertical_align: Bottom,
         horizontal_align: Center,
     ),
     cava: (
@@ -47,10 +47,9 @@
             "1":       SwitchToTab("Queue"),
             "2":       SwitchToTab("Directories"),
             "3":       SwitchToTab("Artists"),
-            "4":       SwitchToTab("Album Artists"),
-            "5":       SwitchToTab("Albums"),
-            "6":       SwitchToTab("Playlists"),
-            "7":       SwitchToTab("Search"),
+            "4":       SwitchToTab("Albums"),
+            "5":       SwitchToTab("Playlists"),
+            "6":       SwitchToTab("Search"),
             "q":       Quit,
             ">":       NextTrack,
             "p":       TogglePause,
@@ -102,6 +101,8 @@
             "K":         MoveUp,
             "D":         Delete,
             "B":         ShowInfo,
+            "*":         Rate(kind: Like(), current: false),
+            "#":         Rate(kind: Neutral(), current: false),
         },
         queue: {
             "D":       DeleteAll,
@@ -136,7 +137,27 @@
             pane: Split(
                 direction: Horizontal,
                 panes: [
-                    (size: "40%", pane: Pane(AlbumArt)),
+                    (size: "40%", pane: Split(
+                        direction: Vertical,
+                        panes: [
+                            (size: "6", pane: Pane(Empty())),
+                            (size: "100%", pane: Pane(AlbumArt)),
+                            (size: "3", pane: Split(
+                                direction: Vertical,
+                                panes: [
+                                    (size: "1", pane: Pane(Property(content: [
+                                        (kind: Text("~ help   p pause   > next   < prev"))
+                                    ], align: Left))),
+                                    (size: "1", pane: Pane(Property(content: [
+                                        (kind: Text("z repeat  x random  c consume  v single"))
+                                    ], align: Left))),
+                                    (size: "1", pane: Pane(Property(content: [
+                                        (kind: Text("* star    # unstar  / search   : cmd"))
+                                    ], align: Left))),
+                                ],
+                            )),
+                        ],
+                    )),
                     (size: "60%", pane: Split(
                         direction: Vertical,
                         panes: [
@@ -154,10 +175,6 @@
         (
             name: "Artists",
             pane: Pane(Artists),
-        ),
-        (
-            name: "Album Artists",
-            pane: Pane(AlbumArtists),
         ),
         (
             name: "Albums",
