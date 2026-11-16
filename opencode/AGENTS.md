@@ -131,7 +131,22 @@ The primary agent remains responsible for the overall outcome, regardless of del
 - Prefer reversible changes when practical.
 - Preserve environment-specific configuration.
 
-## 9. Completion
+## 9. Engineering standards
+
+### Testing
+All testing decisions MUST follow the standards in:
+`~/.config/opencode/testing.md`
+
+Before writing, modifying, or removing tests:
+- Read the testing standards.
+- Inspect existing test coverage and conventions.
+- Prioritize meaningful behavioral coverage over test quantity.
+- Avoid redundant, speculative, and implementation-coupled tests.
+- Do not introduce unnecessary testing infrastructure.
+
+Project-specific instructions may impose stricter requirements.
+
+## 10. Completion
 
 Before finishing:
 

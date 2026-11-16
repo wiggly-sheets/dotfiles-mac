@@ -13,7 +13,9 @@ showSpaceNumbers = true
 showSpaceLayout = true
 showIconStrip = true
 showMultiAppIcons = true
-hudIconSource = "native"
+hudIconSource = "sbarFont"
+hudIconStripSeparate = false
+hudIconStripSource = "native"
 
 [spaceNames]
 showSpaceNames = false
@@ -37,6 +39,8 @@ solidOpacity = 1.0
 matchBackgroundOpacity = false
 hudShadow = true
 hudCornerRadius = 4.0
+hudFontName = "LigaSFMonoNerdFont-Heavy"
+hudFontSize = 12.0
 spacesMatchBackground = false
 spacesBackgroundStyle = "glass"
 spacesGlassStyle = "tinted"
@@ -70,7 +74,7 @@ spaceDragFocus = "stay"
 windowDragFocus = "destination"
 showThumbnailWallpaper = true
 hudAnimationsEnabled = true
-hudAnimationStyle = "fast"
+hudAnimationStyle = "natural"
 hudEntranceStyle = "scale"
 presence = "none"
 menuBarDisplayMode = "icon"
@@ -168,7 +172,7 @@ borderEnabled = false
 [appFont]
 updateMode = "auto"
 installedVersion = "v3.0.25"
-lastCheck = 1794661252
+lastCheck = 1794811684
 
 [advanced]
 socketHealthInterval = 60
