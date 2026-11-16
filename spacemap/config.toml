@@ -23,7 +23,7 @@ showSpaceNames = false
 [spaceNames.names]
 
 [appearance]
-theme = "default"
+theme = "tokyonight"
 mode = "auto"
 backgroundAlpha = 1.0
 backgroundStyle = "glass"
@@ -41,6 +41,7 @@ hudShadow = true
 hudCornerRadius = 4.0
 hudFontName = "LigaSFMonoNerdFont-Heavy"
 hudFontSize = 12.0
+hudTextColor = "f4f8f8"
 spacesMatchBackground = false
 spacesBackgroundStyle = "glass"
 spacesGlassStyle = "tinted"
@@ -120,20 +121,20 @@ kind = "center"
 [glyphStrip]
 enabled = true
 hideInFullscreen = true
-theme = "TokyoNight"
+theme = ""
 showSpaceNumbers = true
 showLayoutSuffix = true
 showBSPLayoutBadge = false
 showStackLayoutBadge = true
 showFloatLayoutBadge = true
 autoResizeMaxLength = 0.0
-verticalPadding = 3.0
+verticalPadding = 11.0
 showAppIcons = true
 iconSource = "sbarFont"
-dedupeAppsPerSpace = true
+dedupeAppsPerSpace = false
 maxIconsPerSpace = 0
-iconSize = 14.0
-indexSize = 14.0
+iconSize = 12.0
+indexSize = 12.0
 highlightCurrentSpace = true
 backgroundMaterial = "liquidGlass"
 glassStyle = "regular"
@@ -149,30 +150,34 @@ glassRegularOpacity = 1.0
 glassTintedOpacity = 0.79
 solidOpacity = 1.0
 shape = "roundedRect"
-cornerRadius = 2.0
+cornerRadius = 14.0
 margin = 4.0
-iconSpacing = 2.0
-indexPadding = 0.0
-yOffset = 43.0
+padding = 4.0
+lockPadding = true
+horizontalPadding = 4.0
+displayMode = "menuBarItem"
+iconSpacing = 0.0
+indexPadding = 3.0
+yOffset = 1070.0
 hoverPadding = 2.0
 hoverCornerRadius = 6.0
 showDisplaySeparators = true
 showAddSpaceButton = false
-showPlaceholders = true
+showPlaceholders = false
 leftClickAction = "focusSpace"
 rightClickAction = "destroySpace"
 middleClickAction = "none"
 position = "custom"
-orientation = "vertical"
+orientation = "horizontal"
 verticalLayout = "stacked"
-lockPosition = true
-xOffset = 1674
+lockPosition = false
+xOffset = 1248
 borderEnabled = false
 
 [appFont]
 updateMode = "auto"
 installedVersion = "v3.0.25"
-lastCheck = 1794811684
+lastCheck = 1794832283
 
 [advanced]
 socketHealthInterval = 60

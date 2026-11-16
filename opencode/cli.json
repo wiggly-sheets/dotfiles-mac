@@ -158,7 +158,8 @@
     {
       "package": "./herdr-opencode"
     },
-    "github:ptthien97/opencode-opendeck"
+    "github:ptthien97/opencode-opendeck",
+    "github:8perezm/esuyo-opencode-session"
   ],
   "leader": {
     "timeout": 2000
