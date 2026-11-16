@@ -23,7 +23,7 @@ showSpaceNames = false
 [spaceNames.names]
 
 [appearance]
-theme = "tokyo night"
+theme = "default"
 mode = "auto"
 backgroundAlpha = 1.0
 backgroundStyle = "glass"
@@ -120,7 +120,7 @@ kind = "center"
 [glyphStrip]
 enabled = true
 hideInFullscreen = true
-theme = "tokyo night"
+theme = "TokyoNight"
 showSpaceNumbers = true
 showLayoutSuffix = true
 showBSPLayoutBadge = false
@@ -153,7 +153,7 @@ cornerRadius = 2.0
 margin = 4.0
 iconSpacing = 2.0
 indexPadding = 0.0
-yOffset = 44.0
+yOffset = 43.0
 hoverPadding = 2.0
 hoverCornerRadius = 6.0
 showDisplaySeparators = true
@@ -166,7 +166,7 @@ position = "custom"
 orientation = "vertical"
 verticalLayout = "stacked"
 lockPosition = true
-xOffset = 1675
+xOffset = 1674
 borderEnabled = false
 
 [appFont]
