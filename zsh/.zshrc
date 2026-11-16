@@ -318,6 +318,7 @@ alias src='source ~/.zshrc'
 
 alias gc='git commit'
 alias gp='git push'
+alias oc='opencode'
 
 
 # ------------------------------------------------

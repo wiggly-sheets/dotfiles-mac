@@ -13,6 +13,7 @@ showSpaceNumbers = true
 showSpaceLayout = true
 showIconStrip = true
 showMultiAppIcons = true
+hudIconSource = "native"
 
 [spaceNames]
 showSpaceNames = false
@@ -22,15 +23,34 @@ showSpaceNames = false
 [appearance]
 theme = "tokyo night"
 mode = "auto"
-backgroundAlpha = 0.0
+backgroundAlpha = 1.0
 backgroundStyle = "glass"
 glassStyle = "clear"
+glassClearVariant = 11
+glassRegularVariant = 21
+glassTintedVariant = 15
+glassTintedMaterial = "clear"
+glassClearOpacity = 1.0
+glassRegularOpacity = 1.0
+glassTintedOpacity = 1.0
+solidOpacity = 1.0
+matchBackgroundOpacity = false
 hudShadow = true
+hudCornerRadius = 4.0
+spacesMatchBackground = false
+spacesBackgroundStyle = "glass"
+spacesGlassStyle = "tinted"
+spacesGlassClearVariant = 11
+spacesGlassRegularVariant = 5
+spacesGlassTintedVariant = 4
+spacesGlassTintedMaterial = "clear"
+spacesOpacity = 1.0
+spacesCornerRadius = 2.0
 iconScale = 0.5
 uiScale = 0.4
 
 [behavior]
-autoHideTimeout = 2
+autoHideTimeout = 1
 displayNavigationWrap = "within"
 useVimKeys = true
 useArrowKeys = true
@@ -41,10 +61,21 @@ customHUDY = 0.5
 focusSpaceOnWindowDrop = "never"
 focusSpaceOnWindowDropModifier = "command"
 showHUDOnSpaceChange = false
-hideMenuBarIcon = true
+showBSPLayoutBadge = true
+showStackLayoutBadge = true
+showFloatLayoutBadge = true
+showHUDInteractionFeedback = true
+spaceDropMode = "content"
+spaceDragFocus = "stay"
+windowDragFocus = "destination"
+showThumbnailWallpaper = true
+hudAnimationsEnabled = true
+hudAnimationStyle = "fast"
+hudEntranceStyle = "scale"
+presence = "none"
 menuBarDisplayMode = "icon"
 menuBarNearbyCount = 3
-updateMode = "notify"
+updateMode = "auto"
 
 [behavior.hotkey]
 keyKind = "keyCode"
@@ -59,47 +90,85 @@ modifiers = []
 keyKind = "none"
 modifiers = []
 
+[behavior.hudMoveSpaceBackHotkey]
+keyKind = "none"
+modifiers = []
+
+[behavior.hudMoveSpaceForwardHotkey]
+keyKind = "none"
+modifiers = []
+
+[behavior.hudNewSpaceHotkey]
+keyKind = "none"
+modifiers = []
+
+[behavior.hudDeleteSpaceHotkey]
+keyKind = "none"
+modifiers = []
+
+[behavior.hudCycleLayoutHotkey]
+keyKind = "none"
+modifiers = []
+
 [behavior.hudPosition]
 kind = "center"
 
 [glyphStrip]
-enabled = false
+enabled = true
+hideInFullscreen = true
 theme = "tokyo night"
 showSpaceNumbers = true
 showLayoutSuffix = true
+showBSPLayoutBadge = false
+showStackLayoutBadge = true
+showFloatLayoutBadge = true
+autoResizeMaxLength = 0.0
+verticalPadding = 3.0
 showAppIcons = true
 iconSource = "sbarFont"
-dedupeAppsPerSpace = false
-maxIconsPerSpace = 8
-iconSize = 10.0
-indexSize = 11.0
+dedupeAppsPerSpace = true
+maxIconsPerSpace = 0
+iconSize = 14.0
+indexSize = 14.0
 highlightCurrentSpace = true
-backgroundMaterial = "none"
-glassAmount = 0.62
-useThemeTint = false
-shape = "pill"
+backgroundMaterial = "liquidGlass"
+glassStyle = "regular"
+glassClearVariant = 11
+glassRegularVariant = 5
+glassTintedVariant = 2
+glassTintedMaterial = "clear"
+matchHUDAppearance = false
 backgroundOpacity = 1.0
-cornerRadius = 13.0
-margin = 6.0
-iconSpacing = 0.0
-indexPadding = 2.5
-yOffset = 0.0
-hoverPadding = 1.0
-hoverCornerRadius = 9.0
+matchBackgroundOpacity = false
+glassClearOpacity = 0.69
+glassRegularOpacity = 1.0
+glassTintedOpacity = 0.79
+solidOpacity = 1.0
+shape = "roundedRect"
+cornerRadius = 2.0
+margin = 4.0
+iconSpacing = 2.0
+indexPadding = 0.0
+yOffset = 44.0
+hoverPadding = 2.0
+hoverCornerRadius = 6.0
 showDisplaySeparators = true
 showAddSpaceButton = false
 showPlaceholders = true
 leftClickAction = "focusSpace"
 rightClickAction = "destroySpace"
 middleClickAction = "none"
-position = "leftOfNotch"
-xOffset = 0
+position = "custom"
+orientation = "vertical"
+verticalLayout = "stacked"
+lockPosition = true
+xOffset = 1675
 borderEnabled = false
 
 [appFont]
-updateMode = "manual"
-installedVersion = "v3.0.6"
-lastCheck = 1791734532
+updateMode = "auto"
+installedVersion = "v3.0.25"
+lastCheck = 1794661252
 
 [advanced]
 socketHealthInterval = 60

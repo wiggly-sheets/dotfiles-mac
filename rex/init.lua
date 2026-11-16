@@ -1,4 +1,5 @@
--- Floating pane toggles: lazygit (alt+g) and yazi (alt+y)
+-- Floating pane toggles: lazygit (alt+g), yazi (alt+y) and a scratch shell
+-- (alt+t)
 -- Press once: opens a popup in the active window, in the pane's current
 -- directory. Press again while open: hides it (process keeps running,
 -- fully detached). Press again: the hidden instance is replaced by a fresh
@@ -72,37 +73,34 @@ local function make_toggle(name)
         end
       end
     end
-    local opts = {
-      command = { APP_PATHS[name] },
-      path_prepend = PATH_PREPEND,
-    }
+    -- A name with no entry in APP_PATHS starts a plain shell, as the scratch
+    -- terminal does.
+    local opts = { path_prepend = PATH_PREPEND }
+    if APP_PATHS[name] then opts.command = { APP_PATHS[name] } end
     -- The popup opens in the directory the key was pressed in. Use block.method
     -- pwd (returns file:// URL) as primary; fall back to process cwd which
     -- the server tracks for shells. Strip file:// prefix; default to home.
-    -- Also use the current pane's cwd as the shell's initial working directory.
-    if name == "lazygit" or name == "yazi" then
-      local cwd = nil
-      -- Try block.method pwd first (most accurate for active shell panes).
-      local r, err = rex.call("block.method", {
-        session_id = sid, block_id = ctx.block_id, method = "pwd",
-      })
-      if r and r.pwd then
-        local p = r.pwd
-        p = p:match("^file://[^/]+(/.*)$") or p
-        cwd = p
-      end
-      -- Fallback: query process for foreground cwd (works on any shell block).
-      if not cwd then
-        local proc_r, proc_err = rex.call("block.method", {
-          session_id = sid, block_id = ctx.block_id, method = "process",
-        })
-        if proc_r and proc_r.foreground then
-          local p = proc_r.foreground.cwd
-          if p then cwd = p end
-        end
-      end
-      if cwd and cwd ~= "" then opts.cwd = cwd end
+    local cwd = nil
+    -- Try block.method pwd first (most accurate for active shell panes).
+    local r, err = rex.call("block.method", {
+      session_id = sid, block_id = ctx.block_id, method = "pwd",
+    })
+    if r and r.pwd then
+      local p = r.pwd
+      p = p:match("^file://[^/]+(/.*)$") or p
+      cwd = p
     end
+    -- Fallback: query process for foreground cwd (works on any shell block).
+    if not cwd then
+      local proc_r, proc_err = rex.call("block.method", {
+        session_id = sid, block_id = ctx.block_id, method = "process",
+      })
+      if proc_r and proc_r.foreground then
+        local p = proc_r.foreground.cwd
+        if p then cwd = p end
+      end
+    end
+    if cwd and cwd ~= "" then opts.cwd = cwd end
     local wid = view.active_window_id
     rex.session.new_layer{
       session_id = sid,
@@ -124,6 +122,12 @@ rex.bind("alt+g", "toggle_lazygit")
 
 rex.action{ name = "toggle_yazi", title = "Toggle Yazi Popup", run = make_toggle("yazi") }
 rex.bind("alt+y", "toggle_yazi")
+
+-- Scratch shell: alt+t. Same toggle as lazygit and yazi, so a second press
+-- hides it (the shell keeps running) and the press after that replaces the
+-- hidden instance with a fresh shell in the pane's current directory.
+rex.action{ name = "toggle_scratch", title = "Toggle Scratch Terminal", run = make_toggle("scratch") }
+rex.bind("alt+t", "toggle_scratch")
 
 -- Floating television picker: cmd+opt+t
 -- Opens tv (television) in a floating pane. Same toggle logic as lazygit/yazi:
@@ -323,8 +327,9 @@ rex.bind("alt+f", "fzf_jump")
 
 -- Vim-style pane management: alt+hjkl focus, alt+shift+hjkl swap with the
 -- nearest neighbor in that direction, alt+z zoom, alt+r/alt+shift+r rotate
--- the active window's panes one slot cw/ccw, alt+x mirror top<->bottom,
--- alt+shift+u mirror left<->right.
+-- the active window's layout 90 degrees cw/ccw (every split turns, so two
+-- side-by-side panes become stacked before the slots repeat), alt+x mirror
+-- top<->bottom, alt+shift+u mirror left<->right.
 
 local function active_window(view)
   for _, win in ipairs(view.windows or {}) do
@@ -357,20 +362,95 @@ local function layout_leaves(node, out)
   return out
 end
 
--- Leaf blocks after swapping before/after at every split of `dir`; since both
--- traversals visit the same leaves, the result is the new slot order.
-local function mirrored_order(node, dir, out)
-  if node.split then
-    local before, after = node.split.before, node.split.after
-    if node.split.direction == dir then
-      before, after = after, before
+-- 90 degree turn of the split tree, clockwise when `cw` is set. Changing each
+-- split's direction is what makes a rotation pass through the intermediate
+-- orientation: two panes side by side become stacked, and four turns return
+-- every pane to its first place.
+local function rotated_layout(node, cw)
+  if node.block_id then return { block_id = node.block_id } end
+  local s = node.split
+  local before = rotated_layout(s.before, cw)
+  local after = rotated_layout(s.after, cw)
+  if cw then
+    if s.direction == "horizontal" then
+      -- Left goes to the top, so the children keep their places.
+      return { split = { direction = "vertical", ratio = s.ratio,
+        before = before, after = after } }
     end
-    mirrored_order(before, dir, out)
-    mirrored_order(after, dir, out)
-  else
-    out[#out + 1] = node.block_id
+    -- Top goes to the right and bottom to the left: the children trade
+    -- places, and the width `before` gains is the height `after` had.
+    return { split = { direction = "horizontal", ratio = 1 - s.ratio,
+      before = after, after = before } }
   end
-  return out
+  if s.direction == "vertical" then
+    return { split = { direction = "horizontal", ratio = s.ratio,
+      before = before, after = after } }
+  end
+  return { split = { direction = "vertical", ratio = 1 - s.ratio,
+    before = after, after = before } }
+end
+
+-- Mirror of the split tree on one axis: `dir` names the splits to reverse, so
+-- "horizontal" mirrors left<->right and "vertical" mirrors top<->bottom.
+local function mirrored_layout(node, dir)
+  if node.block_id then return { block_id = node.block_id } end
+  local s = node.split
+  local before = mirrored_layout(s.before, dir)
+  local after = mirrored_layout(s.after, dir)
+  if s.direction == dir then
+    return { split = { direction = s.direction, ratio = 1 - s.ratio,
+      before = after, after = before } }
+  end
+  return { split = { direction = s.direction, ratio = s.ratio,
+    before = before, after = after } }
+end
+
+local function layout_first_leaf(node)
+  while node.split do node = node.split.before end
+  return node.block_id
+end
+
+-- Visits a split before its children, which is the order a layout must be
+-- built in: each move then divides the space the anchor already holds.
+local function layout_preorder(node, fn)
+  if node.split then
+    fn(node)
+    layout_preorder(node.split.before, fn)
+    layout_preorder(node.split.after, fn)
+  end
+end
+
+-- Reshape the tiled layer to `target`. The API only places a block beside an
+-- anchor block, so every other pane is detached first (a detached pane keeps
+-- running) and then moved back beside the panes placed before it.
+local function rebuild_layout(sid, ids, target)
+  local anchor = layout_first_leaf(target)
+  for _, id in ipairs(ids) do
+    if id ~= anchor then
+      local ok, err = pcall(rex.call, "session.detach_block", {
+        session_id = sid, block_id = id,
+      })
+      if not ok then return "detach failed: " .. tostring(err) end
+    end
+  end
+  local moved, fail = 0, nil
+  layout_preorder(target, function(node)
+    if fail then return end
+    local s = node.split
+    local ok, err = pcall(rex.call, "session.move_block", {
+      session_id = sid,
+      block_id = layout_first_leaf(s.after),
+      anchor_block_id = layout_first_leaf(s.before),
+      direction = s.direction,
+      side = "after",
+      ratio = s.ratio,
+    })
+    if ok then moved = moved + 1 else fail = err end
+  end)
+  if fail then
+    return moved .. " move(s) then failed: " .. tostring(fail)
+  end
+  return nil, moved
 end
 
 -- Which rect axis a direction runs along, and where the neighbor sits on it.
@@ -462,56 +542,31 @@ rex.action{ name = "vim_layout", title = "Transform Window Layout", run = functi
   local leaves = layout_leaves(tiled.layout, {})
   local n = #leaves
   if n < 2 then return "window has " .. n .. " pane(s); nothing to transform" end
-  local want
-  if kind == "rotate_cw" or kind == "rotate_ccw" then
-    local slots = {}
-    for i, lf in ipairs(leaves) do slots[i] = lf.block_id end
-    want = {}
-    -- rotate_cw: the pane in slot i moves to slot i+1, the last wraps to 1.
-    for j = 1, n do
-      want[j] = slots[(j - 2) % n + 1]
-    end
-    if kind == "rotate_ccw" then
-      want = {}
-      for j = 1, n do
-        want[j] = slots[j % n + 1]
-      end
-    end
-  elseif kind == "flip_tb" or kind == "flip_lr" then
-    -- flip_tb mirrors top<->bottom and therefore reverses vertical splits;
-    -- flip_lr mirrors left<->right and reverses horizontal splits.
-    want = mirrored_order(tiled.layout, kind == "flip_tb" and "vertical" or "horizontal", {})
+  local target
+  if kind == "rotate_cw" then
+    target = rotated_layout(tiled.layout, true)
+  elseif kind == "rotate_ccw" then
+    target = rotated_layout(tiled.layout, false)
+  elseif kind == "flip_lr" then
+    -- Mirror across the vertical axis, so left<->right.
+    target = mirrored_layout(tiled.layout, "horizontal")
+  elseif kind == "flip_tb" then
+    -- Mirror across the horizontal axis, so top<->bottom.
+    target = mirrored_layout(tiled.layout, "vertical")
   else
     return "vim_layout: missing kind"
   end
-  -- Permutations run as plain swap_blocks pairs: each pair is two placed
-  -- blocks, so every split keeps its own split_id, direction and ratio,
-  -- and the tree shape never changes.
-  local cur = {}
-  for i, lf in ipairs(leaves) do cur[i] = lf.block_id end
-  local swaps = 0
-  for k = 1, n do
-    if cur[k] ~= want[k] then
-      for l = k + 1, n do
-        if cur[l] == want[k] then
-          rex.call("session.swap_blocks", {
-            session_id = sid, block_id = cur[k], other_block_id = cur[l],
-          })
-          cur[k], cur[l] = cur[l], cur[k]
-          swaps = swaps + 1
-          break
-        end
-      end
-    end
-  end
-  -- Focus follows each block into its new slot; put it back so the same
-  -- program stays under the cursor, tmux rotate-window style.
-  if swaps > 0 and win.focused_block_id then
+  local ids = {}
+  for i, lf in ipairs(leaves) do ids[i] = lf.block_id end
+  local err, moved = rebuild_layout(sid, ids, target)
+  if err then return "vim_layout " .. kind .. ": " .. err end
+  -- Focus follows the pane the key was pressed in, as the swaps do.
+  if win.focused_block_id then
     rex.call("session.focus_block", {
       session_id = sid, block_id = win.focused_block_id,
     })
   end
-  return "vim_layout " .. kind .. ": " .. swaps .. " swap(s)"
+  return "vim_layout " .. kind .. ": " .. moved .. " move(s)"
 end }
 
 -- Focus travel (alt+h/j/k/l): straight to the stock client actions.
@@ -728,6 +783,7 @@ rex.bind("vim/ctrl+shift+tab", "tab_toast", { direction = "previous" })
 --   f           float pane       s  split right    shift+s  split down
 --   arrows      split in that direction
 --   r           rotate cw        shift+r  rotate ccw
+--   x           flip left/right  shift+x  flip top/bottom
 rex.mode("vim", { exclusive = true })
 rex.bind("ctrl+b", "client.mode.enter", { name = "vim" })
 
@@ -770,4 +826,8 @@ rex.bind("vim/down", "pane.split", { direction = "down" })
 
 rex.bind("vim/r", "vim_layout", { kind = "rotate_cw" })
 rex.bind("vim/shift+r", "vim_layout", { kind = "rotate_ccw" })
+
+-- x flips the layout on the x axis (left<->right), shift+x on the y axis.
+rex.bind("vim/x", "vim_layout", { kind = "flip_lr" })
+rex.bind("vim/shift+x", "vim_layout", { kind = "flip_tb" })
 

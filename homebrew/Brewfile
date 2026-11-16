@@ -81,7 +81,7 @@ tap "wakmail/tap"
 tap "waydabber/betterdisplay"
 tap "wickenico/wailbrew", trusted: true
 tap "wiggly-sheets/tap", trusted: true
-tap "writronic/tap"
+tap "writronic/tap", trusted: { casks: ["macursor"] }
 tap "xykong/tap", trusted: true
 tap "z20240/tap"
 tap "zackelia/formulae", trusted: true
@@ -91,8 +91,6 @@ tap "zzscratch/tap", trusted: true
 brew "shellcheck"
 # Static checker for GitHub Actions workflow files
 brew "actionlint"
-# C/C++ and Java libraries for Unicode and globalization
-brew "icu4c@78"
 # Library for manipulating PNG images
 brew "libpng"
 # Software library to render fonts
@@ -103,6 +101,8 @@ brew "gettext"
 brew "xz"
 # Zstandard is a real-time compression algorithm
 brew "zstd"
+# C/C++ and Java libraries for Unicode and globalization
+brew "icu4c@78"
 # Graphics library to dynamically manipulate images
 brew "gd"
 # Apple Intelligence from the command-line, with OpenAi-compatible API server
@@ -844,6 +844,8 @@ cask "container"
 cask "coteditor"
 # System-wide AI autocomplete
 cask "cotypist"
+# Menu bar display manager: DDC brightness, HiDPI, presets, virtual displays
+cask "crisp"
 # Tool to run Windows software
 cask "crossover"
 # Download and manage your addons and mods
@@ -1054,8 +1056,6 @@ cask "macpilot"
 cask "macshot"
 # Menu bar toolbox
 cask "mactools"
-# Custom cursor themes
-cask "writronic/tap/macursor", trusted: true
 # Tool to create bootable USB installers
 cask "macusb"
 # Text editor
@@ -1194,8 +1194,8 @@ cask "playcover/playcover/playcover-community"
 cask "plex"
 # Music player focusing on visuals
 cask "plexamp"
-# Modern Plex and Jellyfin client built with Flutter
-cask "edde746/plezy/plezy"
+# Client for Plex, Jellyfin and Emby media servers
+cask "plezy"
 # Used to access context-specific actions when text is selected
 cask "popclip"
 # Monitor process activity
@@ -1416,8 +1416,11 @@ cask "zoom"
 cask "zotero"
 mas "2048 Game", id: 871033113
 mas "Actions", id: 1586435171
+mas "Amazing AI", id: 1660147028
 mas "Anybox", id: 1593408455
 mas "Apple Configurator", id: 1037126344
+mas "Asphalt", id: 1491129197
+mas "Asphalt8", id: 610391947
 mas "Blackmagic Disk Speed Test", id: 425264550
 mas "Broadcasts", id: 1469995354
 mas "Color Picker", id: 1545870783
@@ -1447,6 +1450,7 @@ mas "JuxtaText", id: 6504801865
 mas "Keynote", id: 361285480
 mas "Keyword Search", id: 1558453954
 mas "Klack", id: 6446206067
+mas "Knights of the Old Republic", id: 416608891
 mas "Kulve", id: 6476389316
 mas "Lickable Menu Bar", id: 6444217677
 mas "Logic Pro", id: 634148309
@@ -1480,6 +1484,7 @@ mas "Spark", id: 1176895641
 mas "Sparrow Weather", id: 6449440582
 mas "Speediness", id: 1596706466
 mas "Sprinkles", id: 1500209074
+mas "Star Wars®: Knights of the Old Republic™ II", id: 960778634
 mas "Startup Manager", id: 1296723195
 mas "Swift Playground", id: 1496833156
 mas "TestFlight", id: 899247664
