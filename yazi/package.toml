@@ -70,8 +70,8 @@ hash = "3070b579618c4831f5d7ca4293c1c275"
 
 [[plugin.deps]]
 use = "uhs-robert/sshfs"
-rev = "2113cf6"
-hash = "5f540c20805d1a73eea68c12e410d890"
+rev = "24a3c46"
+hash = "3021508e0a3ad98d865fc3c3a6d1439f"
 
 [[plugin.deps]]
 use = "pirafrank/what-size"

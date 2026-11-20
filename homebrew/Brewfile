@@ -25,7 +25,7 @@ tap "gitmichaelqiu/tap"
 tap "gromgit/brewtils", trusted: true
 tap "gromgit/fuse", trusted: true
 tap "gschurck/fuzzybrew"
-tap "hewigovens/tap", "https://github.com/hewigovens/tap.git", trusted: true
+tap "hewigovens/tap", "https://github.com/hewigovens/homebrew-tap.git"
 tap "homielab/mountmate", "https://github.com/homielab/mountmate", trusted: true
 tap "jackielii/tap", trusted: true
 tap "jnsahaj/lumen"
@@ -101,8 +101,6 @@ brew "gettext"
 brew "xz"
 # Zstandard is a real-time compression algorithm
 brew "zstd"
-# C/C++ and Java libraries for Unicode and globalization
-brew "icu4c@78"
 # Graphics library to dynamically manipulate images
 brew "gd"
 # Apple Intelligence from the command-line, with OpenAi-compatible API server
@@ -143,6 +141,8 @@ brew "automake"
 brew "bandwhich"
 # Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
+# C/C++ and Java libraries for Unicode and globalization
+brew "icu4c@78"
 # Bastard Tetris
 brew "bastet"
 # Clone of cat(1) with syntax highlighting and Git integration
@@ -153,6 +153,8 @@ brew "bat-extras"
 brew "bfs"
 # GNU binary tools for native development
 brew "binutils"
+# Parser generator
+brew "bison"
 # Open-source, cross-platform JavaScript runtime environment
 brew "node"
 # Secure and free password manager for all of your devices
@@ -291,8 +293,6 @@ brew "glances"
 brew "glow"
 # GNU implementation of the famous stream editor
 brew "gnu-sed"
-# Package compiler and linker metadata toolkit
-brew "pkgconf"
 # GNU grep, egrep and fgrep
 brew "grep"
 # Command-line tool for generating regular expressions
@@ -341,6 +341,8 @@ brew "iftop"
 brew "imagemagick"
 # GNU utilities for networking
 brew "inetutils"
+# Git-compatible distributed version control system
+brew "jj"
 # Ranger-like terminal file manager written in Rust
 brew "joshuto"
 # Image manipulation library
@@ -449,8 +451,6 @@ brew "netcat"
 brew "nethack"
 # RSS/Atom feed reader for text terminals
 brew "newsboat"
-# Graphical client for the Soulseek peer-to-peer network
-brew "nicotine-plus"
 # Space Invaders in the terminal
 brew "ninvaders"
 # Port scanning utility for large networks
@@ -473,6 +473,8 @@ brew "open-adventure"
 brew "openclaw-cli"
 # AI coding agent, built for the terminal
 brew "opencode"
+# 7-Zip (high compression file archiver) implementation
+brew "p7zip"
 # Minecraft package manager and launcher
 brew "pacmc"
 # PAM module for reattaching to the user's GUI (Aqua) session
@@ -491,6 +493,8 @@ brew "pidof"
 brew "pipes-sh"
 # Execute binaries from Python packages in isolated environments
 brew "pipx"
+# Package compiler and linker metadata toolkit
+brew "pkgconf"
 # Fast, disk space efficient package manager
 brew "pnpm"
 # Cowsay but with ponies
@@ -685,6 +689,8 @@ brew "zsh-autosuggestions"
 brew "zsh-completions"
 # Feature-rich syntax highlighting for Zsh
 brew "zsh-fast-syntax-highlighting"
+# Blazingly fast Zsh syntax highlighter
+brew "zsh-patina"
 # Fish shell like syntax highlighting for zsh
 brew "zsh-syntax-highlighting"
 # Better and friendly vi(vim) mode plugin for ZSH
@@ -719,7 +725,7 @@ brew "gschurck/fuzzybrew/fuzzybrew", trusted: true
 brew "jnsahaj/lumen/lumen", trusted: true
 # Drop in replacement for ueberzug written in C++
 brew "jstkdng/programs/ueberzugpp", trusted: true
-# Fig-style IDE autocomplete for your terminal (zsh, bash and fish)
+# IDE-style autocomplete for your terminal (zsh, bash and fish)
 brew "kevengoncalves/tap/lig", trusted: true
 # Coordinates SketchyBar and the native macOS menu bar
 brew "malpern/tap/sketchybar-toggle", trusted: true
@@ -775,6 +781,8 @@ cask "fenio/tap/anylinuxfs-gui", trusted: true
 cask "app-buddy"
 # Inspect application bundles
 cask "apparency"
+# Installer and updater for the Craft App Suite
+cask "artcraft-launcher"
 # Dynamic Island for the MacBook notch
 cask "atoll"
 # Multi-track audio editor and recorder
@@ -813,6 +821,8 @@ cask "bluestacks"
 cask "brave-browser"
 # Native GUI for Homebrew
 cask "msitarzewski/brew-browser/brew-browser"
+# Open source IDE for exploring and testing APIs
+cask "bruno"
 # CD burning application
 cask "burn"
 # E-books management software
@@ -1344,6 +1354,8 @@ cask "ti-connect-ce"
 cask "tigervnc"
 # Utility to change the default backup interval of Time Machine
 cask "timemachineeditor"
+# Application launcher and productivity tool
+cask "tinycast"
 # Alter the character of your TonePrint pedal
 cask "toneprint"
 # Utility to hide the notch
@@ -1381,7 +1393,7 @@ cask "vorssaint"
 # Binary releases of VS Code without MS branding/telemetry/licensing
 cask "vscodium"
 # Manage Homebrew packages with a UI
-cask "wickenico/wailbrew/wailbrew"
+cask "wailbrew"
 # Rust-based terminal
 cask "warp"
 # Web browser
@@ -1416,11 +1428,8 @@ cask "zoom"
 cask "zotero"
 mas "2048 Game", id: 871033113
 mas "Actions", id: 1586435171
-mas "Amazing AI", id: 1660147028
 mas "Anybox", id: 1593408455
 mas "Apple Configurator", id: 1037126344
-mas "Asphalt", id: 1491129197
-mas "Asphalt8", id: 610391947
 mas "Blackmagic Disk Speed Test", id: 425264550
 mas "Broadcasts", id: 1469995354
 mas "Color Picker", id: 1545870783
@@ -1450,7 +1459,6 @@ mas "JuxtaText", id: 6504801865
 mas "Keynote", id: 361285480
 mas "Keyword Search", id: 1558453954
 mas "Klack", id: 6446206067
-mas "Knights of the Old Republic", id: 416608891
 mas "Kulve", id: 6476389316
 mas "Lickable Menu Bar", id: 6444217677
 mas "Logic Pro", id: 634148309
@@ -1484,7 +1492,6 @@ mas "Spark", id: 1176895641
 mas "Sparrow Weather", id: 6449440582
 mas "Speediness", id: 1596706466
 mas "Sprinkles", id: 1500209074
-mas "Star Wars®: Knights of the Old Republic™ II", id: 960778634
 mas "Startup Manager", id: 1296723195
 mas "Swift Playground", id: 1496833156
 mas "TestFlight", id: 899247664
@@ -1505,13 +1512,10 @@ vscode "alefragnani.bookmarks"
 vscode "christian-kohler.path-intellisense"
 vscode "codezombiech.gitignore"
 vscode "continue.continue"
-vscode "cweijan.vscode-office"
 vscode "davidanson.vscode-markdownlint"
 vscode "donjayamanne.githistory"
-vscode "donjayamanne.python-environment-manager"
 vscode "eamodio.gitlens"
 vscode "enkia.tokyo-night"
-vscode "ericsia.pythonsnippets3pro"
 vscode "esbenp.prettier-vscode"
 vscode "formulahendry.code-runner"
 vscode "github.vscode-pull-request-github"
@@ -1519,20 +1523,9 @@ vscode "gruntfuggly.todo-tree"
 vscode "gydunhn.vsc-essentials"
 vscode "gydunhn.vsc-essentials-core"
 vscode "illixion.vscode-vibrancy-continued"
-vscode "kevinrose.vsc-python-indent"
 vscode "kisstkondoros.vscode-gutter-preview"
-vscode "learn-pack.learnpack-vscode"
-vscode "magicstack.magicpython"
 vscode "mechatroner.rainbow-csv"
-vscode "mgesbert.python-path"
 vscode "mhutchie.git-graph"
-vscode "ms-python.debugpy"
-vscode "ms-python.python"
-vscode "ms-toolsai.jupyter"
-vscode "ms-toolsai.jupyter-keymap"
-vscode "ms-toolsai.jupyter-renderers"
-vscode "ms-toolsai.vscode-jupyter-cell-tags"
-vscode "ms-toolsai.vscode-jupyter-slideshow"
 vscode "naumovs.color-highlight"
 vscode "oderwat.indent-rainbow"
 vscode "pkief.material-icon-theme"
@@ -1540,6 +1533,7 @@ vscode "pkief.material-product-icons"
 vscode "redhat.vscode-yaml"
 vscode "sst-dev.opencode"
 vscode "sumneko.lua"
+vscode "tamasfe.even-better-toml"
 vscode "tombonnike.vscode-status-bar-format-toggle"
 vscode "urin.vscode-web-visual-editor"
 vscode "usernamehw.errorlens"

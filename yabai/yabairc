@@ -21,7 +21,7 @@ CONFIGS=(
   "right_padding 0"
   "top_padding 0"
   "bottom_padding 43"
-  "window_gap 5"
+  "window_gap 1"
   "window_shadow float"
   "window_opacity off"
   "window_opacity_duration 0.00"
@@ -32,9 +32,7 @@ CONFIGS=(
   "mouse_modifier alt"
   "mouse_action1 move"
   "mouse_drop_action stack"
-  "event_feedback on"
   "insert_feedback_color 0xffc0caf5"
-  "debug_output off"
 )
 for cfg in "${CONFIGS[@]}"; do
   /opt/homebrew/bin/yabai -m config $cfg

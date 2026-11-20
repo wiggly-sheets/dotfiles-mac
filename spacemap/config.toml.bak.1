@@ -1,0 +1,214 @@
+# Spacemap config
+
+[grid]
+cols = 4
+rows = 2
+cellStyle = "simple"
+showMode = "all"
+multiMonitorHUDMode = "unified"
+unifiedHUDVisibility = "active"
+separateHUDVisibility = "all"
+maxSpaces = 8
+showSpaceNumbers = true
+showSpaceLayout = false
+showIconStrip = true
+showMultiAppIcons = false
+hudIconSource = "native"
+hudIconStripSeparate = true
+hudIconStripSource = "sbarFont"
+
+[spaceNames]
+showSpaceNames = true
+namingMode = "auto"
+
+[spaceNames.names]
+"1" = "Test"
+"2" = "Testes"
+
+[appearance]
+theme = "tokyonight"
+mode = "auto"
+backgroundAlpha = 1.0
+backgroundStyle = "glass"
+glassStyle = "clear"
+glassClearVariant = 11
+glassRegularVariant = 21
+glassTintedVariant = 15
+glassTintedMaterial = "clear"
+glassClearOpacity = 1.0
+glassRegularOpacity = 1.0
+glassTintedOpacity = 1.0
+solidOpacity = 1.0
+matchBackgroundOpacity = false
+hudShadow = true
+hudCornerRadius = 4.0
+hudFontName = "LigaSFMonoNerdFont-Heavy"
+hudFontSize = 12.0
+hudTextColor = "f4f8f8"
+spacesMatchBackground = false
+spacesBackgroundStyle = "glass"
+spacesGlassStyle = "tinted"
+spacesGlassClearVariant = 11
+spacesGlassRegularVariant = 5
+spacesGlassTintedVariant = 4
+spacesGlassTintedMaterial = "clear"
+spacesOpacity = 1.0
+spacesCornerRadius = 2.0
+iconScale = 0.5
+uiScale = 0.4
+
+[behavior]
+autoHideTimeout = 1
+displayNavigationWrap = "within"
+jumpToSpaceEnabled = true
+focusSpaceOnWindowDrop = "never"
+focusSpaceOnWindowDropModifier = "command"
+showHUDOnSpaceChange = false
+showBSPLayoutBadge = true
+showStackLayoutBadge = true
+showFloatLayoutBadge = true
+showHUDInteractionFeedback = true
+spaceDropMode = "content"
+spaceDragFocus = "stay"
+windowDragFocus = "destination"
+showThumbnailWallpaper = true
+hudAnimationsEnabled = true
+hudAnimationStyle = "natural"
+hudEntranceStyle = "scale"
+presence = "none"
+menuBarDisplayMode = "icon"
+menuBarNearbyCount = 3
+updateMode = "auto"
+
+[behavior.hotkey]
+keyKind = "keyCode"
+keyCode = 49
+modifiers = ["ctrl"]
+
+[behavior.pinnedHotkey]
+keyKind = "none"
+modifiers = []
+
+[behavior.glyphStripHotkey]
+keyKind = "none"
+modifiers = []
+
+[behavior.hudMoveSpaceBackHotkey]
+keyKind = "none"
+modifiers = []
+
+[behavior.hudMoveSpaceForwardHotkey]
+keyKind = "none"
+modifiers = []
+
+[behavior.hudNewSpaceHotkey]
+keyKind = "none"
+modifiers = []
+
+[behavior.hudDeleteSpaceHotkey]
+keyKind = "none"
+modifiers = []
+
+[behavior.hudCycleLayoutHotkey]
+keyKind = "none"
+modifiers = []
+
+[hudKeys]
+left = ["h", "left"]
+right = ["l", "right"]
+up = ["k", "up"]
+down = ["j", "down"]
+first = ["f"]
+last = ["e"]
+recent = ["r"]
+close = ["escape", "c"]
+newSpace = ["a"]
+newSpaceAndFocus = ["t"]
+deleteSpace = ["w"]
+layoutBSP = ["b"]
+layoutStack = ["s"]
+layoutFloat = ["u"]
+cycleLayout = []
+moveSpaceBack = []
+moveSpaceForward = []
+
+[behavior.hudPosition]
+kind = "center"
+
+[glyphStrip]
+enabled = true
+hideInFullscreen = true
+theme = "tokyonight"
+showSpaceNumbers = true
+spaceLabelStyle = "numbers"
+showLayoutSuffix = true
+showBSPLayoutBadge = false
+showStackLayoutBadge = true
+showFloatLayoutBadge = true
+autoResizeMaxLength = 0.0
+verticalPadding = 11.0
+showAppIcons = true
+iconSource = "sbarFont"
+dedupeAppsPerSpace = false
+maxIconsPerSpace = 0
+iconSize = 12.0
+indexSize = 12.0
+highlightCurrentSpace = true
+backgroundMaterial = "liquidGlass"
+glassStyle = "regular"
+glassClearVariant = 11
+glassRegularVariant = 5
+glassTintedVariant = 2
+glassTintedMaterial = "clear"
+matchHUDAppearance = false
+backgroundOpacity = 1.0
+matchBackgroundOpacity = false
+glassClearOpacity = 0.69
+glassRegularOpacity = 1.0
+glassTintedOpacity = 0.79
+solidOpacity = 1.0
+shape = "roundedRect"
+cornerRadius = 14.0
+margin = 4.0
+padding = 4.0
+lockPadding = true
+horizontalPadding = 4.0
+displayMode = "menuBarItem"
+iconSpacing = 0.0
+indexPadding = 3.0
+hoverPadding = 2.0
+hoverCornerRadius = 6.0
+showDisplaySeparators = true
+showAddSpaceButton = false
+showPlaceholders = false
+leftClickAction = "focusSpace"
+rightClickAction = "destroySpace"
+middleClickAction = "none"
+position = "leftOfNotch"
+orientation = "horizontal"
+verticalLayout = "stacked"
+lockPosition = false
+customX = 0.5
+customY = 0.5
+customScreen = ""
+borderEnabled = false
+
+[appFont]
+updateMode = "auto"
+installedVersion = "v3.0.27"
+lastCheck = 1795182257
+
+[spaceNameProfiles]
+activeIndex = 0
+
+[spaceNameProfiles.0]
+name = "Default"
+
+[spaceNameProfiles.0.names]
+"1" = "Test"
+"2" = "Testes"
+
+[advanced]
+socketHealthInterval = 60
+showExtraWindows = false
+refuseUntrustedYabai = false

@@ -2,58 +2,120 @@
   "$schema": "https://opencode.ai/config.json",
   "model": "opencode-go/deepseek-v4.1-flash",
   "default_agent": "build",
-  "skills": ["~/dotfiles/skills"],
+  "skills": [
+    "~/dotfiles/skills"
+  ],
   "plugins": [
-    "@tarquinen/opencode-dcp",
     "@mumme-it/opencode-caveman",
     "@dietrichgebert/ponytail",
     "@rizal72/oc-models-pro",
-    "/Users/Zeb/Developer/opencode-v2-lsp-support"
+    "/Users/Zeb/Developer/opencode-v2-lsp-support",
+    "@tarquinen/opencode-dcp@latest"
   ],
   "lsp": {
     "sourcekit-lsp": {
-      "command": ["/usr/bin/sourcekit-lsp"],
-      "extensions": [".swift", ".objc", ".objcpp"]
+      "command": [
+        "/usr/bin/sourcekit-lsp"
+      ],
+      "extensions": [
+        ".swift",
+        ".objc",
+        ".objcpp"
+      ]
     },
     "rust": {
-      "command": ["/Users/Zeb/.cargo/bin/rust-analyzer"],
-      "extensions": [".rs"]
+      "command": [
+        "/Users/Zeb/.cargo/bin/rust-analyzer"
+      ],
+      "extensions": [
+        ".rs"
+      ]
     },
     "json": {
-      "command": ["/opt/homebrew/bin/vscode-json-language-server", "--stdio"],
-      "extensions": [".json", ".jsonc"]
+      "command": [
+        "/opt/homebrew/bin/vscode-json-language-server",
+        "--stdio"
+      ],
+      "extensions": [
+        ".json",
+        ".jsonc"
+      ]
     },
     "css": {
-      "command": ["/opt/homebrew/bin/vscode-css-language-server", "--stdio"],
-      "extensions": [".css", ".scss", ".less"]
+      "command": [
+        "/opt/homebrew/bin/vscode-css-language-server",
+        "--stdio"
+      ],
+      "extensions": [
+        ".css",
+        ".scss",
+        ".less"
+      ]
     },
     "html": {
-      "command": ["/opt/homebrew/bin/vscode-html-language-server", "--stdio"],
-      "extensions": [".html", ".htm"]
+      "command": [
+        "/opt/homebrew/bin/vscode-html-language-server",
+        "--stdio"
+      ],
+      "extensions": [
+        ".html",
+        ".htm"
+      ]
     }
   },
   "agents": {
-    "build": { "model": "opencode-go/deepseek-v4.1-flash#high" },
-    "plan": { "model": "opencode-go/deepseek-v4.1-flash#max" },
-    "general": { "model": "opencode-go/deepseek-v4.1-flash#high" },
+    "build": {
+      "model": "opencode-go/deepseek-v4.1-flash#high"
+    },
+    "plan": {
+      "model": "opencode-go/deepseek-v4.1-flash#max"
+    },
+    "general": {
+      "model": "opencode-go/deepseek-v4.1-flash#high"
+    },
     "explore": {
       "model": "opencode-go/deepseek-v4.1-flash#high",
       "permissions": [
-        { "action": "shell", "resource": "*", "effect": "deny" },
-        { "action": "edit", "resource": "*", "effect": "deny" },
-        { "action": "subagent", "resource": "*", "effect": "deny" },
-        { "action": "lsp", "resource": "*", "effect": "allow" }
+        {
+          "action": "shell",
+          "resource": "*",
+          "effect": "deny"
+        },
+        {
+          "action": "edit",
+          "resource": "*",
+          "effect": "deny"
+        },
+        {
+          "action": "subagent",
+          "resource": "*",
+          "effect": "deny"
+        },
+        {
+          "action": "lsp",
+          "resource": "*",
+          "effect": "allow"
+        }
       ]
     },
-    "title": { "model": "opencode-go/deepseek-v4.1-flash#low" },
-    "summary": { "model": "opencode-go/deepseek-v4.1-flash#low" },
-    "compaction": { "model": "opencode-go/deepseek-v4.1-flash#high" }
+    "title": {
+      "model": "opencode-go/deepseek-v4.1-flash#low"
+    },
+    "summary": {
+      "model": "opencode-go/deepseek-v4.1-flash#low"
+    },
+    "compaction": {
+      "model": "opencode-go/deepseek-v4.1-flash#high"
+    }
   },
   "mcp": {
     "servers": {
       "xcode": {
         "type": "local",
-        "command": ["xcrun", "mcpbridge"]
+        "command": [
+          "xcrun",
+          "mcpbridge"
+        ]
       },
       "exa": {
         "type": "remote",

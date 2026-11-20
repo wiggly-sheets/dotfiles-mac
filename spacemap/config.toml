@@ -10,17 +10,20 @@ unifiedHUDVisibility = "active"
 separateHUDVisibility = "all"
 maxSpaces = 8
 showSpaceNumbers = true
-showSpaceLayout = true
+showSpaceLayout = false
 showIconStrip = true
-showMultiAppIcons = true
-hudIconSource = "sbarFont"
-hudIconStripSeparate = false
-hudIconStripSource = "native"
+showMultiAppIcons = false
+hudIconSource = "native"
+hudIconStripSeparate = true
+hudIconStripSource = "sbarFont"
 
 [spaceNames]
-showSpaceNames = false
+showSpaceNames = true
+namingMode = "auto"
 
 [spaceNames.names]
+"1" = "Test"
+"2" = "Testes"
 
 [appearance]
 theme = "tokyonight"
@@ -57,12 +60,7 @@ uiScale = 0.4
 [behavior]
 autoHideTimeout = 1
 displayNavigationWrap = "within"
-useVimKeys = true
-useArrowKeys = true
-useExtendedKeys = true
 jumpToSpaceEnabled = true
-customHUDX = 0.5
-customHUDY = 0.5
 focusSpaceOnWindowDrop = "never"
 focusSpaceOnWindowDropModifier = "command"
 showHUDOnSpaceChange = false
@@ -115,14 +113,34 @@ modifiers = []
 keyKind = "none"
 modifiers = []
 
+[hudKeys]
+left = ["h", "left"]
+right = ["l", "right"]
+up = ["k", "up"]
+down = ["j", "down"]
+first = ["f"]
+last = ["e"]
+recent = ["r"]
+close = ["escape", "c"]
+newSpace = ["a"]
+newSpaceAndFocus = ["t"]
+deleteSpace = ["w"]
+layoutBSP = ["b"]
+layoutStack = ["s"]
+layoutFloat = ["u"]
+cycleLayout = []
+moveSpaceBack = []
+moveSpaceForward = []
+
 [behavior.hudPosition]
 kind = "center"
 
 [glyphStrip]
 enabled = true
 hideInFullscreen = true
-theme = ""
+theme = "tokyonight"
 showSpaceNumbers = true
+spaceLabelStyle = "numbers"
 showLayoutSuffix = true
 showBSPLayoutBadge = false
 showStackLayoutBadge = true
@@ -158,7 +176,6 @@ horizontalPadding = 4.0
 displayMode = "menuBarItem"
 iconSpacing = 0.0
 indexPadding = 3.0
-yOffset = 1070.0
 hoverPadding = 2.0
 hoverCornerRadius = 6.0
 showDisplaySeparators = true
@@ -167,17 +184,29 @@ showPlaceholders = false
 leftClickAction = "focusSpace"
 rightClickAction = "destroySpace"
 middleClickAction = "none"
-position = "custom"
+position = "leftOfNotch"
 orientation = "horizontal"
 verticalLayout = "stacked"
 lockPosition = false
-xOffset = 1248
+customX = 0.5
+customY = 0.5
+customScreen = ""
 borderEnabled = false
 
 [appFont]
 updateMode = "auto"
-installedVersion = "v3.0.25"
-lastCheck = 1794832283
+installedVersion = "v3.0.27"
+lastCheck = 1795182257
+
+[spaceNameProfiles]
+activeIndex = 0
+
+[spaceNameProfiles.0]
+name = "Default"
+
+[spaceNameProfiles.0.names]
+"1" = "Test"
+"2" = "Testes"
 
 [advanced]
 socketHealthInterval = 60
