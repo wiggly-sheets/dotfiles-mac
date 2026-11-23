@@ -1,39 +1,80 @@
 #!/usr/bin/env bash
-set -euo pipefail
+set -uo pipefail
 
-is_effectively_empty() {
-    local space_id="$1"
-    local window_count
+YABAI=/opt/homebrew/bin/yabai
+JQ=/opt/homebrew/bin/jq
+LOCK_DIR="${TMPDIR:-/tmp}/prune-empty-spaces.lock"
 
-    window_count=$(
-        /opt/homebrew/bin/yabai -m query --windows --space "$space_id" | /opt/homebrew/bin/jq -r '
-            [ .[]
-              | select(
-                    ((.app // "") != "Atoll")
-              )
-            ] | length
-        '
-    )
+log() { printf '%s %s\n' "$(date '+%H:%M:%S')" "$*"; }
 
-    [ "$window_count" -eq 0 ]
+for bin in "$YABAI" "$JQ"; do
+  [ -x "$bin" ] || {
+    log "missing $bin"
+    exit 1
+  }
+done
+
+# Prevent overlapping runs (e.g. rapid skhd presses).
+if ! mkdir "$LOCK_DIR" 2>/dev/null; then
+  log "already running, exiting"
+  exit 0
+fi
+trap 'rmdir "$LOCK_DIR" 2>/dev/null' EXIT
+
+# A window is real unless it's an AXSystemDialog panel (menu bar managers,
+# overlays, helper HUDs) or Finder's untitled desktop surface.
+REAL_WINDOW_DEF='
+  def real_window:
+      (.subrole // "") != "AXSystemDialog"
+      and ((.app // "") != "Finder" or ((.title // "") != ""));
+'
+
+spaces_json=$("$YABAI" -m query --spaces) || {
+  log "yabai query failed (is it running?)"
+  exit 1
+}
+windows_json=$("$YABAI" -m query --windows) || {
+  log "window query failed"
+  exit 1
 }
 
-while true; do
-    # Find the first effectively empty space, fresh query every iteration.
-    # Finder can keep a space "non-empty" even when there are no user windows,
-    # so ignore Finder-only spaces.
-    empty_space=""
-    while IFS= read -r space_id; do
-        if is_effectively_empty "$space_id"; then
-            empty_space="$space_id"
-            break
-        fi
-    done < <(/opt/homebrew/bin/yabai -m query --spaces | /opt/homebrew/bin/jq -r '.[].index')
+# Candidates: no real windows, not focused, not the only space on its display.
+# Highest index first, so destroying one doesn't shift the indices still to come.
+candidates=$("$JQ" -rn \
+  --argjson spaces "$spaces_json" \
+  --argjson windows "$windows_json" \
+  "$REAL_WINDOW_DEF"'
+    ([$windows[] | select(real_window) | .space] | unique) as $occupied
+    | [ $spaces[]
+        | select(.index as $i | $occupied | any(. == $i) | not)
+        | select((.["has-focus"] // false) | not)
+        | select(.display as $d | [$spaces[] | select(.display == $d)] | length > 1)
+        | .index
+      ]
+    | sort | reverse | .[]
+') || {
+  log "failed to evaluate candidates"
+  exit 1
+}
 
-    if [ -z "$empty_space" ]; then
-        break
-    fi
+if [ -z "$candidates" ]; then
+  log "no empty spaces"
+  exit 0
+fi
 
-    echo "Deleting empty space $empty_space"
-    /opt/homebrew/bin/yabai -m space "$empty_space" --destroy || true
-done
+while IFS= read -r idx; do
+  [ -n "$idx" ] || continue
+
+  # Re-check right before destroying in case a window appeared since the snapshot.
+  space_windows=$("$YABAI" -m query --windows --space "$idx") || {
+    log "space $idx query failed, skipping"
+    continue
+  }
+  if printf '%s' "$space_windows" | "$JQ" -e "$REAL_WINDOW_DEF"' any(.[]; real_window)' >/dev/null 2>&1; then
+    log "space $idx now has windows, skipping"
+    continue
+  fi
+
+  log "destroying empty space $idx"
+  "$YABAI" -m space "$idx" --destroy || log "failed to destroy space $idx"
+done <<<"$candidates"

@@ -108,7 +108,7 @@ setup_symlinks() {
 setup_skills() {
   print_status "Linking skills into agent harnesses..."
 
-  mkdir -p "$HOME/.agents" "$HOME/.claude/skills"
+  mkdir -p "$HOME/.agents"
 
   # Universal agent directory points at the dotfiles copy.
   if [[ -e "$HOME/.agents/skills" && ! -L "$HOME/.agents/skills" ]]; then
@@ -117,16 +117,25 @@ setup_skills() {
     ln -sfn "$DOTFILES_DIR/skills" "$HOME/.agents/skills"
   fi
 
-  # Claude Code gets one symlink per skill.
-  local skill dest
-  for skill in "$DOTFILES_DIR"/skills/*/; do
-    [[ -f "$skill/SKILL.md" ]] || continue
-    dest="$HOME/.claude/skills/$(basename "$skill")"
-    if [[ -e "$dest" && ! -L "$dest" ]]; then
-      print_warning "$dest is not a symlink; leaving it alone"
-      continue
-    fi
-    ln -sfn "../../.agents/skills/$(basename "$skill")" "$dest"
+  # Harnesses that only scan their own skills dir get one symlink per skill.
+  # Codex, Zed, OpenCode and DeepSeek Harness read ~/.agents/skills or config directly.
+  local dir skill dest
+  for dir in \
+    "$HOME/.claude/skills" \
+    "$HOME/.pi/agent/skills" \
+    "$HOME/.openclaw/skills" \
+    "$HOME/.cursor/skills" \
+    "$HOME/.hermes/skills"; do
+    mkdir -p "$dir"
+    for skill in "$DOTFILES_DIR"/skills/*/; do
+      [[ -f "$skill/SKILL.md" ]] || continue
+      dest="$dir/$(basename "$skill")"
+      if [[ -e "$dest" && ! -L "$dest" ]]; then
+        print_warning "$dest is not a symlink; leaving it alone"
+        continue
+      fi
+      ln -sfn "$DOTFILES_DIR/skills/$(basename "$skill")" "$dest"
+    done
   done
 
   # Keep the npx skills lock file inside dotfiles so update state syncs too.
@@ -231,5 +240,11 @@ main() {
   echo "To uninstall symlinks, run: cd ~/dotfiles && stow -D ."
   echo ""
 }
+
+# `setup.sh skills` only refreshes skill links; topgrade calls it after updating skills.
+if [[ "${1:-}" == "skills" ]]; then
+  setup_skills
+  exit 0
+fi
 
 main "$@"

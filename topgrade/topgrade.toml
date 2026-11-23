@@ -90,6 +90,8 @@ no_self_update = false
 # "Emacs Snapshot" = "rm -rf ~/.emacs.d/elpa.bak && cp -rl ~/.emacs.d/elpa ~/.emacs.d/elpa.bak"
 "Brew Cleanup" = "brew cleanup --prune=all"
 "Brew Bundle" = "brew bundle dump --force --file=~/dotfiles/homebrew/brewfile"
+# Re-link skills after the skills step so new skills appear in every harness.
+"Refresh skill links" = "bash ~/dotfiles/setup.sh skills"
 
 
 # Custom commands
@@ -147,7 +149,8 @@ fetch_head = true
 # ]
 
 # Don't pull the predefined git repos
-# pull_predefined = false
+# nvim is symlinked into dotfiles, so the predefined list resolves to this repo.
+pull_predefined = false
 # Arguments to pass Git when pulling Repositories
 # arguments = "--rebase --autostash"
 

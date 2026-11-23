@@ -12,12 +12,13 @@ tap "browsh-org/browsh", trusted: true
 tap "can1357/tap"
 tap "catskull/homebrew", "https://github.com/catskull/homebrew", trusted: true
 tap "charmbracelet/tap"
+tap "christian-sc26/formulae"
 tap "clainstone/tap"
 tap "codeeditapp/formulae"
 tap "daniyalmaster693/casks"
 tap "edde746/plezy", "https://github.com/edde746/plezy", trusted: true
 tap "felixkratz/formulae", "https://github.com/FelixKratz/homebrew-formulae"
-tap "fenio/tap"
+tap "fenio/tap", trusted: { formulae: ["zod"] }
 tap "filosottile/musl-cross", trusted: true
 tap "gcenx/wine", trusted: true
 tap "gechr/tap", trusted: true
@@ -311,10 +312,6 @@ brew "harper"
 brew "helix"
 # Agent multiplexer that lives in your terminal
 brew "herdr"
-# Search tool like grep and The Silver Searcher
-brew "ripgrep"
-# Self-improving AI agent that creates skills from experience
-brew "hermes-agent"
 # Client library for huggingface.co hub
 brew "hf"
 # Improved top (interactive process viewer)
@@ -471,6 +468,8 @@ brew "onefetch"
 brew "open-adventure"
 # Your own personal AI assistant
 brew "openclaw-cli"
+# Search tool like grep and The Silver Searcher
+brew "ripgrep"
 # AI coding agent, built for the terminal
 brew "opencode"
 # 7-Zip (high compression file archiver) implementation
@@ -497,6 +496,8 @@ brew "pipx"
 brew "pkgconf"
 # Fast, disk space efficient package manager
 brew "pnpm"
+# Tool for managing OCI containers and pods
+brew "podman"
 # Cowsay but with ponies
 brew "ponysay"
 # PDF rendering library (based on the xpdf-3.0 code base)
@@ -699,12 +700,12 @@ brew "zsh-vi-mode"
 brew "a-shygun/dripfetch/dripfetch"
 # 🔑 a CLI for Apple Passwords 🔒
 brew "alecharmon/tap/applepw", trusted: true
-# A tiling window manager for macOS based on binary space partitioning.
-brew "asmvik/formulae/yabai", args: ["HEAD"], link: false
 # A retro terminal music player inspired by Winamp 2.x
 brew "bjarneo/cliamp/cliamp", trusted: true
 # Coding agent with the IDE wired in
 brew "can1357/tap/omp", trusted: true
+# A tiling window manager for macOS based on binary space partitioning.
+brew "christian-sc26/formulae/yabai", trusted: true
 # Flock of birds in your terminal
 brew "clainstone/tap/cbirds", trusted: true
 # A command-line-interface to open files/folders in CodeEdit.app
@@ -767,8 +768,6 @@ brew "vukkt/tap/iglass", trusted: true
 brew "waydabber/betterdisplay/betterdisplaycli", trusted: true
 # Note editor and whiteboard
 cask "affine"
-# Get the battery level of all your devices on your Mac.
-cask "lihaoyun6/tap/airbattery"
 # Enable Windows-like alt-tab
 cask "alt-tab"
 # iOS App Store alternative
@@ -805,7 +804,7 @@ cask "bettermouse"
 cask "bettershot"
 # Tool to customise input devices and automate computer systems
 cask "bettertouchtool@alpha"
-# Desktop password and login vault
+# Open source desktop password manager with encrypted vault and autofilling
 cask "bitwarden"
 # 3D creation suite
 cask "blender"
@@ -990,8 +989,6 @@ cask "harper-desktop"
 cask "helium-browser"
 # Desktop app for terminals and coding agents
 cask "herdr-app"
-# Open-source desktop AI agent
-cask "hermes-desktop"
 # Game launcher
 cask "heroic"
 # Homebrew's official GUI
@@ -1008,8 +1005,6 @@ cask "istherenet"
 cask "iterm2"
 # Offline AI chat tool
 cask "jan"
-# Download manager
-cask "jdownloader"
 # Pie menu
 cask "kando"
 # Keyboard customiser
@@ -1088,6 +1083,8 @@ cask "megasync"
 cask "rafaelswi/menubarusb/menubarusb"
 # Access the menu from anywhere
 cask "menuwhere"
+# AI-first productivity assistant for Microsoft 365
+cask "microsoft-365-copilot"
 # Sandbox construction video game
 cask "minecraft"
 # Manage your windows in Mission Control
@@ -1128,6 +1125,8 @@ cask "network-weather"
 cask "nimble-commander"
 # Electronic thesaurus for the 'Service' menu
 cask "nisus-thesaurus"
+# Personal AI agent
+cask "nod"
 # App to write, plan, collaborate, and get organised
 cask "notion"
 # Calculator and converter application
@@ -1206,6 +1205,8 @@ cask "plex"
 cask "plexamp"
 # Client for Plex, Jellyfin and Emby media servers
 cask "plezy"
+# Browse, manage, inspect containers and images
+cask "podman-desktop"
 # Used to access context-specific actions when text is selected
 cask "popclip"
 # Monitor process activity
@@ -1489,6 +1490,7 @@ mas "Simple Comic", id: 1497435571
 mas "Sink It for Reddit", id: 6449873635
 mas "SnippetsLab", id: 1006087419
 mas "Spark", id: 1176895641
+mas "Spark Desktop", id: 6445813049
 mas "Sparrow Weather", id: 6449440582
 mas "Speediness", id: 1596706466
 mas "Sprinkles", id: 1500209074

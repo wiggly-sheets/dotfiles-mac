@@ -18,12 +18,14 @@ hudIconStripSeparate = true
 hudIconStripSource = "sbarFont"
 
 [spaceNames]
-showSpaceNames = true
+showSpaceNames = false
 namingMode = "auto"
+autoNameAppCount = 3
 
 [spaceNames.names]
 "1" = "Test"
-"2" = "Testes"
+"2" = ""
+"3" = ""
 
 [appearance]
 theme = "tokyonight"
@@ -61,6 +63,7 @@ uiScale = 0.4
 autoHideTimeout = 1
 displayNavigationWrap = "within"
 jumpToSpaceEnabled = true
+fuzzySpaceJumpEnabled = true
 focusSpaceOnWindowDrop = "never"
 focusSpaceOnWindowDropModifier = "command"
 showHUDOnSpaceChange = false
@@ -131,6 +134,8 @@ layoutFloat = ["u"]
 cycleLayout = []
 moveSpaceBack = []
 moveSpaceForward = []
+previousSpace = ["p"]
+nextSpace = ["n"]
 
 [behavior.hudPosition]
 kind = "center"
@@ -146,7 +151,7 @@ showBSPLayoutBadge = false
 showStackLayoutBadge = true
 showFloatLayoutBadge = true
 autoResizeMaxLength = 0.0
-verticalPadding = 11.0
+verticalPadding = 4.0
 showAppIcons = true
 iconSource = "sbarFont"
 dedupeAppsPerSpace = false
@@ -154,49 +159,50 @@ maxIconsPerSpace = 0
 iconSize = 12.0
 indexSize = 12.0
 highlightCurrentSpace = true
-backgroundMaterial = "liquidGlass"
-glassStyle = "regular"
-glassClearVariant = 11
-glassRegularVariant = 5
+backgroundMaterial = "none"
+glassStyle = "clear"
+glassClearVariant = 5
+glassRegularVariant = 11
 glassTintedVariant = 2
 glassTintedMaterial = "clear"
 matchHUDAppearance = false
 backgroundOpacity = 1.0
 matchBackgroundOpacity = false
-glassClearOpacity = 0.69
+glassClearOpacity = 0.5
 glassRegularOpacity = 1.0
 glassTintedOpacity = 0.79
-solidOpacity = 1.0
-shape = "roundedRect"
-cornerRadius = 14.0
+solidOpacity = 0.5
+cornerRadius = 6.0
 margin = 4.0
-padding = 4.0
+plainMargin = 6.0
+padding = 0.0
 lockPadding = true
 horizontalPadding = 4.0
-displayMode = "menuBarItem"
+displayMode = "floating"
 iconSpacing = 0.0
 indexPadding = 3.0
-hoverPadding = 2.0
+hoverPadding = 0.0
 hoverCornerRadius = 6.0
 showDisplaySeparators = true
 showAddSpaceButton = false
-showPlaceholders = false
+showPlaceholders = true
 leftClickAction = "focusSpace"
 rightClickAction = "destroySpace"
 middleClickAction = "none"
-position = "leftOfNotch"
+position = "rightOfNotch"
+plainPosition = "custom"
 orientation = "horizontal"
 verticalLayout = "stacked"
-lockPosition = false
-customX = 0.5
-customY = 0.5
-customScreen = ""
+lockPosition = true
+customX = 0.5857345299952763
+customY = 0.9992101105845181
+customScreen = "CBFD6544-2BFB-438B-8A65-BE1AE547C9E3"
 borderEnabled = false
 
 [appFont]
 updateMode = "auto"
-installedVersion = "v3.0.27"
-lastCheck = 1795182257
+installedVersion = "v3.0.29"
+lastCheck = 1795285058
 
 [spaceNameProfiles]
 activeIndex = 0
@@ -206,7 +212,8 @@ name = "Default"
 
 [spaceNameProfiles.0.names]
 "1" = "Test"
-"2" = "Testes"
+"2" = ""
+"3" = ""
 
 [advanced]
 socketHealthInterval = 60

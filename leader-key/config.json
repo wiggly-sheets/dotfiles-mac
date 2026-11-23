@@ -38,44 +38,31 @@
           "key" : "e",
           "label" : "Emoji Picker",
           "type" : "url",
-          "value" : "raycast-x://extensions/raycast/emoji-symbols/search-emoji-symbols"
-        },
-        {
-          "key" : "p",
-          "label" : "Confetti",
-          "type" : "url",
-          "value" : "raycast-x://extensions/raycast/raycast/confetti"
+          "value" : "tinycast://extensions/emoji/emoji"
         },
         {
           "key" : "v",
           "label" : "Open Camera",
           "type" : "url",
-          "value" : "raycast-x://extensions/raycast/raycast/open-camera"
-        },
-        {
-          "iconPath" : "link",
-          "key" : "b",
-          "label" : "Bounce Animation",
-          "type" : "url",
-          "value" : "raycast-x://extensions/raycast/raycast/toggle-bounce-animation"
+          "value" : "tinycast://command/open-camera"
         },
         {
           "key" : "c",
           "label" : "Clipboard",
           "type" : "url",
-          "value" : "raycast-x://extensions/raycast/clipboard-history/clipboard-history"
+          "value" : "tinycast://command/clipboard-history"
         },
         {
           "key" : "k",
           "label" : "Kill Process",
           "type" : "url",
-          "value" : "raycast-x://extensions/rolandleth/kill-process/index"
+          "value" : "tinycast://extensions/kill-process/index"
         },
         {
           "key" : "q",
           "label" : "Quit Apps",
           "type" : "url",
-          "value" : "raycast-x://extensions/mackopes/quit-applications/index"
+          "value" : "tinycast://extensions/quit-applications/index"
         }
       ],
       "key" : "r",

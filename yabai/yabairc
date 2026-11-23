@@ -3,9 +3,6 @@ echo "$(whoami) ALL=(root) NOPASSWD: sha256:$(shasum -a 256 /opt/homebrew/bin/ya
 /opt/homebrew/bin/yabai -m signal --add event=dock_did_restart action="sudo /opt/homebrew/bin/yabai --load-sa"
 sudo /opt/homebrew/bin/yabai --load-sa
 
-# scratchpad setup
-/opt/homebrew/bin/yabai -m rule --add app="^Stickies$" scratchpad=scratchpad grid=6:6:6:0:8:8
-
 # MAIN CONFIG
 CONFIGS=(
   "layout bsp"
@@ -24,15 +21,15 @@ CONFIGS=(
   "window_gap 1"
   "window_shadow float"
   "window_opacity off"
-  "window_opacity_duration 0.00"
-  "active_window_opacity 1.0"
-  "normal_window_opacity 0.80"
   "mouse_follows_focus on"
   "focus_follows_mouse autoraise"
   "mouse_modifier alt"
   "mouse_action1 move"
   "mouse_drop_action stack"
   "insert_feedback_color 0xffc0caf5"
+  "window_native_tabs on"
+  "mouse_bsp_live_resize on"
+
 )
 for cfg in "${CONFIGS[@]}"; do
   /opt/homebrew/bin/yabai -m config $cfg
