@@ -201,8 +201,8 @@ borderEnabled = false
 
 [appFont]
 updateMode = "auto"
-installedVersion = "v3.0.29"
-lastCheck = 1795285058
+installedVersion = "v3.0.31"
+lastCheck = 1795455412
 
 [spaceNameProfiles]
 activeIndex = 0

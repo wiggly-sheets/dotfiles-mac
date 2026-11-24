@@ -297,6 +297,17 @@
       "skillFolderHash": "ac92229646fccf7315ae139c37b479b3790617f2",
       "installedAt": "2026-07-30T21:05:53.944Z",
       "updatedAt": "2026-11-13T07:25:39.359Z"
+    },
+    "frontend-design": {
+      "source": "anthropics/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/anthropics/skills.git",
+      "commit": "e4bb5d960d87126ff3b3a8af1a104b7db67560ba",
+      "skillPath": "skills/frontend-design/SKILL.md",
+      "skillFolderHash": "d79e2a5bb4df4a386c2adcdd9ab8709bba28c3f6",
+      "pluginName": "example-skills",
+      "installedAt": "2026-11-23T14:21:07.975Z",
+      "updatedAt": "2026-11-23T14:21:07.975Z"
     }
   },
   "dismissed": {
@@ -308,6 +319,7 @@
     "codex",
     "cursor",
     "droid",
+    "fx",
     "gemini-cli",
     "github-copilot",
     "kilo",
